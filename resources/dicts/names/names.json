@@ -58,7 +58,9 @@
     "Abyssinian": ["back", "pelt", "fur", "shade"],
     "Braided": ["stripe", "feather", "shade", "ripple", "shadow"],
     "Splotch": ["fade", "dusk", "dawn", "smoke", "dapple", "speckle", "spot", "speck", "freckle"],
-    "Saber": ["streak", "shade", "stem", "shadow", "smoke", "mist", "dawn", "dusk", "dapple"]
+    "Saber": ["streak", "shade", "stem", "shadow", "smoke", "mist", "dawn", "dusk", "dapple"],
+    "Faded": ["fade", "dusk", "dawn", "smoke"],
+    "Masked": ["fade", "dusk", "dawn", "smoke"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["dapple", "speckle", "spots", "splash"],
@@ -77,7 +79,9 @@
     "braided": ["stripe", "feather", "leaf", "stripe", "shade", "fern"],
     "brindle": ["stripe", "feather", "fern", "shade"],
     "splotch": ["dapple", "speckle", "spots", "speck", "fern", "freckle"],
-    "saber": ["fade", "dusk", "dawn", "smoke"]
+    "saber": ["streak", "shade", "stem", "shadow", "smoke", "mist", "dawn", "dusk", "dapple"],
+    "faded": ["fade", "dusk", "dawn", "smoke"],
+    "masked": ["fade", "dusk", "dawn", "smoke"]
   },
 
   "normal_prefixes": [
@@ -530,7 +534,7 @@
     "Zahra", "Zambezi", "Zambia", "Zaniah", "Zari", "Zariah", "Zazu", "Zekrom", "Zelda", "Zell", "Zebra",
     "Zendaya", "Zeraora", "Zikomo", "Zim", "Zion", "Zira", "Ziti", "Zoe", "Zorro", "Zorua", "Zuberi", "Zuko", "Zuma", "Zuna", "Zuva",
     "Chance", "Briar", "Oliver", "Chloe", "Casper", "Sir Fam Bam of Scritch Scratch", "Southpaw", "Jynx", "Buster", "Zypher", "Tchalla",
-    "Bruno", "Horsefeathers", "Pepper"
+    "Bruno", "Horsefeathers", "Pepper", "Chatty"
     ],
 	"animal_suffixes": [
 		"badger", "bat", "bear", "bee", "beetle", "bird", "bug", "cricket", "deer", "eagle", "elk", "falcon", "fawn", "fish", "fox", "goose", "hare", "hawk", "horse", 

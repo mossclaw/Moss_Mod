@@ -113,7 +113,7 @@ class Sprites():
             'whitepatches', 'eyes', 'eyes2', 'skin', 'scars', 'missingscars',
             'collars', 'bellcollars', 'bowcollars', 'nyloncollars',
             'bengalcolours', 'marbledcolours', 'rosettecolours', 'smokecolours', 'tickedcolours',
-            'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours', 'singlestripecolours',
+            'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
             'fadestarclan', 'fadedarkforest', 'eyes3', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
@@ -446,6 +446,19 @@ class Sprites():
                                'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
                                'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']):
             self.make_group('fadedcolours', (a, 2), f'faded{i}')
+        # masked
+        for a, i in enumerate(['WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
+                               'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
+                               'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST']):
+            self.make_group('maskedcolours', (a, 0), f'masked{i}')
+        for a, i in enumerate(['PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
+                               'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
+                               'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE']):
+            self.make_group('maskedcolours', (a, 1), f'masked{i}')
+        for a, i in enumerate(['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
+                               'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
+                               'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']):
+            self.make_group('maskedcolours', (a, 2), f'masked{i}')
 
         # new new torties
         for a, i in enumerate(['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'SPLIT', 'STREAK', 'MASK']):
