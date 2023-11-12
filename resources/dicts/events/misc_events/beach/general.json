@@ -17,7 +17,7 @@
           "Newleaf",
           "Greenleaf",
           "Leaf-fall"],
-      "event_text": "m_c was at the shoreline when an unexpected wave crashed over {PRONOUN/m_c/objective}! Shaken, but otherwise unharmed, {PRONOUN/m_c/subject} {VERB/m_c/return/returns} to camp covered in seaweed.",
+      "event_text": "m_c was at the shoreline when an unexpected wave crashed over {PRONOUN/m_c/object}! Shaken, but otherwise unharmed, {PRONOUN/m_c/subject} {VERB/m_c/return/returns} to camp covered in seaweed.",
       "accessories": [
           "SEAWEED"
       ]
