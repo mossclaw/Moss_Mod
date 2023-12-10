@@ -169,16 +169,16 @@ class Pelt():
     little_white = ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 'BIB', 'VEE', 'PAWS',
                     'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
                     'LUNA', 'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE', 'BACKSPOT',
-                    'EYEBAGS']
+                    'EYEBAGS', 'LOCKET', 'BLAZEMASK', 'TEARS']
     mid_white = ['TUXEDO', 'FANCY', 'UNDERS', 'DAMIEN', 'SKUNK', 'MITAINE', 'SQUEAKS', 'STAR',
                  'WINGS', 'MOSSY', 'CHANCE', 'DIVA', 'SAVANNAH', 'FADESPOTS', 'BEARD', 'DAPPLEPAW', 'TOPCOVER', 'WOODPECKER', 'MISS', 'VENUS',
-                 'BOWTIE', 'VEST', 'FADEBELLY', 'DIGIT', 'FCTWO', 'FCONE', 'MIA']
+                 'BOWTIE', 'VEST', 'FADEBELLY', 'DIGIT', 'FCTWO', 'FCONE', 'MIA', 'ROSINA', 'PRINCESS', 'DOUGIE']
     high_white = ['ANY', 'ANYTWO', 'BROKEN', 'FRECKLES', 'RINGTAIL', 'HALFFACE', 'PANTSTWO',
                   'GOATEE', 'PRINCE', 'FAROFA', 'MISTER', 'PANTS', 'REVERSEPANTS', 'HALFWHITE', 'APPALOOSA', 'PIEBALD',
                   'CURVED', 'GLASS', 'MASKMANTLE', 'MAO', 'PAINTED', 'NIGHTMIST', 'FALCON', 'RETSUKO', 'SHIBAINU',
                   'SNOWSTORM', 'PEPPER', 'OWL', 'BUB', 'SPARROW', 'TRIXIE',
                   'SAMMY', 'FRONT', 'BLOSSOMSTEP', 'BULLSEYE', 'COWTWO', 'COWFOUR', 'COWSIX', 'COWEIGHT', 'COWELEVEN',
-                  'FINN', 'SCAR', 'BUSTER']
+                  'FINN', 'SCAR', 'BUSTER', 'HAWKBLAZE', 'CAKE']
     mostly_white = ['VAN', 'ONEEAR', 'LIGHTSONG', 'TAIL', 'HEART', 'MOORISH', 'APRON', 'CAPSADDLE',
                     'CHESTSPECK', 'BLACKSTAR', 'PETAL', 'HEARTTWO', 'MOTH', 'FRECKLEMASK', 'COW', 'TIDAL',
                     'DIAMOND', 'ECLIPSE', 'PEBBLESHINE', 'BOOTS', 'COWTHREE', 'COWFIVE', 'COWSEVEN', 'COWNINE', 'COWTEN',
