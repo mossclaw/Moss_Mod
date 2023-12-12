@@ -808,15 +808,17 @@ class Pelt():
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
-                    if self.colour == "WHITE":
+                    if self.colour == "WHITE" or "SNOW WHITE":
                         possible_colors = Pelt.white_colours.copy()
                         possible_colors.remove("WHITE")
                         self.colour = choice(possible_colors)
 
                     # Ginger is often duplicated to increase its chances
-                    if (self.colour in Pelt.black_colours) or (self.colour in Pelt.white_colours):
-                        self.tortiecolour = choice(Pelt.blue_colours + Pelt.gold_colours + (Pelt.fire_colours * 2) + (
-                                    Pelt.ginger_colours * 2) + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                    if self.colour in Pelt.black_colours:
+                        self.tortiecolour = choice(Pelt.blue_colours + Pelt.gold_colours + (Pelt.fire_colours * 4) + (
+                                    Pelt.ginger_colours * 4) + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                    elif self.colour in Pelt.white_colours:
+                        self.tortiecolour = choice(Pelt.white_colours)
                     elif self.colour in Pelt.blue_colours:
                         self.tortiecolour = choice(Pelt.black_colours + (
                                     Pelt.cream_colours * 2) + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.coolbrown_colours)
