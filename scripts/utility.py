@@ -1245,8 +1245,7 @@ def generate_sprite(cat, life_state=None, scars_hidden=False, acc_hidden=False, 
             else:
                 tortie_pattern = cat.pelt.tortiepattern
 
-            patches = sprites.sprites[
-                tortie_pattern + cat.pelt.tortiecolour + cat_sprite].copy()
+            patches = sprites.sprites[tortie_pattern + cat.pelt.tortiecolour + cat_sprite].copy()
             patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0),
                          special_flags=pygame.BLEND_RGBA_MULT)
 
@@ -1290,15 +1289,25 @@ def generate_sprite(cat, life_state=None, scars_hidden=False, acc_hidden=False, 
         if cat.pelt.vitiligo:
             new_sprite.blit(sprites.sprites['white' + cat.pelt.vitiligo + cat_sprite], (0, 0))
 
-        # draw eyes & scars1
-
-        eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
+        # draw eyes
         if cat.pelt.eye_colour2 != None:
-            eyes.blit(sprites.sprites['eyes2' + cat.pelt.eye_colour2 + cat_sprite], (0, 0))
-        if cat.pelt.eye_colour3 != None:
-            eyes.blit(sprites.sprites['eyes3' + cat.pelt.eye_colour3 + cat_sprite], (0, 0))
-        new_sprite.blit(eyes, (0, 0))
+            # Base Eye
+            new_sprite.blit(
+                sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite],
+                (0, 0))
 
+            # Create the patch image
+            eyepatches = sprites.sprites[cat.pelt.eye_pattern + cat.pelt.eye_colour2 + cat_sprite].copy()
+            eyepatches.blit(sprites.sprites['eyes2' + cat.pelt.eye_colour + cat_sprite], (0, 0),
+                         special_flags=pygame.BLEND_RGBA_MULT)
+
+            # Add patches onto cat.
+            new_sprite.blit(eyepatches, (0, 0))
+        else:
+            eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
+            new_sprite.blit(eyes, (0, 0))
+
+        #scars1
         if not scars_hidden:
             for scar in cat.pelt.scars:
                 if scar in cat.pelt.scars1:

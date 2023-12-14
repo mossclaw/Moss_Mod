@@ -166,6 +166,7 @@ class Pelt():
         'SUN-LIT ICE', 'COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY', 'PALE YELLOW', 'GOLD', 'LIME',
         'HAZELNUT', 'DARK AMBER', 'SLATE', 'RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE'
     ]
+    eye_patterns = ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED']
     little_white = ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 'BIB', 'VEE', 'PAWS',
                     'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
                     'LUNA', 'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE', 'BACKSPOT',
@@ -199,7 +200,7 @@ class Pelt():
                  white_patches:str=None,
                  eye_color:str="BLUE",
                  eye_colour2:str=None,
-                 eye_colour3:str=None,
+                 eye_pattern:str=None,
                  tortiebase:str=None,
                  tortiecolour:str=None,
                  pattern:str=None,
@@ -225,7 +226,7 @@ class Pelt():
         self.white_patches = white_patches
         self.eye_colour = eye_color
         self.eye_colour2 = eye_colour2
-        self.eye_colour3 = eye_colour3
+        self.eye_pattern = eye_pattern
         self.tortiebase = tortiebase
         self.pattern = pattern
         self.tortiepattern = tortiepattern
@@ -438,10 +439,10 @@ class Pelt():
         if self.white_patches == 'FULLWHITE' or self.colour == 'WHITE' or self.colour == 'SNOW WHITE':
             num -= 10
         for _par in parents:
-            if _par.pelt.eye_colour2 or _par.pelt.eye_colour3:
+            if _par.pelt.eye_colour2:
                 num -= 10
         if num < 0:
-            num = 2
+            num = 1
         hit = random.randint(0, num)
         if hit == 0:
             if self.eye_colour in Pelt.yellow_eyes:
@@ -462,25 +463,11 @@ class Pelt():
             elif self.eye_colour in Pelt.purple_eyes:
                 eye_choice = choice([Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.grey_eyes])
                 self.eye_colour2 = choice(eye_choice)
-        if hit == 1:
-            if self.eye_colour in Pelt.yellow_eyes:
-                eye_choice = choice([Pelt.blue_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.grey_eyes, Pelt.purple_eyes])
-                self.eye_colour3 = choice(eye_choice)
-            elif self.eye_colour in Pelt.blue_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.grey_eyes, Pelt.purple_eyes])
-                self.eye_colour3 = choice(eye_choice)
-            elif self.eye_colour in Pelt.green_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.red_eyes, Pelt.grey_eyes, Pelt.purple_eyes])
-                self.eye_colour3 = choice(eye_choice)
-            elif self.eye_colour in Pelt.red_eyes:
-                eye_choice = choice([Pelt.blue_eyes, Pelt.blue_eyes, Pelt.green_eyes, Pelt.grey_eyes, Pelt.purple_eyes])
-                self.eye_colour3 = choice(eye_choice)
-            elif self.eye_colour in Pelt.grey_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.purple_eyes])
-                self.eye_colour3 = choice(eye_choice)
-            elif self.eye_colour in Pelt.purple_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.grey_eyes])
-                self.eye_colour3 = choice(eye_choice)
+
+        if hit == 0:
+            self.eye_pattern = choice(Pelt.eye_patterns)
+        else:
+            self.eye_pattern = None
 
     def pattern_color_inheritance(self, parents: tuple=(), gender="female"):
         # setting parent pelt categories

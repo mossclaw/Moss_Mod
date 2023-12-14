@@ -181,7 +181,7 @@
 		"base_permanent_condition": 90,
 		"base_male_tortie": 13,
 		"base_female_tortie": 4,
-		"base_heterochromia": 120,
+		"base_heterochromia": 1,
 		"direct_inheritance": 15,
 		"wildcard_tortie": 9,
 		"vit_chance": 8,

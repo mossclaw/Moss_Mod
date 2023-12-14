@@ -143,28 +143,25 @@ class Sprites():
         for a, i in enumerate(
                 ['YELLOW', 'AMBER', 'HAZEL', 'PALE GREEN', 'GREEN', 'BLUE']):
             self.make_group('eyes', (a, 0), f'eyes{i}')
-            self.make_group('eyes2', (a, 0), f'eyes2{i}')
-            self.make_group('eyes3', (a, 0), f'eyes3{i}')
+
         for a, i in enumerate(
                 ['DARK BLUE', 'GREY', 'CYAN', 'EMERALD', 'HEATHER BLUE', 'SUN-LIT ICE']):
             self.make_group('eyes', (a, 1), f'eyes{i}')
-            self.make_group('eyes2', (a, 1), f'eyes2{i}')
-            self.make_group('eyes3', (a, 1), f'eyes3{i}')
+
         for a, i in enumerate(
                 ['COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY']):
             self.make_group('eyes', (a, 2), f'eyes{i}')
-            self.make_group('eyes2', (a, 2), f'eyes2{i}')
-            self.make_group('eyes3', (a, 2), f'eyes3{i}')
+
         for a, i in enumerate(
                 ['PALE YELLOW', 'GOLD', 'LIME', 'HAZELNUT', 'DARK AMBER', 'SLATE']):
             self.make_group('eyes', (a, 3), f'eyes{i}')
-            self.make_group('eyes2', (a, 3), f'eyes2{i}')
-            self.make_group('eyes3', (a, 3), f'eyes3{i}')
+
         for a, i in enumerate(
                 ['RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE']):
             self.make_group('eyes', (a, 4), f'eyes{i}')
-            self.make_group('eyes2', (a, 4), f'eyes2{i}')
-            self.make_group('eyes3', (a, 4), f'eyes3{i}')
+
+        for a, i in enumerate(['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED']):
+            self.make_group('eyes2', (a, 0), f'eyes2{i}')
 
         # white patches
         for a, i in enumerate(['FULLWHITE', 'ANY', 'TUXEDO', 'LITTLE', 'COLOURPOINT', 'VAN', 'ANYTWO',
