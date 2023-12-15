@@ -719,9 +719,10 @@ class MakeClanScreen(Screens):
                 self.elements['cat_name'].set_text(str(selected.name))
             self.elements['cat_name'].show()
             self.elements['cat_info'].set_text(selected.gender + "\n" +
+                                                str(selected.pelt.name + "\n" +
                                                str(selected.age + "\n" +
                                                    str(selected.personality.trait) + "\n" +
-                                                   str(selected.skills.skill_string())))
+                                                   str(selected.skills.skill_string()))))
             self.elements['cat_info'].show()
         else:
             self.elements['next_step'].disable()
@@ -781,7 +782,7 @@ class MakeClanScreen(Screens):
     def _get_cat_tooltip_string(self, cat: Cat):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
 
-        return f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}"
+        return f"<b>{cat.name}</b><br>{cat.pelt.name}<br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}"
 
     def open_game_mode(self):
         # Clear previous screen

@@ -869,10 +869,8 @@ class Pelt():
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
-                    if self.colour == "WHITE" or "SNOW WHITE":
-                        possible_colors = Pelt.white_colours.copy()
-                        possible_colors.remove("WHITE")
-                        self.colour = choice(possible_colors)
+                    possible_colors = Pelt.pelt_colours.copy()
+                    possible_colors.remove(self.colour)
 
                     # Ginger is often duplicated to increase its chances
                     if self.colour in Pelt.black_colours:
@@ -1284,13 +1282,22 @@ class Pelt():
                     color_name = f"{color_name} {cat.pelt.name.lower()}"
 
         if cat.pelt.white_patches:
-            if cat.pelt.white_patches == "FULLWHITE":
-                # If the cat is fullwhite, discard all other information. They are just white. 
-                color_name = "white"
-            if cat.pelt.white_patches in Pelt.mostly_white and cat.pelt.name != "Calico":
-                color_name = f"white and {color_name}"
-            elif cat.pelt.name != "Calico":
-                color_name = f"{color_name} and white"
+            if cat.pelt.white_patches_tint == "black":
+                if cat.pelt.white_patches == "FULLWHITE":
+                    # If the cat is fullwhite, discard all other information. They are just white.
+                    color_name = "black"
+                if cat.pelt.white_patches in Pelt.mostly_white and cat.pelt.name != "Calico":
+                    color_name = f"black and {color_name}"
+                elif cat.pelt.name != "Calico":
+                    color_name = f"{color_name} and black"
+            else:
+                if cat.pelt.white_patches == "FULLWHITE":
+                    # If the cat is fullwhite, discard all other information. They are just white.
+                    color_name = "white"
+                if cat.pelt.white_patches in Pelt.mostly_white and cat.pelt.name != "Calico":
+                    color_name = f"white and {color_name}"
+                elif cat.pelt.name != "Calico":
+                    color_name = f"{color_name} and white"
         
         if cat.pelt.points:
             color_name = f"{color_name} point"
@@ -1299,6 +1306,9 @@ class Pelt():
 
         if "white and white" in color_name:
             color_name = color_name.replace("white and white", "white")
+
+        if "black and black" in color_name:
+            color_name = color_name.replace("black and black", "black")
 
         # Now it's time for gender
         if cat.genderalign in ["female", "trans female"]:
