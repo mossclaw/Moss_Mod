@@ -1291,18 +1291,12 @@ def generate_sprite(cat, life_state=None, scars_hidden=False, acc_hidden=False, 
 
         # draw eyes
         if cat.pelt.eye_colour2 != None:
-            # Base Eye
-            new_sprite.blit(
-                sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite],
-                (0, 0))
-
-            # Create the patch image
-            eyepatches = sprites.sprites[cat.pelt.eye_pattern + cat.pelt.eye_colour2 + cat_sprite].copy()
-            eyepatches.blit(sprites.sprites['eyes2' + cat.pelt.eye_colour + cat_sprite], (0, 0),
-                         special_flags=pygame.BLEND_RGBA_MULT)
-
-            # Add patches onto cat.
-            new_sprite.blit(eyepatches, (0, 0))
+            eyes = sprites.sprites["eyes" + cat.pelt.eye_colour + cat_sprite].copy().convert_alpha()
+            new_sprite.blit(eyes, (0, 0))
+            second_eye = sprites.sprites["eyes" + cat.pelt.eye_colour2 + cat_sprite].copy().convert_alpha()
+            second_eye.blit(sprites.sprites["eyes2" + cat.pelt.eye_pattern + cat_sprite], (0, 0),
+                            special_flags=pygame.BLEND_RGBA_MULT)
+            new_sprite.blit(second_eye, (0, 0))
         else:
             eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
             new_sprite.blit(eyes, (0, 0))

@@ -166,7 +166,7 @@ class Pelt():
         'SUN-LIT ICE', 'COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY', 'PALE YELLOW', 'GOLD', 'LIME',
         'HAZELNUT', 'DARK AMBER', 'SLATE', 'RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE'
     ]
-    eye_patterns = ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED']
+    eye_patterns = ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED', 'RING', 'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP']
     little_white = ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 'BIB', 'VEE', 'PAWS',
                     'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
                     'LUNA', 'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE', 'BACKSPOT',
@@ -697,7 +697,7 @@ class Pelt():
 
         # Determine pelt.
         chosen_pelt = choice(
-            random.choices(Pelt.pelt_categories, weights=(35, 20, 30, 15, 20, 15, 0, 0), k=1)[0]
+            random.choices(Pelt.pelt_categories, weights=(35, 20, 30, 15, 20, 15, 10, 0), k=1)[0]
         )
 
         # Tortie chance
@@ -863,9 +863,9 @@ class Pelt():
 
                 else:
                     # Normal generation
-                    if self.tortiebase in ["singlestripe", "smoke", "single"]:
+                    if self.tortiebase in ["smoke", "single", "abyssinian"]:
                         self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'smoke', 'agouti',
-                                                'ticked', 'abyssinian', 'masked'])
+                                                'ticked', 'abyssinian', 'masked', 'brindle'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
@@ -884,7 +884,7 @@ class Pelt():
                         self.tortiecolour = choice(Pelt.black_colours + (
                                     Pelt.cream_colours * 4) + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.coolbrown_colours)
                     elif self.colour in Pelt.gray_colours:
-                        self.tortiecolour = choice(Pelt.gold_colours + Pelt.fire_colours + (
+                        self.tortiecolour = choice(Pelt.gold_colours + (Pelt.fire_colours * 4) + (
                                     Pelt.ginger_colours * 4) + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
                     elif self.colour in Pelt.cream_colours:
                         self.tortiecolour = choice((Pelt.blue_colours * 4) + Pelt.black_colours + (
@@ -1225,21 +1225,21 @@ class Pelt():
             "Tabby": "c_n tabby",
             "Speckled": "speckled c_n",
             "Bengal": "unusually dappled c_n",
-            "Marbled": "c_n tabby",
-            "Ticked": "c_n ticked",
+            "Marbled": "c_n marbled tabby",
+            "Ticked": "c_n ticked tabby",
             "Smoke": "c_n smoke",
-            "Mackerel": "c_n tabby",
-            "Classic": "c_n tabby",
-            "Agouti": "c_n tabby",
+            "Mackerel": "c_n mackerel tabby",
+            "Classic": "c_n classic tabby",
+            "Agouti": "c_n agouti tabby",
             "Singlestripe": "dorsal-striped c_n",
-            "Rosette": "unusually spotted c_n",
-            "Sokoke": "c_n tabby",
+            "Rosette": "rosetted c_n",
+            "Sokoke": "c_n sokoke tabby",
             "Abyssinian": "c_n abyssinian",
-            "Brindle": "unusually striped c_n",
-            "Braided": "c_n tabby",
+            "Brindle": "c_n brindle",
+            "Braided": "c_n braided tabby",
             "Splotch": "unusually splotched c_n",
-            "Saber": "c_n tabby",
-            "Faded": "c_n tabby",
+            "Saber": "c_n wild tabby",
+            "Faded": "c_n faded tabby",
             "Masked": "c_n masked tabby"
         }
 

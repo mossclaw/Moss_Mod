@@ -117,7 +117,7 @@ class Sprites():
             'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
-            'fadestarclan', 'fadedarkforest', 'eyes3', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
+            'fadestarclan', 'fadedarkforest', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
             'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs'
 
         ]:
@@ -162,6 +162,8 @@ class Sprites():
 
         for a, i in enumerate(['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED']):
             self.make_group('eyes2', (a, 0), f'eyes2{i}')
+        for a, i in enumerate(['RING', 'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP']):
+            self.make_group('eyes2', (a, 1), f'eyes2{i}')
 
         # white patches
         for a, i in enumerate(['FULLWHITE', 'ANY', 'TUXEDO', 'LITTLE', 'COLOURPOINT', 'VAN', 'ANYTWO',

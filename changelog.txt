@@ -1,3 +1,10 @@
+<strong>Heterochromia Update (12/14/23)</strong>
+- New types of heterochromia:
+    'TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED', 'RING',
+    'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP'
+- Fixed Atlas Moth display
+- Fixed palebrown white patch tint
+
 <strong>Brindle Update (8/7/23)</strong>
 - New brindle pelt design
 
