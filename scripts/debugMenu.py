@@ -5,12 +5,16 @@ Debug menu
 import pygame
 import pygame_gui
 
+from ast import literal_eval
+
+import builtins
+
 from typing import List
 from scripts.game_structure.game_essentials import MANAGER, game
 
 from scripts.utility import get_text_box_theme
-from scripts.debug_commands import commandList
-from scripts.debug_commands.utils import setDebugClass
+from scripts.debugCommands import commandList
+from scripts.debugCommands.utils import setDebugClass
 
 
 class debugConsole(pygame_gui.windows.UIConsoleWindow):
@@ -66,9 +70,7 @@ class debugConsole(pygame_gui.windows.UIConsoleWindow):
                             f"Error while executing command {command}: {e}")
                         raise e
                     break
-            if command in ["cls", "clear"]:
-                self._clear()
-            elif not commandFound:
+            if not commandFound:
                 self.add_output_line_to_log(f"Command {command} not found")
 
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_TAB:
@@ -81,8 +83,6 @@ class debugConsole(pygame_gui.windows.UIConsoleWindow):
 
         return super().process_event(event)
 
-    def _clear(self):
-        self.clear_log()
 
 class debugMode:
     def __init__(self):
