@@ -39,6 +39,7 @@ clan_cat_schema = Schema(
     "sprite_para_adult": int,
     "eye_colour": str,
     Optional("eye_colour2", default=None): Or(str, None),
+    Optional("eye_pattern", default=None): Or(str, None),
     "reverse": bool,
     "white_patches": Or(str, None),
     Optional("vitiligo", default=None): Or(str, None),
