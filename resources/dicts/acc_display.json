@@ -538,5 +538,80 @@
     "default": "moss ball",
     "plural": "moss balls",
     "singular": "moss ball"
+  },
+  "CRIMSONFANG": {
+    "default": "crimson dog-tooth collar",
+    "plural": "crimson dog-tooth collars",
+    "singular": "crimson dog-tooth collar"
+  },
+  "BLUEFANG": {
+    "default": "blue dog-tooth collar",
+    "plural": "blue dog-tooth collars",
+    "singular": "blue dog-tooth collar"
+  },
+  "CYANFANG": {
+    "default": "cyan dog-tooth collar",
+    "plural": "cyan dog-tooth collars",
+    "singular": "cyan dog-tooth collar"
+  },
+  "YELLOWFANG": {
+    "default": "yellow dog-tooth collar",
+    "plural": "yellow dog-tooth collars",
+    "singular": "yellow dog-tooth collar"
+  },
+  "LIMEFANG": {
+    "default": "lime dog-tooth collar",
+    "plural": "lime dog-tooth collars",
+    "singular": "lime dog-tooth collar"
+  },
+  "GREENFANG": {
+    "default": "green dog-tooth collar",
+    "plural": "green dog-tooth collars",
+    "singular": "green dog-tooth collar"
+  },
+  "REDFANG": {
+    "default": "red dog-tooth collar",
+    "plural": "red dog-tooth collars",
+    "singular": "red dog-tooth collar"
+  },
+  "RAINBOWFANG": {
+    "default": "rainbow dog-tooth collar",
+    "plural": "rainbow dog-tooth collars",
+    "singular": "rainbow dog-tooth collar"
+  },
+  "BLACKFANG": {
+    "default": "black dog-tooth collar",
+    "plural": "black dog-tooth collars",
+    "singular": "black dog-tooth collar"
+  },
+  "SPIKESFANG": {
+    "default": "spiky dog-tooth collar",
+    "plural": "spiky dog-tooth collars",
+    "singular": "spiky dog-tooth collar"
+  },
+  "WHITEFANG": {
+    "default": "white dog-tooth collar",
+    "plural": "white dog-tooth collars",
+    "singular": "white dog-tooth collar"
+  },
+  "PINKFANG": {
+    "default": "pink dog-tooth collar",
+    "plural": "pink dog-tooth collars",
+    "singular": "pink dog-tooth collar"
+  },
+  "PURPLEFANG": {
+    "default": "purple dog-tooth collar",
+    "plural": "purple dog-tooth collars",
+    "singular": "purple dog-tooth collar"
+  },
+  "MULTIFANG": {
+    "default": "lilac dog-tooth collar",
+    "plural": "lilac dog-tooth collars",
+    "singular": "lilac dog-tooth collar"
+  },
+  "INDIGOFANG": {
+    "default": "indigo dog-tooth collar",
+    "plural": "indigo dog-tooth collars",
+    "singular": "indigo dog-tooth collar"
   }
 }

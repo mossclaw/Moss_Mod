@@ -118,7 +118,7 @@ class Sprites():
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
             'fadestarclan', 'fadedarkforest', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
-            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs'
+            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -592,6 +592,13 @@ class Sprites():
             self.make_group('nyloncollars', (a, 1), f'collars{i}')
         for a, i in enumerate(["PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON"]):
             self.make_group('nyloncollars', (a, 2), f'collars{i}')
+
+        for a, i in enumerate(["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG"]):
+            self.make_group('bloodcollars', (a, 0), f'dogcollars{i}')
+        for a, i in enumerate(["GREENFANG", "RAINBOWFANG", "BLACKFANG", "SPIKESFANG", "WHITEFANG"]):
+            self.make_group('bloodcollars', (a, 1), f'dogcollars{i}')
+        for a, i in enumerate(["PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]):
+            self.make_group('bloodcollars', (a, 2), f'dogcollars{i}')
 
 # CREATE INSTANCE 
 sprites = Sprites()
