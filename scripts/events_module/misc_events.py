@@ -197,6 +197,8 @@ class MiscEvents():
             acc_list.extend(Pelt.plant2_accessories)
         if "LIVING" in possible_accs:
             acc_list.extend(Pelt.living_accessories)
+        if "DOGCOLLAR" in possible_accs:
+            acc_list.extend(Pelt.dog_collars)
 
         for acc in possible_accs:
             if acc not in ["WILD", "PLANT", "COLLAR", "WILD2", "PLANT2", "LIVING"]:
