@@ -72,7 +72,8 @@ class Pelt():
                       'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP', 'CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE',
                       'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE',
                       'ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED',
-                      'VIPER', 'SKULL', 'POINTS', 'DITTO', 'BODY', 'SHILOH']
+                      'VIPER', 'SKULL', 'POINTS', 'DITTO', 'BODY', 'SHILOH', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED',
+                      'SABER', 'ROSETTE', 'MASKED', 'DUST']
 
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
@@ -866,9 +867,9 @@ class Pelt():
 
                 else:
                     # Normal generation
-                    if self.tortiebase in ["smoke", "single", "abyssinian"]:
-                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'smoke', 'agouti',
-                                                'ticked', 'abyssinian', 'masked', 'brindle'])
+                    if self.tortiebase in ["single"]:
+                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'masked', 'brindle',
+                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
