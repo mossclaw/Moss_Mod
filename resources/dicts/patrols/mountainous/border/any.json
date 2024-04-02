@@ -77,8 +77,7 @@
                         "values": ["respect", "trust"],
                         "amount": 5
                     }
-                ],
-                "art": "gen_bord_otherclan_allies"
+                ]
             },
             {
                 "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich meadow outside of c_n territory.",
@@ -93,8 +92,7 @@
                         "values": ["respect", "trust"],
                         "amount": 5
                     }
-                ],
-                "art": "gen_bord_otherclan_allies"
+                ]
             },
             {
                 "text": "s_c eagerly springs into action! {PRONOUN/s_c/poss/CAP} <i>special training</i> speaks for itself in the way s_c flawlessly performs battle move after battle move. With the rest of the patrol for backup, the rogues quickly turn tail and flee from such a terrifying cat!",
@@ -222,6 +220,12 @@
                 "exp": 30,
                 "weight": 10,
                 "stat_skill": ["DARK,1"]
+            },
+            {
+                "text": "s_c unsheathes {PRONOUN/s_c/poss} claws, excited for a chance to try out some <i>real</i> tactics without criticism. s_c returns late to camp with a bloodied pelt but not a scratch on {PRONOUN/s_c/object}, simply stating {PRONOUN/s_c/subject} solved a rogue problem.",
+                "exp": 30,
+                "weight": 10,
+                "stat_trait": ["bloodthirsty", "fierce", "vengeful"]
             }
         ],
         "fail_outcomes": [
@@ -290,6 +294,18 @@
                 ]
             },
             {
+                "text": "s_c spins a story, vivid and engaging, telling the tale of the first cat to ever pad through the stars, Silverpelt, and how she decorates her fur with the gleaming souls of fallen warriors to keep her company in Starclan.",
+                "exp": 20,
+                "weight": 20,
+                "stat_skill": ["LORE,1"]
+            },
+            {
+                "text": "s_c spins a story, vivid and engaging, telling the tale of an ancient prophecy... <i>Fire alone could save the Clans.</i> It swept through their lands, scorching evil to ash, driving out those with cowardice in their hearts, until the good and strong could reclaim their places and peace ruled among the elements.",
+                "exp": 20,
+                "weight": 20,
+                "stat_skill": ["LORE,1"]
+            },
+            {
                 "text": "It's a fantastic idea, making the patrol fly by as cats chat and laugh with their Clanmates, and everyone ends the day feeling much closer to each other.",
                 "exp": 20,
                 "weight": 20,
@@ -334,7 +350,8 @@
                         "values": ["platonic", "respect", "comfort"],
                         "amount": -10
                     }
-                ]
+                ],
+                "art": "gen_train_argueWW"
             }
         ]
     },
@@ -623,7 +640,7 @@
   "season": ["Any"],
   "types": ["border"],
   "tags": [],
-  "patrol_art": "bord_general_intro",
+  "patrol_art": "gen_bord_scent_hostile",
   "min_cats": 1,
   "max_cats": 1,
   "min_max_status": {},
@@ -828,23 +845,6 @@
       "dead_cats": ["s_c"],
       "history_text": {
         "reg_death": "This cat died from a confrontation with a large wolf.",
-        "lead_death": "lost a life to a large wolf"
-      }
-    },
-    {
-      "text": "r_c turns to flee, but the desert is a terrible place to find cover. It's only by the grace of Starclan that {PRONOUN/r_c/poss} eyes are drawn to a small cave, a rocky refuge as the wolves bark their fury outside. Not all of r_c makes it inside.",
-      "exp": 40,
-      "weight": 20,
-      "injury": [
-        {
-          "cats": ["r_c"],
-          "injuries": ["mangled_tail"],
-          "scars": ["HALFTAIL"]
-        }
-      ],
-      "history_text": {
-        "scar": "This cat is missing half their tail from a large wolf biting it off.",
-        "reg_death": "This cat died from the wounds suffered in a confrontation with a large wolf.",
         "lead_death": "lost a life to a large wolf"
       }
     },
