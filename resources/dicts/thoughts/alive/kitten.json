@@ -168,7 +168,7 @@
         ]
     },
     {
-        "id": "daring_kit",
+        "id": "fearless_kit",
         "thoughts": [
             "Is attempting to pounce on the tail of r_c",
             "Tries to sneak out of camp with a patrol",
@@ -188,7 +188,7 @@
 
         ],
         "main_trait_constraint": [
-            "daring"
+            "fearless"
         ]
     },
     {
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "id": "nervous_kit",
+        "id": "skittish_kit",
         "thoughts": [
             "Was startled by a croaking frog",
             "Is doing {PRONOUN/m_c/poss} best not to get stepped on",
@@ -276,7 +276,7 @@
             "Has a lot on {PRONOUN/m_c/poss} mind"
         ],
         "main_trait_constraint": [
-            "nervous"
+            "skittish"
         ]
     },
     {
@@ -330,7 +330,7 @@
         ]
     },
     {
-        "id": "troublesome_kit",
+        "id": "unruly_kit",
         "thoughts": [
             "Is thinking about mischief",
             "Is wondering what trouble {PRONOUN/m_c/subject} can create",
@@ -357,11 +357,11 @@
             "Is covered in mud"
         ],
         "main_trait_constraint": [
-            "troublesome"
+            "unruly"
         ]
     },
     {
-        "id": "lonesome_kit",
+        "id": "shy_kit",
         "thoughts": [
             "Is feeling alone",
             "Wishes {PRONOUN/m_c/subject} had friends",
@@ -376,7 +376,7 @@
             "Thought about talking to r_c but changed {PRONOUN/m_c/poss} mind"
         ],
         "main_trait_constraint": [
-            "lonesome"
+            "shy"
         ]
     },
     {
@@ -416,7 +416,7 @@
         ]
     },
     {
-        "id": "insecure_kit",
+        "id": "self-conscious_kit",
         "thoughts": [
             "Doesn't think {PRONOUN/m_c/subject} will ever be an apprentice",
             "Thinks r_c doesn't like {PRONOUN/m_c/object}",
@@ -428,7 +428,7 @@
             "Is afraid of being in the way"
         ],
         "main_trait_constraint": [
-            "insecure"
+            "self-conscious"
         ]
     },
     {
