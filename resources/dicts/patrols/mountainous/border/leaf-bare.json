@@ -1,6 +1,6 @@
 [
     {
-        "patrol_id": "mtn_bord_leafbare_ledge",
+        "patrol_id": "mtn_bord_leafbare_cliffside",
         "biome": ["mountainous"],
         "season": ["leaf-bare"],
         "types": ["border"],
@@ -21,7 +21,7 @@
                 "art": "mtn_med_herblocation2W"
             },
             {
-                "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. The patrol spends the day laboring, pushing the rock with all their might, and eventually moves it a safer distance away. Every cat is a bit sore, but proud of c_n's collective strength!",
+                "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. The patrol spends the day laboring in the snow, pushing the rock with all their might, and eventually moves it a safer distance away. Every cat is a bit sore, but proud of c_n's collective strength!",
                 "exp": 40,
                 "weight": 10,
                 "relationships": [
@@ -36,83 +36,35 @@
                 "art": "mtn_med_herblocation2W"
             },
             {
-                "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge.",
+                "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. s_c is quick to volunteer {PRONOUN/s_c/poss/} strength and takes charge of moving the freezing boulder. The snowfall makes the task difficult but nothing seems to stop s_c! Full of pride, {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} to move the rock to a safer location and isn't even that sore... for now.",
                 "exp": 30,
                 "weight": 20,
-                "stat_trait": ["bloodthirsty", "fierce", "vengeful"],
-                "art": "blank"
+                "stat_trait": ["bold", "daring", "confident", "arrogant"]
             },
             {
-                "text": "blank",
+                "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. s_c is quick to volunteer {PRONOUN/s_c/poss/} wits and works out a way to slide the rock over packed down snow. Under s_c's direction the patrol finishes up quickly and briskly heads back to camp with good news and cold paws.",
                 "exp": 30,
                 "weight": 20,
-                "art": "blank"
-            },
-            {
-                "text": "blank",
-                "exp": 30,
-                "weight": 5,
-                "art": "blank"
-            },
-            {
-                "text": "blank",
-                "exp": 30,
-                "weight": 20,
-                "stat_skill": ["SPEAKER,1"],
-                "relationships": [
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["respect", "trust"],
-                        "amount": 5
-                    }
-                ]
-            },
-            {
-                "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich meadow outside of c_n territory.",
-                "exp": 30,
-                "weight": 20,
-                "stat_trait": ["bold", "confident", "charming"],
-                "relationships": [
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["respect", "trust"],
-                        "amount": 5
-                    }
-                ]
-            },
-            {
-                "text": "s_c eagerly springs into action! {PRONOUN/s_c/poss/CAP} <i>special training</i> speaks for itself in the way s_c flawlessly performs battle move after battle move. With the rest of the patrol for backup, the rogues quickly turn tail and flee from such a terrifying cat!",
-                "exp": 30,
-                "weight": 10,
-                "stat_skill": ["DARK,1"],
-                "relationships": [
-                    {
-                        "cats_to": ["sc"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["comfort"],
-                        "amount": -5
-                    }
-                  ],
-                "art": "gen_bord_roguerunaway"
+                "stat_trait": ["thoughtful", "cunning", "wise"]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "The rogues are terrifyingly coordinated and are quick to use the patrol's shock and confusion against them. The patrol cats are picked off one by one, only a couple managing to escape the slaughter on the rocky slopes.",
+                "text": "The patrol tries to head up the cliff side trail but it's no use. The freezing wind is howling and the snow is biting deep into every cat's paws. p_l calls the patrol off and the cats return to camp.",
                 "exp": 0,
                 "weight": 10,
-                "dead_cats": ["multi"],
+                "injury": [
+                    {
+                        "cats": ["all"],
+                        "injuries": ["cold_injury"]
+                    }
+                ],
                 "history_text": {
-                    "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
+                    "scar": "m_c was scarred by the freezing cold winds on the cliff side trail.",
+                    "reg_death": "This cat eventually succumbed to the freezing cold during a cliff side patrol.",
+                    "lead_death": "{VERB/m_c/were/was} frozen on a cliff side patrol"
                 },
-                "art": "gen_bord_otherclan_hostile"
+                "art": "mtn_hunt_leaffallsnowstorm"
             },
             {
                 "text": "Taken by surprise, the patrol scatters and loses cohesion. The rogues are quick to take advantage of the confusion and eventually the patrol retreats, r_c badly wounded.",
