@@ -59,11 +59,11 @@ jobs:
         env:
           IS_RELEASE: 1
       - name: Create archive (.tar.xz)
-        run: tar -caf Clangen_Linux64_glibc2.31+.tar.xz -C dist Clangen
+        run: tar -caf MossMod_Linux64_glibc2.31+.tar.xz -C dist MossMod
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_Linux64_glibc2.31+.tar.xz
-          path: Clangen_Linux64_glibc2.31+.tar.xz
+          name: MossMod_Linux64_glibc2.31+.tar.xz
+          path: MossMod_Linux64_glibc2.31+.tar.xz
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -74,7 +74,7 @@ jobs:
       - name: Upload artifact to API
         if: ${{ env.update_api_push_token != '' }}
         run: |
-          gpg --output Clangen_Linux64_glibc2.31+.tar.xz.sig --detach-sig -a Clangen_Linux64_glibc2.31+.tar.xz
+          gpg --output MossMod_Linux64_glibc2.31+.tar.xz.sig --detach-sig -a MossMod_Linux64_glibc2.31+.tar.xz
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -84,8 +84,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_Linux64_glibc2.31+.tar.xz' \
-            -F 'fileBundle=@Clangen_Linux64_glibc2.31+.tar.xz.sig' \
+            -F 'fileBundle=@MossMod_Linux64_glibc2.31+.tar.xz' \
+            -F 'fileBundle=@MossMod_Linux64_glibc2.31+.tar.xz.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -93,12 +93,12 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
-        run: butler push Clangen_Linux64_glibc2.31+.tar.xz sablesteel/clan-gen-fan-edit:linux64_glibc_231 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_Linux64_glibc2.31+.tar.xz sablesteel/clan-gen-fan-edit:linux64_glibc_231 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_Linux64_glibc2.31+.tar.xz
+          files: MossMod_Linux64_glibc2.31+.tar.xz
 
   build_ubuntu_22_04:
     runs-on: ubuntu-22.04
@@ -153,11 +153,11 @@ jobs:
         env:
           IS_RELEASE: 1
       - name: Create archive (.tar.xz)
-        run: tar -caf Clangen_Linux64_glibc2.35+.tar.xz -C dist Clangen
+        run: tar -caf MossMod_Linux64_glibc2.35+.tar.xz -C dist MossMod
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_Linux64_glibc2.35+.tar.xz
-          path: Clangen_Linux64_glibc2.35+.tar.xz
+          name: MossMod_Linux64_glibc2.35+.tar.xz
+          path: MossMod_Linux64_glibc2.35+.tar.xz
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -168,7 +168,7 @@ jobs:
       - name: Upload artifact to API
         if: ${{ env.update_api_push_token != '' }}
         run: |
-          gpg --output Clangen_Linux64_glibc2.35+.tar.xz.sig --detach-sig -a Clangen_Linux64_glibc2.35+.tar.xz
+          gpg --output MossMod_Linux64_glibc2.35+.tar.xz.sig --detach-sig -a MossMod_Linux64_glibc2.35+.tar.xz
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -178,8 +178,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_Linux64_glibc2.35+.tar.xz' \
-            -F 'fileBundle=@Clangen_Linux64_glibc2.35+.tar.xz.sig' \
+            -F 'fileBundle=@MossMod_Linux64_glibc2.35+.tar.xz' \
+            -F 'fileBundle=@MossMod_Linux64_glibc2.35+.tar.xz.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -187,12 +187,12 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
-        run: butler push Clangen_Linux64_glibc2.35+.tar.xz sablesteel/clan-gen-fan-edit:linux64_glibc_235 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_Linux64_glibc2.35+.tar.xz sablesteel/clan-gen-fan-edit:linux64_glibc_235 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_Linux64_glibc2.35+.tar.xz
+          files: MossMod_Linux64_glibc2.35+.tar.xz
 
   build_win32:
     runs-on: windows-2019
@@ -269,12 +269,12 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-          cp dist/Clangen/.itch.toml dist/ 
-          tar.exe -a -c -f Clangen_Win32.zip -C dist Clangen .itch.toml
+          cp dist/MossMod/.itch.toml dist/ 
+          tar.exe -a -c -f MossMod_Win32.zip -C dist MossMod .itch.toml
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_Win32
-          path: Clangen_Win32.zip
+          name: MossMod_Win32
+          path: MossMod_Win32.zip
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -286,7 +286,7 @@ jobs:
         if: ${{ env.update_api_push_token != '' }}
         shell: bash
         run: |
-          gpg --output Clangen_Win32.zip.sig --detach-sig -a Clangen_Win32.zip
+          gpg --output MossMod_Win32.zip.sig --detach-sig -a MossMod_Win32.zip
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -296,8 +296,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_Win32.zip;type=application/zip' \
-            -F 'fileBundle=@Clangen_Win32.zip.sig' \
+            -F 'fileBundle=@MossMod_Win32.zip;type=application/zip' \
+            -F 'fileBundle=@MossMod_Win32.zip.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -305,12 +305,12 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-        run: butler push Clangen_Win32.zip sablesteel/clan-gen-fan-edit:win32 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_Win32.zip sablesteel/clan-gen-fan-edit:win32 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_Win32.zip
+          files: MossMod_Win32.zip
 
   build_win64:
     runs-on: windows-latest
@@ -393,12 +393,12 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-          cp dist/Clangen/.itch.toml dist/ 
-          tar.exe -a -c -f Clangen_Win64.zip -C dist Clangen .itch.toml
+          cp dist/MossMod/.itch.toml dist/ 
+          tar.exe -a -c -f MossMod_Win64.zip -C dist MossMod .itch.toml
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_Win64
-          path: Clangen_Win64.zip
+          name: MossMod_Win64
+          path: MossMod_Win64.zip
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -410,7 +410,7 @@ jobs:
         if: ${{ env.update_api_push_token != '' }}
         shell: bash
         run: |
-          gpg --output Clangen_Win64.zip.sig --detach-sig -a Clangen_Win64.zip
+          gpg --output MossMod_Win64.zip.sig --detach-sig -a MossMod_Win64.zip
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -420,8 +420,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_Win64.zip;type=application/zip' \
-            -F 'fileBundle=@Clangen_Win64.zip.sig' \
+            -F 'fileBundle=@MossMod_Win64.zip;type=application/zip' \
+            -F 'fileBundle=@MossMod_Win64.zip.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -429,12 +429,12 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
-        run: butler push Clangen_Win64.zip sablesteel/clan-gen-fan-edit:win64 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_Win64.zip sablesteel/clan-gen-fan-edit:win64 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_Win64.zip
+          files: MossMod_Win64.zip
 
   build_win64_py311:
     runs-on: windows-latest
@@ -517,12 +517,12 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-          cp dist/Clangen/.itch.toml dist/ 
-          tar.exe -a -c -f Clangen_Win64_Windows10+.zip -C dist Clangen .itch.toml
+          cp dist/MossMod/.itch.toml dist/ 
+          tar.exe -a -c -f MossMod_Win64_Windows10+.zip -C dist MossMod .itch.toml
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_Win64_Windows10+
-          path: Clangen_Win64_Windows10+.zip
+          name: MossMod_Win64_Windows10+
+          path: MossMod_Win64_Windows10+.zip
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -534,7 +534,7 @@ jobs:
         if: ${{ env.update_api_push_token != '' }}
         shell: bash
         run: |
-          gpg --output Clangen_Win64_Windows10+.zip.sig --detach-sig -a Clangen_Win64_Windows10+.zip
+          gpg --output MossMod_Win64_Windows10+.zip.sig --detach-sig -a MossMod_Win64_Windows10+.zip
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -544,8 +544,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_Win64_Windows10+.zip;type=application/zip' \
-            -F 'fileBundle=@Clangen_Win64_Windows10+.zip.sig' \
+            -F 'fileBundle=@MossMod_Win64_Windows10+.zip;type=application/zip' \
+            -F 'fileBundle=@MossMod_Win64_Windows10+.zip.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -553,12 +553,12 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
-        run: butler push Clangen_Win64_Windows10+.zip sablesteel/clan-gen-fan-edit:win64_10 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_Win64_Windows10+.zip sablesteel/clan-gen-fan-edit:win64_10 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_Win64_Windows10+.zip
+          files: MossMod_Win64_Windows10+.zip
 
   build_macos64:
     # For commits to the original mac build action see:
@@ -617,15 +617,15 @@ jobs:
         env:
           IS_RELEASE: 1
       - name: Create archive (.tar.xz)
-        run: rm -r dist/Clangen
+        run: rm -r dist/MossMod
       - name: Install appdmg
         run: "npm install -g appdmg"
       - name: Generate .dmg
-        run: "appdmg appdmg.json Clangen_macOS64.dmg"
+        run: "appdmg appdmg.json MossMod_macOS64.dmg"
       - uses: actions/upload-artifact@v3
         with:
-          name: Clangen_macOS64.dmg
-          path: Clangen_macOS64.dmg
+          name: MossMod_macOS64.dmg
+          path: MossMod_macOS64.dmg
       - name: Import GPG key
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
@@ -636,8 +636,8 @@ jobs:
       - name: Upload artifact to API
         if: ${{ env.update_api_push_token != '' }}
         run: |
-          zip Clangen_macOS64.dmg.zip ./Clangen_macOS64.dmg
-          gpg --output Clangen_macOS64.dmg.zip.sig --detach-sig -a Clangen_macOS64.dmg.zip
+          zip MossMod_macOS64.dmg.zip ./MossMod_macOS64.dmg
+          gpg --output MossMod_macOS64.dmg.zip.sig --detach-sig -a MossMod_macOS64.dmg.zip
           curl -X 'POST' \
             'https://clangen.io/api/v1/Update/Channels/${{ env.RELEASE_CHANNEL }}/Releases/${{ env.VERSION_NUMBER }}/Appoint' \
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
@@ -647,8 +647,8 @@ jobs:
             -H 'X-API-Key: ${{ secrets.UPDATE_API_DEPLOY_KEY }}' \
             -H 'accept: */*' \
             -H 'Content-Type: multipart/form-data' \
-            -F 'fileBundle=@Clangen_macOS64.dmg.zip;type=application/zip' \
-            -F 'fileBundle=@Clangen_macOS64.dmg.zip.sig' \
+            -F 'fileBundle=@MossMod_macOS64.dmg.zip;type=application/zip' \
+            -F 'fileBundle=@MossMod_macOS64.dmg.zip.sig' \
             --http1.1
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -656,12 +656,12 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         if: startsWith(github.ref, 'refs/tags/') && env.BUTLER_API_KEY != ''
-        run: butler push Clangen_macOS64.dmg sablesteel/clan-gen-fan-edit:osx64 --userversion "${{ env.VERSION_NUMBER }}"
+        run: butler push MossMod_macOS64.dmg sablesteel/clan-gen-fan-edit:osx64 --userversion "${{ env.VERSION_NUMBER }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Clangen_macOS64.dmg
+          files: MossMod_macOS64.dmg
 
   confirm_release_ubuntu_22_04:
     runs-on: ubuntu-22.04

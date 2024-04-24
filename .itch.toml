@@ -1,11 +1,11 @@
 [[actions]]
 name = "play"
 platform = "windows"
-path = "Clangen/Clangen.exe"
+path = "MossMod/MossMod.exe"
 args = ["--launched-through-itch"]
 
 [[actions]]
 name = "play"
 platform = "linux"
-path = "Clangen/Clangen"
+path = "MossMod/MossMod"
 args = ["--launched-through-itch"]

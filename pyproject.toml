@@ -1,6 +1,6 @@
 [tool.poetry]
 
-name = "clangen"
+name = "MossMod"
 version = "0.7.9"
 description = "Fan-edit of the warrior cat clangen game"
 license = "MPL-2.0"
