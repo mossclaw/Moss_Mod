@@ -123,7 +123,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "pln_train_sett",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {},
@@ -284,7 +284,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "pln_train_sett",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -479,16 +479,12 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "altruistic",
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -743,16 +739,12 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "altruistic",
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "can_have_stat": ["p_l"],
                 "relationships": [
@@ -916,16 +908,12 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "altruistic",
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -2849,7 +2837,7 @@
                         "cat_to": ["patrol"],
                         "cat_from": ["patrol"],
                         "mutual": true,
-                        "values": ["platonic, comfort"],
+                        "values": ["platonic", "comfort"],
                         "amount": 5
                     }
                     
@@ -2864,6 +2852,406 @@
                 "lost_cats": ["r_c"]
             }
         ]
+    },
+    {
+        "patrol_id": "pln_train_tunnel1",
+        "biome": ["plains"],
+        "season": ["Any"],
+        "types": ["training"],
+        "tags": [],
+        "patrol_art": "pln_bord_tunnel",
+        "min_cats": 3,
+        "max_cats": 6,
+        "min_max_status": {
+            "apprentice": [2, 6],
+            "normal adult":[1, 6]
+        },
+        "weight": 30,
+        "intro_text": "p_l leads the training patrol out for a crucial lesson, imparting survival knowledge specific to the plains cats.",
+        "decline_text": "On second thought, p_l decides they all need the afternoon off.",
+        "chance_of_success": 50,
+        "success_outcomes": [
+            {
+                "text": "This is important, p_l says, sitting as tall as {PRONOUN/p_l/subject} can and making eye contact with the apprentices. Living in the grasslands affords c_n few of the hiding spots that come naturally to cats, with few big trees and not a lot of thick bush cover. c_n uses tunnels instead, and it's vital to develop a map of the known safe refuges in the territory.",
+                "exp": 40,
+                "weight": 20,
+                "relationships": [
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["app1"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["app2"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    }
+                ]
+            },
+            {
+                "text": "p_l leads the patrol out to a known set of safe tunnels. c_n doesn't usually discover these in leaf-bare, p_l explains, but leaf-bare is the season you're most likely to need them. Shelter from storms, refuge from hungry predators, app1's life might one day depend on knowing where the nearest tunnel is.",
+                "exp": 40,
+                "weight": 10,
+                "relationships": [
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["app1"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["app2"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    }
+                ]
+            },
+            {
+                "text": "When p_l stops the patrol at the entrance to a abandoned badger sett and asks if the apprentices know why c_n values every safe burrow and underground haven, s_c pipes up. {PRONOUN/s_c/subject/CAP} know! It's because these are the places c_n retreat to in times of danger!",
+                "exp": 40,
+                "weight": 30,
+                "can_have_stat": ["any", "app"],
+                "stat_skill": ["CAMP,0", "CLEVER,0"],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": false,
+                        "values": ["platonic"],
+                        "amount": 5
+                    }
+                ]
+            },
+            {
+                "text": "p_l shows the apprentices different types of tunnels, expanding their knowledge of safe hideyholes to retreat from danger into. It soothes something in s_c to know about them. By the end of the afternoom there's a happy lightness to {PRONOUN/s_c/poss} step and {PRONOUN/s_c/poss} tail is up.",
+                "exp": 40,
+                "weight": 30,
+                "art": ["gen_train_soloapp"],
+                "can_have_stat": ["any", "app"],
+                "stat_trait":[
+                    "nervous",
+                    "insecure",
+                    "gloomy"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": false,
+                        "values": ["comfort"],
+                        "amount": 15
+                    }
+                ]
+            },
+            {
+                "text": "As p_l shows the apprentices different types of tunnels and explains how valuable they are as refuges for c_n in moments of danger, s_c gives p_l {PRONOUN/s_c/poss} full attention. This sounds just as important as p_l promised, and {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} determined to remember the locations of the safe hideyholes in c_n's territory.",
+                "exp": 40,
+                "weight": 30,
+                "art": ["gen_train_soloapp"],
+                "can_have_stat": ["any", "app"],
+                "stat_trait":[
+                    "wise",
+                    "thoughtful",
+                    "careful"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    }
+                ]
+            },
+            {
+                "text": "s_c carefully shows the apprentices three examples of safe refuge tunnels. The first is huge, big enough for all the patrol to fit into, but shallow, made by the large badgers. The next is cramped, a burrow rather than a tunnel, first dug out be rabbits. The last is the most valuable, a huge badger sett dug by the smaller badger species, sprawling out with multiple entrances and spacious chambers.",
+                "exp": 40,
+                "weight": 40,
+                "can_have_stat": ["any", "adult"],
+                "stat_skill": ["TEACHER,0", "SPEAKER,2", "INSIGHTFUL,1"],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app1"],
+                        "mutual": false,
+                        "values": ["platonic"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app2"],
+                        "mutual": false,
+                        "values": ["platonic"],
+                        "amount": 5
+                    }
+                ]
+            },
+            {
+                "text": "These tunnels have sheltered many cats in their time, s_c explains. c_n learnt to hide from danger underground when they first came to the plains, when their first leader sheltered from danger as it stalked above ground.",
+                "exp": 40,
+                "weight": 40,
+                "can_have_stat": ["any", "adult"],
+                "stat_skill": ["LORE,1"],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app1"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app2"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    }
+                ]
+            },
+            {
+                "text": "As the patrol impacts the importance of knowing where the tunnel refuges are placed in c_n's territory, s_c tells of how, without any shelter or tunnels to find safety in, some cats because stronger, bigger, and their prides began to move constantly. They because lions, mighty and great - but not warriors anymore, not Clancats.",
+                "exp": 40,
+                "weight": 40,
+                "can_have_stat": ["any", "adult"],
+                "stat_skill": ["STORY,1"],
+                "relationships": [
+                    {
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 15
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app1"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    },
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["app2"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5
+                    }
+                ]
+            }
+        ],
+        "fail_outcomes": [
+            {
+                "text": "p_l tries in vain to lay down exactly how important keeping a mental map of safe tunnels is to any c_n warrior, but {PRONOUN/p_l/subject} simply can't find the words for it. One day the apprentices' lives will depend on knowing where to find refuge, this isn't a game.",
+                "exp": 0,
+                "weight": 20,
+                "relationships": [
+                    {
+                        "cats_to": ["app1"],
+                        "cats_from": ["p_l"],
+                        "mutual": false,
+                        "values": ["respect", "trust"],
+                        "amount": -5
+                    },
+                    {
+                        "cats_to": ["app2"],
+                        "cats_from": ["p_l"],
+                        "mutual": false,
+                        "values": ["respect", "trust"],
+                        "amount": -5
+                    }
+                ]
+            },
+            {
+                "text": "s_c rushes into the tunnels with a gleeful meow! A new place to explore and discover! {PRONOUN/s_c/subject/CAP}{VERB/s_c/'re/'s} brought up short by an irritated p_l. This isn't a game - these are important safe retreats in case of danger!",
+                "exp": 0,
+                "weight": 20,
+                "can_have_stat": ["any", "app"],
+                "stat_trait": ["childish", "oblivious", "playful", "adventurous"],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["comfort", "trust"],
+                        "amount": -5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": false,
+                        "values": ["dislike"],
+                        "amount": 10
+                    }
+                ]
+            },
+            {
+                "text": "s_c doesn't need to know where the Clan's refuges are, they're going to be far too good of a warrior to ever need them!<br>p_l doens't look so convinced.",
+                "exp": 0,
+                "weight": 20,
+                "can_have_stat": ["any", "app"],
+                "stat_trait": [
+                    "arrogant",
+                    "competitive",
+                    "rebellious"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["comfort", "trust"],
+                        "amount": -5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": true,
+                        "values": ["dislike"],
+                        "amount": 10
+                    }
+                ]
+            },
+            {
+                "text": "p_l tries, but it just isn't easy to teach s_c anything, even important things like the location of tunnels to retreat to when things are dangerous.",
+                "exp": 0,
+                "weight": 20,
+                "can_have_stat": ["any", "app"],
+                "stat_trait": [
+                    "grumpy",
+                    "oblivious",
+                    "childish"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["comfort", "trust"],
+                        "amount": -5
+                    },
+                    {
+                        "cats_to": ["p_l"],
+                        "cats_from": ["s_c"],
+                        "mutual": true,
+                        "values": ["dislike"],
+                        "amount": 10
+                    }
+                ]
+            }
+        ]
     }
-    
 ]

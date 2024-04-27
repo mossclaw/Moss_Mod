@@ -5,7 +5,7 @@
         "season": ["Any"],
         "types": ["border"],
         "tags": [],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_border_dogscent_clanmember",
         "min_cats": 1,
         "max_cats": 6,
         "min_max_status": {},

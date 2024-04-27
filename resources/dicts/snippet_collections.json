@@ -80,6 +80,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "sound": {
@@ -116,6 +122,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "smell": {
@@ -139,6 +151,12 @@
 
       ],
       "mountainous": [
+
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     },
@@ -164,6 +182,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "touch": {
@@ -184,6 +208,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     }
   },
@@ -193,7 +223,6 @@
       "general": [
         ["a five-pointed leaf", "a star-shaped leaf", "an oddly torn leaf"],
         ["a stone of two halves perfectly fitting together", "a stone with shining chips in it", "a stone with odd patterns on it", "a sparkling stone"],
-        ["a crooked-jawed squirrel"],
         ["an odd pile of soft downy fur", "a tuft of fox fur", "a tuft of badger fur", "a charred scrap of fur"],
         ["a shard of glass"],
         ["withered deathberries"],
@@ -201,13 +230,9 @@
         ["a gleaming feather", "an oddly shaped feather", "a broken feather", "tattered feathers"],
         ["the tooth of a large predator", "the claw of a large predator", "an old bloody claw"],
         ["an eagle's talon", "the talon of a hawk"],
-        ["a split acorn"],
         ["a piece of fresh prey already rotting"],
-        ["a shell shining with the colors of water"],
-        ["a branch that looks whole but comes apart with a gentle touch", "a stick rotted through"],
-        ["a three-eyed fish"],
         ["a two-headed adder", "a dead snake eating it's own tail", "a perfectly shed snake-skin"],
-        ["a glowing bug fallen into the middle of camp"],
+        ["a glowing bug fallen to the ground"],
         ["a pawprint of red on rock"],
         ["destroyed herbs", "wilting herbs"],
         ["a bird's broken egg", "a perfectly intact yet hollow bird's egg"],
@@ -219,19 +244,35 @@
         ["an emaciated vole", "an emaciated rabbit", "an emaciated mouse"],
         ["a headless centipede"],
         ["an abandoned bee-stinger"],
-        ["a miraculously burning reed"],
         ["a shed whisker"]
       ],
       "forest": [
-
+        ["a crooked-jawed squirrel", "a dying rat"],
+        ["a split acorn", "a perfect walnut", "a massive slab of tree-bark", "a scorched pine cone"],
+        ["a branch that looks whole but comes apart with a gentle touch", "a stick rotted through"]
       ],
       "plains": [
+        ["a patch of dying grass", "wilted grass", "a single burnt stalk of grass", "sprouting grass"],
+        ["a towering thundercloud", "the vast blue clear sky", "the flat horizon simmering in the far distance"],
+        ["a crooked-jawed squirrel", "a white rabbit", "a white spotted rabbit"]
 
       ],
       "beach": [
+        ["a three-eyed fish"],
+        ["a miraculously burning reed"],
+        ["a shell shining with the colors of water"]
 
       ],
       "mountainous": [
+        ["a crooked-jawed squirrel"]
+      ],
+      "wetlands": [
+        ["a three-eyed fish"],
+        ["a miraculously burning reed"],
+        ["a shell shining with the colors of water"]
+
+      ],
+      "desert": [
 
       ]
     },
@@ -244,12 +285,20 @@
 
       ],
       "plains": [
+        ["the rustle of wind through the grass", "the howl of wind over an empty plain"],
+        ["the cry of hawk", "the screech of an eagle"]
 
       ],
       "beach": [
 
       ],
       "mountainous": [
+        ["the cry of hawk", "the screech of an eagle"]
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     },
@@ -260,6 +309,7 @@
 
       ],
       "forest": [
+        ["pine sap scent strong in the air"]
 
       ],
       "plains": [
@@ -269,6 +319,12 @@
 
       ],
       "mountainous": [
+
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     },
@@ -291,6 +347,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "touch": {
@@ -307,6 +369,12 @@
 
       ],
       "mountainous": [
+
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     }
@@ -390,6 +458,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "smell": {
@@ -409,6 +483,12 @@
 
       ],
       "mountainous": [
+
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     },
@@ -448,6 +528,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "touch": {
@@ -475,6 +561,12 @@
       ],
       "mountainous": [
 
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
+
       ]
     },
     "taste": {
@@ -493,6 +585,12 @@
 
       ],
       "mountainous": [
+
+      ],
+      "wetlands": [
+
+      ],
+      "desert": [
 
       ]
     }
@@ -551,6 +649,12 @@
       ["The Betrayal of the Ravens"],
       ["The Dancing Sky"],
       ["The Sun-drown Place"]
+
+    ],
+    "wetlands": [
+
+    ],
+    "desert": [
 
     ]
   }

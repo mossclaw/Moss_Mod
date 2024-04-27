@@ -1909,7 +1909,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "gen_train_vision",
+        "patrol_art": "gen_train_vision4",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
@@ -4250,7 +4250,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "hunt_general_intro",
+        "patrol_art": "gen_train_huntingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
@@ -4416,7 +4416,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "hunt_general_intro",
+        "patrol_art": "gen_train_huntingskill",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
@@ -4657,7 +4657,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "hunt_general_intro",
+        "patrol_art": "gen_train_huntingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
@@ -4890,7 +4890,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "hunt_general_intro",
+        "patrol_art": "gen_train_huntingskill",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
@@ -4970,7 +4970,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "hunt_general_intro",
+        "patrol_art": "gen_train_huntingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
@@ -5051,7 +5051,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "gen_train_fightingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
@@ -5115,7 +5115,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "gen_train_fightingskill",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {},
@@ -5177,7 +5177,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "gen_train_fightingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
@@ -5244,7 +5244,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "gen_train_fightingskill",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
@@ -5310,7 +5310,7 @@
         "season": ["Any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "gen_train_fightingskill",
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {

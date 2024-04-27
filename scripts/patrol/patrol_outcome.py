@@ -208,11 +208,17 @@ class PatrolOutcome():
         
         # With allowed_specfic empty, that means the stat can can be anyone that's not patrol leader
         # or stat cat. This can
-        if not allowed_specfic or "no_pl_rc" in allowed_specfic:
+        if not allowed_specfic or "not_pl_rc" in allowed_specfic:
             if kitty in (patrol.patrol_leader, patrol.patrol_random_cat):
                 return False
             return True
         
+        if not allowed_specfic or "not_pl" in allowed_specfic:
+            if kitty is patrol.patrol_leader:
+                return False
+            return True
+        other_cats = [i for i in patrol.patrol_cats if i not in [patrol.patrol_leader, patrol.patrol_random_cat]]
+
         # Otherwise, check to see if the cat matched any of the specfic cats
         if "p_l" in allowed_specfic and kitty == patrol.patrol_leader:
             return True
@@ -223,6 +229,30 @@ class PatrolOutcome():
             return True
         if "app2" in allowed_specfic and len(patrol.patrol_apprentices) >= 2 and \
                 kitty == patrol.patrol_apprentices[1]:
+            return True
+        if "app3" in allowed_specfic and len(patrol.patrol_apprentices) >= 3 and \
+                kitty == patrol.patrol_apprentices[2]:
+            return True
+        if "app4" in allowed_specfic and len(patrol.patrol_apprentices) >= 4 and \
+                kitty == patrol.patrol_apprentices[3]:
+            return True
+        if "app5" in allowed_specfic and len(patrol.patrol_apprentices) >= 5 and \
+                kitty == patrol.patrol_apprentices[4]:
+            return True
+        if "app6" in allowed_specfic and len(patrol.patrol_apprentices) >= 6 and \
+                kitty == patrol.patrol_apprentices[5]:
+            return True
+        if "o_c1" in allowed_specfic and len(other_cats) >= 1 and \
+                kitty == other_cats[0]:
+            return True
+        if "o_c2" in allowed_specfic and len(other_cats) >= 2 and \
+                kitty == other_cats[1]:
+            return True
+        if "o_c3" in allowed_specfic and len(other_cats) >= 3 and \
+                kitty == other_cats[2]:
+            return True
+        if "o_c4" in allowed_specfic and len(other_cats) >= 4 and \
+                kitty == other_cats[3]:
             return True
         
         return False
@@ -236,7 +266,8 @@ class PatrolOutcome():
         
         # Grab any specfic stat cat requirements: 
         allowed_specfic = [x for x in self.can_have_stat if x in 
-                           ("r_c", "p_l", "app1", "app2", "any", "not_pl_rc")]
+                           ("r_c", "p_l", "app1", "app2", "app3", "app4", "app5", "app6", 
+                             "any", "not_pl_rc", "not_pl", "o_c1", "o_c2", "o_c3", "o_c4")]
         
         # Special default behavior for patrols less than two cats.
         # Patrol leader is the only one allowed to be stat_cat in patrols equal to or less than than two cats 
@@ -984,7 +1015,7 @@ class PatrolOutcome():
                 break
                 
             if match.group(1) == "has_kits":
-                age = randint(14, 120)
+                age = randint(19, 120)
                 break
                 
         
