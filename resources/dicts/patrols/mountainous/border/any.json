@@ -77,7 +77,8 @@
                         "values": ["respect", "trust"],
                         "amount": 5
                     }
-                ]
+                ],
+                "art": "gen_happy_cat"
             },
             {
                 "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich meadow outside of c_n territory.",
@@ -92,7 +93,8 @@
                         "values": ["respect", "trust"],
                         "amount": 5
                     }
-                ]
+                ],
+                "art": "gen_happy_cat"
             },
             {
                 "text": "s_c eagerly springs into action! {PRONOUN/s_c/poss/CAP} <i>special training</i> speaks for itself in the way s_c flawlessly performs battle move after battle move. With the rest of the patrol for backup, the rogues quickly turn tail and flee from such a terrifying cat!",
@@ -219,13 +221,15 @@
                 "text": "s_c unsheathes {PRONOUN/s_c/poss} claws, excited for a chance to try out some <i>real</i> tactics without criticism. s_c returns late to camp with a bloodied pelt but not a scratch on {PRONOUN/s_c/object}, simply stating {PRONOUN/s_c/subject} solved a rogue problem.",
                 "exp": 30,
                 "weight": 10,
-                "stat_skill": ["DARK,1"]
+                "stat_skill": ["DARK,1"],
+                "art": "gen_angry_cat_warrior"
             },
             {
                 "text": "s_c unsheathes {PRONOUN/s_c/poss} claws, excited for a chance to try out some <i>real</i> tactics without criticism. s_c returns late to camp with a bloodied pelt but not a scratch on {PRONOUN/s_c/object}, simply stating {PRONOUN/s_c/subject} solved a rogue problem.",
                 "exp": 30,
                 "weight": 10,
-                "stat_trait": ["bloodthirsty", "fierce", "vengeful"]
+                "stat_trait": ["bloodthirsty", "fierce", "vengeful"],
+                "art": "gen_angry_cat_warrior"
             }
         ],
         "fail_outcomes": [

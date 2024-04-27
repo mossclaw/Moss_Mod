@@ -17,8 +17,7 @@
             {
                 "text": "The group ascends the mountainside, carefully, until they reach the border. They work together to move any potentially dangerous rocks away from the edge and measure the snowfall to report back to camp. Things seem safe for the moment.",
                 "exp": 30,
-                "weight": 20,
-                "art": "mtn_med_herblocation2W"
+                "weight": 20
             },
             {
                 "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. The patrol spends the day laboring in the snow, pushing the rock with all their might, and eventually moves it a safer distance away. Every cat is a bit sore, but proud of c_n's collective strength!",
@@ -32,8 +31,7 @@
                         "values": ["respect", "trust"],
                         "amount": 10
                     }
-                ],
-                "art": "mtn_med_herblocation2W"
+                ]
             },
             {
                 "text": "After finally making it up the treacherous trail, p_l notes a particularly large rock that's too close to the edge. s_c is quick to volunteer {PRONOUN/s_c/poss/} strength and takes charge of moving the freezing boulder. The snowfall makes the task difficult but nothing seems to stop s_c! Full of pride, {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} to move the rock to a safer location and isn't even that sore... for now.",
@@ -52,7 +50,7 @@
             {
                 "text": "The patrol tries to head up the cliff side trail but it's no use. The freezing wind is howling and the snow is biting deep into every cat's paws. p_l calls the patrol off and the cats return to camp.",
                 "exp": 0,
-                "weight": 10,
+                "weight": 20,
                 "injury": [
                     {
                         "cats": ["all"],
@@ -67,49 +65,68 @@
                 "art": "mtn_hunt_leaffallsnowstorm"
             },
             {
-                "text": "Taken by surprise, the patrol scatters and loses cohesion. The rogues are quick to take advantage of the confusion and eventually the patrol retreats, r_c badly wounded.",
+                "text": "The patrol wearily reaches the top of the cliff side and to their dismay finds a large rock dangerously close to the edge. They rally together to push the boulder to safety, but have very little space from the edge to work with. Made careless by anger or perhaps a general lack of empathy, s_c pushes past r_c a little to roughly, sending r_c tumbling down the cliff! There's nothing any cat can do, and to make matters worse, no cat is quite sure if s_c <i>accidentally</i> pushed r_c or not... Thankfully, r_c just barely survives this encounter.",
                 "exp": 0,
                 "weight": 10,
-                "injury": [
-                    {
-                        "cats": ["r_c"],
-                        "injuries": ["battle_injury"],
-                        "scars": ["FACE"]
-                    }
-                ],
-                "history_text": {
-                    "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
-                },
-                "art": "gen_bord_otherclan_hostile"
-            },
-            {
-                "text": "The rogues posture and jeer, eventually provoking a battle. They prove to be strong fighters and eventually the patrol is forced to retreat, r_c badly injured.",
-                "exp": 0,
-                "weight": 10,
-                "injury": [
-                    {
-                        "cats": ["r_c"],
-                        "injuries": ["battle_injury"],
-                        "scars": ["THROAT"]
-                    }
-                ],
-                "history_text": {
-                    "scar": "m_c was badly scarred when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
-                },
+                "stat_trait": ["troublesome", "bloodthirsty", "cold", "oblivious"],
                 "relationships": [
                     {
-                        "cats_to": ["patrol"],
+                        "cats_to": ["s_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "trust"],
-                        "amount": -5
+                        "values": ["trust"],
+                        "amount": -20
                     }
                 ],
-                "art": "gen_bord_otherclan_hostile"
+                "injury": [
+                    {
+                        "cats": ["r_c"],
+                        "injuries": ["blunt_force_injury"]
+                    }
+                ],
+                "history_text": {
+                    "scar": "m_c was scarred after tumbling down the cliff side trail.",
+                    "reg_death": "This cat was killed by tumbling down the cliff side trail.",
+                    "lead_death": "{VERB/m_c/were/was} killed by tumbling down the cliff side trail"
+                },
+                "art": "mnt_train_stuck"
+            },
+            {
+                "text": "The patrol wearily reaches the top of the cliff side and to their dismay finds a large rock dangerously close to the edge. They rally together to push the boulder to safety, but have very little space from the edge to work with. Made careless by anger or perhaps a general lack of empathy, s_c pushes past r_c a little to roughly, sending r_c tumbling down the cliff! There's nothing any cat can do, and to make matters worse, no cat is quite sure if s_c <i>accidentally</i> pushed r_c or not...",
+                "exp": 0,
+                "weight": 10,
+                "stat_trait": ["troublesome", "bloodthirsty", "cold", "oblivious"],
+                "dead_cats": ["r_c"],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["trust"],
+                        "amount": -20
+                    }
+                ],
+                "history_text": {
+                    "reg_death": "This cat was killed by tumbling down the cliff side trail.",
+                    "lead_death": "{VERB/m_c/were/was} killed by tumbling down the cliff side trail"
+                },
+                "art": "mnt_train_stuck"
+            },
+            {
+                "text": "The patrol heads out into the icy wind and makes their way up the treacherous cliff side path. Each cat carefully stepping in the paw prints of the cat ahead, with s_c following r_c closely. Suddenly, s_c feels a shiver deep travel up {PRONOUN/s_c/poss} spine and time seems to slow down as {PRONOUN/s_c/subject} {VERB/s_c/see/sees} a vision of r_c slipping. Without hesitating s_c snaps out of the vision and lunges forward to catch r_c right as {PRONOUN/r_c/poss} paws slip! r_c is a bit shaken, but okay, and forever grateful to s_c.",
+                "exp": 15,
+                "weight": 5,
+                "stat_skill": ["OMEN,1", "CLAIRVOYANT,1"],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["r_c"],
+                        "mutual": false,
+                        "values": ["trust", "respect", "platonic", "comfort"],
+                        "amount": 30
+                    }
+                ],
+                "art": "mnt_train_stuck"
             }
         ]
     }
