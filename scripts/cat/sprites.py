@@ -118,7 +118,7 @@ class Sprites():
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
             'fadestarclan', 'fadedarkforest', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
-            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars'
+            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -475,6 +475,32 @@ class Sprites():
                                'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
                                'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']):
             self.make_group('maskedcolours', (a, 2), f'masked{i}')
+        # mist
+        for a, i in enumerate(['WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
+                               'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
+                               'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST']):
+            self.make_group('mistcolours', (a, 0), f'mist{i}')
+        for a, i in enumerate(['PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
+                               'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
+                               'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE']):
+            self.make_group('mistcolours', (a, 1), f'mist{i}')
+        for a, i in enumerate(['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
+                               'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
+                               'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']):
+            self.make_group('mistcolours', (a, 2), f'mist{i}')
+        # fog
+        for a, i in enumerate(['WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
+                               'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
+                               'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST']):
+            self.make_group('fogcolours', (a, 0), f'fog{i}')
+        for a, i in enumerate(['PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
+                               'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
+                               'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE']):
+            self.make_group('fogcolours', (a, 1), f'fog{i}')
+        for a, i in enumerate(['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
+                               'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
+                               'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']):
+            self.make_group('fogcolours', (a, 2), f'fog{i}')
 
         # new new torties
         for a, i in enumerate(['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE']):

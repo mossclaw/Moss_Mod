@@ -29,6 +29,8 @@ class Pelt():
         'Saber': 'saber',
         'Faded': 'faded',
         'Masked': 'masked',
+        'Fog': 'fog',
+        'Mist': 'mist',
         'Tortie': None,
         'Calico': None
     }
@@ -77,7 +79,7 @@ class Pelt():
 
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
-                   'saber', 'faded', 'masked']
+                   'saber', 'faded', 'masked', 'fog', 'mist']
 
 
     pelt_length = ["short", "medium", "long"]
@@ -132,7 +134,7 @@ class Pelt():
     dog_collars = ["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG", "GREENFANG", "RAINBOWFANG",
         "BLACKFANG", "SPIKESFANG", "WHITEFANG", "PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]
 
-    points = ["Ticked", "Agouti", "Smoke"]
+    points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog"]
     spots = ["Speckled", "Rosette", "Bengal"]
     swirls = ["Tabby", "Classic", "Sokoke", "Marbled"]
     flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
@@ -1242,7 +1244,9 @@ class Pelt():
             "Splotch": "unusually splotched c_n",
             "Saber": "c_n wild tabby",
             "Faded": "c_n faded tabby",
-            "Masked": "c_n masked tabby"
+            "Masked": "c_n masked tabby",
+            "Fog": "c_n foggy tabby",
+            "Mist": "c_n misted tabby"
         }
 
         # Start with determining the base color name. 

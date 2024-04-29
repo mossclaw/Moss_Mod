@@ -59,7 +59,9 @@
     "Braided": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Splotch": ["dapple", "speckle", "spot", "speck", "freckle", "fleck", "spots", "flecks", "freckles", "splotch", "splash", "patch", "speckles"],
     "Saber": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
-    "Masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "Masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "Fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft"],
@@ -80,8 +82,9 @@
     "braided": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "splotch": ["dapple", "speckle", "spot", "speck", "freckle", "fleck", "spots", "flecks", "freckles", "splotch", "splash", "patch", "speckles"],
     "saber": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
-    "masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
-
+    "masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"]
   },
 
   "normal_prefixes": [
@@ -106,7 +109,7 @@
     "Lily", "Lion", "Little", "Lizard", "Locust", "Long", "Lotus", "Loud", "Low", "Luck", "Lupine", "Lynx", "Mallow", "Mantis", 
     "Maple", "Marigold", "Marsh", "Meadow", "Midge", "Milk", "Milkweed", "Mink", "Minnow", "Mistle", "Mite", "Mole", "Moon", 
     "Moor", "Morning", "Moss", "Mossy", "Moth", "Mottle", "Mottled", "Mouse", "Mumble", "Murk", "Myrtle", "Nectar", "Needle", 
-    "Nettle", "Newt", "Nightingale", "Nimble", "Nut", "Oak", "Oat", "Odd", "One", "Oriole", "Osprey", "Pansy", "Panther", "Parsley", 
+    "Nettle", "Newt", "Nightingale", "Nimble", "Oak", "Oat", "Odd", "One", "Oriole", "Osprey", "Pansy", "Panther", "Parsley",
     "Partridge", "Patch", "Patchouli", "Peak", "Pear", "Peat", "Perch", "Petal", "Petunia", "Pheasant", "Pigeon", "Pike", "Pine", 
     "Piper", "Plover", "Plum", "Pod", "Pond", "Pool", "Pop", "Poppy", "Posy", "Pounce", "Prance", "Prickle", "Prim", "Primrose", 
     "Puddle", "Python", "Quail", "Quick", "Quiet", "Quill", "Quiver", "Rabbit", "Raccoon", "Ragged", "Rain", "Rainbow", "Rat", 
@@ -350,7 +353,7 @@
     "Cream", "Crema", "Crescent", "Crispy", "Crow", "Crumpet", "Crunchwrap", "Crunchy", "Cullen", "Cupcake", "Cupid", "Curry", "Cyndaquil", 
     "Cutie", "Cybele", "Cyprus", "Daisy Mae", "Dakarai", "Dakari", "Dakota", "Dali", 
     "Daliah", "Dambi", "Dan", "Danbi", "Danchu", "Dandelion", "Danger Dave", "Dapper", "Darling", "Dasik", "Dave", "Dayo", "Dean", "Deep Dish Pizza", "Deimos", "Deino", "Deirdre", "Deli", "Delilah", "Della", "Demeter", "Destiny", "Dewey", "Diablo", "Diallo", "Diamond", "Diana", "Digiorno", "Dinah", "Dino", "Diona", "Dipper", "Dirk", "Disco", "Distinguished Gentleman", "Diva", 
-    "Dizzy", "Djungelskog", "Dmitri", "Dobie", "Doc", "Doctor Who", "Dog", "Doja", "Dolly", "Domingo", "Dominic", "Domino", "Donald", "Donut", "Donuts", "Doodle", 
+    "Dizzy", "Djungelskog", "Dmitri", "Dobie", "Doc", "Doctor Who", "Dog", "Doja", "Dolly", "Domingo", "Dominic", "Domino", "Donald", "Doodle",
     "Doofenshmirtz", "Dori", "Dorian", "Dorothy", "Double Trouble", "Dova", "Draco", "Dragon", "Dragonfly", "Draugr", "Dreamy", "Dr. Strange",  "Duchess", "Dude", 
     "Dulce", "Dumpling", "Dumpster", "Dune", "Dunnock", "Dust Bunny", "Dusty Cuddles", "Dwarf", "Dysnomia",
     "Eclipse", "Ed", "Eda", "Eddie", "Edgar", "Edward", "Eepy", "Eevee", "Egg", "Egypt", "Einar", "Elden", "Electron", "Eli", "Elijah", "Elio", "Ellie", "Elton", "Elvis",
@@ -434,9 +437,11 @@
     "Yinuo", "Yippee", "Yokai", "Yoonmin", "Yooted", "Yoshi", "Yote", "Yuca", "Yuka", "Yuki", "Yumeko", "Yusuke", "Yuzu", "Yvaine",
     "Zahra", "Zambezi", "Zambia", "Zaniah", "Zari", "Zariah", "Zazu", "Zebra", "Zekrom", "Zelda", "Zell", "Zach", "Zachary", "Zenith",
     "Zendaya", "Zeraora", "Zikomo", "Zim", "Zion", "Zira", "Ziti", "Zoe", "Zoomie", "Zorro", "Zorua", "Zuberi", "Zuko", "Zuma", "Zuna", "Zuva",
+
     "Chance", "Briar", "Oliver", "Chloe", "Casper", "Sir Fam Bam of Scritch Scratch", "Southpaw", "Jynx", "Buster", "Zypher", "Tchalla",
-    "Bruno", "Horsefeathers", "Pepper", "Chatty", "Gary", "Astaroth", "Malphas", "Miriam", "John Ward", "Nixon", "Ratha", "Thistle-Chasher",
-    "Newt", "Thakur", "Fessran", "Bonechewer", "Mishanti", "Dreambiter", "Smokey", "Mint", "Storm", "Cloud"
+    "Bruno", "Horsefeathers", "Pepper", "Chatty", "Gary", "Astaroth", "Malphas", "Miriam", "John Ward", "Nixon", "Ratha", "Thistle-Chaser",
+    "Newt", "Thakur", "Fessran", "Bonechewer", "Mishanti", "Dreambiter", "Smokey", "Mint", "Storm", "Cloud", "Stone", "Paprika", "Murphy", "Socks", "Big Homie",
+    "Jonkler"
 
 
     ],
