@@ -416,23 +416,6 @@
             "Leaf-fall",
             "Leaf-bare"
         ],
-        "event_text": "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
-        "cat_trait": null,
-        "cat_skill": "ROGUE,0",
-        "other_cat_trait": null,
-        "other_cat_skill": null,
-        "accessories": [
-            "DOGCOLLAR"
-        ]
-    },
-    {
-        "camp": "any",
-        "tags": [
-            "Newleaf",
-            "Greenleaf",
-            "Leaf-fall",
-            "Leaf-bare"
-        ],
         "event_text": "m_c dares any cat to ask about {PRONOUN/m_c/poss} new acc_singular.",
         "cat_trait": "bloodthirsty",
         "cat_skill": null,
