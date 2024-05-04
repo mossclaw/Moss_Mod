@@ -77,7 +77,9 @@
         "event_text": "r_c gives m_c something to adorn {PRONOUN/m_c/poss} pelt as congratulations.",
         "accessories": [
             "WILD",
-            "PLANT"
+            "PLANT",
+            "WILD2",
+            "PLANT2"
         ]
     },
     {
@@ -760,5 +762,44 @@
             "bold",
             "strict"
         ]
-    }
+    },
+    {
+      "camp": "any",
+      "tags": [
+          "Newleaf",
+          "Greenleaf",
+          "Leaf-fall",
+          "Leaf-bare"
+      ],
+      "event_text": "m_c sheepishly returns to camp after spending a little too much time around some twolegs... and no longer able to hide it because of {PRONOUN/m_c/poss} new acc_singular.",
+      "accessories": [
+          "KITTYACC"
+      ]
+   },
+    {
+      "camp": "any",
+      "tags": [
+          "Newleaf",
+          "Greenleaf",
+          "Leaf-fall",
+          "Leaf-bare"
+      ],
+      "event_text": "m_c makes sure to say meowdy to everycat and tip {PRONOUN/m_c/poss} new hat.",
+      "accessories": [
+          "COWBOY HAT"
+      ]
+   },
+    {
+      "camp": "any",
+      "tags": [
+          "Newleaf",
+          "Greenleaf",
+          "Leaf-fall",
+          "Leaf-bare"
+      ],
+      "event_text": "m_c is simply way too cool now, and always leaves {PRONOUN/m_c/poss} shades on.",
+      "accessories": [
+          "SUNGLASSES"
+      ]
+   }
 ]

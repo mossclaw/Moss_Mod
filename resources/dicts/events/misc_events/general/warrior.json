@@ -117,7 +117,7 @@
         "other_cat_trait": null,
         "other_cat_skill": null,
         "accessories": [
-            "COLLAR"
+            "COLLAR", "RED BANDANA", "ORANGE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "BLUE BANDANA", "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA"
         ]
     },
     {
@@ -418,7 +418,7 @@
         ],
         "event_text": "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
         "cat_trait": null,
-        "cat_skill": "ROGUE",
+        "cat_skill": "ROGUE,0",
         "other_cat_trait": null,
         "other_cat_skill": null,
         "accessories": [

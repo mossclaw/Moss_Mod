@@ -613,5 +613,105 @@
     "default": "indigo dog-tooth collar",
     "plural": "indigo dog-tooth collars",
     "singular": "indigo dog-tooth collar"
+  },
+  "SUNGLASSES": {
+    "default": "sunglasses",
+    "plural": "pair of sunglasses",
+    "singular": "sunglasses"
+  },
+  "COWBOY HAT": {
+    "default": "cowboy hat",
+    "plural": "cowboy hats",
+    "singular": "cowboy hat"
+  },
+  "RED BANDANA": {
+    "default": "red bandana",
+    "plural": "red bandanas",
+    "singular": "red bandana"
+  },
+  "ORANGE BANDANA": {
+    "default": "orange bandana",
+    "plural": "orange bandanas",
+    "singular": "orange bandana"
+  },
+  "YELLOW BANDANA": {
+    "default": "yellow bandana",
+    "plural": "yellow bandanas",
+    "singular": "yellow bandana"
+  },
+  "GREEN BANDANA": {
+    "default": "green bandana",
+    "plural": "green bandanas",
+    "singular": "green bandana"
+  },
+  "BLUE BANDANA": {
+    "default": "blue bandana",
+    "plural": "blue bandanas",
+    "singular": "blue bandana"
+  },
+  "PURPLE BANDANA": {
+    "default": "purple bandana",
+    "plural": "purple bandanas",
+    "singular": "purple bandana"
+  },
+  "PINK BANDANA": {
+    "default": "pink bandana",
+    "plural": "pink bandanas",
+    "singular": "pink bandana"
+  },
+  "BLACK BANDANA": {
+    "default": "black bandana",
+    "plural": "black bandanas",
+    "singular": "black bandana"
+  },
+  "WHITE BANDANA": {
+    "default": "white bandana",
+    "plural": "white bandanas",
+    "singular": "white bandana"
+  },
+  "RED HARNESS": {
+    "default": "red harness",
+    "plural": "red harnesses",
+    "singular": "red harness"
+  },
+  "ORANGE HARNESS": {
+    "default": "orange harness",
+    "plural": "orange harnesses",
+    "singular": "orange harness"
+  },
+  "YELLOW HARNESS": {
+    "default": "yellow harness",
+    "plural": "yellow harnesses",
+    "singular": "yellow harness"
+  },
+  "GREEN HARNESS": {
+    "default": "green harness",
+    "plural": "green harnesses",
+    "singular": "green harness"
+  },
+  "BLUE HARNESS": {
+    "default": "blue harness",
+    "plural": "blue harnesses",
+    "singular": "blue harness"
+  },
+  "PURPLE HARNESS": {
+    "default": "purple harness",
+    "plural": "purple harnesses",
+    "singular": "purple harness"
+  },
+  "PINK HARNESS": {
+    "default": "pink harness",
+    "plural": "pink harnesses",
+    "singular": "pink harness"
+  },
+  "BLACK HARNESS": {
+    "default": "black harness",
+    "plural": "black harnesses",
+    "singular": "black harness"
+  },
+  "WHITE HARNESS": {
+    "default": "white harness",
+    "plural": "white harnesses",
+    "singular": "white harness"
   }
 }

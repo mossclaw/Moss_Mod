@@ -118,7 +118,8 @@ class Sprites():
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
             'fadestarclan', 'fadedarkforest', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
-            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours'
+            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
+            'kittypetacc'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -582,6 +583,20 @@ class Sprites():
         for a, i in enumerate([
             "WILD FLOWERS", "TWIGS", "SHELL", "CRYSTAL", "SERPENT", "MOSS BALL"]):
             self.make_group('mossherbs', (a, 3), f'acc_moss{i}')
+
+        #kittypet
+        for a, i in enumerate([
+            "SUNGLASSES", "BLUE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "RED BANDANA", "ORANGE BANDANA"]):
+            self.make_group('kittypetacc', (a, 0), f'acc_kitty{i}')
+        for a, i in enumerate([
+            "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA", "RED HARNESS", "ORANGE HARNESS"]):
+            self.make_group('kittypetacc', (a, 1), f'acc_kitty{i}')
+        for a, i in enumerate([
+            "YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS"]):
+            self.make_group('kittypetacc', (a, 2), f'acc_kitty{i}')
+        for a, i in enumerate([
+            "PINK HARNESS", "COWBOY HAT"]):
+            self.make_group('kittypetacc', (a, 3), f'acc_kitty{i}')
 
         for a, i in enumerate(["CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME"]):
             self.make_group('collars', (a, 0), f'collars{i}')
