@@ -31,6 +31,7 @@ class Pelt():
         'Masked': 'masked',
         'Fog': 'fog',
         'Mist': 'mist',
+        'Smudged': 'smudge',
         'Tortie': None,
         'Calico': None
     }
@@ -80,7 +81,7 @@ class Pelt():
 
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
-                   'saber', 'faded', 'masked', 'fog', 'mist']
+                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge']
 
 
     pelt_length = ["short", "medium", "long"]
@@ -139,7 +140,7 @@ class Pelt():
 
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog"]
     spots = ["Speckled", "Rosette", "Bengal"]
-    swirls = ["Tabby", "Classic", "Sokoke", "Marbled"]
+    swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudged"]
     flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
     stripes = ["Mackerel", "Braided", "Brindle"]
     splotches = ["Splotch", "Masked"]
@@ -874,7 +875,7 @@ class Pelt():
                     # Normal generation
                     if self.tortiebase in ["single"]:
                         self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'masked', 'brindle',
-                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled'])
+                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
@@ -886,7 +887,7 @@ class Pelt():
                         self.tortiecolour = choice(Pelt.blue_colours + Pelt.gold_colours + (Pelt.fire_colours * 4) + (
                                     Pelt.ginger_colours * 4) + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
                     elif self.colour in Pelt.white_colours:
-                        self.tortiecolour = choice(Pelt.white_colours + (Pelt.cream_colours * 2) + (Pelt.blue_colours * 2) + Pelt.black_colours)
+                        self.tortiecolour = choice((Pelt.cream_colours * 2) + (Pelt.blue_colours * 2) + Pelt.black_colours)
                     elif self.colour in Pelt.blue_colours:
                         self.tortiecolour = choice(Pelt.black_colours + (
                                     Pelt.cream_colours * 4) + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.coolbrown_colours)
@@ -1249,7 +1250,8 @@ class Pelt():
             "Faded": "c_n faded tabby",
             "Masked": "c_n masked tabby",
             "Fog": "c_n foggy tabby",
-            "Mist": "c_n misted tabby"
+            "Mist": "c_n misted tabby",
+            "Smudged": "c_n smudged tabby"
         }
 
         # Start with determining the base color name. 

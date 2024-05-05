@@ -61,7 +61,8 @@
     "Saber": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
-    "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"]
+    "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "Smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft"],
@@ -84,7 +85,8 @@
     "saber": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
-    "fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"]
+    "fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
 
   "normal_prefixes": [
@@ -466,6 +468,6 @@
     "Wren"
 	],
 	"inappropriate_names": [
-		"wetback", "yellowface", "redface", "blackface", "brownface", "pancakeface", "yellowbone", "molesting"
+		"wetback", "yellowface", "redface", "blackface", "brownface", "pancakeface", "yellowbone", "molesting", "wetdream"
 	]
 }
