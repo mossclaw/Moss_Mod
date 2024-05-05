@@ -213,7 +213,7 @@ class Sprites():
             self.make_group('whitepatchesmoss', (a, 0), f'white{i}')
         for a, i in enumerate(
                 ['COWFIVE', 'COWSIX', 'COWSEVEN', 'COWEIGHT', 'COWNINE', 'COWTEN',
-                 'COWELEVEN', 'FRECKLEMASK', 'SPLAT', 'BATWING']):
+                 'COWELEVEN', 'FRECKLEMASK', 'SPLAT', 'BATWING', 'SMALLPATCHES']):
             self.make_group('whitepatchesmoss', (a, 1), f'white{i}')
 
         # single (solid)
@@ -517,7 +517,9 @@ class Sprites():
 
         for a, i in enumerate(['VIPER', 'SKULL', 'POINTS', 'DITTO', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED']):
             self.make_group('tortiesmoss', (a, 0), f"tortiemask{i}")
-        for a, i in enumerate(['SABER', 'ROSETTE', 'MASKED', 'DUST']):
+        for a, i in enumerate(['SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX']):
+            self.make_group('tortiesmoss', (a, 1), f"tortiemask{i}")
+        for a, i in enumerate(['MAXIMUMSEVEN', 'MAXIMUMEIGHT']):
             self.make_group('tortiesmoss', (a, 1), f"tortiemask{i}")
 
         # SKINS
