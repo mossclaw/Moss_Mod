@@ -31,7 +31,7 @@ class Pelt():
         'Masked': 'masked',
         'Fog': 'fog',
         'Mist': 'mist',
-        'Smudged': 'smudge',
+        'Smudge': 'smudge',
         'Tortie': None,
         'Calico': None
     }
@@ -140,7 +140,7 @@ class Pelt():
 
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog"]
     spots = ["Speckled", "Rosette", "Bengal"]
-    swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudged"]
+    swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
     flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
     stripes = ["Mackerel", "Braided", "Brindle"]
     splotches = ["Splotch", "Masked"]
@@ -1251,7 +1251,7 @@ class Pelt():
             "Masked": "c_n masked tabby",
             "Fog": "c_n foggy tabby",
             "Mist": "c_n misted tabby",
-            "Smudged": "c_n smudged tabby"
+            "Smudge": "c_n smudge tabby"
         }
 
         # Start with determining the base color name. 

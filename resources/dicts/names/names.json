@@ -62,7 +62,7 @@
     "Masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
     "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
-    "Smudged": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "Smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft"],
