@@ -603,31 +603,31 @@ class Pelt():
         weights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for p_ in par_peltcolours:
             if p_ in Pelt.white_colours:
-                add_weight = (300, 150, 50, 0, 10, 0, 0, 0, 0, 10, 0, 0)
+                add_weight = (200, 90, 50, 0, 10, 0, 0, 0, 0, 10, 0, 0)
             elif p_ in Pelt.blue_colours:
-                add_weight = (150, 300, 50, 100, 10, 0, 0, 0, 0, 10, 0, 0)
+                add_weight = (90, 200, 50, 70, 10, 0, 0, 0, 0, 10, 0, 0)
             elif p_ in Pelt.gray_colours:
-                add_weight = (30, 30, 300, 100, 0, 10, 0, 0, 10, 0, 10, 0)
+                add_weight = (30, 30, 200, 70, 0, 10, 0, 0, 10, 0, 10, 0)
             elif p_ in Pelt.black_colours:
-                add_weight = (0, 30, 50, 300, 0, 0, 0, 0, 0, 0, 0, 0)
+                add_weight = (0, 30, 50, 200, 0, 0, 0, 0, 0, 0, 0, 0)
             elif p_ in Pelt.cream_colours:
-                add_weight = (0, 0, 10, 0, 300, 50, 100, 100, 0, 10, 0, 0)
+                add_weight = (0, 0, 10, 0, 200, 50, 70, 70, 0, 10, 0, 0)
             elif p_ in Pelt.gold_colours:
-                add_weight = (30, 0, 0, 0, 30, 300, 100, 100, 10, 0, 10, 0)
+                add_weight = (30, 0, 0, 0, 30, 200, 70, 70, 10, 0, 10, 0)
             elif p_ in Pelt.fire_colours:
-                add_weight = (0, 0, 0, 0, 30, 50, 300, 150, 0, 0, 0, 10)
+                add_weight = (0, 0, 0, 0, 30, 50, 200, 90, 0, 0, 0, 10)
             elif p_ in Pelt.ginger_colours:
-                add_weight = (0, 0, 0, 0, 30, 50, 150, 300, 0, 0, 0, 10)
+                add_weight = (0, 0, 0, 0, 30, 50, 90, 200, 0, 0, 0, 10)
             elif p_ in Pelt.coolbrown_colours:
-                add_weight = (0, 0, 10, 0, 0, 10, 0, 0, 300, 30, 150, 100)
+                add_weight = (0, 0, 10, 0, 0, 10, 0, 0, 200, 30, 90, 70)
             elif p_ in Pelt.lavender_colours:
-                add_weight = (10, 10, 0, 0, 10, 0, 0, 0, 50, 300, 50, 100)
+                add_weight = (10, 10, 0, 0, 10, 0, 0, 0, 50, 200, 50, 70)
             elif p_ in Pelt.warmbrown_colours:
-                add_weight = (0, 0, 10, 0, 0, 10, 0, 0, 150, 30, 300, 100)
+                add_weight = (0, 0, 10, 0, 0, 10, 0, 0, 90, 30, 200, 70)
             elif p_ in Pelt.brown_colours:
-                add_weight = (0, 0, 0, 10, 0, 0, 10, 10, 50, 30, 50, 300)
+                add_weight = (0, 0, 0, 10, 0, 0, 10, 10, 50, 30, 50, 200)
             elif p_ is None:
-                add_weight = (25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25)
+                add_weight = (30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30)
             else:
                 add_weight = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
