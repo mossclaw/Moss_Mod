@@ -62,7 +62,9 @@
     "Masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
     "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
-    "Smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "Smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "Longdan": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "BrokenMackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft"],
@@ -86,7 +88,9 @@
     "masked": ["mask", "snout", "shade", "dusk", "mist", "smoke", "fade", "stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
     "fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
-    "smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "longdan": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "brokenmackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
 
   "normal_prefixes": [
