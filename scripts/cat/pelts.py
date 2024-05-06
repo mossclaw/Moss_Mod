@@ -32,6 +32,8 @@ class Pelt():
         'Fog': 'fog',
         'Mist': 'mist',
         'Smudge': 'smudge',
+        'BrokenMackerel': 'brokenmackerel',
+        'Longdan': 'longdan',
         'Tortie': None,
         'Calico': None
     }
@@ -81,7 +83,7 @@ class Pelt():
 
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
-                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge']
+                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel']
 
 
     pelt_length = ["short", "medium", "long"]
@@ -142,9 +144,9 @@ class Pelt():
     spots = ["Speckled", "Rosette", "Bengal"]
     swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
     flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
-    stripes = ["Mackerel", "Braided", "Brindle"]
+    stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel"]
     splotches = ["Splotch", "Masked"]
-    exotic = ["Saber", "Faded"]
+    exotic = ["Saber", "Faded", "Longdan"]
     torties = ["Tortie", "Calico"]
     pelt_categories = [points, spots, swirls, flats, stripes, splotches, exotic, torties]
 
@@ -603,31 +605,31 @@ class Pelt():
         weights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for p_ in par_peltcolours:
             if p_ in Pelt.white_colours:
-                add_weight = (200, 20, 30, 0, 30, 0, 0, 0, 10, 0, 0, 0)
+                add_weight = (200, 90, 50, 5, 10, 5, 5, 5, 5, 10, 5, 5)
             elif p_ in Pelt.blue_colours:
-                add_weight = (30, 200, 40, 30, 0, 0, 0, 0, 20, 10, 0, 0)
+                add_weight = (90, 200, 50, 70, 10, 5, 5, 5, 5, 10, 0, 5)
             elif p_ in Pelt.gray_colours:
-                add_weight = (30, 40, 200, 40, 30, 0, 0, 0, 20, 10, 0, 0)
+                add_weight = (30, 30, 200, 70, 5, 10, 5, 5, 10, 5, 10, 5)
             elif p_ in Pelt.black_colours:
-                add_weight = (0, 30, 50, 200, 0, 0, 0, 0, 0, 0, 0, 20)
+                add_weight = (5, 30, 50, 200, 5, 5, 5, 5, 5, 5, 5, 5)
             elif p_ in Pelt.cream_colours:
-                add_weight = (40, 20, 30, 0, 200, 40, 30, 30, 30, 20, 10, 10)
+                add_weight = (5, 5, 10, 5, 200, 50, 70, 70, 5, 10, 5, 5)
             elif p_ in Pelt.gold_colours:
-                add_weight = (30, 0, 0, 0, 30, 200, 40, 40, 20, 20, 10, 5)
+                add_weight = (30, 5, 5, 5, 30, 200, 70, 70, 10, 5, 10, 5)
             elif p_ in Pelt.fire_colours:
-                add_weight = (0, 0, 0, 0, 30, 40, 200, 40, 0, 0, 20, 10)
+                add_weight = (5, 5, 5, 5, 30, 50, 200, 90, 5, 5, 5, 10)
             elif p_ in Pelt.ginger_colours:
-                add_weight = (0, 0, 0, 0, 30, 40, 40, 200, 0, 0, 20, 10)
+                add_weight = (5, 5, 5, 5, 30, 50, 90, 200, 5, 5, 5, 10)
             elif p_ in Pelt.coolbrown_colours:
-                add_weight = (20, 20, 10, 0, 10, 0, 0, 0, 200, 40, 10, 30)
+                add_weight = (5, 5, 10, 5, 5, 10, 5, 5, 200, 30, 90, 70)
             elif p_ in Pelt.lavender_colours:
-                add_weight = (0, 10, 20, 0, 30, 0, 0, 0, 40, 200, 30, 40)
+                add_weight = (10, 10, 5, 5, 10, 5, 5, 5, 50, 200, 50, 70)
             elif p_ in Pelt.warmbrown_colours:
-                add_weight = (0, 0, 0, 0, 0, 30, 30, 40, 10, 20, 200, 40)
+                add_weight = (5, 5, 10, 5, 5, 10, 5, 5, 90, 30, 200, 70)
             elif p_ in Pelt.brown_colours:
-                add_weight = (0, 0, 20, 30, 10, 0, 0, 0, 20, 30, 40, 200)
+                add_weight = (5, 5, 5, 10, 5, 5, 10, 10, 50, 30, 50, 200)
             elif p_ is None:
-                add_weight = (40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40)
+                add_weight = (30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30)
             else:
                 add_weight = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
@@ -875,7 +877,7 @@ class Pelt():
                     # Normal generation
                     if self.tortiebase in ["single"]:
                         self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'masked', 'brindle',
-                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke'])
+                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke', 'brokenmackerel'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
@@ -1251,7 +1253,9 @@ class Pelt():
             "Masked": "c_n masked tabby",
             "Fog": "c_n foggy tabby",
             "Mist": "c_n misted tabby",
-            "Smudge": "c_n smudge tabby"
+            "Smudge": "c_n smudge tabby",
+            "BrokenMackerel": "c_n broken mackerel tabby",
+            "Longdan": "c_n longdan tiger tabby"
         }
 
         # Start with determining the base color name. 
@@ -1278,7 +1282,7 @@ class Pelt():
                     color_name = cat.pelt.name.lower()
             else:
                 base = cat.pelt.tortiebase.lower()
-                if base in Pelt.stripes + ['bengal', 'rosette', 'speckled', 'faded', 'saber', 'tabby', 'classic', 'sokoke', 'marbled', 'masked']:
+                if base in Pelt.stripes + ['bengal', 'rosette', 'speckled', 'faded', 'saber', 'tabby', 'classic', 'sokoke', 'marbled', 'masked', 'brokenmackerel', 'longdan', 'smudge']:
                     base = 'tabby'
                 else:
                     base = ''
