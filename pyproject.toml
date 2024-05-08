@@ -9,7 +9,7 @@ authors = [
 ]
 readme = "README.md"
 homepage = "https://clangen.io"
-repository = "https://github.com/ClanGenOfficial/clangen"
+repository = "https://github.com/mossclaw/Moss_Mod"
 keywords = ["warriorcats", "fanedit", "game", "pygame"]
 
 [tool.poetry.dependencies]
