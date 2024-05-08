@@ -64,7 +64,10 @@
     "Mist": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
     "Smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "Longdan": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
-    "BrokenMackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "BrokenMackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "Dust": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "CharcoalBengal": ["dapple", "speckle", "spot", "speck", "freckle", "fleck", "spots", "flecks", "freckles", "splotch", "splash", "patch", "speckles"],
+    "BrokenBraided": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
   "tortie_pelt_suffixes": {
     "solid": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft"],
@@ -90,7 +93,10 @@
     "fog": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
     "smudge": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
     "longdan": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
-    "brokenmackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
+    "brokenmackerel": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"],
+    "dust": ["patch", "spot", "splash", "splotch", "blaze", "belly", "blotch", "snout", "tail", "tuft", "fade", "dusk", "dawn", "smoke", "shimmer"],
+    "charcoalbengal": ["dapple", "speckle", "spot", "speck", "freckle", "fleck", "spots", "flecks", "freckles", "splotch", "splash", "patch", "speckles"],
+    "brokenbraided": ["stripe", "feather", "streak", "ripple", "slash", "stripes", "swirl", "curl", "dapple", "blaze", "fern", "leaf"]
   },
 
   "normal_prefixes": [

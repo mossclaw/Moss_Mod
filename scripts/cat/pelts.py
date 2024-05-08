@@ -33,6 +33,9 @@ class Pelt():
         'Mist': 'mist',
         'Smudge': 'smudge',
         'BrokenMackerel': 'brokenmackerel',
+        'Dust': 'dust',
+        'CharcoalBengal': 'charcoalbengal',
+        'BrokenBraided': 'brokenbraided',
         'Longdan': 'longdan',
         'Tortie': None,
         'Calico': None
@@ -83,7 +86,8 @@ class Pelt():
 
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
-                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel']
+                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel', 'brokenbraided',
+                   'charcoalbengal', 'dust']
 
 
     pelt_length = ["short", "medium", "long"]
@@ -140,15 +144,14 @@ class Pelt():
     kitty_accessories = ["SUNGLASSES", "RED BANDANA", "ORANGE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "BLUE BANDANA", "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA",
                          "RED HARNESS", "ORANGE HARNESS", "YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS", "PINK HARNESS", "COWBOY HAT"]
 
-    points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog"]
-    spots = ["Speckled", "Rosette", "Bengal"]
+    points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
+    spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
     swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
     flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
-    stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel"]
-    splotches = ["Splotch", "Masked"]
-    exotic = ["Saber", "Faded", "Longdan"]
+    stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel", "BrokenBraided", "Masked"]
+    exotic = ["Saber", "Faded", "Longdan", "Splotch"]
     torties = ["Tortie", "Calico"]
-    pelt_categories = [points, spots, swirls, flats, stripes, splotches, exotic, torties]
+    pelt_categories = [points, spots, swirls, flats, stripes, exotic, torties]
 
     # SPRITE NAMES
     single_colours = [
@@ -538,34 +541,32 @@ class Pelt():
         # ------------------------------------------------------------------------------------------------------------#
 
         # Determine pelt.
-        weights = [0, 0, 0, 0, 0, 0,
-                   0]  # Weights for each pelt group. It goes: (points, spots, swirls, flats, stripes, splotches, exotic)
+        weights = [0, 0, 0, 0, 0,
+                   0]  # Weights for each pelt group. It goes: (points, spots, swirls, flats, stripes, exotic)
         for p_ in par_peltnames:
             if p_ in Pelt.points:
-                add_weight = (100, 5, 0, 25, 15, 5, 0)
+                add_weight = (100, 5, 0, 25, 15, 0)
             elif p_ in Pelt.spots:
-                add_weight = (5, 100, 0, 5, 0, 25, 15)
+                add_weight = (5, 100, 0, 5, 0, 15)
             elif p_ in Pelt.swirls:
-                add_weight = (0, 0, 100, 15, 30, 0, 5)
+                add_weight = (0, 0, 100, 15, 30, 5)
             elif p_ in Pelt.flats:
-                add_weight = (25, 5, 0, 100, 5, 15, 0)
+                add_weight = (25, 5, 0, 100, 5, 0)
             elif p_ in Pelt.stripes:
-                add_weight = (5, 0, 35, 5, 100, 0, 5)
-            elif p_ in Pelt.splotches:
-                add_weight = (25, 15, 0, 5, 0, 100, 5)
+                add_weight = (5, 0, 35, 5, 100, 5)
             elif p_ in Pelt.exotic:
-                add_weight = (30, 15, 0, 0, 0, 5, 100)
+                add_weight = (30, 15, 0, 0, 0, 100)
             elif p_ is None:  # If there is at least one unknown parent, a None will be added to the set.
-                add_weight = (20, 10, 15, 50, 10, 5, 5)
+                add_weight = (20, 10, 15, 50, 10, 5)
             else:
-                add_weight = (0, 0, 0, 0, 0, 0, 0)
+                add_weight = (0, 0, 0, 0, 0, 0)
 
             for x in range(0, len(weights)):
                 weights[x] += add_weight[x]
 
         #A quick check to make sure all the weights aren't 0
         if all([x == 0 for x in weights]):
-            weights = [1, 1, 1, 1, 1, 1, 1]
+            weights = [1, 1, 1, 1, 1, 1]
 
         # Now, choose the pelt category and pelt. The extra 0 is for the tortie pelts,
         chosen_pelt = choice(
@@ -709,7 +710,7 @@ class Pelt():
 
         # Determine pelt.
         chosen_pelt = choice(
-            random.choices(Pelt.pelt_categories, weights=(35, 20, 30, 15, 20, 15, 10, 0), k=1)[0]
+            random.choices(Pelt.pelt_categories, weights=(35, 20, 30, 15, 20, 15, 0), k=1)[0]
         )
 
         # Tortie chance
@@ -877,7 +878,8 @@ class Pelt():
                     # Normal generation
                     if self.tortiebase in ["single"]:
                         self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'masked', 'brindle',
-                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke', 'brokenmackerel'])
+                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke',
+                                                     'brokenmackerel', 'charcoalbengal', 'brokenbraided'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
@@ -1234,7 +1236,7 @@ class Pelt():
         pattern_des = {
             "Tabby": "c_n tabby",
             "Speckled": "speckled c_n",
-            "Bengal": "unusually dappled c_n",
+            "Bengal": "c_n bengal",
             "Marbled": "c_n marbled tabby",
             "Ticked": "c_n ticked tabby",
             "Smoke": "c_n smoke",
@@ -1248,14 +1250,17 @@ class Pelt():
             "Brindle": "c_n brindle",
             "Braided": "c_n braided tabby",
             "Splotch": "unusually splotched c_n",
-            "Saber": "c_n wild tabby",
+            "Saber": "c_n saber tabby",
             "Faded": "c_n faded tabby",
             "Masked": "c_n masked tabby",
             "Fog": "c_n foggy tabby",
             "Mist": "c_n misted tabby",
             "Smudge": "c_n smudge tabby",
             "BrokenMackerel": "c_n broken mackerel tabby",
-            "Longdan": "c_n longdan tiger tabby"
+            "Longdan": "c_n longdan tiger tabby",
+            "BrokenBraided": "c_n broken braided tabby",
+            "CharcoalBengal": "c_n charcoal bengal",
+            "Dust": "c_n dust"
         }
 
         # Start with determining the base color name. 
@@ -1282,7 +1287,7 @@ class Pelt():
                     color_name = cat.pelt.name.lower()
             else:
                 base = cat.pelt.tortiebase.lower()
-                if base in Pelt.stripes + ['bengal', 'rosette', 'speckled', 'faded', 'saber', 'tabby', 'classic', 'sokoke', 'marbled', 'masked', 'brokenmackerel', 'longdan', 'smudge']:
+                if base in Pelt.stripes + ['bengal', 'rosette', 'speckled', 'faded', 'saber', 'tabby', 'classic', 'sokoke', 'marbled', 'masked', 'brokenmackerel', 'longdan', 'smudge', 'brokenbraided']:
                     base = 'tabby'
                 else:
                     base = ''
