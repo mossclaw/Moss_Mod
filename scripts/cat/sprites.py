@@ -600,7 +600,7 @@ class Sprites():
         for a, i in enumerate(['SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX']):
             self.make_group('tortiesmoss', (a, 1), f"tortiemask{i}")
         for a, i in enumerate(['MAXIMUMSEVEN', 'MAXIMUMEIGHT']):
-            self.make_group('tortiesmoss', (a, 1), f"tortiemask{i}")
+            self.make_group('tortiesmoss', (a, 2), f"tortiemask{i}")
 
         # SKINS
         for a, i in enumerate(['BLACK', "RED", 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN']):
