@@ -185,9 +185,9 @@
     "singular": "purple leather collar"
   },
   "MULTI": {
-    "default": "lilac leather collar",
-    "plural": "lilac leather collars",
-    "singular": "lilac leather collar"
+    "default": "pale rainbow leather collar",
+    "plural": "pale rainbow leather collars",
+    "singular": "pale rainbow leather collar"
   },
   "INDIGO": {
     "default": "indigo leather collar",
@@ -260,9 +260,9 @@
     "singular": "purple bell collar"
   },
   "MULTIBELL": {
-    "default": "lilac bell collar",
-    "plural": "lilac bell collars",
-    "singular": "lilac bell collar"
+    "default": "pale rainbow bell collar",
+    "plural": "pale rainbow bell collars",
+    "singular": "pale rainbow bell collar"
   },
   "INDIGOBELL": {
     "default": "indigo bell collar",
@@ -335,9 +335,9 @@
     "singular": "purple bow collar"
   },
   "MULTIBOW": {
-    "default": "lilac bow collar",
-    "plural": "lilac bow collars",
-    "singular": "lilac bow collar"
+    "default": "pale rainbow bow collar",
+    "plural": "pale rainbow bow collars",
+    "singular": "pale rainbow bow collar"
   },
   "INDIGOBOW": {
     "default": "indigo bow collar",
@@ -410,9 +410,9 @@
     "singular": "purple nylon collar"
   },
   "MULTINYLON": {
-    "default": "lilac nylon collar",
-    "plural": "lilac nylon collars",
-    "singular": "lilac nylon collar"
+    "default": "pale rainbow nylon collar",
+    "plural": "pale rainbow nylon collars",
+    "singular": "pale rainbow nylon collar"
   },
   "INDIGONYLON": {
     "default": "indigo nylon collar",
@@ -605,9 +605,9 @@
     "singular": "purple dog-tooth collar"
   },
   "MULTIFANG": {
-    "default": "lilac dog-tooth collar",
-    "plural": "lilac dog-tooth collars",
-    "singular": "lilac dog-tooth collar"
+    "default": "pale rainbow dog-tooth collar",
+    "plural": "pale rainbow dog-tooth collars",
+    "singular": "pale rainbow dog-tooth collar"
   },
   "INDIGOFANG": {
     "default": "indigo dog-tooth collar",
