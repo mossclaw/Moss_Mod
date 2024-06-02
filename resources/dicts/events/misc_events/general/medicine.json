@@ -374,7 +374,7 @@
     ]
   },
     {
-        "camp": "Any",
+        "camp": "any",
         "tags": [
             "medicine_cat",
             "medicine_cat_app",
