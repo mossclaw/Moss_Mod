@@ -131,10 +131,10 @@ class Sprites():
             'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
             'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
             'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
-            'fadestarclan', 'fadedarkforest', 'abyssiancolours', 'braidedcolours', 'brindlecolours',
+            'fadestarclan', 'fadedarkforest', 'abyssiniancolours', 'braidedcolours', 'brindlecolours',
             'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
             'kittypetacc', 'smudgecolours', 'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours',
-            'charcoalbengalcolours', 'dustcolours'
+            'charcoalbengalcolours', 'dustcolours', 'symbols'
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
@@ -209,11 +209,15 @@ class Sprites():
             ['COWFIVE', 'COWSIX', 'COWSEVEN', 'COWEIGHT', 'COWNINE', 'COWTEN', 'COWELEVEN', 'FRECKLEMASK', 'SPLAT', 'BATWING', 'SMALLPATCHES']
         ]
 
-        all_white_patches = white_patches + white_patches2 + white_patches_moss
-
-        for row, patches in enumerate(all_white_patches):
+        for row, patches in enumerate(white_patches):
             for col, patch in enumerate(patches):
                 self.make_group('whitepatches', (col, row), f'white{patch}')
+        for row, patches in enumerate(white_patches2):
+            for col, patch in enumerate(patches):
+                self.make_group('whitepatches2', (col, row), f'white{patch}')
+        for row, patches in enumerate(white_patches_moss):
+            for col, patch in enumerate(patches):
+                self.make_group('whitepatchesmoss', (col, row), f'white{patch}')
 
         # Define colors and categories
         color_categories = [
@@ -233,7 +237,7 @@ class Sprites():
             'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours',
             'singlestripecolours', 'maskedcolours',
 
-            'abyssiancolours', 'braidedcolours', 'brindlecolours', 'fadedcolours',
+            'abyssiniancolours', 'braidedcolours', 'brindlecolours', 'fadedcolours',
             'sabercolours', 'splotchcolours', 'fogcolours', 'mistcolours', 'smudgecolours',
             'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours', 'charcoalbengalcolours', 'dustcolours'
         ]
@@ -259,11 +263,13 @@ class Sprites():
             ['MAXIMUMSEVEN', 'MAXIMUMEIGHT']
         ]
 
-        all_tortiepatchesmasks = tortiepatchesmasks + tortiepatchesmasksmoss
-
-        for row, masks in enumerate(all_tortiepatchesmasks):
+        for row, masks in enumerate(tortiepatchesmasks):
             for col, mask in enumerate(masks):
                 self.make_group('tortiepatchesmasks', (col, row), f"tortiemask{mask}")
+
+        for row, masks in enumerate(tortiepatchesmasksmoss):
+            for col, mask in enumerate(masks):
+                self.make_group('tortiesmoss', (col, row), f"tortiemask{mask}")
 
         # Define skin colors 
         skin_colors = [
@@ -405,7 +411,7 @@ class Sprites():
         # kittypetacc
         for row, kittypetaccs in enumerate(kittypetacc_data):
             for col, kittypetacc in enumerate(kittypetaccs):
-                self.make_group('nyloncollars', (col, row), f'acc_kitty{kittypetacc}')
+                self.make_group('kittypetacc', (col, row), f'acc_kitty{kittypetacc}')
 
         # bloodcollars
         for row, bloodcollars in enumerate(bloodcollars_data):
