@@ -176,7 +176,7 @@ class Sprites():
 
         for row, patterns in enumerate(eye_patterns):
             for col, pattern in enumerate(patterns):
-                self.make_group('eyes', (col, row), f'eyes2{pattern}')
+                self.make_group('eyes', (col, row), f'eyes{pattern}')
 
         # Define white patches
         white_patches = [
