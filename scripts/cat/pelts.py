@@ -1293,11 +1293,13 @@ class Pelt:
                     color_name = cat.pelt.name.lower()
             else:
 
+
                 base = cat.pelt.tortiebase.lower()
                 if base in Pelt.stripes + ['bengal', 'rosette', 'speckled', 'faded', 'saber', 'tabby', 'classic', 'sokoke', 'marbled', 'masked', 'brokenmackerel', 'longdan', 'smudge', 'brokenbraided']:
-                    base = 'tabby'
+                    base = ' tabby'
+
                 else:
-                    color_name = ''
+                    base = ''
 
                 patches_color = cat.pelt.tortiecolour.lower()
                 if patches_color in renamed_colors:
@@ -1306,9 +1308,9 @@ class Pelt:
 
                 if cat.pelt.colour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours and \
                         cat.pelt.tortiecolour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours:
-                    color_name = f"{color_name} mottled"
+                    color_name = f"{color_name} mottled{base}"
                 else:
-                    color_name = f"{color_name} {cat.pelt.name.lower()}"
+                    color_name = f"{color_name} {cat.pelt.name.lower()}{base}"
 
         if cat.pelt.white_patches:
             if cat.pelt.white_patches_tint == "black":
