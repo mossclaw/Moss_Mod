@@ -64,5 +64,17 @@
         "amount": 10
       }
     ]
+  },
+  {
+    "event_id": "pln_misc_any_acc_SHROOM1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c is such a fungi to be around!",
+    "new_accessory": ["MUSHROOM"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
   }
 ]

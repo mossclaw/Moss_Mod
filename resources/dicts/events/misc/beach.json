@@ -61,5 +61,29 @@
           "adjust": "reduce_full"
       }
     ]
+  },
+  {
+    "event_id": "bch_misc_any_acc_SHELL1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 15,
+    "event_text":  "m_c found an interesting looking shell on the beach and decided to keep it.",
+    "new_accessory": ["SHELL"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "bch_misc_any_acc_SEAWEED1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 15,
+    "event_text":  "m_c was at the shoreline when an unexpected wave crashed over {PRONOUN/m_c/object}! Shaken, but otherwise unharmed, {PRONOUN/m_c/subject} {VERB/m_c/return/returns} to camp covered in seaweed.",
+    "new_accessory": ["SEAWEED"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
   }
 ]

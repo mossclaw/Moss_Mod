@@ -568,7 +568,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "r_c finds acc_plural while out on a walk and decides to give them to m_c.",
-    "new_accessory": ["WILD","PLANT"],
+    "new_accessory": ["WILD","PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -601,7 +601,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "m_c finds acc_plural while out on a walk and decides to keep them.",
-    "new_accessory": ["WILD","PLANT"],
+    "new_accessory": ["WILD","PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -614,7 +614,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "m_c was given acc_plural as a congratulations, r_c watches from the side with a jealous glint in {PRONOUN/r_c/poss} eyes.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -640,7 +640,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "m_c received a present, acc_plural, from r_c and decided to keep it with {PRONOUN/m_c/object} on {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -666,7 +666,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "m_c decides to pick something to adorn {PRONOUN/m_c/poss} pelt as celebration.",
-    "new_accessory": ["WILD","PLANT"],
+    "new_accessory": ["WILD","PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -679,7 +679,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c gives m_c something to adorn {PRONOUN/m_c/poss} pelt as congratulations.",
-    "new_accessory": ["WILD","PLANT"],
+    "new_accessory": ["WILD","PLANT", "WILD2", "PLANT2"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -942,7 +942,7 @@
     "sub_type": ["accessory"],
     "weight": 15,
     "event_text": "m_c gives r_c a acc_singular to make up for a bad fight between them.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "age": ["young adult", "adult", "senior adult","senior"],
       "relationship_status": ["mates"]
@@ -967,7 +967,7 @@
     "sub_type": ["accessory"],
     "weight": 5,
     "event_text": "m_c gifts {PRONOUN/m_c/poss} beloved r_c with a acc_singular to wear in {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "age": ["young adult", "adult", "senior adult","senior"],
       "relationship_status": ["mates"]
@@ -1319,7 +1319,7 @@
         "sub_type": ["accessory"],
         "weight": 15,
         "event_text": "m_c is just too cute - r_c gives {PRONOUN/m_c/object} a pretty acc_singular as a gift.",
-        "new_accessory": ["WILD", "PLANT"],
+        "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
         "m_c": {
           "age": ["kitten"],
           "trait": ["sweet", "polite"]
@@ -1344,7 +1344,7 @@
         "sub_type": ["accessory"],
         "weight": 15,
         "event_text": "r_c gives m_c a pretty acc_singular {PRONOUN/r_c/subject} found while playing.",
-        "new_accessory": ["WILD", "PLANT"],
+        "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
         "m_c": {
             "age": ["kitten"]
         },
@@ -1375,7 +1375,7 @@
         "sub_type": ["accessory"],
         "weight": 20,
         "event_text": "m_c starts bringing a pretty acc_singular everywhere {PRONOUN/m_c/subject} {VERB/m_c/go/goes}, and r_c loudly complains that {PRONOUN/r_c/subject} {VERB/r_c/want/wants} one, too.",
-        "new_accessory": ["WILD", "PLANT"],
+        "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
         "m_c": {
             "age": ["kitten"]
         },
@@ -1424,7 +1424,7 @@
         "sub_type": ["accessory"],
         "weight": 15,
         "event_text": "m_c finds some acc_singular to wear in {PRONOUN/m_c/poss} fur to impress r_c!",
-        "new_accessory": ["WILD", "PLANT"],
+        "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
         "m_c": {
             "age": ["kitten"],
             "relationship_status": ["child/parent"],
@@ -1693,7 +1693,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "m_c gets dared to hunt outside in the snow alone, and returns with acc_singular in {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice"]
     }
@@ -2346,7 +2346,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 10,
     "event_text": "r_c presents m_c with acc_plural as a congratulations.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["medicine cat"]
     },
@@ -3295,7 +3295,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["any"],
       "relationship_status":["child/parent"]
@@ -3320,7 +3320,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} kit has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations for becoming an apprentice.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice"],
       "relationship_status":["child/parent"]
@@ -3345,7 +3345,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations for becoming a warrior. r_c knew that m_c would do great things for c_n.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["warrior"],
       "relationship_status":["child/parent"]
@@ -3370,7 +3370,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations. m_c takes it, but as r_c turns away, a complicated expression crosses {PRONOUN/m_c/poss} face. Perhaps {PRONOUN/m_c/subject} had the wrong idea about r_c.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["any"],
       "relationship_status":["child/parent", "dislike_20"]
@@ -3452,7 +3452,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "m_c is feeling a bit overwhelmed, now that {PRONOUN/m_c/subject} {VERB/m_c/are/is} an apprentice. Luckily, r_c is there with a gift of acc_plural and some comforting words to cheer m_c up.",
-    "new_accessory": ["WILD","PLANT"],
+    "new_accessory": ["WILD","PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice"],
       "trait": ["nervous", "insecure"],
@@ -3517,7 +3517,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "m_c can't help but feel hurt when {PRONOUN/m_c/poss} sibling isn't there to congratulate {PRONOUN/m_c/object} for becoming a warrior. However, when {PRONOUN/m_c/subject} later {VERB/m_c/go/goes} to {PRONOUN/m_c/poss} new nest {PRONOUN/m_c/subject} {VERB/m_c/find/finds} r_c there waiting for {PRONOUN/m_c/object}, with a gift of acc_plural. Together the siblings work on making m_c's new nest feel more comfortable.",
-    "new_accessory": ["WILD"],
+    "new_accessory": ["WILD", "WILD2"],
     "m_c": {
       "status": ["warrior"],
       "relationship_status":["siblings", "platonic_50"]
@@ -3543,7 +3543,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "m_c has been so excited for {PRONOUN/m_c/poss} first lesson with r_c. However, instead of something like hunting or moss gathering, r_c takes {PRONOUN/m_c/object} on a tour of the territory. At the end of the lesson, r_c gives m_c acc_plural, saying {PRONOUN/r_c/subject} {VERB/r_c/are/is} glad to be m_c's mentor.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice", "medicine cat apprentice", "mediator apprentice"],
       "relationship_status":["app/mentor"]
@@ -3576,7 +3576,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "As a new mentor, r_c wants to make a good initial impression on {PRONOUN/r_c/poss} apprentice, and after some careful consideration {PRONOUN/r_c/subject} {VERB/r_c/decide/decides} the best way is a gift. Taking m_c to the side, r_c gives {PRONOUN/m_c/object} acc_plural, telling {PRONOUN/m_c/object} with a soft voice that if m_c has any sort of issue then {PRONOUN/m_c/subject} can come to {PRONOUN/r_c/object} for help.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice", "medicine cat apprentice", "mediator apprentice"],
       "relationship_status":["app/mentor"]
@@ -3609,7 +3609,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 10,
     "event_text": "m_c yowls in shock, claws unsheathing from an unexpected to weight pinning {PRONOUN/m_c/object}. When {PRONOUN/m_c/subject} {VERB/m_c/are/is} able to get up, m_c's surprised and a bit upset to see that it had been {PRONOUN/m_c/poss} mentor who attacked {PRONOUN/m_c/object}. r_c doesn't seem to notice m_c's discomfort as {PRONOUN/r_c/subject} excitedly tell m_c about the acc_plural that now adorns {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["WILD", "PLANT"],
+    "new_accessory": ["WILD", "PLANT", "WILD2", "PLANT2"],
     "m_c": {
       "status": ["apprentice", "medicine cat apprentice", "mediator apprentice"],
       "relationship_status":["app/mentor"]
@@ -3641,5 +3641,163 @@
         "amount": 5
       }
     ]
+  },
+  {
+    "event_id": "gen_misc_any_acc_KITTY1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c has been interested in twolegs, and it seems to have caught up with {PRONOUN/m_c/object} as {PRONOUN/m_c/subject} return to camp wearing a acc_singular.",
+    "new_accessory": ["KITTYACC"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_KITTY2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c sheepishly returns to camp after spending a little too much time around some twolegs... and no longer able to hide it because of {PRONOUN/m_c/poss} new acc_singular.",
+    "new_accessory": ["KITTYACC"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_MOTHS1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c cant seem to get a pesky acc_singular off {PRONOUN/m_c/poss} face.",
+    "new_accessory": ["LUNA MOTH", "ATLAS MOTH"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_SWARM1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 10,
+    "event_text":  "m_c is always surrounded by a acc_singular.",
+    "new_accessory": ["FIREFLIES", "BUTTERFLIES"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_MOSSBALL1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 10,
+    "event_text":  "m_c seems to be exceptionally good at moss ball!",
+    "new_accessory": ["MOSS BALL"],
+    "m_c": {
+        "age": ["kitten", "adolescent"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_LILYPAD1",
+    "location": ["any"],
+    "season": ["Greenleaf"],
+    "sub_type": ["accessory"],
+    "weight": 10,
+    "event_text":  "Desperate to escape Greenleaf's heat, m_c hesitantly decides to cool off in a fresh water pond nearby. {PRONOUN/m_c/subject} thankfully {VERB/m_c/cool/cools} off quickly, but {VERB/m_c/are/is} now covered in lily pads!",
+    "new_accessory": ["LILY PAD"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_DOG1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c has been hanging around a group of scary-looking rogues... and has a acc_singular to prove it!",
+    "new_accessory": ["DOGCOLLAR"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_DOG2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 10,
+    "event_text":  "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
+    "new_accessory": ["DOGCOLLAR"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
+        "skill": ["ROGUE,0"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_DOG3",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 10,
+    "event_text":  "m_c dares any cat to ask about {PRONOUN/m_c/poss} new acc_singular.",
+    "new_accessory": ["DOGCOLLAR"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
+        "trait": ["bloodthirsty", "fierce"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_COWBOY1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c makes sure to say meowdy to everycat and tip {PRONOUN/m_c/poss} new hat.",
+    "new_accessory": ["COWBOY HAT"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_COWBOY1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c makes sure to be rootin', be tootin' and by StarClan be shootin' but most of all, be kind.",
+    "new_accessory": ["COWBOY HAT"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_COWBOY2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c is simply way too cool now, and always leaves {PRONOUN/m_c/poss} shades on.",
+    "new_accessory": ["SUNGLASSES"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
+  },
+  {
+    "event_id": "gen_misc_any_acc_STICK1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 5,
+    "event_text":  "m_c hears the whispers of ancient voices that seem to be coming from an oddly scratched acc_singular.",
+    "new_accessory": ["STICK"],
+    "m_c": {
+        "status": ["medicine cat", "medicine cat apprentice"]
+    }
   }
 ]

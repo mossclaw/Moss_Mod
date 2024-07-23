@@ -35,5 +35,17 @@
       "status": ["medicine cat", "medicine cat apprentice"],
       "skill": ["OMEN,2"]
     }
+  },
+  {
+    "event_id": "pln_misc_any_acc_SPROUT1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["accessory"],
+    "weight": 15,
+    "event_text":  "m_c is covered in dust and soil so regularly, a small plant has begun to sprout on {PRONOUN/m_c/poss} head!",
+    "new_accessory": ["SPROUT"],
+    "m_c": {
+        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    }
   }
 ]
