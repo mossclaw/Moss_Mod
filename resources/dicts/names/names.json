@@ -462,12 +462,11 @@
     "Zendaya", "Zeraora", "Zikomo", "Zim", "Zion", "Zira", "Ziti", "Zoe", "Zoomie", "Zorro", "Zorua", "Zuberi", "Zuko", "Zuma", "Zuna", "Zuva",
 
     "Chance", "Briar", "Oliver", "Chloe", "Casper", "Sir Fam Bam of Scritch Scratch", "Southpaw", "Jynx", "Buster", "Zypher", "Tchalla",
-    "Bruno", "Horsefeathers", "Pepper", "Chatty", "Gary", "Astaroth", "Malphas", "Miriam", "John Ward", "Nixon", "Ratha", "Thistle-Chaser",
-    "Newt", "Thakur", "Fessran", "Bonechewer", "Mishanti", "Dreambiter", "Smokey", "Mint", "Storm", "Cloud", "Stone", "Paprika", "Murphy", "Socks", "Big Homie",
-    "Jonkler", "Nutmeg", "Cinnamon"
+    "Bruno", "Horsefeathers", "Pepper", "Chatty",  "Nixon", "Smokey", "Mint", "Storm", "Cloud", "Stone", "Paprika",
+    "Murphy", "Socks", "Big Homie", "Nutmeg", "Cinnamon", "Parsley", "Coriander", "Cayenne", "Honey", "Garam Masala",
 
-
-    ],
+    "Ratha", "Thistle-Chaser","Jonkler", "Newt", "Thakur", "Fessran", "Bonechewer", "Mishanti", "Dreambiter", "Astaroth", "Malphas", "Miriam", "John Ward", "Gary"
+  ],
 	"animal_suffixes": [
 		"badger", "bat", "bear", "bee", "beetle", "bird", "bug", "cricket", "deer", "eagle", "elk", "falcon", "fawn", "fish", "fox", "goose", "hare", "hawk", "horse", 
     "jay", "kestrel", "kite", "lamb", "leopard", "lion", "minnow", "moth", "mouse", "newt", "ram", "raven", "roach", "scorpion", "sheep", "snake", "spider", 
