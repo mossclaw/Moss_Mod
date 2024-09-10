@@ -51,14 +51,50 @@
   },
   {
     "event_id": "mtn_misc_any_acc_CRYSTAL3",
+    "location": [
+      "any"
+    ],
+    "season": [
+      "any"
+    ],
+    "sub_type": [
+      "accessory"
+    ],
+    "weight": 15,
+    "event_text": "m_c is relaxing quietly in camp, when suddenly a rock tumbles down from the overhead mountain! {PRONOUN/m_c/subject/CAP} quickly {VERB/m_c/dodge/dodges} out of the way and the rock hits the ground hard, cracking open to reveal a beautiful acc_singular.",
+    "new_accessory": [
+      "CRYSTAL"
+    ],
+    "m_c": {
+      "age": [
+        "adolescent",
+        "young adult",
+        "adult",
+        "senior adult",
+        "senior"
+      ]
+    }
+  },
+  {
+    "event_id": "mtn_misc_any_patch_accessory",
     "location": ["any"],
     "season": ["any"],
     "sub_type": ["accessory"],
-    "weight": 15,
-    "event_text":  "m_c is relaxing quietly in camp, when suddenly a rock tumbles down from the overhead mountain! {PRONOUN/m_c/subject/CAP} quickly {VERB/m_c/dodge/dodges} out of the way and the rock hits the ground hard, cracking open to reveal a beautiful acc_singular.",
-    "new_accessory": ["CRYSTAL"],
-    "m_c": {
-        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+    "weight": 5,
+    "event_text":  "r_c found a little patch of acc_plural and decided to gift them to m_c.",
+    "new_accessory": ["POPPY", "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY", "BULB WHITE"],
+    "r_c": {
+        "age": ["any"],
+    "relationships": [
+        {
+          "cats_to": ["m_c"],
+            "cats_from": ["r_c"],
+            "mutual": true,
+            "values": ["comfort", "trust", "platonic"],
+          "amount": 5
+        }
+    ]
+
     }
   }
 ]

@@ -67,14 +67,37 @@
   },
   {
     "event_id": "pln_misc_any_acc_SHROOM1",
-    "location": ["any"],
-    "season": ["any"],
-    "sub_type": ["accessory"],
+    "location": [
+      "any"
+    ],
+    "season": [
+      "any"
+    ],
+    "sub_type": [
+      "accessory"
+    ],
     "weight": 5,
-    "event_text":  "m_c is such a fungi to be around!",
-    "new_accessory": ["MUSHROOM"],
+    "event_text": "m_c is such a fungi to be around!",
+    "new_accessory": [
+      "MUSHROOM"
+    ],
     "m_c": {
-        "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
+      "age": [
+        "adolescent",
+        "young adult",
+        "adult",
+        "senior adult",
+        "senior"
+      ]
     }
+  },
+  {
+    "event_id": "fst_misc_sparrow_accessory",
+    "location": ["any"],
+    "season": ["newleaf","greenleaf"],
+    "subtype": ["accessory"],
+    "weight": 20,
+    "event_text": "A small flock of sparrows has decided to start frequenting the branches high above camp and, much to the annoyance of most, have dropped pleanty of feathers everwhere as they preen. m_c thinks they're pretty though and decides to keep some",
+    "new_accessory": ["SPARROW FEATHERS"]
   }
 ]

@@ -119,15 +119,23 @@ class Pelt:
               "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"]
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
-    plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "LAUREL",
-                         "BLUEBELLS", "NETTLE", "POPPY", "LAVENDER", "HERBS", "PETALS", "DRY HERBS",
-                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "JUNIPER", "CATTAIL", "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY",
-                         "LILY OF THE VALLEY", "SNAPDRAGON", "HEATHER", "GORSE", "RASPBERRY", "LAUREL", "BULB WHITE", "BULB YELLOW", "BULB ORANGE", "BULB PINK", "BULB BLUE",
-                         "DRY CATMINT", "DRY NETTLES", "DRY LAURELS", "CLOVER", "DAISY"]
 
+    plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
+                         "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY",
+                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "HERBS", "PETALS", "NETTLE", "HEATHER",
+                         "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
+                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB WHITE", "BULB YELLOW", "BULB ORANGE",
+                         "BULB PINK", "BULB BLUE", "CLOVER", "DAISY",
+                         "CLOVER", "DAISY", "LILY OF THE VALLEY", "HEATHER", "SNAPDRAGON", "GORSE", "BULB WHITE",
+                         "BULB YELLOW",
+                         "DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"
+                         ]
+    wild_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS",
+                        "MOTH WINGS", "ROSY MOTH WINGS", "MORPHO BUTTERFLY", "MONARCH BUTTERFLY", "CICADA WINGS",
+                        "BLACK CICADA"]
 
-    wild_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "MOTH WINGS", "CICADA WINGS"]
-    tail_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS"]
+    tail_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS", "CLOVER",
+                        "DAISY"]
     living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
     plant2_accessories = ["YELLOW DAISY", "IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
     wild2_accessories = ["BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT"]
@@ -985,8 +993,8 @@ class Pelt:
             chance = 10 - len(par_points)
         else:
             chance = 40
-
-        if self.name != "Tortie" and not (random.random() * chance):
+        # Chance of point is 1 / chance.
+        if self.name != "Tortie" and not int(random.random() * chance):
             self.points = choice(Pelt.point_markings)
         else:
             self.points = None
