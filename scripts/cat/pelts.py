@@ -121,12 +121,15 @@ class Pelt:
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "LAUREL",
                          "BLUEBELLS", "NETTLE", "POPPY", "LAVENDER", "HERBS", "PETALS", "DRY HERBS",
-                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "JUNIPER"]
+                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "JUNIPER", "CATTAIL", "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY",
+                         "LILY OF THE VALLEY", "SNAPDRAGON", "HEATHER", "GORSE", "RASPBERRY", "LAUREL", "BULB WHITE", "BULB YELLOW", "BULB ORANGE", "BULB PINK", "BULB BLUE",
+                         "DRY CATMINT", "DRY NETTLES", "DRY LAURELS", "CLOVER", "DAISY"]
+
 
     wild_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "MOTH WINGS", "CICADA WINGS"]
     tail_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS"]
     living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
-    plant2_accessories = ["DAISY", "IVY", "CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
+    plant2_accessories = ["YELLOW DAISY", "IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
     wild2_accessories = ["BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT"]
     beach_accessories = ["SEAWEED", "SHELL"]
     mountain_accessories = ["CRYSTAL"]

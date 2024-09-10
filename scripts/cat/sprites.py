@@ -133,7 +133,7 @@ class Sprites:
             'fadestarclan', 'fadedarkforest', 'abyssiniancolours', 'braidedcolours', 'brindlecolours',
             'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
             'kittypetacc', 'smudgecolours', 'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours',
-            'charcoalbengalcolours', 'dustcolours', 'symbols'
+            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild'
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
@@ -352,8 +352,8 @@ class Sprites:
         ]
 
         mossherb_data = [
-            ["LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "IVY", "DAISY", "BUTTERFLIES"],
-            ["CLOVER", "ANTLERS", "STICK", "FIREFLIES", "WREATH", "FLOWER WREATH"],
+            ["LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "IVY", "YELLOW DAISY", "BUTTERFLIES"],
+            ["LUCKY CLOVER", "ANTLERS", "STICK", "FIREFLIES", "WREATH", "FLOWER WREATH"],
             ["SPROUT", "MUSHROOM", "LILAC", "SEAWEED", "LILY PAD", "MONSTERA"],
             ["WILD FLOWERS", "TWIGS", "SHELL", "CRYSTAL", "SERPENT", "MOSS BALL"]
         ]

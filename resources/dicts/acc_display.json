@@ -439,20 +439,20 @@
     "plural": "ivy vines",
     "singular": "ivy vine"
   },
-  "DAISY": {
-    "default": "daisies",
-    "plural": "daisies",
-    "singular": "bunch of daisies"
+  "YELLOW DAISY": {
+    "default": "yellow daisies",
+    "plural": "yellow daisies",
+    "singular": "bunch of yellow daisies"
   },
   "BUTTERFLIES": {
     "default": "butterflies",
     "plural": "butterflies",
     "singular": "swarm of butterflies"
   },
-  "CLOVER": {
+  "LUCKY CLOVER": {
     "default": "four-leaf clover",
-    "plural": "clovers",
-    "singular": "clover"
+    "plural": "four-leaf clovers",
+    "singular": "four-leaf clover"
   },
   "ANTLERS": {
     "default": "stick antlers",
