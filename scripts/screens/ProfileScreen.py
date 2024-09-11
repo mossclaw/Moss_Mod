@@ -632,14 +632,14 @@ class ProfileScreen(Screens):
 
         self.profile_elements["cat_info_column1"] = UITextBoxTweaked(
             self.generate_column1(self.the_cat),
-            scale(pygame.Rect((600, 460), (360, 380))),
+            scale(pygame.Rect((600, 460), (450, 380))),
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             line_spacing=1,
             manager=MANAGER,
         )
         self.profile_elements["cat_info_column2"] = UITextBoxTweaked(
             self.generate_column2(self.the_cat),
-            scale(pygame.Rect((980, 460), (500, 360))),
+            scale(pygame.Rect((1050, 460), (500, 360))),
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             line_spacing=1,
             manager=MANAGER,
@@ -834,7 +834,7 @@ class ProfileScreen(Screens):
         output += "\n"
 
         # PELT TYPE
-        output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower()
+        output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower() + ' (tint: ' +the_cat.pelt.tint.lower() + ')'
 
         # NEWLINE ----------
         output += "\n"
