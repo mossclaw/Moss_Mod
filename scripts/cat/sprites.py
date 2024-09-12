@@ -224,19 +224,31 @@ class Sprites:
         self.make_group('bottomline', (0, 0), 'bottomline')
 
         # Middle color layer
-        mids = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        mids = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
+                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
+                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
         for row, mid in enumerate(mids):
             for col, md in enumerate(mid):
                 self.make_group('mid', (col, row), f'mid{md}')
 
         # Light color layer
-        lights = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        lights = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
+                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
+                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
         for row, light in enumerate(lights):
             for col, lt in enumerate(light):
                 self.make_group('light', (col, row), f'light{lt}')
 
         # Dark color layer
-        darks = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        darks = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
+                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
+                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
         for row, dark in enumerate(darks):
             for col, dr in enumerate(dark):
                 self.make_group('dark', (col, row), f'dark{dr}')

@@ -2573,7 +2573,7 @@ def generate_sprite(
             tortie_base = str(cat.pelt.tortiepattern).upper()
             tortie_color = str(cat.pelt.tortiecolour).upper()
 
-        if base_name in ["SOLID"]:
+        if base_name != ["TORTIE", "CALICO"]:
 
             base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             base_tint.fill(color_dict[base_color][1])
@@ -2588,7 +2588,7 @@ def generate_sprite(
             dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             dark_tint.fill(color_dict[base_color][3])
             dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
-            dark_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            dark_pelt.blit(dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
             light_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             light_tint.fill(color_dict[base_color][0])
@@ -2606,7 +2606,7 @@ def generate_sprite(
             topline_pelt.blit(topline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
 
-        if base_name in ["SOLID"]:
+        if base_name != ["TORTIE", "CALICO"]:
             new_sprite.blit(base_pelt, (0, 0))
             new_sprite.blit(mid_pelt, (0, 0))
             new_sprite.blit(dark_pelt, (0, 0))
