@@ -133,7 +133,7 @@ class Sprites:
             'fadestarclan', 'fadedarkforest', 'abyssiniancolours', 'braidedcolours', 'brindlecolours',
             'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
             'kittypetacc', 'smudgecolours', 'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours',
-            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild'
+            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild', 'base', 'mid', 'dark', 'light'
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
@@ -218,33 +218,26 @@ class Sprites:
             for col, patch in enumerate(patches):
                 self.make_group('whitepatchesmoss', (col, row), f'white{patch}')
 
-        # Define colors and categories
-        color_categories = [
-            ['WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'PALE BLUE', 'BLUE', 'PALE LILAC',
-             'LILAC', 'SILVER', 'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST'],
+        # base pelt - to be expanded with extras later
+        self.make_group('base', (0, 0), 'baseSOLID')
 
-            ['PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'PALE CINNAMON', 'CINNAMON',
-                'SABLE', 'DARK SABLE', 'BIRCH', 'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE'],
+        # Middle color layer
+        mids = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        for row, mid in enumerate(mids):
+            for col, md in enumerate(mid):
+                self.make_group('mid', (col, row), f'mid{md}')
 
-            ['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER', 'PALE GOLD', 'YELLOW',
-             'GOLD', 'BRONZE', 'ROSE', 'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD']
-        ]
+        # Light color layer
+        lights = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        for row, light in enumerate(lights):
+            for col, lt in enumerate(light):
+                self.make_group('light', (col, row), f'light{lt}')
 
-        color_types = [
-            'singlecolours', 'tabbycolours', 'marbledcolours', 'rosettecolours',
-            'smokecolours', 'tickedcolours', 'speckledcolours', 'bengalcolours',
-            'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours',
-            'singlestripecolours', 'maskedcolours',
-
-            'abyssiniancolours', 'braidedcolours', 'brindlecolours', 'fadedcolours',
-            'sabercolours', 'splotchcolours', 'fogcolours', 'mistcolours', 'smudgecolours',
-            'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours', 'charcoalbengalcolours', 'dustcolours'
-        ]
-
-        for row, colors in enumerate(color_categories):
-            for col, color in enumerate(colors):
-                for color_type in color_types:
-                    self.make_group(color_type, (col, row), f'{color_type[:-7]}{color}')
+        # Dark color layer
+        darks = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
+        for row, dark in enumerate(darks):
+            for col, dr in enumerate(dark):
+                self.make_group('dark', (col, row), f'dark{dr}')
 
         # tortiepatchesmasks
         tortiepatchesmasks = [

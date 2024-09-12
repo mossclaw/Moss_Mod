@@ -8,8 +8,7 @@ from scripts.game_structure.game_essentials import game
 
 class Pelt:
     sprites_names = {
-        "SingleColour": 'single',
-        'TwoColour': 'single',
+        "Solid": 'solid',
         'Tabby': 'tabby',
         'Marbled': 'marbled',
         'Rosette': 'rosette',
@@ -85,7 +84,7 @@ class Pelt:
                       'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE',
                       'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT']
 
-    tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
+    tortiebases = ['solid', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
                    'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel', 'brokenbraided',
                    'charcoalbengal', 'dust']
@@ -163,7 +162,7 @@ class Pelt:
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
     spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
     swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
-    flats = ["SingleColour", "TwoColour", "Singlestripe", "Abyssinian"]
+    flats = ["Solid", "Singlestripe", "Abyssinian"]
     stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel", "BrokenBraided", "Masked"]
     exotic = ["Saber", "Faded", "Longdan", "Splotch"]
     torties = ["Tortie", "Calico"]
@@ -226,7 +225,7 @@ class Pelt:
     """Holds all appearance information for a cat. """
 
     def __init__(self,
-                 name: str = "SingleColour",
+                 name: str = "Solid",
                  length: str = "short",
                  colour: str = "WHITE",
                  white_patches: str = None,
@@ -329,7 +328,7 @@ class Pelt:
         if self.tortiepattern and "tortie" in self.tortiepattern:
             self.tortiepattern = sub("tortie", "", self.tortiepattern.lower())
             if self.tortiepattern == "solid":
-                self.tortiepattern = "single"
+                self.tortiepattern = "solid"
 
         if self.white_patches in convert_dict["old_creamy_patches"]:
             self.white_patches = convert_dict["old_creamy_patches"][self.white_patches]
@@ -606,8 +605,8 @@ class Pelt:
         if torbie:
             # If it is tortie, the chosen pelt above becomes the base pelt.
             chosen_tortie_base = chosen_pelt
-            if chosen_tortie_base in ["TwoColour", "SingleColour"]:
-                chosen_tortie_base = "Single"
+            if chosen_tortie_base in ["Solid"]:
+                chosen_tortie_base = "Solid"
             chosen_tortie_base = chosen_tortie_base.lower()
             chosen_pelt = random.choice(Pelt.torties)
 
@@ -701,11 +700,11 @@ class Pelt:
         chosen_white = random.randint(1, 100) <= chance
 
         # Adjustments to pelt chosen based on if the pelt has white in it or not.
-        if chosen_pelt in ["TwoColour", "SingleColour"]:
+        if chosen_pelt in ["Solid"]:
             if chosen_white:
-                chosen_pelt = "TwoColour"
+                chosen_pelt = "Solid"
             else:
-                chosen_pelt = "SingleColour"
+                chosen_pelt = "Solid"
         elif chosen_pelt == "Calico":
             if not chosen_white:
                 chosen_pelt = "Tortie"
@@ -740,8 +739,8 @@ class Pelt:
         if torbie:
             # If it is tortie, the chosen pelt above becomes the base pelt.
             chosen_tortie_base = chosen_pelt
-            if chosen_tortie_base in ["TwoColour", "SingleColour"]:
-                chosen_tortie_base = "Single"
+            if chosen_tortie_base in ["Solid"]:
+                chosen_tortie_base = "Solid"
             chosen_tortie_base = chosen_tortie_base.lower()
             chosen_pelt = random.choice(Pelt.torties)
 
@@ -766,11 +765,11 @@ class Pelt:
         chosen_white = random.randint(1, 100) <= 40
 
         # Adjustments to pelt chosen based on if the pelt has white in it or not.
-        if chosen_pelt in ["TwoColour", "SingleColour"]:
+        if chosen_pelt in ["Solid"]:
             if chosen_white:
-                chosen_pelt = "TwoColour"
+                chosen_pelt = "Solid"
             else:
-                chosen_pelt = "SingleColour"
+                chosen_pelt = "Solid"
         elif chosen_pelt == "Calico":
             if not chosen_white:
                 chosen_pelt = "Tortie"
@@ -888,12 +887,12 @@ class Pelt:
 
                 else:
                     # Normal generation
-                    if self.tortiebase in ["single"]:
-                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'masked', 'brindle',
+                    if self.tortiebase in ["solid"]:
+                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'solid', 'masked', 'brindle',
                                                      'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke',
                                                      'brokenmackerel', 'charcoalbengal', 'brokenbraided'])
                     else:
-                        self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
+                        self.tortiepattern = random.choices([self.tortiebase, 'solid'], weights=[97, 3], k=1)[0]
 
                     possible_colors = Pelt.pelt_colours.copy()
                     possible_colors.remove(self.colour)
@@ -1286,7 +1285,7 @@ class Pelt:
 
 
         # Replace "white" with "pale" if the cat is white
-        if cat.pelt.name not in ["SingleColour", "TwoColour", "Tortie", "Calico"] and color_name == "white":
+        if cat.pelt.name not in ["Solid", "Tortie", "Calico"] and color_name == "white":
             color_name = "pale"
         # Time to describe the pattern and any additional colors
         if cat.pelt.name in pattern_des:

@@ -2494,43 +2494,146 @@ def generate_sprite(
         else:
             cat_sprite = str(cat.pelt.cat_sprites[age])
 
-    new_sprite = pygame.Surface(
-        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
-    )
+    new_sprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
     # generating the sprite
     try:
-        if cat.pelt.name not in ["Tortie", "Calico"]:
-            new_sprite.blit(
-                sprites.sprites[
-                    cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
-                ],
-                (0, 0),
-            )
+        # light, base, mid, dark
+        color_dict = {
+            "WHITE": ["#fff9ee", "#fff9ee", "#fff3de", "#fff3de"],
+            "SNOW WHITE": ["#fafcff", "#fafcff", "#f1f7ff", "#f1f7ff"],
+            "GRAY": ["#f1ebe3", "#cec8be", "#a9a7a2", "#8d8d8d"],
+            "SLATE": ["#e5e5e5", "#bfc0c4", "#989aa0", "#70727c"],
+            "DARK GRAY": ["#a29b92", "#786e63", "#5b544c", "#413c39"],
+            "DARK SLATE": ["#959499", "#56555a", "#49484d", "#2b292c"],
+            "PALE BLUE": ["#d7dde3", "#b5bbc0", "#a2adb8", "#909ca7"],
+            "BLUE": ["#d0d8e3", "#8e9aa8", "#79899b", "#5a6878"],
+            "PALE LILAC": ["#eee1d7", "#c2afa2", "#a0928a", "#655d57"],
+            "LILAC": ["#e5dbd0", "#9f9596", "#7a6e78", "#51464e"],
+            "SILVER": ["#f2f1f0", "#bbb8b5", "#7d7d7c", "#1c1b19"],
+            "BLACK": ["#3b3d3a", "#212526", "#141a1e", "#0b0f12"],
+            "SOOT BLACK": ["#44474f", "#32353e", "#1a1a22", "#101018"],
+            "OBSIDIAN": ["#1c1b19", "#1c1b19", "#12100d", "#12100d"],
+            "GHOST": ["#2c2c2c", "#1c1b19", "#1c1b19", "#12100d"],
+            "PALE FIRE": ["#ffd37d", "#ffa041", "#e5673c", "#903027"],
+            "FIRE": ["#f1b875", "#ec8b19", "#d75a09", "#bd3604"],
+            "DARK FIRE": ["#ffa041", "#c63e10", "#ae351d", "#841b11"],
+            "PALE GINGER": ["#ffe8cc", "#eeaf8e", "#e18e70", "#c15832"],
+            "GINGER": ["#ecb088", "#c85928", "#ac3205", "#891400"],
+            "DARK GINGER": ["#d78859", "#992c10", "#861800", "#7a0a00"],
+            "PALE GOLD": ["#f9dcb4", "#f9c999", "#f0b883", "#e09e60"],
+            "YELLOW": ["#fcd9a2", "#fdb772", "#ec9a4a", "#d88533"],
+            "GOLD": ["#eabb8a", "#d7934d", "#bd6d35", "#ad530d"],
+            "BRONZE": ["#fcbd87", "#eb772e", "#ca540a", "#ae4500"],
+            "ROSE": ["#f1e3d7", "#e1bdaf", "#d6a594", "#c15832"],
+            "LIGHT CREAM": ["#faede0", "#f1d5ba", "#ecc8a4", "#e2b791"],
+            "CREAM": ["#fae1c6", "#f1c89f", "#e8b78b", "#dda775"],
+            "DARK CREAM": ["#eed1b4", "#e1ae75", "#d2995a", "#bd7b39"],
+            "PALE BROWN": ["#d7cbc6", "#aa9991", "#9b897b", "#7d6559"],
+            "ALMOND": ["#e8cdbd", "#bfa088", "#a6856d", "#896956"],
+            "ACORN": ["#dfb28b", "#c78350", "#ab632d", "#924b12"],
+            "LIGHT BROWN": ["#d6b496", "#c49570", "#b27f56", "#996235"],
+            "BROWN": ["#b78b6f", "#986747", "#78492d", "#603419"],
+            "DARK BROWN": ["#755640", "#593923", "#482a16", "#2c1c12"],
+            "PALE CINNAMON": ["#e0af8a", "#c17041", "#a64c1e", "#882f0c"],
+            "CINNAMON": ["#d6966c", "#a54e2c", "#903615", "#7f2309"],
+            "SABLE": ["#d08b55", "#9e623c", "#784626", "#623214"],
+            "DARK SABLE": ["#c87b3f", "#8e4f29", "#633013", "#4b1c01"],
+            "BIRCH": ["#f4e4d3", "#e3c8b7", "#cea98e", "#a0693a"],
+            "PALE LAVENDER": ["#e3ccc7", "#c0a7a3", "#b29894", "#907675"],
+            "LAVENDER": ["#dec2b6", "#b89388", "#9a7872", "#82605e"],
+            "DARK LAVENDER": ["#dfd0c7", "#a5928d", "#897273", "#5e484a"],
+            "DARK ORANGE": ["#e2cfba", "#b0671c", "#904301", "#3b2724"],
+            "DARK GOLD": ["#f7f5f1", "#f2c777", "#e99818", "#533e3d"]
+        }
+
+        # SPRITE GENERATION
+        # thank you Kori ;-;
+        base_name = None
+        base_color = None
+        tortie_base = None
+        tortie_color = None
+        base_tint = None
+
+        # SETTING UP EACH PIECE
+        base_pelt = None
+        mid_pelt = None
+        light_pelt = None
+        dark_pelt = None
+        pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
+
+        if cat.pelt.name not in ['Tortie', 'Calico']:
+            base_name = str(cat.pelt.name).upper()
+            base_color = str(cat.pelt.colour).upper()
         else:
-            # Base Coat
-            new_sprite.blit(
-                sprites.sprites[cat.pelt.tortiebase + cat.pelt.colour + cat_sprite],
-                (0, 0),
-            )
+            base_name = str(cat.pelt.tortiebase).upper()
+            base_color = str(cat.pelt.colour).upper()
+            tortie_base = str(cat.pelt.tortiepattern).upper()
+            tortie_color = str(cat.pelt.tortiecolour).upper()
+
+        if base_name in ["SOLID"]:
+
+            base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            base_tint.fill(color_dict[base_color][1])
+            base_pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
+            base_pelt.blit(base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            mid_tint.fill(color_dict[base_color][2])
+            mid_pelt = sprites.sprites['mid' + base_name + cat_sprite].copy().convert_alpha()
+            mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            dark_tint.fill(color_dict[base_color][2])
+            dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
+            dark_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            light_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            light_tint.fill(color_dict[base_color][0])
+            light_pelt = sprites.sprites['light' + base_name + cat_sprite].copy().convert_alpha()
+            light_pelt.blit(light_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+#
+
+        if base_name in ["SOLID"]:
+            new_sprite.blit(base_pelt, (0, 0))
+            new_sprite.blit(mid_pelt, (0, 0))
+            new_sprite.blit(dark_pelt, (0, 0))
+            new_sprite.blit(light_pelt, (0, 0))
+
+
+        # clangen bits below
+
+        #if cat.pelt.name not in ["Tortie", "Calico"]:
+        #    new_sprite.blit(
+        #        sprites.sprites[
+         #           cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
+        #        ],
+        #        (0, 0),
+        #    )
+        #else:
+        #    # Base Coat
+        #    new_sprite.blit(
+        #        sprites.sprites[cat.pelt.tortiebase + cat.pelt.colour + cat_sprite],
+        #        (0, 0),
+        #    )
 
             # Create the patch image
-            if cat.pelt.tortiepattern == "Single":
-                tortie_pattern = "SingleColour"
-            else:
-                tortie_pattern = cat.pelt.tortiepattern
+         #   if cat.pelt.tortiepattern == "Single":
+         #       tortie_pattern = "SingleColour"
+         #   else:
+         #       tortie_pattern = cat.pelt.tortiepattern
 
 
-            patches = sprites.sprites[
-                tortie_pattern + cat.pelt.tortiecolour + cat_sprite
-            ].copy()
-            patches.blit(
-                sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGBA_MULT,
-            )
+         #   patches = sprites.sprites[
+         #       tortie_pattern + cat.pelt.tortiecolour + cat_sprite
+         #   ].copy()
+         #   patches.blit(
+         #       sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite],
+         #       (0, 0),
+         #       special_flags=pygame.BLEND_RGBA_MULT,
+          #  )
             # Add patches onto cat.
-            new_sprite.blit(patches, (0, 0))
+         #   new_sprite.blit(patches, (0, 0))
 
         # TINTS
         if (
