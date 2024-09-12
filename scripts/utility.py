@@ -2498,53 +2498,53 @@ def generate_sprite(
 
     # generating the sprite
     try:
-        # light, base, mid, dark
+        # light, base, mid, dark, topline, bottomline
         color_dict = {
-            "WHITE": ["#fff9ee", "#fff9ee", "#fff3de", "#fff3de"],
-            "SNOW WHITE": ["#fafcff", "#fafcff", "#f1f7ff", "#f1f7ff"],
-            "GRAY": ["#f1ebe3", "#cec8be", "#a9a7a2", "#8d8d8d"],
-            "SLATE": ["#e5e5e5", "#bfc0c4", "#989aa0", "#70727c"],
-            "DARK GRAY": ["#a29b92", "#786e63", "#5b544c", "#413c39"],
-            "DARK SLATE": ["#959499", "#56555a", "#49484d", "#2b292c"],
-            "PALE BLUE": ["#d7dde3", "#b5bbc0", "#a2adb8", "#909ca7"],
-            "BLUE": ["#d0d8e3", "#8e9aa8", "#79899b", "#5a6878"],
-            "PALE LILAC": ["#eee1d7", "#c2afa2", "#a0928a", "#655d57"],
-            "LILAC": ["#e5dbd0", "#9f9596", "#7a6e78", "#51464e"],
-            "SILVER": ["#f2f1f0", "#bbb8b5", "#7d7d7c", "#1c1b19"],
-            "BLACK": ["#3b3d3a", "#212526", "#141a1e", "#0b0f12"],
-            "SOOT BLACK": ["#44474f", "#32353e", "#1a1a22", "#101018"],
-            "OBSIDIAN": ["#1c1b19", "#1c1b19", "#12100d", "#12100d"],
-            "GHOST": ["#2c2c2c", "#1c1b19", "#1c1b19", "#12100d"],
-            "PALE FIRE": ["#ffd37d", "#ffa041", "#e5673c", "#903027"],
-            "FIRE": ["#f1b875", "#ec8b19", "#d75a09", "#bd3604"],
-            "DARK FIRE": ["#ffa041", "#c63e10", "#ae351d", "#841b11"],
-            "PALE GINGER": ["#ffe8cc", "#eeaf8e", "#e18e70", "#c15832"],
-            "GINGER": ["#ecb088", "#c85928", "#ac3205", "#891400"],
-            "DARK GINGER": ["#d78859", "#992c10", "#861800", "#7a0a00"],
-            "PALE GOLD": ["#f9dcb4", "#f9c999", "#f0b883", "#e09e60"],
-            "YELLOW": ["#fcd9a2", "#fdb772", "#ec9a4a", "#d88533"],
-            "GOLD": ["#eabb8a", "#d7934d", "#bd6d35", "#ad530d"],
-            "BRONZE": ["#fcbd87", "#eb772e", "#ca540a", "#ae4500"],
-            "ROSE": ["#f1e3d7", "#e1bdaf", "#d6a594", "#c15832"],
-            "LIGHT CREAM": ["#faede0", "#f1d5ba", "#ecc8a4", "#e2b791"],
-            "CREAM": ["#fae1c6", "#f1c89f", "#e8b78b", "#dda775"],
-            "DARK CREAM": ["#eed1b4", "#e1ae75", "#d2995a", "#bd7b39"],
-            "PALE BROWN": ["#d7cbc6", "#aa9991", "#9b897b", "#7d6559"],
-            "ALMOND": ["#e8cdbd", "#bfa088", "#a6856d", "#896956"],
-            "ACORN": ["#dfb28b", "#c78350", "#ab632d", "#924b12"],
-            "LIGHT BROWN": ["#d6b496", "#c49570", "#b27f56", "#996235"],
-            "BROWN": ["#b78b6f", "#986747", "#78492d", "#603419"],
-            "DARK BROWN": ["#755640", "#593923", "#482a16", "#2c1c12"],
-            "PALE CINNAMON": ["#e0af8a", "#c17041", "#a64c1e", "#882f0c"],
-            "CINNAMON": ["#d6966c", "#a54e2c", "#903615", "#7f2309"],
-            "SABLE": ["#d08b55", "#9e623c", "#784626", "#623214"],
-            "DARK SABLE": ["#c87b3f", "#8e4f29", "#633013", "#4b1c01"],
-            "BIRCH": ["#f4e4d3", "#e3c8b7", "#cea98e", "#a0693a"],
-            "PALE LAVENDER": ["#e3ccc7", "#c0a7a3", "#b29894", "#907675"],
-            "LAVENDER": ["#dec2b6", "#b89388", "#9a7872", "#82605e"],
-            "DARK LAVENDER": ["#dfd0c7", "#a5928d", "#897273", "#5e484a"],
-            "DARK ORANGE": ["#e2cfba", "#b0671c", "#904301", "#3b2724"],
-            "DARK GOLD": ["#f7f5f1", "#f2c777", "#e99818", "#533e3d"]
+            "WHITE": ["#fff9ee", "#fff9ee", "#fff3de", "#fff3de", "#e0cdac", "#a2957e"],
+            "SNOW WHITE": ["#fafcff", "#fafcff", "#f1f7ff", "#f1f7ff", "#cad3e0", "#8d98a6"],
+            "GRAY": ["#f1ebe3", "#cec8be", "#a9a7a2", "#8d8d8d", "#828282", "#474747"],
+            "SLATE": ["#e5e5e5", "#bfc0c4", "#989aa0", "#70727c", "#474747", "#474747"],
+            "DARK GRAY": ["#a29b92", "#786e63", "#5b544c", "#413c39", "#474747", "#1a1512"],
+            "DARK SLATE": ["#959499", "#56555a", "#49484d", "#2b292c", "#201e21", "#070508"],
+            "PALE BLUE": ["#d7dde3", "#b5bbc0", "#a2adb8", "#909ca7", "#6f8496", "#4c6073"],
+            "BLUE": ["#d0d8e3", "#8e9aa8", "#79899b", "#5a6878", "#485666", "#1d3147"],
+            "PALE LILAC": ["#eee1d7", "#c2afa2", "#a0928a", "#655d57", "#574639", "#302014"],
+            "LILAC": ["#e5dbd0", "#9f9596", "#7a6e78", "#51464e", "#42373f", "#1f141c"],
+            "SILVER": ["#f2f1f0", "#bbb8b5", "#7d7d7c", "#1c1b19", "#000000", "#000000"],
+            "BLACK": ["#3b3d3a", "#212526", "#141a1e", "#0b0f12", "#000000", "#000000"],
+            "SOOT BLACK": ["#44474f", "#32353e", "#1a1a22", "#101018", "#000000", "#000000"],
+            "OBSIDIAN": ["#1c1b19", "#1c1b19", "#12100d", "#12100d", "#000000", "#000000"],
+            "GHOST": ["#2c2c2c", "#1c1b19", "#1c1b19", "#12100d", "#000000", "#000000"],
+            "PALE FIRE": ["#ffd37d", "#ffa041", "#e5673c", "#903027", "#7f281f", "#480c06"],
+            "FIRE": ["#f1b875", "#ec8b19", "#d75a09", "#bd3604", "#a62400", "#780100"],
+            "DARK FIRE": ["#ffa041", "#c63e10", "#ae351d", "#841b11", "#780100", "#450000"],
+            "PALE GINGER": ["#ffe8cc", "#eeaf8e", "#e18e70", "#c15832", "#b24b26", "#872603"],
+            "GINGER": ["#ecb088", "#c85928", "#ac3205", "#891400", "#7a0800", "#540000"],
+            "DARK GINGER": ["#d78859", "#992c10", "#861800", "#7a0a00", "#400000", "#2e0000"],
+            "PALE GOLD": ["#f9dcb4", "#f9c999", "#f0b883", "#e09e60", "#d68f4b", "#a36021"],
+            "YELLOW": ["#fcd9a2", "#fdb772", "#ec9a4a", "#d88533", "#c97828", "#964b01"],
+            "GOLD": ["#eabb8a", "#d7934d", "#bd6d35", "#ad530d", "#974302", "#974302"],
+            "BRONZE": ["#fcbd87", "#eb772e", "#ca540a", "#ae4500", "#9b3700", "#751800"],
+            "ROSE": ["#f1e3d7", "#e1bdaf", "#d6a594", "#c15832", "#a65031", "#802d0f"],
+            "LIGHT CREAM": ["#faede0", "#f1d5ba", "#ecc8a4", "#e2b791", "#d6a273", "#99683b"],
+            "CREAM": ["#fae1c6", "#f1c89f", "#e8b78b", "#dda775", "#d09865", "#875323"],
+            "DARK CREAM": ["#eed1b4", "#e1ae75", "#d2995a", "#bd7b39", "#aa6827", "#713e0b"],
+            "PALE BROWN": ["#d7cbc6", "#aa9991", "#9b897b", "#7d6559", "#6e564a", "#473125"],
+            "ALMOND": ["#e8cdbd", "#bfa088", "#a6856d", "#896956", "#70513e", "#422411"],
+            "ACORN": ["#dfb28b", "#c78350", "#ab632d", "#924b12", "#823c05", "#5e1c00"],
+            "LIGHT BROWN": ["#d6b496", "#c49570", "#b27f56", "#996235", "#8a5327", "#5c2800"],
+            "BROWN": ["#b78b6f", "#986747", "#78492d", "#603419", "#54280e", "#260000"],
+            "DARK BROWN": ["#755640", "#593923", "#482a16", "#2c1c12", "#1f140d", "#000000"],
+            "PALE CINNAMON": ["#e0af8a", "#c17041", "#a64c1e", "#882f0c", "#751c00", "#4c0000"],
+            "CINNAMON": ["#d6966c", "#a54e2c", "#903615", "#7f2309", "#6e1500", "#3b0000"],
+            "SABLE": ["#d08b55", "#9e623c", "#784626", "#623214", "#562809", "#2a0500"],
+            "DARK SABLE": ["#c87b3f", "#8e4f29", "#633013", "#4b1c01", "#3a1200", "#200300"],
+            "BIRCH": ["#f4e4d3", "#e3c8b7", "#cea98e", "#a0693a", "#905a2d", "#5b3311"],
+            "PALE LAVENDER": ["#e3ccc7", "#c0a7a3", "#b29894", "#907675", "#806665", "#59403f"],
+            "LAVENDER": ["#dec2b6", "#b89388", "#9a7872", "#82605e", "#6e4c4a", "#4c2b29"],
+            "DARK LAVENDER": ["#dfd0c7", "#a5928d", "#897273", "#5e484a", "#523c3e", "#301b1d"],
+            "DARK ORANGE": ["#e2cfba", "#b0671c", "#904301", "#3b2724", "#301c19", "#261110"],
+            "DARK GOLD": ["#f7f5f1", "#f2c777", "#e99818", "#533e3d", "#473231", "#261110"]
         }
 
         # SPRITE GENERATION
@@ -2560,6 +2560,8 @@ def generate_sprite(
         mid_pelt = None
         light_pelt = None
         dark_pelt = None
+        topline_pelt = None
+        bottomline_pelt = None
         pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
 
         if cat.pelt.name not in ['Tortie', 'Calico']:
@@ -2584,7 +2586,7 @@ def generate_sprite(
             mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
             dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            dark_tint.fill(color_dict[base_color][2])
+            dark_tint.fill(color_dict[base_color][3])
             dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
             dark_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
@@ -2592,13 +2594,25 @@ def generate_sprite(
             light_tint.fill(color_dict[base_color][0])
             light_pelt = sprites.sprites['light' + base_name + cat_sprite].copy().convert_alpha()
             light_pelt.blit(light_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-#
+
+            bottomline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            bottomline_tint.fill(color_dict[base_color][5])
+            bottomline_pelt = sprites.sprites['bottomline' + cat_sprite].copy().convert_alpha()
+            bottomline_pelt.blit(bottomline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            topline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            topline_tint.fill(color_dict[base_color][4])
+            topline_pelt = sprites.sprites['topline' + cat_sprite].copy().convert_alpha()
+            topline_pelt.blit(topline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
 
         if base_name in ["SOLID"]:
             new_sprite.blit(base_pelt, (0, 0))
             new_sprite.blit(mid_pelt, (0, 0))
             new_sprite.blit(dark_pelt, (0, 0))
             new_sprite.blit(light_pelt, (0, 0))
+            new_sprite.blit(bottomline_pelt, (0, 0))
+            new_sprite.blit(topline_pelt, (0, 0))
 
 
         # clangen bits below

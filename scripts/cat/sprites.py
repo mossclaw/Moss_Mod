@@ -133,7 +133,7 @@ class Sprites:
             'fadestarclan', 'fadedarkforest', 'abyssiniancolours', 'braidedcolours', 'brindlecolours',
             'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
             'kittypetacc', 'smudgecolours', 'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours',
-            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild', 'base', 'mid', 'dark', 'light'
+            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild', 'base', 'mid', 'dark', 'light', 'topline', 'bottomline'
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
@@ -220,6 +220,8 @@ class Sprites:
 
         # base pelt - to be expanded with extras later
         self.make_group('base', (0, 0), 'baseSOLID')
+        self.make_group('topline', (0, 0), 'topline')
+        self.make_group('bottomline', (0, 0), 'bottomline')
 
         # Middle color layer
         mids = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'FOG', 'MIST', 'LYNX', 'SABER', 'SMUDGE', 'ROSETTE', 'DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKEN MACKEREL', 'BRAIDED', 'BROKEN BRAIDED', 'SMOKE', 'CHARCOAL BENGAL']]
