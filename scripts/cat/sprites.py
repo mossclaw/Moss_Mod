@@ -123,17 +123,15 @@ class Sprites:
         del width, height  # unneeded
 
         for x in [
-            'lineart', 'singlecolours', 'speckledcolours', 'tabbycolours', 'tortiesmoss',
-            'whitepatches', 'whitepatches2', 'whitepatchesmoss', 'eyes', 'eyes2', 'skin', 'scars', 'missingscars',
-            'collars', 'bellcollars', 'bowcollars', 'nyloncollars',
-            'bengalcolours', 'marbledcolours', 'rosettecolours', 'smokecolours', 'tickedcolours',
-            'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
-            'shadersnewwhite', 'lineartdead', 'tortiepatchesmasks',
-            'medcatherbs', 'lineartdf', 'lightingnew', 'fademask',
-            'fadestarclan', 'fadedarkforest', 'abyssiniancolours', 'braidedcolours', 'brindlecolours',
-            'fadedcolours', 'sabercolours', 'splotchcolours', 'mossherbs', 'bloodcollars', 'fogcolours', 'mistcolours',
-            'kittypetacc', 'smudgecolours', 'brokenmackerelcolours', 'longdancolours', 'brokenbraidedcolours',
-            'charcoalbengalcolours', 'dustcolours', 'symbols', 'wild', 'base', 'mid', 'dark', 'light', 'topline', 'bottomline'
+            'lineart', 'topline', 'bottomline', 'lineartdf', 'lineartdead', 'symbols',
+            'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
+            'base', 'mid', 'dark', 'light',
+            'eyes', 'eyes2', 'skin', 'scars', 'missingscars',
+            'whitepatches', 'whitepatches2', 'whitepatchesmoss',
+            'tortiepatchesmasks', 'tortiesmoss',
+            'collars', 'bellcollars', 'bowcollars', 'nyloncollars', 'bloodcollars',
+            'medcatherbs',  'wild', 'mossherbs', 'kittypetacc'
+
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
