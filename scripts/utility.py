@@ -2498,7 +2498,7 @@ def generate_sprite(
 
     # generating the sprite
     try:
-        # light, base, mid, dark, topline, bottomline
+        # 0unders/highlight, 1base, 2mid, 3dark, 4shade, 5line
         color_dict = {
             "WHITE": ["#fff9ee", "#fff9ee", "#fff3de", "#fff3de", "#e0cdac", "#a2957e"],
             "SNOW WHITE": ["#fafcff", "#fafcff", "#f1f7ff", "#f1f7ff", "#cad3e0", "#8d98a6"],
@@ -2558,13 +2558,31 @@ def generate_sprite(
         # SETTING UP EACH PIECE
         base_pelt = None
         mid_pelt = None
-        light_pelt = None
+        highlight_pelt = None
         dark_pelt = None
-        topline_pelt = None
-        bottomline_pelt = None
+        line_pelt = None
+        unders_pelt = None
+        shade_pelt = None
 
         pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
         tortie_pelt = sprites.sprites["baseSOLID" + cat_sprite].copy().convert_alpha()
+
+        # Hello! I'm sorry
+        #Unders(U), Mid(M), Dark(D), Shade(S), Highlight(H)
+
+        swap_layers = ["SOKOKE", "BRAIDED"]
+        u_layers = ["CLASSIC", "MACKEREL", "BROKENMACKEREL", "BROKENBRAIDED", "SPECKLED", "BENGAL", "LONGDAN", "FADED",
+                    "MARBLED", "SPLOTCH", "SABER", "SMUDGE", "ROSETTE", "SMOKE", "MIST", "LYNX", "CHARCOALBENGAL", "FOG"]
+        m_layers = ["CLASSIC", "MACKEREL", "BROKENMACKEREL", "BROKENBRAIDED", "SOLID", "TABBY", "BRINDLE", "DUST",
+                    "SPECKLED", "BENGAL", "LONGDAN", "FADED", "MARBLED", "SPLOTCH", "SABER", "SMUDGE", "ROSETTE",
+                    "ABYSSINIAN", "SINGLESTRIPE", "MASKED", "TICKED", "AGOUTI", "SMOKE", "MIST", "LYNX", "CHARCOALBENGAL", "FOG"]
+        d_layers = ["CLASSIC", "MACKEREL", "BROKENMACKEREL", "BROKENBRAIDED", "SPECKLED", "BENGAL", "LONGDAN", "FADED",
+                    "MARBLED", "SPLOTCH", "SABER", "SMUDGE", "ROSETTE", "ABYSSINIAN", "SINGLESTRIPE", "MASKED",
+                    "TICKED", "AGOUTI", "SMOKE", "MIST", "LYNX", "CHARCOALBENGAL", "FOG", "TABBY"]
+        s_layers = ["ABYSSINIAN", "SINGLESTRIPE", "MASKED", "TICKED", "AGOUTI", "SMOKE", "MIST", "LYNX", "CHARCOALBENGAL", "FOG"]
+        h_layers = ["SOLID", "TABBY", "BRINDLE", "DUST", "SPECKLED", "BENGAL", "LONGDAN", "FADED", "MARBLED", "SPLOTCH",
+                    "SABER", "SMUDGE", "ROSETTE", "ABYSSINIAN", "SINGLESTRIPE", "MASKED", "TICKED", "AGOUTI", "SMOKE",
+                    "MIST", "LYNX", "CHARCOALBENGAL", "FOG"]
 
 
         if cat.pelt.name not in ['Tortie', 'Calico']:
@@ -2576,125 +2594,244 @@ def generate_sprite(
             tortie_base = str(cat.pelt.tortiepattern).upper()
             tortie_color = str(cat.pelt.tortiecolour).upper()
 
-        if base_name != ["TORTIE", "CALICO"]:
-
+        if base_name:
+            # all pelts use base
             base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             base_tint.fill(color_dict[base_color][1])
             base_pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
             base_pelt.blit(base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            mid_tint.fill(color_dict[base_color][2])
-            mid_pelt = sprites.sprites['mid' + base_name + cat_sprite].copy().convert_alpha()
-            mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if base_name in swap_layers:
+                if base_name == "SOKOKE":
+                    mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    mid_tint.fill(color_dict[base_color][2])
+                    mid_pelt = sprites.sprites['mid' + base_name + cat_sprite].copy().convert_alpha()
+                    mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            dark_tint.fill(color_dict[base_color][3])
-            dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
-            dark_pelt.blit(dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    dark_tint.fill(color_dict[base_color][4])
+                    dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
+                    dark_pelt.blit(dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            light_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            light_tint.fill(color_dict[base_color][0])
-            light_pelt = sprites.sprites['light' + base_name + cat_sprite].copy().convert_alpha()
-            light_pelt.blit(light_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    shade_tint.fill(color_dict[base_color][3])
+                    shade_pelt = sprites.sprites['shade' + base_name + cat_sprite].copy().convert_alpha()
+                    shade_pelt.blit(shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            bottomline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            bottomline_tint.fill(color_dict[base_color][5])
-            bottomline_pelt = sprites.sprites['bottomline' + cat_sprite].copy().convert_alpha()
-            bottomline_pelt.blit(bottomline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    highlight_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    highlight_tint.fill(color_dict[base_color][0])
+                    highlight_pelt = sprites.sprites['highlight' + base_name + cat_sprite].copy().convert_alpha()
+                    highlight_pelt.blit(highlight_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            topline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            topline_tint.fill(color_dict[base_color][4])
-            topline_pelt = sprites.sprites['topline' + cat_sprite].copy().convert_alpha()
-            topline_pelt.blit(topline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                elif base_name == "BRAIDED":
+                    unders_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    unders_tint.fill(color_dict[base_color][0])
+                    unders_pelt = sprites.sprites['under' + base_name + cat_sprite].copy().convert_alpha()
+                    unders_pelt.blit(unders_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
+                    mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    mid_tint.fill(color_dict[base_color][2])
+                    mid_pelt = sprites.sprites['mid' + base_name + cat_sprite].copy().convert_alpha()
+                    mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    dark_tint.fill(color_dict[base_color][4])
+                    dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
+                    dark_pelt.blit(dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    shade_tint.fill(color_dict[base_color][3])
+                    shade_pelt = sprites.sprites['shade' + base_name + cat_sprite].copy().convert_alpha()
+                    shade_pelt.blit(shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            else:
+                if base_name in u_layers:
+                    unders_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    unders_tint.fill(color_dict[base_color][0])
+                    unders_pelt = sprites.sprites['under' + base_name + cat_sprite].copy().convert_alpha()
+                    unders_pelt.blit(unders_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if base_name in m_layers:
+                    mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    mid_tint.fill(color_dict[base_color][2])
+                    mid_pelt = sprites.sprites['mid' + base_name + cat_sprite].copy().convert_alpha()
+                    mid_pelt.blit(mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if base_name in d_layers:
+                    dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    dark_tint.fill(color_dict[base_color][3])
+                    dark_pelt = sprites.sprites['dark' + base_name + cat_sprite].copy().convert_alpha()
+                    dark_pelt.blit(dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if base_name in s_layers:
+                    shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    shade_tint.fill(color_dict[base_color][4])
+                    shade_pelt = sprites.sprites['shade' + base_name + cat_sprite].copy().convert_alpha()
+                    shade_pelt.blit(shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if base_name in h_layers:
+                    highlight_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    highlight_tint.fill(color_dict[base_color][0])
+                    highlight_pelt = sprites.sprites['highlight' + base_name + cat_sprite].copy().convert_alpha()
+                    highlight_pelt.blit(highlight_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        if base_name:
+            line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            line_tint.fill(color_dict[base_color][5])
+            line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+            line_pelt.blit(line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+        # repeat for torties
         if tortie_base:
             tortie_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tortie_base_tint.fill(color_dict[tortie_color][1])
             tortie_base_pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
             tortie_base_pelt.blit(tortie_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tortie_mid_tint.fill(color_dict[tortie_color][2])
-            tortie_mid_pelt = sprites.sprites['mid' + tortie_base + cat_sprite].copy().convert_alpha()
-            tortie_mid_pelt.blit(tortie_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if tortie_base in swap_layers:
+                if tortie_base == "SOKOKE":
+                    tortie_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_mid_tint.fill(color_dict[tortie_color][2])
+                    tortie_mid_pelt = sprites.sprites['mid' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_mid_pelt.blit(tortie_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tortie_dark_tint.fill(color_dict[tortie_color][3])
-            tortie_dark_pelt = sprites.sprites['dark' + tortie_base + cat_sprite].copy().convert_alpha()
-            tortie_dark_pelt.blit(tortie_dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    tortie_dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_dark_tint.fill(color_dict[tortie_color][4])
+                    tortie_dark_pelt = sprites.sprites['dark' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_dark_pelt.blit(tortie_dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_light_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tortie_light_tint.fill(color_dict[tortie_color][0])
-            tortie_light_pelt = sprites.sprites['light' + tortie_base + cat_sprite].copy().convert_alpha()
-            tortie_light_pelt.blit(tortie_light_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    tortie_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_shade_tint.fill(color_dict[tortie_color][3])
+                    tortie_shade_pelt = sprites.sprites['shade' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_shade_pelt.blit(tortie_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_bottomline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tortie_bottomline_tint.fill(color_dict[tortie_color][5])
-            tortie_bottomline_pelt = sprites.sprites['bottomline' + cat_sprite].copy().convert_alpha()
-            tortie_bottomline_pelt.blit(tortie_bottomline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    tortie_highlight_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_highlight_tint.fill(color_dict[tortie_color][0])
+                    tortie_highlight_pelt = sprites.sprites['highlight' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_highlight_pelt.blit(tortie_highlight_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_topline_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tortie_topline_tint.fill(color_dict[tortie_color][4])
-            tortie_topline_pelt = sprites.sprites['topline' + cat_sprite].copy().convert_alpha()
-            tortie_topline_pelt.blit(tortie_topline_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                elif tortie_base == "BRAIDED":
+                    tortie_unders_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_unders_tint.fill(color_dict[tortie_color][0])
+                    tortie_unders_pelt = sprites.sprites['under' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_unders_pelt.blit(tortie_unders_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    tortie_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_mid_tint.fill(color_dict[tortie_color][2])
+                    tortie_mid_pelt = sprites.sprites['mid' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_mid_pelt.blit(tortie_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    tortie_dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_dark_tint.fill(color_dict[tortie_color][4])
+                    tortie_dark_pelt = sprites.sprites['dark' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_dark_pelt.blit(tortie_dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    tortie_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_shade_tint.fill(color_dict[tortie_color][3])
+                    tortie_shade_pelt = sprites.sprites['shade' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_shade_pelt.blit(tortie_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            else:
+                if tortie_base in u_layers:
+                    tortie_unders_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_unders_tint.fill(color_dict[tortie_color][0])
+                    tortie_unders_pelt = sprites.sprites['under' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_unders_pelt.blit(tortie_unders_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if tortie_base in m_layers:
+                    tortie_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_mid_tint.fill(color_dict[tortie_color][2])
+                    tortie_mid_pelt = sprites.sprites['mid' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_mid_pelt.blit(tortie_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if tortie_base in d_layers:
+                    tortie_dark_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_dark_tint.fill(color_dict[tortie_color][3])
+                    tortie_dark_pelt = sprites.sprites['dark' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_dark_pelt.blit(tortie_dark_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if tortie_base in s_layers:
+                    tortie_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_shade_tint.fill(color_dict[tortie_color][4])
+                    tortie_shade_pelt = sprites.sprites['shade' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_shade_pelt.blit(tortie_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                if tortie_base in h_layers:
+                    tortie_highlight_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tortie_highlight_tint.fill(color_dict[tortie_color][0])
+                    tortie_highlight_pelt = sprites.sprites['highlight' + tortie_base + cat_sprite].copy().convert_alpha()
+                    tortie_highlight_pelt.blit(tortie_highlight_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        if tortie_base:
+            tortie_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            tortie_line_tint.fill(color_dict[tortie_color][5])
+            tortie_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+            tortie_line_pelt.blit(tortie_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
 
+        # Now we must make the jam
 
-        if base_name != ["CRYINGRN"]:
+        if base_name in swap_layers:
+            if base_name == "SOKOKE":
+                new_sprite.blit(base_pelt, (0, 0))
+                new_sprite.blit(mid_pelt, (0, 0))
+                new_sprite.blit(dark_pelt, (0, 0))
+                new_sprite.blit(shade_pelt, (0, 0))
+                new_sprite.blit(highlight_pelt, (0, 0))
+                new_sprite.blit(line_pelt, (0, 0))
+            if base_name == "BRAIDED":
+                new_sprite.blit(base_pelt, (0, 0))
+                new_sprite.blit(unders_pelt, (0, 0))
+                new_sprite.blit(mid_pelt, (0, 0))
+                new_sprite.blit(dark_pelt, (0, 0))
+                new_sprite.blit(shade_pelt, (0, 0))
+                new_sprite.blit(line_pelt, (0, 0))
+        else:
             new_sprite.blit(base_pelt, (0, 0))
-            new_sprite.blit(mid_pelt, (0, 0))
-            new_sprite.blit(dark_pelt, (0, 0))
-            new_sprite.blit(light_pelt, (0, 0))
-            new_sprite.blit(bottomline_pelt, (0, 0))
-            new_sprite.blit(topline_pelt, (0, 0))
+            if base_name in u_layers:
+                new_sprite.blit(unders_pelt, (0, 0))
+            if base_name in m_layers:
+                new_sprite.blit(mid_pelt, (0, 0))
+            if base_name in d_layers:
+                new_sprite.blit(dark_pelt, (0, 0))
+            if base_name in s_layers:
+                new_sprite.blit(shade_pelt, (0, 0))
+            if base_name in h_layers:
+                new_sprite.blit(highlight_pelt, (0, 0))
+            new_sprite.blit(line_pelt, (0, 0))
 
         if tortie_base:
             patches = sprites.sprites["baseSOLID" + cat_sprite].copy().convert_alpha()
-            patches.blit(tortie_base_pelt, (0, 0))
-            patches.blit(tortie_mid_pelt, (0, 0))
-            patches.blit(tortie_dark_pelt, (0, 0))
-            patches.blit(tortie_light_pelt, (0, 0))
-            patches.blit(tortie_bottomline_pelt, (0, 0))
-            patches.blit(tortie_topline_pelt, (0, 0))
-            patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+            if tortie_base in swap_layers:
+                if tortie_base == "SOKOKE":
+                    patches.blit(tortie_base_pelt, (0, 0))
+                    patches.blit(tortie_mid_pelt, (0, 0))
+                    patches.blit(tortie_dark_pelt, (0, 0))
+                    patches.blit(tortie_shade_pelt, (0, 0))
+                    patches.blit(tortie_highlight_pelt, (0, 0))
+                    patches.blit(tortie_line_pelt, (0, 0))
+                    patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0),
+                                 special_flags=pygame.BLEND_RGBA_MULT)
+                    new_sprite.blit(patches, (0, 0))
+                if tortie_base == "BRAIDED":
+                    patches.blit(tortie_base_pelt, (0, 0))
+                    patches.blit(tortie_unders_pelt, (0, 0))
+                    patches.blit(tortie_mid_pelt, (0, 0))
+                    patches.blit(tortie_dark_pelt, (0, 0))
+                    patches.blit(tortie_shade_pelt, (0, 0))
+                    patches.blit(tortie_line_pelt, (0, 0))
+                    patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0),
+                                 special_flags=pygame.BLEND_RGBA_MULT)
+                    new_sprite.blit(patches, (0, 0))
+            else:
+                patches.blit(tortie_base_pelt, (0, 0))
+                if tortie_base in u_layers:
+                    patches.blit(tortie_unders_pelt, (0, 0))
+                if tortie_base in m_layers:
+                    patches.blit(tortie_mid_pelt, (0, 0))
+                if tortie_base in d_layers:
+                    patches.blit(tortie_dark_pelt, (0, 0))
+                if tortie_base in s_layers:
+                    patches.blit(tortie_shade_pelt, (0, 0))
+                if tortie_base in h_layers:
+                    patches.blit(tortie_highlight_pelt, (0, 0))
+                patches.blit(tortie_line_pelt, (0, 0))
+            patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0),
+                         special_flags=pygame.BLEND_RGBA_MULT)
             new_sprite.blit(patches, (0, 0))
-
-
-
-        # clangen bits below
-
-        #if cat.pelt.name not in ["Tortie", "Calico"]:
-        #    new_sprite.blit(
-        #        sprites.sprites[
-         #           cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
-        #        ],
-        #        (0, 0),
-        #    )
-        #else:
-        #    # Base Coat
-        #    new_sprite.blit(
-        #        sprites.sprites[cat.pelt.tortiebase + cat.pelt.colour + cat_sprite],
-        #        (0, 0),
-        #    )
-
-            # Create the patch image
-         #   if cat.pelt.tortiepattern == "Single":
-         #       tortie_pattern = "SingleColour"
-         #   else:
-         #       tortie_pattern = cat.pelt.tortiepattern
-
-
-         #   patches = sprites.sprites[
-         #       tortie_pattern + cat.pelt.tortiecolour + cat_sprite
-         #   ].copy()
-         #   patches.blit(
-         #       sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite],
-         #       (0, 0),
-         #       special_flags=pygame.BLEND_RGBA_MULT,
-          #  )
-            # Add patches onto cat.
-         #   new_sprite.blit(patches, (0, 0))
 
         # TINTS
         if (

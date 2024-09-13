@@ -123,9 +123,9 @@ class Sprites:
         del width, height  # unneeded
 
         for x in [
-            'lineart', 'topline', 'bottomline', 'lineartdf', 'lineartdead', 'symbols',
+            'lineart', 'line', 'lineartdf', 'lineartdead', 'symbols',
             'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
-            'base', 'mid', 'dark', 'light',
+            'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
             'eyes', 'eyes2', 'skin', 'scars', 'missingscars',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
@@ -218,38 +218,67 @@ class Sprites:
 
         # base pelt - to be expanded with extras later
         self.make_group('base', (0, 0), 'baseSOLID')
-        self.make_group('topline', (0, 0), 'topline')
-        self.make_group('bottomline', (0, 0), 'bottomline')
+        self.make_group('line', (0, 0), 'line')
 
         # Middle color layer
-        mids = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
-                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
-                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
+        mids = [
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
+            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
+        ]
         for row, mid in enumerate(mids):
             for col, md in enumerate(mid):
                 self.make_group('mid', (col, row), f'mid{md}')
 
-        # Light color layer
-        lights = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
-                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
-                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
-        for row, light in enumerate(lights):
-            for col, lt in enumerate(light):
-                self.make_group('light', (col, row), f'light{lt}')
+        # Highlight color layer
+        highlights = [
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
+            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
+        ]
+        for row, highlight in enumerate(highlights):
+            for col, hl in enumerate(highlight):
+                self.make_group('highlight', (col, row), f'highlight{hl}')
 
         # Dark color layer
-        darks = [['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-                 ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-                 ['SMOKE', 'FOG', 'MIST', 'SABER', 'SMUDGE', 'ROSETTE'],
-                 ['DUST', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL', 'BRAIDED'],
-                 ['BROKENBRAIDED', 'SPLOTCH', 'CHARCOALBENGAL', 'MASKED']]
+        darks = [
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
+            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
+        ]
         for row, dark in enumerate(darks):
             for col, dr in enumerate(dark):
                 self.make_group('dark', (col, row), f'dark{dr}')
+
+        # Darker color layer
+        shades = [
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
+            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
+        ]
+        for row, shade in enumerate(shades):
+            for col, sh in enumerate(shade):
+                self.make_group('shade', (col, row), f'shade{sh}')
+
+        # Unders color layer
+        unders = [
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
+            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
+            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
+            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
+        ]
+        for row, under in enumerate(unders):
+            for col, ud in enumerate(under):
+                self.make_group('unders', (col, row), f'under{ud}')
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
