@@ -2503,7 +2503,7 @@ def generate_sprite(
             "WHITE": ["#fff9ee", "#fff9ee", "#fff3de", "#fff3de", "#e0cdac", "#a2957e"],
             "SNOW WHITE": ["#fafcff", "#fafcff", "#f1f7ff", "#f1f7ff", "#cad3e0", "#8d98a6"],
             "GRAY": ["#f1ebe3", "#cec8be", "#a9a7a2", "#8d8d8d", "#828282", "#474747"],
-            "SLATE": ["#e5e5e5", "#bfc0c4", "#989aa0", "#70727c", "#474747", "#474747"],
+            "SLATE": ["#e5e5e5", "#bfc0c4", "#989aa0", "#70727c", "#474747", "#3b3d4c"],
             "DARK GRAY": ["#a29b92", "#786e63", "#5b544c", "#413c39", "#474747", "#1a1512"],
             "DARK SLATE": ["#959499", "#56555a", "#49484d", "#2b292c", "#201e21", "#070508"],
             "PALE BLUE": ["#d7dde3", "#b5bbc0", "#a2adb8", "#909ca7", "#6f8496", "#4c6073"],
@@ -2523,7 +2523,7 @@ def generate_sprite(
             "DARK GINGER": ["#d78859", "#992c10", "#861800", "#7a0a00", "#400000", "#2e0000"],
             "PALE GOLD": ["#f9dcb4", "#f9c999", "#f0b883", "#e09e60", "#d68f4b", "#a36021"],
             "YELLOW": ["#fcd9a2", "#fdb772", "#ec9a4a", "#d88533", "#c97828", "#964b01"],
-            "GOLD": ["#eabb8a", "#d7934d", "#bd6d35", "#ad530d", "#974302", "#974302"],
+            "GOLD": ["#eabb8a", "#d7934d", "#bd6d35", "#ad530d", "#974302", "#752600"],
             "BRONZE": ["#fcbd87", "#eb772e", "#ca540a", "#ae4500", "#9b3700", "#751800"],
             "ROSE": ["#f1e3d7", "#e1bdaf", "#d6a594", "#c15832", "#a65031", "#802d0f"],
             "LIGHT CREAM": ["#faede0", "#f1d5ba", "#ecc8a4", "#e2b791", "#d6a273", "#99683b"],
@@ -2903,16 +2903,139 @@ def generate_sprite(
             )
 
         # draw eyes
+        # base0, mid1, top2, shade3
+        eyecolor_dict = {
+            "YELLOW": ["#fffde3", "#ceb94c", "#9e8033", "#90631d"],
+            "AMBER": ["#f2e085", "#c77d40", "#a14a1e", "#903203"],
+            "HAZEL": ["#f2e085", "#aeb670", "#665e2e", "#544c1c"],
+            "PALE GREEN": ["#dde895", "#77ab5d", "#356735", "#214f21"],
+            "GREEN": ["#b5ecad", "#569669", "#20473d", "#06271f"],
+            "BLUE": ["#adeef0", "#6ab1d4", "#2f4f9c", "#052573"],
+            "DARK BLUE": ["#afc7f3", "#4d5190", "#261b3b", "#170e27"],
+            "GREY": ["#c9c9c9", "#8f8f8f", "#3f3f3f", "#2e2e2e"],
+            "CYAN": ["#d9f3ef", "#8cbdbd", "#549c9c", "#347d7d"],
+            "EMERALD": ["#fef696", "#4ddfa2", "#279582", "#006c58"],
+            "HEATHER BLUE": ["#b8b7ed", "#7875ba", "#3c3a86", "#1d1c62"],
+            "SUN-LIT ICE": ["#fff9ac", "#6eb7d7", "#213d8a", "#0c2773"],
+            "COPPER": ["#fff9ac", "#c75212", "#8a1e02", "#710200"],
+            "SAGE": ["#fff9ac", "#6a8f7b", "#255039", "#1b3f2c"],
+            "BRIGHT BLUE": ["#fff8d5", "#57c0d0", "#125a80", "#00375e"],
+            "PALE BLUE": ["#e5f5f8", "#acdfe8", "#6e9dad", "#4b7e90"],
+            "LAVENDER": ["#fff9ac", "#7b78bd", "#3c3a86", "#22206a"],
+            "DARK GREY": ["#f1e3c0", "#47485a", "#131719", "#060808"],
+            "PALE YELLOW": ["#f6eecb", "#f2dd7d", "#eb9f1d", "#c66200"],
+            "GOLD": ["#f6eecb", "#efb931", "#a95d03", "#903400"],
+            "LIME": ["#fef8ac", "#969c27", "#343507", "#222200"],
+            "HAZELNUT": ["#f2bf85", "#974911", "#4b1100", "#380000"],
+            "DARK AMBER": ["#f1b995", "#ef4c3f", "#790200", "#600000"],
+            "SLATE": ["#bdc9e7", "#6b789b", "#303951", "#21293c"],
+            "RUBY": ["#f8d0af", "#dd631d", "#b10e0e", "#900000"],
+            "LILAC": ["#fff1ce", "#fba6c3", "#6a7bff", "#7a4fea"],
+            "LIGHT GREY": ["#f3f8fa", "#c8d5db", "#7791a0", "#567384"],
+            "PINK": ["#f2e7e7", "#f7c0d6", "#9c415b", "#84243f"],
+            "DARK HAZEL": ["#f9e7df", "#767e5b", "#442f21", "#311f13"],
+            "CHOCOLATE": ["#bf9c8a", "#422b20", "#0c0502", "#000000"],
+            "PURPLE": ["#dbdbfa", "#bc75f9", "#535eeb", "#00218a"],
+            "SUNSET": ["#f6cbd8", "#ff0051", "#790043", "#05002e"],
+            "CARAMEL": ["#fbf8f2", "#deb888", "#b76f44", "#904518"],
+            "AUTUMN": ["#eedcb6", "#fa915c", "#b16c49", "#7a3f21"],
+            "MAGENTA": ["#ffeec1", "#ff5779", "#813b4b", "#4f2430"],
+            "SUMMER": ["#fdf0bd", "#fbb341", "#1c674d", "#01412b"],
+            "SEASIDE": ["#f6ebc6", "#f87e4d", "#0e7fa6", "#1c1e5e"],
+            "MIDNIGHT": ["#b6ddec", "#0d588a", "#59295b", "#210755"],
+            "WINTER": ["#faf4ee", "#93adc6", "#3686b6", "#49346a"],
+            "ECLIPSE": ["#f3e2ac", "#a44321", "#530e1e", "#061427"],
+            "CRIMSON": ["#f3e2d2", "#d23535", "#880000", "#4d0000"],
+            "SPRING": ["#fdfcea", "#c9e7be", "#6bc8a1", "#4c846c"],
+            "ICE": ["#f4f5f9", "#d7e3fa", "#a8c5ff", "#78a2fb"],
+            "FOREST": ["#f5ecc0", "#88a446", "#346635", "#1e4132"],
+            "COFFEE": ["#ffefca", "#9a6052", "#4b2e33", "#2c1115"],
+            "BRIGHT GREEN": ["#dfffbd", "#a4f99d", "#2def85", "#00a548"],
+            "MOCHA": ["#f5ebe4", "#c6a484", "#6d5d54", "#433d38"],
+            "SEA GREEN": ["#e8fed7", "#a0f0c8", "#2fd3b4", "#089397"]
+        }
+
+        eye_base = None
+        eye_mid = None
+        eye_top = None
+        eye_shade = None
+        hc_eye_base = None
+        hc_eye_mid = None
+        hc_eye_top = None
+        hc_eye_shade = None
+
+
+        eye_color = str(cat.pelt.eye_colour).upper()
+        eye_color2 = str(cat.pelt.eye_colour2).upper()
+
+        eye_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        eye_base_tint.fill(eyecolor_dict[eye_color][0])
+        eye_base = sprites.sprites['eyebase' + cat_sprite].copy().convert_alpha()
+        eye_base.blit(eye_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        eye_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        eye_mid_tint.fill(eyecolor_dict[eye_color][1])
+        eye_mid = sprites.sprites['eyemid' + cat_sprite].copy().convert_alpha()
+        eye_mid.blit(eye_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        eye_top_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        eye_top_tint.fill(eyecolor_dict[eye_color][2])
+        eye_top = sprites.sprites['eyetop' + cat_sprite].copy().convert_alpha()
+        eye_top.blit(eye_top_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        eye_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        eye_shade_tint.fill(eyecolor_dict[eye_color][3])
+        eye_shade = sprites.sprites['eyeshade' + cat_sprite].copy().convert_alpha()
+        eye_shade.blit(eye_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
         if cat.pelt.eye_colour2 != None:
-            eyes = sprites.sprites["eyes" + cat.pelt.eye_colour + cat_sprite].copy().convert_alpha()
-            new_sprite.blit(eyes, (0, 0))
-            second_eye = sprites.sprites["eyes" + cat.pelt.eye_colour2 + cat_sprite].copy().convert_alpha()
-            second_eye.blit(sprites.sprites["eyes2" + cat.pelt.eye_pattern + cat_sprite], (0, 0),
-                            special_flags=pygame.BLEND_RGBA_MULT)
+            hc_eye_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            hc_eye_base_tint.fill(eyecolor_dict[eye_color2][0])
+            hc_eye_base = sprites.sprites['eyebase' + cat_sprite].copy().convert_alpha()
+            hc_eye_base.blit(hc_eye_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            hc_eye_mid_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            hc_eye_mid_tint.fill(eyecolor_dict[eye_color2][1])
+            hc_eye_mid = sprites.sprites['eyemid' + cat_sprite].copy().convert_alpha()
+            hc_eye_mid.blit(hc_eye_mid_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            hc_eye_top_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            hc_eye_top_tint.fill(eyecolor_dict[eye_color2][2])
+            hc_eye_top = sprites.sprites['eyetop' + cat_sprite].copy().convert_alpha()
+            hc_eye_top.blit(hc_eye_top_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            hc_eye_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            hc_eye_shade_tint.fill(eyecolor_dict[eye_color2][3])
+            hc_eye_shade = sprites.sprites['eyeshade' + cat_sprite].copy().convert_alpha()
+            hc_eye_shade.blit(eye_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        new_sprite.blit(eye_base, (0, 0))
+        new_sprite.blit(eye_mid, (0, 0))
+        new_sprite.blit(eye_top, (0, 0))
+        new_sprite.blit(eye_shade, (0, 0))
+
+        if cat.pelt.eye_colour2 != None:
+            second_eye = sprites.sprites['eyebase' + cat_sprite].copy().convert_alpha()
+            second_eye.blit(hc_eye_base, (0, 0))
+            second_eye.blit(hc_eye_mid, (0, 0))
+            second_eye.blit(hc_eye_top, (0, 0))
+            second_eye.blit(hc_eye_shade, (0, 0))
+            second_eye.blit(sprites.sprites["eyes2" + cat.pelt.eye_pattern + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
             new_sprite.blit(second_eye, (0, 0))
-        else:
-            eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
-            new_sprite.blit(eyes, (0, 0))
+
+        new_sprite.blit(sprites.sprites["eyelight" + cat_sprite], (0, 0))
+
+        #old
+       # if cat.pelt.eye_colour2 != None:
+      #      eyes = sprites.sprites["eyes" + cat.pelt.eye_colour + cat_sprite].copy().convert_alpha()
+      #      new_sprite.blit(eyes, (0, 0))
+      #      second_eye = sprites.sprites["eyes" + cat.pelt.eye_colour2 + cat_sprite].copy().convert_alpha()
+      #      second_eye.blit(sprites.sprites["eyes2" + cat.pelt.eye_pattern + cat_sprite], (0, 0),
+      #                      special_flags=pygame.BLEND_RGBA_MULT)
+     #       new_sprite.blit(second_eye, (0, 0))
+      #  else:
+      #      eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
+      #      new_sprite.blit(eyes, (0, 0))
 
         #scars1
         if not scars_hidden:

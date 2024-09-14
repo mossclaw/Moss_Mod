@@ -126,7 +126,7 @@ class Sprites:
             'lineart', 'line', 'lineartdf', 'lineartdead', 'symbols',
             'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
-            'eyes', 'eyes2', 'skin', 'scars', 'missingscars',
+            'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
             'collars', 'bellcollars', 'bowcollars', 'nyloncollars', 'bloodcollars',
@@ -152,19 +152,11 @@ class Sprites:
             self.make_group('fadestarclan', (i, 0), f'fadestarclan{i}')
             self.make_group('fadedarkforest', (i, 0), f'fadedf{i}')
 
-
-        # Define eye colors
-        eye_colors = [
-            ['YELLOW', 'AMBER', 'HAZEL', 'PALE GREEN', 'GREEN', 'BLUE'],
-            ['DARK BLUE', 'GREY', 'CYAN', 'EMERALD', 'HEATHER BLUE', 'SUN-LIT ICE'],
-            ['COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY'],
-            ['PALE YELLOW', 'GOLD', 'LIME', 'HAZELNUT', 'DARK AMBER', 'SLATE'],
-            ['RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE']
-        ]
-
-        for row, colors in enumerate(eye_colors):
-            for col, color in enumerate(colors):
-                self.make_group('eyes', (col, row), f'eyes{color}')
+        self.make_group('eyebase', (0, 0), 'eyebase')
+        self.make_group('eyemid', (0, 0), 'eyemid')
+        self.make_group('eyetop', (0, 0), 'eyetop')
+        self.make_group('eyeshade', (0, 0), 'eyeshade')
+        self.make_group('eyelight', (0, 0), 'eyelight')
 
         eye_patterns = [
             ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED'],
