@@ -60,11 +60,11 @@
   },
   "possible_tints": {
     "basic": ["pink", "gray", "red", "orange", "none", "warmdilute"],
-    "warm": ["yellow", "purple", "dilute", "cooldilute"],
-    "cool": ["purple", "black", "dilute"],
-    "white": ["yellow"],
-    "monochrome": ["blue", "black", "dilute", "cooldilute"],
-    "brown": ["yellow", "purple", "black", "dilute", "cooldilute"]
+    "warm": ["yellow", "purple", "blush", "rosy", "sandy", "beige", "coral", "tan", "cream", "dilute", "cooldilute"],
+    "cool": ["blue", "purple", "black", "willow", "lilac", "plum", "cadet", "dilute"],
+    "white": ["yellow", "tan", "cream"],
+    "monochrome": ["blue", "black", "bluegray", "cadet", "dilute", "cooldilute"],
+    "brown": ["yellow", "purple", "black", "plum", "lilac", "cadet", "bluegray", "dilute", "cooldilute"]
   },
   "tint_colours":
   {
@@ -76,6 +76,20 @@
     "yellow": [250, 248, 225],
     "purple": [235, 225, 244],
     "blue": [218, 237, 245],
+    "blush": [218, 149, 149],
+    "willow": [231, 241, 229],
+    "bluegray": [199, 213, 232],
+    "lilac": [226, 208, 226],
+    "sandy": [238, 238, 206],
+    "plum": [225, 207, 243],
+    "midgray": [100, 99, 107],
+    "cadet": [187, 223, 245],
+    "sage": [159, 170, 160],
+    "coral": [212, 145, 82],
+    "tan": [252, 234, 222],
+    "rosy": [174, 132, 126],
+    "beige": [184, 150, 133],
+    "cream": [247, 220, 182],
     "none": null
   },
   "dilute_tint_colours":
@@ -84,5 +98,6 @@
     "warmdilute": [25, 15, 7],
     "cooldilute": [7, 15, 25],
     "none": null
-  }
+  },
+  "comment": "Thank you Beetle for your lovely tints!"
 }
