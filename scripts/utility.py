@@ -2942,7 +2942,7 @@ def generate_sprite(
             "DARK AMBER": ["#f1b995", "#ef4c3f", "#790200", "#600000"],
             "SLATE": ["#bdc9e7", "#6b789b", "#303951", "#21293c"],
             "RUBY": ["#f8d0af", "#dd631d", "#b10e0e", "#900000"],
-            "LILAC": ["#fff1ce", "#fba6c3", "#6a7bff", "#7a4fea"],
+            "LILAC": ["#f6e6bf", "#ec8eae", "#5566f1", "#6235d7"],
             "LIGHT GREY": ["#f3f8fa", "#c8d5db", "#7791a0", "#567384"],
             "PINK": ["#f2e7e7", "#f7c0d6", "#9c415b", "#84243f"],
             "DARK HAZEL": ["#f9e7df", "#767e5b", "#442f21", "#311f13"],
@@ -2962,9 +2962,9 @@ def generate_sprite(
             "ICE": ["#f4f5f9", "#d7e3fa", "#a8c5ff", "#78a2fb"],
             "FOREST": ["#f5ecc0", "#88a446", "#346635", "#1e4132"],
             "COFFEE": ["#ffefca", "#9a6052", "#4b2e33", "#2c1115"],
-            "BRIGHT GREEN": ["#dfffbd", "#a4f99d", "#2def85", "#00a548"],
+            "BRIGHT GREEN": ["#ccf3a3", "#8dec85", "#1de377", "#00993c"],
             "MOCHA": ["#f5ebe4", "#c6a484", "#6d5d54", "#433d38"],
-            "SEA GREEN": ["#e8fed7", "#a0f0c8", "#2fd3b4", "#089397"]
+            "SEA GREEN": ["#d6f1c2", "#8ae5b8", "#1ac4a4", "#00878b"]
         }
 
         eye_base = None
