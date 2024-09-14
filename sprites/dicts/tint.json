@@ -45,7 +45,18 @@
     "LAVENDER": "cool",
     "DARK LAVENDER": "cool",
     "DARK ORANGE": "warm",
-    "DARK GOLD": "warm"
+    "DARK GOLD": "warm",
+    "COFFEE": "brown",
+    "PALE EMBER": "warm",
+    "SANDY": "brown",
+    "HEATHER BLUE": "cool",
+    "COCOA": "brown",
+    "WARM HONEY": "warm",
+    "CHOCOLATE": "brown",
+    "SIENNA": "warm",
+    "GRANITE": "monochrome",
+    "BLUE GRAY": "cool",
+    "SANDSTONE": "brown"
   },
   "possible_tints": {
     "basic": ["pink", "gray", "red", "orange", "none", "warmdilute"],

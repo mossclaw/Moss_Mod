@@ -50,7 +50,9 @@ class Pelt:
         'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
         'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
         'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE'
+        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
+        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE'
     ]
     pelt_c_no_white = [
         'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
@@ -61,7 +63,9 @@ class Pelt:
         'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
         'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
         'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE'
+        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
+        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE'
     ]
     pelt_c_no_bw = [
         'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
@@ -71,7 +75,9 @@ class Pelt:
         'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
         'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
         'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE'
+        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
+        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE'
     ]
 
 
@@ -176,20 +182,21 @@ class Pelt:
         'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE',
         'YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'PALE FIRE', 'FIRE', 'DARK FIRE', 'GINGER', 'DARK GINGER', 'DARK ORANGE',
         'PALE BROWN', 'ALMOND', 'BIRCH', 'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'PALE CINNAMON', 'CINNAMON', 'SABLE',
-        'DARK SABLE', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN'
+        'DARK SABLE', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE'
     ]
     white_colours = ['WHITE', 'SNOW WHITE']
-    blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC']
+    blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'HEATHER BLUE', 'BLUE GRAY']
     gray_colours = ['GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER']
-    black_colours = ['BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST']
+    black_colours = ['BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'GRANITE']
     cream_colours = ['LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE']
     gold_colours = ['YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD']
-    fire_colours = ['PALE FIRE', 'FIRE', 'DARK FIRE']
-    ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE']
-    coolbrown_colours = ['PALE BROWN', 'ALMOND', 'BIRCH']
+    fire_colours = ['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE EMBER', 'EMBER']
+    ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE', 'WARM HONEY', 'SIENNA']
+    coolbrown_colours = ['PALE BROWN', 'ALMOND', 'BIRCH', 'SANDSTONE']
     lavender_colours = ['PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER']
-    warmbrown_colours = ['PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE']
-    brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN']
+    warmbrown_colours = ['PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'SANDY']
+    brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'CHOCOLATE', 'COCOA']
     colour_categories = [white_colours, blue_colours, gray_colours, black_colours, cream_colours, gold_colours,
                      fire_colours, ginger_colours, coolbrown_colours, lavender_colours, warmbrown_colours,
                      brown_colours]
