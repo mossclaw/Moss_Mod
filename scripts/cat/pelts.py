@@ -322,6 +322,11 @@ class Pelt:
             self.white_patches = 'ANYTWO'
         elif self.white_patches == "VITILIGO2":
             self.white_patches = "VITILIGOTWO"
+
+        if self.name == 'SingleColour':
+            self.name = 'Solid'
+        if self.name == 'TwoColour':
+            self.name = 'Solid'
             
         if self.vitiligo == "VITILIGO2":
             self.vitiligo = "VITILIGOTWO"
