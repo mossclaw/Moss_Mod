@@ -14,13 +14,13 @@ jobs:
       gpg_private_key_passphrase: ${{ secrets.PACKAGESIGNKEYPASSPHRASE }}
       update_api_push_token: ${{ secrets.UPDATE_API_DEPLOY_KEY }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.4.1
       - name: Setup Python 3.11 x64
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           architecture: "x64"
@@ -60,7 +60,7 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.tar.xz)
         run: tar -caf MossMod_Linux64_glibc2.31+.tar.xz -C dist MossMod
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Linux64_glibc2.31+.tar.xz
           path: MossMod_Linux64_glibc2.31+.tar.xz
@@ -108,13 +108,13 @@ jobs:
       gpg_private_key_passphrase: ${{ secrets.PACKAGESIGNKEYPASSPHRASE }}
       update_api_push_token: ${{ secrets.UPDATE_API_DEPLOY_KEY }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.4.1
       - name: Setup Python 3.11 x64
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           architecture: "x64"
@@ -154,7 +154,7 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.tar.xz)
         run: tar -caf MossMod_Linux64_glibc2.35+.tar.xz -C dist MossMod
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Linux64_glibc2.35+.tar.xz
           path: MossMod_Linux64_glibc2.35+.tar.xz
@@ -202,18 +202,18 @@ jobs:
       gpg_private_key_passphrase: ${{ secrets.PACKAGESIGNKEYPASSPHRASE }}
       update_api_push_token: ${{ secrets.UPDATE_API_DEPLOY_KEY }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Python 3.8 x86
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.8" # 3.8 to support older versions of Windows
           architecture: "x86"
       - name: Install poetry
-        uses: abatilo/actions-poetry@v2
+        uses: abatilo/actions-poetry@v3
         with:
           poetry-version: 1.4.1
       - name: Set up cargo cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         continue-on-error: false
         with:
           path: |
@@ -269,11 +269,7 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-
-          cp dist/MossMod/_internal/.itch.toml dist/ 
-          tar.exe -a -c -f MossMod_Win32.zip -C dist MossMod .itch.toml
-
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Win32
           path: MossMod_Win32.zip
@@ -322,19 +318,19 @@ jobs:
       gpg_private_key_passphrase: ${{ secrets.PACKAGESIGNKEYPASSPHRASE }}
       update_api_push_token: ${{ secrets.UPDATE_API_DEPLOY_KEY }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
-        uses: abatilo/actions-poetry@v2
+        uses: abatilo/actions-poetry@v3
         with:
           poetry-version: 1.4.1
       - name: Setup Python 3.8 x64
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.8" # 3.8 to support older versions of Windows
           architecture: "x64"
           cache: "poetry"
       - name: Set up cargo cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         continue-on-error: false
         with:
           path: |
@@ -395,11 +391,9 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-
           cp dist/MossMod/_internal/.itch.toml dist/ 
           tar.exe -a -c -f MossMod_Win64.zip -C dist MossMod .itch.toml
-
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Win64
           path: MossMod_Win64.zip
@@ -448,19 +442,19 @@ jobs:
       gpg_private_key_passphrase: ${{ secrets.PACKAGESIGNKEYPASSPHRASE }}
       update_api_push_token: ${{ secrets.UPDATE_API_DEPLOY_KEY }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.4.1
       - name: Setup Python 3.11 x64
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           architecture: "x64"
           cache: "poetry"
       - name: Set up cargo cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         continue-on-error: false
         with:
           path: |
@@ -521,11 +515,7 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-
-          cp dist/MossMod/_internal/.itch.toml dist/ 
-          tar.exe -a -c -f MossMod_Win64_Windows10+.zip -C dist MossMod .itch.toml
-
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Win64_Windows10+
           path: MossMod_Win64_Windows10+.zip
@@ -579,13 +569,13 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
-        uses: abatilo/actions-poetry@v2
+        uses: abatilo/actions-poetry@v3
         with:
           poetry-version: 1.7.1
       - name: Setup Python 3.11
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "poetry"
@@ -628,7 +618,7 @@ jobs:
         run: "npm install -g appdmg"
       - name: Generate .dmg
         run: "appdmg appdmg.json MossMod_macOS64.dmg"
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MossMod_macOS64.dmg
           path: MossMod_macOS64.dmg
