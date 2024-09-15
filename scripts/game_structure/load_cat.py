@@ -126,6 +126,7 @@ def json_load():
                 tortiepattern=cat["tortie_pattern"],
                 pattern=cat["pattern"],
                 skin=cat["skin"],
+                skin_color=cat["skin_color"] if "skin_color" in cat else Pelt.skin_color,
                 tint=cat["tint"] if "tint" in cat else "none",
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],

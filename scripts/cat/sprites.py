@@ -296,16 +296,14 @@ class Sprites:
             for col, mask in enumerate(masks):
                 self.make_group('tortiesmoss', (col, row), f"tortiemask{mask}")
 
-        # Define skin colors 
-        skin_colors = [
-            ['BLACK', 'RED', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN'],
-            ['DARK', 'DARKGREY', 'GREY', 'DARKSALMON', 'SALMON', 'PEACH'],
-            ['DARKMARBLED', 'MARBLED', 'LIGHTMARBLED', 'DARKBLUE', 'BLUE', 'LIGHTBLUE']
+        # Define skin patterns
+        skins = [
+            ["SOLID", "TIP", "MARBLE", "FRECKLE"]
         ]
 
-        for row, colors in enumerate(skin_colors):
-            for col, color in enumerate(colors):
-                self.make_group('skin', (col, row), f"skin{color}")
+        for row, skins in enumerate(skins):
+            for col, skin in enumerate(skins):
+                self.make_group('skin', (col, row), f"skin{skin}")
 
         self.load_scars()
         self.load_symbols()

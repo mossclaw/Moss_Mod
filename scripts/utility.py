@@ -3078,7 +3078,37 @@ def generate_sprite(
             new_sprite.blit(sprites.sprites["lineartdead" + cat_sprite], (0, 0))
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
-        new_sprite.blit(sprites.sprites["skin" + cat.pelt.skin + cat_sprite], (0, 0))
+
+        skincolor_dict = {
+            "BLACK": ["#312923"],
+            "RED": ["#bf5338"],
+            "PINK": ["#f9c0b8"],
+            "DARKBROWN": ["#523219"],
+            "BROWN": ["#5f3e24"],
+            "LIGHTBROWN": ["#7d6146"],
+            "DARK": ["#201e1b"],
+            "DARKGREY": ["#464340"],
+            "GREY": ["#8a8581"],
+            "DARKSALMON": ["#9a5a44"],
+            "SALMON": ["#da9c7b"],
+            "PEACH": ["#ffc7a8"],
+            "DARKBLUE": ["#545a5e"],
+            "BLUE": ["#3a4e57"],
+            "LIGHTBLUE": ["#5f676b"]
+        }
+
+        skin_color = str(cat.pelt.skin_color).upper()
+        skin_name = str(cat.pelt.skin).upper()
+        skin_base = None
+
+        skin_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        skin_base_tint.fill(skincolor_dict[skin_color][0])
+        skin_base = sprites.sprites['skin' + skin_name + cat_sprite].copy().convert_alpha()
+        skin_base.blit(skin_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        new_sprite.blit(skin_base, (0, 0))
+
+
 
         if not scars_hidden:
             for scar in cat.pelt.scars:

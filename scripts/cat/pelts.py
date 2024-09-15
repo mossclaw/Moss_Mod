@@ -228,8 +228,9 @@ class Pelt:
     white_sprites = [
             little_white, mid_white, high_white, mostly_white, point_markings, vit, 'FULLWHITE']
 
-    skin_sprites = ['BLACK', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
-                    'SALMON', 'PEACH', 'DARKMARBLED', 'MARBLED', 'LIGHTMARBLED', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
+    skin_color = ['BLACK', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
+                    'SALMON', 'PEACH', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
+    skin = ['SOLID', 'TIP', 'MARBLE', 'FRECKLE']
 
     """Holds all appearance information for a cat. """
 
@@ -252,7 +253,8 @@ class Pelt:
                  opacity: int = 100,
                  scars: list = None,
                  tint: str = "none",
-                 skin: str = "BLACK",
+                 skin: str = "SOLID",
+                 skin_color: str = "BLACK",
                  white_patches_tint: str = "none",
                  kitten_sprite: int = None,
                  adol_sprite: int = None,
@@ -293,6 +295,7 @@ class Pelt:
                             "sick_young": 37}
         self.reverse = reverse
         self.skin = skin
+        self.skin_color = skin_color
 
     @staticmethod
     def generate_new_pelt(gender: str, parents: tuple = (), age: str = "adult"):
@@ -362,6 +365,64 @@ class Pelt:
             elif self.eye_colour == "BLUEGREEN":
                 self.eye_colour2 = "GREEN"
             self.eye_colour = "BLUE"
+
+        if self.skin not in ["SOLID", 'TIP', 'MARBLE', 'FRECKLE']:
+            if self.skin == "BLACK":
+                self.skin = "SOLID"
+                self.skin_color = "BLACK"
+            elif self.skin == "RED":
+                self.skin = "SOLID"
+                self.skin_color = "RED"
+            elif self.skin == "PINK":
+                self.skin = "SOLID"
+                self.skin_color = "PINK"
+            elif self.skin == "DARKBROWN":
+                self.skin = "SOLID"
+                self.skin_color = "DARKBROWN"
+            elif self.skin == "BROWN":
+                self.skin = "SOLID"
+                self.skin_color = "BROWN"
+            elif self.skin == "LIGHTBROWN":
+                self.skin = "SOLID"
+                self.skin_color = "LIGHTBROWN"
+            elif self.skin == "DARK":
+                self.skin = "SOLID"
+                self.skin_color = "DARK"
+            elif self.skin == "DARKGREY":
+                self.skin = "SOLID"
+                self.skin_color = "DARKGREY"
+            elif self.skin == "GREY":
+                self.skin = "SOLID"
+                self.skin_color = "GREY"
+            elif self.skin == "DARKSALMON":
+                self.skin = "SOLID"
+                self.skin_color = "DARKSALMON"
+            elif self.skin == "SALMON":
+                self.skin = "SOLID"
+                self.skin_color = "SALMON"
+            elif self.skin == "PEACH":
+                self.skin = "SOLID"
+                self.skin_color = "PEACH"
+            elif self.skin == "DARKBLUE":
+                self.skin = "SOLID"
+                self.skin_color = "DARKBLUE"
+            elif self.skin == "BLUE":
+                self.skin = "SOLID"
+                self.skin_color = "BLUE"
+            elif self.skin == "LIGHTBLUE":
+                self.skin = "SOLID"
+                self.skin_color = "LIGHTBLUE"
+            elif self.skin == "MARBLED":
+                self.skin = "TIP"
+                self.skin_color = "PINK"
+            elif self.skin == "DARKMARBLED":
+                self.skin = "TIP"
+                self.skin_color = "RED"
+            elif self.skin == "LIGHTMARBLED":
+                self.skin = "MARBLE"
+                self.skin_color = "PINK"
+
+
 
         if self.length == 'long':
             if self.cat_sprites['adult'] not in [15, 16, 17, 18, 19, 20, 21, 22, 23]:
@@ -817,7 +878,8 @@ class Pelt:
         }
         self.reverse = choice([True, False])
         # skin chances
-        self.skin = choice(Pelt.skin_sprites)
+        self.skin = choice(Pelt.skin)
+        self.skin_color = choice(Pelt.skin_color)
 
         if self.length != 'long':
             self.cat_sprites['kitten'] = random.randint(0, 2)
