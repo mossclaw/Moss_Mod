@@ -2027,26 +2027,26 @@ class Cat:
             return
 
         # remove accessories if need be
-        if "NOTAIL" in self.pelt.scars and self.pelt.accessory in [
-            "RED FEATHERS",
-            "BLUE FEATHERS",
-            "JAY FEATHERS",
-            "GULL FEATHERS",
-            "SPARROW FEATHERS",
-            "CLOVER",
-            "DAISY"
-        ]:
-            self.pelt.accessory = None
-        if "HALFTAIL" in self.pelt.scars and self.pelt.accessory in [
-            "RED FEATHERS",
-            "BLUE FEATHERS",
-            "JAY FEATHERS",
-            "GULL FEATHERS",
-            "SPARROW FEATHERS",
-            "CLOVER",
-            "DAISY"
-        ]:
-            self.pelt.accessory = None
+    #    if "NOTAIL" in self.pelt.scars and self.pelt.accessory in [
+     #       "RED FEATHERS",
+     #       "BLUE FEATHERS",
+     #       "JAY FEATHERS",
+     #       "GULL FEATHERS",
+     #       "SPARROW FEATHERS",
+    #        "CLOVER",
+    #        "DAISY"
+    #    ]:
+    #        self.pelt.accessory = None
+    #    if "HALFTAIL" in self.pelt.scars and self.pelt.accessory in [
+    #        "RED FEATHERS",
+    #        "BLUE FEATHERS",
+    #        "JAY FEATHERS",
+    #        "GULL FEATHERS",
+    #        "SPARROW FEATHERS",
+    #        "CLOVER",
+   #         "DAISY"
+   #     ]:
+   #         self.pelt.accessory = None
 
         condition = PERMANENT[name]
         new_condition = False
@@ -3409,6 +3409,10 @@ class Cat:
                 "skill_dict": self.skills.get_skill_dict(),
                 "scars": self.pelt.scars if self.pelt.scars else [],
                 "accessory": self.pelt.accessory,
+                "accessory_color": self.pelt.accessory_color,
+                "accessory_color2": self.pelt.accessory_color2,
+                "accessory_pattern": self.pelt.accessory_pattern,
+                "accessory_pattern2": self.pelt.accessory_pattern2,
                 "experience": self.experience,
                 "dead_moons": self.dead_for,
                 "current_apprentice": [appr for appr in self.apprentice],

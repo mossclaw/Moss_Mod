@@ -267,10 +267,10 @@ class Pelt:
                  vitiligo: str = None,
                  points: str = None,
                  accessory: str = None,
-                 accessory_color: str = "RED",
-                 accessory_color2: str = "RED",
-                 accessory_pattern: str = "STRIPES",
-                 accessory_pattern2: str = "STRIPES",
+                 accessory_color: str = None,
+                 accessory_color2: str = None,
+                 accessory_pattern: str = None,
+                 accessory_pattern2: str = None,
                  paralyzed: bool = False,
                  opacity: int = 100,
                  scars: list = None,
@@ -945,6 +945,10 @@ class Pelt:
     def init_accessories(self, age):
         if age == "newborn":
             self.accessory = None
+            self.accessory_color = None
+            self.accessory_color2 = None
+            self.accessory_pattern = None
+            self.accessory_pattern2 = None
             return
 
         acc_display_choice = random.randint(0, 80)
@@ -963,7 +967,7 @@ class Pelt:
         else:
             self.accessory = None
 
-        if not self.accessory_color:
+        if self.accessory != "None":
             if self.accessory in Pelt.layer_accessories:
                 if self.accessory in Pelt.onecolor_nopattern_acc:
                     if self.accessory in Pelt.bug_acc:
