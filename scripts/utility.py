@@ -3186,6 +3186,7 @@ def generate_sprite(
                 fang.blit(ap_pelt, (0, 0))
                 fang.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0),special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(fang, (0, 0))
+                new_sprite.blit(sprites.sprites['acccollars' + "FANG" + cat_sprite], (0, 0), )
                 print("fangcollar drawn")
 
             if cat.pelt.accessory == "BELLCOLLAR":

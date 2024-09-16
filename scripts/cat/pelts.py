@@ -156,10 +156,11 @@ class Pelt:
     twocolor_twopattern_acc = ["BOWCOLLAR"]
 
 
-    flower_acc = ["POPPY", "PETALS", "BULB"]
+    flower_acc = ["POPPY", "PETALS"]
+    leafbase_acc = ["BULB"]
     bug_acc = ["BUTTERFLY", "MOTH", "CICADA"]
     feather_acc = ["FEATHER"]
-    twoleg_acc = ["COLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BELLCOLLAR", "BOWCOLLAR"]
+    twoleg_acc = ["COLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BOWCOLLAR"]
     metal_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
     leaf_acc = ["HERBS"]
 
@@ -179,11 +180,11 @@ class Pelt:
                          'NEON PURPLE']
     metal_colors = ['GOLD', 'SILVER']
     leaf_colors = ['GREEN', 'LIGHT GREEN', 'BRIGHT GREEN', 'DARK GREEN', 'BROWN', 'DARK BROWN', 'BRONZE', 'LIGHT BROWN']
-    flower_colors = ["BLACK", "WHITE", "RED", "DARK ORANGE", "YELLOW", "PALE YELLOW", "CYAN", "LIGHT BLUE", "BLUE",
-                         "DARK BLUE", "PURPLE", "LIGHT PURPLE", "LILAC", "PINK"]
-    bug_colors = ["RED", "DARK ORANGE", "YELLOW", "PALE YELLOW", "CYAN", "LIGHT BLUE", "BLUE",
-                         "DARK BLUE", "PURPLE", "LIGHT PURPLE", "LILAC", "PINK"]
-    feather_colors = ["RED", "DARK ORANGE", "YELLOW", "BLUE", "LIGHT BLUE", "DARK BROWN", "WHITE", "BLACK"]
+    flower_colors = ['BLACK', 'WHITE', 'RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
+                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
+    bug_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
+                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
+    feather_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'BLUE', 'LIGHT BLUE', 'DARK BROWN', 'WHITE', 'BLACK']
 
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
     spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
@@ -947,11 +948,14 @@ class Pelt:
             self.accessory = None
             return
 
-        acc_display_choice = random.randint(0, 80)
+        acc_display_choice = random.randint(1, 1)
+        #acc_display_choice = random.randint(0, 80)
         if age in ['kitten', 'adolescent']:
-            acc_display_choice = random.randint(0, 180)
+            acc_display_choice = random.randint(1, 1)
+            #acc_display_choice = random.randint(0, 180)
         elif age in ['young adult', 'adult']:
-            acc_display_choice = random.randint(0, 100)
+            acc_display_choice = random.randint(1, 1)
+            #acc_display_choice = random.randint(0, 100)
 
         if acc_display_choice == 1:
             self.accessory = choice([
@@ -963,38 +967,54 @@ class Pelt:
         else:
             self.accessory = None
 
-        if self.accessory in Pelt.simple_acc:
-            print("---basic accessory")
-        if self.accessory in Pelt.layer_accessories:
-            print("!!!accessory detected")
-            if self.accessory in Pelt.onecolor_nopattern_acc:
-                if self.accessory in Pelt.bug_acc:
-                    self.accessory_color = choice(Pelt.bug_colors)
-                elif self.accessory in Pelt.flower_acc:
-                    self.accessory_color = choice(Pelt.flower_colors)
-                elif self.accessory in Pelt.feather_acc:
-                    self.accessory_color = choice(Pelt.feather_colors)
-                elif self.accessory in Pelt.leaf_acc:
-                    self.accessory_color = choice(Pelt.leaf_colors)
-            if self.accessory in Pelt.twocolor_nopattern_acc:
-                if self.accessory in Pelt.flower_acc:
-                    self.accessory_color = choice(Pelt.leaf_colors)
-                    self.accessory_color2 = choice(Pelt.flower_colors)
-            if self.accessory in Pelt.onecolor_onepattern_acc:
-                if self.accessory in Pelt.twoleg_acc:
-                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                    self.accessory_pattern = choice(Pelt.accpatterns)
-            if self.accessory in Pelt.twocolor_onepattern_acc:
-                if self.accessory in Pelt.twoleg_acc:
-                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                    self.accessory_pattern = choice(Pelt.accpatterns)
-                    self.accessory_color2 = choice(Pelt.metal_colors)
-            if self.accessory in Pelt.twocolor_twopattern_acc:
-                if self.accessory in Pelt.twoleg_acc:
-                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                    self.accessory_pattern = choice(Pelt.accpatterns)
-                    self.accessory_color2 = choice(Pelt.twoleg_acc_colors)
-                    self.accessory_pattern2 = choice(Pelt.accpatterns)
+
+
+        if self.accessory in Pelt.flower_acc:
+            possible_first_colors = choice(Pelt.flower_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.leafbase_acc:
+            possible_first_colors = choice(Pelt.leaf_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.bug_acc:
+            possible_first_colors = choice(Pelt.bug_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.feather_acc:
+            possible_first_colors = choice(Pelt.feather_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.twoleg_acc:
+            possible_first_colors = choice(Pelt.twoleg_acc_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.metal_acc:
+            possible_first_colors = choice(Pelt.twoleg_acc_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.leaf_acc:
+            possible_first_colors = choice(Pelt.leaf_colors)
+            self.accessory_color = choice([possible_first_colors])
+
+        if self.accessory in Pelt.flower_acc:
+            possible_second_colors = choice(Pelt.flower_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.leafbase_acc:
+            possible_second_colors = choice(Pelt.flower_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.bug_acc:
+            possible_second_colors = choice(Pelt.bug_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.feather_acc:
+            possible_second_colors = choice(Pelt.feather_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.twoleg_acc:
+            possible_second_colors = choice(Pelt.twoleg_acc_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.metal_acc:
+            possible_second_colors = choice(Pelt.metal_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.leaf_acc:
+            possible_second_colors = choice(Pelt.leaf_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+
+        self.accessory_pattern = choice(Pelt.accpatterns)
+        self.accessory_pattern2 = choice(Pelt.accpatterns)
 
     def init_pattern(self):
         if self.name in Pelt.torties:
