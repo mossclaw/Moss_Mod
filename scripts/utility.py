@@ -3253,10 +3253,10 @@ def generate_sprite(
                 collar.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(collar, (0, 0))
-                bow = sprites.sprites['accbase' + "BOW" + cat_sprite].copy().convert_alpha()
+                bow = sprites.sprites['acccollars' + "BOW" + cat_sprite].copy().convert_alpha()
                 bow.blit(ac_pelt, (0, 0))
                 bow.blit(ap_pelt, (0, 0))
-                bow.blit(sprites.sprites['accbase' + "BOW" + cat_sprite], (0, 0),
+                bow.blit(sprites.sprites['acccollars' + "BOW" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(bow, (0, 0))
 
@@ -3322,7 +3322,8 @@ def generate_sprite(
                 acc.blit(ac_pelt, (0, 0))
                 new_sprite.blit(acc, (0, 0))
                 print("OCNP drawn")
-            if cat.pelt.accessory == ["DAISY", "MOTH", "FEATHER"]:
+
+            if cat.pelt.accessory in ["DAISY", "MOTH", "FEATHER"]:
                 new_sprite.blit(sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite], (0, 0))
                 print("daisy/moth/feather details drawn")
 
