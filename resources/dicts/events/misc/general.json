@@ -992,7 +992,7 @@
     "sub_type": ["accessory"],
     "weight": 15,
     "event_text": "m_c and r_c spend the evening chasing cicadas around camp. m_c keeps a trophy of {PRONOUN/m_c/poss} catch on {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["CICADA WINGS", "BLACK CICADA"],
+    "new_accessory": ["CICADA"],
     "m_c": {
       "age": ["young adult", "adult", "senior adult","senior"],
       "relationship_status": ["mates"]
@@ -1283,7 +1283,7 @@
         "sub_type": ["accessory"],
         "weight": 15,
         "event_text": "m_c caught an insect while sneaking outside of the camp and proudly wears its wings as a trophy of {PRONOUN/m_c/poss} journey.",
-        "new_accessory": ["MOTH WINGS", "ROSY MOTH WINGS", "MORPHO BUTTERFLY", "MONARCH BUTTERFLY", "CICADA WINGS", "BLACK CICADA"],
+        "new_accessory": ["CICADA", "MOTH", "BUTTERFLY"],
         "m_c": {
           "status": ["kitten"]
         }
@@ -1407,7 +1407,7 @@
         "sub_type": ["accessory"],
         "weight": 10,
         "event_text": "No matter how hard r_c tries, there's always something stuck in m_c's fur.",
-        "new_accessory": ["HERBS", "PETALS", "DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"],
+        "new_accessory": ["HERBS", "PETALS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"],
         "m_c": {
           "age": ["kitten"],
           "relationship_status": ["child/parent"]
@@ -3882,7 +3882,7 @@
     "sub_type": ["accessory"],
     "weight": 10,
     "event_text": "m_c finds a stray acc_singular in its last moments of life leading them to a new herb gathering spot before {PRONOUN/m_c/subject} {VERB/m_c/have/has} never found before. It gives a final flutter before it gently decends to the ground. Is it a sign from StarClan, or a coincidence? m_c doesnt know but {PRONOUN/m_c/subject} {VERB/m_c/decide/decides} to keep it with {PRONOUN/m_c/object} in its honor.",
-    "new_accessory": ["BLACK CICADA", "CICADA WINGS", "ROSY MOTH WINGS", "MORPHO BUTTERFLY", "MONARCH BUTTERFLY"],
+    "new_accessory": ["CICADA", "MOTH", "BUTTERFLY"],
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
       "status": ["medicine cat"]
