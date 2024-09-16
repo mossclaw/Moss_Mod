@@ -967,37 +967,38 @@ class Pelt:
         else:
             self.accessory = None
 
+        if self.accessory in Pelt.simple_acc:
+            print("---basic accessory")
         if self.accessory in Pelt.layer_accessories:
-            print("accessory detected")
-            if self.accessory_color != "null":
-                if self.accessory in Pelt.onecolor_nopattern_acc:
-                    if self.accessory in Pelt.bug_acc:
-                        self.accessory_color = choice(Pelt.bug_colors)
-                    elif self.accessory in Pelt.flower_acc:
-                        self.accessory_color = choice(Pelt.flower_colors)
-                    elif self.accessory in Pelt.feather_acc:
-                        self.accessory_color = choice(Pelt.feather_colors)
-                    elif self.accessory in Pelt.leaf_acc:
-                        self.accessory_color = choice(Pelt.leaf_colors)
-                if self.accessory in Pelt.twocolor_nopattern_acc:
-                    if self.accessory in Pelt.flower_acc:
-                        self.accessory_color = choice(Pelt.leaf_colors)
-                        self.accessory_color2 = choice(Pelt.flower_colors)
-                if self.accessory in Pelt.onecolor_onepattern_acc:
-                    if self.accessory in Pelt.twoleg_acc:
-                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                        self.accessory_pattern = choice(Pelt.accpatterns)
-                if self.accessory in Pelt.twocolor_onepattern_acc:
-                    if self.accessory in Pelt.twoleg_acc:
-                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                        self.accessory_pattern = choice(Pelt.accpatterns)
-                        self.accessory_color2 = choice(Pelt.metal_colors)
-                if self.accessory in Pelt.twocolor_twopattern_acc:
-                    if self.accessory in Pelt.twoleg_acc:
-                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
-                        self.accessory_pattern = choice(Pelt.accpatterns)
-                        self.accessory_color2 = choice(Pelt.twoleg_acc_colors)
-                        self.accessory_pattern2 = choice(Pelt.accpatterns)
+            print("!!!accessory detected")
+            if self.accessory in Pelt.onecolor_nopattern_acc:
+                if self.accessory in Pelt.bug_acc:
+                    self.accessory_color = choice(Pelt.bug_colors)
+                elif self.accessory in Pelt.flower_acc:
+                    self.accessory_color = choice(Pelt.flower_colors)
+                elif self.accessory in Pelt.feather_acc:
+                    self.accessory_color = choice(Pelt.feather_colors)
+                elif self.accessory in Pelt.leaf_acc:
+                    self.accessory_color = choice(Pelt.leaf_colors)
+            if self.accessory in Pelt.twocolor_nopattern_acc:
+                if self.accessory in Pelt.flower_acc:
+                    self.accessory_color = choice(Pelt.leaf_colors)
+                    self.accessory_color2 = choice(Pelt.flower_colors)
+            if self.accessory in Pelt.onecolor_onepattern_acc:
+                if self.accessory in Pelt.twoleg_acc:
+                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                    self.accessory_pattern = choice(Pelt.accpatterns)
+            if self.accessory in Pelt.twocolor_onepattern_acc:
+                if self.accessory in Pelt.twoleg_acc:
+                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                    self.accessory_pattern = choice(Pelt.accpatterns)
+                    self.accessory_color2 = choice(Pelt.metal_colors)
+            if self.accessory in Pelt.twocolor_twopattern_acc:
+                if self.accessory in Pelt.twoleg_acc:
+                    self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                    self.accessory_pattern = choice(Pelt.accpatterns)
+                    self.accessory_color2 = choice(Pelt.twoleg_acc_colors)
+                    self.accessory_pattern2 = choice(Pelt.accpatterns)
 
     def init_pattern(self):
         if self.name in Pelt.torties:
