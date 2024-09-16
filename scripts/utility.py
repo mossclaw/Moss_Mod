@@ -3171,7 +3171,7 @@ def generate_sprite(
 
                 ac_pelt.blit(ap_pelt, (0, 0))
                 new_sprite.blit(ac_pelt, (0, 0))
-                print("collar drawn")
+
             if cat.pelt.accessory == "FANGCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3187,7 +3187,7 @@ def generate_sprite(
                 fang.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0),special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(fang, (0, 0))
                 new_sprite.blit(sprites.sprites['acccollars' + "FANG" + cat_sprite], (0, 0), )
-                print("fangcollar drawn")
+
 
             if cat.pelt.accessory == "BELLCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
@@ -3209,7 +3209,7 @@ def generate_sprite(
                 collar.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(collar, (0, 0))
                 new_sprite.blit(ac2_pelt, (0, 0))
-                print("bellcollar drawn")
+
             if cat.pelt.accessory == "STUDDEDCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3230,7 +3230,7 @@ def generate_sprite(
                 collar.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(collar, (0, 0))
                 new_sprite.blit(ac2_pelt, (0, 0))
-                print("studdedcollar drawn")
+
             if cat.pelt.accessory == "BOWCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3253,15 +3253,16 @@ def generate_sprite(
                 collar.blit(ap_pelt, (0, 0))
                 collar.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
-                new_sprite.blit(collar, (0, 0))
+
                 bow = sprites.sprites['acccollars' + "BOW" + cat_sprite].copy().convert_alpha()
                 bow.blit(ac_pelt, (0, 0))
                 bow.blit(ap_pelt, (0, 0))
                 bow.blit(sprites.sprites['acccollars' + "BOW" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
+
+                new_sprite.blit(collar, (0, 0))
                 new_sprite.blit(bow, (0, 0))
 
-                print("bowcollar drawn")
             if cat.pelt.accessory == "BANDANA":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3277,7 +3278,7 @@ def generate_sprite(
                 bandana.blit(sprites.sprites['accbase' + "BANDANA" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(bandana, (0, 0))
-                print("bandana drawn")
+
             if cat.pelt.accessory == "HARNESS":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3293,7 +3294,7 @@ def generate_sprite(
                 harness.blit(sprites.sprites['accbase' + "HARNESS" + cat_sprite], (0, 0),
                              special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(harness, (0, 0))
-                print("harness drawn")
+
             if cat.pelt.accessory == "BULB":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3307,12 +3308,12 @@ def generate_sprite(
 
                 leaf = sprites.sprites['accbase' + "BULB" + cat_sprite].copy().convert_alpha()
                 leaf.blit(ac_pelt, (0, 0))
-                bulb = sprites.sprites['accbase' + "BULB" + cat_sprite].copy().convert_alpha()
+                bulb = sprites.sprites['accadd' + "BULB" + cat_sprite].copy().convert_alpha()
                 bulb.blit(ac2_pelt, (0, 0))
+
                 new_sprite.blit(leaf, (0, 0))
                 new_sprite.blit(bulb, (0, 0))
 
-                print("bulb drawn")
             if cat.pelt.accessory in cat.pelt.onecolor_nopattern_acc:
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3322,11 +3323,10 @@ def generate_sprite(
                 acc = sprites.sprites['accbase' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
                 acc.blit(ac_pelt, (0, 0))
                 new_sprite.blit(acc, (0, 0))
-                print("OCNP drawn")
 
             if cat.pelt.accessory in ["DAISY", "MOTH", "FEATHER"]:
                 new_sprite.blit(sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite], (0, 0))
-                print("daisy/moth/feather details drawn")
+
 
 
 
