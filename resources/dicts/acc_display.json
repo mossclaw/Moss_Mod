@@ -187,6 +187,11 @@
     "plural": "bow collars",
     "singular": "bow collar"
   },
+    "STUDDEDCOLLAR": {
+    "default": "studded collar",
+    "plural": "studded collars",
+    "singular": "studded collar"
+  },
   "LUNA MOTH": {
     "default": "luna moth",
     "plural": "luna moths",
