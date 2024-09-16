@@ -276,7 +276,7 @@
     "sub_type": ["accessory"],
     "weight": 5,
     "event_text":  "m_c disappears for a few days, then returns to camp with a acc_singular around {PRONOUN/m_c/poss} neck.",
-    "new_accessory": ["COLLAR"],
+    "new_accessory": ["COLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     }
@@ -555,7 +555,7 @@
     "sub_type": ["accessory"],
     "weight": 10,
     "event_text": "m_c always seems to have acc_plural stuck in {PRONOUN/m_c/poss} fur.",
-    "new_accessory": ["HERBS","PETALS","DRY HERBS", "DRY CATMINT", "DRY LAURELS", "DRY NETTLES", "RED FEATHERS", "BLUE FEATHERS","JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS"],
+    "new_accessory": ["HERBS","PETALS", "DRY CATMINT", "DRY LAURELS", "DRY NETTLES", "FEATHER"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -712,7 +712,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "m_c found a mysterious acc_singular growing in the frost and decided to wear it.",
-    "new_accessory": ["FORGET ME NOTS", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "POPPY", "ORANGE POPPY", "WHITE POPPY", "CYAN POPPY", "PINK POPPY"],
+    "new_accessory": ["FORGET ME NOTS", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "POPPY"],
     "m_c":{
       "age": ["any"],
       "status": ["any"]
@@ -1259,7 +1259,7 @@
         "sub_type": ["accessory"],
         "weight": 15,
         "event_text": "m_c was playing with acc_plural earlier, and decides to wear some of them.",
-        "new_accessory": ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS"],
+        "new_accessory": ["FEATHER"],
         "m_c": {
           "status": ["kitten"]
         }
@@ -1705,7 +1705,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text": "m_c is nearly blindsided by r_c as {PRONOUN/r_c/subject} {VERB/r_c/walk/walks} into camp after a long training day, listening to the kit squeak about a type of feather. r_c leads m_c to the nursery, where {PRONOUN/r_c/subject} carefully put acc_plural in m_c's fur.",
-    "new_accessory": ["BLUE FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS", "JAY FEATHERS", "RED FEATHERS"],
+    "new_accessory": ["FEATHER"],
     "m_c": {
         "age": ["adolescent"]
     },
@@ -3485,7 +3485,7 @@
     "sub_type": ["ceremony", "accessory"],
     "weight": 20,
     "event_text": "r_c feels so lucky to have {PRONOUN/r_c/poss} own sibling become a medicine cat apprentice. Knowing how time consuming it is to gather herbs, r_c spends a long time gathering up acc_plural to help out m_c. While m_c appreciates the efforts, none of these are particularly useful. Instead m_c uses the acc_plural to decorate {PRONOUN/m_c/poss} pelt.",
-    "new_accessory": ["HERBS", "DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"],
+    "new_accessory": ["HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"],
     "m_c": {
       "status": ["medicine cat apprentice"],
       "relationship_status":["siblings"]
@@ -3721,7 +3721,7 @@
     "sub_type": ["accessory"],
     "weight": 5,
     "event_text":  "m_c has been hanging around a group of scary-looking rogues... and has a acc_singular to prove it!",
-    "new_accessory": ["DOGCOLLAR"],
+    "new_accessory": ["FANGCOLLAR"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     }
@@ -3733,7 +3733,7 @@
     "sub_type": ["accessory"],
     "weight": 10,
     "event_text":  "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
-    "new_accessory": ["DOGCOLLAR"],
+    "new_accessory": ["FANGCOLLAR"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
         "skill": ["ROGUE,0"]
@@ -3746,7 +3746,7 @@
     "sub_type": ["accessory"],
     "weight": 10,
     "event_text":  "m_c dares any cat to ask about {PRONOUN/m_c/poss} new acc_singular.",
-    "new_accessory": ["DOGCOLLAR"],
+    "new_accessory": ["FANGCOLLAR"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
         "trait": ["bloodthirsty", "fierce"]
@@ -3818,7 +3818,7 @@
     "sub_type": ["accessory"],
     "weight": 20,
     "event_text":  "r_c found a little patch of acc_plural and decided to gift them to m_c.",
-    "new_accessory": ["POPPY", "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY", "BULB WHITE", "BULB YELLOW", "BULB ORANGE", "BULB PINK", "BULB BLUE", "LAVENDER", "HEATHER", "GORSE", "LILY OF THE VALLEY", "BLUEBELLS", "FORGET ME NOTS"],
+    "new_accessory": ["POPPY", "BULB", "LAVENDER", "HEATHER", "GORSE", "LILY OF THE VALLEY", "BLUEBELLS", "FORGET ME NOTS"],
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     },
@@ -3833,7 +3833,7 @@
     "subtype": ["accessory", "romance"],
     "weight": 10,
     "event_text": "Flowers can be so pretty, even before they bloom, just like m_c. r_c blushes as {PRONOUN/r_c/subject} {VERB/r_c/see/sees} m_c wear the acc_singular {PRONOUN/r_c/subject} got {PRONOUN/m_c/object}.",
-    "new_accessory": ["BULB WHITE", "BULB YELLOW", "BULB ORANGE", "BULB PINK", "BULB BLUE"],
+    "new_accessory": ["BULB"],
     "m_c": {
       "age": ["young adult", "adult", "senior adult"]
     },

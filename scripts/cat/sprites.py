@@ -130,7 +130,8 @@ class Sprites:
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
             'collars', 'bellcollars', 'bowcollars', 'nyloncollars', 'bloodcollars',
-            'medcatherbs',  'wild', 'mossherbs', 'kittypetacc'
+            'medcatherbs',  'wild', 'mossherbs', 'kittypetacc',
+            'accbase', 'accadd', 'accpattern', 'collaradd'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -342,108 +343,83 @@ class Sprites:
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay
         medcatherbs_data = [
-            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY", "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY"],
-            ["BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "HERBS", "PETALS", "NETTLE", "HEATHER", "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER"],
-            ["OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB WHITE", "BULB YELLOW", "BULB PINK", "BULB BLUE", "CLOVER", "DAISY", "BULB ORANGE"]
+            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
+            ["BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "NOPE", "NOPE", "NETTLE", "HEATHER", "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER"],
+            ["OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "NOPE", "NOPE", "NOPE", "NOPE", "CLOVER", "NOPE", "NOPE"]
         ]
         dryherbs_data = [
-            ["DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"]
-        ]
-        wild_data = [
-            ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS", "MOTH WINGS", "ROSY MOTH WINGS", "MORPHO BUTTERFLY", "MONARCH BUTTERFLY", "CICADA WINGS", "BLACK CICADA"]
-        ]
-
-        collars_data = [
-            ["CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME"],
-            ["GREEN", "RAINBOW", "BLACK", "SPIKES", "WHITE"],
-            ["PINK", "PURPLE", "MULTI", "INDIGO"]
-        ]
-
-        bellcollars_data = [
-            ["CRIMSONBELL", "BLUEBELL", "YELLOWBELL", "CYANBELL", "REDBELL", "LIMEBELL"],
-            ["GREENBELL", "RAINBOWBELL", "BLACKBELL", "SPIKESBELL", "WHITEBELL"],
-            ["PINKBELL", "PURPLEBELL", "MULTIBELL", "INDIGOBELL"]
-        ]
-
-        bowcollars_data = [
-            ["CRIMSONBOW", "BLUEBOW", "YELLOWBOW", "CYANBOW", "REDBOW", "LIMEBOW"],
-            ["GREENBOW", "RAINBOWBOW", "BLACKBOW", "SPIKESBOW", "WHITEBOW"],
-            ["PINKBOW", "PURPLEBOW", "MULTIBOW", "INDIGOBOW"]
-        ]
-
-        nyloncollars_data = [
-            ["CRIMSONNYLON", "BLUENYLON", "YELLOWNYLON", "CYANNYLON", "REDNYLON", "LIMENYLON"],
-            ["GREENNYLON", "RAINBOWNYLON", "BLACKNYLON", "SPIKESNYLON", "WHITENYLON"],
-            ["PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON"]
+            ["NOPE", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"]
         ]
 
         mossherb_data = [
-            ["LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "IVY", "YELLOW DAISY", "BUTTERFLIES"],
+            ["LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "IVY", "NOPE", "BUTTERFLIES"],
             ["LUCKY CLOVER", "ANTLERS", "STICK", "FIREFLIES", "WREATH", "FLOWER WREATH"],
             ["SPROUT", "MUSHROOM", "LILAC", "SEAWEED", "LILY PAD", "MONSTERA"],
             ["WILD FLOWERS", "TWIGS", "SHELL", "CRYSTAL", "SERPENT", "MOSS BALL"]
         ]
 
         kittypetacc_data = [
-            ["SUNGLASSES", "BLUE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "RED BANDANA", "ORANGE BANDANA"],
-            ["PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA", "RED HARNESS", "ORANGE HARNESS"],
-            ["YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS"],
-            ["PINK HARNESS", "COWBOY HAT"]
-        ]
-
-        bloodcollars_data = [
-            ["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG"],
-            ["GREENFANG", "RAINBOWFANG", "BLACKFANG", "SPIKESFANG", "WHITEFANG"],
-            ["PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]
+            ["SUNGLASSES", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
+            ["NOPE", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
+            ["NOPE", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
+            ["NOPE", "COWBOY HAT"]
         ]
 
         # medcatherbs
         for row, herbs in enumerate(medcatherbs_data):
             for col, herb in enumerate(herbs):
-                self.make_group('medcatherbs', (col, row), f'acc_herbs{herb}')
+                self.make_group('medcatherbs', (col, row), f'acc{herb}')
         #dryherbs
         for row, dry in enumerate(dryherbs_data):
             for col, dryherbs in enumerate(dry):
-                self.make_group('medcatherbs', (col, 3), f'acc_herbs{dryherbs}')     
-        # wild
-        for row, wilds in enumerate(wild_data):
-            for col, wild in enumerate(wilds):
-                self.make_group('wild', (col, 0), f'acc_wild{wild}')
-
-        # collars
-        for row, collars in enumerate(collars_data):
-            for col, collar in enumerate(collars):
-                self.make_group('collars', (col, row), f'collars{collar}')
-
-        # bellcollars
-        for row, bellcollars in enumerate(bellcollars_data):
-            for col, bellcollar in enumerate(bellcollars):
-                self.make_group('bellcollars', (col, row), f'collars{bellcollar}')
-
-        # bowcollars
-        for row, bowcollars in enumerate(bowcollars_data):
-            for col, bowcollar in enumerate(bowcollars):
-                self.make_group('bowcollars', (col, row), f'collars{bowcollar}')
-
-        # nyloncollars
-        for row, nyloncollars in enumerate(nyloncollars_data):
-            for col, nyloncollar in enumerate(nyloncollars):
-                self.make_group('nyloncollars', (col, row), f'collars{nyloncollar}')
+                self.make_group('medcatherbs', (col, 3), f'acc{dryherbs}')
 
         # mossherbs
         for row, mossherbs in enumerate(mossherb_data):
             for col, mossherb in enumerate(mossherbs):
-                self.make_group('mossherbs', (col, row), f'acc_moss{mossherb}')
+                self.make_group('mossherbs', (col, row), f'acc{mossherb}')
 
         # kittypetacc
         for row, kittypetaccs in enumerate(kittypetacc_data):
             for col, kittypetacc in enumerate(kittypetaccs):
-                self.make_group('kittypetacc', (col, row), f'acc_kitty{kittypetacc}')
+                self.make_group('kittypetacc', (col, row), f'acc{kittypetacc}')
 
-        # bloodcollars
-        for row, bloodcollars in enumerate(bloodcollars_data):
-            for col, bloodcollar in enumerate(bloodcollars):
-                self.make_group('bloodcollars', (col, row), f'dogcollars{bloodcollar}')
+        # please im begging you
+        accbases_data = [
+            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
+            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+        ]
+
+        for row, accbases in enumerate(accbases_data):
+            for col, accbase in enumerate(accbases):
+                self.make_group('accbase', (col, row), f'accbase{accbase}')
+
+        accadds_data = [
+            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
+            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+        ]
+
+        for row, accadds in enumerate(accadds_data):
+            for col, accadd in enumerate(accadds):
+                self.make_group('accadd', (col, row), f'accadd{accadd}')
+
+        accpatterns_data = [
+            ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID"],
+            ["ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS"],
+            ["BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO", "CONVERSE"]
+        ]
+
+        for row, accpatterns in enumerate(accpatterns_data):
+            for col, accpattern in enumerate(accpatterns):
+                self.make_group('accpattern', (col, row), f'accpattern{accpattern}')
+
+        acccollars_data = [
+            ["BELL", "BOW", "STUDDED", "FANG"]
+        ]
+
+        for row, acccollars in enumerate(acccollars_data):
+            for col, acccollars in enumerate(acccollars):
+                self.make_group('collaradd', (col, row), f'acccollars{acccollars}')
 
     def load_symbols(self):
         """

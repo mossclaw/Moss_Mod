@@ -128,44 +128,62 @@ class Pelt:
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
 
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
-                         "ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY",
-                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "HERBS", "PETALS", "NETTLE", "HEATHER",
+                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "NETTLE", "HEATHER",
                          "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
-                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB WHITE", "BULB YELLOW", "BULB ORANGE",
-                         "BULB PINK", "BULB BLUE", "CLOVER", "DAISY",
-                         "CLOVER", "DAISY", "LILY OF THE VALLEY", "HEATHER", "SNAPDRAGON", "GORSE", "BULB WHITE",
-                         "BULB YELLOW",
-                         "DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"
+                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB", "CLOVER", "DAISY",
+                         "HEATHER", "SNAPDRAGON", "GORSE",
+                        "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"
                          ]
-    wild_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS",
-                        "MOTH WINGS", "ROSY MOTH WINGS", "MORPHO BUTTERFLY", "MONARCH BUTTERFLY", "CICADA WINGS",
-                        "BLACK CICADA"]
-
-    tail_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS", "CLOVER",
-                        "DAISY"]
+    wild_accessories = ["FEATHER", "MOTH", "BUTTERFLY", "CICADA"]
+    tail_accessories = ["NOWAY"]
     living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
-    plant2_accessories = ["YELLOW DAISY", "IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
+    plant2_accessories = ["IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
     wild2_accessories = ["BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT"]
     beach_accessories = ["SEAWEED", "SHELL"]
     mountain_accessories = ["CRYSTAL"]
     plains_accessories = ["SPROUT"]
     forest_accessories = ["MUSHROOM"]
     special_accessories = ["STICK", "MOSS BALL", "LILY PAD"]
-    collars = [
-        "CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME", "GREEN", "RAINBOW",
-        "BLACK", "SPIKES", "WHITE", "PINK", "PURPLE", "MULTI", "INDIGO", "CRIMSONBELL", "BLUEBELL",
-        "YELLOWBELL", "CYANBELL", "REDBELL", "LIMEBELL", "GREENBELL",
-        "RAINBOWBELL", "BLACKBELL", "SPIKESBELL", "WHITEBELL", "PINKBELL", "PURPLEBELL",
-        "MULTIBELL", "INDIGOBELL", "CRIMSONBOW", "BLUEBOW", "YELLOWBOW", "CYANBOW", "REDBOW",
-        "LIMEBOW", "GREENBOW", "RAINBOWBOW", "BLACKBOW", "SPIKESBOW", "WHITEBOW", "PINKBOW",
-        "PURPLEBOW", "MULTIBOW", "INDIGOBOW", "CRIMSONNYLON", "BLUENYLON", "YELLOWNYLON", "CYANNYLON",
-        "REDNYLON", "LIMENYLON", "GREENNYLON", "RAINBOWNYLON",
-        "BLACKNYLON", "SPIKESNYLON", "WHITENYLON", "PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON",
-    ]
-    dog_collars = ["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG", "GREENFANG", "RAINBOWFANG",
-        "BLACKFANG", "SPIKESFANG", "WHITEFANG", "PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]
-    kitty_accessories = ["SUNGLASSES", "RED BANDANA", "ORANGE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "BLUE BANDANA", "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA",
-                         "RED HARNESS", "ORANGE HARNESS", "YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS", "PINK HARNESS", "COWBOY HAT"]
+
+    collars = ["COLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
+    kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS"]
+    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+
+    onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER"]
+    twocolor_nopattern_acc = ["BULB"]
+    onecolor_onepattern_acc = ["COLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
+    twocolor_onepattern_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
+    twocolor_twopattern_acc = ["BOWCOLLAR"]
+
+
+    flower_acc = ["POPPY", "PETALS", "BULB"]
+    bug_acc = ["BUTTERFLY", "MOTH", "CICADA"]
+    feather_acc = ["FEATHER"]
+    twoleg_acc = ["COLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BELLCOLLAR", "BOWCOLLAR"]
+    metal_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
+    leaf_acc = ["HERBS"]
+
+    accpatterns = ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID",
+                   "ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS",
+                   "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO", "CONVERSE"]
+
+    simple_acc = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "BLUEBELLS",
+                  "LILY OF THE VALLEY", "SNAPDRAGON", "NETTLE", "HEATHER", "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
+                  "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "CLOVER", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS",
+                  "LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES", "IVY", "LUCKY CLOVER", "WREATH",
+                  "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA", "BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT",
+                  "SEAWEED", "SHELL", "CRYSTAL", "SPROUT", "MUSHROOM", "STICK", "MOSS BALL", "LILYPAD", "SUNGLASSES", "COWBOY HAT"]
+
+    twoleg_acc_colors = ['BLACK', 'WHITE', 'RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
+                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK', 'GREEN', 'LIME', 'BRIGHT PURPLE', 'HOT PINK',
+                         'NEON PURPLE']
+    metal_colors = ['GOLD', 'SILVER']
+    leaf_colors = ['GREEN', 'LIGHT GREEN', 'BRIGHT GREEN', 'DARK GREEN', 'BROWN', 'DARK BROWN', 'BRONZE', 'LIGHT BROWN']
+    flower_colors = ["BLACK", "WHITE", "RED", "DARK ORANGE", "YELLOW", "PALE YELLOW", "CYAN", "LIGHT BLUE", "BLUE",
+                         "DARK BLUE", "PURPLE", "LIGHT PURPLE", "LILAC", "PINK"]
+    bug_colors = ["RED", "DARK ORANGE", "YELLOW", "PALE YELLOW", "CYAN", "LIGHT BLUE", "BLUE",
+                         "DARK BLUE", "PURPLE", "LIGHT PURPLE", "LILAC", "PINK"]
+    feather_colors = ["RED", "DARK ORANGE", "YELLOW", "BLUE", "LIGHT BLUE", "DARK BROWN", "WHITE", "BLACK"]
 
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
     spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
@@ -249,6 +267,10 @@ class Pelt:
                  vitiligo: str = None,
                  points: str = None,
                  accessory: str = None,
+                 accessory_color: str = "RED",
+                 accessory_color2: str = "RED",
+                 accessory_pattern: str = "STRIPES",
+                 accessory_pattern2: str = "STRIPES",
                  paralyzed: bool = False,
                  opacity: int = 100,
                  scars: list = None,
@@ -277,6 +299,10 @@ class Pelt:
         self.length = length
         self.points = points
         self.accessory = accessory
+        self.accessory_color = accessory_color
+        self.accessory_color2 = accessory_color2
+        self.accessory_pattern = accessory_pattern
+        self.accessory_pattern2 = accessory_pattern2
         self.paralyzed = paralyzed
         self.opacity = opacity
         self.scars = scars if isinstance(scars, list) else []
@@ -936,6 +962,51 @@ class Pelt:
             ])
         else:
             self.accessory = None
+
+        if not self.accessory_color:
+            if self.accessory in Pelt.layer_accessories:
+                if self.accessory in Pelt.onecolor_nopattern_acc:
+                    if self.accessory in Pelt.bug_acc:
+                        self.accessory_color = choice(Pelt.bug_colors)
+                    elif self.accessory in Pelt.flower_acc:
+                        self.accessory_color = choice(Pelt.flower_colors)
+                    elif self.accessory in Pelt.feather_acc:
+                        self.accessory_color = choice(Pelt.feather_colors)
+                    elif self.accessory in Pelt.leaf_acc:
+                        self.accessory_color = choice(Pelt.leaf_colors)
+                    self.accessory_color2 = None
+                    self.accessory_pattern = None
+                    self.accessory_pattern2 = None
+                if self.accessory in Pelt.twocolor_nopattern_acc:
+                    if self.accessory in Pelt.flower_acc:
+                        self.accessory_color = choice(Pelt.leaf_colors)
+                        self.accessory_color2 = choice(Pelt.flower_colors)
+                    self.accessory_pattern = None
+                    self.accessory_pattern2 = None
+                if self.accessory in Pelt.onecolor_onepattern_acc:
+                    if self.accessory in Pelt.twoleg_acc:
+                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                        self.accessory_pattern = choice(Pelt.accpatterns)
+                    self.accessory_color2 = None
+                    self.accessory_pattern2 = None
+                if self.accessory in Pelt.twocolor_onepattern_acc:
+                    if self.accessory in Pelt.twoleg_acc:
+                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                        self.accessory_pattern = choice(Pelt.accpatterns)
+                        self.accessory_color2 = choice(Pelt.metal_colors)
+                    self.accessory_pattern2 = None
+                if self.accessory in Pelt.twocolor_twopattern_acc:
+                    if self.accessory in Pelt.twoleg_acc:
+                        self.accessory_color = choice(Pelt.twoleg_acc_colors)
+                        self.accessory_pattern = choice(Pelt.accpatterns)
+                        self.accessory_color2 = choice(Pelt.twoleg_acc_colors)
+                        self.accessory_pattern2 = choice(Pelt.accpatterns)
+            else:
+                self.accessory_color = None
+                self.accessory_color2 = None
+                self.accessory_pattern = None
+                self.accessory_pattern2 = None
+
 
     def init_pattern(self):
         if self.name in Pelt.torties:
