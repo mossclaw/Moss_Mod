@@ -3249,7 +3249,7 @@ def generate_sprite(
                 ac2_pelt = sprites.sprites['acccollars' + "BOW" + cat_sprite].copy().convert_alpha()
                 ac2_pelt.blit(ac2_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-                ap2_pelt = sprites.sprites['accpattern' + cat.pelt.accessory_pattern + cat_sprite].copy().convert_alpha()
+                ap2_pelt = sprites.sprites['accpattern' + cat.pelt.accessory_pattern2 + cat_sprite].copy().convert_alpha()
                 ap2_pelt.blit(ap2_pelt, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
                 collar = sprites.sprites['accbase' + "COLLAR" + cat_sprite].copy().convert_alpha()
@@ -3259,8 +3259,8 @@ def generate_sprite(
                             special_flags=pygame.BLEND_RGBA_MULT)
 
                 bow = sprites.sprites['acccollars' + "BOW" + cat_sprite].copy().convert_alpha()
-                bow.blit(ac_pelt, (0, 0))
-                bow.blit(ap_pelt, (0, 0))
+                bow.blit(ac2_pelt, (0, 0))
+                bow.blit(ap2_pelt, (0, 0))
                 bow.blit(sprites.sprites['acccollars' + "BOW" + cat_sprite], (0, 0),
                             special_flags=pygame.BLEND_RGBA_MULT)
 
