@@ -130,10 +130,10 @@ def json_load():
                 tint=cat["tint"] if "tint" in cat else "none",
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],
-                accessory_color=cat["accessory_color"] if "accessory_color" in cat else Pelt.twoleg_acc_colors,
-                accessory_color2=cat["accessory_color2"] if "accessory_color2" in cat else Pelt.twoleg_acc_colors,
-                accessory_pattern=cat["accessory_pattern"] if "accessory_pattern" in cat else Pelt.accpatterns,
-                accessory_pattern2=cat["accessory_pattern2"] if "accessory_pattern2" in cat else Pelt.accpatterns,
+                accessory_color=cat["accessory_color"] if "accessory_color" in cat else "RED",
+                accessory_color2=cat["accessory_color2"] if "accessory_color2" in cat else "RED",
+                accessory_pattern=cat["accessory_pattern"] if "accessory_pattern" in cat else "STRIPES",
+                accessory_pattern2=cat["accessory_pattern2"] if "accessory_pattern2" in cat else "STRIPES",
                 opacity=cat["opacity"] if "opacity" in cat else 100,
             )
 

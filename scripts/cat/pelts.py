@@ -449,6 +449,76 @@ class Pelt:
                 self.skin = "MARBLE"
                 self.skin_color = "PINK"
 
+        old_poppy = ["ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY"]
+        old_bulb =["BULB WHITE", "BULB YELLOW", "BULB PINK", "BULB BLUE", "BULB ORANGE"]
+        old_feathers = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS"]
+        old_cicada = ["CICADA WINGS", "BLACK CICADA"]
+        old_moth = ["MOTH WINGS", "ROSY MOTH WINGS"]
+        old_flutter = ["MORPHO BUTTERFLY", "MONARCH BUTTERFLY"]
+        #"DRY HERBS"
+        old_collars = [
+            "CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME",
+            "GREEN", "RAINBOW", "BLACK", "SPIKES", "WHITE",
+            "PINK", "PURPLE", "MULTI", "INDIGO"]
+        old_bellcollars = [
+            "CRIMSONBELL", "BLUEBELL", "YELLOWBELL", "CYANBELL", "REDBELL", "LIMEBELL",
+            "GREENBELL", "RAINBOWBELL", "BLACKBELL", "SPIKESBELL", "WHITEBELL",
+            "PINKBELL", "PURPLEBELL", "MULTIBELL", "INDIGOBELL"]
+        old_bowcollars = [
+            "CRIMSONBOW", "BLUEBOW", "YELLOWBOW", "CYANBOW", "REDBOW", "LIMEBOW",
+            "GREENBOW", "RAINBOWBOW", "BLACKBOW", "SPIKESBOW", "WHITEBOW",
+            "PINKBOW", "PURPLEBOW", "MULTIBOW", "INDIGOBOW"]
+        old_nyloncollars = [
+            "CRIMSONNYLON", "BLUENYLON", "YELLOWNYLON", "CYANNYLON", "REDNYLON", "LIMENYLON",
+            "GREENNYLON", "RAINBOWNYLON", "BLACKNYLON", "SPIKESNYLON", "WHITENYLON",
+            "PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON"]
+        old_bloodcollars = ["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG",
+                           "GREENFANG", "RAINBOWFANG", "BLACKFANG", "SPIKESFANG", "WHITEFANG",
+                           "PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]
+        old_harness =  ["RED HARNESS", "ORANGE HARNESS",
+            "YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS",
+            "PINK HARNESS"]
+        old_bandana = ["BLUE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "RED BANDANA", "ORANGE BANDANA",
+            "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA"]
+
+        if self.accessory in old_poppy:
+            self.accessory = "POPPY"
+        if self.accessory in old_bulb:
+            self.accessory = "BULB"
+            self.accessory_color = "GREEN"
+            self.accessory_color2 = "ORANGE"
+        if self.accessory in old_feathers:
+            self.accessory = "FEATHER"
+        if self.accessory in old_cicada:
+            self.accessory = "CICADA"
+        if self.accessory in old_moth:
+            self.accessory = "MOTH"
+        if self.accessory in old_flutter:
+            self.accessory = "BUTTERFLY"
+        if self.accessory in old_collars:
+            self.accessory = "COLLAR"
+        if self.accessory in old_bellcollars:
+            self.accessory = "BELLCOLLAR"
+            self.accessory_color2 = "GOLD"
+        if self.accessory in old_nyloncollars:
+            self.accessory = "STUDDEDCOLLAR"
+        if self.accessory in old_bloodcollars:
+            self.accessory = "FANGCOLLAR"
+        if self.accessory in old_bowcollars:
+            self.accessory = "BELLCOLLAR"
+        if self.accessory == "DRY HERBS":
+            self.accessory = "HERBS"
+            self.accessory_color = "BROWN"
+        if self.accessory == "YELLOW DAISY":
+            self.accessory = "DAISY"
+            self.accessory_color = "YELLOW"
+        if self.accessory in old_harness:
+            self.accessory = "HARNESS"
+        if self.accessory in old_bandana:
+            self.accessory = "BANDANA"
+
+
+
 
 
         if self.length == 'long':

@@ -129,8 +129,7 @@ class Sprites:
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
-            'collars', 'bellcollars', 'bowcollars', 'nyloncollars', 'bloodcollars',
-            'medcatherbs',  'wild', 'mossherbs', 'kittypetacc',
+            'medcatherbs', 'mossherbs', 'kittypetacc',
             'accbase', 'accadd', 'accpattern', 'collaradd'
 
         ]:

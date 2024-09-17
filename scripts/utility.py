@@ -3169,8 +3169,12 @@ def generate_sprite(
                 ap_pelt = sprites.sprites['accpattern' + cat.pelt.accessory_pattern + cat_sprite].copy().convert_alpha()
                 ap_pelt.blit(ap_pelt, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-                ac_pelt.blit(ap_pelt, (0, 0))
-                new_sprite.blit(ac_pelt, (0, 0))
+                collar = sprites.sprites['accbase' + "COLLAR" + cat_sprite].copy().convert_alpha()
+                collar.blit(ac_pelt, (0, 0))
+                collar.blit(ap_pelt, (0, 0))
+                collar.blit(sprites.sprites['accbase' + "COLLAR" + cat_sprite], (0, 0),
+                            special_flags=pygame.BLEND_RGBA_MULT)
+                new_sprite.blit(collar, (0, 0))
 
             if cat.pelt.accessory == "FANGCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
