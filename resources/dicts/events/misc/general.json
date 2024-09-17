@@ -276,7 +276,7 @@
     "sub_type": ["accessory"],
     "weight": 5,
     "event_text":  "m_c disappears for a few days, then returns to camp with a acc_singular around {PRONOUN/m_c/poss} neck.",
-    "new_accessory": ["COLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR"],
+    "new_accessory": ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     }
@@ -3765,7 +3765,7 @@
     }
   },
   {
-    "event_id": "gen_misc_any_acc_COWBOY1",
+    "event_id": "gen_misc_any_acc_COWBOY2",
     "location": ["any"],
     "season": ["any"],
     "sub_type": ["accessory"],
@@ -3777,7 +3777,7 @@
     }
   },
   {
-    "event_id": "gen_misc_any_acc_COWBOY2",
+    "event_id": "gen_misc_any_acc_SUNGLASSES",
     "location": ["any"],
     "season": ["any"],
     "sub_type": ["accessory"],

@@ -118,12 +118,12 @@
     "singular": "cicada wing"
   },
   "CLOVER": {
-    "default": "clover tail",
+    "default": "clovers",
     "plural": "clovers",
     "singular": "bunch of clovers"
   },
   "DAISY": {
-    "default": "daisy tail",
+    "default": "daisies",
     "plural": "daisies",
     "singular": "bunch of daisies"
   },
@@ -172,7 +172,7 @@
     "plural": "monarch butterfly wings",
     "singular": "monarch butterfly"
   },
-  "COLLAR": {
+  "LEATHERCOLLAR": {
     "default": "leather collar",
     "plural": "leather collars",
     "singular": "leather collar"

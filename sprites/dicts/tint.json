@@ -49,7 +49,7 @@
     "COFFEE": "brown",
     "PALE EMBER": "warm",
     "SANDY": "brown",
-    "HEATHER BLUE": "cool",
+    "HEATHER BLUE": "hb",
     "COCOA": "brown",
     "WARM HONEY": "warm",
     "CHOCOLATE": "brown",
@@ -64,7 +64,8 @@
     "cool": ["blue", "purple", "black", "willow", "lilac", "plum", "cadet", "dilute"],
     "white": ["yellow", "tan", "cream"],
     "monochrome": ["blue", "black", "bluegray", "cadet", "dilute", "cooldilute"],
-    "brown": ["yellow", "purple", "black", "plum", "lilac", "cadet", "bluegray", "dilute", "cooldilute"]
+    "brown": ["yellow", "purple", "black", "plum", "lilac", "cadet", "bluegray", "dilute", "cooldilute"],
+    "hb": ["blue", "black", "willow", "dilute", "cooldilute"]
   },
   "tint_colours":
   {

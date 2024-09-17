@@ -889,6 +889,23 @@ class ProfileScreen(Screens):
             output += "accessory: " + str(
                 ACC_DISPLAY[the_cat.pelt.accessory]["default"]
             )
+            if the_cat.pelt.accessory_color != "DEFAULT":
+                if the_cat.pelt.accessory == "BOWCOLLAR":
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " collar, " + str(the_cat.pelt.accessory_color2.lower()) + " " + str(the_cat.pelt.accessory_pattern2.lower()) + " bow)"
+                elif the_cat.pelt.accessory == "BELLCOLLAR":
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " collar, " + str(the_cat.pelt.accessory_color2.lower()) + " bell)"
+                elif the_cat.pelt.accessory == "STUDDEDCOLLAR":
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " collar, " + str(the_cat.pelt.accessory_color2.lower()) + " buttons)"
+                elif the_cat.pelt.accessory in the_cat.pelt.leafbase_acc:
+                    output += " (" + str(the_cat.pelt.accessory_color2.lower()) + " flower with " + str(the_cat.pelt.accessory_color.lower()) + " leaves)"
+                elif the_cat.pelt.accessory in the_cat.pelt.twoleg_acc:
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + ")"
+                elif the_cat.pelt.accessory in the_cat.pelt.layer_accessories:
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + ")"
+                else:
+                    None
+        else:
+            None
             # NEWLINE ----------
 
         # PARENTS

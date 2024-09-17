@@ -366,7 +366,7 @@ class HandleShortEvents:
             acc_list.extend(pelts.wild_accessories)
         if "PLANT" in possible_accs:
             acc_list.extend(pelts.plant_accessories)
-        if "COLLAR" in possible_accs:
+        if "COLLARS" in possible_accs:
             acc_list.extend(pelts.collars)
         if "WILD2" in possible_accs:
             acc_list.extend(pelts.wild2_accessories)
@@ -392,48 +392,48 @@ class HandleShortEvents:
             self.main_cat.pelt.accessory = random.choice(acc_list)
 
             if self.main_cat.pelt.accessory in Pelt.flower_acc:
-                possible_first_colors = random.choice(Pelt.flower_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                flower_possible_first_colors = random.choice(Pelt.flower_colors)
+                self.main_cat.pelt.accessory_color = random.choice([flower_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.leafbase_acc:
-                possible_first_colors = random.choice(Pelt.leaf_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                leafbase_possible_first_colors = random.choice(Pelt.leaf_colors)
+                self.main_cat.pelt.accessory_color = random.choice([leafbase_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.bug_acc:
-                possible_first_colors = random.choice(Pelt.bug_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                bug_possible_first_colors = random.choice(Pelt.bug_colors)
+                self.main_cat.pelt.accessory_color = random.choice([bug_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.feather_acc:
-                possible_first_colors = random.choice(Pelt.feather_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                feather_possible_first_colors = random.choice(Pelt.feather_colors)
+                self.main_cat.pelt.accessory_color = random.choice([feather_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.twoleg_acc:
-                possible_first_colors = random.choice(Pelt.twoleg_acc_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                twoleg_possible_first_colors = random.choice(Pelt.twoleg_acc_colors)
+                self.main_cat.pelt.accessory_color = random.choice([twoleg_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.metal_acc:
-                possible_first_colors = random.choice(Pelt.twoleg_acc_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                metal_possible_first_colors = random.choice(Pelt.twoleg_acc_colors)
+                self.main_cat.pelt.accessory_color = random.choice([metal_possible_first_colors])
             if self.main_cat.pelt.accessory in Pelt.leaf_acc:
-                possible_first_colors = random.choice(Pelt.leaf_colors)
-                self.main_cat.pelt.accessory_color = random.choice([possible_first_colors])
+                leaf_possible_first_colors = random.choice(Pelt.leaf_colors)
+                self.main_cat.pelt.accessory_color = random.choice([leaf_possible_first_colors])
 
             if self.main_cat.pelt.accessory in Pelt.flower_acc:
-                possible_second_colors = random.choice(Pelt.flower_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                flower2_possible_second_colors = random.choice(Pelt.flower_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([flower2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.leafbase_acc:
-                possible_second_colors = random.choice(Pelt.flower_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                leafbase2_possible_second_colors = random.choice(Pelt.flower_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([leafbase2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.bug_acc:
-                possible_second_colors = random.choice(Pelt.bug_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                bug2_possible_second_colors = random.choice(Pelt.bug_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([bug2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.feather_acc:
-                possible_second_colors = random.choice(Pelt.feather_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                feather2_possible_second_colors = random.choice(Pelt.feather_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([feather2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.twoleg_acc:
-                possible_second_colors = random.choice(Pelt.twoleg_acc_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                twoleg2_possible_second_colors = random.choice(Pelt.twoleg_acc_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([twoleg2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.metal_acc:
-                possible_second_colors = random.choice(Pelt.metal_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                metal2_possible_second_colors = random.choice(Pelt.metal_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([metal2_possible_second_colors])
             if self.main_cat.pelt.accessory in Pelt.leaf_acc:
-                possible_second_colors = random.choice(Pelt.leaf_colors)
-                self.main_cat.pelt.accessory_color2 = random.choice([possible_second_colors])
+                leaf2_possible_second_colors = random.choice(Pelt.leaf_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([leaf2_possible_second_colors])
 
             self.main_cat.pelt.accessory_pattern = random.choice(Pelt.accpatterns)
             self.main_cat.pelt.accessory_pattern2 = random.choice(Pelt.accpatterns)

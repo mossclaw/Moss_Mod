@@ -145,22 +145,22 @@ class Pelt:
     forest_accessories = ["MUSHROOM"]
     special_accessories = ["STICK", "MOSS BALL", "LILY PAD"]
 
-    collars = ["COLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
+    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
     kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS"]
     layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
 
     onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER"]
     twocolor_nopattern_acc = ["BULB"]
-    onecolor_onepattern_acc = ["COLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
+    onecolor_onepattern_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
     twocolor_onepattern_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
     twocolor_twopattern_acc = ["BOWCOLLAR"]
 
 
-    flower_acc = ["POPPY", "PETALS"]
+    flower_acc = ["POPPY", "PETALS", "DAISY"]
     leafbase_acc = ["BULB"]
     bug_acc = ["BUTTERFLY", "MOTH", "CICADA"]
     feather_acc = ["FEATHER"]
-    twoleg_acc = ["COLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BOWCOLLAR"]
+    twoleg_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BOWCOLLAR"]
     metal_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
     leaf_acc = ["HERBS"]
 
@@ -268,8 +268,8 @@ class Pelt:
                  vitiligo: str = None,
                  points: str = None,
                  accessory: str = None,
-                 accessory_color: str = "RED",
-                 accessory_color2: str = "RED",
+                 accessory_color: str = "DEFAULT",
+                 accessory_color2: str = "DEFAULT",
                  accessory_pattern: str = "STRIPES",
                  accessory_pattern2: str = "STRIPES",
                  paralyzed: bool = False,
@@ -496,7 +496,9 @@ class Pelt:
         if self.accessory in old_flutter:
             self.accessory = "BUTTERFLY"
         if self.accessory in old_collars:
-            self.accessory = "COLLAR"
+            self.accessory = "LEATHERCOLLAR"
+        if self.accessory == "COLLAR":
+            self.accessory = "LEATHERCOLLAR"
         if self.accessory in old_bellcollars:
             self.accessory = "BELLCOLLAR"
             self.accessory_color2 = "GOLD"

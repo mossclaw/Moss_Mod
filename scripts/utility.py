@@ -821,6 +821,14 @@ def create_new_cat(
         # give em a collar if they got one
         if accessory:
             new_cat.pelt.accessory = accessory
+            new_cat.pelt.accessory_color = choice(new_cat.pelt.twoleg_acc_colors)
+            new_cat.pelt.accessory_color2 = choice(new_cat.pelt.twoleg_acc_colors)
+        if new_cat.pelt.accessory == "STUDDEDCOLLAR":
+            new_cat.pelt.accessory_color2 = choice(new_cat.pelt.metal_colors)
+        elif new_cat.pelt.accessory == "BELLCOLLAR":
+            new_cat.pelt.accessory_color2 = choice(new_cat.pelt.metal_colors)
+
+
 
         # give apprentice aged cat a mentor
         if new_cat.age == "adolescent":
@@ -3149,7 +3157,8 @@ def generate_sprite(
             "GOLD": ["#f9ba32"],
             "SILVER": ["#d2cdc4"],
             "LIME": ["#aed41c"],
-            "NEON PURPLE": ["#ac2ccd"]
+            "NEON PURPLE": ["#ac2ccd"],
+            "DEFAULT": ["#000000"]
         }
 
         ac = str(cat.pelt.accessory_color).upper()
@@ -3160,7 +3169,7 @@ def generate_sprite(
         if not acc_hidden:
             if cat.pelt.accessory in cat.pelt.simple_acc:
                 new_sprite.blit(sprites.sprites["acc" + cat.pelt.accessory + cat_sprite], (0, 0),)
-            if cat.pelt.accessory == "COLLAR":
+            if cat.pelt.accessory == "LEATHERCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
                 ac_pelt = sprites.sprites['accbase' + "COLLAR" + cat_sprite].copy().convert_alpha()
