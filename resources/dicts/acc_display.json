@@ -331,5 +331,20 @@
     "default": "harness",
     "plural": "harnesses",
     "singular": "harness"
+  },
+  "RAINBOW BANDANA": {
+    "default": "rainbow bandana",
+    "plural": "rainbow bandanas",
+    "singular": "rainbow bandana"
+  },
+  "RAINBOW HARNESS": {
+    "default": "rainbow harness",
+    "plural": "rainbow harnesses",
+    "singular": "rainbow harness"
+  },
+  "RAINBOW COLLAR": {
+    "default": "rainbow collar",
+    "plural": "rainbow collars",
+    "singular": "rainbow collar"
   }
 }

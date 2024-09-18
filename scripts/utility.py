@@ -3169,6 +3169,22 @@ def generate_sprite(
         if not acc_hidden:
             if cat.pelt.accessory in cat.pelt.simple_acc:
                 new_sprite.blit(sprites.sprites["acc" + cat.pelt.accessory + cat_sprite], (0, 0),)
+            if cat.pelt.accessory == "COWBOY HAT":
+                ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                ac_tint.fill(acolor_dict[ac][0])
+                ac_pelt = sprites.sprites['accbase' + "BANDANA" + cat_sprite].copy().convert_alpha()
+                ac_pelt.blit(ac_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                ap_pelt = sprites.sprites['accpattern' + cat.pelt.accessory_pattern + cat_sprite].copy().convert_alpha()
+                ap_pelt.blit(ap_pelt, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                bandana = sprites.sprites['accbase' + "BANDANA" + cat_sprite].copy().convert_alpha()
+                bandana.blit(ac_pelt, (0, 0))
+                bandana.blit(ap_pelt, (0, 0))
+                bandana.blit(sprites.sprites['accbase' + "BANDANA" + cat_sprite], (0, 0),
+                             special_flags=pygame.BLEND_RGBA_MULT)
+                new_sprite.blit(bandana, (0, 0))
+                new_sprite.blit(sprites.sprites["acccollars" + "COWBOY HAT" + cat_sprite], (0, 0), )
             if cat.pelt.accessory == "LEATHERCOLLAR":
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
@@ -3308,20 +3324,38 @@ def generate_sprite(
                              special_flags=pygame.BLEND_RGBA_MULT)
                 new_sprite.blit(harness, (0, 0))
 
-            if cat.pelt.accessory == "BULB":
+            if cat.pelt.accessory in cat.pelt.leafbase_acc:
                 ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac_tint.fill(acolor_dict[ac][0])
-                ac_pelt = sprites.sprites['accbase' + "BULB" + cat_sprite].copy().convert_alpha()
+                ac_pelt = sprites.sprites['accbase' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
                 ac_pelt.blit(ac_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
                 ac2_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 ac2_tint.fill(acolor_dict[ac2][0])
-                ac2_pelt = sprites.sprites['accadd' + "BULB" + cat_sprite].copy().convert_alpha()
+                ac2_pelt = sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
                 ac2_pelt.blit(ac2_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-                leaf = sprites.sprites['accbase' + "BULB" + cat_sprite].copy().convert_alpha()
+                leaf = sprites.sprites['accbase' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
                 leaf.blit(ac_pelt, (0, 0))
-                bulb = sprites.sprites['accadd' + "BULB" + cat_sprite].copy().convert_alpha()
+                bulb = sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
+                bulb.blit(ac2_pelt, (0, 0))
+
+                new_sprite.blit(leaf, (0, 0))
+                new_sprite.blit(bulb, (0, 0))
+            if cat.pelt.accessory in cat.pelt.doubleflower_acc:
+                ac_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                ac_tint.fill(acolor_dict[ac][0])
+                ac_pelt = sprites.sprites['accbase' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
+                ac_pelt.blit(ac_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                ac2_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                ac2_tint.fill(acolor_dict[ac2][0])
+                ac2_pelt = sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
+                ac2_pelt.blit(ac2_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                leaf = sprites.sprites['accbase' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
+                leaf.blit(ac_pelt, (0, 0))
+                bulb = sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite].copy().convert_alpha()
                 bulb.blit(ac2_pelt, (0, 0))
 
                 new_sprite.blit(leaf, (0, 0))

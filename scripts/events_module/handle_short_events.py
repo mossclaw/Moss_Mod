@@ -412,6 +412,21 @@ class HandleShortEvents:
             if self.main_cat.pelt.accessory in Pelt.leaf_acc:
                 leaf_possible_first_colors = random.choice(Pelt.leaf_colors)
                 self.main_cat.pelt.accessory_color = random.choice([leaf_possible_first_colors])
+            if self.main_cat.pelt.accessory in Pelt.doubleflower_acc:
+                doubleflower_possible_first_colors = random.choice(Pelt.flower_colors)
+                self.main_cat.pelt.accessory_color = random.choice([doubleflower_possible_first_colors])
+            if self.main_cat.pelt.accessory in Pelt.crystal_acc:
+                crystal_possible_first_colors = random.choice(Pelt.crystal_colors)
+                self.main_cat.pelt.accessory_color = random.choice([crystal_possible_first_colors])
+            if self.main_cat.pelt.accessory == "HEATHER":
+                heather_possible_first_colors = random.choice(Pelt.leaf_colors)
+                self.main_cat.pelt.accessory_color = random.choice([heather_possible_first_colors])
+            if self.main_cat.pelt.accessory == "GORSE":
+                gorse_possible_first_colors = random.choice(Pelt.leaf_colors)
+                self.main_cat.pelt.accessory_color = random.choice([gorse_possible_first_colors])
+            if self.main_cat.pelt.accessory == "COWBOY HAT":
+                twoleg_possible_first_colors = random.choice(Pelt.twoleg_acc_colors)
+                self.main_cat.pelt.accessory_color = random.choice([twoleg_possible_first_colors])
 
             if self.main_cat.pelt.accessory in Pelt.flower_acc:
                 flower2_possible_second_colors = random.choice(Pelt.flower_colors)
@@ -434,6 +449,18 @@ class HandleShortEvents:
             if self.main_cat.pelt.accessory in Pelt.leaf_acc:
                 leaf2_possible_second_colors = random.choice(Pelt.leaf_colors)
                 self.main_cat.pelt.accessory_color2 = random.choice([leaf2_possible_second_colors])
+            if self.main_cat.pelt.accessory in Pelt.doubleflower_acc:
+                doubleflower_possible_second_colors = random.choice(Pelt.flower_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([doubleflower_possible_second_colors])
+            if self.main_cat.pelt.accessory in Pelt.crystal_acc:
+                crystal_possible_second_colors = random.choice(Pelt.crystal_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([crystal_possible_second_colors])
+            if self.main_cat.pelt.accessory == "HEATHER":
+                heather_possible_second_colors = random.choice(Pelt.heather_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([heather_possible_second_colors])
+            if self.main_cat.pelt.accessory == "GORSE":
+                gorse_possible_second_colors = random.choice(Pelt.gorse_colors)
+                self.main_cat.pelt.accessory_color2 = random.choice([gorse_possible_second_colors])
 
             self.main_cat.pelt.accessory_pattern = random.choice(Pelt.accpatterns)
             self.main_cat.pelt.accessory_pattern2 = random.choice(Pelt.accpatterns)

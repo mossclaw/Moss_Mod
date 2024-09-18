@@ -129,8 +129,7 @@ class Sprites:
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
-            'medcatherbs', 'mossherbs', 'kittypetacc',
-            'accbase', 'accadd', 'accpattern', 'collaradd'
+            'medcatherbs', 'accbase', 'accadd', 'accpattern', 'collaradd'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -342,51 +341,24 @@ class Sprites:
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay
         medcatherbs_data = [
-            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
-            ["BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "NOPE", "NOPE", "NETTLE", "HEATHER", "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER"],
-            ["OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "NOPE", "NOPE", "NOPE", "NOPE", "CLOVER", "NOPE", "NOPE"]
-        ]
-        dryherbs_data = [
-            ["NOPE", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"]
-        ]
-
-        mossherb_data = [
-            ["LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "IVY", "NOPE", "BUTTERFLIES"],
-            ["LUCKY CLOVER", "ANTLERS", "STICK", "FIREFLIES", "WREATH", "FLOWER WREATH"],
-            ["SPROUT", "MUSHROOM", "LILAC", "SEAWEED", "LILY PAD", "MONSTERA"],
-            ["WILD FLOWERS", "TWIGS", "SHELL", "CRYSTAL", "SERPENT", "MOSS BALL"]
-        ]
-
-        kittypetacc_data = [
-            ["SUNGLASSES", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
-            ["NOPE", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
-            ["NOPE", "NOPE", "NOPE", "NOPE", "NOPE", "NOPE"],
-            ["NOPE", "COWBOY HAT"]
+            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "SUNGLASSES", "LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "LUCKY CLOVER"],
+            ["BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "STICK", "FIREFLIES", "SPROUT", "MUSHROOM", "JUNIPER", "RASPBERRY", "LAVENDER"],
+            ["OAK LEAVES", "LILAC", "MAPLE SEED", "SEAWEED", "LILY PAD", "MONSTERA", "WILD FLOWERS", "TWIGS", "CLOVER", "SERPENT", "MOSS BALL"],
+            ["RAINBOW COLLAR", "RAINBOW HARNESS", "RAINBOW BANDANA"]
         ]
 
         # medcatherbs
         for row, herbs in enumerate(medcatherbs_data):
             for col, herb in enumerate(herbs):
                 self.make_group('medcatherbs', (col, row), f'acc{herb}')
-        #dryherbs
-        for row, dry in enumerate(dryherbs_data):
-            for col, dryherbs in enumerate(dry):
-                self.make_group('medcatherbs', (col, 3), f'acc{dryherbs}')
 
-        # mossherbs
-        for row, mossherbs in enumerate(mossherb_data):
-            for col, mossherb in enumerate(mossherbs):
-                self.make_group('mossherbs', (col, row), f'acc{mossherb}')
-
-        # kittypetacc
-        for row, kittypetaccs in enumerate(kittypetacc_data):
-            for col, kittypetacc in enumerate(kittypetaccs):
-                self.make_group('kittypetacc', (col, row), f'acc{kittypetacc}')
 
         # please im begging you
         accbases_data = [
             ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
-            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"],
+            ["NETTLES", "HEATHER", "GORSE", "CATMINT", "LAUREL", "IVY"],
+            ["BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
         ]
 
         for row, accbases in enumerate(accbases_data):
@@ -395,7 +367,9 @@ class Sprites:
 
         accadds_data = [
             ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
-            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"],
+            ["NETTLES", "HEATHER", "GORSE", "CATMINT", "LAUREL", "IVY"],
+            ["BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
         ]
 
         for row, accadds in enumerate(accadds_data):
@@ -413,7 +387,7 @@ class Sprites:
                 self.make_group('accpattern', (col, row), f'accpattern{accpattern}')
 
         acccollars_data = [
-            ["BELL", "BOW", "STUDDED", "FANG"]
+            ["BELL", "BOW", "STUDDED", "FANG", "COWBOY HAT"]
         ]
 
         for row, acccollars in enumerate(acccollars_data):

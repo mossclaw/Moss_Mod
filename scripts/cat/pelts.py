@@ -131,9 +131,7 @@ class Pelt:
                          "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "NETTLE", "HEATHER",
                          "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
                          "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB", "CLOVER", "DAISY",
-                         "HEATHER", "SNAPDRAGON", "GORSE",
-                        "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"
-                         ]
+                         "HEATHER", "SNAPDRAGON", "GORSE"]
     wild_accessories = ["FEATHER", "MOTH", "BUTTERFLY", "CICADA"]
     tail_accessories = ["NOWAY"]
     living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
@@ -145,11 +143,13 @@ class Pelt:
     forest_accessories = ["MUSHROOM"]
     special_accessories = ["STICK", "MOSS BALL", "LILY PAD"]
 
-    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
-    kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS"]
-    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"]
+    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "RAINBOW COLLAR"]
+    kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS", "RAINBOW HARNESS", "RAINBOW BANDANA"]
+    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
+                         "NETTLE", "HEATHER", "GORSE", "CATMINT", "LAUREL", "BUTTERFLIES", "IVY", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
 
-    onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER"]
+    onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER", "BUTTERFLIES", "CATMINT", "LAUREL",
+                              "IVY", "WREATH", "SHELL", "CRYSTAL"]
     twocolor_nopattern_acc = ["BULB"]
     onecolor_onepattern_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
     twocolor_onepattern_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
@@ -157,23 +157,25 @@ class Pelt:
 
 
     flower_acc = ["POPPY", "PETALS", "DAISY"]
-    leafbase_acc = ["BULB"]
-    bug_acc = ["BUTTERFLY", "MOTH", "CICADA"]
+    doubleflower_acc = ["FLOWER WREATH"]
+    crystal_acc = ["SHELL", "CRYSTAL"]
+    leafbase_acc = ["BULB", "HEATHER", "GORSE"]
+    bug_acc = ["BUTTERFLY", "MOTH", "CICADA", "BUTTERFLIES"]
     feather_acc = ["FEATHER"]
     twoleg_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BOWCOLLAR"]
     metal_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
-    leaf_acc = ["HERBS"]
+    leaf_acc = ["HERBS", "CATMINT", "LAUREL", "IVY", "WREATH"]
 
     accpatterns = ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID",
                    "ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS",
                    "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO", "CONVERSE"]
 
     simple_acc = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "BLUEBELLS",
-                  "LILY OF THE VALLEY", "SNAPDRAGON", "NETTLE", "HEATHER", "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
-                  "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "CLOVER", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS",
-                  "LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES", "IVY", "LUCKY CLOVER", "WREATH",
-                  "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA", "BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT",
-                  "SEAWEED", "SHELL", "CRYSTAL", "SPROUT", "MUSHROOM", "STICK", "MOSS BALL", "LILYPAD", "SUNGLASSES", "COWBOY HAT"]
+                  "LILY OF THE VALLEY", "SNAPDRAGON", "JUNIPER", "RASPBERRY", "LAVENDER",
+                  "OAK LEAVES", "MAPLE SEED", "CLOVER",
+                  "LUNA MOTH", "ATLAS MOTH", "FIREFLIES", "LUCKY CLOVER",
+                  "WILD FLOWERS", "LILAC", "MONSTERA", "BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT",
+                  "SEAWEED", "SPROUT", "MUSHROOM", "STICK", "MOSS BALL", "LILYPAD", "SUNGLASSES", "RAINBOW HARNESS", "RAINBOW COLLAR", "RAINBOW BANDANA"]
 
     twoleg_acc_colors = ['BLACK', 'WHITE', 'RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
                          'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK', 'GREEN', 'LIME', 'BRIGHT PURPLE', 'HOT PINK',
@@ -184,7 +186,12 @@ class Pelt:
                          'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
     bug_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
                          'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
+    crystal_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
+                  'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK', "GREEN"]
     feather_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'BLUE', 'LIGHT BLUE', 'DARK BROWN', 'WHITE', 'BLACK']
+    gorse_colors = ["ORANGE", "YELLOW", "LIGHT YELLOW", "GOLD"]
+    heather_colors = ["PURPLE", "LILAC", "LIGHT PURPLE", "BRIGHT PURPLE"]
+    dry_colors = ["BROWN", "DARK BROWN", "BRONZE", "LIGHT BROWN"]
 
     points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
     spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
@@ -455,7 +462,6 @@ class Pelt:
         old_cicada = ["CICADA WINGS", "BLACK CICADA"]
         old_moth = ["MOTH WINGS", "ROSY MOTH WINGS"]
         old_flutter = ["MORPHO BUTTERFLY", "MONARCH BUTTERFLY"]
-        #"DRY HERBS"
         old_collars = [
             "CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME",
             "GREEN", "RAINBOW", "BLACK", "SPIKES", "WHITE",
@@ -518,6 +524,15 @@ class Pelt:
             self.accessory = "HARNESS"
         if self.accessory in old_bandana:
             self.accessory = "BANDANA"
+        if self.accessory == "DRY NETTLES":
+            self.accessory = "NETTLE"
+            self.accessory_color = "BROWN"
+        if self.accessory == "DRY LAURELS":
+            self.accessory = "LAUREL"
+            self.accessory_color = "BROWN"
+        if self.accessory == "DRY CATMINT":
+            self.accessory = "CATMINT"
+            self.accessory_color = "BROWN"
 
 
 
@@ -1059,6 +1074,21 @@ class Pelt:
         if self.accessory in Pelt.leaf_acc:
             possible_first_colors = choice(Pelt.leaf_colors)
             self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.doubleflower_acc:
+            possible_first_colors = choice(Pelt.flower_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory in Pelt.crystal_acc:
+            possible_first_colors = choice(Pelt.crystal_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory == "HEATHER":
+            possible_first_colors = choice(Pelt.leaf_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory == "GORSE":
+            possible_first_colors = choice(Pelt.leaf_colors)
+            self.accessory_color = choice([possible_first_colors])
+        if self.accessory == "COWBOY HAT":
+            possible_first_colors = choice(Pelt.twoleg_acc_colors)
+            self.accessory_color = choice([possible_first_colors])
 
         if self.accessory in Pelt.flower_acc:
             possible_second_colors = choice(Pelt.flower_colors)
@@ -1080,6 +1110,18 @@ class Pelt:
             self.accessory_color2 = choice([possible_second_colors])
         if self.accessory in Pelt.leaf_acc:
             possible_second_colors = choice(Pelt.leaf_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.doubleflower_acc:
+            possible_second_colors = choice(Pelt.flower_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory in Pelt.crystal_acc:
+            possible_second_colors = choice(Pelt.crystal_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory == "HEATHER":
+            possible_second_colors = choice(Pelt.heather_colors)
+            self.accessory_color2 = choice([possible_second_colors])
+        if self.accessory == "GORSE":
+            possible_second_colors = choice(Pelt.gorse_colors)
             self.accessory_color2 = choice([possible_second_colors])
 
         self.accessory_pattern = choice(Pelt.accpatterns)

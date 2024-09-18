@@ -896,10 +896,19 @@ class ProfileScreen(Screens):
                     output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " collar, " + str(the_cat.pelt.accessory_color2.lower()) + " bell)"
                 elif the_cat.pelt.accessory == "STUDDEDCOLLAR":
                     output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " collar, " + str(the_cat.pelt.accessory_color2.lower()) + " buttons)"
+                elif the_cat.pelt.accessory == "COWBOY HAT":
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + " bandana)"
+                elif the_cat.pelt.accessory == "FLOWER WREATH":
+                    output += " (" + str(the_cat.pelt.accessory_color.lower()) + " and" + str(the_cat.pelt.accessory_color2.lower()) + " flowers)"
                 elif the_cat.pelt.accessory in the_cat.pelt.leafbase_acc:
                     output += " (" + str(the_cat.pelt.accessory_color2.lower()) + " flower with " + str(the_cat.pelt.accessory_color.lower()) + " leaves)"
                 elif the_cat.pelt.accessory in the_cat.pelt.twoleg_acc:
                     output += " (" + str(the_cat.pelt.accessory_color.lower()) + " " + str(the_cat.pelt.accessory_pattern.lower()) + ")"
+                elif the_cat.pelt.accessory in the_cat.pelt.leaf_acc:
+                    if the_cat.pelt.accessory_color in the_cat.pelt.dry_colors:
+                        output += " (dried)"
+                    else:
+                        output += " (" + str(the_cat.pelt.accessory_color.lower()) + ")"
                 elif the_cat.pelt.accessory in the_cat.pelt.layer_accessories:
                     output += " (" + str(the_cat.pelt.accessory_color.lower()) + ")"
                 else:
