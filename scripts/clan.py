@@ -253,9 +253,9 @@ class Clan:
         number_other_clans = randint(3, 5)
         for _ in range(number_other_clans):
             other_clan_names = [str(i.name) for i in self.all_clans] + [game.clan.name]
-            other_clan_name = choice(names.names_dict["normal_prefixes"])
+            other_clan_name = choice(names.names_dict["clan_prefixes"])
             while other_clan_name in other_clan_names:
-                other_clan_name = choice(names.names_dict["normal_prefixes"])
+                other_clan_name = choice(names.names_dict["clan_prefixes"])
             other_clan = OtherClan(name=other_clan_name)
             self.all_clans.append(other_clan)
         self.save_clan()
@@ -1282,8 +1282,7 @@ class OtherClan:
     ]
 
     def __init__(self, name="", relations=0, temperament="", chosen_symbol=""):
-        clan_names = names.names_dict["normal_prefixes"]
-        clan_names.extend(names.names_dict["clan_prefixes"])
+        clan_names = names.names_dict["clan_prefixes"]
         self.name = name or choice(clan_names)
         self.relations = relations or randint(8, 12)
         self.temperament = temperament or choice(self.temperament_list)

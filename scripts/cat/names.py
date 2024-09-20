@@ -80,11 +80,15 @@ class Name:
         biome=None,
         specsuffix_hidden=False,
         load_existing_name=False,
+        
     ):
         self.status = status
         self.prefix = prefix
         self.suffix = suffix
         self.specsuffix_hidden = specsuffix_hidden
+        # Track style-based names for parents
+        self.prefix_styles = []
+        self.suffix_styles = []
 
         name_fixpref = False
         # Set prefix
@@ -107,19 +111,23 @@ class Name:
                 self.prefix[-2:] + self.suffix[0],
                 self.prefix[-1] + self.suffix[:2],
             )
-            if all(
-                i == possible_three_letter[0][0] for i in possible_three_letter[0]
-            ) or all(
-                i == possible_three_letter[1][0] for i in possible_three_letter[1]
-            ):
+            if all(i == possible_three_letter[0][0] for i in possible_three_letter[0]) or all(i == possible_three_letter[1][0] for i in possible_three_letter[1]):
                 triple_letter = True
+
             # Prevent double animal names (ex. Spiderfalcon)
             double_animal = False
-            if (
-                self.prefix in self.names_dict["animal_prefixes"]
-                and self.suffix in self.names_dict["animal_suffixes"]
-            ):
+            # Check if both prefix and suffix are tagged as 'animal'
+            prefix_is_animal = (
+                "animal" in self.names_dict["names"][self.prefix]["tags"] and
+                "prefix" in self.names_dict["names"][self.prefix]["tags"]
+            )
+            suffix_is_animal = (
+                "animal" in self.names_dict["names"][self.suffix]["tags"] and
+                "suffix" in self.names_dict["names"][self.suffix]["tags"]
+            )
+            if prefix_is_animal and suffix_is_animal:
                 double_animal = True
+
             # Prevent the inappropriate names
             nono_name = self.prefix + self.suffix
             # Prevent double names (ex. Iceice)
@@ -171,93 +179,102 @@ class Name:
 
     # Generate possible prefix
     def give_prefix(self, eyes, colour, biome):
-        """Generate possible prefix."""
-        # decided in game config: cat_name_controls
+        """Generate possible prefix based on parent styles and appearance."""
         if game.config["cat_name_controls"]["always_name_after_appearance"]:
             named_after_appearance = True
         else:
-            named_after_appearance = not random.getrandbits(
-                2
-            )  # Chance for True is '1/4'
+            named_after_appearance = not random.getrandbits(2)
 
-        named_after_biome_ = not random.getrandbits(3)  # chance for True is 1/8
+        named_after_biome = not random.getrandbits(3)
 
-        # Add possible prefix categories to list.
-        possible_prefix_categories = []
-        if game.config["cat_name_controls"][
-            "allow_eye_names"
-        ]:  # game config: cat_name_controls
-            if eyes in self.names_dict["eye_prefixes"]:
-                possible_prefix_categories.append(self.names_dict["eye_prefixes"][eyes])
-        if colour in self.names_dict["colour_prefixes"]:
-            possible_prefix_categories.append(
-                self.names_dict["colour_prefixes"][colour]
-            )
-        if biome is not None and biome in self.names_dict["biome_prefixes"]:
-            possible_prefix_categories.append(self.names_dict["biome_prefixes"][biome])
+        possible_prefix_categories = self.get_style_based_prefixes(eyes, colour, biome)
 
-        # Choose appearance-based prefix if possible and named_after_appearance because True.
-        if (
-            named_after_appearance
-            and possible_prefix_categories
-            and not named_after_biome_
-        ):
-            prefix_category = random.choice(possible_prefix_categories)
-            self.prefix = random.choice(prefix_category)
-        elif named_after_biome_ and possible_prefix_categories:
-            prefix_category = random.choice(possible_prefix_categories)
-            self.prefix = random.choice(prefix_category)
+        # If there are style-based prefix options, choose one
+        if named_after_appearance and possible_prefix_categories and not named_after_biome:
+            self.prefix = random.choice(possible_prefix_categories)
+        elif named_after_biome and possible_prefix_categories:
+            self.prefix = random.choice(possible_prefix_categories)
         else:
-            self.prefix = random.choice(self.names_dict["normal_prefixes"])
+            # If no specific styles, pick a random prefix with the "prefix" tag
+            prefix_names = [
+                name for name, info in self.names_dict["names"].items()
+                if "prefix" in info["tags"]
+            ]
+            self.prefix = random.choice(prefix_names)
 
-        # This thing prevents any prefix duplications from happening.
-        # Try statement stops this form running when initailizing.
-        try:
-            if self.prefix in names.prefix_history:
-                # do this recurively until a name that isn't on the history list is chosses.
-                self.give_prefix(eyes, colour, biome)
-                # prevent infinite recursion
-                if len(names.prefix_history) > 0:
-                    names.prefix_history.pop(0)
-            else:
-                names.prefix_history.append(self.prefix)
-            # Set the maximun lenth to 8 just to be sure
-            if len(names.prefix_history) > 8:
-                # removing at zero so the oldest gets removed
-                names.prefix_history.pop(0)
-        except NameError:
-            pass
+        self.track_prefix_style()
 
     # Generate possible suffix
     def give_suffix(self, pelt, biome, tortiepattern):
-        """Generate possible suffix."""
+        """Generate suffix, factoring in style preferences."""
+        # If there is no pelt pattern or it's "SingleColour", random suffix
         if pelt is None or pelt == "SingleColour":
-            self.suffix = random.choice(self.names_dict["normal_suffixes"])
+            suffix_names = [
+                name for name, info in self.names_dict["names"].items()
+                if "suffix" in info["tags"]
+            ]
+            self.suffix = random.choice(suffix_names)
         else:
-            named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
-            named_after_biome = not random.getrandbits(3)  # 1/8
-            # Pelt name only gets used if there's an associated suffix.
-            if named_after_pelt:
-                if (
-                    pelt in ["Tortie", "Calico"]
-                    and tortiepattern in self.names_dict["tortie_pelt_suffixes"]
-                ):
-                    self.suffix = random.choice(
-                        self.names_dict["tortie_pelt_suffixes"][tortiepattern]
-                    )
-                elif pelt in self.names_dict["pelt_suffixes"]:
-                    self.suffix = random.choice(self.names_dict["pelt_suffixes"][pelt])
-                else:
-                    self.suffix = random.choice(self.names_dict["normal_suffixes"])
-            elif named_after_biome:
-                if biome in self.names_dict["biome_suffixes"]:
-                    self.suffix = random.choice(
-                        self.names_dict["biome_suffixes"][biome]
-                    )
-                else:
-                    self.suffix = random.choice(self.names_dict["normal_suffixes"])
-            else:
-                self.suffix = random.choice(self.names_dict["normal_suffixes"])
+            # Pick a random suffix based on "suffix" tag
+            suffix_names = [
+                name for name, info in self.names_dict["names"].items()
+                if "suffix" in info["tags"]
+            ]
+            self.suffix = random.choice(suffix_names)
+            
+        self.track_suffix_style()
+
+
+    def get_style_based_prefixes(self, eyes, colour, biome):
+        """Filter possible prefixes based on parent styles and tags."""
+        possible_prefixes = []
+
+        # Look for names tagged with the "eyes" style
+        if eyes:
+            eye_style_names = [
+                name for name, info in self.names_dict["names"].items()
+                if "eyes" in info["tags"]
+            ]
+            if eye_style_names:
+                possible_prefixes.append(random.choice(eye_style_names))
+
+        # Check if colour has associated prefix options
+        if colour:
+            colour_style_names = [
+                name for name, info in self.names_dict["names"].items()
+                if "color" in info["tags"]
+            ]
+            if colour_style_names:
+                possible_prefixes.append(random.choice(colour_style_names))
+
+        # Check if biome has associated prefix options
+        if biome and biome in self.names_dict["styles"]["nature"]:
+            biome_style_names = [
+                name for name, info in self.names_dict["names"].items()
+                if biome in info["tags"]
+            ]
+            if biome_style_names:
+                possible_prefixes.append(random.choice(biome_style_names))
+
+        return possible_prefixes
+
+    def track_prefix_style(self):
+        """Assign the name's style based on the tags in its dictionary entry."""
+        name_info = self.names_dict["names"].get(self.prefix)
+        if name_info:
+            tags = name_info["tags"]
+            for style, related_tags in self.names_dict["styles"].items():
+                if any(tag in tags for tag in related_tags):
+                    self.prefix_styles.append(style)
+
+    def track_suffix_style(self):
+        """Track the suffix styles similarly to the prefix."""
+        name_info = self.names_dict["names"].get(self.suffix)
+        if name_info:
+            tags = name_info["tags"]
+            for style, related_tags in self.names_dict["styles"].items():
+                if any(tag in tags for tag in related_tags):
+                    self.suffix_styles.append(style)
 
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),

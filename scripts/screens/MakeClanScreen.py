@@ -1140,7 +1140,7 @@ class MakeClanScreen(Screens):
 
     def random_clan_name(self):
         clan_names = (
-            names.names_dict["normal_prefixes"] + names.names_dict["clan_prefixes"]
+            names.names_dict["clan_prefixes"]
         )
         while True:
             chosen_name = choice(clan_names)

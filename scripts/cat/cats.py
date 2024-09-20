@@ -3353,6 +3353,7 @@ class Cat:
                 "name_prefix": self.name.prefix,
                 "name_suffix": self.name.suffix,
                 "specsuffix_hidden": self.name.specsuffix_hidden,
+                "prefix_style": self.name.prefix_styles,
                 "gender": self.gender,
                 "gender_align": self.genderalign,
                 "pronouns": self.pronouns,
