@@ -1,0 +1,151 @@
+"Name" : {
+	"tags": ["prefix"]
+},
+
+"Adder" : {
+	"tags": ["prefix", "animal", "desert_biome", "fierce_trait", "vengeful_trait", "cunning_trait", "fighter_skill"]
+},
+"Alder" : {
+	"tags": ["prefix", "tree", "forest_biome"]
+},
+"Aphid" : {
+	"tags": ["prefix", "bug", "forest_biome", "plains_biome"]
+},
+"Apple" : {
+	"tags": ["prefix", "plant", "tree", "forest_biome", "ginger_pelt_color"]
+},
+"Apricot" : {
+	"tags": ["prefix", "plant", "tree", "forest_biome", "paleginger_pelt_color"]
+},
+"Arch" : {
+	"tags": ["prefix", "body", "action", "grumpy_trait", "sneaky_trait", "careful_trait", "nervous_trait"]
+},
+"Aspen" : {
+	"tags": ["prefix", "tree", "forest_biome", "mountainous_biome" ]
+},
+"Aster" : {
+	"tags": ["prefix", "flower", "forest_biome", "plains_biome", "blue_eye_color", "white_pelt_color"] 
+},
+"Badger" : {
+	"tags": ["prefix", "animal", "fierce_trait", "fighter_skill", "grumpy_trait"]
+},
+"Barley" : {
+	"tags": ["prefix", "plant", "plains_biome", "golden_pelt_color", "yellow_eye_color"]
+},
+"Basil" : {
+	"tags": ["prefix", "plant", "forest_biome", "green_eye_color"]
+},
+"Bass" : {
+	"tags": ["prefix", "animal", "beach_biome", "swimmer_skill"]
+},
+"Bay" : {
+	"tags": ["prefix", "landscape", "beach_biome"]
+},
+"Beam" : {
+	"tags": ["prefix", "abstract"]
+},
+"Bear" : {
+	"tags": ["prefix", "animal", "fighter_skill", "fierce_trait", "grumpy_trait", "brown_pelt_color"]
+},
+"Beaver" : {
+	"tags": ["prefix", "animal", "swimmer_skill", "den_skill", "brown_pelt_color"]
+},
+"Bee" : {
+	"tags": ["prefix", "bug", "yellow_eye_color", "yellow_pelt_color"]
+},
+"Beech" : {
+	"tags": ["prefix", "tree", "forest_biome"]
+},
+"Beetle" : {
+	"tags": ["prefix", "bug", "black_pelt_color"]
+},
+"Berry" : {
+	"tags": ["prefix", "plant", "forest_biome", "blue_eye_color"]
+},
+"Big" : {
+	"tags": ["prefix", "body", "fighter_skill", "abstract"]
+},
+"Billow" : {
+	"tags": ["prefix", "weather", "abstract"]
+},
+"Birch" : {
+	"tags": ["prefix", "tree", "forest_biome", "mountainous_biome", "white_pelt_color"]
+},
+"Bird" : {
+	"tags": ["prefix", "animal"]
+},
+"Bite" : {
+	"tags": ["prefix", "action", "fighter_skill", "fierce_trait", "hunter_skill", "dark_skill"]
+},
+"Bitter" : {
+	"tags": ["prefix", "abstract", "grumpy_trait", "dark_skill"]
+},
+"Bittern" : {
+	"tags": ["prefix", "animal", "wetlands_biome"]
+},
+"Bliss" : {
+	"tags": ["prefix", "abstract", "dream_skill", "star_skill", "loving_trait", "compassionate_trait"]
+},
+"Blizzard" : {
+	"tags": ["prefix", "weather", "mountainous_biome"]
+},
+"Bloom" : {
+	"tags": ["prefix", "plant", "abstract"]
+},
+"Blossom" : {
+	"tags": ["prefix", "flower", "abstract"]
+},
+"Blotch" : {
+	"tags": ["prefix", "body", "abstract"]
+},
+"Bluebell" : {
+	"tags": ["prefix", "flower", "blue_eye_color"]
+},
+"Bluff" : {
+	"tags": ["prefix", "landscape", "mountainous_biome", "beach_biome"]
+},
+"Bog" : {
+	"tags": ["prefix", "landscape", "wetlands_biome"]
+},
+"Borage" : {
+	"tags": ["prefix", "plant", "healer_skill", "green_eye_color"]
+},
+"Bough" : {
+	"tags": ["prefix", "tree", "plant", "forest_biome"]
+},
+"Boulder" : {
+	"tags": ["prefix", "landscape", "mountainous_biome", "grey_pelt_color"]
+},
+"Bounce" : {
+	"tags": ["prefix", "action", "abstract"]
+},
+"Bracken" : {
+	"tags": ["prefix", "plant", "brown_pelt_color"]
+},
+"Bramble" : {
+	"tags": ["prefix", "plant", "brown_pelt_color"]
+},
+"Brave" : {
+	"tags": ["prefix", "abstract", "fighter_skill", "bold_trait", "daring_trait", "righteous_trait", "adventurous_trait", "arrogant_trait"]
+},
+"Breeze" : {
+	"tags": ["prefix", "weather"]
+},
+"Briar" : {
+	"tags": ["prefix", "plant"]
+},
+"Bright" : {
+	"tags": ["prefix", "abstract", "wise_trait", "compassionate_trait", "loving_trait", "thoughtful_trait", "sincere_trait"]
+},
+"Brindle" : {
+	"tags": ["prefix", "tabby_pelt"]
+},
+"Bristle" : {
+	"tags": ["prefix", "body", "action"]
+},
+"Broken" : {
+	"tags": ["prefix", "abstract", "dark_skill", "gloomy_trait", "vengeful_trait", "shameless_trait", "cold_trait"]
+},
+"Brook" : {
+	"tags": ["prefix", "landscape", "blue_eye_color"]
+},
