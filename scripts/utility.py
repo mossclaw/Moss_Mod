@@ -3371,7 +3371,7 @@ def generate_sprite(
                 acc.blit(ac_pelt, (0, 0))
                 new_sprite.blit(acc, (0, 0))
 
-            if cat.pelt.accessory in ["DAISY", "MOTH", "FEATHER"]:
+            if cat.pelt.accessory in ["DAISY", "MOTH", "FEATHER", "CRYSTAL"]:
                 new_sprite.blit(sprites.sprites['accadd' + cat.pelt.accessory + cat_sprite], (0, 0))
 
 
