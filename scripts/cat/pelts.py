@@ -88,7 +88,7 @@ class Pelt:
                       'ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED',
                       'VIPER', 'SKULL', 'POINTS', 'DITTO', 'BODY', 'SHILOH', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED',
                       'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE',
-                      'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT']
+                      'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT', 'FRECKLED', 'HEARTBEAT']
 
     tortiebases = ['solid', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
