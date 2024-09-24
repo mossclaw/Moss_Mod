@@ -149,3 +149,115 @@
 "Brook" : {
 	"tags": ["prefix", "landscape", "blue_eye_color"]
 },
+"Brush" : {
+	"tags": ["prefix", "landscape", "plant", "action"]
+},
+"Bubbling" : {
+	"tags": ["prefix", "action", "abstract"]
+},
+"Bud" : {
+	"tags": ["prefix", "flower", "plant"]
+},
+"Bug" : {
+	"tags": ["prefix", "bug"]
+},
+"Bumble" : {
+	"tags": ["prefix", "abstract", "action", "bug"]
+},
+"Burdock" : {
+	"tags": ["prefix", "plant", "healer_skill"]
+},
+"Burr" : {
+	"tags": ["prefix", "plant", "grumpy_trait"]
+},
+"Burrow" : {
+	"tags": ["prefix", "landscape", "action"]
+},
+"Bush" : {
+	"tags": ["prefix", "plant"]
+},
+"Butterfly" : {
+	"tags": ["prefix", "bug"]
+},
+"Buzzard" : {
+	"tags": ["prefix", "animal", "desert_biome"]
+},
+"Carnation" : {
+	"tags": ["prefix", "flower"]
+},
+"Carp" : {
+	"tags": ["prefix", "animal", "beach_biome"]
+},
+"Caterpillar" : {
+	"tags": ["prefix", "bug"]
+},
+"Cave" : {
+	"tags": ["prefix", "landscape", "mountainous_biome"]
+},
+"Cedar" : {
+	"tags": ["prefix", "tree", "forest_biome"]
+},
+"Chaffinch" : {
+	"tags": ["prefix", "animal"]
+},
+"Chasing" : {
+	"tags": ["prefix", "action"]
+},
+"Cherry" : {
+	"tags": ["prefix", "tree", "plant"]
+},
+"Chervil" : {
+	"tags": ["prefix", "plant"]
+},
+"Chestnut" : {
+	"tags": ["prefix", "tree", "plant"]
+},
+"Chirp" : {
+	"tags": ["prefix", "action", "abstract"]
+},
+"Chive" : {
+	"tags": ["prefix", "plant"]
+},
+"Cicada" : {
+	"tags": ["prefix", "bug"]
+},
+"Claw" : {
+	"tags": ["prefix", "body", "action"]
+},
+"Clay" : {
+	"tags": ["prefix", "landscape"]
+},
+"Clear" : {
+	"tags": ["prefix", "abstract", "weather"]
+},
+"Cliff" : {
+	"tags": ["prefix", "landscape", "mountainous_biome"]
+},
+"Clover" : {
+	"tags": ["prefix", "plant"]
+},
+"Comfrey" : {
+	"tags": ["prefix", "flower"]
+},
+"Condor" : {
+	"tags": ["prefix", "animal", "mountainous_biome"]
+},
+"Cone" : {
+	"tags": ["prefix", "tree", "plant", "forest_biome"]
+},
+"Conifer" : {
+	"tags": ["prefix", "tree"]
+},
+"Conker" : {
+	"tags": ["prefix", "tree", "plant"]
+},
+"Copse" : {
+	"tags": ["prefix", "landscape", "tree", "forest_biome"]
+},
+"Cougar" : {
+	"tags": ["prefix", "animal", "mountainous_biome", "fighter_skill", "hunter_skill"]
+},
+
+
+
+
