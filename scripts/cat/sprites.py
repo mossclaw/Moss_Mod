@@ -159,7 +159,8 @@ class Sprites:
 
         eye_patterns = [
             ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED'],
-            ['RING', 'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP']
+            ['RING', 'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP'],
+            ['SWITCH', 'TRANSFORM']
         ]
 
         for row, patterns in enumerate(eye_patterns):

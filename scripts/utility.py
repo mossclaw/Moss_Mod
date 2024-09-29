@@ -2977,7 +2977,24 @@ def generate_sprite(
             "COFFEE": ["#ffefca", "#9a6052", "#4b2e33", "#2c1115"],
             "BRIGHT GREEN": ["#ccf3a3", "#8dec85", "#1de377", "#00993c"],
             "MOCHA": ["#f5ebe4", "#c6a484", "#6d5d54", "#433d38"],
-            "SEA GREEN": ["#d6f1c2", "#8ae5b8", "#1ac4a4", "#00878b"]
+            "SEA GREEN": ["#d6f1c2", "#8ae5b8", "#1ac4a4", "#00878b"],
+            "DOVE": ["#f2fbbb", "#f0e8a3", "#1d6e8c", "#abcf5e"],
+            "CANDY": ["#d6f7ff", "#a8eeff", "#49c9e9", "#e997ed"],
+            "HIBISCUS": ["#fedfbd", "#e94ec9", "#b90e52", "#680b08"],
+            "HONEY": ["#ffedc7", "#ffd47a", "#ec9332", "#b54312"],
+            "PIXIE": ["#ffe0fb", "#ffc2f7", "#37aeeb", "#0987c8"],
+            "OLIVE": ["#dce5c8", "#76ab73", "#538650", "#355634"],
+            "STARLIGHT": ["#d5e1fc", "#4472cf", "#ffffff", "#19439a"],
+            "BARK": ["#e5cbb3", "#563f29", "#33271c", "#33271c"],
+            "COLD PURPLE": ["#d4f0fe", "#b078c3", "#793a65", "#461c40"],
+            "WARM GREEN": ["#d8c971", "#555c08", "#554e08", "#554508"],
+            "SUNRISE": ["#ecad8e", "#e36a6f", "#705b7c", "#365071"],
+            "WARM HAZEL": ["#f0aa54", "#a27450", "#9e572b", "#64622f"],
+            "COLD FIRE": ["#eaf4fd", "#c8e3fd", "#e18c89", "#e18c89"],
+            "EMBER": ["#f9e156", "#f9b656", "#bd3b1b", "#860e00"],
+            "RUST": ["#6f8586", "#576b6d", "#855031", "#425757"],
+            "LEMON": ["#f9f8f4", "#faeed7", "#ffe2a8", "#fbd178"],
+
         }
 
         eye_base = None
@@ -3032,7 +3049,7 @@ def generate_sprite(
             hc_eye_shade_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             hc_eye_shade_tint.fill(eyecolor_dict[eye_color2][3])
             hc_eye_shade = sprites.sprites['eyeshade' + cat_sprite].copy().convert_alpha()
-            hc_eye_shade.blit(eye_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            hc_eye_shade.blit(hc_eye_shade_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
         new_sprite.blit(eye_base, (0, 0))
         new_sprite.blit(eye_mid, (0, 0))
