@@ -257,6 +257,89 @@
 "Cougar" : {
 	"tags": ["prefix", "animal", "mountainous_biome", "fighter_skill", "hunter_skill"]
 },
+"Coyote" : {
+	"tags": ["prefix", "animal"]
+},
+"Crag" : {
+	"tags": ["prefix", "landscape", "mountainous_biome"]
+},
+"Crane" : {
+	"tags": ["prefix", "animal"]
+},
+"Creek" : {
+	"tags": ["prefix", "landscape"]
+},
+"Cress" : {
+	"tags": ["prefix", "plant", "green_eye_color"]
+},
+"Crest" : {
+	"tags": ["prefix", "body", "landscape"]
+},
+"Crested" : {
+	"tags": ["prefix", "body"]
+},
+"Cricket" : {
+	"tags": ["prefix", "bug", "black_pelt_color"]
+},
+"Crooked" : {
+	"tags": ["prefix", "body", "abstract"]
+},
+"Crouch" : {
+	"tags": ["prefix", "action"]
+},
+"Curl" : {
+	"tags": ["prefix", "body", "action", "abstract"]
+},
+"Curlew" : {
+	"tags": ["prefix", "animal"]
+},
+"Curly" : {
+	"tags": ["prefix", "body", "abstract"]
+},
+"Current" : {
+	"tags": ["prefix", "landscape", "abstract"]
+},
+"Cypress" : {
+	"tags": ["prefix", "tree", "forest_biome"]
+},
+"Dahlia" : {
+	"tags": ["prefix", "flower"]
+},
+"Daisy" : {
+	"tags": ["prefix", "flower"]
+},
+"Dancing" : {
+	"tags": ["prefix", "action", "abstract"]
+},
+"Dapple" : {
+	"tags": ["prefix", "body"]
+},
+"Dappled" : {
+	"tags": ["prefix", "body"]
+},
+"Dart" : {
+	"tags": ["prefix", "action"]
+},
+"Dash" : {
+	"tags": ["prefix", "action"]
+},
+"Dawn" : {
+	"tags": ["prefix", "abstract"]
+},
+"Dazzle" : {
+	"tags": ["prefix", "action", "abstract"]
+},
+"Dew" : {
+	"tags": ["prefix", "landscape", "weather"]
+},
+"Dog" : {
+	"tags": ["prefix", "animal"]
+},
+"Down" : {
+	"tags": ["prefix", "body"]
+},
+
+
 
 
 
