@@ -2631,6 +2631,10 @@ def generate_sprite(
             "GRANITE": ["#c6b8c0", "#a1949b", "#897c83", "#4e3c4c", "#31202f", "#040003"],
             "BLUE GRAY": ["#b7b8aa", "#7c8b90", "#5f737a", "#3e5963", "#223941", "#061217"],
             "SANDSTONE": ["#c79271", "#b4805f", "#9e745c", "#8b7263", "#5a4e46", "#35251a"],
+            "BLUE GINGER": ["#d8c4bd", "#b4b0bf", "#8a828d", "#d4836b", "#a95b44", "#673628"],
+            "GRAY GINGER": ["#cac2bf", "#9fa0a4", "#818286", "#b07e73", "#af6f56", "#6a3d2c"],
+            "SILVER GINGER": ["#eae2dd", "#b3aba8", "#a29a96", "#c67f59", "#a46149", "#7a371f"],
+
         }
 
         # SPRITE GENERATION
