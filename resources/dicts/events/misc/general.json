@@ -3865,7 +3865,7 @@
     "season": ["Greenleaf"],
     "sub_type": ["accessory"],
     "weight": 10,
-    "event_text":  "Desperate to escape Greenleaf's heat, m_c hesitantly decides to cool off in a fresh water pond nearby. {PRONOUN/m_c/subject} thankfully {VERB/m_c/cool/cools} off quickly, but {VERB/m_c/are/is} now covered in lily pads!",
+    "event_text":  "Desperate to escape Greenleaf's heat, m_c hesitantly decides to cool off in a fresh water pond nearby. {PRONOUN/m_c/subject/CAP} thankfully {VERB/m_c/cool/cools} off quickly, but {VERB/m_c/are/is} now covered in lily pads!",
     "new_accessory": ["LILY PAD"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
