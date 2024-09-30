@@ -2634,6 +2634,7 @@ def generate_sprite(
             "BLUE GINGER": ["#d8c4bd", "#b4b0bf", "#8a828d", "#d4836b", "#a95b44", "#673628"],
             "GRAY GINGER": ["#cac2bf", "#9fa0a4", "#818286", "#b07e73", "#af6f56", "#6a3d2c"],
             "SILVER GINGER": ["#eae2dd", "#b3aba8", "#a29a96", "#c67f59", "#a46149", "#7a371f"],
+            "SLATE GINGER": ["#a6a89b", "#64634e", "#404638", "#272e1e", "#801e01", "#4b0000"]
 
         }
 
