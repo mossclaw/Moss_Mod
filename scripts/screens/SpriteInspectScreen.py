@@ -517,7 +517,7 @@ class SpriteInspectScreen(Screens):
         """Generates the image to save, with platform if needed."""
         if self.platform_shown:
             full_image = self.get_platform()
-            full_image.blit(self.cat_image, (15, 0))
+            full_image.blit(self.cat_image, (55, -10))
             return full_image
         else:
             return self.cat_image
