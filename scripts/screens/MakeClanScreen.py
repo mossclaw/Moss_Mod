@@ -983,17 +983,28 @@ class MakeClanScreen(Screens):
                 self.elements["cat_name"].set_text(str(selected.name))
             self.elements["cat_name"].show()
             self.elements["cat_info"].set_text(
-                selected.genderalign
+                str(selected.personality.trait) + " " + selected.genderalign + " " + str(selected.age)
 
                 + "\n"
-                + str(
-                    selected.pelt.colour.lower() + " " + str(selected.pelt.name.lower() + " (tint: " + str(selected.pelt.tint.lower() + ")"
-                    + "\n"
-                    +str(selected.age
-                    + "\n"
-                    +str(selected.personality.trait)
-                    + "\n"
-                    +str(selected.skills.skill_string()))))))
+                + "Pelt: " + str(selected.pelt.colour).lower() + " " + str(selected.pelt.name).lower() + " (tint: " + str(selected.pelt.tint).lower() + ")"
+
+                + "\n"
+                + "Tortie patch: " + str(selected.pelt.pattern).lower() + " (color: " + str(selected.pelt.tortiecolour).lower() + ")"
+
+                + "\n"
+                + "White patch: " + str(selected.pelt.white_patches).lower() + " (tint: " + str(selected.pelt.white_patches_tint).lower() + ")"
+
+                + "\n"
+                + "Eyes: " + str(selected.pelt.eye_colour).lower()
+
+                + "\n"
+                + " HC: " + str(selected.pelt.eye_pattern).lower() + " (color: " + str(selected.pelt.eye_colour2).lower() + ")"
+
+                + "\n"
+                + "Points: " + str(selected.pelt.points).lower() + " | Vitiligo: " + str(selected.pelt.vitiligo).lower()
+
+                + "\n"
+                +str(selected.skills.skill_string()))
             self.elements['cat_info'].show()
 
         else:
@@ -2044,7 +2055,7 @@ class MakeClanScreen(Screens):
     def create_cat_info(self):
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((0, 10), (250, 60))),
+            ui_scale(pygame.Rect((0, 10), (300, 60))),
             visible=False,
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             manager=MANAGER,
@@ -2057,7 +2068,7 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((440, 220), (175, 125))),
+            ui_scale(pygame.Rect((440, 180), (300, 200))),
             visible=False,
             object_id=get_text_box_theme("#text_box_26_horizcenter"),
             manager=MANAGER,
