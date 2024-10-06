@@ -270,7 +270,7 @@ jobs:
       - name: Create archive (.zip)
         run: |
           cp dist/MossMod/_internal/.itch.toml dist/ 
-          tar.exe -a -c -f MossMod_Win32.zip -C dist MossMod .itch
+          tar.exe -a -c -f MossMod_Win32.zip -C dist MossMod .itch.toml
       - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Win32
@@ -518,7 +518,7 @@ jobs:
       - name: Create archive (.zip)
         run: |
           cp dist/MossMod/_internal/.itch.toml dist/ 
-          tar.exe -a -c -f MossMod_Win64_Windows10+.zip -C dist MossMod .itch
+          tar.exe -a -c -f MossMod_Windows10+.zip -C dist MossMod .itch.toml
       - uses: actions/upload-artifact@v4
         with:
           name: MossMod_Win64_Windows10+
