@@ -271,7 +271,7 @@ jobs:
         run: |
       - uses: actions/upload-artifact@v4
         with:
-          name: MossMod_Win32.zip
+          name: MossMod_Win32
           path: MossMod_Win32.zip
       - name: Import GPG key
         id: import_gpg
