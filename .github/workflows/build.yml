@@ -269,7 +269,7 @@ jobs:
           IS_RELEASE: 1
       - name: Create archive (.zip)
         run: |
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           name: MossMod_Win32
           path: MossMod_Win32.zip
