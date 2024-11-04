@@ -109,9 +109,6 @@ def json_load():
                     if "sprite_senior" in cat
                     else cat["spirit_elder"]
                 ),
-                para_adult_sprite=(
-                    cat["sprite_para_adult"] if "sprite_para_adult" in cat else None
-                ),
                 reverse=cat["reverse"],
                 vitiligo=cat["vitiligo"] if "vitiligo" in cat else None,
                 points=cat["points"] if "points" in cat else None,

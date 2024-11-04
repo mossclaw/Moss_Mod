@@ -56,7 +56,7 @@ class Sprites:
                    pos,
                    name,
 
-                   sprites_x=6,
+                   sprites_x=8,
                    sprites_y=8,
                    no_index=False):  # pos = ex. (2, 3), no single pixels
         """
@@ -112,10 +112,10 @@ class Sprites:
         # if anyone changes lineart for whatever reason update this
         if isinstance(self.size, int):
             pass
-        elif width / 6 == height / 8:
-            self.size = width / 6
+        elif width / 8 == height / 8:
+            self.size = width / 8
         else:
-            self.size = 50  # default, what base clangen uses
+            self.size = 400  # default, what base clangen uses
             print(f"lineart.png is not 3x7, falling back to {self.size}")
             print(f"if you are a modder, please update scripts/cat/sprites.py and "
                   f"do a search for 'if width / 3 == height / 7:'")
