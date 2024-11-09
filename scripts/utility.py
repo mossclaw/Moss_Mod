@@ -2560,12 +2560,19 @@ def generate_sprite(
         dead = cat.dead
 
     # setting the cat_sprite (bc this makes things much easier)
+    cat_sprite = str(0)
     if (
         not no_not_working
         and cat.not_working()
         and age != "newborn"
         and game.config["cat_sprites"]["sick_sprites"]
     ):
+        if age == "elder" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "senior"
+        if age == "young adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
+        if age == "senior adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
         if cat.pelt.length == "long":
             if age == "kitten":
                 cat_sprite = str(49)
@@ -2712,8 +2719,7 @@ def generate_sprite(
         unders_pelt = None
         shade_pelt = None
 
-        pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
-        tortie_pelt = sprites.sprites["baseSOLID" + cat_sprite].copy().convert_alpha()
+
 
         # Hello! I'm sorry
         swap_layers = ["SOKOKE", "BRAIDED"]
