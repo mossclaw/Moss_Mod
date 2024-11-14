@@ -214,10 +214,9 @@ class Sprites:
 
         # Middle color layer
         mids = [
-            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
-            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
+            ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
         for row, mid in enumerate(mids):
@@ -226,10 +225,9 @@ class Sprites:
 
         # Highlight color layer
         highlights = [
-            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
-            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
+            ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
         for row, highlight in enumerate(highlights):
@@ -238,10 +236,9 @@ class Sprites:
 
         # Dark color layer
         darks = [
-            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
-            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
+            ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
         for row, dark in enumerate(darks):
@@ -250,10 +247,9 @@ class Sprites:
 
         # Darker color layer
         shades = [
-            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
-            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
+            ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
         for row, shade in enumerate(shades):
@@ -262,10 +258,9 @@ class Sprites:
 
         # Unders color layer
         unders = [
-            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN'],
-            ['BRINDLE', 'CLASSIC', 'FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE'],
-            ['SMOKE', 'FOG', 'MIST', 'SPLOTCH', 'SABER', 'SMUDGE'],
-            ['ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
+            ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
+            ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
         for row, under in enumerate(unders):
@@ -315,18 +310,17 @@ class Sprites:
 
         # Define scars
         scars_data = [
-            ["ONE", "TWO", "THREE", "MANLEG", "BRIGHTHEART", "MANTAIL", "BRIDGE", "RIGHTBLIND", "LEFTBLIND",
-             "BOTHBLIND", "BURNPAWS", "BURNTAIL"],
-            ["BURNBELLY", "BEAKCHEEK", "BEAKLOWER", "BURNRUMP", "CATBITE", "RATBITE", "FROSTFACE", "FROSTTAIL",
+            ["ONE", "TWO", "THREE", "FOUR", "BRIDGE", "RIGHTBLIND", "LEFTBLIND", "BOTHBLIND"],
+            ["BEAKCHEEK", "BEAKLOWER", "BURNRUMP", "CATBITE", "RATBITE", "FROSTFACE", "FROSTTAIL",
              "FROSTMITT", "FROSTSOCK", "QUILLCHUNK", "QUILLSCRATCH"],
             ["TAILSCAR", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY", "TOETRAP", "SNAKE", "LEGBITE",
              "NECKBITE", "FACE"],
-            ["HINDLEG", "BACK", "QUILLSIDE", "SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "FOUR"]
+            ["HINDLEG", "BACK", "QUILLSIDE", "SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "MANLEG", "BURNPAWS", "BURNTAIL", "BURNBELLY"]
         ]
 
         # define missing parts
         missing_parts_data = [
-            ["LEFTEAR", "RIGHTEAR", "NOTAIL", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "HALFTAIL", "NOPAW"]
+            ["LEFTEAR", "RIGHTEAR", "NOTAIL", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "HALFTAIL", "NOPAW", "MANTAIL", "BRIGHTHEART"]
         ]
 
         # scars 
