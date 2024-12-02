@@ -1038,7 +1038,7 @@
                     "lonesome",
                     "sincere"
                 ],
-                "lost_cats": ["multi"]
+                "lost_cats": ["s_c"]
             }
         ]
     },
@@ -5034,8 +5034,8 @@
                 "weight": 20,
                 "relationships": [
                     {
-                        "cats_to": "patrol",
-                        "cats_from": "clan",
+                        "cats_to": ["patrol"],
+                        "cats_from": ["clan"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -5062,8 +5062,8 @@
                 ],
                 "relationships": [
                     {
-                        "cats_to": "patrol",
-                        "cats_from": "clan",
+                        "cats_to": ["patrol"],
+                        "cats_from": ["clan"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -5090,8 +5090,8 @@
                 },
                 "relationships": [
                     {
-                        "cats_to": "patrol",
-                        "cats_from": "clan",
+                        "cats_to": ["patrol"],
+                        "cats_from": ["clan"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -5130,8 +5130,8 @@
                 },
                 "relationships": [
                     {
-                        "cats_to": "patrol",
-                        "cats_from": "clan",
+                        "cats_to": ["patrol"],
+                        "cats_from": ["clan"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -5301,7 +5301,7 @@
         "patrol_id": "bch_hunt_frogman1",
         "biome": ["beach"],
         "season": ["any"],
-        "types": ["hunt"],
+        "types": ["hunting"],
         "tags": ["halloween"],
         "patrol_art": "loveland_frog_INTRO",
         "min_cats": 2,

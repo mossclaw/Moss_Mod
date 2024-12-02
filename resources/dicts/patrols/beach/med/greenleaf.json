@@ -67,7 +67,7 @@
                 ]
             },
             {
-                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
+                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to smother s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["troublesome", "childish"],
@@ -101,7 +101,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out, leading a patrol of medicine cats to go find some of the bounty of greenleaf.",
-        "decline_text": "... And {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} called back almost immediately, as one of the elders has started hacking something up.",
+        "decline_text": "...And they're called back almost immediately, as one of the elders has started hacking something up.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -168,7 +168,7 @@
                 ]
             },
             {
-                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/s_c/subject/CAP}{VERB/s_c/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
+                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to smother s_c. {PRONOUN/s_c/subject/CAP}{VERB/s_c/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["troublesome", "childish"],
@@ -201,7 +201,7 @@
         },
         "weight": 20,
         "intro_text": "p_l is on a mission to find herbs. {PRONOUN/p_l/subject/CAP} {VERB/p_l/know/knows} a nice place where mullein grows in a grassy meadow, only a quick trot away from the beach, and it's always good to have some on paw for coughs and sore throats.",
-        "decline_text": "A cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave camp.",
+        "decline_text": "Some cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave camp.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -211,7 +211,7 @@
                 "herbs": ["mullein"]
             },
             {
-                "text": "Not only is the mullein intact and growing nicely, but there's also a nice patch of plantain growing just nearby. p_l purrs in satisfaction - seems like {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} caught two prey in one blow on this trip. {PRONOUN/p_l/subject/CAP}'ll remember that plantain for later.",
+                "text": "Not only is the mullein intact and growing nicely, but there's also a nice patch of plantain growing just nearby. p_l purrs in satisfaction - seems like {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} caught two prey with one blow on this trip. {PRONOUN/p_l/subject/CAP}'ll remember that plantain for later.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["mullein"]
@@ -241,7 +241,7 @@
         },
         "weight": 20,
         "intro_text": "p_l needs to go and gather some burdock root. {PRONOUN/p_l/subject/CAP} {VERB/p_l/take/takes} along what warriors {PRONOUN/p_l/subject} can find around camp to help gather and carry the roots back.",
-        "decline_text": "A cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave.",
+        "decline_text": "Some cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -324,7 +324,7 @@
         },
         "weight": 20,
         "intro_text": "p_l wanders off into the territory, keeping an eye out for the purple flowers that grow on betony.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -340,7 +340,7 @@
                 "herbs": ["many_herbs", "betony"]
             },
             {
-                "text": "As ever, s_c's keen eyes pick out {PRONOUN/s_c/poss} target quickly, and {PRONOUN/s_c/subject} {VERB/s_c/bring/brings} back a great haul of betony for the herb stores.",
+                "text": "As keen as ever, s_c picks out {PRONOUN/s_c/poss} target quickly, and {PRONOUN/s_c/subject} {VERB/s_c/bring/brings} back a great haul of betony for the herb stores.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -421,7 +421,7 @@
                 ]
             },
             {
-                "text": "As ever, s_c's keen eyes pick out {PRONOUN/s_c/poss} target quickly. {PRONOUN/s_c/subject/CAP} {VERB/s_c/point/points} it out to app1, and the two bring back a great haul of betony for the herb stores.",
+                "text": "As keen as ever, s_c picks out {PRONOUN/s_c/poss} target quickly. {PRONOUN/s_c/subject/CAP} {VERB/s_c/point/points} it out to app1, and the two bring back a great haul of betony for the herb stores.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -533,7 +533,7 @@
                 ]
             },
             {
-                "text": "As ever, s_c's keen eyes pick out {PRONOUN/s_c/poss} target quickly, and {PRONOUN/s_c/subject} {VERB/s_c/organize/organizes} {PRONOUN/s_c/poss} patrol to bring back a great haul of betony for the herb stores.",
+                "text": "As keen as ever, s_c picks out {PRONOUN/s_c/poss} target quickly, and {PRONOUN/s_c/subject} {VERB/s_c/organize/organizes} {PRONOUN/s_c/poss} patrol to bring back a great haul of betony for the herb stores.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -596,7 +596,7 @@
         },
         "weight": 20,
         "intro_text": "The blackberry brambles will be at their peak leaf growth soon, if they aren't there already. p_l heads out to replenish the Clan's stocks.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -867,7 +867,7 @@
         },
         "weight": 20,
         "intro_text": "With the full sun of greenleaf fueling plant growth everywhere, it's the perfect time to hunt for burdock. p_l heads out to replenish the Clan's stocks.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -1134,7 +1134,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out into the sunshine, padding away from camp in a search for one of the most elusive herbs.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -1288,7 +1288,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As p_l looks at the twitching tails and wide eyes of the patrol set up to 'help' {PRONOUN/p_l/object} {VERB/p_l/gather/gathers} catmint, {PRONOUN/p_l/poss} heart sinks. These overly excited warriors don't look like they're going to be useful, and catmint is too important to be silly about collecting. Yes, it smells wonderful. <i>Please</i> get over it.",
+        "intro_text": "As p_l looks at the twitching tails and wide eyes of the patrol set up to 'help' {PRONOUN/p_l/object} gather catmint, {PRONOUN/p_l/poss} heart sinks. These overly excited warriors don't look like they're going to be useful, and catmint is too important to be silly about collecting. Yes, it smells wonderful. <i>Please</i> get over it.",
         "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -1362,7 +1362,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l is proven unfortunately correct, as the patrol is full of juvenile behavior and dumb jokes, rather than focused effort. The one catmint plant {PRONOUN/p_l/subject} successfully find ends up with {PRONOUN/p_l/poss} helpers rolling around in it, bruising all the stems until it's unharvestable, and p_l is furious by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
+                "text": "p_l is proven unfortunately correct, as the patrol is full of juvenile behavior and dumb jokes, rather than focused effort. The one catmint plant {PRONOUN/p_l/subject} successfully {VERB/p_l/find/finds} ends up with {PRONOUN/p_l/poss} helpers rolling around in it, bruising all the stems until it's unharvestable, and p_l is furious by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1400,7 +1400,7 @@
         },
         "weight": 20,
         "intro_text": "The heat of greenleaf brings warmth to {PRONOUN/p_l/poss} pelt as p_l wanders, aimlessly searching for daisies to harvest their leaves.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -1419,7 +1419,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed on leaves are useless to c_n.",
+                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed leaves are useless to c_n.",
                 "exp": 0,
                 "weight": 20
             }
@@ -1517,7 +1517,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed on leaves are useless to c_n. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/app1/subject} definitely come close.",
+                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed leaves are useless to c_n. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/app1/subject} definitely come close.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1730,7 +1730,7 @@
         },
         "weight": 20,
         "intro_text": "Greenleaf's bounty means that finding dandelions shouldn't be any trouble, and p_l heads out to find some.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -1973,7 +1973,7 @@
         },
         "weight": 20,
         "intro_text": "The thick growth of greenleaf will serve c_n well today, p_l decides, thinking about gathering elder leaves. There's a particular tree in a sheltered dip along a stream {PRONOUN/p_l/subject} {VERB/p_l/want/wants} to check on today.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -2063,7 +2063,7 @@
                 ]
             },
             {
-                "text": "The tree, growing in a sheltered spot without huge amounts of wind, has branches that extend a mere whisker-length above the ground. The gathering is simple, today, warmed by the greenleaf sun. They even stop for a nap before going home, app1 stretching out and ripping at the ground with {PRONOUN/app1/poss} claws indulgently.",
+                "text": "The tree, growing in a sheltered spot without huge amounts of wind, has branches that extend a mere whisker-length above the ground. The gathering is simple today, warmed by the greenleaf sun. They even stop for a nap before going home, app1 stretching out and ripping at the ground with {PRONOUN/app1/poss} claws indulgently.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["many_herbs", "elder_leaves"],
@@ -2390,7 +2390,7 @@
         },
         "weight": 20,
         "intro_text": "Greenleaf is truly the best time of year to be a medicine cat, with the world so full of flowers and green growth. p_l heads out to gather fresh goldenrod for the stores.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -2554,7 +2554,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The many stems of goldenrod surround p_l as {PRONOUN/p_l/subject} {VERB/p_l/work/works}, snipping off stems and clumps of tiny yellow flowers to bring back to c_n's herb stores. The patrol chats as they work, exchanging gossip and news as the smell of cut stems wreathes around them.",
+                "text": "The many stems of goldenrod surround p_l as {PRONOUN/p_l/subject} {VERB/p_l/work/works}, snipping off stems and clumps of tiny yellow flowers to bring back to c_n's herb stores. The patrol chats as they work, exchanging gossip and news as the smell of cut stems wreaths around them.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["goldenrod"],
@@ -2661,7 +2661,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out to find a juniper tree, wanting to restock on its needles.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -2977,7 +2977,7 @@
         },
         "weight": 20,
         "intro_text": "p_l and app1 head out for lungwort, and p_l starts a lesson on the value of this rare herb for treating yellowcough.",
-        "decline_text": "A cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave. p_l heaves a sigh - the expedition is delayed for another time.",
+        "decline_text": "Some cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave. p_l heaves a sigh - the expedition is delayed for another time.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -3052,7 +3052,7 @@
                 "text": "Night falls, and still s_c insists they keep going. Lungwort is the only reliable cure for yellowcough, and {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cats persevere until they finally find the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["adult"],
                 "herbs": ["lungwort"],
                 "relationships": [
@@ -3112,7 +3112,7 @@
         },
         "weight": 20,
         "intro_text": "p_l is on a mission to find lungwort now that greenleaf is here. As the only reliable cure for yellowcough, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} determined that c_n stock up on it.",
-        "decline_text": "A cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave camp.",
+        "decline_text": "Some cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave camp.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -3165,7 +3165,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat perseveres until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "herbs": ["lungwort"],
                 "relationships": [
                     {
@@ -3194,7 +3194,7 @@
                 ]
             },
             {
-                "text": "p_l searches until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "p_l searches until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -3232,7 +3232,7 @@
         },
         "weight": 20,
         "intro_text": "p_l is on a mission to find lungwort now that greenleaf is here. As the only reliable cure for yellowcough, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} determined that c_n won't run out of it. {PRONOUN/p_l/subject/CAP} {VERB/p_l/take/takes} along a warrior escort to help.",
-        "decline_text": "A cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave.",
+        "decline_text": "Some cat grabs p_l's attention before {PRONOUN/p_l/subject} can leave.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -3286,7 +3286,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat perseveres until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["r_c"],
                 "herbs": ["lungwort"],
                 "relationships": [
@@ -3332,7 +3332,7 @@
                 ]
             },
             {
-                "text": "The cats search and search until their pawpads are sore and their muscles exhausted, but they just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "The cat's search and search until their paw pads are sore and their muscles exhausted, but they just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -3443,7 +3443,7 @@
         },
         "weight": 20,
         "intro_text": "Greenleaf is truly the best time of year to be a medicine cat, with the world so full of flowers and green growth. p_l heads out to gather fresh mallow for the stores.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -3607,7 +3607,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The soft, rose-like scent of the mallow bushes drifts around p_l and {PRONOUN/p_l/poss} Clanmates as they work. They snip off clumps of large, fuzzy, three-nubbed leaves, and the occasional pink flower, to be taken back to camp. The patrol chats as they work, exchanging gossip and news as the smell of cut stems wreathes around them.",
+                "text": "The soft, rose-like scent of the mallow bushes drifts around p_l and {PRONOUN/p_l/poss} Clanmates as they work. They snip off clumps of large, fuzzy, three-nubbed leaves, and the occasional pink flower, to be taken back to camp. The patrol chats as they work, exchanging gossip and news as the smell of cut stems wreaths around them.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["mallow"],
@@ -3784,7 +3784,7 @@
         },
         "weight": 20,
         "intro_text": "More marigold would be useful, particularly with greenleaf in full swing. The season will bring the marigold to bloom, and the flowers are just as useful as the leaves to p_l <i>and</i> extremely easy to spot from a distance.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4093,7 +4093,7 @@
         },
         "weight": 20,
         "intro_text": "Once mullein starts to tower over the other plants, it's a good time to harvest it.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4358,7 +4358,7 @@
         },
         "weight": 20,
         "intro_text": "Greenleaf encourages the oak to reach its full potential, wide and towering, and p_l goes to collect a harvest of its leaves.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4688,7 +4688,7 @@
         },
         "weight": 20,
         "intro_text": "As the plantain starts to choke off the paths the Clan uses to get about, fueled by greenleaf, it's a great time to clean up the paths and bring a good harvest home.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4938,7 +4938,7 @@
         },
         "weight": 20,
         "intro_text": "With greenleaf bringing the poppies to seed and only so much time before the plants die off in leaf-fall, p_l is keen to go collect as much as possible.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -5102,7 +5102,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "These plants will be dead in leaf-fall, but the Clan won't stop needing painkillers in the colder seasons, so there's no time to waste. p_l goes out and brings back a decent harvest, with all the members of the patrol bringing back at least a couple dried flowerheads full of seeds each.",
+                "text": "These plants will be dead in leaf-fall, but the Clan won't stop needing painkillers in the colder seasons, so there's no time to waste. p_l goes out and brings back a decent harvest, with all the members of the patrol bringing back at least a couple dried flower heads full of seeds each.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["poppy"],
@@ -5209,7 +5209,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out to find ragwort, keeping the particular fractal shape of its furled leaves in {PRONOUN/p_l/poss} mind to distinguish it from every other low-growing patch of greenery.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -5706,7 +5706,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce bloodloss have saved countless lives, and brought kittens safely into the world.",
+                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce blood loss have saved countless lives, and brought kittens safely into the world.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["raspberry"],
@@ -5773,7 +5773,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out to find tansy, scenting the air for its sharp smell and eyes on the lookout for tansy's strange, orb-like yellow flowers that greenleaf has brought out in abundance.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -6158,7 +6158,7 @@
         },
         "weight": 20,
         "intro_text": "p_l has finally put enough time aside to go search for thyme.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -6461,7 +6461,7 @@
         },
         "weight": 20,
         "intro_text": "p_l heads out on what promises to be a fragrant patrol, searching for wild garlic.",
-        "decline_text": "{PRONOUN/p_l/poss/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {

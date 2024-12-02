@@ -1178,7 +1178,6 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -1274,7 +1273,6 @@
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -4305,7 +4303,7 @@
     	"biome": ["plains"],
     	"season": ["leaf-fall"],
     	"types": ["hunting"],
-    	"tags": ["halloween", "romance"],
+    	"tags": ["halloween", "romantic"],
     	"patrol_art": "pipbats_INTRO",
     	"min_cats": 3,
     	"max_cats": 6,

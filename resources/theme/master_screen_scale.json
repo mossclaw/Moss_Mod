@@ -102,6 +102,7 @@
     "#med_cat_den_hover.tool_tip": {"misc": {"rect_width": "140"}},
     "#med_cat_den_hover_big.tool_tip": {"misc": {"rect_width": "230"}},
     "#blank_button.tool_tip": {"misc": {"rect_width": "350"}},
+    "#blank_button_dark.tool_tip": {"misc": {"rect_width": "350"}},
     "#blank_button_small.tool_tip": {"misc": {"rect_width": "250"}},
     "@mns_image.#moon.tool_tip": {"misc": {"rect_width": "100"}},
     "@mns_image.tool_tip": {"misc": {"rect_width": "100"}},
@@ -178,7 +179,7 @@
     },
     "@buttonstyles_vertical_tab": {
         "prototype": "buttonstyles_prototype",
-        "misc": {"padding": "5, 5", "state_transitions": {"hovered_normal": "0"}}
+        "misc": {"padding": "10, 5", "state_transitions": {"hovered_normal": "0"}}
     },
     "@buttonstyles_dropdown": {"prototype": "buttonstyles_prototype"},
     "@buttonstyles_ladder_top": {
@@ -596,19 +597,15 @@
         "colours": {"normal_text": "#EFE5CE"}
     },
     "#blank_button": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/blank.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/blank.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/blank.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/blank.png"
-            }
+        "font": {
+            "name": "notosans",
+            "size": "14"
+        },
+        "colours": {
+            "normal_text": "#000000",
+            "hovered_text": "#000000",
+            "selected_text": "#000000",
+            "active_text": "#000000"
         }
     },
     "#blank_button_small": {
@@ -2109,54 +2106,6 @@
             }
         }
     },
-    "#classic_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/classic_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/classic_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/classic_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/classic_camp_unavailable.png"
-            }
-        }
-    },
-    "#gully_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/gully_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/gully_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/gully_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/gully_camp_unavailable.png"
-            }
-        }
-    },
-    "#grotto_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/grotto_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/grotto_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/grotto_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/grotto_camp_unavailable.png"
-            }
-        }
-    },
     "#beach_biome_button": {
         "images": {
             "normal_image": {
@@ -2170,182 +2119,6 @@
             },
             "disabled_image": {
                 "path": "resources\/images\/buttons\/beach_unavailable.png"
-            }
-        }
-    },
-    "#cliff_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/cliff_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/cliff_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/cliff_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/cliff_camp_unavailable.png"
-            }
-        }
-    },
-    "#cave_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/cave_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/cave_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/cave_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/cave_camp_unavailable.png"
-            }
-        }
-    },
-    "#crystal_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/crystal_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/crystal_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/crystal_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/crystal_camp_unavailable.png"
-            }
-        }
-    },
-    "#ruins_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/ruins_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/ruins_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/ruins_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/ruins_camp_unavailable.png"
-            }
-        }
-    },
-    "#grasslands_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/grasslands_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/grasslands_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/grasslands_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/grasslands_camp_unavailable.png"
-            }
-        }
-    },
-    "#tunnel_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/tunnel_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/tunnel_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/tunnel_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/tunnel_camp_unavailable.png"
-            }
-        }
-    },
-    "#tidepool_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/tidepool_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/tidepool_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/tidepool_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/tidepool_camp_unavailable.png"
-            }
-        }
-    },
-    "#tidal_cave_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/tidal_cave_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/tidal_cave_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/tidal_cave_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/tidal_cave_camp_unavailable.png"
-            }
-        }
-    },
-    "#shipwreck_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/shipwreck_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/shipwreck_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/shipwreck_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/shipwreck_camp_unavailable.png"
-            }
-        }
-    },
-    "#wasteland_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/wastelands_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/wastelands_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/wastelands_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/wastelands_camp_unavailable.png"
-            }
-        }
-    },
-    "#lakeside_tab": {
-        "images": {
-            "normal_image": {
-                "path": "resources\/images\/buttons\/lakeside_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources\/images\/buttons\/lakeside_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources\/images\/buttons\/lakeside_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources\/images\/buttons\/lakeside_camp_unavailable.png"
             }
         }
     },

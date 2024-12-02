@@ -92,7 +92,10 @@ class PatrolScreen(Screens):
 
     def handle_choose_cats_events(self, event):
         if event.ui_element == self.elements["random"]:
-            self.selected_cat = choice(self.able_cats)
+            if self.able_cats:
+                self.selected_cat = choice(self.able_cats)
+            else:
+                print('WARNING: attempted to select random cat for patrol from empty list of able cats')
             self.update_selected_cat()
             self.update_button()
         # Check is a cat is clicked
@@ -128,7 +131,10 @@ class PatrolScreen(Screens):
                         able_no_med = self.able_cats
                     self.selected_cat = choice(able_no_med)
                 else:
-                    self.selected_cat = choice(self.able_cats)
+                    if self.able_cats:
+                        self.selected_cat = choice(self.able_cats)
+                    else:
+                        print('WARNING: attempted to select random cat for patrol from empty list of able cats')
                 self.update_selected_cat()
                 self.current_patrol.append(self.selected_cat)
             self.update_cat_images_buttons()
@@ -208,7 +214,13 @@ class PatrolScreen(Screens):
                 self.patrol_type = "hunting"
             self.update_button()
         elif event.ui_element == self.elements["patrol_start"]:
+            self.elements["patrol_start"].disable()
             self.selected_cat = None
+            if (
+                self.start_patrol_thread is not None
+                and self.start_patrol_thread.is_alive()
+            ):
+                return
             self.start_patrol_thread = self.loading_screen_start_work(
                 self.run_patrol_start, "start"
             )
@@ -257,6 +269,11 @@ class PatrolScreen(Screens):
             inp = "antagonize"
 
         if inp:
+            if (
+                self.proceed_patrol_thread is not None
+                and self.proceed_patrol_thread.is_alive()
+            ):
+                return
             self.proceed_patrol_thread = self.loading_screen_start_work(
                 self.run_patrol_proceed, "proceed", (inp,)
             )
@@ -279,6 +296,7 @@ class PatrolScreen(Screens):
         if (
             self.in_progress_data is not None
             and self.in_progress_data["current_moon"] == game.clan.age
+            and self.in_progress_data["clan_name"] == game.clan.name
         ):
             self.display_change_load(self.in_progress_data)
         else:
@@ -312,6 +330,7 @@ class PatrolScreen(Screens):
         variable_dict["outcome_art"] = self.outcome_art
 
         variable_dict["current_moon"] = game.clan.age
+        variable_dict["clan_name"] = game.clan.name
 
         return variable_dict
 
@@ -751,8 +770,14 @@ class PatrolScreen(Screens):
         )
         self.elements["intro_image"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((75, 150), (300, 300))),
-            pygame.transform.smoothscale(
-                self.patrol_obj.get_patrol_art(), ui_scale_dimensions((300, 300))
+            pygame.transform.scale(
+                self.patrol_obj.get_patrol_art().premul_alpha(),
+                ui_scale_dimensions((300, 300)),
+            )
+            if game.settings["no sprite antialiasing"]
+            else pygame.transform.smoothscale(
+                self.patrol_obj.get_patrol_art().premul_alpha(),
+                ui_scale_dimensions((300, 300)),
             ),
         )
 
@@ -976,7 +1001,11 @@ class PatrolScreen(Screens):
                 self.fav[str(i)].disable()
             self.cat_buttons["able_cat" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
-                pygame.transform.smoothscale(cat.sprite, ui_scale_dimensions((50, 50))),
+                pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50)))
+                if game.settings["no sprite antialiasing"]
+                else pygame.transform.smoothscale(
+                    cat.sprite, ui_scale_dimensions((50, 50))
+                ),
                 cat_object=cat,
                 manager=MANAGER,
             )
@@ -996,7 +1025,9 @@ class PatrolScreen(Screens):
             for cat in self.current_patrol:
                 self.cat_buttons["patrol_cat" + str(i)] = UISpriteButton(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
-                    pygame.transform.smoothscale(
+                    pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50)))
+                    if game.settings["no sprite antialiasing"]
+                    else pygame.transform.smoothscale(
                         cat.sprite, ui_scale_dimensions((50, 50))
                     ),
                     cat_object=cat,
@@ -1320,10 +1351,10 @@ class PatrolScreen(Screens):
         super().on_use()
 
         self.loading_screen_on_use(
-            self.start_patrol_thread, self.open_patrol_event_screen, (700, 500)
+            self.start_patrol_thread, self.open_patrol_event_screen
         )
         self.loading_screen_on_use(
-            self.proceed_patrol_thread, self.open_patrol_complete_screen, (350, 500)
+            self.proceed_patrol_thread, self.open_patrol_complete_screen
         )
 
     @staticmethod

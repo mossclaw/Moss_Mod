@@ -129,14 +129,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -306,14 +303,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -353,8 +347,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "relationships": [
                     {
@@ -479,14 +472,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "can_have_stat": ["p_l"],
                 "relationships": [
@@ -527,8 +517,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "can_have_stat": ["p_l"],
                 "relationships": [
@@ -1577,7 +1566,6 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
                     "lonesome",
@@ -1880,7 +1868,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"

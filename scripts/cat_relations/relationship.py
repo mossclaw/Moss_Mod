@@ -416,7 +416,7 @@ class Relationship:
             value_weights["dislike"] += 1
             value_weights["jealousy"] += 1
 
-        # increase the chance of a romantic interaction if there already mates
+        # increase the chance of a romantic interaction if they are already mates
         if self.mates:
             value_weights["romantic"] += 1
 
@@ -436,6 +436,10 @@ class Relationship:
         if (not mate_from_to or not mate_to_from) and not self.mates:
             while "romantic" in types:
                 types.remove("romantic")
+
+        # if cats have no romantic relationship already, don't allow romantic decrease
+        if not positive and "romantic" in types and not self.cat_from.relationships[self.cat_to.ID].romantic_love:
+            types.remove("romantic")
 
         rel_type = choice(types)
         return rel_type

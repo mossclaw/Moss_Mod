@@ -2345,7 +2345,7 @@
                 "text": "The cats slip and slide in a world suddenly damp and wet in the growing rainstorm, but s_c commiserates with those who fall and encourages every cat on, the patrol not only having fun with each other, but also managing to catch a good haul of desert creatures as confused by the slippery ground as they are.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "prey": ["large"],
                 "relationships": [
                     {
@@ -2464,7 +2464,7 @@
                 "text": "A storm descends, sudden and violent enough to drive the c_n cats to shelter. As the cats hide from the wind, s_c keeps an eye out for everyone. There's a lot of restless energy in the shelter as the cats watch leaf-bare bless c_n, but it's easily redirected to games and friendly debates, perhaps even a little flirting.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],

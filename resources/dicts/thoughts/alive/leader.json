@@ -1,25 +1,5 @@
 [
     {
-        "id": "leader_alive_kits",
-        "thoughts": [
-            "Has recently picked up the scent of mischievous kits in {PRONOUN/m_c/poss} den...",
-            "Is pondering the next mentors for the kits of the Clan",
-            "Thinks about who should mentor new apprentices",
-            "Bats a moss ball back to r_c when it hits {PRONOUN/m_c/object}, chuckling at the wide-eyed kit",
-            "Is looking over the kits, pleased the Clan is thriving",
-            "Is visiting the nursery to check on the kits, the future of the Clan"
-
-
-        ],  
-
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
-    },
-    {
         "id": "gen_leader",
         "thoughts": [
             "Is hoping for a sign from StarClan",
@@ -45,6 +25,33 @@
             "Promises to take care of the Clan with {PRONOUN/m_c/poss} lives",
             "Is busy planning out priorities for the day"
 
+        ]
+    },
+    {
+        "id": "leader_DF",
+        "thoughts": [
+            "Thinks {PRONOUN/m_c/subject} {VERB/m_c/have/has} been hearing the voices of Dark Forest cats...",
+            "Is pondering recent dreams {PRONOUN/m_c/subject} {VERB/m_c/have/has} had... perhaps from the Dark Forest?"
+        ],
+        "random_living_status": [
+            "darkforest"
+        ]
+    },
+    {
+        "id": "leader_alive_kits",
+        "thoughts": [
+            "Has recently picked up the scent of mischievous kits in {PRONOUN/m_c/poss} den...",
+            "Is pondering the next mentors for the kits of the Clan",
+            "Thinks about who should mentor new apprentices",
+            "Bats a moss ball back to r_c when it hits {PRONOUN/m_c/object}, chuckling at the wide-eyed kit",
+            "Is looking over the kits, pleased the Clan is thriving",
+            "Is visiting the nursery to check on the kits, the future of the Clan"
+        ],
+        "random_status_constraint": [
+            "kitten"
+        ],
+        "random_living_status": [
+            "living"
         ]
     },
     {
@@ -81,16 +88,6 @@
         ],
         "random_living_status": [
             "living"
-        ]
-    },
-    {
-        "id": "leader_DF",
-        "thoughts": [
-            "Thinks {PRONOUN/m_c/subject} {VERB/m_c/have/has} been hearing the voices of Dark Forest cats...",
-            "Is pondering recent dreams {PRONOUN/m_c/subject} {VERB/m_c/have/has} had... perhaps from the Dark Forest?"
-        ],
-        "random_living_status": [
-            "darkforest"
         ]
     },
     {
@@ -214,16 +211,6 @@
         ]
     },
     {
-        "id": "charismatic_leader",
-        "thoughts": [
-            "Gives a particularly rousing speech at a Clan meeting",
-            "Feels confident that the Clan admires {PRONOUN/m_c/object}"
-        ],
-        "main_trait_constraint": [
-            "charismatic"
-        ]
-    },
-    {
         "id": "leader_meanie_deputy_meanie",
         "thoughts": [
             "Is pleased with r_c's ruthless treatment of the warriors",
@@ -314,100 +301,6 @@
             "vengeful"
         ]
     }
-    ,
-    {
-        "id": "charismatic_leader",
-        "thoughts": [
-            "Gives a particularly rousing speech at a Clan meeting",
-            "Feels confident that the Clan admires {PRONOUN/m_c/object}"
-        ],
-        "main_trait_constraint": [
-            "charismatic"
-        ]
-    },
-    {
-        "id":"leader_meany_deputy_meany",
-        "thoughts":[
-            "Is pleased with r_c's ruthless treatment of the warriors",
-            "Is sparring violently with r_c, both drawing blood",
-            "Is showing r_c how to lead by fear and not worry about respect",
-            "Is asking r_c to take care of any disloyal warriors",
-            "Trusts r_c to continue to keep the Clan in line",
-            "Is threatening to drag r_c to the dark forest with {PRONOUN/m_c/object}",
-            "Is teaching r_c how to rat out spies and dissenting warriors",
-            "Is showing r_c how to lead by pain and suffering"
-        ],
-        "random_status_constraint": [
-            "deputy"
-        ],
-        "random_living_status":[
-            "living"
-        ],
-        "main_trait_constraint": [
-            "bloodthirsty",
-            "fierce",
-            "cold",
-            "vengeful"
-        ],
-        "random_trait_constraint": [
-            "bloodthirsty",
-            "fierce",
-            "cold",
-            "vengeful"
-        ]
-    },
-    {
-        "id":"leader_meany_med_meany",
-        "thoughts":[
-            "Is pleased that r_c is withholding herbs from the weaker cats",
-            "Is instructing r_c to let a sick cat die",
-            "Is telling r_c to make a poultice with death berries",
-            "Is asking r_c to fake a sign from StarClan to prepare the Clan for war",
-            "Is pleased with having a like minded medicine cat like r_c",
-            "Is listening to r_c explain the pointlessness of treating weak or old cats"
-        ],
-        "random_status_constraint": [
-            "medicine cat"
-        ],
-        "random_living_status":[
-            "living"
-        ],
-        "main_trait_constraint": [
-            "bloodthirsty",
-            "fierce",
-            "cold",
-            "vengeful"
-        ],
-        "random_trait_constraint": [
-            "bloodthirsty",
-            "fierce",
-            "cold",
-            "vengeful"
-        ]
-    },
-    {
-        "id":"leader_deputy_meany",
-        "thoughts":[
-            "Is wondering if {PRONOUN/m_c/subject} made a mistake by appointing r_c",
-            "Is trying to teach r_c to lead with kindness",
-            "Is doing all {PRONOUN/m_c/subject} can to make r_c a better cat",
-            "Is startled by r_c's aggressiveness",
-            "Is arguing with r_c about how to treat weaker members of the Clan",
-            "Is wondering if r_c has been sneaking around",
-            "Is afraid r_c might be plotting against {PRONOUN/m_c/object}",
-            "Is shaken after catching r_c teaching the warriors a killing blow"
-        ],
-        "random_status_constraint": [
-            "deputy"
-        ],
-        "random_living_status":[
-            "living"
-        ],
-        "random_trait_constraint": [
-            "bloodthirsty",
-            "fierce",
-            "cold",
-            "vengeful"
-        ]
-    }
+
 ]
+

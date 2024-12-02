@@ -189,7 +189,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "thoughtful",
                     "wise"
                 ],
@@ -283,7 +282,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "thoughtful",
                     "wise"
                 ],
@@ -353,7 +351,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "thoughtful",
                     "wise"
                 ],
@@ -423,7 +420,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "thoughtful",
                     "wise"
                 ],
@@ -709,10 +705,8 @@
                 "weight": 10,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -787,10 +781,8 @@
                 "weight": 10,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -865,10 +857,8 @@
                 "weight": 10,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -922,7 +912,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -1011,7 +1000,6 @@
                     "nervous",
                     "sneaky",
                     "strange",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"

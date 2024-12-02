@@ -28,6 +28,7 @@ from scripts.utility import (
     ui_scale_dimensions,
     shorten_text_to_fit,
     ui_scale_offset,
+    adjust_list_text,
 )
 from .Screens import Screens
 from ..cat.history import History
@@ -135,6 +136,7 @@ class ProfileScreen(Screens):
 
     def __init__(self, name=None):
         super().__init__(name)
+        self.condition_data = {}
         self.show_moons = None
         self.no_moons = None
         self.help_button = None
@@ -635,16 +637,20 @@ class ProfileScreen(Screens):
 
         self.profile_elements["cat_info_column1"] = UITextBoxTweaked(
             self.generate_column1(self.the_cat),
+
             #ui_scale(pygame.Rect((600, 460), (450, 380))),
             ui_scale(pygame.Rect((320, 230), (200, 200))),
+
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             line_spacing=1,
             manager=MANAGER,
         )
         self.profile_elements["cat_info_column2"] = UITextBoxTweaked(
             self.generate_column2(self.the_cat),
+
             #ui_scale(pygame.Rect((980, 460), (500, 360))),
             ui_scale(pygame.Rect((550, 230), (200, 200))),
+
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             line_spacing=1,
             manager=MANAGER,
@@ -984,7 +990,6 @@ class ProfileScreen(Screens):
                         if Cat.fetch_cat(i)
                     ]
                 )
-
             # NEWLINE ----------
             output += "\n"
 
@@ -1666,6 +1671,7 @@ class ProfileScreen(Screens):
         if death_history:
             all_deaths = []
             death_number = len(death_history)
+            multi_life_count = 0
             for index, death in enumerate(death_history):
                 found_murder = (
                     False  # Add this line to track if a matching murder event is found
@@ -1693,6 +1699,9 @@ class ProfileScreen(Screens):
                     )
 
                 if self.the_cat.status == "leader":
+                    if text == "multi_lives":
+                        multi_life_count += 1
+                        continue
                     if index == death_number - 1 and self.the_cat.dead:
                         if death_number == 9:
                             life_text = "lost {PRONOUN/m_c/poss} final life"
@@ -1709,10 +1718,21 @@ class ProfileScreen(Screens):
                             "fifth",
                             "sixth",
                             "seventh",
-                            "eigth",
+                            "eighth",
                         ]
+                        if multi_life_count != 0:
+                            temp_index = index - multi_life_count
+                            lives = [life_names[temp_index]]
+                            while multi_life_count != 0:
+                                multi_life_count -= 1
+                                temp_index += 1
+                                lives.append(life_names[temp_index])
+                        else:
+                            lives = [life_names[index]]
                         life_text = (
-                            "lost {PRONOUN/m_c/poss} " + life_names[index] + " life"
+                            "lost {PRONOUN/m_c/poss} "
+                            + adjust_list_text(lives)
+                            + (" life" if len(lives) == 1 else " lives")
                         )
                 elif death_number > 1:
                     # for retired leaders
@@ -1925,37 +1945,41 @@ class ProfileScreen(Screens):
             self.right_conditions_arrow.enable()
 
         x_pos = 13
+        for x in self.condition_data.values():
+            x.kill()
+        self.condition_data = {}
         for con in all_illness_injuries[self.conditions_page]:
             # Background Box
-            bg = pygame_gui.elements.UIPanel(
-                ui_scale(pygame.Rect((x_pos, 13), (142, 145))),
+            self.condition_data[f"bg_{con}"] = pygame_gui.elements.UIPanel(
+                ui_scale(pygame.Rect((x_pos, 13), (142, 142))),
                 manager=MANAGER,
                 container=self.condition_container,
                 object_id="#profile_condition_panel",
+                margins={"left": 0, "right": 0, "top": 0, "bottom": 0},
             )
 
-            name = UITextBoxTweaked(
+            self.condition_data[f"name_{con}"] = UITextBoxTweaked(
                 con[0],
-                ui_scale(pygame.Rect((0, 5), (138, -1))),
+                ui_scale(pygame.Rect((0, 0), (120, -1))),
                 line_spacing=0.90,
                 object_id="#text_box_30_horizcenter",
-                container=bg,
-                manager=MANAGER,
-                anchors={"left": "left", "right": "right"},
-            )
-
-            y_adjust = name.get_relative_rect().height
-            details_rect = ui_scale(pygame.Rect((0, 0), (138, -1)))
-            details_rect.y = y_adjust
-
-            UITextBoxTweaked(
-                con[1],
-                details_rect,
-                line_spacing=0.90,
-                object_id="#text_box_22_horizcenter_pad_20_20",
-                container=bg,
+                container=self.condition_data[f"bg_{con}"],
                 manager=MANAGER,
                 anchors={"centerx": "centerx"},
+            )
+
+            y_adjust = self.condition_data[f"name_{con}"].get_relative_rect().height
+            details_rect = ui_scale(pygame.Rect((0, 0), (142, 100)))
+            details_rect.bottomleft = (0, 0)
+
+            self.condition_data[f"desc_{con}"] = UITextBoxTweaked(
+                con[1],
+                details_rect,
+                line_spacing=0.75,
+                object_id="#text_box_22_horizcenter",
+                container=self.condition_data[f"bg_{con}"],
+                manager=MANAGER,
+                anchors={"bottom": "bottom", "centerx": "centerx"},
             )
 
             x_pos += 152
@@ -2506,6 +2530,9 @@ class ProfileScreen(Screens):
             self.right_conditions_arrow.kill()
             self.conditions_background.kill()
             self.condition_container.kill()
+            for data in self.condition_data.values():
+                data.kill()
+            self.condition_data = {}
 
         self.open_tab = None
 

@@ -676,6 +676,7 @@ class Pelt:
 
         if num < 0:
             num = 1
+#old
         hit = random.randint(0, num)
         if hit == 0:
             if self.eye_colour in Pelt.yellow_eyes:
@@ -710,6 +711,16 @@ class Pelt:
             self.eye_pattern = choice(Pelt.eye_patterns)
         else:
             self.eye_pattern = None
+
+#new
+        ###if not random.randint(0, num):
+            ###colour_wheel = [Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes]
+            #for colour in colour_wheel[:]:
+                #if self.eye_colour in colour:
+                    #colour_wheel.remove(colour) # removes the selected list from the options
+                    #self.eye_colour2 = choice(choice(colour_wheel)) # choose from the remaining two lists
+                    #break
+
 
     def pattern_color_inheritance(self, parents: tuple = (), gender="female"):
         # setting parent pelt categories
@@ -1015,7 +1026,7 @@ class Pelt:
             'sick_young': 37,
             'sick_adult': 36
         }
-        self.reverse = choice([True, False])
+        self.reverse = bool(random.getrandbits(1))
         # skin chances
         self.skin = choice(Pelt.skin)
         self.skin_color = choice(Pelt.skin_color)

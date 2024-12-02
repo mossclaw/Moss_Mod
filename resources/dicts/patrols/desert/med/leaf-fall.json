@@ -157,7 +157,6 @@
                 "text": "Even though there should be many herbs they fail to find anything. p_l blames r_c for distracting them and they get into a huge argument.",
                 "exp": 0,
                 "weight": 20,
-                "stat_trait": ["None"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],

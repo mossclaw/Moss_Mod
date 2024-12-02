@@ -182,6 +182,13 @@
             "m_c jumps when another cat comes up on {PRONOUN/m_c/poss} bad side. {PRONOUN/m_c/subject/CAP} {VERB/m_c/remind/reminds} {PRONOUN/m_c/self} that {PRONOUN/m_c/subject} {VERB/m_c/have/has} to get used to this. {PRONOUN/m_c/subject/CAP} {VERB/m_c/know/knows} {PRONOUN/m_c/poss} eye is permanently damaged."
         ]
     },
+    "claw-wound": {
+        "weak leg": [
+            "r_c informs m_c that {PRONOUN/m_c/poss} healed claw-wound has left {PRONOUN/m_c/poss} leg permanently weakened.",
+            "m_c finds that {PRONOUN/m_c/subject} {VERB/m_c/have/has} a new limp, despite having healed from {PRONOUN/m_c/poss} claw-wound. r_c tells {PRONOUN/m_c/object} it's likely permanent.",
+            "m_c limps around camp, fully healed from {PRONOUN/m_c/poss} claw-wound but still marked by it for the rest of {PRONOUN/m_c/poss} life."
+        ]
+    },
     "broken back": {
         "paralyzed": [
             "r_c is gentle when {PRONOUN/r_c/subject} {VERB/r_c/break/breaks} the news, but m_c had already expected it. {PRONOUN/m_c/subject/CAP} will never walk again.",

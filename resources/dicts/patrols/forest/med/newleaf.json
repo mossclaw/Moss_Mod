@@ -2773,7 +2773,7 @@
                 "text": "Night falls, and still s_c insists they keep going. Lungwort is the only reliable cure for yellowcough, and {PRONOUN/p_l/subject} just can't let c_n go without. Exhausted, but determined, the medicine cats persist patiently until they finally find the precious, speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["adult"],
                 "herbs": ["lungwort"],
                 "relationships": [
@@ -2886,7 +2886,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted, but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious, speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "herbs": ["lungwort"],
                 "relationships": [
                     {
@@ -2992,7 +2992,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted, but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious, speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["healer"],
                 "herbs": ["lungwort"],
                 "relationships": [

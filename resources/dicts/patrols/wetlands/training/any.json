@@ -30,7 +30,7 @@
                 "text": "By the end of the patrol, s_c is able to hide in the water, {PRONOUN/s_c/poss} movements barely creating ripples.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["calm", "careful", "sneaky", "quiet", "patient"]
+                "stat_trait": ["calm", "careful", "sneaky"]
             }
         ],
         "fail_outcomes": [
@@ -43,7 +43,7 @@
                 "text": "s_c struggles to take the lesson seriously, and the training session ends early with no real progress made.",
                 "exp": 0,
                 "weight": 20,
-                "stat_trait": ["troublesome", "playful", "noisy"]
+                "stat_trait": ["troublesome", "playful"]
             }
         ]
     },
@@ -111,14 +111,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -158,8 +155,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "relationships": [
                     {
@@ -256,14 +252,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -303,8 +296,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "relationships": [
                     {
@@ -971,7 +963,7 @@
         "season": ["any"],
         "types": ["training"],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "wtlnd_train_moosemyth_storylocked1",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {

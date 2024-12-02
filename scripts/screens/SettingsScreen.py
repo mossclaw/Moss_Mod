@@ -59,18 +59,22 @@ class SettingsScreen(Screens):
     # contains the tooltips for contributors
     tooltip = {}
 
-    info_text = ""
+    info_text = ["", [], ""]
     tooltip_text = []
+    info_text_index = 0
     with open("resources/credits_text.json", "r", encoding="utf-8") as f:
         credits_text = ujson.load(f)
     for string in credits_text["text"]:
         if string == "{contrib}":
+            # removing the previous newline
+            info_text[info_text_index] = info_text[info_text_index][:-4]
+            info_text_index += 1
             for contributor in credits_text["contrib"]:
-                info_text += contributor + "<br>"
+                info_text[info_text_index].append(contributor)
                 tooltip_text.append(credits_text["contrib"][contributor])
+            info_text_index += 1
         else:
-            info_text += string
-            info_text += "<br>"
+            info_text[info_text_index] += string + "<br>"
 
     def __init__(self, name="settings_screen"):
         super().__init__(name)
@@ -487,7 +491,7 @@ class SettingsScreen(Screens):
         )
 
         self.checkboxes_text["info_text_box"] = pygame_gui.elements.UITextBox(
-            self.info_text,
+            self.info_text[0],
             ui_scale(pygame.Rect((0, 0), (575, -1))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             container=self.checkboxes_text["info_container"],
@@ -497,24 +501,38 @@ class SettingsScreen(Screens):
 
         self.checkboxes_text["info_text_box"].disable()
 
-        i = 0
-        y_pos = 343
         for i, tooltip in enumerate(self.tooltip_text):
-            self.tooltip[f"tip{i}"] = (
-                UIImageButton(
-                    ui_scale(pygame.Rect((0, i * 26 + y_pos), (200, 26))),
-                    "",
-                    object_id="#blank_button",
-                    container=self.checkboxes_text["info_container"],
-                    manager=MANAGER,
-                    tool_tip_text=tooltip if tooltip else None,
-                    starting_height=2,
-                    anchors={"centerx": "centerx"},
-                ),
+            self.tooltip[f"tip{i}"] = UIImageButton(
+                ui_scale(pygame.Rect((0, 0), (200, 26))),
+                self.info_text[1][i],
+                object_id="#blank_button_dark"
+                if self.toggled_theme == "dark"
+                else "#blank_button",
+                container=self.checkboxes_text["info_container"],
+                manager=MANAGER,
+                tool_tip_text=tooltip if tooltip else None,
+                starting_height=2,
+                sound_id=None,
+                anchors={
+                    "centerx": "centerx",
+                    "top_target": self.tooltip[f"tip{i - 1}"]
+                    if i > 0
+                    else self.checkboxes_text["info_text_box"],
+                },
             )
-        self.checkboxes_text["info_container"].set_scrollable_area_dimensions(
-            ui_scale_dimensions((785, i * 28 + y_pos + 275))
+
+        self.checkboxes_text["info_text_box_2"] = pygame_gui.elements.UITextBox(
+            self.info_text[2],
+            ui_scale(pygame.Rect((0, 0), (575, -1))),
+            object_id=get_text_box_theme("#text_box_30_horizcenter"),
+            container=self.checkboxes_text["info_container"],
+            manager=MANAGER,
+            anchors={
+                "centerx": "centerx",
+                "top_target": self.tooltip[list(self.tooltip.keys())[-1]],
+            },
         )
+        self.checkboxes_text["info_text_box_2"].disable()
 
     def open_lang_settings(self):
         """Open Language Settings"""

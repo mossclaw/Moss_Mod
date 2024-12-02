@@ -158,7 +158,6 @@ class MusicManager:
         pauses current music track
         """
         self.muted = True
-        game.switch_setting("audio_mute")
         pygame.mixer.music.pause()
 
     def unmute_music(self, screen):
@@ -167,7 +166,6 @@ class MusicManager:
         if necessary
         """
         self.muted = False
-        game.switch_setting("audio_mute")
         pygame.mixer.music.unpause()
         self.check_music(screen)
 
@@ -243,6 +241,16 @@ class _SoundManager:
         UIImageButtons have a sound_id parameter for assigning unique sounds to individual buttons
         :param event: the event that is taking place
         """
+        # This think make sounds play using UI_BUTTON_PRESSED, instead of UI_BUTTON_START_PRESS
+        try:
+            if event.ui_element.sound_id in ["timeskip"]:
+                if event.type == pygame_gui.UI_BUTTON_PRESSED:
+                    self.play("button_press", event.ui_element)
+                else:
+                    return
+        except:
+            pass
+
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.pressed = event.ui_element
             self.play("button_press", event.ui_element)

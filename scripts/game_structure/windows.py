@@ -65,8 +65,8 @@ class SymbolFilterWindow(UIWindow):
         self.set_blocking(True)
 
         self.possible_tags = {
-            "plant": ["flower", "tree"],
-            "animal": ["cat", "fish", "bird", "mammal", "bug", "other animals"],
+            "plant": ["flower", "tree", "leaf", "other plant", "fruit"],
+            "animal": ["cat", "fish", "bird", "mammal", "bug", "other animal"],
             "element": ["water", "fire", "earth", "air", "light"],
             "location": [],
             "descriptor": [],
@@ -553,11 +553,11 @@ class ChangeCatName(UIWindow):
             container=self,
         )
 
-        if self.the_cat.name.status in self.the_cat.name.names_dict["special_suffixes"]:
+        if self.the_cat.status in self.the_cat.name.names_dict["special_suffixes"]:
             self.suffix_entry_box = pygame_gui.elements.UITextEntryLine(
                 ui_scale(pygame.Rect((159 + x_pos, 50 + y_pos), (120, 30))),
                 placeholder_text=self.the_cat.name.names_dict["special_suffixes"][
-                    self.the_cat.name.status
+                    self.the_cat.status
                 ],
                 manager=MANAGER,
                 container=self,
@@ -608,7 +608,7 @@ class ChangeCatName(UIWindow):
                 # Suffixes can be empty, if you want. However, don't change the suffix if it's currently being hidden
                 # by a special suffix.
                 if (
-                    self.the_cat.name.status
+                    self.the_cat.status
                     not in self.the_cat.name.names_dict["special_suffixes"]
                     or self.the_cat.name.specsuffix_hidden
                 ):
@@ -631,13 +631,9 @@ class ChangeCatName(UIWindow):
                     use_suffix = self.the_cat.name.suffix
                 self.prefix_entry_box.set_text(
                     Name(
-                        self.the_cat.status,
                         None,
                         use_suffix,
-                        self.the_cat.pelt.colour,
-                        self.the_cat.pelt.eye_colour,
-                        self.the_cat.pelt.name,
-                        self.the_cat.pelt.tortiepattern,
+                        cat=self.the_cat
                     ).prefix
                 )
             elif event.ui_element == self.random_suffix:
@@ -647,13 +643,9 @@ class ChangeCatName(UIWindow):
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
                     Name(
-                        self.the_cat.status,
                         use_prefix,
                         None,
-                        self.the_cat.pelt.colour,
-                        self.the_cat.pelt.eye_colour,
-                        self.the_cat.pelt.name,
-                        self.the_cat.pelt.tortiepattern,
+                        cat=self.the_cat
                     ).suffix
                 )
 
@@ -1607,9 +1599,11 @@ class RelationshipLog(UIWindow):
         )
         self.closing_buttons = [self.exit_button, self.back_button, self.log_icon]
 
-        self.disable_button_list = disable_button_list
-        for button in self.disable_button_list:
-            button.disable()
+        self.disable_button_list = []
+        for button in disable_button_list:
+            if button.is_enabled:
+                self.disable_button_list.append(button)
+                button.disable()
 
         opposite_log_string = None
         if not relationship.opposite_relationship:
@@ -1850,9 +1844,11 @@ class SaveAsImage(UIWindow):
 
 
 class EventLoading(UIWindow):
+    """Handles the event loading animation"""
+
     def __init__(self, pos):
         if pos is None:
-            pos = ui_scale_offset((800, 700))
+            pos = (350, 300)
 
         super().__init__(
             ui_scale(pygame.Rect(pos, (100, 100))),
@@ -1867,7 +1863,9 @@ class EventLoading(UIWindow):
         self.end_animation = False
 
         self.animated_image = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect(0, 0, 100, 100)), self.frames[0], container=self
+            ui_scale(pygame.Rect(0, 0, 100, 100)),
+            self.frames[0],
+            container=self,
         )
 
         self.animation_thread = threading.Thread(target=self.animate)
@@ -1884,17 +1882,12 @@ class EventLoading(UIWindow):
         return frames
 
     def animate(self):
+        """Loops over the event frames and displays the animation"""
         i = 0
-        while True:
-            if self.end_animation:
-                break
-
-            i += 1
-            if i >= len(self.frames):
-                i = 0
+        while not self.end_animation:
+            i = (i + 1) % (len(self.frames))
 
             self.animated_image.set_image(self.frames[i])
-
             time.sleep(0.125)
 
     def kill(self):
@@ -2070,10 +2063,11 @@ class SelectFocusClans(UIWindow):
             object_id="#exit_window_button",
             container=self,
         )
-        self.save_button = UIImageButton(
+        self.save_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((80, 180), (139, 30))),
-            "",
-            object_id="#change_focus_button",
+            "Change Focus",
+            get_button_dict(ButtonStyles.SQUOVAL, (139, 30)),
+            object_id="@buttonstyles_squoval",
             container=self,
         )
         self.save_button.disable()

@@ -1287,7 +1287,6 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -1383,7 +1382,6 @@
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -2062,8 +2060,6 @@
         }, 
         "weight": 15,
         "chance_of_success": 30,
-        "relationship_constraint": null,
-        "pl_skill_constraint": null,
         "intro_text": "The patrol hears a strange sound coming from the grass. What is that? It's like... a hiss and rustle at once?",
         "decline_text": "p_l knows <i>exactly</i> what that sound is. Get away! Now! lead_name will have to be informed of this venomous threat on their hunting path.",
         "success_outcomes": [
@@ -2087,13 +2083,13 @@
         "text": "r_c finds {PRONOUN/r_c/self} face to fang with a rattling snake. {PRONOUN/r_c/subject/CAP} {VERB/r_c/flinch/flinches} away just as the snake snaps its dripping fangs shut a whisker-length from {PRONOUN/r_c/poss} nose. r_c bolts back to the patrol. They'll need to alter their hunting path - that was too close!",
                 "exp": 5,
                 "weight": 20, 
-                "prey": ["very small"],
+                "prey": ["very_small"],
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect,trust"],
+                        "values": ["respect", "trust"],
                         "amount": 5
                     }
         ]
@@ -2112,8 +2108,8 @@
                         "amount": -5
                     }
                 ],
-                "injury": 
-    {
+                "injury": [
+                    {
                         "cats": ["r_c"],
                         "injuries": ["snake bite","poisoned"],
                         "scars": ["SNAKE"],
@@ -2123,6 +2119,7 @@
                             "lead_death": "a rattlesnake while hunting."
                         }
                     }
+                ]
                 
             },
             {
@@ -2138,8 +2135,8 @@
                         "amount": -5
                     }
                 ],
-                "injury": 
-    {
+                "injury": [
+                    {
                         "cats": ["r_c"],
                         "injuries": ["snake bite","poisoned","damaged eyes"],
                         "scars": ["RIGHTBLIND","LEFTBLIND","BOTHBLIND"],
@@ -2150,6 +2147,7 @@
                         "lead_death": "a rattlesnake while hunting."}
                         
                     }
+                ]
     
             },
             {

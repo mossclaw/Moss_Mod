@@ -57,7 +57,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 }
             }
@@ -171,7 +171,7 @@
                 "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich meadow outside of c_n territory.",
                 "exp": 30,
                 "weight": 20,
-                "stat_trait": ["bold", "confident", "charming"],
+                "stat_trait": ["bold", "confident"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -298,9 +298,7 @@
                     "charismatic",
                     "childish",
                     "playful",
-                    "empathetic",
-                    "loving",
-                    "patient"
+                    "loving"
                 ],
                 "relationships": [
                     {
@@ -535,7 +533,7 @@
    		 "injury": [
    			 {
    				 "cats": ["r_c"],
-   				 "injuries": ["persistent headache"]
+   				 "injuries": ["persistent headaches"]
    			 }
    		 ],
          "art": "mothman_OUTCOME"

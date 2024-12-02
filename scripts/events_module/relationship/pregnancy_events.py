@@ -376,7 +376,7 @@ class Pregnancy_Events:
                 if cat.exiled:
                     kit.status = "loner"
                     name = choice(names.names_dict["normal_prefixes"])
-                    kit.name = Name("loner", prefix=name, suffix="")
+                    kit.name = Name(prefix=name, suffix="", cat=kit)
                 if other_cat and not other_cat.outside:
                     kit.backstory = "outsider2"
                 if cat.outside and not cat.exiled:
@@ -422,8 +422,12 @@ class Pregnancy_Events:
         ):
             involved_cats.append(other_cat.ID)
             event_list.append(choice(events["birth"]["affair"]))
+            if len(cat.mate) > 0:
+                event_list.append(choice(events["birth"]["affair_mated"]))
         else:
             event_list.append(choice(events["birth"]["unmated_parent"]))
+
+        involved_cats += [k.ID for k in kits]
 
         if clan.game_mode != "classic":
             try:
@@ -726,7 +730,7 @@ class Pregnancy_Events:
         blood_parent = None
 
         ##### SELECT BACKSTORY #####
-        if cat and cat.gender == "female":
+        if cat and "pregnant" in cat.injuries:
             backstory = choice(["halfclan1", "outsider_roots1"])
         elif cat:
             backstory = choice(["halfclan2", "outsider_roots2"])
@@ -756,7 +760,6 @@ class Pregnancy_Events:
 
         #### GENERATE THE KITS ######
         for kit in range(kits_amount):
-            kit = None
             if not cat:
                 # No parents provided, give a blood parent - this is an adoption.
                 if not blood_parent:

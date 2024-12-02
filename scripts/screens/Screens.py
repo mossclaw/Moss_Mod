@@ -252,18 +252,14 @@ class Screens:
         """This is a short-up to deal with mute button presses.
         This will fail if event.type != pygame_gui.UI_BUTTON_START_PRESS"""
         if event.ui_element == Screens.menu_buttons["mute_button"]:
-            game.switch_setting("audio_mute")
             music_manager.mute_music()
             Screens.menu_buttons["mute_button"].hide()
             Screens.menu_buttons["unmute_button"].show()
-            music_manager.mute_music()
             return True
         elif event.ui_element == Screens.menu_buttons["unmute_button"]:
-            game.switch_setting("audio_mute")
             music_manager.unmute_music(self.name)
             Screens.menu_buttons["unmute_button"].hide()
             Screens.menu_buttons["mute_button"].show()
-            music_manager.unmute_music(self.name)
             return True
         else:
             return False

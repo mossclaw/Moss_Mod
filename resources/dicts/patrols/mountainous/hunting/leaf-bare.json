@@ -657,7 +657,7 @@
                 "text": "s_c really keeps the patrol on task and motivated through the sharp cold of the leaf-bare morning, not through authority or commands, but with a gentle voice and compassionate understanding that encourages every cat to do their best for c_n.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": [ "compassionate", "empathetic", "faithful", "loving", "thoughtful" ],
+                "stat_trait": [ "compassionate", "faithful", "loving", "thoughtful" ],
                 "prey": ["medium"],
                 "relationships": [
                     {
@@ -819,7 +819,7 @@
                 "text": "A storm descends, sudden and violent, putting an end to any other thoughts but survival. As the cats hide under shrubbery of a sheltered valley, s_c keeps an eye out for everyone. It's a long couple of hours, but with gentle understanding and compassion the cats make it through safely, closer than ever afterwards.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": [ "compassionate", "empathetic", "faithful", "loving", "thoughtful" ],
+                "stat_trait": [ "compassionate", "faithful", "loving", "thoughtful" ],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],
@@ -1734,7 +1734,6 @@
                     "responsible",
                     "confident",
                     "wise",
-                    "patient",
                     "sneaky",
                     "careful"
                 ],
@@ -1921,7 +1920,6 @@
                     "careful",
                     "righteous",
                     "responsible",
-                    "patient",
                     "strange",
                     "shameless"
                 ],
@@ -1940,7 +1938,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Drat! p_l hesitated too long and the bird flew off! {PRONOUN/p_l/subject/CAP} still {VERB/p_l/do/does}n't know if {PRONOUN/p_l/subject}} could have caught it!",
+                "text": "Drat! p_l hesitated too long and the bird flew off! {PRONOUN/p_l/subject/CAP} still {VERB/p_l/do/does}n't know if {PRONOUN/p_l/subject} could have caught it!",
                 "exp": 0,
                 "weight": 20
             },

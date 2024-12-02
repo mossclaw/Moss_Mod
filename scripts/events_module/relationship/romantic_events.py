@@ -453,6 +453,7 @@ class Romantic_Events:
 
         return: bool if event is triggered or not
         """
+
         # get the highest romantic love relationships and
         rel_list = cat_from.relationships.values()
         highest_romantic_relation = get_highest_romantic_relation(
@@ -468,6 +469,10 @@ class Romantic_Events:
             return False
 
         cat_to = highest_romantic_relation.cat_to
+
+        if cat_to.outside != cat_from.outside:
+            return False
+
         if not cat_to.is_potential_mate(cat_from) or not cat_from.is_potential_mate(
             cat_to
         ):
@@ -577,6 +582,9 @@ class Romantic_Events:
         """Checks if the two cats can become mates, or not. Returns: boolean and event_string"""
         become_mates = False
         young_age = ["newborn", "kitten", "adolescent"]
+        if cat_to.outside != cat_from.outside:
+            return False, None
+
         if not cat_from.is_potential_mate(cat_to):
             return False, None
 

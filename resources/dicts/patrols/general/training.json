@@ -24,7 +24,8 @@
                         "cats_from": ["patrol"],
                         "mutual": false,
                         "values": ["comfort", "trust"],
-                        "amount": 5
+                        "amount": 5,
+                        "log": "r_c warned the patrol {PRONOUN/r_c/subject} {VERB/r_c/were/was} with about some potentially dangerous red berries"
                     }
                 ]
             },
@@ -494,10 +495,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -661,10 +660,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -874,10 +871,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -971,10 +966,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -1060,10 +1053,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -1164,10 +1155,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -2360,10 +2349,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -2447,10 +2434,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -2543,10 +2528,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -2634,10 +2617,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -2944,10 +2925,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -3176,7 +3155,7 @@
                 ]
             },
             {
-                "text": "That's kinda odd. app1 hastens to add that that doesn't mean it's bad, but maybe {PRONOUN/app2/subject} should tell {PRONOUN/app2/poss} mentor about this. Maybe it's something to do with StarClan?",
+                "text": "That's kind of odd. app1 hastens to add that that doesn't mean it's bad, but maybe {PRONOUN/app2/subject} should tell {PRONOUN/app2/poss} mentor about this. Maybe it's something to do with StarClan?",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -3308,7 +3287,7 @@
                 "text": "s_c cannot relate to the frankly nightmarish scenes app1 has been tormented by, but {PRONOUN/s_c/subject} can't believe {PRONOUN/s_c/poss} Clanmate has been going through so much without anybody noticing. Wrapping {PRONOUN/s_c/poss} tail around app1's shoulders, {PRONOUN/s_c/subject} tell app1 this will all be alright - {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} going to make sure that app1 doesn't have to shoulder this burden alone.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["calm", "compassionate", "empathetic", "faithful", "strange"],
+                "stat_trait": ["calm", "compassionate", "faithful", "strange"],
                 "can_have_stat": ["adult"],
                 "relationships": [
                     {
@@ -3683,10 +3662,8 @@
                 "prey": ["small"],
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -3738,10 +3715,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -6130,7 +6105,6 @@
                 "weight": 30,
                 "stat_trait": [
                     "loyal",
-                    "patient",
                     "responsible",
                     "righteous",
                     "sincere",
@@ -11503,14 +11477,12 @@
                     }
 		],
                 "weight": 10
-            }
+            },
 
-        ]
-    },
     {
                 "text": "Mistiming {PRONOUN/app1/poss} jump, app1 ends up sprawled on the ground after his failed battle move. Even worse, {PRONOUN/app1/subject} {VERB/app1/catch/catches} sight of s_c rolling {PRONOUN/app2/poss} eyes on the sidelines.",
                 "exp": 0,
-		"stat_skill": ["arrogant", "bloodthirsty", "cold", "competitive", "cunning", "fierce", "gloomy", "grumpy", "vengeful"],
+		        "stat_trait": ["arrogant", "bloodthirsty", "cold", "competitive", "cunning", "fierce", "gloomy", "grumpy", "vengeful"],
                 "can_have_stat": ["app2"],
                 "relationships": [
                     {
@@ -11531,7 +11503,7 @@
      {
                 "text": "Though s_c reassures app1 {PRONOUN/app1/poss} battle move was great, app1 can tell {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} just being kind. Honestly, app1 wished {PRONOUN/s_c/subject}'d just call {PRONOUN/app1/object} a mousebrain.",
                 "exp": 0,
-		"stat_skill": ["calm", "careful", "compassionate", "loving", "insecure", "nervous", "thoughtful"],
+		        "stat_trait": ["calm", "careful", "compassionate", "loving", "insecure", "nervous", "thoughtful"],
                 "can_have_stat": ["app2"],
                 "relationships": [
                     {
@@ -11561,7 +11533,9 @@
                     }
 		],
                 "weight": 5
-     },
+     }
+    ]
+    },
      {
         "patrol_id": "gen_train_kittypets_lesson",
         "biome": ["any"],
@@ -11690,5 +11664,793 @@
                 "weight": 20
             }
         ]
-    }
+    },
+    {
+       "patrol_id": "gen_train_advanced_moves",
+       "biome": ["any"],
+       "season": ["any"],
+       "types": ["training"],
+       "tags": [],
+       "patrol_art": "train_general_intro",
+       "min_cats": 2,
+       "max_cats": 2,
+       "min_max_status": {
+           "normal adult": [1, 6],
+           "all apprentices": [1, 6]
+       },
+       "relationship_constraint": ["mentor/app"],
+       "weight": 20,
+       "chance_of_success": 50,
+       "intro_text": "As p_l leads app1 to a training area, app1 stops {PRONOUN/p_l/object} and asks, with a serious look in {PRONOUN/app1/poss} eye, if p_l will teach {PRONOUN/app1/object} some <i>advanced</i> battle moves.",
+       "decline_text": "p_l brushes it off and tells app1 {PRONOUN/p_l/subject} {VERB/p_l/have/has} a different plan in mind for today.",
+       "success_outcomes": [
+           {
+               "text": "s_c explains that one day, c_n might be taken over by a tyrannical ruler! True and loyal c_n warriors will have to be powerful enough to keep c_n safe. p_l supposes that's possible and agrees to show {PRONOUN/s_c/object} some advanced moves.",
+               "exp": 10,
+                "stat_trait": ["troublesome", "rebellious", "cunning", "careful", "childish" ],
+               "can_have_stat": ["app1"],
+               "relationships": [
+                   {
+                       "cats_to": ["app1"],
+                       "cats_from": ["p_l"],
+           "mutual": true,
+                       "values": ["platonic", "respect", "trust", "comfort"],
+                       "amount": 15
+                   }
+       ],
+               "weight": 20
+           },
+           {
+               "text": "s_c explains that sometimes, {PRONOUN/s_c/subject} {VERB/s_c/like/likes} to wander the territory alone. What if {PRONOUN/s_c/subject} {VERB/s_c/run/runs} into a predator or a gang of rogues? p_l reminds s_c that {PRONOUN/s_c/subject} should always ask permission before leaving camp alone, but agrees to teach {PRONOUN/s_c/object} a few moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+               "stat_trait": ["lonesome"],
+               "relationships": [
+                   {
+                       "cats_to": ["app2"],
+                       "cats_from": ["p_l"],
+                        "mutual": true,
+                       "values": ["platonic", "respect", "comfort", "trust"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c explains that {PRONOUN/s_c/subject} may one day be in a life or death situation and need to kill. p_l eyes {PRONOUN/s_c/object}, wondering if s_c might secretly be looking forward to that day, but nevertheless agrees to show {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+               "stat_trait": ["bloodthirsty", "fierce", "cold", "vengeful"],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+                        "mutual": true,
+                       "values": ["platonic", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "Maintaining {PRONOUN/s_c/poss} serious expression, s_c explains that {PRONOUN/s_c/subject} {VERB/s_c/need/needs} to get big and strong so {PRONOUN/s_c/subject} can give the best badger rides ever! p_l purrs and agrees to practice some advanced moves with {PRONOUN/s_c/object}.",
+               "exp": 10,
+               "can_have_stat": ["p_l"],
+                "stat_trait": [ "childish", "playful" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c admits that sometimes {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} the pressure of being loved and relied on by so many cats. If {PRONOUN/s_c/subject} knew {PRONOUN/s_c/subject} could protect {PRONOUN/s_c/poss} Clanmates, s_c would feel a lot better. p_l agrees to help, touched by {PRONOUN/s_c/poss} reasoning.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "charismatic", "loving", "loyal", "responsible", "compassionate" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "p_l asks {PRONOUN/s_c/object} why {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to learn such advanced battle moves. s_c looks at {PRONOUN/p_l/object} like that's a mouse-brained question - {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to be the best, obviously! p_l purrs and agrees to show {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "bold", "daring", "insecure", "confident", "arrogant", "ambitious" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+            "text": "p_l agrees. There is not much harm to helping app1 develop {PRONOUN/app1/poss} skills, even if the sudden request was unexpected. The two train, and p_l is ecstatic about how quickly app1 caught onto the tough move.",
+            "exp": 10,
+            "relationships": [
+                {
+                    "cats_to": ["p_l"],
+                    "cats_from": ["app1"],
+                    "mutual": true,
+                    "values": ["platonic", "comfort", "trust", "respect"],
+                    "amount": 5
+                } ],
+            "weight": 20
+    },
+           {
+               "text": "s_c confesses {PRONOUN/s_c/poss} fear that one day, all of c_n will be in danger, and only {PRONOUN/s_c/subject} will be able to save them. p_l comforts s_c and assures {PRONOUN/s_c/object} that c_n will stand together against any threat. Feeling reassured, s_c asks if p_l will teach {PRONOUN/s_c/object} some moves anyway - for fun.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "insecure", "nervous", "gloomy", "loving" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c's passion surprises p_l when {PRONOUN/s_c/subject} {VERB/s_c/declare/declares} that {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to be able to defend those that cannot defend themselves - kits, elders, every cat in c_n, and even those beyond their borders. p_l agrees to show s_c some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "righteous", "faithful", "thoughtful", "sincere", "loving" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c explains that doing good and upholding the code is always going to be a struggle against evil and rule-breakers. {PRONOUN/s_c/subject/CAP} {VERB/app1/need/needs} to be powerful to enforce the code. p_l agrees to teach {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "righteous", "strict" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c describes a future where {PRONOUN/s_c/subject} might be alone in the territory, or even beyond the border, and might need to take care of {PRONOUN/s_c/self}. p_l reassures s_c that this is unlikely to happen to {PRONOUN/s_c/object} any time soon, but agrees to show {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "adventurous", "nervous", "lonesome" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c tells p_l that the better {PRONOUN/s_c/subject} can fight, the better {PRONOUN/s_c/subject}'ll be able to protect {PRONOUN/s_c/self}. p_l nods and advises {PRONOUN/s_c/object} to use these moves only when {PRONOUN/s_c/poss} life is in danger before they begin the training session.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "calm", "careful", "thoughtful", "responsible", "sincere" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c exclaims that {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to be the <i>best</i>, better than any other Clanmate or rogue or loner or <i>anyone</i>. s_c wants to win every fight {PRONOUN/s_c/subject} {VERB/s_c/are/is} ever in, including spars. p_l snorts and agrees to help s_c achieve these lofty ambitions.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "competitive", "shameless", "flamboyant", "arrogant", "ambitious" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c shrugs and comments with an air of nonchalance that sometimes a cat needs to be their own back up... if that cat is the sort of cat that gets into trouble a lot. p_l narrows {PRONOUN/p_l/poss} eyes and agrees that getting into trouble can lead to consequences. All the same, {PRONOUN/p_l/subject} {VERB/p_l/agree/agrees} to teach {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "troublesome", "rebellious", "sneaky", "cunning" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c explains that if {PRONOUN/s_c/poss} shadow ever challenges {PRONOUN/s_c/object} to a fight, {PRONOUN/s_c/subject} {VERB/s_c/need/needs} to learn some moves that the shadow doesn't know. p_l squints a bit at {PRONOUN/s_c/poss} logic, but appreciates s_c's desire to learn and agrees to focus on advanced moves today.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "strange" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "A cold flame lights in s_c's eyes as {PRONOUN/s_c/subject} {VERB/s_c/explain/explains} that {PRONOUN/s_c/subject} may need to take {PRONOUN/s_c/poss} revenge on an enemy, one day. p_l isn't sure what to make of that rationale, but agrees that s_c is probably ready for advanced battle training.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "vengeful" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "p_l asks why s_c is set on learning advanced moves all of a sudden. s_c merely says that it is difficult to say what the future must hold, and {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to prepare for all possibilities. p_l agrees and shows {PRONOUN/s_c/object} some moves.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "wise", "thoughtful", "sincere", "careful" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "p_l asks why s_c is set on learning advanced moves all of a sudden. s_c grouches that it's {PRONOUN/p_l/poss} job to show {PRONOUN/s_c/object} how to fight, so why is {PRONOUN/p_l/subject} acting like this is a strange request? p_l shrugs and agrees.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "grumpy" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c suggests that p_l finally show {PRONOUN/s_c/object} how to get underneath an opponent and claw their belly. p_l points out that they covered that in battle training just a few sunrises ago. s_c blinks, then asks if they can go over it again. p_l sighs and agrees.",
+               "exp": 10,
+               "can_have_stat": ["app1"],
+                "stat_trait": [ "oblivious" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           },
+           {
+               "text": "s_c asks app1 why {PRONOUN/app1/subject}{VERB/app1/'re/'s} interested in advanced techniques. app1 replies that s_c is one of the best fighters in the Clan - of course {PRONOUN/app1/subject} {VERB/app1/want/wants} to learn from {PRONOUN/s_c/object}! s_c is flattered and agrees to show {PRONOUN/app1/object} {PRONOUN/s_c/poss} tricks.",
+               "exp": 10,
+               "can_have_stat": ["p_l"],
+                "stat_skill": [ "FIGHTER,2" ],
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+           "mutual": true,
+                       "values": ["platonic", "comfort", "trust", "respect"],
+                       "amount": 15
+                   } ],
+               "weight": 20
+           }
+       ],
+       "fail_outcomes": [
+           {
+               "text": "p_l tells app1 that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} in charge of training, and {PRONOUN/p_l/subject}'ll be the one to decide what training they focus on.",
+               "exp": 5,
+               "relationships": [
+                   {
+                       "cats_to": ["p_l"],
+                       "cats_from": ["app1"],
+                       "values": ["respect", "platonic", "comfort", "trust"],
+                       "amount": -5
+                   },
+                   {
+                    "cats_to": ["p_l"],
+                    "cats_from": ["app1"],
+                    "values": ["dislike"],
+                    "amount": 10
+                }
+       ],
+               "weight": 10
+           },
+           {
+            "text": "p_l purrs and tells app1 that {PRONOUN/app1/subject}{VERB/app1/'re/'s} not ready for that, yet.",
+            "exp": 5,
+            "relationships": [
+                {
+                    "cats_to": ["p_l"],
+                    "cats_from": ["app1"],
+                    "values": ["respect", "platonic", "comfort", "trust"],
+                    "amount": -5
+                },
+                {
+                 "cats_to": ["p_l"],
+                 "cats_from": ["app1"],
+                 "values": ["dislike"],
+                 "amount": 10
+             }
+    ],
+            "weight": 10
+        },
+        {
+         "text": "p_l tells app1 they'll focus on hunting today, but that p_l will gladly teach {PRONOUN/app1/object} some more advanced hunting techniques. app1 perseveres dejectedly through stalking training.",
+         "exp": 5,
+         "relationships": [
+             {
+                 "cats_to": ["p_l"],
+                 "cats_from": ["app1"],
+                 "values": ["respect", "platonic", "comfort", "trust"],
+                 "amount": -5
+             },
+             {
+              "cats_to": ["p_l"],
+              "cats_from": ["app1"],
+              "values": ["dislike"],
+              "amount": 10
+          }
+ ],
+         "weight": 10
+     }
+       ]
+   },
+   {
+	"patrol_id": "gen_train_two_on_one",
+	"biome": [ "any" ],
+	"season": [ "any" ],
+	"types": [ "training" ],
+	"tags": [],
+	"patrol_art": "train_general_intro",
+	"min_cats": 3,
+	"max_cats": 3,
+	"min_max_status": {
+		"normal adult": [3, 3]
+	},
+	"weight": 20,
+	"chance_of_success": 30,
+	"intro_text": "Since they have three cats, p_l suggests they practice two-on-one fighting.",
+	"decline_text": "r_c announces {PRONOUN/r_c/subject} {VERB/r_c/want/wants} to practice stalking instead.",
+	"success_outcomes": [
+        {
+            "text": "p_l organizes the patrol into a spar, and the cats congratulate each other on a good fight.",
+            "exp": 5,
+        "weight": 1,
+            "relationships": [
+        {
+                    "cats_to": ["patrol"],
+                    "cats_from": ["patrol"],
+                    "mutual": false,
+                    "values": ["comfort", "respect", "platonic"],
+                    "amount": 5
+        }
+        ],
+        "art": "train_general_intro"
+        },
+		{
+            "text": "p_l waggles {PRONOUN/p_l/poss} haunches and dares r_c and s_c to come at {PRONOUN/p_l/object}. The three cats tussle until r_c distracts p_l with a sheathed strike to {PRONOUN/p_l/poss} ear, and s_c pins {PRONOUN/p_l/object} down. They congratulate each other as they head back to camp.",
+            "exp": 5,
+        "weight": 20,
+        "stat_trait": ["troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful", "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning", "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"],
+            "relationships": [
+        {
+                    "cats_to": ["patrol"],
+                    "cats_from": ["patrol"],
+                    "mutual": false,
+                    "values": ["comfort", "respect", "platonic"],
+                    "amount": 7
+        }
+        ],
+        "art": "train_general_intro"
+},
+{
+    "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. Though s_c does {PRONOUN/s_c/poss} best, {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't stand much of a chance against two of {PRONOUN/s_c/poss} Clanmates.",
+    "exp": 5,
+"weight": 20,
+"stat_trait": ["troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful", "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning", "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"],
+    "relationships": [
+{
+            "cats_to": ["patrol"],
+            "cats_from": ["patrol"],
+            "mutual": false,
+            "values": ["comfort", "respect", "platonic"],
+            "amount": 7
+}
+],
+"art": "train_general_intro"
+},
+{
+    "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. s_c tries to keep {PRONOUN/s_c/poss} eyes on both {PRONOUN/s_c/poss} Clanmates at once, but p_l and r_c find a rhythm together, and s_c can't keep up. After the match, p_l and r_c agree they'll have to try some of these moves in a future skirmish.",
+    "exp": 5,
+"weight": 20,
+"stat_trait": ["troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful", "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning", "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"],
+    "relationships": [
+{
+            "cats_to": ["patrol"],
+            "cats_from": ["patrol"],
+            "mutual": false,
+            "values": ["comfort", "respect", "platonic"],
+            "amount": 5
+},
+{
+           "cats_to": ["p_l"],
+            "cats_from": ["r_c"],
+            "mutual": true,
+           "values": ["trust"],
+           "amount": 10
+}
+],
+"art": "train_general_intro"
+},
+{  
+	"text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. s_c agrees, puffing out {PRONOUN/s_c/poss} chest and crouching low. When p_l and r_c pounce, s_c dodges aside as quick as a rabbit and swipes at p_l, then leaps out of the way of r_c's strike. p_l and r_c best {PRONOUN/s_c/object} eventually, but s_c makes them work for it.",
+	"exp": 10,
+    "weight": 40,
+    "stat_trait": [ "bloodthirsty", "arrogant", "ambitious", "confident", "sneaky", "cunning", "fierce", "competitive" ],
+	"relationships": [
+{
+			"cats_to": [ "patrol" ],
+			"cats_from": [ "patrol" ],
+			"mutual": false,
+			"values": [ "comfort", "platonic"],
+			"amount": 5
+},	
+{
+			"cats_to": [ "s_c" ],
+			"cats_from": [ "p_l", "r_c" ],
+			"mutual": false,
+			"values": [ "respect" ],
+			"amount": 10
+		}
+],
+"art": "train_general_intro"
+		},
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. When p_l and r_c pounce, s_c shocks them by springing forward and knocking p_l off {PRONOUN/p_l/poss} paws. Before {PRONOUN/p_l/subject} can scramble to {PRONOUN/p_l/poss} feet, s_c whirls around, shoulders r_c off balance, and pins {PRONOUN/r_c/object} down. p_l and r_c exchange shocked and impressed glances from their backs on the ground.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "bloodthirsty", "adventurous", "arrogant", "ambitious", "confident", "fierce", "competitive" ],
+            "stat_skill": [ "FIGHTER,2"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"        
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. No matter how hard r_c and p_l try to flank s_c, {PRONOUN/s_c/subject} {VERB/s_c/move/moves} fast and fluid like moving water. {PRONOUN/s_c/subject/CAP} {VERB/s_c/seem/seems} to know where they'll strike before they do, wearing them down until r_c and p_l admit defeat, panting and impressed.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "wise", "thoughtful", "calm", "careful", "lonesome" ],
+            "stat_skill": [ "FIGHTER,2"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"    
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. Just as r_c gathers {PRONOUN/r_c/poss} haunches to pounce on s_c, s_c exclaims that a fox is right behind r_c! As p_l and r_c scramble out of the way, s_c swipes at their fleeing tails. After all, p_l didn't specify {PRONOUN/s_c/subject} had to fight fair.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "cunning", "sneaky", "shameless", "flamboyant", "charismatic", "daring", "bold" ],
+            "stat_skill": [ "FIGHTER,1"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": -3
+                }
+        ],
+        "art": "gen_train_playbite_2warriors"        
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. As the three of them tussle, p_l and r_c discover that s_c knows them better than either of them realized - {PRONOUN/s_c/subject} {VERB/s_c/anticipate/anticipates} their every move, knocking away their strikes easily.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "charismatic", "loving", "compassionate", "loyal", "faithful", "cunning", "thoughtful", "sincere" ],
+            "stat_skill": [ "FIGHTER,2"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"        
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. They rarely see their Clanmate come alive the way {PRONOUN/s_c/subject} {VERB/s_c/do/does} in a fight. r_c and p_l circle s_c, but they can't catch {PRONOUN/s_c/object} off-guard. Eventually, r_c makes a hasty move, and s_c pins {PRONOUN/r_c/object}.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "cunning", "sneaky", "cold", "lonesome", "grumpy", "gloomy", "strict", "strange", "insecure", "nervous" ],
+            "stat_skill": [ "FIGHTER,2"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5 
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"       
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. s_c warily agrees, but {PRONOUN/s_c/subject} {VERB/s_c/have/has} nothing to worry about. Even outnumbered, s_c proves {PRONOUN/s_c/poss} talent in battle, and r_c and p_l heap praise on {PRONOUN/s_c/object} after the bout.",
+            "exp": 10,
+            "weight": 40,
+            "stat_trait": [ "gloomy", "lonesome", "insecure", "nervous" ],
+            "stat_skill": [ "FIGHTER,2"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 10
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"        
+        },
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. No matter how hard r_c and p_l try to flank s_c, {PRONOUN/s_c/subject} always {VERB/s_c/seem/seems} to know where they'll strike before they do, wearing them down until r_c and p_l admit defeat, panting and impressed. s_c smiles secretively.",
+            "exp": 10,
+            "weight": 40,
+            "stat_skill": [ "CLAIRVOYANT,1"],
+            "relationships": [
+        {
+                    "cats_to": [ "patrol" ],
+                    "cats_from": [ "patrol" ],
+                    "mutual": false,
+                    "values": [ "comfort", "platonic"],
+                    "amount": 5 
+        },	
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": 10
+                }
+        ],
+        "art": "train_general_intro"        
+        }
+	],
+	"fail_outcomes": [
+        {
+            "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. s_c immediately begins whining that it's unfair, so p_l groans and calls off the whole idea. They can all find hunting patrols to join instead.",
+            "exp": 0,
+            "weight": 40,
+            "stat_trait": [ "childish"],
+            "relationships": [
+        {
+                    "cats_to": [ "s_c" ],
+                    "cats_from": [ "p_l", "r_c" ],
+                    "mutual": false,
+                    "values": [ "respect" ],
+                    "amount": -10
+                },
+                {
+                            "cats_to": [ "s_c" ],
+                            "cats_from": [ "p_l", "r_c" ],
+                            "mutual": false,
+                            "values": [ "dislike" ],
+                            "amount": 5
+                }
+        ],
+        "art": "gen_train_argue"        
+        },
+    {
+        "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. As soon as they attack, s_c turns tail and sprints off. When p_l calls {PRONOUN/s_c/object} back, confused, {PRONOUn/s_c/subject} {VERB/s_c/explain/explains} that's what {PRONOUN/s_c/subject}'d do if {PRONOUN/s_c/subject} were outnumbered in a fight. p_l sighs.",
+        "exp": 0,
+        "weight": 40,
+        "stat_trait": [ 
+        "troublesome", "lonesome", "cold", "childish", "playful", "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict", "compassionate", "thoughtful", "confident", "calm", "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning", "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"
+    ],
+        "relationships": [
+    {
+                "cats_to": [ "s_c" ],
+                "cats_from": [ "p_l", "r_c" ],
+                "mutual": false,
+                "values": [ "platonic" ],
+                "amount": -5
+            }
+    ],
+    "art": "running_two_warriors"        
+		},
+        {
+            "text": "p_l and r_c team up against s_c and thrash {PRONOUN/s_c/object} easily. While p_l and r_c congratulate each other, s_c silently stews over this unfair, unbalanced training exercise. {PRONOUN/s_c/poss/CAP} Clanmates don't notice {PRONOUN/s_c/poss} bad mood, which only makes {PRONOUN/s_c/object} more irritable.",
+            "exp": 0,
+            "weight": 20,
+            "stat_trait": [ 
+            "troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful", "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning", "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"
+        ],
+            "relationships": [
+        {
+                    "cats_to": [ "p_l", "r_c" ],
+                    "cats_from": [ "s_c" ],
+                    "mutual": false,
+                    "values": [ "platonic", "comfort", "respect" ],
+                    "amount": -5
+                },
+                {
+                    "cats_to": [ "p_l", "r_c" ],
+                    "cats_from": [ "s_c" ],
+                    "mutual": false,
+                    "values": [ "dislike" ],
+                    "amount": 5
+                }
+        ],
+        "art": "gen_train_argue"        
+            },
+            {
+                "text": "p_l and r_c team up against s_c and, despite s_c's best efforts, the fight is over extremely quickly. While p_l and r_c compliment each other's fighting styles, s_c's temper boils over, and {PRONOUN/s_c/subject} {VERB/s_c/snap/snaps} that it was an unfair fight - {PRONOUN/s_c/subject} could totally beat either of them one-on-one!",
+                "exp": 0,
+                "weight": 10,
+                "stat_trait": [ 
+                "troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "bold", "daring", "righteous", "insecure", "strict", "ambitious", "confident", "adventurous", "faithful", "loyal", "shameless", "sneaky", "strange", "vengeful", "arrogant", "competitive", "grumpy", "gloomy", "sincere", "flamboyant", "rebellious"
+            ],
+                "relationships": [
+            {
+                        "cats_to": [ "p_l", "r_c" ],
+                        "cats_from": [ "s_c" ],
+                        "mutual": false,
+                        "values": [ "platonic", "comfort", "respect" ],
+                        "amount": -10
+                    },
+                    {
+                        "cats_to": [ "p_l", "r_c" ],
+                        "cats_from": [ "s_c" ],
+                        "mutual": false,
+                        "values": [ "dislike" ],
+                        "amount": 10
+                    }
+            ],
+            "art": "gen_train_argue"        
+                },
+                {
+                    "text": "p_l uses {PRONOUN/p_l/poss} position as patrol leader to boss the other two around. They can't get organized enough to do a proper scrum because neither wants to listen to p_l.",
+                    "exp": 0,
+                    "weight": 20,
+                    "relationships": [
+                {
+                            "cats_to": [ "p_l" ],
+                            "cats_from": [ "patrol" ],
+                            "mutual": false,
+                            "values": [ "platonic", "comfort", "respect" ],
+                            "amount": 5
+                        },
+                        {
+                            "cats_to": [ "p_l" ],
+                            "cats_from": [ "patrol" ],
+                            "mutual": false,
+                            "values": [ "dislike" ],
+                            "amount": 5
+                        }
+                ],
+                "art": "gen_train_argue"        
+                    },
+            {
+                "text": "p_l and r_c team up against s_c, and everything goes well until s_c shoves p_l off {PRONOUN/s_c/object} a little too vigorously and p_l yelps in pain as {PRONOUN/p_l/subject} {VERB/p_l/hit/hits} the ground. Then r_c and s_c team up - to help p_l limp back to camp.",
+                "exp": 0,
+                "weight": 20,
+                "stat_trait": [ 
+                "troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "bold", "daring", "righteous", "insecure", "strict", "ambitious", "confident", "adventurous", "faithful", "loyal", "shameless", "sneaky", "strange", "vengeful", "arrogant", "competitive", "grumpy", "gloomy", "sincere", "flamboyant", "rebellious"
+            ],
+            "injury": [
+                {
+                    "cats": [ "p_l" ],
+                    "injuries": [ "sprain" ]
+                }
+            ],
+            "art": "train_general_intro"        
+                }
+	]
+}
 ]

@@ -175,18 +175,19 @@ class LeaderDenScreen(Screens):
                 manager=MANAGER,
             )
 
-        self.screen_elements["lead_image"] = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((230, 230), (150, 150))),
-            pygame.transform.scale(
-                game.clan.leader.sprite, ui_scale_dimensions((150, 150))
-            ),
-            object_id="#lead_cat_image",
-            starting_height=3,
-            manager=MANAGER,
-        )
+        if not self.no_leader:
+            self.screen_elements["lead_image"] = pygame_gui.elements.UIImage(
+                ui_scale(pygame.Rect((230, 230), (150, 150))),
+                pygame.transform.scale(
+                    game.clan.leader.sprite, ui_scale_dimensions((150, 150))
+                ),
+                object_id="#lead_cat_image",
+                starting_height=3,
+                manager=MANAGER,
+            )
 
         self.helper_cat = None
-        if game.clan.leader.not_working():
+        if self.no_leader or game.clan.leader.not_working():
             if game.clan.deputy:
                 if not game.clan.deputy.not_working() and not game.clan.deputy.dead:
                     self.helper_cat = game.clan.deputy  # if lead is sick, dep helps

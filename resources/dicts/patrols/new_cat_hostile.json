@@ -1402,8 +1402,8 @@
                 ],
                 "history_text": {
                     "scar": "m_c gained a scar after tussling with a rogue.",
-                    "reg_death": "m_c was killed by a rogue.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a rogue"
+                    "reg_death": "m_c died from injuries sustained in a fight with a rogue.",
+                    "lead_death": "died from injuries sustained in a fight with a rogue"
                 }
             },
             {
@@ -1433,14 +1433,14 @@
                 ],
                 "history_text": {
                     "scar": "m_c gained a scar after tussling with a rogue.",
-                    "reg_death": "m_c was killed by a rogue.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a rogue"
+                    "reg_death": "m_c was died from injuries sustained in a fight with a rogue.",
+                    "lead_death": "died from injuries sustained in a fight with a rogue"
                 }
             }
         ],
         "antag_fail_outcomes": [
             {
-                "text": "p_l finds a gang of rogues in the bush! p_l has to turn tail and run, the sound of gloating the last thing in p_l's ears, hearing how little the rogues think of c_n.",
+                "text": "p_l finds a gang of rogues in the bush! p_l turns tail and runs, the sound of gloating the last thing in p_l's ears, hearing how little the rogues think of c_n.",
                 "exp": 0,
                 "weight": 20,
                 "new_cat": [
@@ -1461,7 +1461,7 @@
         ],
         "antag_success_outcomes": [
             {
-                "text": "p_l goes to check the bush and finds a kittypet cowering inside. p_l scratches its ears off and sends it on its way.",
+                "text": "p_l checks the bush and finds a kittypet cowering inside. p_l scratches its ears off and sends it on its way.",
                 "exp": 10,
                 "weight": 20
             }

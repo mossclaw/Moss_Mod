@@ -51,10 +51,8 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise"
@@ -824,7 +822,7 @@
                     ]
                 },
                 {
-                    "text": "Somberly, p_l lists the cats {PRONOUN/p_l/subject} {VERB/p_l/know/knows} who died to avalanche, who thought they were faster, who didn't heed the signs, who weren't cautious. Most of these cats were dead long before p_l was born, {PRONOUN/p_l/poss} knowledge of history going back gnerations, but this is what history is <i>for</i>. To learn from it.",
+                    "text": "Somberly, p_l lists the cats {PRONOUN/p_l/subject} {VERB/p_l/know/knows} who died to avalanche, who thought they were faster, who didn't heed the signs. Most of these cats were dead long before p_l was born, {PRONOUN/p_l/poss} knowledge of history going back generations, but this is what history is <i>for</i>. To learn from it.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",
@@ -862,11 +860,11 @@
                     ]
                 },
                 {
-                    "text": "There are tricks to it, p_l explains. Avalanches fall like sudden floods of water, or mud, but with unimaginable force. If you're caught, it's luck whether you survive. So don't get caught - run to the side of the slope, out of the path of the flow, horizonal, not tyring to race anything. Climb, climb anything. The tree will get swept away, but they might float.",
+                    "text": "There are tricks to it, p_l explains. Avalanches fall like sudden floods of water or mud, but with unimaginable force. If you're caught, it's luck whether you survive. So don't get caught - run to the side of the slope, out of the path of the flow, horizontal, not tyring to race anything. Climb, climb anything. The tree will get swept away, but they might float.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",
-                    "stat_skill": ["CLEVER,1", "INSIGHTFUL,1"],
+                    "stat_skill": ["CLEVER,1", "INSIGHTFUL,1", "TEACHER,1"],
                     "can_have_stat": ["p_l"],
                     "relationships": [
                         {
@@ -904,7 +902,7 @@
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_bord_story",
-                    "stat_skill": ["CLEVER,1", "INSIGHTFUL,1"],
+                    "stat_skill": ["CLEVER,1", "INSIGHTFUL,1", "TEACHER,1"],
                     "can_have_stat": ["p_l"],
                     "relationships": [
                         {
@@ -968,7 +966,7 @@
                     "history_text": {
                         "scar":"m_c was scarred from the bite of the cold of an avalanche, though {PRONOUN/m_c/subject} escaped with {PRONOUN/m_c/poss} life.",
                         "reg_death": "The view point c_n thought was safe from avalanches... was not.",
-                        "lead_death": "the view point c_n thought was safe from avalanches... was not"
+                        "lead_death": "chose the wrong spot to teach the apprentices about avalanches"
                     }
                 }
             ]

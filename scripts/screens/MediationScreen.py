@@ -209,15 +209,19 @@ class MediationScreen(Screens):
             object_id="@buttonstyles_icon",
         )
 
-        self.next_page = UIImageButton(
-            ui_scale(pygame.Rect((433, 612), (34, 34))),
-            "",
-            object_id="#relation_list_next",
+        self.next_page = UISurfaceImageButton(
+            ui_scale(pygame.Rect((433, 619), (34, 34))),
+            Icon.ARROW_RIGHT,
+            get_button_dict(ButtonStyles.ICON, (34, 34)),
+            object_id="@buttonstyles_icon",
+            manager=MANAGER,
         )
-        self.previous_page = UIImageButton(
-            ui_scale(pygame.Rect((333, 612), (34, 34))),
-            "",
-            object_id="#relation_list_previous",
+        self.previous_page = UISurfaceImageButton(
+            ui_scale(pygame.Rect((333, 619), (34, 34))),
+            Icon.ARROW_LEFT,
+            get_button_dict(ButtonStyles.ICON, (34, 34)),
+            object_id="@buttonstyles_icon",
+            manager=MANAGER,
         )
 
         self.deselect_1 = UISurfaceImageButton(

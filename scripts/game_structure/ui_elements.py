@@ -632,8 +632,11 @@ class UISpriteButton:
         input_sprite = (
             pygame.transform.smoothscale(input_sprite, relative_rect.size)
             if (
-                relative_rect.height <= ui_scale_value(sprite.get_height())
-                or relative_rect.width <= ui_scale_value(sprite.get_height())
+                (
+                    relative_rect.height <= ui_scale_value(sprite.get_height())
+                    or relative_rect.width <= ui_scale_value(sprite.get_height())
+                )
+                and not game.settings["no sprite antialiasing"]
             )
             else pygame.transform.scale(input_sprite, relative_rect.size)
         )

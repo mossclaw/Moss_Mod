@@ -20,7 +20,7 @@ from scripts.game_structure.ui_elements import (
     UISurfaceImageButton,
 )
 from scripts.patrol.patrol import Patrol
-from scripts.utility import get_text_box_theme, ui_scale, ui_scale_blit
+from scripts.utility import get_text_box_theme, ui_scale, ui_scale_blit, ui_scale_offset
 from scripts.utility import ui_scale_dimensions
 from .Screens import Screens
 from ..cat.sprites import sprites
@@ -826,92 +826,208 @@ class MakeClanScreen(Screens):
         self.tabs["tab4"].kill()
 
         if self.biome_selected == "Forest":
-            self.tabs["tab1"] = UIImageButton(
-                ui_scale(pygame.Rect((95, 180), (154, 30))),
-                "",
-                object_id="#classic_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (85, 30)))
+            tab_rect.topright = ui_scale_offset((5, 180))
+            self.tabs["tab1"] = UISurfaceImageButton(
+                tab_rect,
+                "Classic",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (85, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={"right": "right", "right_target": self.elements["art_frame"]},
             )
-            self.tabs["tab2"] = UIImageButton(
-                ui_scale(pygame.Rect((108, 215), (154, 30))),
-                "",
-                object_id="#gully_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (70, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab2"] = UISurfaceImageButton(
+                tab_rect,
+                "Gully",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (70, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab1"],
+                },
             )
-            self.tabs["tab3"] = UIImageButton(
-                ui_scale(pygame.Rect((95, 250), (154, 30))),
-                "",
-                object_id="#grotto_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (85, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab3"] = UISurfaceImageButton(
+                tab_rect,
+                "Grotto",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (85, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab2"],
+                },
             )
-            self.tabs["tab4"] = UIImageButton(
-                ui_scale(pygame.Rect((85, 285), (154, 30))),
-                "",
-                object_id="#lakeside_tab",
+
+            tab_rect.size = ui_scale_dimensions((100, 30))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab4"] = UISurfaceImageButton(
+                tab_rect,
+                "Lakeside",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (100, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab3"],
+                },
             )
         elif self.biome_selected == "Mountainous":
-            self.tabs["tab1"] = UIImageButton(
-                ui_scale(pygame.Rect((111, 180), (154, 30))),
-                "",
-                object_id="#cliff_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (70, 30)))
+            tab_rect.topright = ui_scale_offset((5, 180))
+            self.tabs["tab1"] = UISurfaceImageButton(
+                tab_rect,
+                "Cliff",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (70, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={"right": "right", "right_target": self.elements["art_frame"]},
             )
-            self.tabs["tab2"] = UIImageButton(
-                ui_scale(pygame.Rect((90, 215), (154, 30))),
-                "",
-                object_id="#cave_tab",
+
+            tab_rect = ui_scale(pygame.Rect((0, 0), (90, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab2"] = UISurfaceImageButton(
+                tab_rect,
+                "Cavern",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (90, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab1"],
+                },
             )
-            self.tabs["tab3"] = UIImageButton(
-                ui_scale(pygame.Rect((42, 250), (179, 30))),
-                "",
-                object_id="#crystal_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (130, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab3"] = UISurfaceImageButton(
+                tab_rect,
+                "Crystal River",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (130, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab2"],
+                },
             )
-            self.tabs["tab4"] = UIImageButton(
-                ui_scale(pygame.Rect((107, 285), (154, 30))),
-                "",
-                object_id="#ruins_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (80, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab4"] = UISurfaceImageButton(
+                tab_rect,
+                "Ruins",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (80, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab3"],
+                },
             )
         elif self.biome_selected == "Plains":
-            self.tabs["tab1"] = UIImageButton(
-                ui_scale(pygame.Rect((64, 180), (154, 30))),
-                "",
-                object_id="#grasslands_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (115, 30)))
+            tab_rect.topright = ui_scale_offset((5, 180))
+            self.tabs["tab1"] = UISurfaceImageButton(
+                tab_rect,
+                "Grasslands",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (115, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={"right": "right", "right_target": self.elements["art_frame"]},
             )
-            self.tabs["tab2"] = UIImageButton(
-                ui_scale(pygame.Rect((89, 215), (154, 30))),
-                "",
-                object_id="#tunnel_tab",
+
+            tab_rect = ui_scale(pygame.Rect((0, 0), (90, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab2"] = UISurfaceImageButton(
+                tab_rect,
+                "Tunnels",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (90, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab1"],
+                },
             )
-            self.tabs["tab3"] = UIImageButton(
-                ui_scale(pygame.Rect((64, 250), (154, 30))),
-                "",
-                object_id="#wasteland_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (115, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab3"] = UISurfaceImageButton(
+                tab_rect,
+                "Wastelands",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (115, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab2"],
+                },
             )
         elif self.biome_selected == "Beach":
-            self.tabs["tab1"] = UIImageButton(
-                ui_scale(pygame.Rect((76, 180), (154, 30))),
-                "",
-                object_id="#tidepool_tab",
+            tab_rect = ui_scale(pygame.Rect((0, 0), (110, 30)))
+            tab_rect.topright = ui_scale_offset((5, 180))
+            self.tabs["tab1"] = UISurfaceImageButton(
+                tab_rect,
+                "Tidepools",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (110, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={"right": "right", "right_target": self.elements["art_frame"]},
             )
-            self.tabs["tab2"] = UIImageButton(
-                ui_scale(pygame.Rect((65, 215), (154, 30))),
-                "",
-                object_id="#tidal_cave_tab",
+
+            tab_rect = ui_scale(pygame.Rect((0, 0), (110, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab2"] = UISurfaceImageButton(
+                tab_rect,
+                "Tidal Cave",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (110, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab1"],
+                },
             )
-            self.tabs["tab3"] = UIImageButton(
-                ui_scale(pygame.Rect((70, 250), (154, 30))),
-                "",
-                object_id="#shipwreck_tab",
+
+            tab_rect = ui_scale(pygame.Rect((0, 0), (110, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab3"] = UISurfaceImageButton(
+                tab_rect,
+                "Shipwreck",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (110, 30)),
+                object_id="@buttonstyles_vertical_tab",
                 manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab2"],
+                },
+            )
+
+            tab_rect = ui_scale(pygame.Rect((0, 0), (80, 30)))
+            tab_rect.topright = ui_scale_offset((5, 5))
+            self.tabs["tab4"] = UISurfaceImageButton(
+                tab_rect,
+                "Fjord",
+                get_button_dict(ButtonStyles.VERTICAL_TAB, (80, 30)),
+                object_id="@buttonstyles_vertical_tab",
+                manager=MANAGER,
+                anchors={
+                    "right": "right",
+                    "right_target": self.elements["art_frame"],
+                    "top_target": self.tabs["tab3"],
+                },
             )
 
         self.tabs["tab1"].disable() if self.selected_camp_tab == 1 else self.tabs[
@@ -2044,11 +2160,12 @@ class MakeClanScreen(Screens):
 
     def draw_art_frame(self):
         if "art_frame" in self.elements:
-            self.elements["art_frame"].kill()
+            return
         self.elements["art_frame"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect(((0, 20), (466, 416)))),
             get_box(BoxStyles.FRAME, (466, 416)),
             manager=MANAGER,
+            starting_height=2,
             anchors={"center": "center"},
         )
 

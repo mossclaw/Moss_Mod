@@ -155,7 +155,11 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient"
+                    "thoughtful",
+                    "confident",
+                    "loyal",
+                    "responsible",
+                    "arrogant"
                 ],
                 "relationships": [
                     {
@@ -330,7 +334,11 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient"
+                    "thoughtful",
+                    "confident",
+                    "loyal",
+                    "responsible",
+                    "arrogant"
                 ],
                 "relationships": [
                     {
@@ -498,7 +506,11 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient"
+                    "thoughtful",
+                    "confident",
+                    "loyal",
+                    "responsible",
+                    "arrogant"
                 ],
                 "herbs": [
                     "many_herbs",

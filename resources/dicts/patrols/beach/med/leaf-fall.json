@@ -66,7 +66,7 @@
                 ]
             },
             {
-                "text": "Not only do {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
+                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["troublesome", "childish"],
@@ -152,7 +152,7 @@
                 ]
             },
             {
-                "text": "Not only do {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
+                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, p_l wants to murder s_c. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} obnoxious, troublesome, childish... and simply not someone p_l enjoys interacting with.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["troublesome", "childish"],
@@ -341,11 +341,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
-        "intro_text": "The betony plants have started to dramatically give up on life as leaf-fall progresses, so p_l takes the opportunity to go harvest from {PRONOUN/p_l/object}, bringing along a patrol to help {PRONOUN/p_l/subject} carry the leaves back to the herb stores.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "The betony plants have started to dramatically give up on life as leaf-fall progresses, so p_l takes the opportunity to go harvest from {PRONOUN/p_l/object}, bringing along a patrol to help {PRONOUN/p_l/object} carry the leaves back to the herb stores.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -466,13 +466,13 @@
                 "herbs": ["blackberry"]
             },
             {
-                "text": "Perfect - there's a good crop of blackberries just waiting for {PRONOUN/p_l/object}, and the bramble seems to be sending out new exploratory branches too, promising more growth in the future. As {PRONOUN/p_l/subject} set out the leaves out to dry before {PRONOUN/p_l/subject}'re put away in the herb stores, p_l purrs at the sight of {PRONOUN/p_l/poss} harvest.",
+                "text": "Perfect - there's a good crop of blackberries just waiting for {PRONOUN/p_l/object}, and the bramble seems to be sending out new exploratory branches too, promising more growth in the future. As {PRONOUN/p_l/subject} set out the leaves out to dry before they're put away in the herb stores, p_l purrs at the sight of {PRONOUN/p_l/poss} harvest.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "blackberry"]
             },
             {
-                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} hum to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles.",
+                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} {VERB/s_c/hum/hums} to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -553,7 +553,7 @@
                 ]
             },
             {
-                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} hum to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles. app1 smiles to hear the quiet sound, comforted by the familiar work and tune.",
+                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} {VERB/s_c/hum/hums} to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles. app1 smiles to hear the quiet sound, comforted by the familiar work and tune.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -612,11 +612,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As leaf-fall arrives, the blackberry plants burst into fruit, and p_l heads out to take advantage, bringing along anyone who isn't busy with other work.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -664,7 +664,7 @@
                 ]
             },
             {
-                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} hum to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles. The patrol follows {PRONOUN/s_c/poss} lead, and it's a relaxed group that wanders back into camp with a massive haul from the blackberry bushes.",
+                "text": "s_c falls into the meditative state that herb-gathering brings, and {PRONOUN/s_c/subject} {VERB/s_c/hum/hums} to {PRONOUN/s_c/self} as {PRONOUN/s_c/subject} {VERB/s_c/work/works}, crisply plucking from the blackberry brambles. The patrol follows {PRONOUN/s_c/poss} lead, and it's a relaxed group that wanders back into camp with a massive haul from the blackberry bushes.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -850,7 +850,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Maybe {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} just coming down with a runny nose, but p_l doesn't manage to sniff out any burdock, and it feels like a wasted afternoon. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/p_l/subject} definitely come close.",
+                "text": "Maybe {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} just coming down with a runny nose, but p_l doesn't manage to sniff out any burdock, and it feels like a wasted afternoon. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/p_l/subject} definitely {VERB/p_l/come/comes} close.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -884,11 +884,11 @@
         "min_max_status": {
             "medicine cat": [1, 6],
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As leaf-fall starts to hint at the cold soon to come, the burdock plants begin to wilt. p_l heads out to replenish the Clan's stocks, bringing along anyone who isn't busy with other work.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -1156,11 +1156,11 @@
         "min_max_status": {
             "medicine cat": [1, 6],
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As p_l looks at the twitching tails and wide eyes of the patrol set up to 'help' {PRONOUN/p_l/subject} {VERB/p_l/gather/gathers} catmint, {PRONOUN/p_l/poss} heart sinks. These overly-excited warriors don't look like {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} going to be useful, and p_l only has so much time before the catmint dies off at the end of leaf-fall.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
@@ -1186,7 +1186,7 @@
                 ]
             },
             {
-                "text": "Leaf-fall indicates the last of the catmint harvest, and p_l works hard to bring some home before the plants wilt and lose {PRONOUN/p_l/poss} potency. {PRONOUN/p_l/subject/CAP} somehow keep control of {PRONOUN/p_l/poss} rowdy group, channeling {PRONOUN/p_l/poss} energies into herb-gathering, not smell-enjoying. It's not as easygoing as {PRONOUN/p_l/poss} patrols normally are, but the more experienced cats back {PRONOUN/p_l/object} up.",
+                "text": "Leaf-fall indicates the last of the catmint harvest, and p_l works hard to bring some home before the plants wilt and lose {PRONOUN/p_l/poss} potency. {PRONOUN/p_l/subject/CAP} somehow {VERB/p_l/keep/keeps} control of {PRONOUN/p_l/poss} rowdy group, channeling {PRONOUN/p_l/poss} energies into herb-gathering, not smell-enjoying. It's not as easygoing as {PRONOUN/p_l/poss} patrols normally are, but the more experienced cats back {PRONOUN/p_l/object} up.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["catmint"],
@@ -1233,7 +1233,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l is proven unfortunately correct, as the patrol is full of juvenile behavior and dumb jokes rather than focused effort. The one catmint plant {PRONOUN/p_l/subject} successfully find ends up with {PRONOUN/p_l/poss} helpers rolling around in it, bruising all the stems until it's unharvestable. p_l is furious by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
+                "text": "p_l is proven unfortunately correct, as the patrol is full of juvenile behavior and dumb jokes rather than focused effort. The one catmint plant {PRONOUN/p_l/subject} successfully {VERB/p_l/find/finds} ends up with {PRONOUN/p_l/poss} helpers rolling around in it, bruising all the stems until it's unharvestable. p_l is furious by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1313,7 +1313,7 @@
             "normal adult": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "There's still time this leaf-fall to store away a good harvest of dried but potent daisy leaves, in case c_n's elders need it for {PRONOUN/p_l/poss} joints or cats need to unexpectedly travel. p_l brings app1 along for a lesson.",
+        "intro_text": "There's still time during leaf-fall to store away a good harvest of dried but potent daisy leaves, in case c_n's elders need it for {PRONOUN/p_l/poss} joints or cats need to unexpectedly travel. p_l brings app1 along for a lesson.",
         "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/poss} apprentice along too, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
@@ -1388,7 +1388,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed on leaves are useless to c_n. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/p_l/subject} definitely come close.",
+                "text": "Frustratingly, some herbivore has come through and feasted on the daisies p_l targets. The plants will recover, but these half-chewed leaves are useless to c_n. {PRONOUN/p_l/subject/CAP} {VERB/p_l/avoid/avoids} snapping at app1, who seems unable to identify the common herb, but {PRONOUN/p_l/subject} definitely {VERB/p_l/come/comes} close.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1421,11 +1421,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
-        "intro_text": "There's still time this leaf-fall to store away a good harvest of dried but potent daisy leaves, in case c_n's elders need it for {PRONOUN/p_l/poss} joints or cats need to unexpectedly travel. p_l assembles a little group of warriors to help {PRONOUN/p_l/subject} carry the herbs.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "There's still time during leaf-fall to store away a good harvest of dried but potent daisy leaves, in case c_n's elders need it for {PRONOUN/p_l/poss} joints or cats need to unexpectedly travel. p_l assembles a little group of warriors to help {PRONOUN/p_l/object} carry the herbs.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -1654,7 +1654,7 @@
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in {PRONOUN/p_l/poss} roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kitten's favorite, shortlived toy. p_l smiles fondly as {PRONOUN/p_l/subject} {VERB/p_l/remember/remembers} watching app1 playing with {PRONOUN/p_l/object} just a few short moons ago.",
+                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in {PRONOUN/p_l/poss} roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kitten's favorite, short-lived toy. p_l smiles fondly as {PRONOUN/p_l/subject} {VERB/p_l/remember/remembers} watching app1 playing with {PRONOUN/p_l/object} just a few short moons ago.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["dandelion"],
@@ -1757,15 +1757,15 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "Yellow flowers poke out from the leaf litter, signaling that the dandelions haven't given up on growing for the season. p_l heads out to look for {PRONOUN/p_l/object}, bringing a group of {PRONOUN/p_l/poss} Clanmates along for the gathering patrol.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in their roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kitten's favorite, shortlived toy. The warriors smile at the sight, sharing fond nursery memories about them as they gather.",
+                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in their roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kitten's favorite, short lived toy. The warriors smile at the sight, sharing fond nursery memories about them as they gather.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["dandelion"],
@@ -1787,7 +1787,7 @@
                 ]
             },
             {
-                "text": "It's a successful gathering mission, and p_l strides back to camp with a great haul of whole, intact dandelion plants. Later, {PRONOUN/p_l/subject}'ll sort the leaves and roots to be stored separately - the leaves remain fresh for a far shorter time, but for now {PRONOUN/p_l/subject} {VERB/p_l/make/makes} sure to thank the warriors that have helped {PRONOUN/p_l/subject} bring home so many.",
+                "text": "It's a successful gathering mission, and p_l strides back to camp with a great haul of whole, intact dandelion plants. Later, {PRONOUN/p_l/subject}'ll sort the leaves and roots to be stored separately - the leaves remain fresh for a far shorter time, but for now {PRONOUN/p_l/subject} {VERB/p_l/make/makes} sure to thank the warriors that have helped {PRONOUN/p_l/object} bring home so many.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["dandelion"],
@@ -2122,11 +2122,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "With leaf-fall washing the world in tones of red and brown, p_l feels the need to gather as many elder leaves as possible, before the season turns and the Clan must survive without new stocks during leaf-bare. There's a particular tree in a sheltered dip along a stream {PRONOUN/p_l/subject} {VERB/p_l/want/wants} to check on today, bringing a group of {PRONOUN/p_l/poss} Clanmates with {PRONOUN/p_l/object}.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
@@ -2174,7 +2174,7 @@
                 ]
             },
             {
-                "text": "s_c has discovered with time and experience that elder leaf picking is actually better handled by chewing off several low-hanging, thin branches and carrying those back to camp instead. With so many assistants, {PRONOUN/s_c/subject} can bring a truly massive haul home, where the rest of the patrol helps {PRONOUN/s_c/subject} strip the leaves and carefully store {PRONOUN/s_c/object}.",
+                "text": "s_c has discovered with time and experience that elder leaf picking is actually better handled by chewing off several low-hanging, thin branches and carrying those back to camp instead. With so many assistants, {PRONOUN/s_c/subject} can bring a truly massive haul home, where the rest of the patrol helps {PRONOUN/s_c/object} strip the leaves and carefully store them.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -2574,11 +2574,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "Leaf-fall holds the last chances to stock up on herbs that will die off in leaf-bare, and p_l heads out to gather fresh goldenrod for the stores with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -2846,11 +2846,11 @@
         "min_max_status": {
             "medicine cat": [1, 6],
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "p_l sniffs the clean fresh morning air, wondering if {PRONOUN/p_l/subject} can smell juniper berries on the breeze. {PRONOUN/p_l/subject/CAP} {VERB/p_l/assemble/assembles} a patrol to investigate.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -3125,7 +3125,7 @@
                 "text": "Night falls, and still s_c insists {PRONOUN/s_c/subject} {VERB/s_c/keep/keeps} going. Lungwort is the only reliable cure for yellowcough, and {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cats persist patiently until {PRONOUN/s_c/subject} finally find the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["adult"],
                 "herbs": ["lungwort"],
                 "relationships": [
@@ -3148,7 +3148,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Not only do {PRONOUN/p_l/subject} not find anything, app1 seems to not be taking in a single thing p_l tries to teach, and by the time {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} back at camp, p_l wants to screech.",
+                "text": "Not only {VERB/p_l/do/does} {PRONOUN/p_l/subject} not find anything, app1 seems to not be taking in a single thing p_l tries to teach, and by the time {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} back at camp, p_l wants to screech.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -3238,7 +3238,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "herbs": ["lungwort"],
                 "relationships": [
                     {
@@ -3253,7 +3253,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l searches until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "p_l searches until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -3267,7 +3267,7 @@
                 ]
             },
             {
-                "text": "p_l searches until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "p_l searches until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -3281,7 +3281,7 @@
                 ]
             },
             {
-                "text": "p_l searches until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "p_l searches until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} can't find lungwort anywhere. {PRONOUN/p_l/subject/CAP} {VERB/p_l/return/returns} to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -3372,7 +3372,7 @@
                 "text": "Night falls, but still s_c insistently keeps going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} the precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "can_have_stat": ["r_c"],
                 "herbs": ["lungwort"],
                 "relationships": [
@@ -3388,7 +3388,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The cats search and search until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "The cats search and search until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -3418,7 +3418,7 @@
                 ]
             },
             {
-                "text": "The cats search and search until {PRONOUN/p_l/poss} pawpads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
+                "text": "The cats search and search until {PRONOUN/p_l/poss} paw pads are sore and {PRONOUN/p_l/poss} muscles exhausted, but {PRONOUN/p_l/subject} just can't find lungwort anywhere. p_l returns to camp disappointed but determined to try again. It's simply too important to not keep a good supply of.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -3685,11 +3685,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "Leaf-fall holds the last chances to stock up on herbs that will die off in leaf-bare, and p_l heads out to gather fresh mallow for the stores with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -4027,11 +4027,11 @@
         "min_max_status": {
             "medicine cat": [1, 6],
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "Leaf-fall holds the last chances to stock up on herbs that will die off in leaf-bare, and p_l heads out to gather fresh marigold for the stores with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object} before the plants wither and die off.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -4079,7 +4079,7 @@
                 ]
             },
             {
-                "text": "s_c finds a patch of marigold, harvests its best leaves and flowers, and pads home, unaware of how much of {PRONOUN/s_c/poss} success rests on {PRONOUN/s_c/poss} talent for herb gathering. The patrol, too, is unaware, but it certainly bolsters {PRONOUN/s_c/poss} faith in {PRONOUN/s_c/poss} medicine cat to see {PRONOUN/s_c/subject} succeed with such competence.",
+                "text": "s_c finds a patch of marigold, harvests its best leaves and flowers, and pads home, unaware of how much of {PRONOUN/s_c/poss} success rests on {PRONOUN/s_c/poss} talent for herb gathering. The patrol, too, is unaware, but it certainly bolsters {PRONOUN/s_c/poss} faith in {PRONOUN/s_c/poss} medicine cat to see {PRONOUN/s_c/object} succeed with such competence.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -4363,11 +4363,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As the mullein towers impressively over the other plants, it's a good time to harvest it.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -4393,7 +4393,7 @@
                 ]
             },
             {
-                "text": "Easing the lungs of those with weaker chest muscles or infections, helping with certain sorts of pain, <i>and</i> being used to treat unhappy guts - mullein is a good herb to keep in stock, even without the glamour of catmint or the rarity of lungwort. The warriors helping p_l don't understand the importance, but obligingly help {PRONOUN/p_l/subject} harvest it.",
+                "text": "Easing the lungs of those with weaker chest muscles or infections, helping with certain sorts of pain, <i>and</i> being used to treat unhappy guts - mullein is a good herb to keep in stock, even without the glamour of catmint or the rarity of lungwort. The warriors helping p_l don't understand the importance, but obligingly help {PRONOUN/p_l/object} harvest it.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "mullein"],
@@ -4634,11 +4634,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As the oaks are washed with brilliant color, p_l heads out on a gathering patrol with warriors to gather {PRONOUN/p_l/poss} last green leaves.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -4970,11 +4970,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
-        "intro_text": "p_l is always amused by the plantain's enduring cheerfulness in the face of being trodden on, and it's nice that the plants grow with such enthusiasm right to the end of leaf-fall. The warriors {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} bringing along seem to regard {PRONOUN/p_l/poss} task as more path clearing and less herb gathering, but if it gets them helpers, p_l isn't too fussed about it.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "p_l is always amused by the plantain's enduring cheerfulness in the face of being trodden on, and it's nice that the plants grow with such enthusiasm right to the end of leaf-fall. The warriors {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} bringing along seem to regard {PRONOUN/p_l/poss} task as more path clearing and less herb gathering, but if it gets {PRONOUN/p_l/object} helpers, p_l isn't too fussed about it.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -5241,11 +5241,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
-        "intro_text": "The ragwort plants start to dramatically give up on life as leaf-fall progresses, and p_l takes the opportunity to go harvest from {PRONOUN/p_l/object}, bringing along a patrol to help {PRONOUN/p_l/subject} carry the leaves back to the herb stores.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "The ragwort plants start to dramatically give up on life as leaf-fall progresses, and p_l takes the opportunity to go harvest from {PRONOUN/p_l/object}, bringing along a patrol to help {PRONOUN/p_l/object} carry the leaves back to the herb stores.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -5536,21 +5536,21 @@
                 "weight": 20
             },
             {
-                "text": "app1 plucks the berries, several splitting in {PRONOUN/app1/poss} mouth, and is surprised at how good {PRONOUN/app1/subject} {VERB/app1/taste/tastes} - after all, every herb {PRONOUN/app1/subject}{VERB/app1/'re/'s} trying to learn tastes awful, so it's surprising that one tastes good. As {PRONOUN/app1/subject} {VERB/app1/start/starts} back to camp, however, {PRONOUN/app1/subject} {VERB/app1/wobble/wobbles} a bit, and the world goes dark. {PRONOUN/app1/poss/CAP} body is found soon after, but it's already too late to help.",
+                "text": "app1 plucks the berries, several splitting in {PRONOUN/app1/poss} mouth, and is surprised at how good they {VERB/app1/taste/tastes} - after all, every herb {PRONOUN/app1/subject}{VERB/app1/'re/'s} trying to learn tastes awful, so it's surprising that one tastes good. As {PRONOUN/app1/subject} {VERB/app1/start/starts} back to camp, however, {PRONOUN/app1/subject} {VERB/app1/wobble/wobbles} a bit, and the world goes dark. {PRONOUN/app1/poss/CAP} body is found soon after, but it's already too late to help.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "app1 carefully plucks the delicious-tasting berries, and as soon as the deceptive taste hits {PRONOUN/app1/poss} tongue, {PRONOUN/app1/subject} {VERB/app1/realize/realizes} {PRONOUN/app1/subject}{VERB/app1/'ve/'s} made a terrible mistake. Trying to force themself to vomit and staggering weakly, {PRONOUN/app1/subject} {VERB/app1/crawl/crawls} back to camp, weakly hoping {PRONOUN/app1/poss} mentor will help {PRONOUN/app1/object}.",
+                "text": "app1 carefully plucks the delicious-tasting berries, and as soon as the deceptive taste hits {PRONOUN/app1/poss} tongue, {PRONOUN/app1/subject} {VERB/app1/realize/realizes} {PRONOUN/app1/subject}{VERB/app1/'ve/'s} made a terrible mistake. Trying to force {PRONOUN/app1/self} to vomit and staggering weakly, {PRONOUN/app1/subject} {VERB/app1/crawl/crawls} back to camp - but too late for {PRONOUN/app1/poss} mentor to save {PRONOUN/app1/object}.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["app1"],
                 "history_text": {
-                    "reg_death": "m_c died before completing their medicine cat training, having accidentally eaten deathberries."
+                    "reg_death": "m_c died before completing {PRONOUN/m_c/poss} medicine cat training, having accidentally eaten deathberries."
                 }
             },
             {
-                "text": "app1 carefully plucks the delicious-tasting berries, and as soon as the deceptive taste hits {PRONOUN/app1/poss} tongue, {PRONOUN/app1/subject} {VERB/app1/realize/realizes} {PRONOUN/app1/subject}{VERB/app1/'ve/'s} made a terrible mistake. Trying to force themself to vomit and staggering weakly, {PRONOUN/app1/subject} {VERB/app1/crawl/crawls} back to camp, weakly hoping {PRONOUN/app1/poss} mentor will help {PRONOUN/app1/object}.",
+                "text": "app1 carefully plucks the delicious-tasting berries, and as soon as the deceptive taste hits {PRONOUN/app1/poss} tongue, {PRONOUN/app1/subject} {VERB/app1/realize/realizes} {PRONOUN/app1/subject}{VERB/app1/'ve/'s} made a terrible mistake. Trying to force {PRONOUN/app1/self} to vomit and staggering weakly, {PRONOUN/app1/subject} {VERB/app1/crawl/crawls} back to camp, weakly hoping {PRONOUN/app1/poss} mentor will help {PRONOUN/app1/object}.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -5561,7 +5561,7 @@
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c died before completing their medicine cat training, having accidentally eaten deathberries."
+                    "reg_death": "m_c died before completing {PRONOUN/m_c/poss} medicine cat training, having accidentally eaten deathberries."
                 }
             }
         ]
@@ -5586,7 +5586,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce bloodloss have saved countless lives, and brought kittens safely into the world.",
+                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce blood loss have saved countless lives, and brought kittens safely into the world.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["raspberry"],
@@ -5809,11 +5809,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "As the tansy plants fight on though leaf-fall to fit in as much life as possible before leaf-bare, p_l goes out to harvest them with a gathering patrol.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -6222,11 +6222,11 @@
         "max_cats": 6,
         "min_max_status": {
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "The thyme plants are running out of growing time - p_l better go harvest {PRONOUN/p_l/object} before leaf-fall is over, bringing a patrol with {PRONOUN/p_l/object} to help.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -6576,11 +6576,11 @@
         "min_max_status": {
             "medicine cat": [1, 6],
             "healer cats": [1, 6],
-            "normal adult": [1, 6]
+            "normal adult": [2, 6]
         },
         "weight": 20,
         "intro_text": "In the crisp cool air of a leaf-fall morning, it should be easy to find wild garlic by scent. p_l leads a gathering patrol to do just that.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}'re stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {

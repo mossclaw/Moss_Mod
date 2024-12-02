@@ -113,12 +113,18 @@ class EventsScreen(Screens):
                         self.handle_tab_switch(ele)
                         break
 
+            self.mute_button_pressed(event)
+
         # ON FULL BUTTON PRESS
         elif (
             event.type == pygame_gui.UI_BUTTON_PRESSED
         ):  # everything else on button press to prevent blinking
             element = event.ui_element
             if element == self.timeskip_button:
+                # ensure we can't run the same timeskip multiple times
+                if self.events_thread is not None and self.events_thread.is_alive():
+                    return
+                self.timeskip_button.disable()
                 self.events_thread = self.loading_screen_start_work(
                     events_class.one_moon
                 )
@@ -485,13 +491,15 @@ class EventsScreen(Screens):
                         object_id="#events_cat_profile_button",
                         starting_height=1,
                         manager=MANAGER,
-                        anchors={
-                            "left_target": self.cat_profile_buttons[
-                                f"profile_button{i - 1}"
-                            ]
-                        }
-                        if i > 0
-                        else {"left": "left"},
+                        anchors=(
+                            {
+                                "left_target": self.cat_profile_buttons[
+                                    f"profile_button{i - 1}"
+                                ]
+                            }
+                            if i > 0
+                            else {"left": "left"}
+                        ),
                     )
         else:
             rect = ui_scale(pygame.Rect((0, 0), (120, 34)))
@@ -511,13 +519,15 @@ class EventsScreen(Screens):
                         object_id="#events_cat_profile_button",
                         starting_height=1,
                         manager=MANAGER,
-                        anchors={
-                            "left_target": self.cat_profile_buttons[
-                                f"profile_button{i - 1}"
-                            ]
-                        }
-                        if i > 0
-                        else {"right": "right"},
+                        anchors=(
+                            {
+                                "left_target": self.cat_profile_buttons[
+                                    f"profile_button{i - 1}"
+                                ]
+                            }
+                            if i > 0
+                            else {"right": "right"}
+                        ),
                     )
         del rect
         self.involved_cat_container.set_view_container_dimensions(
@@ -611,9 +621,11 @@ class EventsScreen(Screens):
                 element_id="event_panel",
                 object_id="#dark" if game.settings["dark mode"] else None,
                 margins={"top": 0, "bottom": 0, "left": 0, "right": 0},
-                anchors={"top_target": self.event_display_elements[f"container{i - 1}"]}
-                if i > 0
-                else {"top": "top"},
+                anchors=(
+                    {"top_target": self.event_display_elements[f"container{i - 1}"]}
+                    if i > 0
+                    else {"top": "top"}
+                ),
             )
             if i % 2 == 0:
                 self.event_display_elements[f"container{i}"].background_colour = (
@@ -662,17 +674,19 @@ class EventsScreen(Screens):
             self.event_display_elements[f"container{i}"].set_dimensions(
                 (
                     default_rect[2],
-                    self.event_display_elements[f"event{i}"].get_relative_rect()[3]
-                    + (
-                        self.involved_cat_buttons[f"cat_button{i}"].get_relative_rect()[
-                            3
-                        ]
-                        + ui_scale_value(10)
-                    )
-                    if f"cat_button{i}" in self.involved_cat_buttons
-                    else self.event_display_elements[f"event{i}"].get_relative_rect()[
-                        3
-                    ],
+                    (
+                        self.event_display_elements[f"event{i}"].get_relative_rect()[3]
+                        + (
+                            self.involved_cat_buttons[
+                                f"cat_button{i}"
+                            ].get_relative_rect()[3]
+                            + ui_scale_value(10)
+                        )
+                        if f"cat_button{i}" in self.involved_cat_buttons
+                        else self.event_display_elements[
+                            f"event{i}"
+                        ].get_relative_rect()[3]
+                    ),
                 )
             )
 
@@ -706,7 +720,6 @@ class EventsScreen(Screens):
     def on_use(self):
         super().on_use()
         self.loading_screen_on_use(self.events_thread, self.timeskip_done)
-        pass
 
     def timeskip_done(self):
         """Various sorting and other tasks that must be done with the timeskip is over."""
@@ -762,4 +775,9 @@ class EventsScreen(Screens):
         else:
             self.alert["miscellaneous"].hide()
 
+        # resets the alerts' x position to make sure they don't shift places over multiple moons.
+        for item in self.alert.values():
+            item.set_relative_position((10, item.get_relative_rect()[1]))
+
         self.update_events_display()
+        self.timeskip_button.enable()

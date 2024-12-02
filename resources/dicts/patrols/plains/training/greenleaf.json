@@ -59,7 +59,7 @@
         "season": ["greenleaf"],
         "types": ["training"],
         "tags": ["romantic"],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "pln_train_newleaf_3mates_cloverfield1",
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {

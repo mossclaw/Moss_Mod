@@ -49,7 +49,7 @@
                 "text": "s_c really keeps the patrol on task and motivated through the sharp cold of the leaf-bare morning, not through authority or commands, but with a gentle voice and compassionate understanding that encourages every cat to do their best for c_n.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "prey": ["medium"],
                 "relationships": [
                     {
@@ -196,7 +196,7 @@
                 "text": "A storm descends, sudden and violent, putting an end to any other thoughts but survival. As the cats hide from the wind in a stream gully, s_c keeps an eye out for everyone. It's a long couple of hours, but with gentle understanding and compassion the cats make it through safely, closer than ever afterwards.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],
@@ -745,7 +745,6 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -841,7 +840,6 @@
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -1343,11 +1341,11 @@
                         "scars": []
                     }
                 ],
-                "history_text": [
-                    {"reg_death": "m_c perished after being frostbitten on patrol."},
-                    {"lead_death": "couldn't recover after freezing on patrol"},
-                    {"scar": "m_c was frostbitten as an apprentice while hunting."}
-                ]
+                "history_text": {
+                    "reg_death": "m_c perished after being frostbitten on patrol.",
+                    "lead_death": "couldn't recover after freezing on patrol",
+                    "scar": "m_c was frostbitten as an apprentice while hunting."
+                }
             }
         ]
     },
@@ -3815,8 +3813,6 @@
         },
         "weight": 20,
         "chance_of_success": 30,
-        "relationship_constraint": null,
-        "pl_skill_constraint": null,
         "intro_text": "Leaf-bare is taking its toll. The patrol is cold, frustrated, and most of all, hungry. p_l notices something odd. Is that a fox in the distance? Why is it jumping into the snow like that?",
         "decline_text": "First the cold, and the snow, and now a fox? This is too much for one day, p_l decides. Back to camp, another patrol can try again later.",
         "success_outcomes": [
@@ -3831,7 +3827,7 @@
                 "cats_to": ["s_c"],
                 "cats_from": ["patrol"],
                 "mutual": false,
-                "values": ["respect, trust, platonic"],
+                "values": ["respect", "trust", "platonic"],
                 "amount": 5
             } ] }, 
         {
@@ -3853,13 +3849,13 @@
             {"text": "r_c snarls. {PRONOUN/r_c/subject/CAP} {VERB/r_c/are/is} too cold and too hungry to watch a stupid fox. This will be a hard hunt, r_c snaps, and if the others can't focus, then they should go huddle with the kits at camp.",
             "exp": 0,
             "weight": 15, 
-            "prey": ["very small"],
+            "prey": ["very_small"],
             "relationships": [
                 {
                     "cats_to": ["r_c"],
                     "cats_from": ["patrol"],
                     "mutual": true,
-                    "values": ["platonic, respect, trust"],
+                    "values": ["platonic", "respect", "trust"],
                     "amount": -5
                 }
             ]

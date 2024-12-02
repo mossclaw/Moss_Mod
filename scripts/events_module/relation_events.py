@@ -91,6 +91,10 @@ class Relation_Events:
         # only adding cats which already have SOME relationship with each other
         cat_to_choose_from = []
         for inter_cat in possible_cats:
+            # toss out cats who are outside
+            if inter_cat.outside:
+                continue
+
             if inter_cat.ID not in cat.relationships:
                 cat.create_one_relationship(inter_cat)
             if cat.ID not in inter_cat.relationships:

@@ -61,7 +61,7 @@
                 "text": "s_c stops the patrol before they can move to enter the tunnels. After a careful inspection of the entrance, s_c concludes that a wolverine has claimed this as its home. The predator seems to be away for the moment but could return soon. The patrol quickly moves on.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["careful", "wise", "patient", "responsible"],
+                "stat_trait": ["careful", "wise", "responsible"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -92,7 +92,7 @@
                 "text": "s_c rushes into the tunnels with a gleeful meow! A new place to explore and discover! {PRONOUN/s_c/subject/CAP}{VERB/s_c/'re/'s} brought up short when the tunnel abruptly ends. It seems this tunnel leads to a dead end only a few fox-lengths from the entrance.",
                 "exp": 0,
                 "weight": 20,
-                "stat_trait": ["childish", "impulsive", "playful", "adventurous"],
+                "stat_trait": ["childish", "playful", "adventurous"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -186,7 +186,7 @@
                 "text": "s_c pauses before entering the tunnels. After a careful inspection of the entrance, s_c concludes that a wolverine has claimed this as its home. The predator seems to be away for the moment but could return soon. The patrol quickly moves on.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["careful", "wise", "patient", "responsible"]
+                "stat_trait": ["careful", "wise", "responsible"]
             }
         ],
         "fail_outcomes": [
@@ -199,7 +199,7 @@
                 "text": "s_c rushes into the tunnels with a gleeful meow! A new place to explore and discover! {PRONOUN/s_c/subject/CAP}{VERB/s_c/'re/'s} brought up short when the tunnel abruptly ends. It seems this tunnel leads to nothing but a dead end only a few fox-lengths from the entrance.",
                 "exp": 0,
                 "weight": 20,
-                "stat_trait": ["childish", "impulsive", "playful", "adventurous"]
+                "stat_trait": ["childish", "playful", "adventurous"]
             },
             {
                 "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c is snagged by the jaws of the predator. r_c won't make it back to camp...",
@@ -448,7 +448,7 @@
                 "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich forest outside of c_n territory.",
                 "exp": 30,
                 "weight": 20,
-                "stat_trait": ["bold", "confident", "charming"],
+                "stat_trait": ["bold", "confident"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -785,8 +785,8 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by an invading rogue.",
-                    "reg_death": "m_c was killed by an invading rogue.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an invading rogue"
+                    "reg_death": "m_c died from an injury inflicted by an invading rogue.",
+                    "lead_death": "died from an injury inflicted by an invading rogue"
                 }
             }
         ]
@@ -925,7 +925,11 @@
                         "scars": ["BRIDGE"]
                     }
                 ],
-                "history_text": { "scar": "m_c was scarred by an invading rogue." },
+                "history_text": {
+                    "scar": "m_c was scarred by an invading rogue.",
+                    "reg_death": "m_c died from an injury inflicted by an invading rogue.",
+                    "lead_death": "died from an injury inflicted by an invading rogue"
+                },
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -1072,7 +1076,11 @@
                         "scars": ["BRIDGE"]
                     }
                 ],
-                "history_text": { "scar": "m_c was scarred by an invading rogue." },
+                "history_text": {
+                    "scar": "m_c was scarred by an invading rogue.",
+                    "reg_death": "m_c died from an injury inflicted by an invading rogue.",
+                    "lead_death": "died from an injury inflicted by an invading rogue"
+                },
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -1154,7 +1162,11 @@
                         "scars": ["CHEEK"]
                     }
                 ],
-                "history_text": { "scar": "m_c was scarred by an invading rogue." }
+                "history_text": {
+                    "scar": "m_c was scarred by an invading rogue.",
+                    "reg_death": "m_c died from an injury inflicted by an invading rogue.",
+                    "lead_death": "died from an injury inflicted by an invading rogue"
+                }
             }
         ]
     },
@@ -1552,9 +1564,7 @@
                     "charismatic",
                     "childish",
                     "playful",
-                    "empathetic",
-                    "loving",
-                    "patient"
+                    "loving"
                 ],
                 "relationships": [
                     {
@@ -1670,10 +1680,10 @@
                 "weight": 20,
                 "relationships": [
                     {
-                        "cat_to": ["patrol"],
-                        "cat_from": ["patrol"],
+                        "cats_to": ["patrol"],
+                        "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["platonic, comfort"],
+                        "values": ["platonic", "comfort"],
                         "amount": 5
                     }
                     

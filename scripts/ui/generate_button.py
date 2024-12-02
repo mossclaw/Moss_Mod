@@ -1,5 +1,5 @@
 from enum import Enum
-from functools import cache
+from functools import lru_cache
 from math import floor
 from typing import Tuple, Dict
 
@@ -429,7 +429,7 @@ def get_button_dict(
     )
 
 
-@cache
+@lru_cache(maxsize=None)
 def _get_button_dict(
     style: ButtonStyles, unscaled_dimensions: Tuple[int, int], scale
 ) -> Dict[str, pygame.Surface]:

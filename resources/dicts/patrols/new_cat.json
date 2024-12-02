@@ -1267,7 +1267,7 @@
                 "weight": 20,
                 "outsider_rep": -1,
                 "new_cat": [
-                    "meeting", "loner"
+                    ["meeting", "loner"]
                 ],
                 "relationships": [
                     {
@@ -1287,7 +1287,7 @@
                 "weight": 20,
                 "outsider_rep": -2,
                 "new_cat": [
-                    "meeting", "loner"
+                    ["meeting", "loner"]
                 ]
             }
         ]
@@ -1911,7 +1911,7 @@
                 "weight": 10,
                 "dead_cats": ["r_c", "some_lives"],
                 "history_text": {
-                    "reg_death": "This cat died in an ambush set by rogues.",
+                    "reg_death": "m_c died in an ambush set by rogues.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 },
                 "outsider_rep": -1
@@ -1940,7 +1940,7 @@
         ],
         "antag_success_outcomes": [
             {
-                "text": "p_l can sense it's a trap and waits just outside, setting {PRONOUN/p_l/poss} own trap. {PRONOUN/p_l/subject/CAP} {VERB/p_l/manage/manages} to set up such a yowl that it sends the rogues running as if LionClan were after them.",
+                "text": "p_l can sense it's a trap and waits just outside, setting {PRONOUN/p_l/poss} own trap. {PRONOUN/p_l/subject/CAP} {VERB/p_l/fill/fills} {PRONOUN/p_l/poss} lungs deeply and {VERB/p_l/let/lets} out a yowl that sends the rogues running as if LionClan were after them.",
                 "exp": 30,
                 "weight": 20,
                 "outsider_rep": -2,
@@ -2044,7 +2044,7 @@
                 "weight": 10,
                 "dead_cats": ["multi"],
                 "history_text": {
-                    "reg_death": "This cat died in an ambush set by rogues.",
+                    "reg_death": "m_c died in an ambush set by rogues.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 },
                 "outsider_rep": -1,
@@ -2212,7 +2212,11 @@
                         "scars": ["BRIDGE"]
                     }
                 ],
-                "history_text": { "scar": "m_c gained a scar after tussling with a rogue." },
+                "history_text": { 
+                    "scar": "m_c gained a scar after tussling with a rogue.",
+                    "reg_death": "m_c died from injuries sustained in a fight with a rogue.",
+                    "lead_death": "died from injuries sustained in a fight with a rogue"
+                 },
                 "outsider_rep": -1
             }
         ],
@@ -2340,7 +2344,7 @@
                 "weight": 10,
                 "dead_cats": ["patrol"],
                 "history_text": {
-                    "reg_death": "This cat died from being ambushed by rogues.",
+                    "reg_death": "m_c died from being ambushed by rogues.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 },
                 "outsider_rep": -1

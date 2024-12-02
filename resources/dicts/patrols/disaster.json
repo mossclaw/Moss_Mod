@@ -571,7 +571,7 @@
                 "weight": 10,
                 "dead_cats": ["r_c", "some_lives"],
                 "history_text": {
-                    "reg_death": "This cat died from being ambushed by rogues while on a solo patrol.",
+                    "reg_death": "m_c died in a rogue ambush while on a solo patrol.",
                     "lead_death": "{VERB/m_c/were/was} ambushed by rogues while on a solo patrol"
                 }
             }
@@ -1575,7 +1575,7 @@
                 "weight": 10,
                 "dead_cats": ["r_c", "some_lives"],
                 "history_text": {
-                    "reg_death": "This cat died from being ambushed by rogues while on a solo patrol.",
+                    "reg_death": "m_c died in a rogue ambush while on a solo patrol.",
                     "lead_death": "{VERB/m_c/were/was} ambushed by rogues while on a solo patrol"
                 }
             }
@@ -1587,7 +1587,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -1683,7 +1683,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {},
@@ -1734,7 +1734,7 @@
         "season": ["leaf-bare"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -1819,7 +1819,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -1912,7 +1912,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {},
@@ -1960,7 +1960,7 @@
         "season": ["leaf-bare"],
         "types": ["border"],
         "tags": ["disaster"],
-        "patrol_art": "bord_general_intro",
+        "patrol_art": "gen_bord_flashflood",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -2149,8 +2149,8 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat was badly scarred when rogues ambushed their patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "scar": "m_c was badly scarred when rogues ambushed their patrol.",
+                    "reg_death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 }
             }
@@ -2390,7 +2390,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 }
             }
@@ -2510,7 +2510,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 }
             }

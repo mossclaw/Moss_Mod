@@ -30,7 +30,7 @@
                 "text": "By the end of the patrol s_c is able to move steadily with the wind and sand, their movements sure and confident",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["calm", "careful", "sneak", "quiet", "patient"]
+                "stat_trait": ["calm", "careful", "sneaky"]
             }
         ],
         "fail_outcomes": [
@@ -43,7 +43,7 @@
                 "text": "s_c struggles to take the lesson seriously, and eventually the training session ends early with no real progress made.",
                 "exp": 0,
                 "weight": 20,
-                "stat_trait": ["troublesome", "playful", "noisy"]
+                "stat_trait": ["troublesome", "playful"]
             }
         ]
     },
@@ -83,7 +83,6 @@
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -163,7 +162,6 @@
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
-                    "patient",
                     "responsible",
                     "thoughtful",
                     "wise",
@@ -266,14 +264,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -313,8 +308,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "relationships": [
                     {
@@ -411,14 +405,11 @@
                 "weight": 20,
                 "stat_trait": [
                     "compassionate",
-                    "empathetic",
                     "faithful",
                     "loving",
-                    "patient",
                     "responsible",
                     "thoughtful",
-                    "wise",
-                    "inquisitive"
+                    "wise"
                 ],
                 "relationships": [
                     {
@@ -458,8 +449,7 @@
                     "shameless",
                     "strict",
                     "troublesome",
-                    "vengeful",
-                    "bossy"
+                    "vengeful"
                 ],
                 "relationships": [
                     {

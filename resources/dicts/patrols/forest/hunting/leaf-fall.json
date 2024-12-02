@@ -440,12 +440,12 @@
                 "injury": [
                     {
                         "cats": ["r_c"],
-                        "injuries": ["sprain", "sore", "shivering"],
+                        "injuries": ["shivering"],
                         "scars": []
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c was scarred after disappearing on patrol and being discovered injured."
+                    "scar": "m_c was scarred after disappearing on patrol and being found soaked and freezing."
                 },
                 "relationships": [
                     {
@@ -5490,7 +5490,7 @@
     	"biome": ["forest"],
     	"season": ["leaf-fall"],
     	"types": ["hunting"],
-    	"tags": ["halloween", "romance"],
+    	"tags": ["halloween", "romantic"],
     	"patrol_art": "pipbats_INTRO",
     	"min_cats": 3,
     	"max_cats": 6,

@@ -619,7 +619,7 @@
                 "text": "s_c really keeps the patrol on task and motivated through the sharp chill of the newleaf morning, not through authority or commands, but with a gentle voice and compassionate understanding that encourages every cat to do their best for c_n.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "prey": ["medium"],
                 "relationships": [
                     {
@@ -771,7 +771,7 @@
                 "text": "A storm descends, sudden and violent, putting an end to any other thoughts but survival. As the cats hide under shrubbery of a sheltered valley, s_c keeps an eye out for everyone. It's a long couple of hours, but with gentle understanding and compassion the cats make it through safely, closer than ever afterwards.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["altruistic", "compassionate", "empathetic", "faithful", "loving"],
+                "stat_trait": ["compassionate", "faithful", "loving"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],

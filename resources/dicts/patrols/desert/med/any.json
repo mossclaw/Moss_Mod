@@ -367,7 +367,7 @@
                 "text": "Night falls, and still s_c insists they keep going - lungwort is the only reliable cure for yellowcough, they can't let c_n go without. Exhausted but determined, the medicine cats persist patiently until they find those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -476,7 +476,7 @@
                 "text": "Night falls, and still s_c insists to {PRONOUN/s_c/self} that {PRONOUN/s_c/subject} {VERB/s_c/need/needs} to keep going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -582,7 +582,7 @@
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["many_herbs", "lungwort"],
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -722,7 +722,7 @@
                 "text": "Night falls, and still s_c insists they keep going - lungwort is the only reliable cure for yellowcough, they can't let c_n go without. Exhausted but determined, the medicine cats persist patiently until they find those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -831,7 +831,7 @@
                 "text": "Night falls, and still s_c insists to {PRONOUN/s_c/self} that {PRONOUN/s_c/subject} {VERB/s_c/need/needs} to keep going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -937,7 +937,7 @@
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["many_herbs", "lungwort"],
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -1077,7 +1077,7 @@
                 "text": "Night falls, and still s_c insists they keep going - lungwort is the only reliable cure for yellowcough, they can't let c_n go without. Exhausted but determined, the medicine cats persist patiently until they find those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -1186,7 +1186,7 @@
                 "text": "Night falls, and still s_c insists to {PRONOUN/s_c/self} that {PRONOUN/s_c/subject} {VERB/s_c/need/needs} to keep going - {PRONOUN/s_c/subject} just can't let c_n go without. Exhausted but determined, the medicine cat persists patiently until {PRONOUN/s_c/subject} {VERB/s_c/find/finds} those precious speckled leaves.",
                 "exp": 20,
                 "weight": 20,
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
@@ -1292,7 +1292,7 @@
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["many_herbs", "lungwort"],
-                "stat_trait": ["patient"],
+                "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],

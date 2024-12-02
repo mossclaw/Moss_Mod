@@ -1756,7 +1756,7 @@
             "weight": 20
         },
         {
-            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kinda hurts.",
+            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kind of hurts.",
             "exp": 0,
             "weight": 20,
             "injury": [
@@ -1826,7 +1826,7 @@
             "weight": 20
         },
         {
-            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kinda hurts.",
+            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kind of hurts.",
             "exp": 0,
             "weight": 20,
             "injury": [
@@ -1896,7 +1896,7 @@
             "weight": 20
         },
         {
-            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kinda hurts.",
+            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kind of hurts.",
             "exp": 0,
             "weight": 20,
             "injury": [
@@ -1966,7 +1966,7 @@
             "weight": 20
         },
         {
-            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kinda hurts.",
+            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kind of hurts.",
             "exp": 0,
             "weight": 20,
             "injury": [
@@ -2036,7 +2036,7 @@
             "weight": 20
         },
         {
-            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kinda hurts.",
+            "text": "app1 lines up what {PRONOUN/app1/subject} {VERB/app1/think/thinks} is a perfect pounce, launches - and goes flying into a rock. Well. At least no one saw that. {PRONOUN/app1/poss/CAP} ear kind of hurts.",
             "exp": 0,
             "weight": 20,
             "injury": [
@@ -3711,7 +3711,7 @@
             "exp": 20,
             "weight": 20,
             "prey": ["small"],
-            "art": ["kittylion_OUTCOME"]
+            "art": "kittylion_OUTCOME"
         },
         {
             "text": "Boldly, s_c steps forward to interrogate the small lion, who explains that it is a kittypet that must put up with its Twolegs' insistence on something called \"costumes\". It even offers to let s_c try its accessory!",
@@ -3725,7 +3725,7 @@
                 "shameless", 
                 "playful"
             ],
-            "art": ["kittylion_OUTCOME"]
+            "art": "kittylion_OUTCOME"
         }
     ],
     "fail_outcomes": [
@@ -4030,7 +4030,7 @@
 		{
             	"cats_to": ["s_c"],
             	"cats_from": ["r_c"],
-            	"values": ["dislike", "jealousy"],
+            	"values": ["dislike", "jealous"],
             	"amount": -5
 		}
 	    ],

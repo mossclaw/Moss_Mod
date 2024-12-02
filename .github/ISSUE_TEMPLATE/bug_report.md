@@ -10,6 +10,7 @@ assignees: ''
 **Type**: (only select one)
 - UI - anything to do with the user interface. maybe a button is not working, or the way some assets are formatted seems to be off. 
 - Sprite - an issue with the art in the game
+- Audio - issues related to the audio system
 - Code - general bugs related to how the game runs and responds to you. 
 - Typo - misspellings or incorrect grammar - IMPORTANT: this type of "bugs" are collected here: https://github.com/ClanGenOfficial/clangen/issues/1818
 

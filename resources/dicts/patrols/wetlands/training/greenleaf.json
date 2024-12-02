@@ -4,7 +4,7 @@
         "biome": ["wetlands"],
         "season": ["greenleaf"],
         "types": ["training"],
-        "tags": ["romance"],
+        "tags": ["romantic"],
         "patrol_art": "fst_hunt_heat",
         "min_cats": 4,
         "max_cats": 6,
@@ -75,8 +75,8 @@
                         }
                     ],
                     "history_text": {
-                        "reg_death": "m_c got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/subject} life from {PRONOUN/m_c/object}.",
-                        "lead_death": "got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/subject} life from {PRONOUN/m_c/object}"
+                        "reg_death": "m_c got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/poss} life from {PRONOUN/m_c/object}.",
+                        "lead_death": "got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/poss} life from {PRONOUN/m_c/object}"
                     }
                 }
             ]

@@ -517,7 +517,7 @@
                 "exp": 10,
                 "weight": 20,
                 "new_cat": [
-                    ["age:senior", "male", "backstory:refugee6"]
+                    ["age:senior", "male", "backstory:refugee6", "status:elder"]
                 ],
                 "relationships": [
                     {
@@ -543,7 +543,7 @@
                 "stat_skill": ["LORE,1", "STORY,1"],
                 "can_have_stat": ["any"],
                 "new_cat": [
-                    ["age:senior", "male", "backstory:refugee6"]
+                    ["age:senior", "male", "backstory:refugee6", "status:elder"]
                 ],
                 "relationships": [
                     {
@@ -1346,7 +1346,7 @@
                 "text": "s_c takes the lead in checking the noise and finds that the bush is hiding a loner and {PRONOUN/n_c:0/poss} litter! The kits are freshly born, new to the world, and s_c is quick to sit and talk quietly with the new parent. After some coaxing, s_c convinces {PRONOUN/n_c:0/object} to come stay with the Clan for a while, maybe even to join permanently.",
                 "exp": 10,
                 "weight": 20,
-                "stat_trait": ["compassionate", "empathetic", "loving", "calm"],
+                "stat_trait": ["compassionate", "loving", "calm"],
                 "new_cat": [
                     ["age:has_kits", "loner", "can_birth"],
                     ["litter", "parent:0", "status:newborn", "backstory:outsider_roots2"]
@@ -1399,7 +1399,11 @@
                         "scars": ["BRIDGE"]
                     }
                 ],
-                "history_text": { "scar": "m_c gained a scar after tussling with a loner." },
+                "history_text": { 
+                    "scar": "m_c gained a scar after tussling with a rogue.",
+                    "reg_death": "m_c died from injuries sustained in a fight with a rogue.",
+                    "lead_death": "died from injuries sustained in a fight with a rogue"
+                },
                 "outsider_rep": -1
             }
         ],

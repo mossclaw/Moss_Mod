@@ -558,6 +558,10 @@ class FamilyTreeScreen(Screens):
                     str(rel_type.value) for rel_type in additional_info["type"]
                 ]
                 rel_types = set(rel_types)  # remove duplicates
+                if "not blood related" in rel_types and len(rel_types) > 1:
+                    # in the edge case of a cat being not related and also related in some way
+                    # (usually from adoption shenanigans), make blood relation have priority
+                    rel_types.remove("not blood related")
                 if "" in rel_types:
                     rel_types.remove("")  # removes empty
                 if len(rel_types) > 0:
@@ -578,7 +582,7 @@ class FamilyTreeScreen(Screens):
             )
 
             pos_x += 50
-            if pos_x > 450:
+            if pos_x > 380:
                 pos_y += 50
                 pos_x = 0
             i += 1

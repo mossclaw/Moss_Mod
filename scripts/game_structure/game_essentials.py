@@ -137,7 +137,6 @@ class Game:
         "fps": 30,
         "war_rel_change_type": "neutral",
         "disallowed_symbol_tags": [],
-        "audio_mute": False,
         "saved_scroll_positions": {},
         "moon&season_open": False,
     }
