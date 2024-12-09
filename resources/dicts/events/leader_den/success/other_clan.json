@@ -104,7 +104,7 @@
     "event_text": "When o_c_n's leader shares their news at the Gathering, m_c repeats bits of it in a singsong.",
     "rel_change": -3,
     "m_c": {
-      "trait": [ "childish", "flamboyant", "playful", "strange", "troublesome" ]
+      "trait": [ "childish", "flamboyant", "playful", "strange", "troublesome", "shameless" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -184,6 +184,17 @@
   },
   {
     "interaction_type": "offend",
+    "event_text": "At the Gathering, a spirit from o_c_n murmurs in m_c's ears, requesting that their message be passed on to o_c_n's leader. m_c ignores the spirit, who disappears with a frustrated hiss.",
+    "rel_change": -3,
+    "m_c": {
+      "trait": ["cold", "oblivious" ],
+      "skill": ["GHOST,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "offend",
     "event_text": "At the Gathering, m_c remarks on how o_c_n might need some nest-weaving tips from c_n, since o_c_n is still making nests from crabgrass and dandelion leaves. To no cat's surprise, o_c_n's leader takes offense at that.",
     "rel_change": -6,
     "m_c": {
@@ -198,7 +209,7 @@
     "event_text": "At the Gathering, o_c_n's leader reports that one of their cats' broken bones has finally healed. m_c scoffs and addresses the o_c_n medicine cats, telling them that they should have re-broken the bone and set it better.",
     "rel_change": -6,
     "m_c": {
-      "trait": ["fierce"],
+      "trait": ["fierce", "bloodthirsty", "bold"],
       "skill": ["HEALER,1"]
     },
     "player_clan_temper": ["any"],
@@ -238,11 +249,33 @@
   },
   {
     "interaction_type": "offend",
+    "event_text": "During {PRONOUN/m_c/poss} Gathering speech, m_c brings up some of o_c_n's unsavory history. o_c_n's leader politely asks {PRONOUN/m_c/object} to stop, and m_c asks if o_c_n is trying to rewrite history.",
+    "rel_change": -4,
+    "m_c": {
+      "trait": ["cold", "bold", "shameless"],
+      "skill": [ "LORE,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "offend",
     "event_text": "m_c is intentional with {PRONOUN/m_c/poss} comments during the Gathering. {PRONOUN/m_c/subject/CAP} {VERB/m_c/manage/manages} to make it clear to o_c_n that c_n is no longer their ally - without being outright insulting.",
     "rel_change": -7,
     "m_c": {
       "trait": ["wise", "sincere", "cunning", "calm", "careful", "loving", "responsible", "righteous", "strict", "compassionate", "thoughtful"]
     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "offend",
+    "event_text": "At the Gathering, m_c rebukes o_c_n's leader for merely driving out the troublemaking rogues on their border instead of slaughtering every last one of them.",
+    "rel_change": -5,
+    "m_c": { 
+      "skill": ["SPEAKER,1"],
+      "trait": [ "bloodthirsty" ]
+  },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
   },
@@ -291,6 +324,17 @@
   },
   {
     "interaction_type": "praise",
+    "event_text": "At the Gathering, m_c spots the moonlit gleam of eyes at the edge of the meeting place. The intruder turns tail and flees, but m_c launches {PRONOUN/m_c/self} off the leader's perch and gives chase, then returns a few heartbeats later with droplets of blood clinging to {PRONOUN/m_c/poss} whiskers and a satisfied look. o_c_n's leader grins approvingly.",
+    "rel_change": 5,
+    "m_c": {
+      "skill": ["RUNNER,1"],
+      "trait": ["bloodthirsty"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["logical", "stoic", "logical", "cunning", "wary", "proud"]
+  },
+    {
+      "interaction_type": "praise",
     "event_text": "At the Gathering, o_c_n's leader grouses about disobedient apprentices. m_c urges them to lay down the code and keep them in line.",
     "rel_change": 5,
     "m_c": {
@@ -324,11 +368,22 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "At the Gathering, m_c fills the ears of o_c_n's leader with flattering rhetoric about how c_n could enable o_c_n to dominate the territories. o_c_n's leader listens attentively, but never notices the shadow flickering behind m_c, too dark to be cast by the moon's light.",
+    "event_text": "At the Gathering, m_c fills the ears of o_c_n's leader with flattering rhetoric about how c_n could enable o_c_n to dominate the territories. o_c_n's leader listens attentively, never noticing the shadow flickering behind m_c, too dark to be cast by the moon's light.",
     "rel_change": 7,
     "m_c": {
       "skill": ["DARK,3"],
       "trait": ["bold", "daring", "ambitious", "cunning"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["proud", "logical", "stoic", "wary", "bloodthirsty"]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, m_c silkily describes a future where o_c_n and c_n rule all the territories together, using all {PRONOUN/m_c/poss} skill in advising. The eyes of o_c_n's leader glaze over, taken by the vision m_c weaves.",
+    "rel_change": 7,
+    "m_c": {
+      "skill": ["SPEAKER,2", "INSIGHTFUL,2"],
+      "trait": ["bloodthirsty", "cunning", "sneaky"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["proud", "logical", "stoic", "wary", "bloodthirsty"]
@@ -405,6 +460,17 @@
   },
   {
     "interaction_type": "praise",
+    "event_text": "m_c spends all moon working on a grass weaving of o_c_n's symbol and proudly presents it to o_c_n's leader at the Gathering. o_c_n's leader is amazed by the gift.",
+    "rel_change": 5,
+    "m_c": {
+        "skill": [ "CAMP,2"],
+        "trait": [ "childish", "playful", "flamboyant", "thoughtful" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "praise",
     "event_text": "m_c compliments o_c_n's newest warriors at the Gathering.",
     "rel_change": 1,
     "m_c": {
@@ -419,7 +485,7 @@
     "rel_change": 10,
     "m_c": {
       "trait": ["sincere"],
-      "skill": ["CLAIRVOYANT,4"]
+      "skill": ["CLAIRVOYANT,3"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -518,8 +584,8 @@
       "trait": ["confident", "compassionate", "bold", "righteous", "loyal", "sincere"],
       "skill": ["SPEAKER,3", "MEDIATOR,3"]
     },
-    "player_clan_temper": [],
-    "other_clan_temper": []
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
   },
   {
     "interaction_type": "praise",
@@ -529,8 +595,52 @@
       "trait": ["loyal"],
       "skill": ["STORY,1"]
     },
-    "player_clan_temper": [],
-    "other_clan_temper": []
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, o_c_n's leader confesses that a problem is plaguing their Clan. They're surprised when m_c offers a very competent solution despite {PRONOUN/m_c/poss} usual childish antics.",
+    "rel_change": 10,
+    "m_c": {
+      "trait": ["childish"],
+      "skill": ["INSIGHTFUL,1"]
+    },
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, o_c_n's leader announces that their medicine cats received an omen. m_c proposes an extremely literal interpretation, which the medicine cats admit they hadn't considered.",
+    "rel_change": 5,
+    "m_c": {
+      "trait": ["childish", "oblivious"],
+      "skill": ["OMEN,1"]
+    },
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, o_c_n's leader announces that their medicine cats received a prophecy. m_c proposes an extremely literal interpretation, which the medicine cats admit they hadn't considered.",
+    "rel_change": 5,
+    "m_c": {
+      "trait": ["childish", "oblivious"],
+      "skill": ["PROPHET,1"]
+    },
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "The night before the Gathering, m_c and o_c_n's leader share a dream of being kits again, playing mossball and tag. At the Gathering, m_c is pleased to see o_c_n's leader looking lighter.",
+    "rel_change": 5,
+    "m_c": {
+      "trait": ["childish", "playful" ],
+      "skill": ["DREAM,1"]
+    },
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
   },
   {
     "interaction_type": "praise",
@@ -540,8 +650,8 @@
       "trait": ["lonesome"],
       "skill": ["SPEAKER,1"]
     },
-    "player_clan_temper": [],
-    "other_clan_temper": []
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
   },
   {
     "interaction_type": "praise",
@@ -551,8 +661,19 @@
       "trait": ["adventurous"],
       "skill": ["STAR,1", "PROPHET,1"]
     },
-    "player_clan_temper": [],
-    "other_clan_temper": []
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, m_c speaks with o_c_n's medicine cats about a prophecy they received, offering valuable insight about the threat o_c_n faces. m_c encourages o_c_n's leader to take immediate, violent action and snuff out this threat.",
+    "rel_change": 4,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["PROPHET,1"]
+    },
+    "player_clan_temper": [ "any" ],
+    "other_clan_temper": [ "any" ]
   },
   {
     "interaction_type": "praise",
@@ -569,6 +690,28 @@
     "m_c": {},
     "player_clan_temper": [],
     "other_clan_temper": ["bloodthirsty", "fierce"]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, o_c_n's leader gets into a spat with another leader. m_c silently hears out both sides and then proves o_c_n's leader is right with cool logic.",
+    "rel_change": 4,
+    "m_c": {
+      "trait": [ "cold" ],
+      "skill": [ "MEDIATOR,1"]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "praise",
+    "event_text": "At the Gathering, o_c_n's leader and m_c put their heads together to discuss the weaknesses of their enemies. o_c_n's leader is impressed by m_c's insight.",
+    "rel_change": 4,
+    "m_c": {
+      "trait": [ "cold", "sneaky", "cunning" ],
+      "skill": [ "INSIGHTFUL,1"]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["proud", "wary", "logical", "bloodthirsty", "stoic", "cunning"]
   },
   {
     "interaction_type": "provoke",
@@ -615,6 +758,17 @@
   },
   {
     "interaction_type": "provoke",
+    "event_text": "m_c senses a presence from beyond the grave hovering around o_c_n's leader at the Gathering, and makes sure to bring up this dead Clanmate every chance {PRONOUN/m_c/subject} {VERB/m_c/get/gets}, just to get under o_c_n's leader's skin.",
+    "rel_change": -5,
+    "m_c": {
+      "skill": ["GHOST,1"],
+      "trait": [ "troublesome", "bold", "shameless" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
     "event_text": "As o_c_n's leader announces new apprentices at the Gathering, m_c interrupts to offer plenty of unsolicited advice about how best to train an apprentice.",
     "rel_change": -5,
     "m_c": {
@@ -631,6 +785,39 @@
     "m_c": {
       "skill": [ "SENSE,1" ],
       "trait": [ "lonesome" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "During o_c_n's leader's Gathering speech, m_c interrupts frequently, finishing o_c_n's leader's sentences. By the end of the night, o_c_n's leader is looking irritated and uneasy.",
+    "rel_change": -5,
+    "m_c": {
+      "skill": [ "CLAIRVOYANT,1" ],
+      "trait": [ "childish", "daring", "bold", "shameless", "flamboyant" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "During the Gathering, m_c compares o_c_n's actions to the legacy of a mythological villain. o_c_n's leader hisses and asks if m_c is insinuating something. m_c stares at them and answers that yes, {PRONOUN/m_c/subject} {VERB/m_c/are/is}.",
+    "rel_change": -5,
+    "m_c": {
+      "skill": [ "STORY,1" ],
+      "trait": [ "cold", "shameless", "bold" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "When o_c_n's leader explains the treatment of a badly injured warrior at the Gathering, m_c interrupts to instruct the medicine cats of o_c_n on a better course of treatment.",
+    "rel_change": -3,
+    "m_c": {
+      "skill": [ "HEALER,1" ],
+      "trait": [ "cold", "bold", "shameless" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -781,6 +968,17 @@
   },
   {
     "interaction_type": "provoke",
+    "event_text": "During the Gathering, m_c asks o_c_n's leader if o_c_n teaches its apprentices killing blows, or whether the Clan is full of mouse-hearts that would rather roll over and show their bellies.",
+    "rel_change": -8,
+    "m_c": {
+      "skill": [ "TEACHER,1"],
+      "trait": ["bloodthirsty"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
     "event_text": "During the Gathering, o_c_n's leader brags about recent successes in border skirmishes. m_c remarks that they're obfuscating how badly wounded some warriors are and how overworked their medicine cats seem.",
     "rel_change": -3,
     "m_c": {
@@ -791,7 +989,27 @@
   },
   {
     "interaction_type": "provoke",
-    "event_text": "During the Gathering, m_c brings up a shameful piece of o_c_n's past at an inopportune moment, much to the annoyance of o_c_n's leader.",
+    "event_text": "During the Gathering, m_c wrinkles {PRONOUN/m_c/poss} nose and demands to know why o_c_n's leader stinks of lavender. o_c_n's leader looks wounded and replies that their dead mother used to wear lavender on her pelt.",
+    "rel_change": -5,
+    "m_c": {
+      "skill": [ "GHOST,1"],
+      "trait": [ "childish" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "During the Gathering, m_c suggests to o_c_n's leader that one of their weaker-looking warriors will probably not survive the next leaf-bare.",
+    "rel_change": -3,
+    "m_c": {
+      "skill": [ "SENSE,1"],
+      "trait": [ "bloodthirsty", "cold" ]
+    }
+  },
+    {
+      "interaction_type": "provoke",
+      "event_text": "During the Gathering, m_c brings up a shameful piece of o_c_n's past at an inopportune moment, much to the annoyance of o_c_n's leader.",
     "rel_change": -3,
     "m_c": {
       "skill": [ "LORE,1"],
@@ -886,6 +1104,60 @@
     "m_c": { 
       "skill": [ "DARK,1" ],
       "trait": ["fierce" ]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "At the Gathering, o_c_n's leader announces their interpretation of a prophecy received by their medicine cats. m_c counters this with another interpretation and challenges o_c_n's medicine cats to admit which interpretation is more plausible. The medicine cats hem and haw, avoiding their leader's gaze.",
+    "rel_change": -5,
+    "m_c": { 
+      "skill": [ "PROPHET,1" ],
+      "trait": ["fierce", "cold", "bold", "shameless" ]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "At the Gathering, o_c_n's leader shares a humorous story about kits sneaking out of camp. m_c coldly replies that o_c_n should teach their kits to behave better.",
+    "rel_change": -5,
+    "m_c": { 
+      "skill": [ "KIT,1" ],
+      "trait": ["cold" ]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "At the Gathering, o_c_n's leader complains about rowdy kits disturbing their sleep. m_c rolls {PRONOUN/m_c/poss} eyes and demands to know if o_c_n's leader never feels like singing at moonhigh. The answer is no, apparently.",
+    "rel_change": -3,
+    "m_c": { 
+      "skill": [ "KIT,1" ],
+      "trait": ["childish", "rebellious", "troublesome" ]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "Before the announcements begin at the Gathering, m_c tells a group of o_c_n apprentices stories of c_n's exploits. o_c_n's leader seems peeved that their apprentices now think m_c is cooler than them.",
+    "rel_change": -3,
+    "m_c": { 
+      "skill": [ "STORY,1", "LORE,1" ],
+      "trait": ["childish" ]
+     },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "provoke",
+    "event_text": "At the Gathering, m_c keeps asking <i>why?</i> in response to everything o_c_n's leader says. o_c_n's leader eventually breaks off with a hiss.",
+    "rel_change": -5,
+    "m_c": {
+      "trait": ["childish" ]
      },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1045,11 +1317,33 @@
   },
   {
     "interaction_type": "befriend",
+    "event_text": "Just as o_c_n arrives at the Gathering, m_c shouts a warning for o_c_n's leader to move. A heartbeat later, a dead branch plummets toward them, but o_c_n's leader leaps out of the way in the nick of time. o_c_n is shocked and relieved.",
+    "rel_change": 3,
+    "m_c": {
+      "trait": [ "loving", "compassionate", "thoughtful", "charismatic" ],
+      "skill": [ "SENSE,1", "CLAIRVOYANT,1" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "befriend",
     "event_text": "At the Gathering, o_c_n's leader struggles through a report that an entire litter of o_c_n kits were wiped out by kitten-cough. m_c draws them aside after and reassures them that the kittens are playing moss-ball together in StarClan. o_c_n's leader thanks {PRONOUN/m_c/object}, their mew thick with emotion.",
     "rel_change": 5,
     "m_c": {
       "skill": [ "KIT,2", "STAR,1"],
       "trait": [ "playful", "compassionate", "thoughtful", "loving" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "befriend",
+    "event_text": "When c_n arrives at the Gathering, m_c launches {PRONOUN/m_c/self} onto the leader's perch with a mighty leap. o_c_n's leader eyes the deep grooves {PRONOUN/m_c/poss} claws left behind in the earth and makes a mental note to stay on c_n's good side.",
+    "rel_change": 5,
+    "m_c": {
+      "skill": [ "CLIMBER,1"],
+      "trait": [ "bloodthirsty" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1235,10 +1529,43 @@
   },
   {
     "interaction_type": "befriend",
+    "event_text": "In their Gathering speech, o_c_n's leader announces the birth of new kittens. m_c promises them that c_n will help rip out the throat of anyone that poses a threat to these kits. o_c_n's leader appreciates m_c's zeal.",
+    "rel_change": 3,
+    "m_c": {
+      "trait": [ "fierce", "bloodthirsty" ],
+      "skill": [ "KIT,1" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["proud", "stoic", "logical", "cunning", "bloodthirsty"]
+  },
+  {
+    "interaction_type": "befriend",
+    "event_text": "At the Gathering, o_c_n's leader vents to the other leaders about disobedient apprentices. m_c offers a few insights into how the apprentices might be feeling, impressing o_c_n's leader.",
+    "rel_change": 3,
+    "m_c": {
+      "trait": ["childish", "thoughtful", "compassionate"],
+      "skill": ["TEACHER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "befriend",
     "event_text": "At the Gathering, m_c thinks about how making friends is a lot like hunting - it's all a matter of approaching at the best angle, timing it right, and then pouncing. By the end of the night, o_c_n's leader is on c_n's fresh-kill pile... metaphorically.",
     "rel_change": 5,
     "m_c": {
       "trait": ["charismatic" ],
+      "skill": ["HUNTER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "befriend",
+    "event_text": "At the Gathering, m_c offers c_n's allyship to o_c_n's leader and promises that together, they can crush their enemies as easily as crushing a mouse's spine.",
+    "rel_change": 5,
+    "m_c": {
+      "trait": ["bloodthirsty" ],
       "skill": ["HUNTER,1"]
     },
     "player_clan_temper": ["any"],
@@ -1254,13 +1581,24 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "o_c_n's leader is loud and threatening at the Gathering. m_c holds {PRONOUN/m_c/poss} ground and shows no fear, earning a look of respect from the other leader.",
+    "event_text": "o_c_n's leader is loud and threatening at the Gathering. m_c holds {PRONOUN/m_c/poss} ground and shows no fear, earning a grudging look of respect from the other leader.",
     "rel_change": 3,
     "m_c": {
       "trait": ["fierce", "bloodthirsty", "cold", "bold", "daring", "righteous", "strict", "ambitious", "confident", "calm", "vengeful", "wise", "cunning", "arrogant", "competitive", "rebellious"]
     },
     "player_clan_temper": [],
     "other_clan_temper": ["bloodthirsty", "proud"]
+  },
+  {
+    "interaction_type": "befriend",
+    "event_text": "At the Gathering, o_c_n's leader discusses an omen received by their medicine cats. m_c expresses great interest and insight, and o_c_n's leader is surprised, given how icy and removed m_c usually is.",
+    "rel_change": 5,
+    "m_c": {
+      "trait": ["cold" ],
+      "skill": ["OMEN,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
   },
   {
     "interaction_type": "antagonize",
@@ -1441,7 +1779,7 @@
     "event_text": "At the Gathering, m_c brings up an old tale of a tyrannical mouse-brain that nearly destroyed their own Clan with warmongering. o_c_n's leader is snarling by the end of the story.",
     "rel_change": -3,
     "m_c": {
-      "skill": [ "STORY,1", "LORE,2", "SPEAKER,4" ]
+      "skill": [ "STORY,1", "LORE,2", "SPEAKER,3" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1500,10 +1838,43 @@
   },
   {
     "interaction_type": "antagonize",
+    "event_text": "m_c encourages c_n to save their prey bones and then leave them by the o_c_n border. At the Gathering, o_c_n's leader brings up this behavior, but m_c plays dumb. What prey bones?",
+    "rel_change": -3,
+    "m_c": {
+      "trait": [ "childish" ],
+      "skill": ["HUNTER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "On the way to the Gathering, m_c stops to splash around in a stream. Once c_n arrives, m_c plops {PRONOUN/m_c/poss} soggy hindquarters right next to o_c_n's leader, spraying water on their fur.",
+    "rel_change": -3,
+    "m_c": {
+      "trait": [ "childish" ],
+      "skill": ["SWIMMER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
     "event_text": "At the Gathering, o_c_n's leader mentions trouble hunting after a proliferation of Twoleg traps on their territory. m_c expresses surprise that any o_c_n warrior would feel hunger when they're so full of themselves already.",
     "rel_change": -4,
     "m_c": {
       "skill": [ "CLEVER,3", "SPEAKER,3" ]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c threatens and riles o_c_n's leader to the point of actual violence - o_c_n's leader lashes m_c across the muzzle with a sheathed paw. m_c leaps on o_c_n's leader and tussles with them, spitting. With the truce broken, the Gathering comes to a hasty end.",
+    "rel_change": -10,
+    "m_c": {
+      "skill": [ "CLEVER,1" ],
+      "trait": [ "bloodthirsty" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1663,7 +2034,7 @@
     "event_text": "At the Gathering, o_c_n's leader gets in m_c's face. m_c squares {PRONOUN/m_c/poss} shoulders and lets {PRONOUN/m_c/poss} muscular physique speak for itself; o_c_n's leader suddenly acquires an appetite for peace. m_c's Clanmates giddily report the next morning that the leader looked like a kit next to {PRONOUN/m_c/object}.",
     "rel_change": 3,
     "m_c": {
-      "skill": [ "SWIMMER,3", "CLIMBER,3", "RUNNER,3", "FIGHTER,4" ],
+      "skill": [ "SWIMMER,2", "CLIMBER,2", "RUNNER,2", "FIGHTER,3" ],
       "trait": [ "bold", "shameless", "daring", "cold", "vengeful", "fierce", "arrogant", "competitive", "cunning", "troublesome", "confident", "adventurous", "loyal", "responsible" ]
     },
     "player_clan_temper": ["any"],
@@ -1695,7 +2066,7 @@
     "event_text": "At the Gathering, m_c speaks passionately of the destruction war wreaks - of young kits growing up fearing their own borders, apprentices thrown into battles too early, and especially leaders throwing away life after life in the service of pointless bloodshed. o_c_n's leader bows their head, vowing to bury the past.",
     "rel_change": 10,
     "m_c": {
-      "skill": [ "MEDIATOR,4", "SPEAKER,4" ]
+      "skill": [ "MEDIATOR,3", "SPEAKER,3" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1717,7 +2088,7 @@
     "rel_change": -10,
     "m_c": {
       "trait": ["lonesome"],
-      "skill": ["PROPHET,4"]
+      "skill": ["PROPHET,3"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1762,6 +2133,73 @@
     "m_c": {
       "trait": ["lonesome"],
       "skill": ["DARK,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, o_c_n's leader announces o_c_n has fortified their camp in anticipation of c_n's attacks. m_c replies that o_c_n mouse-brains who think weaving crabgrass with bracken counts as <i>fortifying</i> deserve to have their camp attacked.",
+    "rel_change": -3,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["CAMP,1"],
+      "player_clan_temper": ["any"],
+      "other_clan_temper": ["any"]
+    }
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c remarks on how {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} spent so much time swimming, {PRONOUN/m_c/poss} fur doesn't soak up water the same way. m_c muses aloud whether blood will roll so easily off {PRONOUN/m_c/poss} pelt once {PRONOUN/m_c/subject} {VERB/m_c/soak/soaks} in the blood of o_c_n warriors.",
+    "rel_change": -7,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["SWIMMER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c threatens to send o_c_n's leader to join their recently-deceased Clanmate in StarClan, before o_c_n's leader even announces the cat's death. o_c_n's leader is rattled and enraged.",
+    "rel_change": -7,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["STAR,2"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c mentions the name of a murderer long ago exiled by o_c_n. m_c seems to know an awful lot of specific details about them, and o_c_n's leader narrows their eyes, even as fur spikes up on their spine.",
+    "rel_change": -7,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["DARK,2"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c asks if o_c_n's leader wants to have a fighty-wighty with their clawsies. m_c warns o_c_n that any more hostilities will lead to ouchie boo-boos.",
+    "rel_change": -3,
+    "m_c": {
+      "trait": ["childish", "troublesome"],
+      "skill": ["SPEAKER,1", "FIGHTER,1"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "antagonize",
+    "event_text": "At the Gathering, m_c surveys o_c_n's warriors and picks out the weakest-looking among them. m_c shares these insights with o_c_n's leader, explaining how {PRONOUN/m_c/subject} will target them in the next skirmish between their Clans.",
+    "rel_change": -6,
+    "m_c": {
+      "trait": ["bloodthirsty"],
+      "skill": ["SENSE,1"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1866,7 +2304,7 @@
     "rel_change": 6,
     "m_c": {
       "trait": ["strange", "thoughtful", "calm"],
-      "skill": [ "INSIGHT,1", "CLEVER,3" ]
+      "skill": [ "INSIGHTFUL,1", "CLEVER,3" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["stoic", "logical"]
@@ -1887,7 +2325,29 @@
     "rel_change": 10,
     "m_c": {
       "skill": ["OMEN,1"],
-      "trait": ["fierce"]
+      "trait": ["fierce", "bloodthirsty"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "appease",
+    "event_text": "At the Gathering, when o_c_n's leader challenges {PRONOUN/m_c/object}, m_c stares at them silently, eyes cold as starlight. Whatever o_c_n's leader sees in {PRONOUN/m_c/poss} gaze makes them back down.",
+    "rel_change": 5,
+    "m_c": {
+      "skill": ["STAR,1"],
+      "trait": ["cold"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["any"]
+  },
+  {
+    "interaction_type": "appease",
+    "event_text": "At the Gathering, when o_c_n's leader challenges {PRONOUN/m_c/object}, m_c stares at them silently, eyes cold and dark as death itself. Whatever o_c_n's leader sees in {PRONOUN/m_c/poss} gaze makes them back down.",
+    "rel_change": 5,
+    "m_c": {
+      "skill": ["DARK,1"],
+      "trait": ["cold"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["any"]
@@ -1956,20 +2416,42 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} speak at the Gathering o_c_n's leader shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy leader stutters a worried apology",
+    "event_text": "During the Gathering, m_c warns o_c_n's leader that unless they back down, m_c will tell {PRONOUN/m_c/poss} super scary friends from the dark place to come get them. o_c_n's leader senses the threat in the childish words.",
+    "rel_change": 5,
+    "m_c": {
+      "skill": ["DARK,1"],
+      "trait": ["childish"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["wary", "logical", "cunning"]
+  },
+  {
+    "interaction_type": "appease",
+    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} speak at the Gathering o_c_n's leader shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy leader stutters a worried apology.",
     "rel_change": 10,
     "m_c": {
-      "skill": ["STAR,4"]
+      "skill": ["STAR,3"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["wary"]
   },
   {
     "interaction_type": "appease",
-    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} speak at the Gathering o_c_n's leader shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy leader blusters and the other Clans rally behind c_n.",
+    "event_text": "At the Gathering, o_c_n's leader insults and hisses at m_c. m_c lists off names of o_c_n warriors who will die if this conflict escalates. The cool certainty in {PRONOUN/m_c/poss} voice chills o_c_n's leader, who backs down abruptly.",
+    "rel_change": 7,
+    "m_c": {
+      "skill": ["CLAIRVOYANT,2"],
+      "trait": ["bloodthirsty"]
+    },
+    "player_clan_temper": ["any"],
+    "other_clan_temper": ["wary"]
+  },
+  {
+    "interaction_type": "appease",
+    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} {VERB/m_c/speak/speaks} at the Gathering, o_c_n's leader shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy leader blusters and the other Clans rally behind c_n.",
     "rel_change": 8,
     "m_c": {
-      "skill": ["STAR,4"]
+      "skill": ["STAR,3"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["bloodthirsty"]
@@ -2002,7 +2484,7 @@
     "rel_change": 5,
     "m_c": {
       "skill": ["DREAM,1"],
-      "trait": [ "fierce" ]
+      "trait": [ "fierce", "bloodthirsty" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["mellow", "gracious", "amiable", "stoic", "logical", "wary", "cunning" ]
@@ -2024,8 +2506,8 @@
     "rel_change": 10,
     "m_c": {
       "age": ["young adult", "adult", "senior adult", "senior"],
-      "skill": [ "DREAM,4"],
-      "trait": [ "troublesome" ]
+      "skill": [ "DREAM,3"],
+      "trait": [ "troublesome", "flamboyant", "shameless" ]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["wary"]

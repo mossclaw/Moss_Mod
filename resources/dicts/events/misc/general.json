@@ -4216,5 +4216,286 @@
       "status": ["medicine cat"]
 
     }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_bord1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 40,
+    "event_text": "m_c travels to o_c_n to resolve some recent border disputes.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_bord2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent border disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 5
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_bord3",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 10,
+    "event_text": "m_c travels to o_c_n to resolve some recent border disputes. However, no progress was made.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 0
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_bord4",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent border disputes. However, it seems m_c only made o_c_n more upset.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": -2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_hunt1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 40,
+    "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_hunt2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 5
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_hunt3",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 10,
+    "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. However, no progress was made.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 0
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_hunt4",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. However, it seems m_c only made o_c_n more upset.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": -2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_herb1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 40,
+    "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_herb2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 5
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_herb3",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 10,
+    "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. However, no progress was made.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 0
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_herb4",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. However, it seems m_c only made o_c_n more upset.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": -2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_person1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 40,
+    "event_text": "m_c travels to o_c_n to resolve some recent personal disputes.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 2
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_person2",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 5
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_person3",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 10,
+    "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. However, no progress was made.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": 0
+    }
+  },
+  {
+    "event_id": "gen_misc_mediator_parley_person4",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["mediator"],
+    "weight": 20,
+    "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. However, it seems m_c only made o_c_n more upset.",
+    "m_c": {
+      "age": ["any"],
+      "status": ["mediator", "mediator apprentice"]
+    },
+    "other_clan": {
+      "current_rep": ["any"],
+      "changed": -2
+    }
+  },
+  {
+    "event_id": "gen_misc_transition_from_female1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["transition"],
+    "weight": 10,
+    "event_text": "m_c has realized that she-cat doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+    "m_c": {
+      "age": ["young adult"],
+      "gender": ["female"]
+    },
+    "new_gender": ["trans male", "nonbinary"]
+  },
+  {
+    "event_id": "gen_misc_transition_from_male1",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["transition"],
+    "weight": 10,
+    "event_text": "m_c has realized that tom doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+    "m_c": {
+      "gender": ["male"]
+    },
+    "new_gender": ["trans female", "nonbinary"]
   }
 ]

@@ -140,6 +140,7 @@ class GenerateEvents:
                         outsider=event["outsider"] if "outsider" in event else {},
                         other_clan=event["other_clan"] if "other_clan" in event else {},
                         supplies=event["supplies"] if "supplies" in event else [],
+                        new_gender=event["new_gender"] if "new_gender" in event else []
                     )
                     event_list.append(event)
 
@@ -397,6 +398,13 @@ class GenerateEvents:
                 if "romantic" in event.tags and not random_cat.is_potential_mate(cat):
                     continue
 
+            # check if already trans
+            if (
+                "transition" in event.sub_type
+                and cat.gender != cat.genderalign
+            ):
+                continue
+
             if event.m_c:
                 if cat.age not in event.m_c["age"] and "any" not in event.m_c["age"]:
                     continue
@@ -475,6 +483,15 @@ class GenerateEvents:
                 if event.m_c["backstory"]:
                     if cat.backstory not in event.m_c["backstory"]:
                         continue
+
+                # check gender for transition events
+                if event.m_c["gender"]:
+                    if (
+                        cat.gender not in event.m_c["gender"]
+                        and "any" not in event.m_c["gender"]
+                    ):
+                        continue
+
 
             # check that a random_cat is available to use for r_c
             if event.r_c and random_cat:
@@ -1041,6 +1058,7 @@ class ShortEvent:
         outsider=None,
         other_clan=None,
         supplies=None,
+        new_gender=None
     ):
         if not event_id:
             print("WARNING: moon event has no event_id")
@@ -1074,6 +1092,8 @@ class ShortEvent:
                 self.m_c["backstory"] = []
             if "dies" not in self.m_c:
                 self.m_c["dies"] = False
+            if "gender" not in self.m_c:
+                self.m_c["gender"] = []
 
         self.r_c = r_c if r_c else {}
         if self.r_c:
@@ -1115,6 +1135,7 @@ class ShortEvent:
             if "changed" not in self.other_clan:
                 self.other_clan["changed"] = 0
         self.supplies = supplies if supplies else []
+        self.new_gender = new_gender
 
 
 class OngoingEvent:
