@@ -311,16 +311,19 @@ class Sprites:
         # Define scars
         scars_data = [
             ["ONE", "TWO", "THREE", "FOUR", "BRIDGE", "RIGHTBLIND", "LEFTBLIND", "BOTHBLIND"],
-            ["BEAKCHEEK", "BEAKLOWER", "BURNRUMP", "CATBITE", "RATBITE", "FROSTFACE", "FROSTTAIL",
-             "FROSTMITT", "FROSTSOCK", "QUILLCHUNK", "QUILLSCRATCH"],
-            ["TAILSCAR", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY", "TOETRAP", "SNAKE", "LEGBITE",
-             "NECKBITE", "FACE"],
-            ["HINDLEG", "BACK", "QUILLSIDE", "SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "MANLEG", "BURNPAWS", "BURNTAIL", "BURNBELLY"]
+            ["BEAKCHEEK", "BEAKLOWER", "BURNRUMP", "CATBITE", "RATBITE", "FROSTFACE", "FROSTMITT", "FROSTSOCK"],
+
+
+            ["QUILLCHUNK", "QUILLSCRATCH", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY"],
+            ["TOETRAP", "SNAKE", "LEGBITE", "NECKBITE", "FACE", "HINDLEG", "BACK", "QUILLSIDE"],
+
+            ["SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "MANLEG", "BURNPAWS", "BURNBELLY"]
         ]
 
         # define missing parts
         missing_parts_data = [
-            ["LEFTEAR", "RIGHTEAR", "NOTAIL", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "HALFTAIL", "NOPAW", "MANTAIL", "BRIGHTHEART"]
+            ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "NOPAW", "NOTAIL", "HALFTAIL"],
+            ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
         ]
 
         # scars 

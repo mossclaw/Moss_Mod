@@ -127,16 +127,17 @@ class Pelt:
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
     # scars from other cats, other animals
-    scars1 = ["ONE", "TWO", "THREE", "TAILSCAR", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY",
-              "LEGBITE", "NECKBITE", "FACE", "MANLEG", "BRIGHTHEART", "MANTAIL", "BRIDGE", "RIGHTBLIND", "LEFTBLIND",
+    scars1 = ["ONE", "TWO", "THREE", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY",
+              "LEGBITE", "NECKBITE", "FACE", "MANLEG", "BRIDGE", "RIGHTBLIND", "LEFTBLIND",
               "BOTHBLIND", "BEAKCHEEK", "BEAKLOWER", "CATBITE", "RATBITE", "QUILLCHUNK", "QUILLSCRATCH", "HINDLEG",
               "BACK", "QUILLSIDE", "SCRATCHSIDE", "BEAKSIDE", "CATBITETWO", "FOUR"]
 
     # missing parts
-    scars2 = ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR", "NOEAR"]
+    scars2 = ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "TAILSCAR",
+              "MANTAIL", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
 
     # "special" scars that could only happen in a special event
-    scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNTAIL", "BURNBELLY", "BURNRUMP", "FROSTFACE", "FROSTTAIL",
+    scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNBELLY", "BURNRUMP", "FROSTFACE",
               "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"]
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
