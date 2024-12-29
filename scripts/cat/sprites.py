@@ -126,7 +126,7 @@ class Sprites:
             'lineart', 'line', 'lineartdf', 'lineartdead', 'symbols',
             'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
-            'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars',
+            'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
             'medcatherbs', 'accbase', 'accadd', 'accpattern', 'collaradd'
@@ -269,11 +269,11 @@ class Sprites:
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
-            ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE'],
-            ['MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP', 'CHIMERA', 'CHEST', 'ARMTAIL',
-             'GRUMPYFACE'],
-            ['MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE'],
-            ['ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED', 'BODY'],
+            ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK'],
+            ['MASK', 'SMOKE', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP'],
+            ['CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE', 'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA'],
+            ['PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE', 'ORIOLE', 'ROBIN'],
+            ['BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED', 'BODY'],
             ['SHILOH', 'FRECKLED', 'HEARTBEAT']
         ]
 
@@ -326,6 +326,11 @@ class Sprites:
             ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
         ]
 
+        missing_parts_color_data = [
+            ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "NOPAW", "NOTAIL", "HALFTAIL"],
+            ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
+        ]
+
         # scars 
         for row, scars in enumerate(scars_data):
             for col, scar in enumerate(scars):
@@ -335,6 +340,10 @@ class Sprites:
         for row, missing_parts in enumerate(missing_parts_data):
             for col, missing_part in enumerate(missing_parts):
                 self.make_group('missingscars', (col, row), f'scars{missing_part}')
+
+        for row, missing_parts_color in enumerate(missing_parts_color_data):
+            for col, missing_part_color in enumerate(missing_parts_color):
+                self.make_group('missingscarscolor', (col, row), f'scarscolor{missing_part_color}')
 
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay

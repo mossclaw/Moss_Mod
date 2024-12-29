@@ -3252,6 +3252,9 @@ def generate_sprite(
                         (0, 0),
                         special_flags=blendmode,
                     )
+                    new_sprite.blit(
+                        sprites.sprites["scarscolor" + scar + cat_sprite], (0, 0)
+                    )
 
         # im sure i won't regret this later
         acolor_dict = {
