@@ -278,6 +278,7 @@ class Sprites:
         ]
 
         tortiepatchesmasksmoss = [
+
             ['VIPER', 'SKULL', 'POINTS', 'DITTO', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED'],
             ['SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX'],
             ['MAXIMUMSEVEN', 'MAXIMUMEIGHT']
