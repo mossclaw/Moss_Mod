@@ -363,10 +363,9 @@ class Sprites:
 
         # please im begging you
         accbases_data = [
-            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
-            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"],
-            ["NETTLES", "HEATHER", "GORSE", "CATMINT", "LAUREL", "IVY"],
-            ["BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
+            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS"],
+            ["FEATHER", "CICADA", "BUTTERFLY", "MOTH", "NETTLES", "HEATHER", "GORSE", "CATMINT"],
+            ["LAUREL", "IVY", "BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
         ]
 
         for row, accbases in enumerate(accbases_data):
@@ -374,10 +373,9 @@ class Sprites:
                 self.make_group('accbase', (col, row), f'accbase{accbase}')
 
         accadds_data = [
-            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY"],
-            ["BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH"],
-            ["NETTLES", "HEATHER", "GORSE", "CATMINT", "LAUREL", "IVY"],
-            ["BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
+            ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS"],
+            ["FEATHER", "CICADA", "BUTTERFLY", "MOTH", "NETTLES", "HEATHER", "GORSE", "CATMINT"],
+            ["LAUREL", "IVY", "BUTTERFLIES", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
         ]
 
         for row, accadds in enumerate(accadds_data):
@@ -385,9 +383,9 @@ class Sprites:
                 self.make_group('accadd', (col, row), f'accadd{accadd}')
 
         accpatterns_data = [
-            ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID"],
-            ["ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS"],
-            ["BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO", "CONVERSE"]
+            ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID", "ZEBRA", "HEARTS"],
+            ["FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS", "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO"],
+            ["CONVERSE", "FRUIT", "GEOMETRICONE", "CHECKERS", "PLAIDTWO", "WINTERSWEATER", "FLOWERPRINTTHREE", "FLOWERPRINTFOUR"]
         ]
 
         for row, accpatterns in enumerate(accpatterns_data):
