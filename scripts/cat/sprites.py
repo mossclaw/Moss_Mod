@@ -129,7 +129,7 @@ class Sprites:
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
-            'medcatherbs', 'accbase', 'accadd', 'accpattern', 'collaradd'
+            'medcatherbs', 'accbase', 'accadd', 'accpattern1', 'accpattern2', 'collaradd'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -382,15 +382,23 @@ class Sprites:
             for col, accadd in enumerate(accadds):
                 self.make_group('accadd', (col, row), f'accadd{accadd}')
 
-        accpatterns_data = [
+        accpatterns1_data = [
             ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID", "ZEBRA", "HEARTS"],
             ["FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS", "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO"],
-            ["CONVERSE", "FRUIT", "GEOMETRICONE", "CHECKERS", "PLAIDTWO", "WINTERSWEATER", "FLOWERPRINTTHREE", "FLOWERPRINTFOUR"]
+
+        ]
+        accpatterns2_data = [
+        ["CONVERSE", "FRUIT", "GEOMETRICONE", "CHECKERS", "PLAIDTWO", "WINTERSWEATER", "FLOWERPRINTTHREE",
+         "FLOWERPRINTFOUR"]
         ]
 
-        for row, accpatterns in enumerate(accpatterns_data):
+        for row, accpatterns in enumerate(accpatterns1_data):
             for col, accpattern in enumerate(accpatterns):
-                self.make_group('accpattern', (col, row), f'accpattern{accpattern}')
+                self.make_group('accpattern1', (col, row), f'accpattern{accpattern}')
+
+        for row, accpatterns in enumerate(accpatterns2_data):
+            for col, accpattern in enumerate(accpatterns):
+                self.make_group('accpattern2', (col, row), f'accpattern{accpattern}')
 
         acccollars_data = [
             ["BELL", "BOW", "STUDDED", "FANG", "COWBOY HAT"]
