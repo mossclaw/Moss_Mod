@@ -129,7 +129,7 @@ class Sprites:
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
-            'medcatherbs', 'accbase', 'accadd', 'accpattern1', 'accpattern2', 'collaradd'
+            'medherbs1', 'medherbs2', 'medherbs3', 'accbase', 'accadd', 'accpattern1', 'accpattern2', 'collaradd'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -348,17 +348,32 @@ class Sprites:
 
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay
-        medcatherbs_data = [
-            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "SUNGLASSES", "LUNA MOTH", "ATLAS MOTH", "BIRD SKULL", "LUCKY CLOVER"],
-            ["BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "STICK", "FIREFLIES", "SPROUT", "MUSHROOM", "JUNIPER", "RASPBERRY", "LAVENDER"],
-            ["OAK LEAVES", "LILAC", "MAPLE SEED", "SEAWEED", "LILY PAD", "MONSTERA", "WILD FLOWERS", "TWIGS", "CLOVER", "SERPENT", "MOSS BALL"],
-            ["RAINBOW COLLAR", "RAINBOW HARNESS", "RAINBOW BANDANA"]
+        medherbs1_data = [
+            ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "SUNGLASSES", "LUNA MOTH"],
+            ["ATLAS MOTH", "BIRD SKULL", "LUCKY CLOVER", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "STICK"]
+        ]
+
+        medherbs2_data = [
+            ["FIREFLIES", "SPROUT", "MUSHROOM", "JUNIPER", "RASPBERRY", "LAVENDER", "OAK LEAVES", "LILAC"],
+            ["MAPLE SEED", "SEAWEED", "LILY PAD", "MONSTERA", "WILD FLOWERS", "TWIGS", "CLOVER", "SERPENT"]
+        ]
+
+        medherbs3_data = [
+            ["MOSS BALL", "RAINBOW COLLAR", "RAINBOW HARNESS", "RAINBOW BANDANA"]
         ]
 
         # medcatherbs
-        for row, herbs in enumerate(medcatherbs_data):
+        for row, herbs in enumerate(medherbs1_data):
             for col, herb in enumerate(herbs):
-                self.make_group('medcatherbs', (col, row), f'acc{herb}')
+                self.make_group('medherbs1', (col, row), f'acc{herb}')
+
+        for row, herbs in enumerate(medherbs2_data):
+            for col, herb in enumerate(herbs):
+                self.make_group('medherbs2', (col, row), f'acc{herb}')
+
+        for row, herbs in enumerate(medherbs3_data):
+            for col, herb in enumerate(herbs):
+                self.make_group('medherbs3', (col, row), f'acc{herb}')
 
 
         # please im begging you
