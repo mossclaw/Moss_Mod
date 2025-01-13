@@ -530,7 +530,7 @@
         "has_injuries": {
             "r_c": [
                 "claw wound",
-                "bite wound",
+                "bite-wound",
                 "cat bite",
                 "beak bite",
                 "snake bite",
