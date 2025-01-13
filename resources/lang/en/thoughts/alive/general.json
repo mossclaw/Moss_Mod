@@ -5211,20 +5211,6 @@
         }
     },
     {
-        "id": "infected_wound_gen",
-        "thoughts": [
-            "Is worrying about how hot {PRONOUN/m_c/poss} wound feels",
-            "Is feeling really sore",
-            "Is hot to the touch but shivering with cold",
-            "Is shivering in {PRONOUN/m_c/poss} nest"
-        ],
-        "has_injuries": {
-            "m_c": [
-                "an infected wound"
-            ]
-        }
-    },
-    {
         "id": "carrionplace_disease_gen",
         "thoughts": [
             "Is having another coughing fit",
