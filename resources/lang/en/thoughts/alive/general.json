@@ -5457,7 +5457,7 @@
         ],
         "has_injuries": {
             "m_c": [
-                "claw wound",
+                "claw-wound",
                 "bite-wound",
                 "cat bite",
                 "beak bite",
