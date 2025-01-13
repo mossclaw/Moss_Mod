@@ -5220,7 +5220,7 @@
         ],
         "has_injuries": {
             "m_c": [
-                "infected wound"
+                "an infected wound"
             ]
         }
     },
@@ -5250,7 +5250,7 @@
         ],
         "has_injuries": {
             "m_c": [
-                "festering wound"
+                "a festering wound"
             ]
         }
     },
