@@ -591,8 +591,9 @@
         "has_injuries": {
             "r_c": [
                 "heat stroke",
-                "festering wound",
+                "a festering wound",
                 "carrionplace disease",
+                "an infected wound",
                 "redcough",
                 "kittencough",
                 "poisoned"
