@@ -565,7 +565,7 @@ class Pelt:
             if self.cat_sprites['senior'] not in [36, 37, 38, 39]:
                 self.cat_sprites['senior'] = random.randint(36, 39)
 
-        else:
+        if self.length != 'long':
             if self.cat_sprites['newborn'] not in [56, 57, 58, 59]:
                 self.cat_sprites['newborn'] = random.randint(56, 57)
             if self.cat_sprites['kitten'] not in [0, 2, 4, 6]:
