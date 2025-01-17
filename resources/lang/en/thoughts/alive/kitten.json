@@ -817,7 +817,7 @@
     {
         "id": "kit_to_pregnant_cat",
         "thoughts": [
-            "Wants r_c to let {PRONOUN/m_c/subject} name one of the kits ",
+            "Wants r_c to let {PRONOUN/m_c/object} name one of the kits",
             "Can't wait for r_c's kits to be here so they can play together",
             "Is asking r_c question after question about being pregnant",
             "Asks r_c if {PRONOUN/r_c/subject}'ll have twelve kits since {PRONOUN/r_c/poss} belly is so big"

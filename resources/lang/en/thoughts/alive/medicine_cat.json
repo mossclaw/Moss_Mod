@@ -568,9 +568,9 @@
     {
         "id": "med_cat_to_mild_illness_gen",
         "thoughts": [
-            "Keeps a watchful eye on r_c's illness ",
+            "Keeps a watchful eye on r_c's illness",
             "Is hopeful that r_c will recover soon",
-            "Reassures r_c that they will overcome their illness"
+            "Reassures r_c that {PRONOUN/r_c/subject} will overcome {PRONOUN/r_c/poss} illness"
         ],
         "has_injuries": {
             "r_c": [

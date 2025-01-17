@@ -4908,7 +4908,7 @@
     {
         "id": "blood_loss_gen",
         "thoughts": [
-            "Is feeling light headed",
+            "Is feeling lightheaded",
             "Is feeling so cold {PRONOUN/m_c/subject} {VERB/m_c/are/is} shivering",
             "Can barely keep {PRONOUN/m_c/poss} eyes open",
             "Is fighting for each breath",
@@ -5069,7 +5069,7 @@
             "Is barely awake",
             "Is taking shallow breaths",
             "Is laying very still to avoid making {PRONOUN/m_c/poss} wound worse",
-            "Is dealing with the non stop tingling in {PRONOUN/m_c/poss} limbs"
+            "Is dealing with the nonstop tingling in {PRONOUN/m_c/poss} limbs"
         ],
         "has_injuries": {
             "m_c": [
