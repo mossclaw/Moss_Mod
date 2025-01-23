@@ -310,9 +310,9 @@ class Sprites:
 
         tortiepatchesmasksmoss = [
 
-            ['VIPER', 'SKULL', 'POINTS', 'DITTO', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED'],
-            ['SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX'],
-            ['MAXIMUMSEVEN', 'MAXIMUMEIGHT']
+            ['VIPER', 'SKULL', 'POINTS', 'DITTO', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC'],
+            ['MACKEREL', 'MARBLED', 'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO'],
+            ['MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT']
         ]
 
         for row, masks in enumerate(tortiepatchesmasks):
