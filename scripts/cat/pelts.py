@@ -527,7 +527,7 @@ class Pelt:
         if self.accessory in old_bloodcollars:
             self.accessory = "FANGCOLLAR"
         if self.accessory in old_bowcollars:
-            self.accessory = "BELLCOLLAR"
+            self.accessory = "BOWCOLLAR"
         if self.accessory == "DRY HERBS":
             self.accessory = "HERBS"
             self.accessory_color = "BROWN"
