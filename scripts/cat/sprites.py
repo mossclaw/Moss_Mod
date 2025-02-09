@@ -126,7 +126,6 @@ class Sprites:
             'lineart', 'line', 'lineartdf', 'lineartdead', 'symbols',
             'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
-            'mid2', 'dark2', 'highlight2', 'shade2', 'unders2',
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
@@ -219,87 +218,62 @@ class Sprites:
         # Middle color layer
         mids = [
             ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
-            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH']
-        ]
-        mids2 = [
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
             ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
+
         for row, mid in enumerate(mids):
             for col, md in enumerate(mid):
                 self.make_group('mid', (col, row), f'mid{md}')
 
-        for row, mid in enumerate(mids2):
-            for col, md in enumerate(mid):
-                self.make_group('mid2', (col, row), f'mid{md}')
-
         # Highlight color layer
         highlights = [
             ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
-            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH']
-        ]
-        highlights2 = [
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
             ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
+
         for row, highlight in enumerate(highlights):
             for col, hl in enumerate(highlight):
                 self.make_group('highlight', (col, row), f'highlight{hl}')
 
-        for row, highlight in enumerate(highlights2):
-            for col, hl in enumerate(highlight):
-                self.make_group('highlight2', (col, row), f'highlight{hl}')
-
         # Dark color layer
         darks = [
             ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
-            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH']
-        ]
-        darks2 = [
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
             ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
+
         for row, dark in enumerate(darks):
             for col, dr in enumerate(dark):
                 self.make_group('dark', (col, row), f'dark{dr}')
 
-        for row, dark in enumerate(darks2):
-            for col, dr in enumerate(dark):
-                self.make_group('dark2', (col, row), f'dark{dr}')
-
         # Darker color layer
         shades = [
             ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
-            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH']
-        ]
-        shades2 = [
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
             ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
+
         for row, shade in enumerate(shades):
             for col, sh in enumerate(shade):
                 self.make_group('shade', (col, row), f'shade{sh}')
 
-        for row, shade in enumerate(shades2):
-            for col, sh in enumerate(shade):
-                self.make_group('shade2', (col, row), f'shade{sh}')
-
         # Unders color layer
         unders = [
             ['SOLID', 'TABBY', 'SPECKLED', 'ABYSSINIAN', 'BENGAL', 'LONGDAN', 'BRINDLE', 'CLASSIC'],
-            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH']
-        ]
-        unders2 = [
+            ['FADED', 'MACKEREL', 'MARBLED', 'SINGLESTRIPE', 'SMOKE', 'FOG', 'MIST', 'SPLOTCH'],
             ['SABER', 'SMUDGE', 'ROSETTE', 'MASKED', 'TICKED', 'AGOUTI', 'SOKOKE', 'BROKENMACKEREL'],
             ['BRAIDED', 'BROKENBRAIDED', 'DUST', 'CHARCOALBENGAL']
         ]
+
         for row, under in enumerate(unders):
             for col, ud in enumerate(under):
                 self.make_group('unders', (col, row), f'under{ud}')
-
-        for row, under in enumerate(unders2):
-            for col, ud in enumerate(under):
-                self.make_group('unders2', (col, row), f'under{ud}')
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
