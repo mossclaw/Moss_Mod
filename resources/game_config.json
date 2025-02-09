@@ -452,6 +452,6 @@
 	"comment": "Forces the season to be locked at the Clan's starting_season",
 	"moss": {
 		"black_lineart": false,
-		"black_white_patches": true
+		"black_white_patches": false
 	}
 }
