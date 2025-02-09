@@ -123,7 +123,7 @@ class Sprites:
         del width, height  # unneeded
 
         for x in [
-            'lineart', 'line', 'lineartdf', 'lineartdead', 'symbols',
+            'line', 'lineartdf', 'lineartdead', 'symbols',
             'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
@@ -133,12 +133,12 @@ class Sprites:
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
-                self.spritesheet(f"sprites/aprilfools{x}.png", x)
+                self.spritesheet(f"sprites/{x}.png", x)
             else:
                 self.spritesheet(f"sprites/{x}.png", x)
 
         # Line art
-        self.make_group('lineart', (0, 0), 'lines')
+
         self.make_group('shadersnewwhite', (0, 0), 'shaders')
         self.make_group('lightingnew', (0, 0), 'lighting')
 

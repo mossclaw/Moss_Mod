@@ -3041,18 +3041,6 @@ def generate_sprite(
 
         new_sprite.blit(sprites.sprites["eyelight" + cat_sprite], (0, 0))
 
-        #old
-       # if cat.pelt.eye_colour2 != None:
-      #      eyes = sprites.sprites["eyes" + cat.pelt.eye_colour + cat_sprite].copy().convert_alpha()
-      #      new_sprite.blit(eyes, (0, 0))
-      #      second_eye = sprites.sprites["eyes" + cat.pelt.eye_colour2 + cat_sprite].copy().convert_alpha()
-      #      second_eye.blit(sprites.sprites["eyes2" + cat.pelt.eye_pattern + cat_sprite], (0, 0),
-      #                      special_flags=pygame.BLEND_RGBA_MULT)
-     #       new_sprite.blit(second_eye, (0, 0))
-      #  else:
-      #      eyes = sprites.sprites['eyes' + cat.pelt.eye_colour + cat_sprite].copy()
-      #      new_sprite.blit(eyes, (0, 0))
-
         #scars1
         if not scars_hidden:
             for scar in cat.pelt.scars:
@@ -3066,26 +3054,54 @@ def generate_sprite(
                     )
 
         # draw line art
-        if game.settings["shaders"] and not dead:
-            new_sprite.blit(
-                sprites.sprites["shaders" + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGB_MULT,
-            )
-            new_sprite.blit(sprites.sprites["lighting" + cat_sprite], (0, 0))
+       # if game.settings["shaders"] and not dead:
+        #    new_sprite.blit(
+        #        sprites.sprites["shaders" + cat_sprite],
+        #        (0, 0),
+        #        special_flags=pygame.BLEND_RGB_MULT,
+        #    )
+         #   new_sprite.blit(sprites.sprites["lighting" + cat_sprite], (0, 0))
+
+        lineart_dict = {
+            "BLACK": ["#000000"],
+            "RED": ["#410000"],
+            "BLUE": ["#94C7E3"]
+        }
 
         if not dead:
             if game.config["moss"]["black_lineart"]:
                 black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-                black_line_tint.fill(color_dict["OBSIDIAN"][5])
+                black_line_tint.fill(lineart_dict["BLACK"][0])
+                black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+                black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                new_sprite.blit(black_line_pelt, (0, 0))
+        elif cat.df:
+            if game.config["moss"]["black_lineart"]:
+                black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                black_line_tint.fill(lineart_dict["BLACK"][0])
                 black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
                 black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
                 new_sprite.blit(black_line_pelt, (0, 0))
             else:
-                new_sprite.blit(sprites.sprites["lines" + cat_sprite], (0, 0))
-        elif cat.df:
+                black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                black_line_tint.fill(lineart_dict["RED"][0])
+                black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+                black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                new_sprite.blit(black_line_pelt, (0, 0))
             new_sprite.blit(sprites.sprites["lineartdf" + cat_sprite], (0, 0))
         elif dead:
+            if game.config["moss"]["black_lineart"]:
+                black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                black_line_tint.fill(lineart_dict["BLACK"][0])
+                black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+                black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                new_sprite.blit(black_line_pelt, (0, 0))
+            else:
+                black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                black_line_tint.fill(lineart_dict["BLUE"][0])
+                black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+                black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                new_sprite.blit(black_line_pelt, (0, 0))
             new_sprite.blit(sprites.sprites["lineartdead" + cat_sprite], (0, 0))
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
