@@ -3075,7 +3075,14 @@ def generate_sprite(
             new_sprite.blit(sprites.sprites["lighting" + cat_sprite], (0, 0))
 
         if not dead:
-            new_sprite.blit(sprites.sprites["lines" + cat_sprite], (0, 0))
+            if game.config["moss"]["black_lineart"]:
+                black_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                black_line_tint.fill(color_dict["OBSIDIAN"][5])
+                black_line_pelt = sprites.sprites['line' + cat_sprite].copy().convert_alpha()
+                black_line_pelt.blit(black_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                new_sprite.blit(black_line_pelt, (0, 0))
+            else:
+                new_sprite.blit(sprites.sprites["lines" + cat_sprite], (0, 0))
         elif cat.df:
             new_sprite.blit(sprites.sprites["lineartdf" + cat_sprite], (0, 0))
         elif dead:

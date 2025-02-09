@@ -449,5 +449,9 @@
 		}
 	},
 	"lock_season": false, 
-	"comment": "Forces the season to be locked at the Clan's starting_season"
+	"comment": "Forces the season to be locked at the Clan's starting_season",
+	"moss": {
+		"black_lineart": false,
+		"black_white_patches": true
+	}
 }

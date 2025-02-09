@@ -1405,7 +1405,11 @@ class Pelt:
                 color_tints = []
 
             if base_tints or color_tints:
-                self.white_patches_tint = choice(base_tints + color_tints)
+                if game.config["moss"]["black_white_patches"]:
+                    black_patches = sprites.white_patches_tints["possible_tints"]["blackpatches"]
+                    self.white_patches_tint = choice(base_tints + color_tints + black_patches)
+                else:
+                    self.white_patches_tint = choice(base_tints + color_tints)
             else:
                 self.white_patches_tint = "none"
         else:
