@@ -3053,14 +3053,7 @@ def generate_sprite(
                         sprites.sprites["scars" + scar + cat_sprite], (0, 0)
                     )
 
-        # draw line art
-       # if game.settings["shaders"] and not dead:
-        #    new_sprite.blit(
-        #        sprites.sprites["shaders" + cat_sprite],
-        #        (0, 0),
-        #        special_flags=pygame.BLEND_RGB_MULT,
-        #    )
-         #   new_sprite.blit(sprites.sprites["lighting" + cat_sprite], (0, 0))
+
 
         lineart_dict = {
             "BLACK": ["#000000"],
@@ -3421,15 +3414,6 @@ def generate_sprite(
                 (0, 0),
                 special_flags=pygame.BLEND_RGBA_MULT,
             )
-
-            if cat.df:
-                temp = sprites.sprites["fadedf" + stage + cat_sprite].copy()
-                temp.blit(new_sprite, (0, 0))
-                new_sprite = temp
-            else:
-                temp = sprites.sprites["fadestarclan" + stage + cat_sprite].copy()
-                temp.blit(new_sprite, (0, 0))
-                new_sprite = temp
 
         # reverse, if assigned so
         if cat.pelt.reverse:

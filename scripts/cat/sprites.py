@@ -124,7 +124,7 @@ class Sprites:
 
         for x in [
             'line', 'lineartdf', 'lineartdead', 'symbols',
-            'fadestarclan', 'fadedarkforest', 'lightingnew', 'fademask', 'shadersnewwhite',
+            'fademask',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
             'whitepatches', 'whitepatches2', 'whitepatchesmoss',
@@ -138,18 +138,13 @@ class Sprites:
                 self.spritesheet(f"sprites/{x}.png", x)
 
         # Line art
-
-        self.make_group('shadersnewwhite', (0, 0), 'shaders')
-        self.make_group('lightingnew', (0, 0), 'lighting')
-
         self.make_group('lineartdead', (0, 0), 'lineartdead')
         self.make_group('lineartdf', (0, 0), 'lineartdf')
 
         # Fading Fog
         for i in range(0, 3):
             self.make_group('fademask', (i, 0), f'fademask{i}')
-            self.make_group('fadestarclan', (i, 0), f'fadestarclan{i}')
-            self.make_group('fadedarkforest', (i, 0), f'fadedf{i}')
+
 
         self.make_group('eyebase', (0, 0), 'eyebase')
         self.make_group('eyemid', (0, 0), 'eyemid')
