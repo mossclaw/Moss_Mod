@@ -1148,7 +1148,8 @@ class Pelt:
                         if self.colour in Pelt.black_colours:
                             self.tortiecolour = choice(Pelt.fire_colours + Pelt.ginger_colours)
                         elif self.colour in Pelt.white_colours:
-                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.blue_colours)
+                            self.colour = choice(Pelt.black_colours)
+                            self.tortiecolour = choice(Pelt.fire_colours + Pelt.ginger_colours)
                         elif self.colour in Pelt.blue_colours:
                             self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours)
                         elif self.colour in Pelt.gray_colours:

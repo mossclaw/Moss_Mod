@@ -461,7 +461,7 @@
 		"real_tortie_colors": false
 	},
 	"comments": [
-		"a * indicates this feature is not working yet",
+		"* indicates this feature is not working yet",
 		"Defaults for moss settings are false, this is the intended way to play moss mod as it includes all content",
 		"Black line art, sets all line art to flat black, including df/sc.",
 		"Black white patches, allows white patches to be tinted black",
