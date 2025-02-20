@@ -452,6 +452,24 @@
 	"comment": "Forces the season to be locked at the Clan's starting_season",
 	"moss": {
 		"black_lineart": false,
-		"black_white_patches": false
-	}
+		"black_white_patches": false,
+		"real_pelts": false,
+		"real_pelt_colors": false,
+		"real_eye_colors": false,
+		"real_white_patches": false,
+		"real_tortie_patches": false,
+		"real_tortie_colors": false
+	},
+	"comments": [
+		"a * indicates this feature is not working yet",
+		"Defaults for moss settings are false, this is the intended way to play moss mod as it includes all content",
+		"Black line art, sets all line art to flat black, including df/sc.",
+		"Black white patches, allows white patches to be tinted black",
+		"* Real pelts, limits pelts to more realistic looking pelts only- this will stop a lot of pelts from showing up!",
+		"* Real pelt colors, limits pelt colors to more realistic looking colors only- this will stop a lot of colors from showing up!",
+		"* Real eye colors, limits eye colors to more realistic looking colors only- this will stop a lot of colors from showing up!",
+		"* Real white patches, limits white patches to more realistic looking patches only- this will stop a lot of patches from showing up!",
+		"* Real tortie patches, limits tortie patches to more realistic looking patches only- this will stop a lot of patches from showing up!",
+		"Real tortie colors, limits tortie color combinations to more realistic looking colors- this will stop a lot of combinations from showing up! NOTE: this setting can be used without real_pelt_colors, this is only for group combinations like black/ginger or gray/cream."
+	]
 }

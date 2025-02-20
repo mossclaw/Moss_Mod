@@ -57,39 +57,6 @@ class Pelt:
         'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
         'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
     ]
-    pelt_c_no_white = [
-        'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
-        'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
-        'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST',
-        'PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
-        'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
-        'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
-        'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
-        'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
-        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
-        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE',
-        'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
-        'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-        'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
-    ]
-    pelt_c_no_bw = [
-        'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
-        'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
-        'PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
-        'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
-        'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
-        'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
-        'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
-        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
-        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE',
-        'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
-        'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-        'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
-    ]
-
-
 
     tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE',
                       'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP', 'CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE',
@@ -103,7 +70,6 @@ class Pelt:
                    'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
                    'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel', 'brokenbraided',
                    'charcoalbengal', 'dust']
-
 
     pelt_length = ["short", "medium", "long"]
     eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALE GREEN', 'GREEN', 'BLUE',
@@ -1178,45 +1144,76 @@ class Pelt:
                     possible_colors.remove(self.colour)
 
                     # Ginger is often duplicated to increase its chances
-                    if self.colour in Pelt.black_colours:
-                        self.tortiecolour = choice(Pelt.blue_colours + Pelt.gold_colours + (Pelt.fire_colours * 4) + (
-                                    Pelt.ginger_colours * 4) + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.white_colours:
-                        self.tortiecolour = choice((Pelt.cream_colours * 2) + (Pelt.blue_colours * 2) + Pelt.black_colours)
-                    elif self.colour in Pelt.blue_colours:
-                        self.tortiecolour = choice(Pelt.black_colours + (
-                                    Pelt.cream_colours * 4) + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.coolbrown_colours)
-                    elif self.colour in Pelt.gray_colours:
-                        self.tortiecolour = choice(Pelt.gold_colours + (Pelt.fire_colours * 4) + (
-                                    Pelt.ginger_colours * 4) + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.cream_colours:
-                        self.tortiecolour = choice((Pelt.blue_colours * 4) + Pelt.black_colours + (
-                                    Pelt.cream_colours * 4) + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.gold_colours:
-                        self.tortiecolour = choice(Pelt.blue_colours + Pelt.gray_colours + (
-                                    Pelt.black_colours * 4) + Pelt.ginger_colours + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.fire_colours:
-                        self.tortiecolour = choice(Pelt.blue_colours + Pelt.gray_colours + (
-                                    Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.ginger_colours:
-                        self.tortiecolour = choice(Pelt.blue_colours + (Pelt.gray_colours * 4) + (
-                                    Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.coolbrown_colours:
-                        self.tortiecolour = choice(
-                            Pelt.gray_colours + Pelt.black_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.lavender_colours:
-                        self.tortiecolour = choice(
-                            Pelt.gray_colours + Pelt.black_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.warmbrown_colours:
-                        self.tortiecolour = choice(
-                            Pelt.blue_colours + Pelt.gray_colours + (Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + (
-                                        Pelt.fire_colours * 4) + Pelt.ginger_colours + Pelt.brown_colours)
-                    elif self.colour in Pelt.brown_colours:
-                        self.tortiecolour = choice(
-                            Pelt.blue_colours + Pelt.gray_colours + (Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + (
-                                        Pelt.fire_colours * 4) + (Pelt.ginger_colours * 4) + Pelt.coolbrown_colours)
+                    if game.config["moss"]["real_tortie_colors"]:
+                        if self.colour in Pelt.black_colours:
+                            self.tortiecolour = choice(Pelt.fire_colours + Pelt.ginger_colours)
+                        elif self.colour in Pelt.white_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.blue_colours)
+                        elif self.colour in Pelt.blue_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours)
+                        elif self.colour in Pelt.gray_colours:
+                            self.tortiecolour = choice(Pelt.gold_colours + Pelt.cream_colours)
+                        elif self.colour in Pelt.cream_colours:
+                            self.tortiecolour = choice((Pelt.blue_colours * 4) + (Pelt.gray_colours * 4) + Pelt.warmbrown_colours + Pelt.brown_colours + Pelt.coolbrown_colours)
+                        elif self.colour in Pelt.gold_colours:
+                            self.tortiecolour = choice((Pelt.blue_colours * 4) + (Pelt.gray_colours * 4) + Pelt.warmbrown_colours + Pelt.brown_colours + Pelt.coolbrown_colours)
+                        elif self.colour in Pelt.fire_colours:
+                            self.tortiecolour = choice((Pelt.black_colours * 4) + Pelt.warmbrown_colours + Pelt.brown_colours + Pelt.coolbrown_colours)
+                        elif self.colour in Pelt.ginger_colours:
+                            self.tortiecolour = choice((Pelt.black_colours * 4) + Pelt.warmbrown_colours + Pelt.brown_colours + Pelt.coolbrown_colours)
+                        elif self.colour in Pelt.coolbrown_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours)
+                        elif self.colour in Pelt.lavender_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours)
+                        elif self.colour in Pelt.warmbrown_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours)
+                        elif self.colour in Pelt.brown_colours:
+                            self.tortiecolour = choice(Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours)
+                        else:
+                            self.tortiecolour = "GOLD"
                     else:
-                        self.tortiecolour = "GOLD"
+                        if self.colour in Pelt.black_colours:
+                            self.tortiecolour = choice(
+                                Pelt.blue_colours + Pelt.gold_colours + (Pelt.fire_colours * 4) + (
+                                        Pelt.ginger_colours * 4) + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.white_colours:
+                            self.tortiecolour = choice(
+                                (Pelt.cream_colours * 2) + (Pelt.blue_colours * 2) + Pelt.black_colours)
+                        elif self.colour in Pelt.blue_colours:
+                            self.tortiecolour = choice(Pelt.black_colours + (
+                                    Pelt.cream_colours * 4) + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.coolbrown_colours)
+                        elif self.colour in Pelt.gray_colours:
+                            self.tortiecolour = choice(Pelt.gold_colours + (Pelt.fire_colours * 4) + (
+                                    Pelt.ginger_colours * 4) + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.cream_colours:
+                            self.tortiecolour = choice((Pelt.blue_colours * 4) + Pelt.black_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.gold_colours:
+                            self.tortiecolour = choice(Pelt.blue_colours + Pelt.gray_colours + (
+                                    Pelt.black_colours * 4) + Pelt.ginger_colours + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.fire_colours:
+                            self.tortiecolour = choice(Pelt.blue_colours + Pelt.gray_colours + (
+                                    Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.ginger_colours:
+                            self.tortiecolour = choice(Pelt.blue_colours + (Pelt.gray_colours * 4) + (
+                                    Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.coolbrown_colours + Pelt.lavender_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.coolbrown_colours:
+                            self.tortiecolour = choice(
+                                Pelt.gray_colours + Pelt.black_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.lavender_colours:
+                            self.tortiecolour = choice(
+                                Pelt.gray_colours + Pelt.black_colours + Pelt.gold_colours + Pelt.fire_colours + Pelt.ginger_colours + Pelt.warmbrown_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.warmbrown_colours:
+                            self.tortiecolour = choice(
+                                Pelt.blue_colours + Pelt.gray_colours + (
+                                            Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + (
+                                        Pelt.fire_colours * 4) + Pelt.ginger_colours + Pelt.brown_colours)
+                        elif self.colour in Pelt.brown_colours:
+                            self.tortiecolour = choice(
+                                Pelt.blue_colours + Pelt.gray_colours + (
+                                            Pelt.black_colours * 4) + Pelt.cream_colours + Pelt.gold_colours + (
+                                        Pelt.fire_colours * 4) + (Pelt.ginger_colours * 4) + Pelt.coolbrown_colours)
+                        else:
+                            self.tortiecolour = "GOLD"
 
             else:
                 self.tortiecolour = "GOLD"

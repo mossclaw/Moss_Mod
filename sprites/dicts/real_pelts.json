@@ -1,0 +1,60 @@
+{
+  "pelts": {
+    "points": ["Ticked", "Agouti", "Smoke"],
+    "spots": ["Rosette"],
+    "swirls": ["Tabby", "Classic", "Sokoke"],
+    "flats": ["Solid", "Abyssinian"],
+    "stripes": ["Mackerel", "BrokenMackerel", "Braided", "BrokenBraided"],
+    "exotic": ["Bengal", "CharcoalBengal"],
+    "torties": ["Tortie", "Calico"]
+  },
+  "colors": {
+    "white": ["WHITE", "SNOW WHITE"],
+    "blue": ["PALE BLUE"],
+    "gray": ["GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER"],
+    "black": ["BLACK", "SOOT BLACK"],
+    "cream": ["LIGHT CREAM", "CREAM", "DARK CREAM"],
+    "gold": ["GOLD", "PALE GOLD"],
+    "fire": ["FIRE", "EMBER", "WARM HONEY"],
+    "ginger": ["GINGER", "SIENNA", "DARK GINGER"],
+    "coolbrown": ["PALE BROWN", "ALMOND", "SANDSTONE"],
+    "lavender": ["LAVENDER", "GRANITE"],
+    "warmbrown": ["SANDY", "CINNAMON", "ACORN"],
+    "brown": ["LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"]
+  },
+  "eyes": {
+    "eye colors": [
+      "YELLOW", "PALE YELLOW", "GOLD", "BLUE", "DARK BLUE", "PALE BLUE", "ICE", "HAZEL", "PALE GREEN",
+      "GREEN", "FOREST", "COPPER", "LIGHT GREY", "SLATE", "HEATHER BLUE", "DARK AMBER", "HAZELNUT", "CHOCOLATE", "AMBER"
+    ],
+    "yellow": ["YELLOW", "PALE YELLOW", "GOLD"],
+    "blue": ["BLUE", "DARK BLUE", "PALE BLUE", "ICE"],
+    "green": ["HAZEL", "PALE GREEN", "GREEN", "FOREST"],
+    "red": ["COPPER"],
+    "grey": ["LIGHT GREY", "SLATE"],
+    "purple": ["HEATHER BLUE"],
+    "pink": ["DARK AMBER"],
+    "brown": ["HAZELNUT", "CHOCOLATE"],
+    "orange": ["AMBER"]
+  },
+  "whitepatches": {
+    "little": [],
+    "mid": [],
+    "high": [],
+    "mostly": [],
+    "point": [],
+    "vit": []
+  },
+  "tortiepatches": {
+    "patterns": [
+      "ONE", "TWO", "THREE", "FOUR", "REDTAIL", "DELILAH", "HALF", "STREAK", "MASK", "SMOKE", "MINIMALONE",
+      "MINIMALTWO", "MINIMALTHREE", "MINIMALFOUR", "SWOOP", "CHIMERA", "GRUMPYFACE", "MOTTLED", "SIDEMASK", "EYEDOT",
+      "BANDANA", "SMUDGED", "DAUB", "EMBER", "BRIE", "ORIOLE", "ROBIN", "ROSETAIL", "DAPPLENIGHT", "BLANKET", "BODY",
+      "FRECKLED", "VIPER", "SKULL", "MAXIMUMEIGHT"
+    ],
+    "bases": [
+      "ticked", "agouti", "smoke", "rosette", "tabby", "classic", "sokoke", "solid", "abyssinian", "mackerel",
+      "brokenmackerel", "braided", "brokenbraided", "bengal", "charcoalbengal"
+    ]
+  }
+}
