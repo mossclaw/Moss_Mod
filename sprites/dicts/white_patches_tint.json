@@ -95,7 +95,7 @@
     "fire": ["fire", "fire", "fire", "fire"],
     "darkfire": ["darkfire", "darkfire", "darkfire", "darkfire"],
     "paleginger": ["paleginger", "paleginger", "paleginger", "paleginger"],
-    "ginger": ["ginger", "ginger", "ginger", "ginger", "black"],
+    "ginger": ["ginger", "ginger", "ginger", "ginger"],
     "darkginger": ["darkginger", "darkginger", "darkginger", "darkginger"],
     "palegold": ["palegold", "palegold", "palegold", "palegold"],
     "yellow": ["yellow", "yellow", "yellow", "yellow"],
