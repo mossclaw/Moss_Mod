@@ -41,55 +41,75 @@ class Pelt:
     }
 
     # ATTRIBUTES, including non-pelt related
-    pelt_colours = [
-        'WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
-        'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
-        'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST',
-        'PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
-        'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
-        'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
-        'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
-        'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
-        'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
-        'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
-        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE',
-        'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
-        'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-        'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
+    if game.config["moss"]["real_pelt_colors"]:
+        pelt_colours = sprites.real_pelts["colors"]["peltcolors"]
+    else:
+        pelt_colours = [
+            'WHITE', 'SNOW WHITE', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE',
+            'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'SILVER',
+            'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST',
+            'PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE GINGER', 'GINGER', 'DARK GINGER',
+            'PALE GOLD', 'YELLOW', 'GOLD', 'BRONZE', 'ROSE',
+            'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'DARK GOLD',
+            'PALE BROWN', 'ALMOND', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN',
+            'PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'BIRCH',
+            'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'DARK ORANGE',
+            'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+            'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE',
+            'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
+            'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
+            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
     ]
+    if game.config["moss"]["real_tortie_patches"]:
+        tortiepatterns = sprites.real_pelts["tortiepatches"]["patterns"]
+    else:
+        tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE',
+                          'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP', 'CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE',
+                          'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE',
+                          'ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED',
+                          'VIPER', 'SKULL', 'POINTS', 'DITTO', 'BODY', 'SHILOH', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED',
+                          'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE',
+                          'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT', 'FRECKLED', 'HEARTBEAT']
 
-    tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE',
-                      'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'SWOOP', 'CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE',
-                      'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE',
-                      'ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED',
-                      'VIPER', 'SKULL', 'POINTS', 'DITTO', 'BODY', 'SHILOH', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC', 'MACKEREL', 'MARBLED',
-                      'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO', 'MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE',
-                      'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT', 'FRECKLED', 'HEARTBEAT']
-
-    tortiebases = ['solid', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
-                   'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
-                   'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel', 'brokenbraided',
-                   'charcoalbengal', 'dust']
+    if game.config["moss"]["real_pelts"]:
+        tortiebases = sprites.real_pelts["tortiepatches"]["bases"]
+    else:
+        tortiebases = ['solid', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
+                       'classic', 'sokoke', 'agouti', 'singlestripe', 'abyssinian', 'brindle', 'braided', 'splotch',
+                       'saber', 'faded', 'masked', 'fog', 'mist', 'smudge', 'longdan', 'brokenmackerel', 'brokenbraided',
+                       'charcoalbengal', 'dust']
 
     pelt_length = ["short", "medium", "long"]
-    eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALE GREEN', 'GREEN', 'BLUE',
-                   'DARK BLUE', 'GREY', 'CYAN', 'EMERALD', 'HEATHER BLUE', 'SUN-LIT ICE',
-                   'COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY',
-                   'PALE YELLOW', 'GOLD', 'LIME', 'HAZELNUT', 'DARK AMBER', 'SLATE',
-                   'RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE', 'PURPLE', 'SUNSET', 'CARAMEL',
-                   'AUTUMN', 'MAGENTA', 'SUMMER', 'SEASIDE', 'MIDNIGHT', 'WINTER', 'ECLIPSE', 'CRIMSON', 'SPRING',
-                   'ICE', 'FOREST', 'COFFEE', 'BRIGHT GREEN', 'MOCHA', 'SEA GREEN', 'CANDY', 'STARLIGHT', 'RUST',
-                   'OLIVE', 'DOVE', 'WARM GREEN', 'COLD FIRE', 'EMBER', 'COLD PURPLE', 'BARK', 'WARM HAZEL', 'HONEY',
-                   'HIBISCUS', 'PIXIE', 'SUNRISE', 'LEMON']
-    yellow_eyes = ['YELLOW', 'PALE YELLOW', 'GOLD', 'LEMON']
-    blue_eyes = ['BLUE', 'DARK BLUE', 'CYAN', 'SUN-LIT ICE', 'BRIGHT BLUE', 'PALE BLUE', 'SEASIDE', 'WINTER', 'ICE', 'CANDY', 'STARLIGHT', 'RUST']
-    green_eyes = ['HAZEL', 'PALE GREEN', 'GREEN', 'EMERALD', 'SAGE', 'LIME', 'DARK HAZEL', 'SUMMER', 'SPRING', 'FOREST', 'BRIGHT GREEN', 'SEA GREEN', 'DOVE', 'OLIVE', 'WARM GREEN']
-    red_eyes = ['DARK AMBER', 'RUBY', 'ECLIPSE', 'CRIMSON', 'COLD FIRE', 'EMBER']
-    grey_eyes = ['GREY', 'DARK GREY', 'SLATE', 'LIGHT GREY']
-    purple_eyes = ['HEATHER BLUE', 'LAVENDER',  'PURPLE', 'SUNSET', 'MIDNIGHT', 'COLD PURPLE']
-    pink_eyes = ['LILAC', 'PINK', 'MAGENTA', 'PIXIE', 'HIBISCUS', 'SUNRISE']
-    brown_eyes = ['HAZELNUT', 'CHOCOLATE', 'CARAMEL', 'COFFEE', 'MOCHA', 'BARK', 'WARM HAZEL']
-    orange_eyes = ['AMBER', 'COPPER', 'AUTUMN', 'SUMMER', 'HONEY']
+    if game.config["moss"]["real_eye_colors"]:
+        eye_colours = sprites.real_pelts["eyes"]["eyecolors"]
+        yellow_eyes = sprites.real_pelts["eyes"]["yellow"]
+        blue_eyes = sprites.real_pelts["eyes"]["blue"]
+        green_eyes = sprites.real_pelts["eyes"]["green"]
+        red_eyes = sprites.real_pelts["eyes"]["red"]
+        grey_eyes = sprites.real_pelts["eyes"]["grey"]
+        purple_eyes = sprites.real_pelts["eyes"]["purple"]
+        pink_eyes = sprites.real_pelts["eyes"]["pink"]
+        brown_eyes = sprites.real_pelts["eyes"]["brown"]
+        orange_eyes = sprites.real_pelts["eyes"]["orange"]
+    else:
+        eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALE GREEN', 'GREEN', 'BLUE',
+                       'DARK BLUE', 'GREY', 'CYAN', 'EMERALD', 'HEATHER BLUE', 'SUN-LIT ICE',
+                       'COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY',
+                       'PALE YELLOW', 'GOLD', 'LIME', 'HAZELNUT', 'DARK AMBER', 'SLATE',
+                       'RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE', 'PURPLE', 'SUNSET', 'CARAMEL',
+                       'AUTUMN', 'MAGENTA', 'SUMMER', 'SEASIDE', 'MIDNIGHT', 'WINTER', 'ECLIPSE', 'CRIMSON', 'SPRING',
+                       'ICE', 'FOREST', 'COFFEE', 'BRIGHT GREEN', 'MOCHA', 'SEA GREEN', 'CANDY', 'STARLIGHT', 'RUST',
+                       'OLIVE', 'DOVE', 'WARM GREEN', 'COLD FIRE', 'EMBER', 'COLD PURPLE', 'BARK', 'WARM HAZEL', 'HONEY',
+                       'HIBISCUS', 'PIXIE', 'SUNRISE', 'LEMON']
+        yellow_eyes = ['YELLOW', 'PALE YELLOW', 'GOLD', 'LEMON']
+        blue_eyes = ['BLUE', 'DARK BLUE', 'CYAN', 'SUN-LIT ICE', 'BRIGHT BLUE', 'PALE BLUE', 'SEASIDE', 'WINTER', 'ICE', 'CANDY', 'STARLIGHT', 'RUST']
+        green_eyes = ['HAZEL', 'PALE GREEN', 'GREEN', 'EMERALD', 'SAGE', 'LIME', 'DARK HAZEL', 'SUMMER', 'SPRING', 'FOREST', 'BRIGHT GREEN', 'SEA GREEN', 'DOVE', 'OLIVE', 'WARM GREEN']
+        red_eyes = ['DARK AMBER', 'RUBY', 'ECLIPSE', 'CRIMSON', 'COLD FIRE', 'EMBER']
+        grey_eyes = ['GREY', 'DARK GREY', 'SLATE', 'LIGHT GREY']
+        purple_eyes = ['HEATHER BLUE', 'LAVENDER',  'PURPLE', 'SUNSET', 'MIDNIGHT', 'COLD PURPLE']
+        pink_eyes = ['LILAC', 'PINK', 'MAGENTA', 'PIXIE', 'HIBISCUS', 'SUNRISE']
+        brown_eyes = ['HAZELNUT', 'CHOCOLATE', 'CARAMEL', 'COFFEE', 'MOCHA', 'BARK', 'WARM HAZEL']
+        orange_eyes = ['AMBER', 'COPPER', 'AUTUMN', 'SUMMER', 'HONEY']
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
     # scars from other cats, other animals
@@ -175,38 +195,62 @@ class Pelt:
     heather_colors = ["PURPLE", "LILAC", "LIGHT PURPLE", "BRIGHT PURPLE"]
     dry_colors = ["BROWN", "DARK BROWN", "BRONZE", "LIGHT BROWN"]
 
-    points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
-    spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
-    swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
-    flats = ["Solid", "Singlestripe", "Abyssinian"]
-    stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel", "BrokenBraided", "Masked"]
-    exotic = ["Saber", "Faded", "Longdan", "Splotch"]
-    torties = ["Tortie", "Calico"]
+    if game.config["moss"]["real_pelts"]:
+        points = sprites.real_pelts["pelts"]["points"]
+        spots = sprites.real_pelts["pelts"]["spots"]
+        swirls = sprites.real_pelts["pelts"]["swirls"]
+        flats = sprites.real_pelts["pelts"]["flats"]
+        stripes = sprites.real_pelts["pelts"]["stripes"]
+        exotic = sprites.real_pelts["pelts"]["exotic"]
+        torties = sprites.real_pelts["pelts"]["torties"]
+    else:
+        points = ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"]
+        spots = ["Speckled", "Rosette", "Bengal", "CharcoalBengal"]
+        swirls = ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"]
+        flats = ["Solid", "Singlestripe", "Abyssinian"]
+        stripes = ["Mackerel", "Braided", "Brindle", "BrokenMackerel", "BrokenBraided", "Masked"]
+        exotic = ["Saber", "Faded", "Longdan", "Splotch"]
+        torties = ["Tortie", "Calico"]
     pelt_categories = [points, spots, swirls, flats, stripes, exotic, torties]
 
     # SPRITE NAMES
-    single_colours = [
-        'WHITE', 'SNOW WHITE', 'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER',
-        'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE',
-        'YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'PALE FIRE', 'FIRE', 'DARK FIRE', 'GINGER', 'DARK GINGER', 'DARK ORANGE',
-        'PALE BROWN', 'ALMOND', 'BIRCH', 'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'PALE CINNAMON', 'CINNAMON', 'SABLE',
-        'DARK SABLE', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
-        'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
-        'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-        'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
+    if game.config["moss"]["real_pelt_colors"]:
+        single_colours = sprites.real_pelts["colors"]["peltcolors"]
+        white_colours = sprites.real_pelts["colors"]["white"]
+        blue_colours = sprites.real_pelts["colors"]["blue"]
+        gray_colours = sprites.real_pelts["colors"]["gray"]
+        black_colours = sprites.real_pelts["colors"]["black"]
+        cream_colours = sprites.real_pelts["colors"]["cream"]
+        gold_colours = sprites.real_pelts["colors"]["gold"]
+        fire_colours = sprites.real_pelts["colors"]["fire"]
+        ginger_colours = sprites.real_pelts["colors"]["ginger"]
+        coolbrown_colours = sprites.real_pelts["colors"]["coolbrown"]
+        lavender_colours = sprites.real_pelts["colors"]["lavender"]
+        warmbrown_colours = sprites.real_pelts["colors"]["warmbrown"]
+        brown_colours = sprites.real_pelts["colors"]["brown"]
+    else:
+        single_colours = [
+            'WHITE', 'SNOW WHITE', 'PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER',
+            'BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE',
+            'YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'PALE FIRE', 'FIRE', 'DARK FIRE', 'GINGER', 'DARK GINGER', 'DARK ORANGE',
+            'PALE BROWN', 'ALMOND', 'BIRCH', 'PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'PALE CINNAMON', 'CINNAMON', 'SABLE',
+            'DARK SABLE', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
+            'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
+            'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
+            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
     ]
-    white_colours = ['WHITE', 'SNOW WHITE']
-    blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'HEATHER BLUE', 'BLUE GRAY', 'BLUE SILVER']
-    gray_colours = ['GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER', 'SLATE GINGER', 'COLD SILVER', 'CINDER', 'JADE']
-    black_colours = ['BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'GRANITE']
-    cream_colours = ['LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE', 'PALE HONEY']
-    gold_colours = ['YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'DARK HONEY']
-    fire_colours = ['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE EMBER', 'EMBER', 'LIGHT EMBER']
-    ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE', 'WARM HONEY', 'SIENNA', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'DARK CHERRY']
-    coolbrown_colours = ['PALE BROWN', 'ALMOND', 'BIRCH', 'SANDSTONE', 'OAK', 'ASH', 'CEDAR']
-    lavender_colours = ['PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'MAUVE']
-    warmbrown_colours = ['PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'SANDY']
-    brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'CHOCOLATE', 'COCOA']
+        white_colours = ['WHITE', 'SNOW WHITE']
+        blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'HEATHER BLUE', 'BLUE GRAY', 'BLUE SILVER']
+        gray_colours = ['GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER', 'SLATE GINGER', 'COLD SILVER', 'CINDER', 'JADE']
+        black_colours = ['BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'GRANITE']
+        cream_colours = ['LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE', 'PALE HONEY']
+        gold_colours = ['YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'DARK HONEY']
+        fire_colours = ['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE EMBER', 'EMBER', 'LIGHT EMBER']
+        ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE', 'WARM HONEY', 'SIENNA', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'DARK CHERRY']
+        coolbrown_colours = ['PALE BROWN', 'ALMOND', 'BIRCH', 'SANDSTONE', 'OAK', 'ASH', 'CEDAR']
+        lavender_colours = ['PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'MAUVE']
+        warmbrown_colours = ['PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'SANDY']
+        brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'CHOCOLATE', 'COCOA']
     colour_categories = [white_colours, blue_colours, gray_colours, black_colours, cream_colours, gold_colours,
                      fire_colours, ginger_colours, coolbrown_colours, lavender_colours, warmbrown_colours,
                      brown_colours]
@@ -1134,9 +1178,7 @@ class Pelt:
                 else:
                     # Normal generation
                     if self.tortiebase in ["solid"]:
-                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'solid', 'masked', 'brindle',
-                                                     'marbled', 'saber', 'bengal', 'rosette', 'speckled', 'sokoke',
-                                                     'brokenmackerel', 'charcoalbengal', 'brokenbraided'])
+                        self.tortiepattern = choice(Pelt.tortiebases)
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'solid'], weights=[97, 3], k=1)[0]
 

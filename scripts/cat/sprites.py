@@ -11,6 +11,7 @@ class Sprites:
     cat_tints = {}
     white_patches_tints = {}
     clan_symbols = []
+    real_pelts = {}
 
     def __init__(self):
         """Class that handles and hold all spritesheets. 
@@ -40,6 +41,12 @@ class Sprites:
                 self.white_patches_tints = ujson.loads(read_file.read())
         except IOError:
             print("ERROR: Reading White Patches Tints")
+
+        try:
+            with open("sprites/dicts/real_pelts.json", 'r') as read_file:
+                self.real_pelts = ujson.loads(read_file.read())
+        except IOError:
+            print("ERROR: Reading Real Pelts")
 
     def spritesheet(self, a_file, name):
         """

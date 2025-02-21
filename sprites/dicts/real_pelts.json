@@ -9,6 +9,12 @@
     "torties": ["Tortie", "Calico"]
   },
   "colors": {
+    "peltcolors": [
+      "WHITE", "SNOW WHITE", "PALE BLUE", "GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER", "BLACK", "SOOT BLACK",
+      "LIGHT CREAM", "CREAM", "DARK CREAM", "GOLD", "PALE GOLD", "FIRE", "EMBER", "WARM HONEY", "GINGER", "SIENNA",
+      "DARK GINGER", "PALE BROWN", "ALMOND", "SANDSTONE", "LAVENDER", "GRANITE", "SANDY", "CINNAMON", "ACORN",
+      "LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"
+    ],
     "white": ["WHITE", "SNOW WHITE"],
     "blue": ["PALE BLUE"],
     "gray": ["GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER"],
@@ -23,7 +29,7 @@
     "brown": ["LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"]
   },
   "eyes": {
-    "eye colors": [
+    "eyecolors": [
       "YELLOW", "PALE YELLOW", "GOLD", "BLUE", "DARK BLUE", "PALE BLUE", "ICE", "HAZEL", "PALE GREEN",
       "GREEN", "FOREST", "COPPER", "LIGHT GREY", "SLATE", "HEATHER BLUE", "DARK AMBER", "HAZELNUT", "CHOCOLATE", "AMBER"
     ],
