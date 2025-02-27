@@ -3128,8 +3128,6 @@ def generate_sprite(
 
         new_sprite.blit(skin_base, (0, 0))
 
-
-
         if not scars_hidden:
             for scar in cat.pelt.scars:
                 if scar in cat.pelt.scars2:
@@ -3138,6 +3136,7 @@ def generate_sprite(
                         (0, 0),
                         special_flags=blendmode,
                     )
+                if scar in cat.pelt.scars4:
                     new_sprite.blit(
                         sprites.sprites["scarscolor" + scar + cat_sprite], (0, 0)
                     )

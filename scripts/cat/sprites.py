@@ -134,7 +134,7 @@ class Sprites:
             'fademask',
             'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
-            'whitepatches', 'whitepatches2', 'whitepatchesmoss',
+            'whitepatches', 'whitepatches2', 'whitepatches3', 'whitepatchesmoss',
             'tortiepatchesmasks', 'tortiesmoss',
             'medherbs', 'accbase', 'accadd', 'accpattern1', 'accpattern2', 'collaradd'
 
@@ -186,8 +186,10 @@ class Sprites:
             ['REVERSEPANTS', 'SKUNK', 'KARPATI', 'HALFWHITE', 'APPALOOSA', 'DAPPLEPAW', 'HEART', 'LILTWO'],
             ['GLASS', 'MOORISH', 'SEPIAPOINT', 'MINKPOINT', 'SEALPOINT', 'MAO', 'LUNA', 'CHESTSPECK'],
             ['WINGS', 'PAINTED', 'HEARTTWO', 'WOODPECKER', 'BOOTS', 'MISS', 'COW', 'COWTWO'],
-            ['BUB', 'BOWTIE', 'MUSTACHE', 'REVERSEHEART', 'SPARROW', 'VEST', 'LOVEBUG', 'TRIXIE'],
+            ['BUB', 'BOWTIE', 'MUSTACHE', 'REVERSEHEART', 'SPARROW', 'VEST', 'LOVEBUG', 'TRIXIE']
+        ]
 
+        white_patches3 = [
             ['SAMMY', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'SHOOTINGSTAR', 'EYESPOT', 'REVERSEEYE'],
             ['FADEBELLY', 'FRONT', 'BLOSSOMSTEP', 'PEBBLE', 'TAILTWO', 'BUDDY', 'BACKSPOT', 'EYEBAGS'],
             ['BULLSEYE', 'FINN', 'DIGIT', 'KROPKA', 'FCTWO', 'FCONE', 'MIA', 'SCAR'],
@@ -208,6 +210,9 @@ class Sprites:
         for row, patches in enumerate(white_patches2):
             for col, patch in enumerate(patches):
                 self.make_group('whitepatches2', (col, row), f'white{patch}')
+        for row, patches in enumerate(white_patches3):
+            for col, patch in enumerate(patches):
+                self.make_group('whitepatches3', (col, row), f'white{patch}')
         for row, patches in enumerate(white_patches_moss):
             for col, patch in enumerate(patches):
                 self.make_group('whitepatchesmoss', (col, row), f'white{patch}')

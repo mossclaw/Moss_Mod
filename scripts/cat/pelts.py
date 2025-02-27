@@ -126,6 +126,9 @@ class Pelt:
     scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNBELLY", "BURNRUMP", "FROSTFACE",
               "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"]
 
+    # missing scars that require color
+    scars4 = ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
+
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
 
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
