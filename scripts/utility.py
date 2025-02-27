@@ -2593,6 +2593,12 @@ def generate_sprite(
                 cat_sprite = str(54)
 
     elif cat.pelt.paralyzed and age != "newborn":
+        if age == "elder" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "senior"
+        if age == "young adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
+        if age == "senior adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
         if cat.pelt.length == "long":
             if age == "kitten":
                 cat_sprite = str(41)
@@ -2614,6 +2620,10 @@ def generate_sprite(
     else:
         if age == "elder" and not game.config["fun"]["all_cats_are_newborn"]:
             age = "senior"
+        if age == "young adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
+        if age == "senior adult" and not game.config["fun"]["all_cats_are_newborn"]:
+            age = "adult"
 
         if game.config["fun"]["all_cats_are_newborn"]:
             cat_sprite = str(cat.pelt.cat_sprites["newborn"])
