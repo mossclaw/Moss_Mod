@@ -3051,17 +3051,7 @@ def generate_sprite(
 
         new_sprite.blit(sprites.sprites["eyelight" + cat_sprite], (0, 0))
 
-        #scars1
-        if not scars_hidden:
-            for scar in cat.pelt.scars:
-                if scar in cat.pelt.scars1:
-                    new_sprite.blit(
-                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                    )
-                if scar in cat.pelt.scars3:
-                    new_sprite.blit(
-                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                    )
+
 
 
 
@@ -3138,8 +3128,18 @@ def generate_sprite(
 
         new_sprite.blit(skin_base, (0, 0))
 
+
+
         if not scars_hidden:
             for scar in cat.pelt.scars:
+                if scar in cat.pelt.scars1:
+                    new_sprite.blit(
+                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
+                    )
+                if scar in cat.pelt.scars3:
+                    new_sprite.blit(
+                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
+                    )
                 if scar in cat.pelt.scars2:
                     new_sprite.blit(
                         sprites.sprites["scars" + scar + cat_sprite],
