@@ -1,6 +1,10 @@
+import logging
+import os.path
 from typing import TYPE_CHECKING
 
 import ujson
+
+from scripts.housekeeping.datadir import get_save_dir
 
 if TYPE_CHECKING:
     from scripts.screens.Screens import Screens
@@ -13,6 +17,8 @@ import pygame_gui
 
 from scripts.game_structure.ui_manager import UIManager
 from scripts.ui.generate_screen_scale_json import generate_screen_scale
+
+logger = logging.getLogger(__name__)
 
 
 offset = (0, 0)
@@ -59,7 +65,7 @@ def set_display_mode(
     if fullscreen is None:
         fullscreen = game.settings["fullscreen"]
 
-    with open("resources/screen_config.json", "r") as read_config:
+    with open("resources/screen_config.json", "r", encoding="utf-8") as read_config:
         screen_config = ujson.load(read_config)
 
     if source_screen is not None:
@@ -75,7 +81,7 @@ def set_display_mode(
         display_size = display_sizes[screen_config["fullscreen_display"]]
         # display_size = [3840, 2160]
 
-        determine_screen_scale(display_size[0], display_size[1])
+        determine_screen_scale(display_size[0], display_size[1], ingame_switch)
 
         screen = pygame.display.set_mode(
             display_size, pygame.FULLSCREEN, display=screen_config["fullscreen_display"]
@@ -94,7 +100,7 @@ def set_display_mode(
         screen = pygame.display.set_mode((screen_x, screen_y))
     game_screen_size = (screen_x, screen_y)
 
-    if source_screen is None:
+    if source_screen is None or MANAGER is None:
         MANAGER = load_manager((screen_x, screen_y), offset, scale=screen_scale)
     else:
         # generate new theme
@@ -112,7 +118,6 @@ def set_display_mode(
         if old_scale != screen_scale:
             from scripts.screens.all_screens import AllScreens
             import scripts.screens.screens_core.screens_core
-            import scripts.debug_menu
 
             game.save_settings(currentscreen=source_screen)
             source_screen.exit_screen()
@@ -135,7 +140,7 @@ def set_display_mode(
             AllScreens.rebuild_all_screens()
 
             scripts.screens.screens_core.screens_core.rebuild_core()
-            scripts.debug_menu.debugmode.rebuild_console()
+            scripts.debug_console.debug_mode.rebuild_console()
 
             screen_name = source_screen.name.replace(" ", "_")
             new_screen: "Screens" = getattr(AllScreens, screen_name)
@@ -200,15 +205,37 @@ def set_display_mode(
 
         ConfirmDisplayChanges(source_screen=source_screen)
 
+    pygame_gui.core.utility.set_default_manager(MANAGER)
 
-def determine_screen_scale(x, y):
+
+def determine_screen_scale(x, y, ingame_switch):
     global screen_scale, screen_x, screen_y, offset, game_screen_size
-    # this means screen scales in multiples of 200 x 175 which has a reasonable tradeoff for crunch
-    scalex = x // 200
-    scaley = y // 175
-    screen_scale = min(scalex, scaley) / 4
-    screen_x = 800 * screen_scale
-    screen_y = 700 * screen_scale
+
+    if ingame_switch:
+        from scripts.game_structure.game_essentials import game
+
+        screen_config = game.settings
+    else:
+        with open(
+            get_save_dir() + "/settings.json", "r", encoding="utf-8"
+        ) as read_config:
+            screen_config = ujson.loads(read_config.read())
+
+    if "fullscreen scaling" in screen_config and screen_config["fullscreen scaling"]:
+        scalex = (x - 20) // 80
+        scaley = (y - 20) // 70
+
+        screen_scale = min(scalex, scaley) / 10
+
+        screen_x = 800 * screen_scale
+        screen_y = 700 * screen_scale
+    else:
+        # this means screen scales in multiples of 200 x 175 which has a reasonable tradeoff for crunch
+        scalex = x // 200
+        scaley = y // 175
+        screen_scale = min(scalex, scaley) / 4
+        screen_x = 800 * screen_scale
+        screen_y = 700 * screen_scale
 
     offset = (
         floor((x - screen_x) / 2),
@@ -258,14 +285,44 @@ def load_manager(res: Tuple[int, int], screen_offset: Tuple[int, int], scale: fl
     if MANAGER is not None:
         MANAGER = None
 
+    try:
+        with open(
+            get_save_dir() + "/settings.json", "r", encoding="utf-8"
+        ) as read_file:
+            settings_data = ujson.loads(read_file.read())
+    except FileNotFoundError:
+        return
+
+    translation_paths = []
+    languages = []
+    for root, dirs, files in os.walk(os.path.join("resources", "lang")):
+        for directory in dirs:
+            languages.append(directory)
+            translation_paths.append(os.path.join(root, directory))
+        break
+
+    # update old settings data from pre-localization
+    if settings_data["language"] not in languages:
+        settings_data["language"] = "en"
+        with open(
+            get_save_dir() + "/settings.json", "w", encoding="utf-8"
+        ) as write_file:
+            new_settings = ujson.dumps(settings_data, ensure_ascii=False, indent=4)
+            write_file.write(new_settings)
+            del new_settings
+
     # initialize pygame_gui manager, and load themes
+
     manager = UIManager(
         res,
         screen_offset,
         scale,
         None,
         enable_live_theme_updates=False,
+        starting_language=settings_data["language"],
+        translation_directory_paths=translation_paths,
     )
+
     manager.add_font_paths(
         font_name="notosans",
         regular_path="resources/fonts/NotoSans-Medium.ttf",

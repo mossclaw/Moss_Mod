@@ -1,3 +1,22 @@
+<strong>Moss Mod 4.0 (5/5/25)</strong>
+-Complete visual overhaul:
+    sprite sizes are now 400x400
+    completely new art
+    many tortie/white patches have been reworked
+-60 total poses:
+    4 newborn, 8 kit, 8 adolescent, 16 adult, 8 elder, 8 para, 8 sick
+-4 body types:
+    lean, average, stocky, stout
+-New Game Config options:
+    enable/disable black lineart
+    enable/disable black tinted white patches
+    enable/disable semi-realistic pelt patterns
+    enable/disable semi-realistic pelt colors
+    enable/disable semi-realistic eye colors
+    enable/disable semi-realistic white patches
+    enable/disable semi-realistic tortie patches
+    enable/disable semi-realistic tortie colors
+
 <strong>Heterochromia Update (12/14/23)</strong>
 - New types of heterochromia:
     'TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED', 'RING',

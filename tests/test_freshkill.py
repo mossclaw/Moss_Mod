@@ -1,6 +1,9 @@
+import os
 import unittest
-
 import ujson
+
+os.environ["SDL_VIDEODRIVER"] = "dummy"
+os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 from scripts.cat.cats import Cat
 from scripts.cat.skills import Skill, SkillPath
@@ -88,7 +91,6 @@ class FreshkillPileTest(unittest.TestCase):
                          biome='Forest',
                          camp_bg=None,
                          game_mode='expanded',
-                         starting_members=[],
                          starting_season='Newleaf')
         test_warrior = Cat()
         test_warrior.status = "warrior"
