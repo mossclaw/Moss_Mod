@@ -139,12 +139,11 @@ class Pelt:
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
 
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
-                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "NETTLE", "HEATHER",
+                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "HEATHER",
                          "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
                          "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB", "CLOVER", "DAISY",
                          "HEATHER", "SNAPDRAGON", "GORSE"]
     wild_accessories = ["FEATHER", "MOTH", "BUTTERFLY", "CICADA"]
-    tail_accessories = ["NOWAY"]
     living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
     plant2_accessories = ["IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
     wild2_accessories = ["BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT"]
@@ -153,11 +152,8 @@ class Pelt:
     plains_accessories = ["SPROUT"]
     forest_accessories = ["MUSHROOM"]
     special_accessories = ["STICK", "MOSS BALL", "LILY PAD"]
-
-    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "RAINBOW COLLAR"]
     kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS", "RAINBOW HARNESS", "RAINBOW BANDANA"]
-    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
-                         "NETTLE", "HEATHER", "GORSE", "CATMINT", "LAUREL", "BUTTERFLIES", "IVY", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL"]
+
 
     onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER", "BUTTERFLIES", "CATMINT", "LAUREL",
                               "IVY", "WREATH", "SHELL", "CRYSTAL"]
@@ -165,6 +161,17 @@ class Pelt:
     onecolor_onepattern_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
     twocolor_onepattern_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
     twocolor_twopattern_acc = ["BOWCOLLAR"]
+
+    tail_accessories = ["NOWAY"]
+    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "RAINBOW COLLAR"]
+    body_accessories = ["CATTAIL", "BIRD SKULL", "STICK", "FIREFLIES", "MUSHROOM", "LILAC", "SEAWEED", "LILY PAD", "MONSTERA",
+                        "WILD FLOWERS", "TWIGS", "CLOVER", "SERPENT", "MOSS BALL", "RAINBOW HARNESS", "RAINBOW BANDANA"]
+    head_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "SUNGLASSES", "LUNA MOTH", "ATLAS MOTH",
+                        "LUCKY CLOVER", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "SPROUT", "JUNIPER", "RASPBERRY", "LAVENDER",
+                        "OAK LEAVES", "MAPLE SEED"]
+    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
+                         "NETTLE", "HEATHER", "GORSE", "CATMINT", "LAUREL", "BUTTERFLIES", "IVY", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL", "COWBOY HAT",
+                         "LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
 
 
     flower_acc = ["POPPY", "PETALS", "DAISY"]
@@ -663,6 +670,7 @@ class Pelt:
         if num < 0:
             num = 1
         if not random.randint(0, num):
+
             colour_wheel = [Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes, Pelt.red_eyes, Pelt.grey_eyes, Pelt.purple_eyes, Pelt.brown_eyes, Pelt.orange_eyes, Pelt.pink_eyes]
             for colour in colour_wheel[:]:
                 if self.eye_colour in colour:
@@ -672,6 +680,7 @@ class Pelt:
                     self.eye_colour2 = choice(
                         choice(colour_wheel)
                     )  # choose from the remaining two lists
+                    self.eye_pattern = choice(Pelt.eye_patterns)
                     break
 
 

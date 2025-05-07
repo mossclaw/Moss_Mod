@@ -1,116 +1,361 @@
 {
     "en": {
-        "WHITE": {
-            "one": "pale",
-            "many": "pale"
-        },
         "FULLWHITE": "white",
-        "PALEGREY": {
+        "WHITE": {
+            "one": "white",
+            "many": "white"
+        },
+        "SNOW WHITE": {
+            "one": "snow white",
+            "many": "snow white"
+        },
+        "GRAY": {
             "one": "gray",
-            "many": "pale gray"
+            "many": "gray"
+        },
+        "SLATE": {
+            "one": "slate",
+            "many": "slate"
+        },
+        "DARK GRAY": {
+            "one": "dark gray",
+            "many": "dark gray"
+        },
+        "DARK SLATE": {
+            "one": "dark slate",
+            "many": "dark slate"
+        },
+        "PALE BLUE": {
+            "one": "pale blue",
+            "many": "pale blue"
+        },
+        "BLUE": {
+            "one": "blue",
+            "many": "blue"
+        },
+        "PALE LILAC": {
+            "one": "pale lilac",
+            "many": "pale lilac"
+        },
+        "LILAC": {
+            "one": "lilac",
+            "many": "lilac"
         },
         "SILVER": {
             "one": "silver",
             "many": "silver"
         },
-        "GREY": {
-            "one": "gray",
-            "many": "gray"
-        },
-        "DARKGREY": {
-            "one": "gray",
-            "many": "dark gray"
-        },
-        "GHOST": {
-            "one": "black",
-            "many": "black"
-        },
         "BLACK": {
             "one": "black",
             "many": "black"
         },
-        "CREAM": {
-            "one": "cream",
-            "many": "cream"
+        "SOOT BLACK": {
+            "one": "soot black",
+            "many": "soot black"
         },
-        "PALEGINGER": {
-            "one": "ginger",
+        "OBSIDIAN": {
+            "one": "obsidian",
+            "many": "obsidian"
+        },
+        "GHOST": {
+            "one": "ghost",
+            "many": "ghost"
+        },
+        "PALE FIRE": {
+            "one": "pale fire",
+            "many": "pale fire"
+        },
+        "FIRE": {
+            "one": "fire",
+            "many": "fire"
+        },
+        "DARK FIRE": {
+            "one": "dark fire",
+            "many": "dark fire"
+        },
+        "PALE GINGER": {
+            "one": "pale ginger",
             "many": "pale ginger"
-        },
-        "GOLDEN": {
-            "one": "golden",
-            "many": "golden"
         },
         "GINGER": {
             "one": "ginger",
             "many": "ginger"
         },
-        "DARKGINGER": {
-            "one": "ginger",
+        "DARK GINGER": {
+            "one": "dark ginger",
             "many": "dark ginger"
         },
-        "SIENNA": {
-            "one": "ginger",
-            "many": "dark ginger"
+        "PALE GOLD": {
+            "one": "pale gold",
+            "many": "pale gold"
         },
-        "LIGHTBROWN": {
-            "one": "brown",
-            "many": "light brown"
+        "YELLOW": {
+            "one": "yellow",
+            "many": "yellow"
         },
-        "LILAC": {
-            "one": "brown",
+        "GOLD": {
+            "one": "gold",
+            "many": "gold"
+        },
+        "BRONZE": {
+            "one": "bronze",
+            "many": "bronze"
+        },
+        "ROSE": {
+            "one": "rose",
+            "many": "rose"
+        },
+        "LIGHT CREAM": {
+            "one": "light cream",
+            "many": "light cream"
+        },
+        "CREAM": {
+            "one": "cream",
+            "many": "cream"
+        },
+        "DARK CREAM": {
+            "one": "dark cream",
+            "many": "dark cream"
+        },
+        "DARK GOLD": {
+            "one": "dark gold",
+            "many": "dark gold"
+        },
+        "PALE BROWN": {
+            "one": "pale brown",
+            "many": "pale brown"
+        },
+        "ALMOND": {
+            "one": "almond",
+            "many": "almond"
+        },
+        "ACORN": {
+            "one": "acorn",
+            "many": "acorn"
+        },
+        "LIGHT BROWN": {
+            "one": "light brown",
             "many": "light brown"
         },
         "BROWN": {
             "one": "brown",
             "many": "brown"
         },
-        "GOLDEN-BROWN": {
-            "one": "brown",
-            "many": "golden brown"
-        },
-        "DARKBROWN": {
-            "one": "brown",
+        "DARK BROWN": {
+            "one": "dark brown",
             "many": "dark brown"
+        },
+        "PALE CINNAMON": {
+            "one": "pale cinnamon",
+            "many": "pale cinnamon"
+        },
+        "CINNAMON": {
+            "one": "cinnamon",
+            "many": "cinnamon"
+        },
+        "SABLE": {
+            "one": "sable",
+            "many": "sable"
+        },
+        "DARK SABLE": {
+            "one": "dark sable",
+            "many": "dark sable"
+        },
+        "BIRCH": {
+            "one": "birch",
+            "many": "birch"
+        },
+        "PALE LAVENDER": {
+            "one": "pale lavender",
+            "many": "pale lavender"
+        },
+        "LAVENDER": {
+            "one": "lavender",
+            "many": "lavender"
+        },
+        "DARK LAVENDER": {
+            "one": "dark lavender",
+            "many": "dark lavender"
+        },
+        "DARK ORANGE": {
+            "one": "dark orange",
+            "many": "dark orange"
+        },
+        "COFFEE": {
+            "one": "coffee",
+            "many": "coffee"
+        },
+        "PALE EMBER": {
+            "one": "pale ember",
+            "many": "pale ember"
+        },
+        "EMBER": {
+            "one": "ember",
+            "many": "ember"
+        },
+        "SANDY": {
+            "one": "sandy",
+            "many": "sandy"
+        },
+        "HEATHER BLUE": {
+            "one": "heather blue",
+            "many": "heather blue"
+        },
+        "COCOA": {
+            "one": "cocoa",
+            "many": "cocoa"
+        },
+        "WARM HONEY": {
+            "one": "warm honey",
+            "many": "warm honey"
         },
         "CHOCOLATE": {
-            "one": "brown",
-            "many": "dark brown"
+            "one": "chocolate",
+            "many": "chocolate"
         },
+        "SIENNA": {
+            "one": "sienna",
+            "many": "sienna"
+        },
+        "GRANITE": {
+            "one": "granite",
+            "many": "granite"
+        },
+        "BLUE GRAY": {
+            "one": "blue gray",
+            "many": "blue gray"
+        },
+        "SANDSTONE": {
+            "one": "sandstone",
+            "many": "sandstone"
+        },
+        "BLUE GINGER": {
+            "one": "blue ginger",
+            "many": "blue ginger"
+        },
+        "GRAY GINGER": {
+            "one": "gray ginger",
+            "many": "gray ginger"
+        },
+        "SILVER GINGER": {
+            "one": "silver ginger",
+            "many": "silver ginger"
+        },
+        "SLATE GINGER": {
+            "one": "slate ginger",
+            "many": "slate ginger"
+        },
+        "OAK": {
+            "one": "oak",
+            "many": "oak"
+        },
+        "COLD SILVER": {
+            "one": "cold silver",
+            "many": "cold silver"
+        },
+        "BLUE SILVER": {
+            "one": "silver",
+            "many": "blue silver"
+        },
+        "MAUVE": {
+            "one": "mauve",
+            "many": "mauve"
+        },
+        "LIGHT EMBER": {
+            "one": "light ember",
+            "many": "light ember"
+        },
+        "CINDER": {
+            "one": "cinder",
+            "many": "cinder"
+        },
+        "JADE": {
+            "one": "jade",
+            "many": "jade"
+        },
+        "DARK CHERRY": {
+            "one": "dark cherry",
+            "many": "dark cherry"
+        },
+        "ASH": {
+            "one": "ash",
+            "many": "ssh"
+        },
+        "PALE HONEY": {
+            "one": "pale honey",
+            "many": "pale honey"
+        },
+        "DARK HONEY": {
+            "one": "dark honey",
+            "many": "dark honey"
+        },
+        "CEDAR": {
+            "one": "cedar",
+            "many": "cedar"
+        },
+
         "SingleColour": "single color",
         "SingleColour_long": "%{color}",
         "TwoColour": "two color",
         "TwoColour_long": "%{color}",
         "Tabby": "tabby",
         "Tabby_long": "%{color} tabby",
-        "Speckled": "speckled",
-        "Speckled_long": "speckled %{color}",
-        "Bengal": "bengal",
-        "Bengal_long": "unusually dappled %{color}",
         "Marbled": "marbled",
-        "Marbled_long": "%{color} tabby",
-        "Ticked": "ticked",
-        "Ticked_long": "%{color} ticked",
+        "Marbled_long": "%{color} marbled tabby",
+        "Rosette": "rosette",
+        "Rosette_long": "%{color} rosette",
         "Smoke": "smoke",
         "Smoke_long": "%{color} smoke",
+        "Ticked": "ticked",
+        "Ticked_long": "%{color} ticked tabby",
+        "Speckled": "speckled",
+        "Speckled_long": "%{color} speckled",
+        "Bengal": "bengal",
+        "Bengal_long": "%{color} bengal",
         "Mackerel": "mackerel",
-        "Mackerel_long": "%{color} tabby",
+        "Mackerel_long": "%{color} mackerel tabby",
         "Classic": "classic",
-        "Classic_long": "%{color} tabby",
+        "Classic_long": "%{color} classic tabby",
+        "Sokoke": "sokoke",
+        "Sokoke_long": "%{color} sokoke tabby",
         "Agouti": "agouti",
-        "Agouti_long": "%{color} tabby",
-        "Singlestripe": "single-striped",
-        "Singlestripe_long": "dorsal-striped %{color}",
-        "Rosette": "Rosette",
-        "Rosette_long": "unusually spotted %{color}",
-        "Sokoke": "Sokoke",
-        "Sokoke_long": "%{color} tabby",
-        "Masked": "Masked",
-        "Masked_long": "masked %{color} tabby",
+        "Agouti_long": "%{color} agouti",
+        "Singlestripe": "single striped",
+        "Singlestripe_long": "%{color} single striped",
+        "Abyssinian": "abyssinian",
+        "Abyssinian_long": "%{color} abyssinian",
+        "Brindle": "brindle",
+        "Brindle_long": "%{color} brindle",
+        "Braided": "braided",
+        "Braided_long": "%{color} braided tabby",
+        "Splotch": "splotch",
+        "Splotch_long": "%{color} splotch",
+        "Saber": "saber",
+        "Saber_long": "%{color} saber tabby",
+        "Faded": "faded",
+        "Faded_long": "%{color} faded",
+        "Masked": "masked",
+        "Masked_long": "%{color} masked tabby",
+        "Fog": "fog",
+        "Fog_long": "%{color} fog",
+        "Mist": "mist",
+        "Mist_long": "%{color} mist",
+        "Smudge": "smudge",
+        "Smudge_long": "%{color} smudge",
+        "BrokenMackerel": "broken mackerel",
+        "BrokenMackerel_long": "%{color} broken mackerel tabby",
+        "Dust": "dust",
+        "Dust_long": "%{color} dust",
+        "CharcoalBengal": "charcoal bengal",
+        "CharcoalBengal_long": "%{color} charcoal bengal",
+        "BrokenBraided": "broken braided",
+        "BrokenBraided_long": "%{color} broken braided tabby",
+        "Longdan": "longdan",
+        "Longdan_long": "%{color} longdan tabby",
         "Calico": "calico",
-        "Calico_tabby": "calico tabby",
+        "Calico_tabby": "tabico",
         "Tortie": "tortie",
-        "Tortie_tabby": "tortie tabby",
+        "Tortie_tabby": "torbie",
         "mottled": "mottled",
         "mottled_long": "%{color} mottled",
         "point": "%{color} point",

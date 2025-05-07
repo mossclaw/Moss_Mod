@@ -422,20 +422,51 @@ class Sprites:
         loads clan symbols
         """
 
-        if os.path.exists('resources/dicts/clan_symbols.json'):
-            with open('resources/dicts/clan_symbols.json') as read_file:
+        if os.path.exists("resources/dicts/clan_symbols.json"):
+            with open(
+                "resources/dicts/clan_symbols.json", encoding="utf-8"
+            ) as read_file:
                 self.symbol_dict = ujson.loads(read_file.read())
 
         # U and X omitted from letter list due to having no prefixes
-        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
-                   "V", "W", "Y", "Z"]
+        letters = [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "V",
+            "W",
+            "Y",
+            "Z",
+        ]
 
         # sprite names will format as "symbol{PREFIX}{INDEX}", ex. "symbolSPRING0"
         y_pos = 1
         for letter in letters:
             x_mod = 0
-            for i, symbol in enumerate([symbol for symbol in self.symbol_dict if
-                                        letter in symbol and self.symbol_dict[symbol]["variants"]]):
+            for i, symbol in enumerate(
+                [
+                    symbol
+                    for symbol in self.symbol_dict
+                    if letter in symbol and self.symbol_dict[symbol]["variants"]
+                ]
+            ):
                 if self.symbol_dict[symbol]["variants"] > 1 and x_mod > 0:
                     x_mod += -1
                 for variant_index in range(self.symbol_dict[symbol]["variants"]):
@@ -444,27 +475,42 @@ class Sprites:
                     if self.symbol_dict[symbol]["variants"] > 1:
                         x_mod += 1
                     elif x_mod > 0:
-                        x_pos += - 1
+                        x_pos += -1
 
                     self.clan_symbols.append(f"symbol{symbol.upper()}{variant_index}")
-                    self.make_group('symbols',
-                                    (x_pos, y_pos),
-                                    f"symbol{symbol.upper()}{variant_index}",
-                                    sprites_x=1, sprites_y=1, no_index=True)
+                    self.make_group(
+                        "symbols",
+                        (x_pos, y_pos),
+                        f"symbol{symbol.upper()}{variant_index}",
+                        sprites_x=1,
+                        sprites_y=1,
+                        no_index=True,
+                    )
 
             y_pos += 1
 
-    def dark_mode_symbol(self, symbol):
-        """Change the color of the symbol to dark mode, then return it
-        :param Surface symbol: The clan symbol to convert"""
-        dark_mode_symbol = copy(symbol)
-        var = pygame.PixelArray(dark_mode_symbol)
-        var.replace((87, 76, 45), (239, 229, 206))
-        del var
-        # dark mode color (239, 229, 206)
-        # debug hot pink (255, 105, 180)
+    def get_symbol(self, symbol: str, force_light=False):
+        """Change the color of the symbol to match the requested theme, then return it
+        :param Surface symbol: The clan symbol to convert
+        :param force_light: Use to ignore dark mode and always display the light mode color
+        """
+        symbol = self.sprites.get(symbol)
+        if symbol is None:
+            logger.warning("%s is not a known Clan symbol! Using default.")
+            symbol = self.sprites[self.clan_symbols[0]]
 
-        return dark_mode_symbol
+        recolored_symbol = copy(symbol)
+        var = pygame.PixelArray(recolored_symbol)
+        var.replace(
+            (87, 76, 45),
+            pygame.Color(game.config["theme"]["dark_mode_clan_symbols"])
+            if not force_light and game.settings["dark mode"]
+            else pygame.Color(game.config["theme"]["light_mode_clan_symbols"]),
+            distance=0,
+        )
+        del var
+
+        return recolored_symbol
 
 # CREATE INSTANCE
 sprites = Sprites()

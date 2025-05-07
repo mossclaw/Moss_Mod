@@ -381,6 +381,7 @@ class ProfileScreen(Screens):
         super().screen_switches()
         self.the_cat = Cat.all_cats.get(game.switches["cat"])
 
+
         # Set up the menu buttons, which appear on all cat profile images.
         self.next_cat_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((622, 25), (153, 30))),
@@ -710,69 +711,41 @@ class ProfileScreen(Screens):
 
         # PELT TYPE
 
-        #output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower() + ' (tint: ' +the_cat.pelt.tint.lower() + ')'
+        output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower() + ' (tint: ' +the_cat.pelt.tint.lower() + ')'
 
-        output += i18n.t(
-            "screens.profile.pelt_label",
-            pelt=i18n.t(f"cat.pelts.{the_cat.pelt.name}").lower(),
-            color=i18n.t(f"cat.pelts.{the_cat.pelt.colour}").lower(),
-            tint=i18n.t(f"cat.pelts.{the_cat.pelt.tint}").lower(),
-        )
-
-        # NEWLINE ----------
-        output += "\n"
-
-        #tortie info
         if the_cat.pelt.name == "Tortie":
-            output += i18n.t(
-                "screens.profile.tortie_label",
-                tortiepatch=i18n.t(f"cat.pelts.{the_cat.pelt.pattern}").lower(),
-                tortiecolor=i18n.t(f"cat.pelts.{the_cat.pelt.tortiecolour}").lower(),
-            )
+            output += 'tortie patch: ' + the_cat.pelt.tortiecolour.lower() + ' ' + the_cat.pelt.pattern.lower()
             # NEWLINE ----------
             output += "\n"
         elif the_cat.pelt.name == "Calico":
-            output += i18n.t(
-                "screens.profile.calico_label",
-                tortiepatch=i18n.t(f"cat.pelts.{the_cat.pelt.pattern}").lower(),
-                tortiecolor=i18n.t(f"cat.pelts.{the_cat.pelt.tortiecolour}").lower(),
-            )
+            output += 'tortie patch: ' + the_cat.pelt.tortiecolour.lower() + ' ' + the_cat.pelt.pattern.lower()
             # NEWLINE ----------
             output += "\n"
         else:
             None
 
-        #whitepatch info
+            # whitepatch info
         if the_cat.pelt.white_patches == None:
             None
         else:
-            output += i18n.t(
-                "screens.profile.whitepatch_label",
-                whitepatch=i18n.t(f"cat.pelts.{the_cat.pelt.white_patches}").lower(),
-                patchtint=i18n.t(f"cat.pelts.{the_cat.pelt.whit_patches_tint}").lower(),
-            )
+            output += 'white patch: ' + the_cat.pelt.white_patches.lower() + ' (tint: ' + str(
+                the_cat.pelt.white_patches_tint) + ')'
             # NEWLINE ----------
             output += "\n"
 
-        # vitiligo info
+            # vitiligo info
         if the_cat.pelt.vitiligo == None:
             None
         else:
-            output += i18n.t(
-                "screens.profile.vitiligo_label",
-                tortiepatch=i18n.t(f"cat.pelts.{the_cat.pelt.vitiligo}").lower(),
-            )
+            output += 'vitiligo: ' + the_cat.pelt.vitiligo.lower()
             # NEWLINE ----------
             output += "\n"
 
-        # point info
+            # point info
         if the_cat.pelt.points == None:
             None
         else:
-            output += i18n.t(
-                "screens.profile.point_label",
-                tortiepatch=i18n.t(f"cat.pelts.{the_cat.pelt.points}").lower(),
-            )
+            output += 'point: ' + the_cat.pelt.points.lower()
             # NEWLINE ----------
             output += "\n"
 
