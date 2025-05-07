@@ -517,7 +517,7 @@
 		"real_white_patches": false,
 		"real_tortie_patches": false,
 		"real_tortie_colors": false,
-		"classic_hc": true
+		"classic_hc": false
 	},
 	"comments": [
 		"Defaults for moss settings are false, this is the intended way to play moss mod as it includes all content",
