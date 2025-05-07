@@ -4,7 +4,7 @@
     completely new art
     many tortie/white patches have been reworked
 -60 total poses:
-    4 newborn, 8 kit, 8 adolescent, 16 adult, 8 elder, 8 para, 8 sick
+    4 newborn, 8 kit, 8 adolescent, 16 adult, 8 elder, 8 paralyzed, 8 sick
 -4 body types:
     lean, average, stocky, stout
 -New Game Config options:
@@ -16,6 +16,12 @@
     enable/disable semi-realistic white patches
     enable/disable semi-realistic tortie patches
     enable/disable semi-realistic tortie colors
+    enable/disable classic heterochromia
+-20 new eye colors:
+    'MINT', 'OCEAN', 'URANIUM', 'PLUTONIUM', 'PHANTOM',
+    'PLUMERIA', 'HYDRANGEA', 'GHOST', 'PASSION FRUIT', 'LIGHT ROSE',
+    'STORM', 'OMEN', 'PEACH', 'GLASS', 'HABANERO',
+    'MANGO', 'VIOLET', 'CHERRY', 'STRAWBERRY', 'FIG'
 
 <strong>Heterochromia Update (12/14/23)</strong>
 - New types of heterochromia:

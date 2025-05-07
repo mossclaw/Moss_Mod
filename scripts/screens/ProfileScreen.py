@@ -576,7 +576,7 @@ class ProfileScreen(Screens):
             self.generate_column1(self.the_cat),
 
             #ui_scale(pygame.Rect((300, 220), (180, 200))),
-            ui_scale(pygame.Rect((320, 230), (200, 200))),
+            ui_scale(pygame.Rect((320, 230), (250, 250))),
 
             object_id=get_text_box_theme("#text_box_22_horizleft"),
             line_spacing=1,
@@ -712,6 +712,8 @@ class ProfileScreen(Screens):
         # PELT TYPE
 
         output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower() + ' (tint: ' +the_cat.pelt.tint.lower() + ')'
+
+        output += "\n"
 
         if the_cat.pelt.name == "Tortie":
             output += 'tortie patch: ' + the_cat.pelt.tortiecolour.lower() + ' ' + the_cat.pelt.pattern.lower()

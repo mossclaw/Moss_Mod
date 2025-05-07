@@ -31,7 +31,8 @@
   "eyes": {
     "eyecolors": [
       "YELLOW", "PALE YELLOW", "GOLD", "BLUE", "DARK BLUE", "PALE BLUE", "ICE", "HAZEL", "PALE GREEN",
-      "GREEN", "FOREST", "COPPER", "LIGHT GREY", "SLATE", "HEATHER BLUE", "DARK AMBER", "HAZELNUT", "CHOCOLATE", "AMBER"
+      "GREEN", "FOREST", "COPPER", "LIGHT GREY", "SLATE", "HEATHER BLUE", "DARK AMBER", "HAZELNUT", "CHOCOLATE", "AMBER",
+      "MANGO"
     ],
     "yellow": ["YELLOW", "PALE YELLOW", "GOLD"],
     "blue": ["BLUE", "DARK BLUE", "PALE BLUE", "ICE"],
@@ -41,15 +42,27 @@
     "purple": ["HEATHER BLUE"],
     "pink": ["DARK AMBER"],
     "brown": ["HAZELNUT", "CHOCOLATE"],
-    "orange": ["AMBER"]
+    "orange": ["AMBER", "MANGO"]
   },
   "whitepatches": {
-    "little": [],
-    "mid": [],
-    "high": [],
-    "mostly": [],
-    "point": [],
-    "vit": []
+    "little": ["LITTLE", "LIGHTTUXEDO", "BUZZARDFANG", "TIP", "BLAZE", "BIB", "VEE", "PAWS",
+      "BELLY", "TAILTIP", "TOES", "BROKENBLAZE", "LILTWO", "SCOURGE", "TOESTAIL", "RAVENPAW", "HONEY",
+      "EXTRA", "MUSTACHE", "REVERSEHEART", "SPARKLE", "RIGHTEAR", "LEFTEAR", "ESTRELLA", "REVERSEEYE", "BACKSPOT",
+      "EYEBAGS", "LOCKET", "BLAZEMASK"],
+    "mid": ["TUXEDO", "FANCY", "UNDERS", "DAMIEN", "MITAINE", "SQUEAKS", "STAR",
+      "MOSSY", "CHANCE", "DIVA", "SAVANNAH", "FADESPOTS", "BEARD", "DAPPLEPAW", "MISS", "VENUS",
+      "BOWTIE", "VEST", "FADEBELLY", "DIGIT", "FCTWO", "FCONE", "MIA", "PRINCESS", "DOUGIE"],
+    "high": ["ANY", "ANYTWO", "BROKEN", "FRECKLES", "RINGTAIL", "HALFFACE", "PANTSTWO",
+      "GOATEE", "PRINCE", "FAROFA", "MISTER", "HALFWHITE", "APPALOOSA", "PIEBALD",
+      "CURVED", "GLASS", "MASKMANTLE", "MAO", "FALCON", "PEPPER", "BUB", "TRIXIE",
+      "SAMMY", "FRONT", "BLOSSOMSTEP", "COWTWO", "COWFOUR", "COWSIX", "COWEIGHT", "COWELEVEN",
+      "FINN", "SCAR", "BUSTER", "HAWKBLAZE"],
+    "mostly": ["VAN", "ONEEAR", "LIGHTSONG", "TAIL", "MOORISH", "APRON", "CAPSADDLE",
+      "CHESTSPECK", "BLACKSTAR", "PETAL", "FRECKLEMASK", "COW", "TIDAL",
+      "PEBBLESHINE", "BOOTS", "COWSEVEN", "COWNINE", "COWTEN",
+      "SHOOTINGSTAR", "EYESPOT", "PEBBLE", "TAILTWO", "BUDDY", "KROPKA"],
+    "point": ["COLOURPOINT", "RAGDOLL", "SEPIAPOINT", "MINKPOINT", "SEALPOINT"],
+    "vit": ["VITILIGO", "VITILIGOTWO", "PHANTOM", "KARPATI", "SPLAT", "BLEACHED"]
   },
   "tortiepatches": {
     "patterns": [
@@ -62,5 +75,8 @@
       "ticked", "agouti", "smoke", "rosette", "tabby", "classic", "sokoke", "solid", "abyssinian", "mackerel",
       "brokenmackerel", "braided", "brokenbraided", "bengal", "charcoalbengal"
     ]
+  },
+  "hc": {
+    "patterns": ["TRUE", "TRUE"]
   }
 }

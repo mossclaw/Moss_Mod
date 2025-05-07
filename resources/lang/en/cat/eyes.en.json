@@ -68,6 +68,26 @@
         "HIBISCUS": "hibiscus",
         "PIXIE": "pixie",
         "SUNRISE": "sunrise",
-        "LEMON": "lemon"
+        "LEMON": "lemon",
+        "MINT": "mint",
+        "OCEAN": "ocean",
+        "URANIUM": "uranium",
+        "PLUTONIUM": "plutonium",
+        "PHANTOM": "phantom",
+        "PLUMERIA": "plumeria",
+        "HYDRANGEA": "hydrangea",
+        "GHOST": "ghost",
+        "PASSION FRUIT": "passion fruit",
+        "LIGHT ROSE": "light rose",
+        "STORM": "storm",
+        "OMEN": "omen",
+        "PEACH": "peach",
+        "GLASS": "glass",
+        "HABANERO": "habanero",
+        "MANGO": "mango",
+        "VIOLET": "violet",
+        "CHERRY": "cherry",
+        "STRAWBERRY": "strawberry",
+        "FIG": "fig"
     }
 }
