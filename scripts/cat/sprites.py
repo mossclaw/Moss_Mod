@@ -3,11 +3,56 @@ from copy import copy
 
 import pygame
 import ujson
+import time
 
 from scripts.game_structure.game_essentials import game
 
 
 class Sprites:
+
+    class SpriteSheet:
+        def __init__(self, a_file):
+            self.image = None
+            self.a_file = a_file
+    
+        @property
+        def sprite(self):
+            if not self.image:
+                t = time.monotonic()
+                self.image = pygame.image.load(self.a_file).convert_alpha()
+                t = time.monotonic() - t
+                print(f"loading sprite sheet - {self.a_file}, time {t}s")
+            return self.image
+
+
+    class SpriteCache:
+        def __init__(self, spritesheet, x, y, size):
+            self.image = None
+            self.spritesheet = spritesheet
+            self.x = x
+            self.y = y
+            self.size = size
+
+        @property
+        def sprite(self):
+            if not self.image:
+                #print(f"cutting sprite from sheet - {self.spritesheet.a_file} at ({self.x}, {self.y}) size {self.size}")
+                self.image = pygame.Surface.subsurface(
+                    self.spritesheet.sprite,
+                    self.x, self.y,
+                    self.size, self.size
+                )
+            return self.image
+
+
+    class Blank:
+        def __init__(self, size):
+            self.sprite = pygame.Surface(
+                (size, size),
+                pygame.HWSURFACE | pygame.SRCALPHA
+            )
+
+
     cat_tints = {}
     white_patches_tints = {}
     clan_symbols = []
@@ -22,12 +67,19 @@ class Sprites:
         self.size = None
         self.spritesheets = {}
         self.images = {}
-        self.sprites = {}
+        self.sprite_cache = {}
+        self.sprites = self
 
         # Shared empty sprite for placeholders
         self.blank_sprite = None
 
         self.load_tints()
+
+    def __getitem__(self, name):
+        return self.sprite_cache[name].sprite
+
+    def get(self, name):
+        return self.sprite_cache[name].sprite
 
     def load_tints(self):
         try:
@@ -56,7 +108,7 @@ class Sprites:
         a_file -- Path to the file to create a spritesheet from.
         name -- Name to call the new spritesheet.
         """
-        self.spritesheets[name] = pygame.image.load(a_file).convert_alpha()
+        self.spritesheets[name] = self.SpriteSheet(a_file)
 
     def make_group(self,
                    spritesheet,
@@ -81,7 +133,7 @@ class Sprites:
         i = 0
 
 
-        # splitting group into singular sprites and storing into self.sprites section
+        # splitting group into on-demand singular sprites and storing in self.sprite_cache
         for y in range(sprites_y):
             for x in range(sprites_x):
                 if no_index:
@@ -90,25 +142,30 @@ class Sprites:
                     full_name = f"{name}{i}"
 
                 try:
-                    new_sprite = pygame.Surface.subsurface(
+                    new_sprite = self.SpriteCache(
                         self.spritesheets[spritesheet],
                         group_x_ofs + x * self.size,
                         group_y_ofs + y * self.size,
-                        self.size, self.size
+                        self.size
                     )
 
                 except ValueError:
                     # Fallback for non-existent sprites
                     print(f"WARNING: nonexistent sprite - {full_name}")
                     if not self.blank_sprite:
-                        self.blank_sprite = pygame.Surface(
-                            (self.size, self.size),
-                            pygame.HWSURFACE | pygame.SRCALPHA
-                        )
+                        self.blank_sprite = self.Blank(self.size)
                     new_sprite = self.blank_sprite
 
-                self.sprites[full_name] = new_sprite
+                self.sprite_cache[full_name] = new_sprite
                 i += 1
+
+    def make_group_split(self,
+                         subdir,
+                         name,
+                         part):
+        spritesheet = f'{name}{part}'
+        self.spritesheet(f"sprites/{subdir}/{part}.png".lower(), spritesheet)
+        self.make_group(spritesheet, (0, 0), spritesheet)
 
     def load_all(self):
         # get the width and height of the spritesheet
@@ -132,11 +189,8 @@ class Sprites:
         for x in [
             'line', 'lineartdf', 'lineartdead', 'symbols',
             'fademask',
-            'base', 'mid', 'dark', 'highlight', 'shade', 'unders',
-            'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight', 'eyes2', 'skin', 'scars', 'missingscars', 'missingscarscolor',
-            'whitepatches', 'whitepatches2', 'whitepatches3', 'whitepatchesmoss',
-            'tortiepatchesmasks', 'tortiesmoss',
-            'medherbs', 'accbase', 'accadd', 'accpattern1', 'accpattern2', 'collaradd'
+            'base', 
+            'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight'
 
         ]:
             if 'lineart' in x and game.config['fun']['april_fools']:
@@ -167,7 +221,7 @@ class Sprites:
 
         for row, patterns in enumerate(eye_patterns):
             for col, pattern in enumerate(patterns):
-                self.make_group('eyes2', (col, row), f'eyes2{pattern}')
+                self.make_group_split('eyes2', 'eyes2', pattern)
 
         # Define white patches
         white_patches = [
@@ -206,16 +260,16 @@ class Sprites:
 
         for row, patches in enumerate(white_patches):
             for col, patch in enumerate(patches):
-                self.make_group('whitepatches', (col, row), f'white{patch}')
+                self.make_group_split('whitepatches', 'white', patch)
         for row, patches in enumerate(white_patches2):
             for col, patch in enumerate(patches):
-                self.make_group('whitepatches2', (col, row), f'white{patch}')
+                self.make_group_split('whitepatches2', 'white', patch)
         for row, patches in enumerate(white_patches3):
             for col, patch in enumerate(patches):
-                self.make_group('whitepatches3', (col, row), f'white{patch}')
+                self.make_group_split('whitepatches3', 'white', patch)
         for row, patches in enumerate(white_patches_moss):
             for col, patch in enumerate(patches):
-                self.make_group('whitepatchesmoss', (col, row), f'white{patch}')
+                self.make_group_split('whitepatchesmoss', 'white', patch)
 
         # base pelt - to be expanded with extras later
         self.make_group('base', (0, 0), 'baseSOLID')
@@ -231,7 +285,7 @@ class Sprites:
 
         for row, mid in enumerate(mids):
             for col, md in enumerate(mid):
-                self.make_group('mid', (col, row), f'mid{md}')
+                self.make_group_split('mid', 'mid', md)
 
         # Highlight color layer
         highlights = [
@@ -243,7 +297,7 @@ class Sprites:
 
         for row, highlight in enumerate(highlights):
             for col, hl in enumerate(highlight):
-                self.make_group('highlight', (col, row), f'highlight{hl}')
+                self.make_group_split('highlight', 'highlight', hl)
 
         # Dark color layer
         darks = [
@@ -255,7 +309,7 @@ class Sprites:
 
         for row, dark in enumerate(darks):
             for col, dr in enumerate(dark):
-                self.make_group('dark', (col, row), f'dark{dr}')
+                self.make_group_split('dark', 'dark', dr)
 
         # Darker color layer
         shades = [
@@ -267,7 +321,7 @@ class Sprites:
 
         for row, shade in enumerate(shades):
             for col, sh in enumerate(shade):
-                self.make_group('shade', (col, row), f'shade{sh}')
+                self.make_group_split('shade', 'shade', sh)
 
         # Unders color layer
         unders = [
@@ -279,7 +333,7 @@ class Sprites:
 
         for row, under in enumerate(unders):
             for col, ud in enumerate(under):
-                self.make_group('unders', (col, row), f'under{ud}')
+                self.make_group_split('unders', 'under', ud)
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
@@ -299,11 +353,11 @@ class Sprites:
 
         for row, masks in enumerate(tortiepatchesmasks):
             for col, mask in enumerate(masks):
-                self.make_group('tortiepatchesmasks', (col, row), f"tortiemask{mask}")
+                self.make_group_split('tortiepatchesmasks', 'tortiemask', mask)
 
         for row, masks in enumerate(tortiepatchesmasksmoss):
             for col, mask in enumerate(masks):
-                self.make_group('tortiesmoss', (col, row), f"tortiemask{mask}")
+                self.make_group_split('tortiesmoss', 'tortiemask', mask)
 
         # Define skin patterns
         skins = [
@@ -312,7 +366,7 @@ class Sprites:
 
         for row, skins in enumerate(skins):
             for col, skin in enumerate(skins):
-                self.make_group('skin', (col, row), f"skin{skin}")
+                self.make_group_split('skin', 'skin', skin)
 
         self.load_scars()
         self.load_symbols()
@@ -345,16 +399,16 @@ class Sprites:
         # scars 
         for row, scars in enumerate(scars_data):
             for col, scar in enumerate(scars):
-                self.make_group('scars', (col, row), f'scars{scar}')
+                self.make_group_split('scars', 'scars', scar)
 
         # missing parts
         for row, missing_parts in enumerate(missing_parts_data):
             for col, missing_part in enumerate(missing_parts):
-                self.make_group('missingscars', (col, row), f'scars{missing_part}')
+                self.make_group_split('missingscars', 'scars', missing_part)
 
         for row, missing_parts_color in enumerate(missing_parts_color_data):
             for col, missing_part_color in enumerate(missing_parts_color):
-                self.make_group('missingscarscolor', (col, row), f'scarscolor{missing_part_color}')
+                self.make_group_split('missingscarscolor', 'scarscolor', missing_part_color)
 
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay
@@ -369,7 +423,7 @@ class Sprites:
         # medcatherbs
         for row, herbs in enumerate(medherbs1_data):
             for col, herb in enumerate(herbs):
-                self.make_group('medherbs', (col, row), f'acc{herb}')
+                self.make_group_split('medherbs', 'acc', herb)
 
         # please im begging you
         accbases_data = [
@@ -380,7 +434,7 @@ class Sprites:
 
         for row, accbases in enumerate(accbases_data):
             for col, accbase in enumerate(accbases):
-                self.make_group('accbase', (col, row), f'accbase{accbase}')
+                self.make_group_split('accbase', 'accbase', accbase)
 
         accadds_data = [
             ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS"],
@@ -390,7 +444,7 @@ class Sprites:
 
         for row, accadds in enumerate(accadds_data):
             for col, accadd in enumerate(accadds):
-                self.make_group('accadd', (col, row), f'accadd{accadd}')
+                self.make_group_split('accadd', 'accadd', accadd)
 
         accpatterns1_data = [
             ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID", "ZEBRA", "HEARTS"],
@@ -403,11 +457,11 @@ class Sprites:
 
         for row, accpatterns in enumerate(accpatterns1_data):
             for col, accpattern in enumerate(accpatterns):
-                self.make_group('accpattern1', (col, row), f'accpattern{accpattern}')
+                self.make_group_split('accpattern1', 'accpattern', accpattern)
 
         for row, accpatterns in enumerate(accpatterns2_data):
             for col, accpattern in enumerate(accpatterns):
-                self.make_group('accpattern2', (col, row), f'accpattern{accpattern}')
+                self.make_group_split('accpattern2', 'accpattern', accpattern)
 
         acccollars_data = [
             ["BELL", "BOW", "STUDDED", "FANG", "COWBOY HAT"]
@@ -415,7 +469,7 @@ class Sprites:
 
         for row, acccollars in enumerate(acccollars_data):
             for col, acccollars in enumerate(acccollars):
-                self.make_group('collaradd', (col, row), f'acccollars{acccollars}')
+                self.make_group_split('collaradd', 'acccollars', acccollars)
 
     def load_symbols(self):
         """
