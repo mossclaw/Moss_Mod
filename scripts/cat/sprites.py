@@ -18,10 +18,7 @@ class Sprites:
         @property
         def sprite(self):
             if not self.image:
-                t = time.monotonic()
                 self.image = pygame.image.load(self.a_file).convert_alpha()
-                t = time.monotonic() - t
-                print(f"loading sprite sheet - {self.a_file}, time {t}s")
             return self.image
 
 
@@ -36,7 +33,6 @@ class Sprites:
         @property
         def sprite(self):
             if not self.image:
-                #print(f"cutting sprite from sheet - {self.spritesheet.a_file} at ({self.x}, {self.y}) size {self.size}")
                 self.image = pygame.Surface.subsurface(
                     self.spritesheet.sprite,
                     self.x, self.y,
