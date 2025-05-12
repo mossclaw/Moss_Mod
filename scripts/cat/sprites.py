@@ -159,6 +159,8 @@ class Sprites:
                          subdir,
                          name,
                          part):
+        if subdir != name:
+            print(f'WARNING: called make_group_split with subdir != name: "{subdir}" != "{name}"')
         spritesheet = f'{name}{part}'
         self.spritesheet(f"sprites/{subdir}/{part}.png".lower(), spritesheet)
         self.make_group(spritesheet, (0, 0), spritesheet)
@@ -185,14 +187,10 @@ class Sprites:
         for x in [
             'line', 'lineartdf', 'lineartdead', 'symbols',
             'fademask',
-            'base', 
             'eyebase', 'eyemid', 'eyetop', 'eyeshade', 'eyelight'
 
         ]:
-            if 'lineart' in x and game.config['fun']['april_fools']:
-                self.spritesheet(f"sprites/{x}.png", x)
-            else:
-                self.spritesheet(f"sprites/{x}.png", x)
+            self.spritesheet(f"sprites/{x}.png", x)
 
         # Line art
         self.make_group('lineartdead', (0, 0), 'lineartdead')
@@ -200,7 +198,7 @@ class Sprites:
 
         # Fading Fog
         for i in range(0, 3):
-            self.make_group('fademask', (i, 0), f'fademask{i}')
+            self.make_group_split('fademask', 'fademask', f'{i}')
 
 
         self.make_group('eyebase', (0, 0), 'eyebase')
@@ -226,28 +224,18 @@ class Sprites:
             ['BROKEN', 'LIGHTTUXEDO', 'BUZZARDFANG', 'RAGDOLL', 'LIGHTSONG', 'VITILIGO', 'BLACKSTAR', 'PIEBALD'],
             ['CURVED', 'PETAL', 'SHIBAINU', 'OWL', 'TIP', 'FANCY', 'FRECKLES', 'RINGTAIL'],
             ['HALFFACE', 'PANTSTWO', 'GOATEE', 'VITILIGOTWO', 'PAWS', 'MITAINE', 'BROKENBLAZE', 'SCOURGE'],
-            ['DIVA', 'BEARD', 'TAIL', 'BLAZE', 'PRINCE', 'BIB', 'VEE', 'UNDERS']
-
-        ]
-
-        white_patches2 = [
+            ['DIVA', 'BEARD', 'TAIL', 'BLAZE', 'PRINCE', 'BIB', 'VEE', 'UNDERS'],
             ['HONEY', 'FAROFA', 'DAMIEN', 'MISTER', 'BELLY', 'TAILTIP', 'TOES', 'TOPCOVER'],
             ['APRON', 'CAPSADDLE', 'MASKMANTLE', 'SQUEAKS', 'STAR', 'TOESTAIL', 'RAVENPAW', 'PANTS'],
             ['REVERSEPANTS', 'SKUNK', 'KARPATI', 'HALFWHITE', 'APPALOOSA', 'DAPPLEPAW', 'HEART', 'LILTWO'],
             ['GLASS', 'MOORISH', 'SEPIAPOINT', 'MINKPOINT', 'SEALPOINT', 'MAO', 'LUNA', 'CHESTSPECK'],
             ['WINGS', 'PAINTED', 'HEARTTWO', 'WOODPECKER', 'BOOTS', 'MISS', 'COW', 'COWTWO'],
-            ['BUB', 'BOWTIE', 'MUSTACHE', 'REVERSEHEART', 'SPARROW', 'VEST', 'LOVEBUG', 'TRIXIE']
-        ]
-
-        white_patches3 = [
+            ['BUB', 'BOWTIE', 'MUSTACHE', 'REVERSEHEART', 'SPARROW', 'VEST', 'LOVEBUG', 'TRIXIE'],
             ['SAMMY', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'SHOOTINGSTAR', 'EYESPOT', 'REVERSEEYE'],
             ['FADEBELLY', 'FRONT', 'BLOSSOMSTEP', 'PEBBLE', 'TAILTWO', 'BUDDY', 'BACKSPOT', 'EYEBAGS'],
             ['BULLSEYE', 'FINN', 'DIGIT', 'KROPKA', 'FCTWO', 'FCONE', 'MIA', 'SCAR'],
             ['BUSTER', 'SMOKEY', 'HAWKBLAZE', 'CAKE', 'ROSINA', 'PRINCESS', 'LOCKET', 'BLAZEMASK'],
-            ['TEARS', 'DOUGIE']
-        ]
-
-        white_patches_moss = [
+            ['TEARS', 'DOUGIE'],
             ['CHANCE', 'MOSSY', 'MOTH', 'NIGHTMIST', 'FALCON', 'VENUS', 'RETSUKO', 'TIDAL'],
             ['DIAMOND', 'ECLIPSE', 'SNOWSTORM', 'PEPPER', 'COWTHREE', 'COWFOUR', 'COWFIVE', 'COWSIX'],
             ['COWSEVEN', 'COWEIGHT', 'COWNINE', 'COWTEN', 'COWELEVEN', 'FRECKLEMASK', 'SPLAT', 'BATWING'],
@@ -256,19 +244,10 @@ class Sprites:
 
         for row, patches in enumerate(white_patches):
             for col, patch in enumerate(patches):
-                self.make_group_split('whitepatches', 'white', patch)
-        for row, patches in enumerate(white_patches2):
-            for col, patch in enumerate(patches):
-                self.make_group_split('whitepatches2', 'white', patch)
-        for row, patches in enumerate(white_patches3):
-            for col, patch in enumerate(patches):
-                self.make_group_split('whitepatches3', 'white', patch)
-        for row, patches in enumerate(white_patches_moss):
-            for col, patch in enumerate(patches):
-                self.make_group_split('whitepatchesmoss', 'white', patch)
+                self.make_group_split('white', 'white', patch)
 
         # base pelt - to be expanded with extras later
-        self.make_group('base', (0, 0), 'baseSOLID')
+        self.make_group_split('base', 'base', 'SOLID')
         self.make_group('line', (0, 0), 'line')
 
         # Middle color layer
@@ -329,7 +308,7 @@ class Sprites:
 
         for row, under in enumerate(unders):
             for col, ud in enumerate(under):
-                self.make_group_split('unders', 'under', ud)
+                self.make_group_split('under', 'under', ud)
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
@@ -338,10 +317,7 @@ class Sprites:
             ['CHIMERA', 'CHEST', 'ARMTAIL', 'GRUMPYFACE', 'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA'],
             ['PACMAN', 'STREAMSTRIKE', 'SMUDGED', 'DAUB', 'EMBER', 'BRIE', 'ORIOLE', 'ROBIN'],
             ['BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'DAPPLENIGHT', 'BLANKET', 'BELOVED', 'BODY'],
-            ['SHILOH', 'FRECKLED', 'HEARTBEAT']
-        ]
-
-        tortiepatchesmasksmoss = [
+            ['SHILOH', 'FRECKLED', 'HEARTBEAT'],
             ['VIPER', 'SKULL', 'POINTS', 'DITTO', 'TABBY', 'SPECKLED', 'BENGAL', 'CLASSIC'],
             ['MACKEREL', 'MARBLED', 'SABER', 'ROSETTE', 'MASKED', 'DUST', 'MAXIMUMONE', 'MAXIMUMTWO'],
             ['MAXIMUMTHREE', 'MAXIMUMFOUR', 'MAXIMUMFIVE', 'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT']
@@ -349,11 +325,7 @@ class Sprites:
 
         for row, masks in enumerate(tortiepatchesmasks):
             for col, mask in enumerate(masks):
-                self.make_group_split('tortiepatchesmasks', 'tortiemask', mask)
-
-        for row, masks in enumerate(tortiepatchesmasksmoss):
-            for col, mask in enumerate(masks):
-                self.make_group_split('tortiesmoss', 'tortiemask', mask)
+                self.make_group_split('tortiemask', 'tortiemask', mask)
 
         # Define skin patterns
         skins = [
@@ -378,11 +350,7 @@ class Sprites:
             ["BEAKCHEEK", "BEAKLOWER", "BURNRUMP", "CATBITE", "RATBITE", "FROSTFACE", "FROSTMITT", "FROSTSOCK"],
             ["QUILLCHUNK", "QUILLSCRATCH", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY"],
             ["TOETRAP", "SNAKE", "LEGBITE", "NECKBITE", "FACE", "HINDLEG", "BACK", "QUILLSIDE"],
-            ["SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "MANLEG", "BURNPAWS", "BURNBELLY"]
-        ]
-
-        # define missing parts
-        missing_parts_data = [
+            ["SCRATCHSIDE", "TOE", "BEAKSIDE", "CATBITETWO", "SNAKETWO", "MANLEG", "BURNPAWS", "BURNBELLY"],
             ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "NOPAW", "NOTAIL", "HALFTAIL"],
             ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
         ]
@@ -397,14 +365,9 @@ class Sprites:
             for col, scar in enumerate(scars):
                 self.make_group_split('scars', 'scars', scar)
 
-        # missing parts
-        for row, missing_parts in enumerate(missing_parts_data):
-            for col, missing_part in enumerate(missing_parts):
-                self.make_group_split('missingscars', 'scars', missing_part)
-
         for row, missing_parts_color in enumerate(missing_parts_color_data):
             for col, missing_part_color in enumerate(missing_parts_color):
-                self.make_group_split('missingscarscolor', 'scarscolor', missing_part_color)
+                self.make_group_split('scarscolor', 'scarscolor', missing_part_color)
 
         # accessories
         #to my beloved modders, im very sorry for reordering everything <333 -clay
@@ -419,7 +382,7 @@ class Sprites:
         # medcatherbs
         for row, herbs in enumerate(medherbs1_data):
             for col, herb in enumerate(herbs):
-                self.make_group_split('medherbs', 'acc', herb)
+                self.make_group_split('acc', 'acc', herb)
 
         # please im begging you
         accbases_data = [
@@ -442,22 +405,15 @@ class Sprites:
             for col, accadd in enumerate(accadds):
                 self.make_group_split('accadd', 'accadd', accadd)
 
-        accpatterns1_data = [
+        accpatterns_data = [
             ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID", "ZEBRA", "HEARTS"],
             ["FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS", "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO"],
-
-        ]
-        accpatterns2_data = [
             ["CONVERSE", "FRUIT", "GEOMETRICONE", "CHECKERS", "PLAIDTWO", "WINTERSWEATER", "FLOWERPRINTTHREE", "FLOWERPRINTFOUR"]
         ]
 
-        for row, accpatterns in enumerate(accpatterns1_data):
+        for row, accpatterns in enumerate(accpatterns_data):
             for col, accpattern in enumerate(accpatterns):
-                self.make_group_split('accpattern1', 'accpattern', accpattern)
-
-        for row, accpatterns in enumerate(accpatterns2_data):
-            for col, accpattern in enumerate(accpatterns):
-                self.make_group_split('accpattern2', 'accpattern', accpattern)
+                self.make_group_split('accpattern', 'accpattern', accpattern)
 
         acccollars_data = [
             ["BELL", "BOW", "STUDDED", "FANG", "COWBOY HAT"]
@@ -465,7 +421,7 @@ class Sprites:
 
         for row, acccollars in enumerate(acccollars_data):
             for col, acccollars in enumerate(acccollars):
-                self.make_group_split('collaradd', 'acccollars', acccollars)
+                self.make_group_split('acccollars', 'acccollars', acccollars)
 
     def load_symbols(self):
         """
