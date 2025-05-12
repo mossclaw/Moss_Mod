@@ -6,7 +6,7 @@
 		"none":   "Ignore the image.",
 		"single": "Load a single sprite from the image, don't split into multiple variants.",
 		"static": "Load a single sprite from the image and use that for all variants.",
-		"_path_": "Details on how to load sprites from the image are in that json file."
+		"<path>": "Details on how to load sprites from the image are in that json file."
 	},
 	"_sheet_size_": [8, 8],
 	
@@ -14,6 +14,7 @@
 	"error_placeholder.png": "none",
 	"paralyzed/Credit.png": "none",
 	"faded": "single",
+	"fademask": "static",
 	"accpattern": "static",
 	"symbol.png": "resources/dicts/clan_symbols.json"
 }
