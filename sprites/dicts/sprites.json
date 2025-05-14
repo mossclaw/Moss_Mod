@@ -1,0 +1,20 @@
+{
+	"_documentation_": 
+		"To change how a sprite sheet is loaded, add it as an entry here, with the relative path as key and the value being as described below. If a folder is listed, it is applied to all images in the folder, that are not separately listed.",
+	"_values_": {
+		"normal": "Load a grid of variants from the image. This is the default.",
+		"none":   "Ignore the image.",
+		"single": "Load a single sprite from the image, don't split into multiple variants.",
+		"static": "Load a single sprite from the image and use that for all variants.",
+		"<path>": "Details on how to load sprites from the image are in that json file."
+	},
+	"_sheet_size_": [8, 8],
+	
+	"lineart.png": "none",
+	"error_placeholder.png": "none",
+	"paralyzed/Credit.png": "none",
+	"faded": "single",
+	"fademask": "static",
+	"accpattern": "static",
+	"symbol.png": "resources/dicts/clan_symbols.json"
+}
