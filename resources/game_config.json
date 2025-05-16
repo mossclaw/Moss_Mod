@@ -183,7 +183,7 @@
 		"base_permanent_condition": 90,
 		"base_male_tortie": 13,
 		"base_female_tortie": 3,
-		"base_heterochromia": 90,
+		"base_heterochromia": 120,
 		"direct_inheritance": 15,
 		"wildcard_tortie": 9,
 		"vit_chance": 6,
@@ -191,7 +191,6 @@
 		"comment": [
 			"Moss mod changes some cat generation options to make some things less rare, default values are listed below",
 			"base_female_tortie 4",
-			"base_heterochromia 120",
 			"vit_chance 8",
 			"random_point_chance 5",
 			"base_acc_chance 130"
