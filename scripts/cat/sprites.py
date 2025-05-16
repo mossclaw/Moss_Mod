@@ -219,7 +219,7 @@ class Sprites:
         elif width / self.sprites_x == height / self.sprites_y:
             self.size = width / self.sprites_x
         else:
-            self.size = 400  # default, what base clangen uses
+            self.size = 400  # default is 50, what base clangen uses
             print(f"The sprite grid size is set to {self.sprites_x}x{self.sprites_y}, "
                   f"which does not match the size of line.png.")
             print(f"Falling back to sprite size {self.size}.")

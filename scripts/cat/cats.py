@@ -3518,6 +3518,9 @@ class Cat:
                 "opacity": self.pelt.opacity,
                 "prevent_fading": self.prevent_fading,
                 "favourite": self.favourite,
+                "tuft": self.pelt.tuft,
+                "tuft_color": self.pelt.tuft_color,
+                "tortie_tuft": self.pelt.tortie_tuft
             }
 
     def determine_next_and_previous_cats(

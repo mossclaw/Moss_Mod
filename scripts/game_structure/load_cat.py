@@ -136,6 +136,9 @@ def json_load():
                 accessory_pattern=cat["accessory_pattern"] if "accessory_pattern" in cat else "STRIPES",
                 accessory_pattern2=cat["accessory_pattern2"] if "accessory_pattern2" in cat else "STRIPES",
                 opacity=cat["opacity"] if "opacity" in cat else 100,
+                tuft=cat["tuft"] if "tuft" in cat else None,
+                tuft_color=cat["tuft_color"] if "tuft_color" in cat else "BASE",
+                tortie_tuft=cat["tortie_tuft"] if "tortie_tuft" in cat else False
             )
 
             # Runs a bunch of apperence-related convertion of old stuff.

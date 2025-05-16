@@ -440,7 +440,6 @@ class HandleShortEvents:
 
         new_accessory = random.choice(acc_list)
         if new_accessory in pelts.layer_accessories:
-            print("i have a layer accessory")
             if new_accessory in Pelt.flower_acc:
                 flower_possible_first_colors = random.choice(Pelt.flower_colors)
                 self.main_cat.pelt.accessory_color = random.choice([flower_possible_first_colors])
@@ -507,10 +506,8 @@ class HandleShortEvents:
 
         if self.main_cat.pelt.accessory:
             self.main_cat.pelt.accessory.append(new_accessory)
-            print("got a new multiple accessory")
         else:
             self.main_cat.pelt.accessory = [new_accessory]
-            print("got a new accessory")
 
 
 

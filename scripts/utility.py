@@ -2834,6 +2834,110 @@ def generate_sprite(
         unders_pelt = None
         shade_pelt = None
 
+        #tuft pieces
+        tuft_type = None
+        tuft_color = str(cat.pelt.tuft_color)
+        tuft_tint = None
+        tuft_pelt = None
+        tuft_line = None
+        tuft_line_tint = None
+
+        if cat.pelt.tortie_tuft:
+            tuft_base_color = str(cat.pelt.tortiecolour).upper()
+        else:
+            tuft_base_color = str(cat.pelt.colour).upper()
+
+        if cat.pelt.tuft is not None:
+            tuft_type = str(cat.pelt.tuft)
+            if tuft_color == "BASE":
+                tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_tint.fill(color_dict[tuft_base_color][1])
+                tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_line_tint.fill(color_dict[tuft_base_color][5])
+                tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            if tuft_color == "HIGHLIGHT":
+                tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_tint.fill(color_dict[tuft_base_color][0])
+                tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_line_tint.fill(color_dict[tuft_base_color][5])
+                tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            if tuft_color == "MID":
+                tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_tint.fill(color_dict[tuft_base_color][2])
+                tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_line_tint.fill(color_dict[tuft_base_color][5])
+                tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            if tuft_color == "DARK":
+                tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_tint.fill(color_dict[tuft_base_color][3])
+                tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_line_tint.fill(color_dict[tuft_base_color][5])
+                tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            if tuft_color == "SHADE":
+                tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_tint.fill(color_dict[tuft_base_color][4])
+                tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tuft_line_tint.fill(color_dict[tuft_base_color][5])
+                tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            if tuft_color == "WHITE":
+                if cat.pelt.white_patches_tint == "black":
+                    tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tuft_tint.fill(color_dict["BLACK"][0])
+                    tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                    tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tuft_line_tint.fill(color_dict["BLACK"][5])
+                    tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                    tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                else:
+                    tuft_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tuft_tint.fill(color_dict["WHITE"][0])
+                    tuft_pelt = sprites.sprites['tufts' + tuft_type + cat_sprite].copy().convert_alpha()
+                    tuft_pelt.blit(tuft_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+                    tuft_line_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tuft_line_tint.fill(color_dict["WHITE"][5])
+                    tuft_line = sprites.sprites['tuftlines' + tuft_type + cat_sprite].copy().convert_alpha()
+                    tuft_line.blit(tuft_line_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+            new_sprite.blit(tuft_pelt, (0, 0))
+            new_sprite.blit(tuft_line, (0, 0))
+
+
+
 
 
         # Hello! I'm sorry

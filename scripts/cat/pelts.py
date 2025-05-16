@@ -316,6 +316,9 @@ class Pelt:
     skin_color = ['BLACK', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
                     'SALMON', 'PEACH', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
     skin = ['SOLID', 'TIP', 'MARBLE', 'FRECKLE']
+    tufts = ['SHORT', 'FLUFFY', 'TALL', 'LONG', 'LYNX', 'LOW', 'CURLY', 'FULL', 'SHORTHALF', 'FLUFFYHALF', 'TALLHALF', 'LONGHALF', 'LYNXHALF', 'LOWHALF', 'CURLYHALF', 'FULLHALF']
+    tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE']
+    white_tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE', 'WHITE']
 
     """Holds all appearance information for a cat. """
 
@@ -351,6 +354,9 @@ class Pelt:
                  adult_sprite: int = None,
                  senior_sprite: int = None,
                  reverse: bool = False,
+                 tuft: str = None,
+                 tuft_color: str = "BASE",
+                 tortie_tuft: bool = False,
                  ) -> None:
         self.name = name
         self.colour = colour
@@ -386,6 +392,9 @@ class Pelt:
         self.reverse = reverse
         self.skin = skin
         self.skin_color = skin_color
+        self.tuft = tuft
+        self.tuft_color = tuft_color
+        self.tortie_tuft = tortie_tuft
 
     @staticmethod
     def generate_new_pelt(gender: str, parents: tuple = (), age: str = "adult"):
@@ -706,6 +715,8 @@ class Pelt:
         par_peltnames = set()
         par_pelts = []
         par_white = []
+        par_tufts = set()
+        par_tufts_color = set()
         for p in parents:
             if p:
                 # Gather pelt color.
@@ -725,6 +736,10 @@ class Pelt:
 
                 # Gather if they have white in their pelt.
                 par_white.append(p.pelt.white)
+
+                #Gather tufts
+                par_tufts.add(p.pelt.tuft)
+                par_tufts_color.add(p.pelt.tuft_color)
             else:
                 # If order for white patches to work correctly, we also want to randomly generate a "pelt_white"
                 # for each "None" parent (missing or unknown parent)
@@ -735,6 +750,7 @@ class Pelt:
                 par_peltcolours.add(None)
                 par_peltlength.add(None)
                 par_peltnames.add(None)
+                par_tufts.add(None)
 
         # If this list is empty, something went wrong.
         if not par_peltcolours:
@@ -1498,6 +1514,54 @@ class Pelt:
         else:
             self.white_patches = None
             self.points = None
+        #tufts
+        #set tortie tuft
+        if self.name == "Tortie":
+            tt_chance = random.randint(1, 100)
+            if tt_chance > 50:
+                self.tortie_tuft = True
+        elif self.name == "Calico":
+            tt_chance = random.randint(1, 100)
+            if tt_chance > 50:
+                self.tortie_tuft = True
+        else:
+            self.tortie_tuft = False
+
+        #get parents info
+        par_tuft = []
+        par_tuft_color = []
+        for p in parents:
+            if p:
+                if p.pelt.tuft:
+                    par_tuft.append(p.pelt.tuft)
+                    par_tuft_color.append(p.pelt.tuft_color)
+
+        #longhair have better chance of tufts
+        if self.length == "long":
+            base_tuft_chance = random.randint(1, 100)
+            longhair_chance = 30
+            tuft_chance = base_tuft_chance + longhair_chance
+        else:
+            tuft_chance = random.randint(1, 100)
+        if tuft_chance > 70:
+            if parents:
+                self.tuft = choice(Pelt.tufts + (par_tuft * 5))
+                if pelt_white:
+                    self.tuft_color = choice(Pelt.white_tuft_colors + (par_tuft_color * 5 ))
+                else:
+                    self.tuft_color = choice(Pelt.tuft_colors + (par_tuft_color * 5))
+            else:
+                self.tuft = choice(Pelt.tufts)
+                if pelt_white:
+                    self.tuft_color = choice(Pelt.white_tuft_colors)
+                else:
+                    self.tuft_color = choice(Pelt.tuft_colors)
+        else:
+            self.tuft = None
+            self.tuft_color = "BASE"
+
+
+
 
     def init_tint(self):
         """Sets tint for pelt and white patches"""

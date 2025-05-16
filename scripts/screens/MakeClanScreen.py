@@ -1337,7 +1337,7 @@ class MakeClanScreen(Screens):
       #      f"<b>{cat.name}</b><br>{cat.pelt.name}<br>{cat.genderalign}<br>{cat.age}<br>{cat.personality.trait}"
       #  )
 
-        return f"<b>pelt: {cat.pelt.colour} {cat.pelt.name}<br>tint: {cat.pelt.tint}<br>eye: {cat.pelt.eye_colour}<br>hc: {cat.pelt.eye_pattern} {cat.pelt.eye_colour2}<br>tortie: {cat.pelt.tortiecolour} {cat.pelt.pattern}<br>white patch: {cat.pelt.white_patches_tint} {cat.pelt.white_patches}<br>points: {cat.pelt.points}<br>vitiligo: {cat.pelt.vitiligo}<br>"
+        return f"<b>pelt: {cat.pelt.colour} {cat.pelt.name}<br>tint: {cat.pelt.tint}<br>eye: {cat.pelt.eye_colour}<br>hc: {cat.pelt.eye_pattern} {cat.pelt.eye_colour2}<br>tortie: {cat.pelt.tortiecolour} {cat.pelt.pattern}<br>white patch: {cat.pelt.white_patches_tint} {cat.pelt.white_patches}<br>points: {cat.pelt.points}<br>vitiligo: {cat.pelt.vitiligo}<br>tufts: {cat.pelt.tuft}"
 
 
     def open_game_mode(self):
