@@ -321,6 +321,26 @@
             "one": "pale rose",
             "many": "pale rose"
         },
+        "PALE SILVER": {
+            "one": "pale silver",
+            "many": "pale silver"
+        },
+        "CROW": {
+            "one": "crow",
+            "many": "crow"
+        },
+        "RAVEN": {
+            "one": "raven",
+            "many": "raven"
+        },
+        "SUNSHINE": {
+            "one": "sunshine",
+            "many": "sunshine"
+        },
+        "DARK EMBER": {
+            "one": "dark ember",
+            "many": "dark ember"
+        },
 
         "SingleColour": "single color",
         "SingleColour_long": "%{color}",

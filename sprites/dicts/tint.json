@@ -79,16 +79,22 @@
     "GINGER CROW": "warm",
     "STORM": "cool",
     "OCEAN": "cool",
-    "PALE ROSE": "warm"
+    "PALE ROSE": "dilutes",
+    "PALE SILVER": "dilutes",
+    "CROW": "monochrome",
+    "RAVEN": "monochrome",
+    "SUNSHINE": "warm",
+    "DARK EMBER": "warm"
   },
   "possible_tints": {
-    "basic": ["pink", "gray", "red", "orange", "none", "warmdilute"],
-    "warm": ["yellow", "purple", "blush", "rosy", "sandy", "beige", "coral", "tan", "cream", "dilute", "cooldilute"],
-    "cool": ["blue", "purple", "black", "willow", "lilac", "plum", "cadet", "dilute"],
-    "white": ["yellow", "tan", "cream"],
-    "monochrome": ["blue", "black", "bluegray", "cadet", "dilute", "cooldilute"],
-    "brown": ["yellow", "purple", "black", "plum", "lilac", "cadet", "bluegray", "dilute", "cooldilute"],
-    "hb": ["blue", "black", "willow", "dilute", "cooldilute"]
+    "basic": ["pink", "gray", "red", "orange", "none", "warmdilute", "none", "none", "none", "none"],
+    "warm": ["yellow", "purple", "blush", "rosy", "sandy", "beige", "coral", "tan", "cream", "dilute", "cooldilute", "none", "none", "none", "none", "none", "none", "none", "none", "none"],
+    "cool": ["blue", "purple", "black", "willow", "lilac", "plum", "cadet", "dilute", "none", "none", "none", "none", "none"],
+    "white": ["yellow", "tan", "cream", "none"],
+    "monochrome": ["blue", "black", "bluegray", "cadet", "dilute", "cooldilute", "none", "none", "none", "none"],
+    "brown": ["yellow", "purple", "black", "plum", "lilac", "cadet", "bluegray", "dilute", "cooldilute", "none", "none", "none", "none"],
+    "hb": ["blue", "black", "willow", "dilute", "cooldilute", "none", "none", "none", "none", "none"],
+    "dilutes": ["dilute", "warm dilute", "cool dilute", "none", "none"]
   },
   "tint_colours":
   {
