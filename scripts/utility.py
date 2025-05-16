@@ -2821,7 +2821,7 @@ def generate_sprite(
             "STORM": ["#70838e", "#5a6873", "#4b5b6b", "#3d4e5d", "#364452", "#273644"],
             "OCEAN": ["#8daf97", "#4f7077", "#374560", "#181b3a", "#0a1437", "#000614"],
             "PALE ROSE": ["#fffaf6", "#fde8de", "#fedbd2", "#ffccc4", "#ffa7b3", "#e56c88"],
-            "PALE SILVER": ["#f3ecea", "#f3ecea", "#e7dcda", "#e7dcda", "#453b3a", "#1f1a19"],
+            "PALE SILVER": ["#fafcff", "#f3ecea", "#f3ecea", "#f3ecea", "#453b3a", "#1f1a19"],
             "CROW": ["#867b8c", "#5c5463", "#3e3846", "#2f2935", "#211b27", "#0a070e"],
             "RAVEN": ["#aaa4c6", "#7b7696", "#454060", "#2b2549", "#171133", "#09061b"],
             "SUNSHINE": ["#f7ebd7", "#f7e0a7", "#f9cc91", "#c46032", "#943b26", "#5e0800"],
@@ -3065,23 +3065,24 @@ def generate_sprite(
             new_sprite.blit(patches, (0, 0))
 
         # TINTS
-        if (
-                cat.pelt.tint != "none"
-                and cat.pelt.tint in sprites.cat_tints["tint_colours"]
-        ):
-            # Multiply with alpha does not work as you would expect - it just lowers the alpha of the
-            # entire surface. To get around this, we first blit the tint onto a white background to dull it,
-            # then blit the surface onto the sprite with pygame.BLEND_RGB_MULT
-            tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
-            new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-        if (
-                cat.pelt.tint != "none"
-                and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
-        ):
-            tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
-            new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
+        if game.config["moss"]["enable_tints"]:
+            if (
+                    cat.pelt.tint != "none"
+                    and cat.pelt.tint in sprites.cat_tints["tint_colours"]
+            ):
+                # Multiply with alpha does not work as you would expect - it just lowers the alpha of the
+                # entire surface. To get around this, we first blit the tint onto a white background to dull it,
+                # then blit the surface onto the sprite with pygame.BLEND_RGB_MULT
+                tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
+                new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if (
+                    cat.pelt.tint != "none"
+                    and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
+            ):
+                tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
+                new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
 
         # draw white patches
