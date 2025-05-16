@@ -62,7 +62,8 @@ class Pelt:
             'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE',
             'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
             'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
+            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR', 'COPPER', 'BLUE GOLDEN', 'DEER', 'GINGER CROW',
+            'STORM', 'OCEAN', 'PALE ROSE'
     ]
     if game.config["moss"]["real_tortie_patches"]:
         tortiepatterns = sprites.real_pelts["tortiepatches"]["patterns"]
@@ -256,20 +257,21 @@ class Pelt:
             'DARK SABLE', 'ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'PALE EMBER', 'EMBER', 'SANDY', 'HEATHER BLUE',
             'COCOA', 'WARM HONEY', 'CHOCOLATE', 'SIENNA', 'GRANITE', 'BLUE GRAY', 'SANDSTONE', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'SLATE GINGER',
             'OAK', 'COLD SILVER', 'BLUE SILVER', 'MAUVE', 'LIGHT EMBER', 'CINDER', 'JADE', 'DARK CHERRY',
-            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR'
+            'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR', 'COPPER', 'BLUE GOLDEN', 'DEER', 'GINGER CROW',
+            'STORM', 'OCEAN', 'PALE ROSE'
     ]
         white_colours = ['WHITE', 'SNOW WHITE']
-        blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'HEATHER BLUE', 'BLUE GRAY', 'BLUE SILVER']
+        blue_colours = ['PALE BLUE', 'BLUE', 'PALE LILAC', 'LILAC', 'HEATHER BLUE', 'BLUE GRAY', 'BLUE SILVER', "STORM", "OCEAN"]
         gray_colours = ['GRAY', 'SLATE', 'DARK GRAY', 'DARK SLATE', 'SILVER', 'SLATE GINGER', 'COLD SILVER', 'CINDER', 'JADE']
         black_colours = ['BLACK', 'SOOT BLACK', 'OBSIDIAN', 'GHOST', 'GRANITE']
-        cream_colours = ['LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE', 'PALE HONEY']
-        gold_colours = ['YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'DARK HONEY']
+        cream_colours = ['LIGHT CREAM', 'CREAM', 'DARK CREAM', 'PALE GOLD', 'PALE GINGER', 'ROSE', 'PALE HONEY', 'PALE ROSE']
+        gold_colours = ['YELLOW', 'GOLD', 'BRONZE', 'DARK GOLD', 'DARK HONEY', "BLUE GOLDEN", "COPPER"]
         fire_colours = ['PALE FIRE', 'FIRE', 'DARK FIRE', 'PALE EMBER', 'EMBER', 'LIGHT EMBER']
-        ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE', 'WARM HONEY', 'SIENNA', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'DARK CHERRY']
+        ginger_colours = ['GINGER', 'DARK GINGER', 'DARK ORANGE', 'WARM HONEY', 'SIENNA', 'BLUE GINGER', 'GRAY GINGER', 'SILVER GINGER', 'DARK CHERRY', "GINGER CROW"]
         coolbrown_colours = ['PALE BROWN', 'ALMOND', 'BIRCH', 'SANDSTONE', 'OAK', 'ASH', 'CEDAR']
         lavender_colours = ['PALE LAVENDER', 'LAVENDER', 'DARK LAVENDER', 'MAUVE']
         warmbrown_colours = ['PALE CINNAMON', 'CINNAMON', 'SABLE', 'DARK SABLE', 'SANDY']
-        brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'CHOCOLATE', 'COCOA']
+        brown_colours = ['ACORN', 'LIGHT BROWN', 'BROWN', 'DARK BROWN', 'COFFEE', 'CHOCOLATE', 'COCOA', "DEER"]
     colour_categories = [white_colours, blue_colours, gray_colours, black_colours, cream_colours, gold_colours,
                      fire_colours, ginger_colours, coolbrown_colours, lavender_colours, warmbrown_colours,
                      brown_colours]

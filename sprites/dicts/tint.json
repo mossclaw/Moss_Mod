@@ -72,7 +72,14 @@
     "ASH": "brown",
     "PALE HONEY": "warm",
     "DARK HONEY": "warm",
-    "CEDAR": "brown"
+    "CEDAR": "brown",
+    "COPPER": "warm",
+    "BLUE GOLDEN": "warm",
+    "DEER": "brown",
+    "GINGER CROW": "warm",
+    "STORM": "cool",
+    "OCEAN": "cool",
+    "PALE ROSE": "warm"
   },
   "possible_tints": {
     "basic": ["pink", "gray", "red", "orange", "none", "warmdilute"],

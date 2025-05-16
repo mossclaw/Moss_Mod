@@ -293,6 +293,34 @@
             "one": "cedar",
             "many": "cedar"
         },
+        "COPPER": {
+            "one": "copper",
+            "many": "copper"
+        },
+        "BLUE GOLDEN": {
+            "one": "blue golden",
+            "many": "blue golden"
+        },
+        "DEER": {
+            "one": "deer",
+            "many": "deer"
+        },
+        "GINGER CROW": {
+            "one": "ginger crow",
+            "many": "ginger crow"
+        },
+        "STORM": {
+            "one": "storm",
+            "many": "storm"
+        },
+        "OCEAN": {
+            "one": "ocean",
+            "many": "ocean"
+        },
+        "PALE ROSE": {
+            "one": "pale rose",
+            "many": "pale rose"
+        },
 
         "SingleColour": "single color",
         "SingleColour_long": "%{color}",

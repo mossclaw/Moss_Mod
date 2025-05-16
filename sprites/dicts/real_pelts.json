@@ -13,14 +13,14 @@
       "WHITE", "SNOW WHITE", "PALE BLUE", "GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER", "BLACK", "SOOT BLACK",
       "LIGHT CREAM", "CREAM", "DARK CREAM", "GOLD", "PALE GOLD", "FIRE", "EMBER", "WARM HONEY", "GINGER", "SIENNA",
       "DARK GINGER", "PALE BROWN", "ALMOND", "SANDSTONE", "LAVENDER", "GRANITE", "SANDY", "CINNAMON", "ACORN",
-      "LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"
+      "LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE", "COPPER", "BLUE GOLDEN"
     ],
     "white": ["WHITE", "SNOW WHITE"],
     "blue": ["PALE BLUE"],
     "gray": ["GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER"],
     "black": ["BLACK", "SOOT BLACK"],
     "cream": ["LIGHT CREAM", "CREAM", "DARK CREAM"],
-    "gold": ["GOLD", "PALE GOLD"],
+    "gold": ["GOLD", "PALE GOLD", "BLUE GOLDEN", "COPPER"],
     "fire": ["FIRE", "EMBER", "WARM HONEY"],
     "ginger": ["GINGER", "SIENNA", "DARK GINGER"],
     "coolbrown": ["PALE BROWN", "ALMOND", "SANDSTONE"],
