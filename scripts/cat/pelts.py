@@ -603,7 +603,7 @@ class Pelt:
 
         if self.length == 'long':
             if self.cat_sprites['newborn'] not in [56, 57, 58, 59]:
-                self.cat_sprites['newborn'] = random.randint(56, 57)
+                self.cat_sprites['newborn'] = random.randint(56, 57, 58, 59)
             if self.cat_sprites['kitten'] not in [1, 3, 5, 7]:
                 self.cat_sprites['kitten'] = choice(kitten_lh)
             if self.cat_sprites['adolescent'] not in [12, 13, 14, 15]:
@@ -617,7 +617,7 @@ class Pelt:
 
         if self.length != 'long':
             if self.cat_sprites['newborn'] not in [56, 57, 58, 59]:
-                self.cat_sprites['newborn'] = random.randint(56, 57)
+                self.cat_sprites['newborn'] = random.randint(56, 57, 58, 59)
             if self.cat_sprites['kitten'] not in [0, 2, 4, 6]:
                 self.cat_sprites['kitten'] = choice(kitten_sh)
             if self.cat_sprites['adolescent'] not in [8, 9, 10, 11]:
@@ -1043,7 +1043,7 @@ class Pelt:
         self.skin = choice(Pelt.skin)
         self.skin_color = choice(Pelt.skin_color)
 
-        self.cat_sprites['newborn'] = random.randint(56, 59)
+        self.cat_sprites['newborn'] = random.randint(56, 57, 58, 59)
 
         kittensh = [0, 2, 4, 6]
         kittenlh = [1, 3, 5, 7]
