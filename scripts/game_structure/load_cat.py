@@ -93,6 +93,11 @@ def json_load():
                 eye_colour2=cat["eye_colour2"] if "eye_colour2" in cat else None,
                 eye_pattern=cat["eye_pattern"] if "eye_pattern" in cat else None,
                 paralyzed=cat["paralyzed"],
+                newborn_sprite=(
+                    cat["sprite_newborn"]
+                    if "sprite_newborn" in cat
+                    else cat["spirit_newborn"]
+                ),
                 kitten_sprite=(
                     cat["sprite_kitten"]
                     if "sprite_kitten" in cat
