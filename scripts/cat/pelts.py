@@ -143,15 +143,7 @@ class Pelt:
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
     # this is used for acc-giving events, only change if you're adding a new category tag to the event filter
     # adding a category here will automatically update the event editor's options
-    acc_categories = {
-        "PLANT": plant_accessories,
-        "WILD": wild_accessories,
-        "COLLAR": collars,
-        "PLANT2": plant2_accessories,
-        "WILD2": wild2_accessories,
-        "LIVING": living_accessories,
-        "KITTY": kitty_accessories,
-    }
+
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
                          "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "HEATHER",
                          "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
@@ -223,6 +215,16 @@ class Pelt:
     gorse_colors = ["ORANGE", "YELLOW", "PALE YELLOW", "GOLD"]
     heather_colors = ["PURPLE", "LILAC", "LIGHT PURPLE", "BRIGHT PURPLE"]
     dry_colors = ["BROWN", "DARK BROWN", "BRONZE", "LIGHT BROWN"]
+
+    acc_categories = {
+        "PLANT": plant_accessories,
+        "WILD": wild_accessories,
+        "COLLAR": collars,
+        "PLANT2": plant2_accessories,
+        "WILD2": wild2_accessories,
+        "LIVING": living_accessories,
+        "KITTY": kitty_accessories,
+    }
 
     if game.config["moss"]["real_pelts"]:
         points = sprites.real_pelts["pelts"]["points"]
