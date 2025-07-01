@@ -72,19 +72,21 @@ class Pelt:
     all_scars = union_of_entries(_pelt_data['scars']['lists'])
     scar_reverse = reverse_dict(_pelt_data['scars']['lists'])
 
+    conversion = read_resource_dict('pelt_conversion', 'Old Save Conversion')
+
 
     """Holds all appearance information for a cat. """
 
     def __init__(self,
                  name: str = "Solid",
                  length: str = "short",
-                 colour: str = "WHITE",
+                 color: str = "WHITE",
                  white_patches: str = None,
-                 eye_color: str = "BLUE",
+                 eye_colour: str = "BLUE",
                  eye_colour2: str = None,
                  eye_pattern: str = None,
                  tortie_base: str = None,
-                 tortie_colour: str = None,
+                 tortie_color: str = None,
                  tortie_marking: str = None,
                  tortie_pattern: str = None,
                  vitiligo: str = None,
@@ -96,28 +98,28 @@ class Pelt:
                  tint: str = "none",
                  skin: str = "SOLID",
                  skin_color: str = "BLACK",
-                 white_patches_tint: str = "none",
-                 newborn_sprite: int = None,
-                 kitten_sprite: int = None,
-                 adol_sprite: int = None,
-                 adult_sprite: int = None,
-                 senior_sprite: int = None,
-                 para_adult_sprite: int = None,
+                 white_patches_tint: str = "offwhite",
+                 sprite_newborn: int = None,
+                 sprite_kitten: int = None,
+                 sprite_adolescent: int = None,
+                 sprite_adult: int = None,
+                 sprite_senior: int = None,
+                 sprite_para_adult: int = None,
                  reverse: bool = False,
                  tuft: str = None,
                  tuft_color: str = "BASE",
                  tortie_tuft: bool = False,
                  ) -> None:
         self.name = name
-        self.colour = colour
+        self.colour = color
         self.white_patches = white_patches
-        self.eye_colour = eye_color
+        self.eye_colour = eye_colour
         self.eye_colour2 = eye_colour2
         self.eye_pattern = eye_pattern
         self.tortie_base = tortie_base
         self.tortie_marking = tortie_marking
         self.tortie_pattern = tortie_pattern
-        self.tortie_colour = tortie_colour
+        self.tortie_colour = tortie_color
         self.vitiligo = vitiligo
         self.length = length
         self.points = points
@@ -135,20 +137,68 @@ class Pelt:
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
-        self.cat_sprites = {"kitten"      : kitten_sprite     or 0,
-                            "adolescent"  : adol_sprite       or 0,
-                            "young adult" : adult_sprite      or 0,
-                            "adult"       : adult_sprite      or 0,
-                            "senior adult": adult_sprite      or 0,
-                            "senior"      : senior_sprite     or 0,
-                            'newborn'     : newborn_sprite    or 0,
-                            "para_adult"  : para_adult_sprite or 0}
+        self.cat_sprites = {"kitten"      : sprite_kitten     or 0,
+                            "adolescent"  : sprite_adolescent or 0,
+                            "young adult" : sprite_adult      or 0,
+                            "adult"       : sprite_adult      or 0,
+                            "senior adult": sprite_adult      or 0,
+                            "senior"      : sprite_senior     or 0,
+                            'newborn'     : sprite_newborn    or 0,
+                            "para_adult"  : sprite_para_adult or 0}
         self.reverse = reverse
         self.skin = skin
         self.skin_color = skin_color
         self.tuft = tuft
         self.tuft_color = tuft_color
         self.tortie_tuft = tortie_tuft
+
+
+    @staticmethod
+    def load_from_cat(cat_dict):
+        pelt_dict = {}
+        for conv in Pelt.conversion['from_cat']:
+            if 'keys' not in conv:
+                keys = { conv['from']: conv['to'] }
+            else:
+                keys = { conv['from'].replace('*', x):
+                         conv['to']  .replace('*', x)
+                         for x in conv['keys'] }
+            for old, new in keys.items():
+                if old in cat_dict:
+                    if 'op' in conv:
+                        match conv['op']:
+                            case 'append':
+                                if new in pelt_dict:
+                                    pelt_dict[new].append(cat_dict[old])
+                                else:
+                                    pelt_dict[new] = [cat_dict[old]]
+                    else:
+                        pelt_dict[new] = cat_dict[old]
+        return Pelt.load(pelt_dict)
+
+
+    @staticmethod
+    def load(pelt_dict):
+        for attr, sub_dict in Pelt.conversion['attribute'].items():
+            if attr not in pelt_dict:
+                continue
+            current = pelt_dict[attr]
+            if current not in sub_dict:
+                continue
+            for key, value in sub_dict[current].items():
+                if key == '*':
+                    key = attr
+                if value == '*':
+                    value = current
+                pelt_dict[key] = value
+        for key, prefix in Pelt.conversion['remove_prefix'].items():
+            if key in pelt_dict and pelt_dict[key] and prefix in pelt_dict[key]:
+                pelt_dict[key] = pelt_dict[key].replace(prefix, '').lower()
+        Accessory.load_all(pelt_dict, Pelt.conversion['accessory'])
+        pelt = Pelt(**pelt_dict)
+        pelt.check_and_convert()
+        return pelt
+
 
     @property
     def accessory(self):
@@ -385,190 +435,9 @@ class Pelt:
         return sprite
 
 
-    def check_and_convert(self, convert_dict):
-        """Checks for old-type properties for the appearance-related properties
+    def check_and_convert(self):
+        """Checks for old-type values for the appearance-related properties
         that are stored in Pelt, and converts them. To be run when loading a cat in."""
-
-        # First, convert from some old names that may be in white_patches.
-        if self.white_patches == "POINTMARK":
-            self.white_patches = "SEALPOINT"
-        elif self.white_patches == "PANTS2":
-            self.white_patches = "PANTSTWO"
-        elif self.white_patches == "ANY2":
-            self.white_patches = "ANYTWO"
-        elif self.white_patches == "VITILIGO2":
-            self.white_patches = "VITILIGOTWO"
-
-
-        if self.vitiligo == "VITILIGO2":
-            self.vitiligo = "VITILIGOTWO"
-
-        # Move white_patches that should be in vit or points.
-        if self.white_patches in Pelt.vit:
-            self.vitiligo = self.white_patches
-            self.white_patches = None
-        elif self.white_patches in Pelt.point_markings:
-            self.points = self.white_patches
-            self.white_patches = None
-
-        if self.tortie_pattern and "tortie" in self.tortie_pattern:
-            self.tortie_pattern = sub("tortie", "", self.tortie_pattern.lower())
-            if self.tortie_pattern == "solid":
-                self.tortie_pattern = "solid"
-
-        if self.white_patches in convert_dict["old_creamy_patches"]:
-            self.white_patches = convert_dict["old_creamy_patches"][self.white_patches]
-            self.white_patches_tint = "darkcream"
-        elif self.white_patches in ("SEPIAPOINT", "MINKPOINT", "SEALPOINT"):
-            self.white_patches_tint = "none"
-
-        # Eye Color Convert Stuff
-        if self.eye_colour == "BLUE2":
-            self.eye_colour = "COBALT"
-        if self.eye_colour2 == "BLUE2":
-            self.eye_colour2 = "COBALT"
-
-        if self.eye_colour in ("BLUEYELLOW", "BLUEGREEN"):
-            if self.eye_colour == "BLUEYELLOW":
-                self.eye_colour2 = "YELLOW"
-            elif self.eye_colour == "BLUEGREEN":
-                self.eye_colour2 = "GREEN"
-            self.eye_colour = "BLUE"
-
-
-        if self.skin not in ["SOLID", 'TIP', 'MARBLE', 'FRECKLE', 'NOSE', 'INNER', 'SPLIT']:
-            if self.skin == "BLACK":
-                self.skin = "SOLID"
-                self.skin_color = "BLACK"
-            elif self.skin == "RED":
-                self.skin = "SOLID"
-                self.skin_color = "RED"
-            elif self.skin == "PINK":
-                self.skin = "SOLID"
-                self.skin_color = "PINK"
-            elif self.skin == "DARKBROWN":
-                self.skin = "SOLID"
-                self.skin_color = "DARKBROWN"
-            elif self.skin == "BROWN":
-                self.skin = "SOLID"
-                self.skin_color = "BROWN"
-            elif self.skin == "LIGHTBROWN":
-                self.skin = "SOLID"
-                self.skin_color = "LIGHTBROWN"
-            elif self.skin == "DARK":
-                self.skin = "SOLID"
-                self.skin_color = "DARK"
-            elif self.skin == "DARKGREY":
-                self.skin = "SOLID"
-                self.skin_color = "DARKGREY"
-            elif self.skin == "GREY":
-                self.skin = "SOLID"
-                self.skin_color = "GREY"
-            elif self.skin == "DARKSALMON":
-                self.skin = "SOLID"
-                self.skin_color = "DARKSALMON"
-            elif self.skin == "SALMON":
-                self.skin = "SOLID"
-                self.skin_color = "SALMON"
-            elif self.skin == "PEACH":
-                self.skin = "SOLID"
-                self.skin_color = "PEACH"
-            elif self.skin == "DARKBLUE":
-                self.skin = "SOLID"
-                self.skin_color = "DARKBLUE"
-            elif self.skin == "BLUE":
-                self.skin = "SOLID"
-                self.skin_color = "BLUE"
-            elif self.skin == "LIGHTBLUE":
-                self.skin = "SOLID"
-                self.skin_color = "LIGHTBLUE"
-            elif self.skin == "MARBLED":
-                self.skin = "TIP"
-                self.skin_color = "PINK"
-            elif self.skin == "DARKMARBLED":
-                self.skin = "TIP"
-                self.skin_color = "RED"
-            elif self.skin == "LIGHTMARBLED":
-                self.skin = "MARBLE"
-                self.skin_color = "PINK"
-
-        old_poppy = ["ORANGE POPPY", "CYAN POPPY", "WHITE POPPY", "PINK POPPY"]
-        old_bulb =["BULB WHITE", "BULB YELLOW", "BULB PINK", "BULB BLUE", "BULB ORANGE"]
-        old_feathers = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS"]
-        old_cicada = ["CICADA WINGS", "BLACK CICADA"]
-        old_moth = ["MOTH WINGS", "ROSY MOTH WINGS"]
-        old_flutter = ["MORPHO BUTTERFLY", "MONARCH BUTTERFLY"]
-        old_collars = [
-            "CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME",
-            "GREEN", "RAINBOW", "BLACK", "SPIKES", "WHITE",
-            "PINK", "PURPLE", "MULTI", "INDIGO"]
-        old_bellcollars = [
-            "CRIMSONBELL", "BLUEBELL", "YELLOWBELL", "CYANBELL", "REDBELL", "LIMEBELL",
-            "GREENBELL", "RAINBOWBELL", "BLACKBELL", "SPIKESBELL", "WHITEBELL",
-            "PINKBELL", "PURPLEBELL", "MULTIBELL", "INDIGOBELL"]
-        old_bowcollars = [
-            "CRIMSONBOW", "BLUEBOW", "YELLOWBOW", "CYANBOW", "REDBOW", "LIMEBOW",
-            "GREENBOW", "RAINBOWBOW", "BLACKBOW", "SPIKESBOW", "WHITEBOW",
-            "PINKBOW", "PURPLEBOW", "MULTIBOW", "INDIGOBOW"]
-        old_nyloncollars = [
-            "CRIMSONNYLON", "BLUENYLON", "YELLOWNYLON", "CYANNYLON", "REDNYLON", "LIMENYLON",
-            "GREENNYLON", "RAINBOWNYLON", "BLACKNYLON", "SPIKESNYLON", "WHITENYLON",
-            "PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON"]
-        old_bloodcollars = ["CRIMSONFANG", "BLUEFANG", "YELLOWFANG", "CYANFANG", "REDFANG", "LIMEFANG",
-                           "GREENFANG", "RAINBOWFANG", "BLACKFANG", "SPIKESFANG", "WHITEFANG",
-                           "PINKFANG", "PURPLEFANG", "MULTIFANG", "INDIGOFANG"]
-        old_harness =  ["RED HARNESS", "ORANGE HARNESS",
-            "YELLOW HARNESS", "GREEN HARNESS", "BLUE HARNESS", "PURPLE HARNESS", "WHITE HARNESS", "BLACK HARNESS",
-            "PINK HARNESS"]
-        old_bandana = ["BLUE BANDANA", "YELLOW BANDANA", "GREEN BANDANA", "RED BANDANA", "ORANGE BANDANA",
-            "PURPLE BANDANA", "WHITE BANDANA", "BLACK BANDANA", "PINK BANDANA"]
-
-        if self.accessory in old_poppy:
-            self.accessory = "POPPY"
-        if self.accessory in old_bulb:
-            self.accessory = "BULB"
-            self.accessory_color = "GREEN"
-            self.accessory_color2 = "ORANGE"
-        if self.accessory in old_feathers:
-            self.accessory = "FEATHER"
-        if self.accessory in old_cicada:
-            self.accessory = "CICADA"
-        if self.accessory in old_moth:
-            self.accessory = "MOTH"
-        if self.accessory in old_flutter:
-            self.accessory = "BUTTERFLY"
-        if self.accessory in old_collars:
-            self.accessory = "LEATHERCOLLAR"
-        if self.accessory == "COLLAR":
-            self.accessory = "LEATHERCOLLAR"
-        if self.accessory in old_bellcollars:
-            self.accessory = "BELLCOLLAR"
-            self.accessory_color2 = "GOLD"
-        if self.accessory in old_nyloncollars:
-            self.accessory = "STUDDEDCOLLAR"
-        if self.accessory in old_bloodcollars:
-            self.accessory = "FANGCOLLAR"
-        if self.accessory in old_bowcollars:
-            self.accessory = "BOWCOLLAR"
-        if self.accessory == "DRY HERBS":
-            self.accessory = "HERBS"
-            self.accessory_color = "BROWN"
-        if self.accessory == "YELLOW DAISY":
-            self.accessory = "DAISY"
-            self.accessory_color = "YELLOW"
-        if self.accessory in old_harness:
-            self.accessory = "HARNESS"
-        if self.accessory in old_bandana:
-            self.accessory = "BANDANA"
-        if self.accessory == "DRY NETTLES":
-            self.accessory = "NETTLE"
-            self.accessory_color = "BROWN"
-        if self.accessory == "DRY LAURELS":
-            self.accessory = "LAUREL"
-            self.accessory_color = "BROWN"
-        if self.accessory == "DRY CATMINT":
-            self.accessory = "CATMINT"
-            self.accessory_color = "BROWN"
 
         poses = self.cat_sprites
         for age in ['newborn', 'kitten', 'adolescent', 'adult', 'senior']:
@@ -578,34 +447,6 @@ class Pelt:
                 if age == 'adult':
                     poses['young adult'] = poses['senior adult'] = poses[age]
 
-
-        if self.tortie_marking in convert_dict["old_tortie_patches"]:
-            old_pattern = self.tortie_marking
-            self.tortie_marking = convert_dict["old_tortie_patches"][old_pattern][1]
-
-            # If the pattern is old, there is also a chance the base color is stored in
-            # tortiecolour. That may be different from the pelt color ("main" for torties)
-            # generated before the "ginger-on-ginger" update. If it was generated after that update,
-            # tortiecolour and pelt_colour will be the same. Therefore, let's also re-set the pelt color
-            self.colour = self.tortie_colour
-            self.tortie_colour = convert_dict["old_tortie_patches"][old_pattern][0]
-
-        if self.tortie_marking == "MINIMAL1":
-            self.tortie_marking = "MINIMALONE"
-        elif self.tortie_marking == "MINIMAL2":
-            self.tortie_marking = "MINIMALTWO"
-        elif self.tortie_marking == "MINIMAL3":
-            self.tortie_marking = "MINIMALTHREE"
-        elif self.tortie_marking == "MINIMAL4":
-            self.tortie_marking = "MINIMALFOUR"
-        elif self.tortie_marking == "SPLIT":
-            self.tortie_marking = "HALF"
-
-
-        if self.accessory is None:
-            self.accessory = tuple()
-        elif isinstance(self.accessory, str):
-            self.accessory = tuple([self.accessory])
 
 
     def excluded_scars(self):

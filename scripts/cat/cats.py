@@ -3523,9 +3523,9 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
         loading_cat=True,
         pelt=Pelt(
             name="SingleColour",
-            colour="WHITE",
+            color="WHITE",
             length="medium",
-            eye_color="SAGE",
+            eye_colour="SAGE",
             reverse=False,
             white_patches=None,
             vitiligo=None,
