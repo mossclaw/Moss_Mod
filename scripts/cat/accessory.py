@@ -39,11 +39,41 @@ class AccessoryDef:
 
 
     def random_colors(self):
-        return [ choice(AccessoryDef.colors[x]) for x in self.color ]
+        return AccessoryDef.__random_colors(self.color)
 
 
     def random_patterns(self):
-        return [ choice(AccessoryDef.patterns) for x in range(1, self.patterns) ]
+        return AccessoryDef.__random_patterns(self.patterns)
+
+
+    def fix(self, acc):
+        n = len(self.color)
+        if len(acc.color) != n:
+            rand_func = AccessoryDef.__random_colors
+            acc.color = acc.color[:n] + rand_func(self.color[len(acc.color):])
+        for i, col in enumerate(acc.color):
+            if col not in AccessoryDef.colors[self.color[i]]:
+                acc.color[i] = AccessoryDef.__random_color(self.color[i])
+
+        n = self.patterns
+        if len(acc.pattern) != n:
+            rand_func = AccessoryDef.__random_patterns
+            acc.pattern = acc.pattern[:n] + rand_func(n - self.patterns)
+
+
+    @staticmethod
+    def __random_color(category):
+        return choice(AccessoryDef.colors[category])
+
+
+    @staticmethod
+    def __random_colors(categories):
+        return [ AccessoryDef.__random_color(x) for x in categories ]
+
+
+    @staticmethod
+    def __random_patterns(n):
+        return [ choice(AccessoryDef.patterns) for x in range(0, n) ]
 
 
     @staticmethod
@@ -90,8 +120,8 @@ class Accessory:
 
     def __init__(self,
                  accessory,
-                 color: list[str],
-                 pattern: list[str]):
+                 color: list[str] = [],
+                 pattern: list[str] = []):
         self.acc = Accessory.__lookup(accessory)
         self.color = color
         self.pattern = pattern
@@ -143,7 +173,7 @@ class Accessory:
 
     @staticmethod
     def __lookup(accessory):
-        if type(accessory) is str:
+        if isinstance(accessory, str):
             accessory = AccessoryDef.available[accessory]
         return accessory
 
@@ -155,7 +185,7 @@ class Accessory:
 
     @staticmethod
     def create_random_for_event(possible, exclude_slots = []):
-        if type(possible) is str:
+        if isinstance(possible, str):
             Accessory.create_random(AccessoryDef.events[possible])
 
         def list_of_accs(x, lists):
@@ -173,7 +203,7 @@ class Accessory:
 
     @staticmethod
     def create_random(available):
-        if type(available) is list:
+        if isinstance(available, list):
             available = choice(available)
         accessory = Accessory.__lookup(available)
         return Accessory(
@@ -184,26 +214,41 @@ class Accessory:
 
     @staticmethod
     def load(data):
-        if type(data) is str:
-            data = [data]
-        elif type(data) is Accessory:
+        if isinstance(data, Accessory):
             return data
+        if isinstance(data, str):
+            return Accessory.create_random(data)
         return load_instance_list(data, Accessory, Accessory._load_args)
 
 
     @staticmethod
-    def load_legacy(cat_data: dict):
-        if 'accessory' not in cat_data:
-            return None
+    def load_all(data, conv):
+        if 'accessory' not in data:
+            return
+        accs = data['accessory']
 
-        name = cat_data['accessory']
-        color = [ cat_data['accessory_color'] ]
-        if 'accessory_color2' in cat_data:
-            color.append(cat_data['accessory_color2'])
-        pattern = [ cat_data['accessory_pattern'] ]
-        if 'accessory_pattern2' in cat_data:
-            pattern.append(cat_data['accessory_pattern2'])
+        if isinstance(accs, str):
+            data['accessory'] = accs = [ accs ]
 
-        # TODO: Probably need more legacy stuff here...
+        for i, acc in enumerate(accs):
+            if isinstance(acc, str):
+                args = conv[acc] if acc in conv else { '*': acc }
+                args['accessory'] = args['*']
+                del args['*']
+                accs[i] = Accessory(**args)
+            elif isinstance(acc, list):
+                accs[i] = Accessory.load(acc)
 
-        return Accessory(name, color, pattern)
+        if len(accs) > 0:
+            acc = accs[0]
+            if 'accessory_color' in data:
+                acc.color = [ data['accessory_color'] ]
+                if 'accessory_color2' in cat_data:
+                    acc.color.append(cat_data['accessory_color2'])
+            if 'accessory_pattern' in data:
+                acc.pattern = [ data['accessory_pattern'] ]
+                if 'accessory_pattern2' in cat_data:
+                    acc.pattern.append(cat_data['accessory_pattern2'])
+
+        for acc in accs:
+            acc.acc.fix(acc)
