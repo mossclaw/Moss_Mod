@@ -32,7 +32,7 @@ from scripts.utility import (
     get_alive_status_cats,
     adjust_list_text,
 )
-
+import random
 
 class HandleShortEvents:
     """Handles generating and executing ShortEvents"""
