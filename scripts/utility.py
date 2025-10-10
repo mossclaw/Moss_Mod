@@ -3389,7 +3389,22 @@ def generate_sprite(
             "PEACH": ["#ffc7a8"],
             "DARKBLUE": ["#545a5e"],
             "BLUE": ["#3a4e57"],
-            "LIGHTBLUE": ["#5f676b"]
+            "LIGHTBLUE": ["#5f676b"],
+            "PALE": ["#d1ccd8"],
+            "WARMBROWN": ["#955a37"],
+            "PALEBROWN": ["#af9173"],
+            "PLUM": ["#754544"],
+            "PURPLE": ["#6a525a"],
+            "BERRY": ["#894a50"],
+            "DARKRED": ["#8c391a"],
+            "DARKORANGE": ["#c37251"],
+            "ORANGE": ["#da7e51"],
+            "GOLD": ["#c3875a"],
+            "LEMON": ["#f0b080"],
+            "DARKPINK": ["#a37275"],
+            "BRIGHTPINK": ["#ffa097"],
+            "APRICOT": ["#f9b6a0"]
+
         }
 
         skin_color = str(cat.pelt.skin_color).upper()

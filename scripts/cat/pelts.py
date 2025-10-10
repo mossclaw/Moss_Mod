@@ -328,7 +328,7 @@ class Pelt:
 
     skin_color = ['BLACK', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
                     'SALMON', 'PEACH', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
-    skin = ['SOLID', 'TIP', 'MARBLE', 'FRECKLE']
+    skin = ['SOLID', 'TIP', 'MARBLE', 'FRECKLE', 'NOSE', 'INNER', 'SPLIT']
     tufts = ['SHORT', 'FLUFFY', 'TALL', 'LONG', 'LYNX', 'LOW', 'CURLY', 'FULL', 'SHORTHALF', 'FLUFFYHALF', 'TALLHALF', 'LONGHALF', 'LYNXHALF', 'LOWHALF', 'CURLYHALF', 'FULLHALF']
     tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE']
     white_tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE', 'WHITE']
@@ -494,7 +494,7 @@ class Pelt:
             self.eye_colour = "BLUE"
 
 
-        if self.skin not in ["SOLID", 'TIP', 'MARBLE', 'FRECKLE']:
+        if self.skin not in ["SOLID", 'TIP', 'MARBLE', 'FRECKLE', 'NOSE', 'INNER', 'SPLIT']:
             if self.skin == "BLACK":
                 self.skin = "SOLID"
                 self.skin_color = "BLACK"
