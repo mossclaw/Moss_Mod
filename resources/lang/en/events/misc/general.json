@@ -477,7 +477,7 @@
         "sub_type": ["accessory"],
         "weight": 5,
         "event_text": "m_c disappears for a few days, then returns to camp with a acc_singular around {PRONOUN/m_c/poss} neck.",
-        "new_accessory": ["COLLAR"],
+        "new_accessory": ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR"],
         "m_c": {
             "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
         }

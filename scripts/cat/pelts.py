@@ -173,7 +173,7 @@ class Pelt:
     head_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "SUNGLASSES", "LUNA MOTH", "ATLAS MOTH",
                         "LUCKY CLOVER", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "SPROUT", "JUNIPER", "RASPBERRY", "LAVENDER",
                         "OAK LEAVES", "MAPLE SEED"]
-    layer_accessories = ["COLLAR", "HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
+    layer_accessories = ["HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
                          "NETTLE", "HEATHER", "GORSE", "CATMINT", "LAUREL", "BUTTERFLIES", "IVY", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL", "COWBOY HAT",
                          "LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
 
@@ -1780,7 +1780,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
     ):
         return "cat.pelts.mottled_long", color_name
     else:
-        if base in tuple(tabby.lower() for tabby in Pelt.tabbies) + (
+        if base in tuple(tabby.lower() for tabby in Pelt.stripes) + (
             "bengal",
             "rosette",
             "speckled",
