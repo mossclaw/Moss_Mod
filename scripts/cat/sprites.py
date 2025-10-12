@@ -1,11 +1,16 @@
+import logging
 import os
 from copy import copy
 
 import pygame
 import ujson
-import time
 
-from scripts.game_structure.game_essentials import game
+from scripts.cat.enums import CatGroup
+from scripts.game_structure import constants, image_cache
+from scripts.game_structure.game.settings import game_setting_get
+from scripts.special_dates import SpecialDate, is_today
+
+logger = logging.getLogger(__name__)
 
 
 class Sprites:
@@ -318,9 +323,9 @@ class Sprites:
         var.replace(
             (87, 76, 45),
             (
-                pygame.Color(game.config["theme"]["dark_mode_clan_symbols"])
-                if not force_light and game.settings["dark mode"]
-                else pygame.Color(game.config["theme"]["light_mode_clan_symbols"])
+                pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
+                if not force_light and game_setting_get("dark mode")
+                else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
             ),
             distance=0,
         )

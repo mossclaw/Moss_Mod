@@ -5,8 +5,9 @@ from re import sub
 import i18n
 
 import scripts.game_structure.screen_settings
+from scripts.cat.enums import CatAge
 from scripts.cat.sprites import sprites
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import constants
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text
 
@@ -46,7 +47,7 @@ class Pelt:
     }
 
     # ATTRIBUTES, including non-pelt related
-    if game.config["moss"]["real_pelt_colors"]:
+    if constants.CONFIG["moss"]["real_pelt_colors"]:
         pelt_colours = sprites.real_pelts["colors"]["peltcolors"]
     else:
         pelt_colours = [
@@ -66,7 +67,7 @@ class Pelt:
             'ASH', 'PALE HONEY', 'DARK HONEY', 'CEDAR', 'COPPER', 'BLUE GOLDEN', 'DEER', 'GINGER CROW',
             'STORM', 'OCEAN', 'PALE ROSE', 'PALE SILVER', 'CROW', 'RAVEN', 'SUNSHINE', 'DARK EMBER'
     ]
-    if game.config["moss"]["real_tortie_patches"]:
+    if constants.CONFIG["moss"]["real_tortie_patches"]:
         tortiepatterns = sprites.real_pelts["tortiepatches"]["patterns"]
     else:
         tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'HALF', 'STREAK', 'MASK', 'SMOKE',
@@ -78,7 +79,7 @@ class Pelt:
                           'MAXIMUMSIX', 'MAXIMUMSEVEN', 'MAXIMUMEIGHT', 'FRECKLED', 'HEARTBEAT']
 
 
-    if game.config["moss"]["real_pelts"]:
+    if constants.CONFIG["moss"]["real_pelts"]:
         tortiebases = sprites.real_pelts["tortiepatches"]["bases"]
     else:
         tortiebases = ['solid', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
@@ -87,7 +88,7 @@ class Pelt:
                        'charcoalbengal', 'dust']
 
     pelt_length = ["short", "medium", "long"]
-    if game.config["moss"]["real_eye_colors"]:
+    if constants.CONFIG["moss"]["real_eye_colors"]:
         eye_colours = sprites.real_pelts["eyes"]["eyecolors"]
         yellow_eyes = sprites.real_pelts["eyes"]["yellow"]
         blue_eyes = sprites.real_pelts["eyes"]["blue"]
@@ -138,6 +139,8 @@ class Pelt:
 
     # missing scars that require color
     scars4 = ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
+
+    all_scars = scars1 + scars2 + scars3 + scars4
 
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
@@ -226,7 +229,7 @@ class Pelt:
         "KITTY": kitty_accessories,
     }
 
-    if game.config["moss"]["real_pelts"]:
+    if constants.CONFIG["moss"]["real_pelts"]:
         points = sprites.real_pelts["pelts"]["points"]
         spots = sprites.real_pelts["pelts"]["spots"]
         swirls = sprites.real_pelts["pelts"]["swirls"]
@@ -245,7 +248,7 @@ class Pelt:
     pelt_categories = [points, spots, swirls, flats, stripes, exotic, torties]
 
     # SPRITE NAMES
-    if game.config["moss"]["real_pelt_colors"]:
+    if constants.CONFIG["moss"]["real_pelt_colors"]:
         single_colours = sprites.real_pelts["colors"]["peltcolors"]
         white_colours = sprites.real_pelts["colors"]["white"]
         blue_colours = sprites.real_pelts["colors"]["blue"]
@@ -291,12 +294,12 @@ class Pelt:
         'SUN-LIT ICE', 'COPPER', 'SAGE', 'BRIGHT BLUE', 'PALE BLUE', 'LAVENDER', 'DARK GREY', 'PALE YELLOW', 'GOLD', 'LIME',
         'HAZELNUT', 'DARK AMBER', 'SLATE', 'RUBY', 'LILAC', 'LIGHT GREY', 'PINK', 'DARK HAZEL', 'CHOCOLATE'
     ]
-    if game.config["moss"]["classic_hc"]:
+    if constants.CONFIG["moss"]["classic_hc"]:
         eye_patterns = sprites.real_pelts["hc"]["patterns"]
     else:
         eye_patterns = ['TRUE', 'CENTRAL', 'QUARTER', 'SLIVER', 'SPECKLES', 'FROSTED', 'RING', 'HALFCENTRAL', 'HALFRING', 'BUBBLE', 'OUTRING', 'SWAP', 'SWITCH', 'TRANSFORM']
 
-    if game.config["moss"]["real_white_patches"]:
+    if constants.CONFIG["moss"]["real_white_patches"]:
         little_white = sprites.real_pelts["whitepatches"]["little"]
         mid_white = sprites.real_pelts["whitepatches"]["mid"]
         high_white = sprites.real_pelts["whitepatches"]["high"]
@@ -707,7 +710,7 @@ class Pelt:
             )
 
         # White patches must be initalized before eye color.
-        num = game.config["cat_generation"]["base_heterochromia"]
+        num = constants.CONFIG["cat_generation"]["base_heterochromia"]
         if (
             self.white_patches in Pelt.high_white
             or self.white_patches in Pelt.mostly_white
@@ -792,7 +795,7 @@ class Pelt:
 
         # There is a 1/10 chance for kits to have the exact same pelt as one of their parents
         if not random.randint(
-            0, game.config["cat_generation"]["direct_inheritance"]
+            0, constants.CONFIG["cat_generation"]["direct_inheritance"]
         ):  # 1/10 chance
             selected = choice(par_pelts)
             self.name = selected.name
@@ -840,10 +843,10 @@ class Pelt:
         )
 
         # Tortie chance
-        tortie_chance_f = game.config["cat_generation"][
+        tortie_chance_f = constants.CONFIG["cat_generation"][
             "base_female_tortie"
         ]  # There is a default chance for female tortie
-        tortie_chance_m = game.config["cat_generation"]["base_male_tortie"]
+        tortie_chance_m = constants.CONFIG["cat_generation"]["base_male_tortie"]
         for p_ in par_pelts:
             if p_.name in Pelt.torties:
                 tortie_chance_f = int(tortie_chance_f / 2)
@@ -988,8 +991,8 @@ class Pelt:
 
         # Tortie chance
         # There is a default chance for female tortie, slightly increased for completely random generation.
-        tortie_chance_f = game.config["cat_generation"]["base_female_tortie"] - 1
-        tortie_chance_m = game.config["cat_generation"]["base_male_tortie"]
+        tortie_chance_f = constants.CONFIG["cat_generation"]["base_female_tortie"] - 1
+        tortie_chance_m = constants.CONFIG["cat_generation"]["base_male_tortie"]
         if gender == "female":
             torbie = random.getrandbits(tortie_chance_f) == 1
         else:
@@ -1263,7 +1266,7 @@ class Pelt:
             if not self.pattern:
                 self.pattern = choice(Pelt.tortiepatterns)
 
-            wildcard_chance = game.config["cat_generation"]["wildcard_tortie"]
+            wildcard_chance = constants.CONFIG["cat_generation"]["wildcard_tortie"]
             if self.colour:
                 # The "not wildcard_chance" allows users to set wildcard_tortie to 0
                 # and always get wildcard torties.
@@ -1293,7 +1296,7 @@ class Pelt:
                     possible_colors.remove(self.colour)
 
                     # Ginger is often duplicated to increase its chances
-                    if game.config["moss"]["real_tortie_colors"]:
+                    if constants.CONFIG["moss"]["real_tortie_colors"]:
                         if self.colour in Pelt.black_colours:
                             self.tortiecolour = choice(Pelt.fire_colours + Pelt.ginger_colours)
                         elif self.colour in Pelt.white_colours:
@@ -1390,7 +1393,7 @@ class Pelt:
 
         # Direct inheritance. Will only work if at least one parent has white patches, otherwise continue on.
         if par_whitepatches and not random.randint(
-            0, game.config["cat_generation"]["direct_inheritance"]
+            0, constants.CONFIG["cat_generation"]["direct_inheritance"]
         ):
             # This ensures Torties and Calicos won't get direct inheritance of incorrect white patch types
             _temp = par_whitepatches.copy()
@@ -1491,7 +1494,7 @@ class Pelt:
     def randomize_white_patches(self):
         # Points determination. Tortie can't be pointed
         if self.name != "Tortie" and not random.getrandbits(
-            game.config["cat_generation"]["random_point_chance"]
+            constants.CONFIG["cat_generation"]["random_point_chance"]
         ):
             # Cat has colorpoint!
             self.points = choice(Pelt.point_markings)
@@ -1533,7 +1536,7 @@ class Pelt:
                 if p.pelt.vitiligo:
                     par_vit.append(p.pelt.vitiligo)
 
-        vit_chance = max(game.config["cat_generation"]["vit_chance"] - len(par_vit), 0)
+        vit_chance = max(constants.CONFIG["cat_generation"]["vit_chance"] - len(par_vit), 0)
         if not random.getrandbits(vit_chance):
             self.vitiligo = choice(Pelt.vit)
 
@@ -1626,7 +1629,7 @@ class Pelt:
                 color_tints = []
 
             if base_tints or color_tints:
-                if game.config["moss"]["black_white_patches"]:
+                if constants.CONFIG["moss"]["black_white_patches"]:
                     black_patches = sprites.white_patches_tints["possible_tints"]["blackpatches"]
                     self.white_patches_tint = choice(base_tints + color_tints + black_patches)
                 else:
