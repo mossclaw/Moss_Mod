@@ -7,7 +7,7 @@ from scripts.conditions import (
     get_amount_cat_for_one_medic,
     medicine_cats_can_cover_clan,
 )
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 # ---------------------------------------------------------------------------- #
@@ -202,8 +202,7 @@ class Scar_Events:
                 return None, None
 
             # If we've reached this point, we can move forward with giving history.
-            History.add_scar(
-                cat,
+            cat.history.add_scar(
                 i18n.t(
                     "cat.history.scar_from_injury",
                     injury_name=i18n.t(f"conditions.injuries.{injury_name}"),

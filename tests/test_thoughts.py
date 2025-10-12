@@ -1,6 +1,8 @@
 import os
 import unittest
 
+from scripts.cat.enums import CatRank, CatGroup
+
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
@@ -10,8 +12,8 @@ from scripts.cat.thoughts import Thoughts
 
 class TestNotWorkingThoughts(unittest.TestCase):
     def setUp(self):
-        self.main = Cat(status="warrior")
-        self.other = Cat(status="warrior")
+        self.main = Cat(status_dict={"rank": CatRank.WARRIOR}, disable_random=True)
+        self.other = Cat(status_dict={"rank": CatRank.WARRIOR}, disable_random=True)
         self.biome = "Forest"
         self.season = "Newleaf"
         self.camp = "camp2"
@@ -90,10 +92,8 @@ class TestNotWorkingThoughts(unittest.TestCase):
 class TestsGetStatusThought(unittest.TestCase):
     def test_medicine_thought(self):
         # given
-        medicine = Cat()
-        warrior = Cat()
-        medicine.status = "medicine cat"
-        warrior.status = "warrior"
+        medicine = Cat(status_dict={"rank": CatRank.MEDICINE_CAT})
+        warrior = Cat(status_dict={"rank": CatRank.WARRIOR})
         medicine.trait = "bold"
         biome = "Forest"
         season = "Newleaf"
@@ -109,9 +109,16 @@ class TestsGetStatusThought(unittest.TestCase):
 
     def test_exiled_thoughts(self):
         # given
-        cat = Cat(status="exiled", moons=40)
-        cat.exiled = True
-        cat.outside = True
+        exiled_status = {
+            "group_history": [
+                {"group": CatGroup.PLAYER_CLAN, "rank": CatRank.WARRIOR, "moons_as": 1},
+                {"group": None, "rank": CatRank.LONER, "moons_as": 1},
+            ],
+            "standing_history": [
+                {"group": CatGroup.PLAYER_CLAN, "standing": ["member", "exiled"]}
+            ],
+        }
+        cat = Cat(status_dict=exiled_status, moons=40, disable_random=True)
         biome = "Forest"
         season = "Newleaf"
         camp = "camp2"
@@ -121,8 +128,8 @@ class TestsGetStatusThought(unittest.TestCase):
 
     def test_lost_thoughts(self):
         # given
-        cat = Cat(status="warrior", moons=40)
-        cat.outside = True
+        cat = Cat(status_dict={"rank": CatRank.WARRIOR}, moons=40, disable_random=True)
+        cat.status.become_lost()
         biome = "Forest"
         season = "Newleaf"
         camp = "camp2"
@@ -134,8 +141,8 @@ class TestsGetStatusThought(unittest.TestCase):
 class TestFamilyThoughts(unittest.TestCase):
     def test_family_thought_young_children(self):
         # given
-        parent = Cat(moons=40)
-        kit = Cat(parent1=parent.ID, moons=4)
+        parent = Cat(moons=40, disable_random=True)
+        kit = Cat(parent1=parent.ID, moons=4, disable_random=True)
         biome = "Forest"
         season = "Newleaf"
         camp = "camp2"
@@ -157,8 +164,8 @@ class TestFamilyThoughts(unittest.TestCase):
 
     def test_family_thought_unrelated(self):
         # given
-        cat1 = Cat(moons=40)
-        cat2 = Cat(moons=40)
+        cat1 = Cat(moons=40, disable_random=True)
+        cat2 = Cat(moons=40, disable_random=True)
 
         # when
 

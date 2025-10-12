@@ -5,7 +5,7 @@ import pygame
 import pygame_gui
 
 from scripts.cat.cats import Cat
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
 from scripts.utility import (
     generate_sprite,
@@ -16,6 +16,10 @@ from scripts.utility import (
 )
 from scripts.utility import ui_scale
 from .Screens import Screens
+from .enums import GameScreen
+from ..cat.sprites import sprites
+from ..clan_package.settings import get_clan_setting
+from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER
 from ..game_structure.windows import SaveAsImage
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -56,16 +60,16 @@ class SpriteInspectScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.back_button:
-                self.change_screen("profile screen")
+                self.change_screen(GameScreen.PROFILE)
             elif event.ui_element == self.next_cat_button:
                 if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                    switch_set_value(Switch.cat, self.next_cat)
                     self.cat_setup()
                 else:
                     print("invalid next cat", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
                 if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                    switch_set_value(Switch.cat, self.previous_cat)
                     self.cat_setup()
                 else:
                     print("invalid previous cat", self.previous_cat)
@@ -213,10 +217,7 @@ class SpriteInspectScreen(Screens):
             starting_height=2,
         )
 
-        if game.clan.clan_settings["backgrounds"]:
-            self.platform_shown = True
-        else:
-            self.platform_shown = False
+        self.platform_shown = get_clan_setting("backgrounds")
 
         self.cat_setup()
 
@@ -226,12 +227,21 @@ class SpriteInspectScreen(Screens):
             self.cat_elements[ele].kill()
         self.cat_elements = {}
 
-        self.the_cat = Cat.fetch_cat(game.switches["cat"])
+        self.the_cat = Cat.fetch_cat(switch_get_value(Switch.cat))
 
         self.cat_elements["platform"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((120, 100), (560, 490))),
             pygame.transform.scale(
-                self.get_platform(), ui_scale_dimensions((560, 350))
+                sprites.get_platform(
+                    biome=game.clan.override_biome
+                    if game.clan.override_biome
+                    else game.clan.biome,
+                    season=game.clan.current_season,
+                    show_nest=self.the_cat.age == "newborn"
+                    or self.the_cat.not_working(),
+                    group=self.the_cat.status.group,
+                ),
+                ui_scale_dimensions((560, 350)),
             ),
             manager=MANAGER,
         )
@@ -458,61 +468,18 @@ class SpriteInspectScreen(Screens):
         else:
             self.previous_life_stage.enable()
 
-    def get_platform(self):
-        the_cat = Cat.all_cats.get(game.switches["cat"], game.clan.instructor)
-
-        light_dark = "light"
-        if game.settings["dark mode"]:
-            light_dark = "dark"
-
-        available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
-        biome = (
-            game.clan.biome
-            if not game.clan.override_biome
-            else game.clan.override_biome
-        )
-
-        if biome not in available_biome:
-            biome = available_biome[0]
-        if the_cat.age == "newborn" or the_cat.not_working():
-            biome = "nest"
-
-        biome = biome.lower()
-
-        platformsheet = pygame.image.load(
-            "resources/images/platforms.png"
-        ).convert_alpha()
-
-        order = ["beach", "forest", "mountainous", "nest", "plains", "SC/DF"]
-
-        offset = 0
-        if light_dark == "light":
-            offset = 300
-        
-        if the_cat.df:
-            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 260, 2400, 260))
-            return biome_platforms.subsurface(pygame.Rect(0 + offset, 0, 300, 260))
-        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
-            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index('SC/DF') * 260, 2400, 260))
-            return biome_platforms.subsurface(pygame.Rect(600 + offset, 0, 300, 260))
-        else:
-            biome_platforms = platformsheet.subsurface(pygame.Rect(0, order.index(biome) * 260, 2400, 260)).convert_alpha()
-            season_x = {
-                "greenleaf": 0 + offset,
-                "leaf-bare": 600 + offset,
-                "leaf-fall": 1200 + offset,
-                "newleaf": 1800 + offset
-            }
-            
-            
-            return biome_platforms.subsurface(pygame.Rect(
-                season_x.get(game.clan.current_season.lower(), season_x["greenleaf"]), 0, 300, 260))
-
     def generate_image_to_save(self):
         """Generates the image to save, with platform if needed."""
         if self.platform_shown:
-            full_image = self.get_platform()
-            full_image.blit(self.cat_image, (55, -10))
+            full_image = sprites.get_platform(
+                biome=game.clan.override_biome
+                if game.clan.override_biome
+                else game.clan.biome,
+                season=game.clan.current_season,
+                show_nest=self.the_cat.age == "newborn" or self.the_cat.not_working(),
+                group=self.the_cat.status.group,
+            )
+            full_image.blit(self.cat_image, (15, 0))
             return full_image
         else:
             return self.cat_image

@@ -8,9 +8,7 @@ from pygame_gui.elements import UIImage
 
 import scripts.game_structure.screen_settings
 from scripts.clan import Clan
-from scripts.game_structure.game_essentials import (
-    game,
-)
+from scripts.game_structure import game
 from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
 from scripts.game_structure.windows import DeleteCheck
 from scripts.utility import (
@@ -21,6 +19,9 @@ from scripts.utility import (
     ui_scale_offset,
 )
 from .Screens import Screens
+from .enums import GameScreen
+from ..game_structure.game.save_load import read_clans
+from ..game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
@@ -41,7 +42,7 @@ class SwitchClanScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.main_menu:
-                self.change_screen("start screen")
+                self.change_screen(GameScreen.START)
             elif event.ui_element == self.next_page_button:
                 self.page += 1
                 self.update_page()
@@ -60,15 +61,15 @@ class SwitchClanScreen(Screens):
 
                 for page in self.clan_buttons:
                     if event.ui_element in page:
-                        self.change_screen("start screen")
+                        self.change_screen(GameScreen.START)
                         Clan.switch_clans(
                             self.clan_name[self.page][page.index(event.ui_element)],
                             False,
                         )
 
-        elif event.type == pygame.KEYDOWN and game.settings["keybinds"]:
+        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
             if event.key == pygame.K_ESCAPE:
-                self.change_screen("start screen")
+                self.change_screen(GameScreen.START)
 
     def exit_screen(self):
         """
@@ -127,16 +128,17 @@ class SwitchClanScreen(Screens):
 
         self.current_clan = pygame_gui.elements.UITextBox(
             "screens.switch_clan.current_clan",
-            ui_scale(pygame.Rect((0, 100), (600, 40))),
+            ui_scale(pygame.Rect((0, 90), (600, 80))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             manager=MANAGER,
             anchors={"centerx": "centerx"},
             text_kwargs={
-                "clan": game.clan.name if game.clan else "",
+                "clan": game.clan.displayname if game.clan else "",
+                "clan_id": game.clan.name if game.clan else "",
                 "count": 1 if game.clan else 0,
             },
         )
-        self.clan_list = game.read_clans()
+        self.clan_list = read_clans()
 
         self.clan_buttons = [[]]
         self.clan_name = [[]]

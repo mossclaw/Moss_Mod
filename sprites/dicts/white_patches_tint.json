@@ -75,6 +75,7 @@
     "CEDAR": "basic"
   },
   "possible_tints": {
+
     "basic": ["none", "offwhite", "snow"],
     "white": ["offwhite", "offwhite", "offwhite"],
     "snowwhite": ["snow", "snow", "snow"],
@@ -122,6 +123,7 @@
     "darkorange": ["darkorange", "darkorange", "darkorange", "darkorange"],
     "darkgold": ["darkgold", "darkgold", "darkgold", "darkgold"],
     "blackpatches": ["black"]
+
 
   },
   "tint_colours":

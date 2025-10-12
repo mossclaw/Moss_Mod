@@ -79,11 +79,6 @@
             "many": "pickleweeds",
             "one": "pickleweed"
         },
-        "CREEPING GOLDEN JENNY": {
-            "zero": "creeping golden jenny",
-            "many": "creeping golden jennies",
-            "one": "creeping golden jenny"
-        },
         "DRY HERBS": {
             "zero": "herb-covered pelt",
             "many": "dry herbs",
@@ -190,16 +185,6 @@
             "zero": "butterfly wings",
             "many": "butterfly wings",
             "one": "butterfly"
-        },
-        "MONARCH BUTTERFLY": {
-            "zero": "monarch butterfly wings",
-            "many": "monarch butterfly wings",
-            "one": "monarch butterfly"
-        },
-        "BLACK CICADA": {
-            "zero": "black cicada wings",
-            "many": "black cicada wings",
-            "one": "black cicada"
         },
         "LEATHERCOLLAR": {
             "zero": "leather collar",
@@ -376,5 +361,6 @@
     "many": "rainbow collars",
     "one": "rainbow collar"
   }
+
     }
 }
