@@ -2661,41 +2661,147 @@ def generate_sprite(
     )
 
     # generating the sprite
+
+
+
+
     try:
-        if cat.pelt.name not in ["Tortie", "Calico"]:
-            new_sprite.blit(
-                sprites.sprites[
-                    cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
-                ],
-                (0, 0),
-            )
+        # 0 Base, 1 Marking, 2 Overlay
+        color_dict = {
+            "WHITE": ["#eff8fd", "#b4d0db", "#f5fbf9"],
+            "PALEGREY": ["#c1d5d3", "#88a9a3", "#dbe2d5"],
+            "SILVER": ["#9cb7bd", "#426a6e", "#cad6c7"],
+            "GREY": ["#93a1a1", "#324242", "#b8bfb6"],
+            "DARKGREY": ["#5b6d6f", "#324242", "#7e8a85"],
+            "GHOST": ["#3a3e4b", "#8a92a5", "#5c5f64"],
+            "BLACK": ["#2e353a", "#050708", "#474b50"],
+            "CREAM": ["#f3d6b3", "#e1a568", "#f4e7c9"],
+            "PALEGINGER": ["#e4bc90", "#c0773e", "#e7ceaa"],
+            "GOLDEN": ["#edc780", "#c06b26", "#edd6a1"],
+            "GINGER": ["#f3a86b", "#da6126", "#f4c794"],
+            "DARKGINGER": ["#d0703c", "#9b230b", "#e0a67a"],
+            "SIENNA": ["#a9563d", "#3f2429", "#b26c4e"],
+            "LIGHTBROWN": ["#cec5b7", "#9e8867", "#ebe3c5"],
+            "LILAC": ["#ab9f9e", "#6c5759", "#cab5a7"],
+            "BROWN": ["#978e87", "#4d3625", "#c4b197"],
+            "GOLDEN-BROWN": ["#976655", "#493030", "#c39d79"],
+            "DARKBROWN": ["#685c55", "#301811", "#957560"],
+            "CHOCOLATE": ["#584244", "#291e1f", "#865a52"]
+        }
+
+        base_name = None
+        base_color = None
+        tortie_base = None
+        tortie_color = None
+        base_tint = None
+
+        # SETTING UP EACH PIECE
+        base_pelt = None
+        overlay_pelt = None
+        marking_pelt = None
+
+        if cat.pelt.name not in ['Tortie', 'Calico']:
+            base_name = str(cat.pelt.name).upper()
+            base_color = str(cat.pelt.colour).upper()
+
         else:
-            # Base Coat
-            sprite_name = f"colours_{cat.pelt.tortie_base}{cat.pelt.colour}{cat_sprite}"
-            new_sprite.blit(
-                sprites.sprites[sprite_name],
-                (0, 0),
-            )
+            base_name = str(cat.pelt.tortie_base).upper()
+            base_color = str(cat.pelt.colour).upper()
+            tortie_base_pattern = str(cat.pelt.tortie_pattern).upper()
+            tortie_color = str(cat.pelt.tortie_colour).upper()
+
+        if base_name:
+            base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            base_tint.fill(color_dict[base_color][0])
+            base_pelt = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
+            base_pelt.blit(base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            marking = f"{sprites.PELT_DATA['spritesheet']}{cat.pelt.name}"
+            marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            marking_tint.fill(color_dict[base_color][1])
+            marking_pelt = sprites.sprites[marking + cat_sprite].copy().convert_alpha()
+            marking_pelt.blit(marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            overlay_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            overlay_tint.fill(color_dict[base_color][2])
+            overlay_pelt = sprites.sprites["overlay" + cat_sprite].copy().convert_alpha()
+            overlay_pelt.blit(overlay_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+        if tortie_base:
+            tortie_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            tortie_base_tint.fill(color_dict[tortie_color][0])
+            tortie_base_pelt = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
+            tortie_base_pelt.blit(tortie_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            tortie_pelt = f"marking_{cat.pelt.tortie_base}"
+            tortie_marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            tortie_marking_tint.fill(color_dict[tortie_color][1])
+            tortie_marking_pelt = sprites.sprites[tortie_pelt + cat_sprite].copy().convert_alpha()
+            tortie_marking_pelt.blit(tortie_marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+            tortie_overlay_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            tortie_overlay_tint.fill(color_dict[tortie_color][2])
+            tortie_overlay_pelt = sprites.sprites["overlay" + cat_sprite].copy().convert_alpha()
+            tortie_overlay_pelt.blit(tortie_overlay_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+
+
+
+
+
+
+        if base_name:
+            new_sprite.blit(base_pelt, (0, 0))
+            new_sprite.blit(marking_pelt, (0, 0))
+            new_sprite.blit(overlay_pelt, (0, 0))
+
+        if tortie_base:
+            patches = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
+            patches.blit(tortie_base_pelt, (0, 0))
+            patches.blit(tortie_marking_pelt, (0, 0))
+            patches.blit(tortie_overlay_pelt, (0, 0))
+            sprite_name = f"{sprites.TORTIE_DATA['spritesheet']}{cat.pelt.tortie_marking}{cat_sprite}"
+            patches.blit(sprites.sprites[sprite_name], (0, 0),
+                         special_flags=pygame.BLEND_RGBA_MULT)
+            new_sprite.blit(patches, (0, 0))
+
+
+
+            ######
+
+      #  if cat.pelt.name not in ["Tortie", "Calico"]:
+       #     new_sprite.blit(
+        #        sprites.sprites[
+         #           cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
+          #      ],
+           #     (0, 0),
+ #           )
+  #      else:
+   #         # Base Coat
+    #        sprite_name = f"colours_{cat.pelt.tortie_base}{cat.pelt.colour}{cat_sprite}"
+     #       new_sprite.blit(
+      #          sprites.sprites[sprite_name],
+       #         (0, 0),
+        #    )
 
             # Create the patch image
-            if cat.pelt.tortie_pattern == "Single":
-                tortie_pattern = "SingleColour"
-            else:
-                tortie_pattern = cat.pelt.tortie_pattern
-
-            sprite_name = (
-                f"colours_{tortie_pattern}{cat.pelt.tortie_colour}{cat_sprite}"
-            )
-            patches = sprites.sprites[sprite_name].copy()
-            sprite_name = f"{sprites.TORTIE_DATA['spritesheet']}{cat.pelt.tortie_marking}{cat_sprite}"
-            patches.blit(
-                sprites.sprites[sprite_name],
-                (0, 0),
-                special_flags=pygame.BLEND_RGBA_MULT,
-            )
+  #          if cat.pelt.tortie_pattern == "Single":
+   #             tortie_pattern = "SingleColour"
+    #        else:
+     #           tortie_pattern = cat.pelt.tortie_pattern
+#
+ #           sprite_name = (
+  #              f"colours_{tortie_pattern}{cat.pelt.tortie_colour}{cat_sprite}"
+   #         )
+    #        patches = sprites.sprites[sprite_name].copy()
+     #       sprite_name = f"{sprites.TORTIE_DATA['spritesheet']}{cat.pelt.tortie_marking}{cat_sprite}"
+      #      patches.blit(
+       #         sprites.sprites[sprite_name],
+        #        (0, 0),
+         #       special_flags=pygame.BLEND_RGBA_MULT,
+          #  )
 
             # Add patches onto cat.
-            new_sprite.blit(patches, (0, 0))
+       #     new_sprite.blit(patches, (0, 0))
 
         # TINTS
         if (
