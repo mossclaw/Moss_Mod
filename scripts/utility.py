@@ -2711,9 +2711,10 @@ def generate_sprite(
             tortie_color = str(cat.pelt.tortie_colour).upper()
 
         if base_name:
+            base = "base"
             base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             base_tint.fill(color_dict[base_color][0])
-            base_pelt = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
+            base_pelt = sprites.sprites[base + cat_sprite].copy().convert_alpha()
             base_pelt.blit(base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
             marking = f"{sprites.PELT_DATA['spritesheet']}{cat.pelt.name}"
