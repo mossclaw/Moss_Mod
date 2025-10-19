@@ -13,9 +13,7 @@
         "marking_sokoke": ["Sokoke"],
         "marking_agouti": ["Agouti"],
         "marking_singlestripe": ["Singlestripe"],
-        "marking_masked": ["Masked"],
-	"base": ["base"],
-	"overlay": ["overlay"]
+        "marking_masked": ["Masked"]
     },
     "sprite_list": [
         {
