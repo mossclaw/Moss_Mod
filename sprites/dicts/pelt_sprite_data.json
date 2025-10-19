@@ -1,19 +1,19 @@
 {
     "spritesheet": {
-        "colours_single": ["SingleColour", "TwoColour"],
-        "colours_tabby": ["Tabby"],
-        "colours_marbled": ["Marbled"],
-        "colours_rosette": ["Rosette"],
-        "colours_smoke": ["Smoke"],
-        "colours_ticked": ["Ticked"],
-        "colours_speckled": ["Speckled"],
-        "colours_bengal": ["Bengal"],
-        "colours_mackerel": ["Mackerel"],
-        "colours_classic": ["Classic"],
-        "colours_sokoke": ["Sokoke"],
-        "colours_agouti": ["Agouti"],
-        "colours_singlestripe": ["Singlestripe"],
-        "colours_masked": ["Masked"]
+        "marking_single": ["SingleColour", "TwoColour"],
+        "marking_tabby": ["Tabby"],
+        "marking_marbled": ["Marbled"],
+        "marking_rosette": ["Rosette"],
+        "marking_smoke": ["Smoke"],
+        "marking_ticked": ["Ticked"],
+        "marking_speckled": ["Speckled"],
+        "marking_bengal": ["Bengal"],
+        "marking_mackerel": ["Mackerel"],
+        "marking_classic": ["Classic"],
+        "marking_sokoke": ["Sokoke"],
+        "marking_agouti": ["Agouti"],
+        "marking_singlestripe": ["Singlestripe"],
+        "marking_masked": ["Masked"]
     },
     "sprite_list": [
         {
