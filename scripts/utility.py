@@ -2717,32 +2717,75 @@ def generate_sprite(
             base_pelt = sprites.sprites[base + cat_sprite].copy().convert_alpha()
             base_pelt.blit(base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            marking = f"{sprites.PELT_DATA['spritesheet']}{cat.pelt.name}"
-            marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            marking_tint.fill(color_dict[base_color][1])
-            marking_pelt = sprites.sprites[marking + cat_sprite].copy().convert_alpha()
-            marking_pelt.blit(marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if cat.pelt.name not in ['Tortie', 'Calico']:
+                if cat.pelt.name == "SingleColour":
+                    marking = "marking_Single"
+                elif cat.pelt.name == "TwoColour":
+                    marking = "marking_Single"
+                else:
+                    marking = f"marking_{cat.pelt.name}"
+                marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                marking_tint.fill(color_dict[base_color][1])
+                marking_pelt = sprites.sprites[marking + cat_sprite].copy().convert_alpha()
+                marking_pelt.blit(marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if cat.pelt.name in ['Tortie', 'Calico']:
+                marking = f"marking_{cat.pelt.tortie_base}"
+                marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                marking_tint.fill(color_dict[base_color][1])
+                marking_pelt = sprites.sprites[marking + cat_sprite].copy().convert_alpha()
+                marking_pelt.blit(marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
+            overlay = "overlay"
             overlay_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             overlay_tint.fill(color_dict[base_color][2])
-            overlay_pelt = sprites.sprites["overlay" + cat_sprite].copy().convert_alpha()
+            overlay_pelt = sprites.sprites[overlay + cat_sprite].copy().convert_alpha()
             overlay_pelt.blit(overlay_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-        if tortie_base:
+        if cat.pelt.name in ['Tortie', 'Calico']:
+            base = "base"
             tortie_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tortie_base_tint.fill(color_dict[tortie_color][0])
-            tortie_base_pelt = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
+            tortie_base_pelt = sprites.sprites[base + cat_sprite].copy().convert_alpha()
             tortie_base_pelt.blit(tortie_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            tortie_pelt = f"marking_{cat.pelt.tortie_base}"
+            # i dont know what im doing send help
+            if cat.pelt.tortie_pattern == "single":
+                tortie_pelt = "marking_Single"
+            if cat.pelt.tortie_pattern == "tabby":
+                tortie_pelt = "marking_Tabby"
+            if cat.pelt.tortie_pattern == "marbled":
+                tortie_pelt = "marking_Marbled"
+            if cat.pelt.tortie_pattern == "rosette":
+                tortie_pelt = "marking_Rosette"
+            if cat.pelt.tortie_pattern == "smoke":
+                tortie_pelt = "marking_Smoke"
+            if cat.pelt.tortie_pattern == "ticked":
+                tortie_pelt = "marking_Ticked"
+            if cat.pelt.tortie_pattern == "speckled":
+                tortie_pelt = "marking_Speckled"
+            if cat.pelt.tortie_pattern == "bengal":
+                tortie_pelt = "marking_Bengal"
+            if cat.pelt.tortie_pattern == "mackerel":
+                tortie_pelt = "marking_Mackerel"
+            if cat.pelt.tortie_pattern == "classic":
+                tortie_pelt = "marking_Classic"
+            if cat.pelt.tortie_pattern == "sokoke":
+                tortie_pelt = "marking_Sokoke"
+            if cat.pelt.tortie_pattern == "agouti":
+                tortie_pelt = "marking_Agouti"
+            if cat.pelt.tortie_pattern == "singlestripe":
+                tortie_pelt = "marking_Singlestripe"
+            if cat.pelt.tortie_pattern == "masked":
+                tortie_pelt = "marking_Masked"
             tortie_marking_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tortie_marking_tint.fill(color_dict[tortie_color][1])
             tortie_marking_pelt = sprites.sprites[tortie_pelt + cat_sprite].copy().convert_alpha()
             tortie_marking_pelt.blit(tortie_marking_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
+            overlay = "overlay"
             tortie_overlay_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tortie_overlay_tint.fill(color_dict[tortie_color][2])
-            tortie_overlay_pelt = sprites.sprites["overlay" + cat_sprite].copy().convert_alpha()
+            tortie_overlay_pelt = sprites.sprites[overlay + cat_sprite].copy().convert_alpha()
             tortie_overlay_pelt.blit(tortie_overlay_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
 
@@ -2755,7 +2798,7 @@ def generate_sprite(
             new_sprite.blit(marking_pelt, (0, 0))
             new_sprite.blit(overlay_pelt, (0, 0))
 
-        if tortie_base:
+        if cat.pelt.name in ['Tortie', 'Calico']:
             patches = sprites.sprites["base" + cat_sprite].copy().convert_alpha()
             patches.blit(tortie_base_pelt, (0, 0))
             patches.blit(tortie_marking_pelt, (0, 0))
