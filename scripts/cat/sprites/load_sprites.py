@@ -125,6 +125,20 @@ class Sprites:
     clan_symbols        = []
     real_pelts          = {}
     
+    # TODO: There are used from pelts.py. Would be nice to decouple, 
+    #       but they *are* required to be in sync. Needs thinking.
+    POSE_DATA = read_sprite_dict('pose_sprite_data')
+    COLLAR_DATA = read_sprite_dict('collar_sprite_data')
+    WILD_DATA = read_sprite_dict('wild_sprite_data')
+    PLANT_DATA = read_sprite_dict('plant_sprite_data')
+    SCAR_DATA = read_sprite_dict('scar_sprite_data')
+    SCAR_MISSING_PART_DATA = read_sprite_dict('scar_missing_sprite_data')
+    SKIN_DATA = read_sprite_dict('skin_sprite_data')
+    TORTIE_DATA = read_sprite_dict('tortie_patches_sprite_data')
+    PELT_DATA = read_sprite_dict('pelt_sprite_data')
+    EYE_DATA = read_sprite_dict('eye_sprite_data')
+    WHITE_DATA = read_sprite_dict('white_patches_sprite_data')
+    
     
     def __init__(self):
         self.symbol_dict   = None
@@ -168,7 +182,6 @@ class Sprites:
     def make_single(self,
                     spritesheet,
                     name,
-                    suffix=None,
                     pos=(0, 0),
                     static=False,
                     sheet_size=None,
@@ -179,8 +192,7 @@ class Sprites:
         :param spritesheet: Name of spritesheet file.
         :param pos:         (x, y) tuple of offsets. NOT pixel offset, but offset in sprites.
         :param name:        Name of sprite being made.
-        :param suffix:      Suffix to add to name.
-        :param sheet_size:   Number of sprites in the grid, as an (x, y) tuple, if different 
+        :param sheet_size:  Number of sprites in the grid, as an (x, y) tuple, if different 
                             from default.
         :param size:        Size of each individual sprite, as an (x, y) tuple, if different 
                             from default.
@@ -356,12 +368,14 @@ class Sprites:
     
     def load_specified_list(self, spritesheet, prefix, entries):
 
-        def read_or_set(entry, name, value, on_read = None):
+        def read_or_set(entry, name, value):
             if name not in entry:
                 entry[name] = value
+                read = False
             else:
                 value = entry[name]
-            return (value, on_read)
+                read = True
+            return (value, read)
         
         
         xpos = 0
@@ -370,14 +384,17 @@ class Sprites:
         
         for name, entry in entries.items():
             variants, _ = read_or_set(entry, 'variants', 1)
-            ypos, xpos  = read_or_set(entry, 'ypos',     ypos, 0)
-            xpos, _     = read_or_set(entry, 'xpos',     xpos)
+            ypos, read  = read_or_set(entry, 'ypos',     ypos)
+            xpos, _     = read_or_set(entry, 'xpos',     0 if read else xpos)
             
             for i in range(variants):
                 sprite_name = f"{prefix}{name}{i}"
                 entry[f"sprite_name{i}"] = sprite_name
                 self.make_single(spritesheet, sprite_name, (xpos, ypos))
-                sprite_names.append(sprite_name)
+                print(f"{sprite_name} at ({xpos}, {ypos})")
+                if 'exclude' not in entry or not entry['exclude']:
+                    sprite_names.append(sprite_name)
+                xpos += 1
         
         return (entries, sprite_names)
     

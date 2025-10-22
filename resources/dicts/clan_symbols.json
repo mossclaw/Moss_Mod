@@ -1,7 +1,12 @@
 {
   "_config_": {
-    "prefix": "symbol"
+    "prefix": "symbol",
     "type": "list"
+  },
+  "DEFAULT": {
+    "ypos": 0,
+    "xpos": 0,
+    "exclude": 1
   },
   "ADDER": {
     "ypos": 1,
