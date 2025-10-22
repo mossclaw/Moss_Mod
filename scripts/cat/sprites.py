@@ -4,436 +4,418 @@ from copy import copy
 
 import pygame
 import ujson
+import time
 
 from scripts.cat.enums import CatGroup
-from scripts.game_structure import constants, image_cache
+from scripts.game_structure import constants#, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.special_dates import SpecialDate, is_today
+
 
 logger = logging.getLogger(__name__)
 
 
+def read_json(path, description_for_error = None):
+    try:
+        with open(path, 'r', encoding="utf-8") as read_file:
+            return ujson.loads(read_file.read())
+    except IOError:
+        if description_for_error is not None:
+            logger.error(f'Failed to read {description_for_error}.')
+        return {}
+
+
+def read_sprite_dict(name, description_for_error = None):
+    return read_json(f'sprites/dicts/{name}.json', description_for_error)
+
+
 class Sprites:
-    cat_tints = {}
+    """ Class that handles and hold all spritesheets. """
+
+    class SpriteSheet:
+        def __init__(self, a_file):
+            self.image = None
+            self.a_file = a_file
+            self.ready = False
+    
+        @property
+        def sprite(self):
+            if self.image is None:
+                self.image = pygame.image.load(self.a_file).convert_alpha()
+            return self.image
+
+
+    class SpriteCache:
+        def __init__(self, spritesheet, x, y, size):
+            self.image = None
+            self.spritesheet = spritesheet
+            self.x = x
+            self.y = y
+            self.size = size
+            self.ready = False
+
+        @property
+        def sprite(self):
+            if self.image is None:
+                self.image = pygame.Surface.subsurface(
+                    self.spritesheet.sprite,
+                    self.x, self.y,
+                    self.size[0], self.size[1]
+                )
+            return self.image
+
+
+    class PaletteSpriteCache:
+        def __init__(self, base_sprite, palette_set, palette_name):
+            self.image = None
+            self.base_sprite = base_sprite
+            self.palette_set = palette_set
+            self.palette_name = palette_name
+            self.ready = False
+
+        @property
+        def sprite(self):
+            if self.image is None:
+                self.image = self.palette_set.apply(
+                    self.base_sprite.sprite, 
+                    self.palette_name
+                )
+            return self.image
+
+
+    class PaletteSet:
+        def __init__(self, path, palette_names):
+            self.palettes = None
+            self.base_palette = None
+            self.path = path
+            self.palette_names = palette_names
+        
+        def apply(self, sprite, palette):
+            if palette == 'BASE':
+                return sprite
+            
+            if self.palettes is None:
+                image = pygame.image.load(path)
+                with pygame.PixelArray(image) as array:
+                    n = array.shape[1]   # pylint: disable=unsubscriptable-object
+                    rows = [ 
+                        [ image.unmap_rbg(color) for color in array[::, i] ]
+                        for i in range(0, n)
+                    ]
+                    self.base_palette = rows[0]
+                    self.palettes = dict(zip(self.palette_names, rows[1::]))
+            
+            sprite = sprite.copy()
+            with pygame.PixelArray(sprite) as array:
+                for old_color, new_color in zip(self.palette_names, self.palettes[palette]):
+                    array.replace(old_color, new_color)
+            
+            return sprite
+
+
+    class Blank:
+        def __init__(self, size):
+            self.sprite = pygame.Surface(
+                size,
+                pygame.HWSURFACE | pygame.SRCALPHA
+            )
+
+
+    cat_tints           = {}
     white_patches_tints = {}
-    clan_symbols = []
-
-    with open(
-        "sprites/dicts/pose_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        POSE_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/collar_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        COLLAR_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/wild_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        WILD_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/plant_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        PLANT_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/scar_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SCAR_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/scar_missing_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SCAR_MISSING_PART_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/skin_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SKIN_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        TORTIE_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/pelt_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        PELT_DATA = ujson.loads(read_file.read())
-
-    with open("sprites/dicts/eye_sprite_data.json", "r", encoding="utf-8") as read_file:
-        EYE_DATA = ujson.loads(read_file.read())
-
-    with open(
-        "sprites/dicts/white_patches_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        WHITE_DATA = ujson.loads(read_file.read())
-
+    clan_symbols        = []
+    real_pelts          = {}
+    
+    
     def __init__(self):
-        """Class that handles and hold all spritesheets.
-        Size is normally automatically determined by the size
-        of the lineart. If a size is passed, it will override
-        this value."""
-        self.symbol_dict = None
-        self.size = None
-        self.spritesheets = {}
-        self.images = {}
-        self.sprites = {}
+        self.symbol_dict   = None
+        self.symbol_colors = None
+        self.size          = None
+        self.spritesheets  = {}
+        self.images        = {}
+        self.sprite_cache  = {}
+        self.sprites       = self
 
         # Shared empty sprite for placeholders
-        self.blank_sprite = None
+        self.blank_sprite  = None
 
         self.load_tints()
 
-        self.sheet_layout = self.POSE_DATA["sheet_layout"]
+
+    def __getitem__(self, name):
+        return self.sprite_cache[name].sprite
+
+
+    def get(self, name):
+        return self.sprite_cache[name].sprite
+
 
     def load_tints(self):
-        try:
-            with open("sprites/dicts/tint.json", "r", encoding="utf-8") as read_file:
-                self.cat_tints = ujson.loads(read_file.read())
-        except IOError:
-            print("ERROR: Reading Tints")
+        self.cat_tints = read_sprite_dict('tint', 'Tints')
+        self.white_patches_tints = read_sprite_dict('white_patches_tint', 'White Patches Tints')
+        self.real_pelts = read_sprite_dict('real_pelts', 'Real Pelts')
 
-        try:
-            with open(
-                "sprites/dicts/white_patches_tint.json", "r", encoding="utf-8"
-            ) as read_file:
-                self.white_patches_tints = ujson.loads(read_file.read())
-        except IOError:
-            print("ERROR: Reading White Patches Tints")
 
     def spritesheet(self, a_file, name):
         """
         Add spritesheet called name from a_file.
 
-        Parameters:
-        a_file -- Path to the file to create a spritesheet from.
-        name -- Name to call the new spritesheet.
+        :param a_file: Path to the file to create a spritesheet from.
+        :param name:   Name to call the new spritesheet.
         """
-        self.spritesheets[name] = pygame.image.load(a_file).convert_alpha()
+        self.spritesheets[name] = self.SpriteSheet(a_file)
 
-    def make_group(
-        self,
-        spritesheet,
-        pos,
-        name,
-        sprites_x=None,
-        sprites_y=None,
-        no_index=False,
-        palettes: list = None,
-    ):  # pos = ex. (2, 3), no single pixels
-        """
-        Divide sprites on a spritesheet into groups of sprites that are easily accessible
-        :param spritesheet: Name of spritesheet file
-        :param pos: (x,y) tuple of offsets. NOT pixel offset, but offset of other sprites
-        :param name: Name of group being made
-        :param sprites_x: default 3, number of sprites horizontally
-        :param sprites_y: default 7, number of sprites vertically
-        :param no_index: default False, set True if sprite name does not require cat pose index:
-        :param palettes: list of palette names
-        """
-        # pulls the defaults from the pose_sprite_data.json file
-        if not sprites_x:
-            sprites_x = self.sheet_layout[0]
-        if not sprites_y:
-            sprites_y = self.sheet_layout[1]
 
-        group_x_ofs = pos[0] * sprites_x * self.size
-        group_y_ofs = pos[1] * sprites_y * self.size
+    def make_single(self,
+                    spritesheet,
+                    name,
+                    suffix=None,
+                    pos=(0, 0),
+                    static=False,
+                    sheet_size=None,
+                    size=None,
+                    palettes=None):
+        """
+        Extract a single sprite from a spritesheet.
+        :param spritesheet: Name of spritesheet file.
+        :param pos:         (x, y) tuple of offsets. NOT pixel offset, but offset in sprites.
+        :param name:        Name of sprite being made.
+        :param suffix:      Suffix to add to name.
+        :param sheet_size:   Number of sprites in the grid, as an (x, y) tuple, if different 
+                            from default.
+        :param size:        Size of each individual sprite, as an (x, y) tuple, if different 
+                            from default.
+        :param palettes:    List of palette names.
+        """
+
+        if size is None:
+            size = (self.size, self.size)
+        x = pos[0] * size[0]
+        y = pos[1] * size[1]
+
+        try:
+            new_sprite = self.SpriteCache(
+                self.spritesheets[spritesheet],
+                x, y, size
+            )
+
+        except ValueError:
+            # Fallback for non-existent sprites
+            logger.warning(f"nonexistent sprite - {name}")
+            if not self.blank_sprite:
+                self.blank_sprite = self.Blank(size)
+            new_sprite = self.blank_sprite
+        
+        if static:
+            if sheet_size is None:
+                sheet_size = (self.sheet_size[0], self.sheet_size[1])
+            for i in range(sheet_size[0] * sheet_size[1]):
+                self.add_sprite(f"{name}{i}", new_sprite)
+        else:
+            self.add_sprite(name, new_sprite)
+            self.sprite_cache[name] = new_sprite
+    
+    
+    def add_sprite(self, name, sprite):
+        self.sprite_cache[name] = sprite
+
+
+    def make_group(self, name, sheet_size=None, size=None, palettes=None):
+        """
+        Divide sprites on a spritesheet into groups of sprites that are easily accessible.
+        :param name:      Name of spritesheet being made into a group of same name.
+        :param sheet_size: Number of sprites in the grid, as an (x, y) tuple, if different 
+                          from default.
+        :param size:      Size of each individual sprite, as an (x, y) tuple, if different 
+                          from default.
+        :param palettes:  List of palette names.
+        """
+
+        if sheet_size is None:
+            sheet_size = (self.sheet_size[0], self.sheet_size[1])
+
+        # splitting group into separate sprites
         i = 0
-
-        # splitting group into singular sprites and storing into self.sprites section
-        for y in range(sprites_y):
-            for x in range(sprites_x):
-                if no_index:
-                    full_name = f"{name}"
-                else:
-                    full_name = f"{name}{i}"
-
-                try:
-                    new_sprite = pygame.Surface.subsurface(
-                        self.spritesheets[spritesheet],
-                        group_x_ofs + x * self.size,
-                        group_y_ofs + y * self.size,
-                        self.size,
-                        self.size,
-                    )
-
-                except ValueError:
-                    # Fallback for non-existent sprites
-                    print(f"WARNING: nonexistent sprite - {full_name}")
-                    if not self.blank_sprite:
-                        self.blank_sprite = pygame.Surface(
-                            (self.size, self.size), pygame.HWSURFACE | pygame.SRCALPHA
-                        )
-                    new_sprite = self.blank_sprite
-
-                if palettes:
-                    self.apply_palettes(i, name, new_sprite, palettes)
-                else:
-                    self.sprites[full_name] = new_sprite
+        for y in range(self.sheet_size[1]):
+            for x in range(self.sheet_size[0]):
+                self.make_single(name, f"{name}{i}", (x, y), size=size)
                 i += 1
 
-    def apply_palettes(
-        self, sprite_index: int, name: str, new_sprite, palette_names: list
-    ):
-        """
-        Creates sprites for each color palette variation
-        :param sprite_index: index of sprite
-        :param name: name of sprite
-        :param new_sprite: the sprite object to create variations of
-        :param palette_names: list of palette names
-        """
-        # first we create an array of our palette map
-        full_map = pygame.image.load(f"sprites/palettes/{name}_palette.png")
-        map_array = pygame.PixelArray(full_map)
-        # then create a dictionary associating the palette name with its row of the array
-        color_palettes = {}
-        palette_names = palette_names.copy()
-        palette_names.insert(0, "BASE")
-        for row in range(
-            0, map_array.shape[1]  # pylint: disable=unsubscriptable-object
-        ):
-            color_name = palette_names[row]
-            color_palettes.update(
-                {color_name: [full_map.unmap_rgb(px) for px in map_array[::, row]]}
-            )
 
-        base_palette = color_palettes["BASE"]
+    def load_file(self, path, name, subdir=None):
+        def invalid(path, reason):
+            logger.warning(f"Entry in sprites.json for {path} is not valid. Ignoring file. {reason}")
+            
+        
+        spritesheet = f"{subdir}{name.upper()}" if subdir else name
+        self.spritesheet(f"sprites/{path}", spritesheet)
+        
+        if path in self.config:
+            kind = self.config[path]
+        elif subdir and subdir in self.config:
+            kind = self.config[subdir]
+        else:
+            kind = 'normal'
+        arg = []
+        if isinstance(kind, list):
+            arg = kind[1::]
+            kind = kind[0]
+        
+        match kind:
+            case 'normal':
+                self.make_group(spritesheet)
+                
+            case 'none':
+                pass
+                
+            case 'single':
+                self.make_single(spritesheet, spritesheet)
+                
+            case 'static':
+                self.make_single(spritesheet, spritesheet, static=True)
+                
+            case 'json':
+                # arg should be a path to a json file
+                if len(arg) >= 1 and os.path.isfile(arg[0]):
+                    specified = self.load_specified(spritesheet, arg[0])
+                    if specified is not None:
+                        self.specified[name] = specified
+                else:
+                    invalid(path, 'Value json requires a file as argument.')
+                
+            case _:
+                invalid(path, 'Valid values are normal, none, single, static or json.')
 
-        # now we recolor the sprite
-        for color_name, palette in color_palettes.items():
-            if color_name == "BASE":
-                continue
-            recolor_sprite = pygame.PixelArray(new_sprite.copy())
-            # we replace each base_palette color with it's matching index from the color_palette
-            for color_i, color in enumerate(palette):
-                recolor_sprite.replace(base_palette[color_i], color)
-            # convert back into a surface
-            _sprite = recolor_sprite.make_surface()
-            # add it to our sprite dict!
-            self.sprites[f"{name}_{color_name}{sprite_index}"] = _sprite
-            # close the pixel array now that we're done
-            recolor_sprite.close()
 
-        map_array.close()
+    def load_dir(self, path, subdir=None):
+        for file_name in os.listdir(path):
+            sub_path = f'{path}/{file_name}'
+            if os.path.isfile(sub_path) and file_name[-4:] == '.png':
+                rel_path = f'{subdir}/{file_name}' if subdir else file_name
+                self.load_file(rel_path, file_name[:-4], subdir)
+            elif os.path.isdir(sub_path) and not subdir:
+                self.load_dir(sub_path, file_name)
+            
 
     def load_all(self):
-        # get the width and height of the spritesheet
-        lineart = pygame.image.load("sprites/lineart.png")
-        width, height = lineart.get_size()
-        del lineart  # unneeded
+        # read sprites.json
+        self.config = read_sprite_dict('sprites', 'Sprite Configuration')
 
-        # if anyone changes lineart for whatever reason update this
+        # get the width and height of the spritesheet
+        self.spritesheet('sprites/line.png', 'line')
+        width, height = self.spritesheets['line'].sprite.get_size()
+        
+        self.sheet_size = tuple(self.config['_sheet_size_'])
+        
+        # check consistency of sheet size and determine sprite size
         if isinstance(self.size, int):
             pass
-        elif width / self.sheet_layout[0] == height / self.sheet_layout[1]:
-            self.size = width / self.sheet_layout[0]
+        elif width / self.sheet_size[0] == height / self.sheet_size[1]:
+            self.size = width / self.sheet_size[0]
         else:
-            self.size = 50  # default, what base clangen uses
-            print(
-                f"lineart.png is not {self.sheet_layout}, falling back to {self.size}"
-            )
-            print(
-                f"if you are a modder, please update sheet_layout in sprites/dicts/pose_sprite_data.json"
-            )
+            self.size = 400  # default is 50, what base clangen uses
+            print(f"The sprite grid size is set to {self.sheet_size[0]}x{self.sheet_size[1]}, "
+                  f"which does not match the size of line.png.")
+            print(f"Falling back to sprite size {self.size}.")
+            print(f"When modifying the sprite grid size, the size set in "
+                  f"sprites/dicts/sprites.json must match the size of line.png.")
 
-        del width, height  # unneeded
+        del width, height
+        self.specified = {}
+        
+        # Process contents of sprites folder
+        self.load_dir('sprites')
+        
+        # Save special sprite sets in individual variables, for convenience and compatibility.
+        self.symbol_dict, self.clan_symbols = self.specified['symbol']
 
-        data_jsons = (
-            self.EYE_DATA,
-            self.PELT_DATA,
-            self.WHITE_DATA,
-            self.TORTIE_DATA,
-            self.SKIN_DATA,
-            self.SCAR_DATA,
-            self.SCAR_MISSING_PART_DATA,
-            self.PLANT_DATA,
-            self.WILD_DATA,
-            self.COLLAR_DATA,
-        )
 
-        # data jsons that have multiple associated spritesheets
-        multi_sheet_data = [
-            x for x in data_jsons if isinstance(x["spritesheet"], (list, dict))
-        ]
+    def load_specified(self, spritesheet, json_path):
+        """
+        Extracts sprites from a spritesheet according to a specification in a json file.
+        """
 
-        # COMPILING SPRITESHEETS
-        spritesheets = [
-            "fademask",
-            "fadestarclan",
-            "fadedarkforest",
-            "fadeunknownresidence",
-            "symbols",
-        ]
-
-        # separate from data_json list bc we need to handle it differently later
-        spritesheets.extend(self.POSE_DATA["spritesheet"])
-
-        for data in data_jsons:
-            if data in multi_sheet_data:
-                spritesheets.extend(data["spritesheet"])
+        def read_or_set(entry, name, value, on_read = None):
+            if name not in entry:
+                entry[name] = value
             else:
-                spritesheets.append(data["spritesheet"])
-
-        for x in spritesheets:
-            if "lineart" in x and (
-                constants.CONFIG["fun"]["april_fools"]
-                or is_today(SpecialDate.APRIL_FOOLS)
-            ):
-                self.spritesheet(f"sprites/{x}_aprilfools.png", x)
+                value = entry[name]
+            return (value, on_read)
+            
+        def get_or_default(entry, name, default):
+            if entry is not None and name in entry:
+                return entry[name]
             else:
-                self.spritesheet(f"sprites/{x}.png", x)
+                return default
 
-        # Line art
-        for sheet in self.POSE_DATA["spritesheet"]:
-            self.make_group(sheet, (0, 0), sheet)
+        
+        entries = read_json(json_path)
+        config = entries['_config_']
+        prefix = get_or_default(config, 'prefix', '')
+        kind = config['type']
+        del(entries['_config_'])
+        
+        match kind:
+            case 'list':
+                return self.load_specified_list(spritesheet, prefix, entries)
+            case 'palette':
+                return self.load_specified_palette(spritesheet, prefix, entries)
+    
+    
+    def load_specified_list(self, spritesheet, prefix, entries):
+        xpos = 0
+        ypos = 0
+        sprite_names = []
+        
+        for name, entry in entries.items():
+            variants, _ = read_or_set(entry, 'variants', 1)
+            ypos, xpos  = read_or_set(entry, 'ypos',     ypos, 0)
+            xpos, _     = read_or_set(entry, 'xpos',     xpos)
+            
+            for i in range(variants):
+                sprite_name = f"{prefix}{name}{i}"
+                entry[f"sprite_name{i}"] = sprite_name
+                self.make_single(spritesheet, sprite_name, (xpos, ypos))
+                sprite_names.append(sprite_name)
+        
+        return (entries, sprite_names)
+    
+    
+    def load_specified_palette(self, spritesheet, prefix, entries):
+        # TODO
+        return None
 
-        # Fading Fog
-        for i in range(0, 3):
-            self.make_group("fademask", (i, 0), f"fademask{i}")
-            self.make_group("fadestarclan", (i, 0), f"fadestarclan{i}")
-            self.make_group("fadedarkforest", (i, 0), f"fadedf{i}")
-            self.make_group("fadeunknownresidence", (i, 0), f"fadeur{i}")
-
-        for data in data_jsons:
-            # collar accs
-            # this guy is special since it uses palette mapping
-            if data == self.COLLAR_DATA and self.COLLAR_DATA["palette_map"]:
-                spritesheet = self.COLLAR_DATA["spritesheet"]
-                for row, style_type in enumerate(self.COLLAR_DATA["style_data"]):
-                    for col, style in enumerate(style_type):
-                        self.make_group(
-                            spritesheet=spritesheet,
-                            pos=(col, row),
-                            name=f"{spritesheet}{style}",
-                            palettes=style_type[style],
-                        )
-
-            # these have multiple sprite sheets, so are handled differently from the others
-            elif data in multi_sheet_data:
-                for spritesheet in data["spritesheet"]:
-                    self.load_sheet(spritesheet, data["sprite_list"])
-
-            # everything else
-            else:
-                self.load_sheet(data["spritesheet"], data["sprite_list"])
-
-        self.load_symbols()
-
-    def load_sheet(self, spritesheet: str, sprite_names: list[list[str]]):
-        """
-        Loads sheet data and creates sprite groups.
-        :param spritesheet: name of the spritesheet
-        :param sprite_names: list containing lists of sprite names for this spritesheet, each list is a single row of the sheet
-        """
-        for row, sprite_names in enumerate(sprite_names):
-            for col, sprite in enumerate(sprite_names):
-                self.make_group(
-                    spritesheet=spritesheet,
-                    pos=(col, row),
-                    name=f"{spritesheet}{sprite}",
-                )
-
-    def load_symbols(self):
-        """
-        loads clan symbols
-        """
-
-        if os.path.exists("resources/dicts/clan_symbols.json"):
-            with open(
-                "resources/dicts/clan_symbols.json", encoding="utf-8"
-            ) as read_file:
-                self.symbol_dict = ujson.loads(read_file.read())
-
-        # U and X omitted from letter list due to having no prefixes
-        letters = [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "V",
-            "W",
-            "Y",
-            "Z",
-        ]
-
-        # sprite names will format as "symbol{PREFIX}{INDEX}", ex. "symbolSPRING0"
-        y_pos = 1
-        for letter in letters:
-            x_mod = 0
-            for i, symbol in enumerate(
-                [
-                    symbol
-                    for symbol in self.symbol_dict
-                    if letter in symbol and self.symbol_dict[symbol]["variants"]
-                ]
-            ):
-                if self.symbol_dict[symbol]["variants"] > 1 and x_mod > 0:
-                    x_mod += -1
-                for variant_index in range(self.symbol_dict[symbol]["variants"]):
-                    x_pos = i + x_mod
-
-                    if self.symbol_dict[symbol]["variants"] > 1:
-                        x_mod += 1
-                    elif x_mod > 0:
-                        x_pos += -1
-
-                    self.clan_symbols.append(f"symbol{symbol.upper()}{variant_index}")
-                    self.make_group(
-                        "symbols",
-                        (x_pos, y_pos),
-                        f"symbol{symbol.upper()}{variant_index}",
-                        sprites_x=1,
-                        sprites_y=1,
-                        no_index=True,
-                    )
-
-            y_pos += 1
 
     def get_symbol(self, symbol: str, force_light=False):
-        """Change the color of the symbol to match the requested theme, then return it
-        :param Surface symbol: The clan symbol to convert
+        """
+        Change the color of the symbol to match the requested theme, then return it
+        :param symbol: The clan symbol to convert
         :param force_light: Use to ignore dark mode and always display the light mode color
         """
-        symbol = self.sprites.get(symbol)
-        if symbol is None:
-            logger.warning("%s is not a known Clan symbol! Using default.")
-            symbol = self.sprites[self.clan_symbols[0]]
+        dark = not force_light and game_setting_get('dark mode')
+        color_key = ('light' if dark else 'light') + '_mode_clan_symbols' 
+        color = constants.CONFIG['theme'][color_key]
+        if color != self.symbol_colors:
+            self.symbol_colors = copy(color)
+            self.clan_symbol_cache = {}
+        
+        if symbol not in self.clan_symbol_cache:
+            if symbol in self.sprite_cache:
+                sprite = self[symbol]
+            else:
+                logger.warning(f"{symbol} is not a known Clan symbol! Using default.")
+                sprite = self.sprites[self.clan_symbols[0]]
 
-        recolored_symbol = copy(symbol)
-        var = pygame.PixelArray(recolored_symbol)
-        var.replace(
-            (87, 76, 45),
-            (
-                pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
-                if not force_light and game_setting_get("dark mode")
-                else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
-            ),
-            distance=0,
-        )
-        del var
+            recolored = copy(sprite)
+            var = pygame.PixelArray(recolored)
+            var.replace((87, 76, 45), pygame.Color(color), distance=0)
+            del var
+            
+            self.clan_symbol_cache[symbol] = recolored
 
-        return recolored_symbol
+        return self.clan_symbol_cache[symbol]
 
+
+    # TODO
     @staticmethod
     def get_platform(biome, season, show_nest, group: CatGroup) -> pygame.Surface:
         """
@@ -497,67 +479,3 @@ class Sprites:
 # CREATE INSTANCE
 sprites = Sprites()
 
-
-def subtract_lineart(surface, mask_surf, bg_color):
-    """
-    Though I doubt there will be a use-case for this in the future, this is a helper function I wrote to extract the
-    semitransparent layer of sparkles from our original StarClan sprites. It requires a mask to work but could probably
-    be altered to remove the need. honestly, I just want this in here so that we have it in at least one commit if
-    we turn out to need something like this again lol it was AWFUL to figure out
-    """
-    width, height = surface.get_size()
-    overlay = pygame.Surface((width, height), pygame.SRCALPHA)
-
-    bg_r, bg_g, bg_b = bg_color.r, bg_color.g, bg_color.b
-
-    surface.lock()
-    overlay.lock()
-
-    for y in range(height):
-        for x in range(width):
-            r, g, b, a = surface.get_at((x, y))
-
-            # If fully transparent, skip
-            if a == 0 or mask_surf.get_at((x, y)).a < 120:
-                overlay.set_at((x, y), (r, g, b, a))
-                continue
-
-            best_error = float("inf")
-            best_color = (0, 0, 0)
-            best_alpha = 0
-
-            alpha_steps = 255
-            # do a heinous process where we eyeball the alpha
-            for step in range(1, alpha_steps + 1):
-                alpha = step / alpha_steps
-
-                try:
-                    # Recover overlay color for this alpha
-                    o_r = (r - (1 - alpha) * bg_r) / alpha
-                    o_g = (g - (1 - alpha) * bg_g) / alpha
-                    o_b = (b - (1 - alpha) * bg_b) / alpha
-                except ZeroDivisionError:
-                    continue
-
-                # if it makes no sense, skip
-                if not (0 <= o_r <= 255 and 0 <= o_g <= 255 and 0 <= o_b <= 255):
-                    continue
-
-                # Simulate the blend & compare
-                sim_r = o_r * alpha + bg_r * (1 - alpha)
-                sim_g = o_g * alpha + bg_g * (1 - alpha)
-                sim_b = o_b * alpha + bg_b * (1 - alpha)
-
-                error = abs(sim_r - r) + abs(sim_g - g) + abs(sim_b - b)
-
-                if error < best_error:
-                    best_error = error
-                    best_color = (int(round(o_r)), int(round(o_g)), int(round(o_b)))
-                    best_alpha = int(round(alpha * 255))
-
-            # Set recovered overlay color
-            overlay.set_at((x, y), (*best_color, best_alpha))
-
-    surface.unlock()
-    overlay.unlock()
-    return overlay
