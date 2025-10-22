@@ -1181,9 +1181,9 @@ class MakeClanScreen(Screens):
 
         # filtering out tagged symbols
         for symbol in sprites.clan_symbols:
-            index = symbol[-1]
+            index = int(symbol[-1])
             name = symbol.strip("symbol1234567890")
-            tags = symbol_attributes[name][f"tags{index}"]
+            tags = symbol_attributes[name]["tags"][index]
             for tag in tags:
                 if tag in switch_get_value(Switch.disallowed_symbol_tags):
                     if symbol in symbol_list:
