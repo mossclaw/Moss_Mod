@@ -10,1912 +10,1912 @@
   },
   "ADDER": {
     "ypos": 1,
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   },
   "AIR": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   },
   "ALDER": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "ANT": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "ANTLER": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "APHID": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "APPLE": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "APRICOT": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "ARCH": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   },
   "ASHEN": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "ASPEN": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "ASTER": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "BADGER": {
     "ypos": 2,
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "BARLEY": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "BASIL": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "BASS": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   },
   "BAT": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "BAY": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   },
   "BEAM": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   },
   "BEAR": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "BEAVER": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "BEE": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "BEECH": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "BEETLE": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "BERRY": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "BIG": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "BILLOW": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   },
   "BIRCH": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "BIRD": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "BITE": {
     "variants": 0,
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "BITTER": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "BITTERN": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "BLAZE": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "BLEAK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "BLISS": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "BLIZZARD": {
     "variants": 0,
-    "tags0": ["element"]
+    "tags": [ ["element"] ]
   },
   "BLOOD": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "BLOOM": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BLOSSOM": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BLOTCH": {
-    "tags0": ["descriptor", "miscellaneous"]
+    "tags": [ ["descriptor", "miscellaneous"] ]
   }, 
   "BLUEBELL": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BLUFF": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "BOG": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   },
   "BONE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "BORAGE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BOUGH": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "BOULDER": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   }, 
   "BOUNCE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "BRACKEN": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "BRAMBLE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "BRANCH": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "BRAVE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "BREEZE": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "BRIAR": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BRIGHT": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   }, 
   "BRINDLE": {
     "variants": 0,
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "BRISTLE": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "BROKEN": {
-    "tags0": ["descriptor", "miscellaneous"]
+    "tags": [ ["descriptor", "miscellaneous"] ]
   }, 
   "BROOK": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "BRUSH": {
-    "tags0": ["plant", "location", "other plant"]
+    "tags": [ ["plant", "location", "other plant"] ]
   }, 
   "BUBBLING": {
-    "tags0": ["miscellaneous", "element", "water"]
+    "tags": [ ["miscellaneous", "element", "water"] ]
   }, 
   "BUD": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "BUG" : {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "BUMBLE": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "BURDOCK": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "BURN": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "BURNET": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "BURR": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "BURROW": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "BUSH": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "BUTTERCUP": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "BUTTERFLY": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "BUZZARD": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "CANARY": {
     "ypos": 3,
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "CARNATION": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "CARP": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "CATERPILLAR": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "CAVE": {
-    "tags0": ["location", "animal", "cat"]
+    "tags": [ ["location", "animal", "cat"] ]
   }, 
   "CEDAR": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "CHAFFINCH": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CHASING": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "CHERRY": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "CHERVIL": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "CHESTNUT": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "CHIRP": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CHIVE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "CICADA": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "CINDER": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "CLAW": {
     "variants": 0,
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "CLAY": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "CLEAR": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "CLIFF": {
     "variants": 0,
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   },
   "CLOUD": {
-    "tags0": ["element", "air", "water"]
+    "tags": [ ["element", "air", "water"] ]
   },
   "CLOUDY": {
-    "tags0": ["element", "air", "water"]
+    "tags": [ ["element", "air", "water"] ]
   },
   "CLOVER": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "COMFREY": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "CONDOR": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CONE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "CONIFER": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "CONKER": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "COPSE": {
-    "tags0": ["plant", "location", "tree"]
+    "tags": [ ["plant", "location", "tree"] ]
   },
   "COTTON": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "COUGAR": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "COYOTE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "CRAG": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "CRANE": {
     "variants": 2,
-    "tags0": ["animal", "bird"],
-    "tags1": ["animal", "bird"]
+    "tags": [ ["animal", "bird"],
+              ["animal", "bird"] ]
 
   }, 
   "CREEK": {
-    "tags0": ["location", "element", "water"]
+    "tags": [ ["location", "element", "water"] ]
   }, 
   "CRESS": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "CREST": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CRESTED": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CRICKET": {
-    "tags0": ["animal", "bug" ]
+    "tags": [ ["animal", "bug"] ]
   },
   "CROCUS": {
-    "tags0": ["flower", "plant"]
+    "tags": [ ["flower", "plant"] ]
   },
   "CROOKED": {
     "variants": 0,
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "CROUCH": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "CROW": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "CURL": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "CURLEW": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "CURLY": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "CURRENT": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "CYPRESS": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "DAHLIA": {
     "ypos": 4,
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "DAISY": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "DANCING": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "DANDELION": {
-    "tags0": ["flower", "plant"]
+    "tags": [ ["flower", "plant"] ]
   },
   "DAPPLE": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "DAPPLED": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "DART": {
-    "tags0": ["fish"]
+    "tags": [ ["fish"] ]
   }, 
   "DASH": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "DAWN": {
-    "tags0": ["miscellaneous", "element", "light"]
+    "tags": [ ["miscellaneous", "element", "light"] ]
   },
   "DAY": {
-    "tags0": ["miscellaneous", "element", "light"]
+    "tags": [ ["miscellaneous", "element", "light"] ]
   },
   "DAZZLE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "DEW": {
     "variants": 0,
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "DOG": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "DOVE": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "DOE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "DOWN": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "DOWNY": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "DREAM": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "DRIFT": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "DRIZZLE": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "DROPLET": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "DRY": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   },
   "DUCK": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "DUSK": {
-    "tags0": ["miscellaneous", "element", "light"]
+    "tags": [ ["miscellaneous", "element", "light"] ]
   }, 
   "EAGLE": {
     "ypos": 5,
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "ECHO": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "EDELWEISS": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "EGG": {
-    "tags0": ["animal", "bird", "other animal"]
+    "tags": [ ["animal", "bird", "other animal"] ]
   },
   "EGRET": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "ELDER": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "ELM": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "EMBER": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "ERMINE": {
     "variants": 3,
-    "tags0": ["animal", "mammal"],
-    "tags1": ["animal", "mammal"],
-    "tags2": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"],
+              ["animal", "mammal"],
+              ["animal", "mammal"] ]
   }, 
   "FAITH": {
     "ypos": 6,
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "FALCON": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "FALLEN": {
     "variants": 2,
-    "tags0": ["cat", "animal"],
-    "tags1": ["cat", "animal"]
+    "tags": [ ["cat", "animal"],
+              ["cat", "animal"] ]
   }, 
   "FALLING": {
     "variants": 2,
-    "tags0": ["cat", "animal"],
-    "tags1": ["element", "light"]
+    "tags": [ ["cat", "animal"],
+              ["element", "light"] ]
   }, 
   "FALLOW": {
     "variants": 2,
-    "tags0": ["animal", "mammal", "descriptor"],
-    "tags1": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal", "descriptor"],
+              ["animal", "mammal"] ]
   },
   "FAWN": {
     "variants": 0,
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "FEATHER": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "FENNEL": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "FERN": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "FERRET": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "FICKLE": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "FIDGET": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "FIERCE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "FIG": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "FIN": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "FINCH": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "FIR": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "FIRE": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "FISH": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "FLAIL": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "FLAME": {
-    "tags0": ["element", "fire"]
+    "tags": [ ["element", "fire"] ]
   },
   "FLARE": {
     "variants": 2,
-    "tags0": ["element", "light"],
-    "tags1": ["element", "light"]
+    "tags": [ ["element", "light"],
+              ["element", "light"] ]
   },
   "FLASH": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   }, 
   "FLAX": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "FLECK": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "FLEET": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "FLICKER": {
-    "tags0": ["fire", "element"]
+    "tags": [ ["fire", "element"] ]
   }, 
   "FLIGHT": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "FLINT": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   }, 
   "FLIP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "FLIT": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "FLOOD": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "FLOWER": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "FLUFF": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "FLUFFY": {
-    "tags0": ["cat", "animal"]
+    "tags": [ ["cat", "animal"] ]
   },
   "FLURRY": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "FLUTTER": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "FLY": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "FOG": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "FOGGY": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   },
   "FOXGLOVE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "FRECKLE": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   },
   "FREEZE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "FRINGE": {
     "variants": 2,
-    "tags0": ["descriptor", "miscellaneous"],
-    "tags1": ["plant", "flower"]
+    "tags": [ ["descriptor", "miscellaneous"],
+              ["plant", "flower"] ]
   },
   "FROG": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "FROND": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "FROST": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "FROZEN": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "FRUIT": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "FUMBLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "FURLED": {
-    "tags0": ["descriptor", "miscellaneous"]
+    "tags": [ ["descriptor", "miscellaneous"] ]
   }, 
   "FURZE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "FUZZ": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "FUZZY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "GALE": {
     "ypos": 7,
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "GANDER": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "GARDENIA": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "GARLIC": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "GENTLE": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "GHOST": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "GILL": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "GLADE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "GLINT": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   },
   "GOOSE": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "GORGE": {
     "variants": 2,
-    "tags0": ["location"],
-    "tags1": ["location"]
+    "tags": [ ["location"],
+              ["location"] ]
   }, 
   "GORSE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "GOSSAMER": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "GRASS": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "GRACKLE": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   },
   "GRAVEL": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "GROUSE": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "GULL": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "GUPPY": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "GUST": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "HAIL": {
     "ypos": 8,
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "HALF": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "HARE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "HATCH": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "HAVEN": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "HAWK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "HAWTHORN": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "HAY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HAZEL": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "HAZY": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "HEART": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "HEATH": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "HEATHER": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "HEAVY": {
-    "tags0": ["descriptor", "animal", "cat"]
+    "tags": [ ["descriptor", "animal", "cat"] ]
   }, 
   "HEMLOCK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HERON": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "HICKORY": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "HILL": {
-    "tags0": ["location", "animal", "cat"]
+    "tags": [ ["location", "animal", "cat"] ]
   }, 
   "HOLLOW": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "HOLLY": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "HOLLYHOCK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "HONEY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HOOT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HOP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HOPE": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "HORNET": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HOUND": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "HOWL": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "HUSH": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "HYACINTH": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "IBIS": {
     "ypos": 9,
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   },
   "ICE": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "ICICLE": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "ICY": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "IRIS": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "IVY": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "JACKDAW": {
     "ypos": 10,
     "variants": 2,
-    "tags0": ["animal", "bird"],
-    "tags1": ["animal", "bird"]
+    "tags": [ ["animal", "bird"],
+              ["animal", "bird"] ]
   }, 
   "JAGGED": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "JASMINE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "JAY": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "JUMBLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "JUMP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "JUNCO": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "JUNIPER": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "KESTREL": {
     "ypos": 11,
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "KINK": {
-    "tags0": ["descriptor", "animal", "cat"]
+    "tags": [ ["descriptor", "animal", "cat"] ]
   }, 
   "KITE": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   },
   "KITTY": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "LAKE": {
     "ypos": 12,
-    "tags0": ["location", "element", "water"]
+    "tags": [ ["location", "element", "water"] ]
   }, 
   "LARCH": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   },
   "LARKSPUR": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "LARK": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "LAUREL": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "LAVENDER": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "LEAF": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "LEAP": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "LEOPARD": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "LICHEN": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LIGHT": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   }, 
   "LIGHTNING": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   }, 
   "LILAC": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "LILY": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "LION": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LITTLE": {
-    "tags0": ["descriptor", "animal", "cat"]
+    "tags": [ ["descriptor", "animal", "cat"] ]
   }, 
   "LIZARD": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "LOCUST": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   },
   "LOG": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "LONG": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "LOTUS": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LOUD": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LOW": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LUCK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "LUPINE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "LYNX": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "LYRE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "MAGPIE": {
     "ypos": 13,
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "MALLOW": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "MANTIS": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "MAPLE": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "MARIGOLD": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "MARSH": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "MEADOW": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "MIDGE": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   },
   "MIDNIGHT": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "MILK": {
-    "tags0": ["water", "element"]
+    "tags": [ ["water", "element"] ]
   }, 
   "MILKWEED": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "MINK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "MINNOW": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   },
   "MIST": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   },
   "MISTLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "MITE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "MOLE": {
     "variants": 2,
-    "tags0": ["animal", "mammal"],
-    "tags1": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"],
+              ["animal", "mammal"] ]
   }, 
   "MOON": {
-    "tags0": ["miscellaneous", "element", "light"]
+    "tags": [ ["miscellaneous", "element", "light"] ]
   }, 
   "MOOR": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "MOREL": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "MORNING": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "MOSS": {
     "variants": 2,
-    "tags0": ["plant", "other plant"],
-    "tags1": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"],
+              ["plant", "other plant"] ]
   },
   "MOSSY": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "MOTH": {
-    "tags0": ["bug", "animal"]
+    "tags": [ ["bug", "animal"] ]
   }, 
   "MOTTLE": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "MOTTLED": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "MOUSE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "MUMBLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "MULBERRY": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "MURK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "MYRTLE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "NECTAR": {
     "ypos": 14,
     "variants": 3,
-    "tags0": ["plant", "flower"],
-    "tags1": ["plant", "flower", "bug", "animal"],
-    "tags2": ["bug", "animal"]
+    "tags": [ ["plant", "flower"],
+              ["plant", "flower", "bug", "animal"],
+              ["bug", "animal"] ]
   }, 
   "NEEDLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "NETTLE": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "NEWT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "NIGHT": {
-    "tags0": ["element", "light", "miscellaneous"]
+    "tags": [ ["element", "light", "miscellaneous"] ]
   },
   "NIGHTINGALE": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "NIMBLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "NUT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "OAK": {
     "ypos": 15,
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "OAT": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "ODD": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "OLEANDER": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "ONE": {
     "variants": 2,
-    "tags0": ["animal", "cat"],
-    "tags1": ["animal", "cat"]
+    "tags": [ ["animal", "cat"],
+              ["animal", "cat"] ]
   },
   "ORCHID": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "ORIOLE": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "OSPREY": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "OTTER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "OWL": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "PANSY": {
     "ypos": 16,
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "PANTHER": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "PARSLEY": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "PARTRIDGE": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "PATCH": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "PATCHOULI": {
-    "tags0": ["flower", "plant"]
+    "tags": [ ["flower", "plant"] ]
   },
   "PEACH": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "PEAK": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "PEAR": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "PEAT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PEBBLE": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   },
   "PERCH": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "PETAL": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "PETUNIA": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "PHEASANT": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "PHLOX": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PIGEON": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "PIKE": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "PINE": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "PIPER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PIPIT": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "PLOVER": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "PLUM": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PLUME": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "POD": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "POND": {
-    "tags0": ["location"]
+    "tags": [ ["location"] ]
   }, 
   "POOL": {
-    "tags0": ["element", "water", "animal", "cat"]
+    "tags": [ ["element", "water", "animal", "cat"] ]
   }, 
   "POP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "POPPY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "POSY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "POUNCE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "PRANCE": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "PRICKLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "PRIM": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "PRIMROSE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "PRIVET": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PUDDLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "PUMPKIN": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   },
   "PYTHON": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "QUAIL": {
     "ypos": 17,
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "QUICK": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "QUIET": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "QUILL": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "QUIVER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "RABBIT": {
     "ypos": 18,
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "RACCOON": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "RAGGED": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "RAIN": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "RAINBOW": {
     "variants": 0, 
-    "tags0": []
+    "tags": []
   }, 
   "RAT": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "RATTLE": {
     "variants": 0, 
-    "tags0": []
+    "tags": []
   }, 
   "RAVEN": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "REED": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "RIDGE": {
     "variants": 0, 
-    "tags0": []
+    "tags": []
   }, 
   "RIFT": {
-    "tags0": ["miscellaneous", "descriptor"]
+    "tags": [ ["miscellaneous", "descriptor"] ]
   },
   "RIME": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "RINDLE": {
-    "tags0": ["water", "element"]
+    "tags": [ ["water", "element"] ]
   }, 
   "RIPPLE": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "RIVER": {
-    "tags0": ["element", "location", "water"]
+    "tags": [ ["element", "location", "water"] ]
   }, 
   "ROACH": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "ROAR": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "ROCK": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   },
   "ROOK": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "ROOT": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "ROSE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "ROSY": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "ROWAN": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "RUBBLE": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   },
   "RUE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "RUNNEL": {
     "variants": 0, 
-    "tags0": []
+    "tags": []
   },
   "RUNNING": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "RUSH": {
-    "tags0": ["plant", "location", "other plant"]
+    "tags": [ ["plant", "location", "other plant"] ]
   }, 
   "RYE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "SABLE": {
     "ypos": 19,
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "SAFFRON": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "SAPLING": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "SCALE": {
-    "tags0": ["animal", "fish", "other animal"]
+    "tags": [ ["animal", "fish", "other animal"] ]
   },
   "SCORCH": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "SCRATCH": {
     "variants": 0, 
-    "tags0": []
+    "tags": []
   },
   "SCRUB": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "SEED": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "SERPENT": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   },
   "SHADE": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "SHADOW": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "SHARD": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   }, 
   "SHARP": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   },
   "SHATTER": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   },
   "SHELL": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "SHIMMER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SHINE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SHINING": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SHIVERING": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SHORT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SHREW": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "SHRIKE": {
     "variants": 2,
-    "tags0": ["bird", "animal"],
-    "tags1": ["animal", "mammal"]
+    "tags": [ ["bird", "animal"],
+              ["animal", "mammal"] ]
   },
   "SHRUB": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "SHY": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "SILENT": {
-    "tags0": ["miscellaneous", "descriptor"]
+    "tags": [ ["miscellaneous", "descriptor"] ]
   }, 
   "SILK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SILT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SKIP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SKY": {
     "variants": 2,
-    "tags0": ["plant", "tree"],
-    "tags1": ["miscellaneous"]
+    "tags": [ ["plant", "tree"],
+              ["miscellaneous"] ]
   }, 
   "SLATE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SLEEK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SLEEPY": {
-    "tags0": ["cat", "animal"]
+    "tags": [ ["cat", "animal"] ]
   }, 
   "SLEET": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SLIGHT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SLIP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SLOE": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "SLOPE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "SLUMBER": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "SMALL": {
-    "tags0": ["descriptor", "animal", "cat"]
+    "tags": [ ["descriptor", "animal", "cat"] ]
   },
   "SMOKE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "SNAIL": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "SNAKE": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "SNAP": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "SNEEZE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SNIP": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "SNOW": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   },
   "SNOWY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SOFT": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "SONG": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "SOOT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "SORREL": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "SPARK": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SPARROW": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "SPECKLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SPIDER": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "SPIKE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "SPINDLE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "SPLASH": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "SPLINTER": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "SPORE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "SPOT": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "SPOTTED": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "SPRING": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "SPROUT": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "SPRUCE": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "SQUIRREL": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "STAG": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "STARLING": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "STEM": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "STOAT": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "STONE": {
-    "tags0": ["element", "earth"]
+    "tags": [ ["element", "earth"] ]
   },
   "STORK": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "STORM": {
-    "tags0": ["element", "air", "water"]
+    "tags": [ ["element", "air", "water"] ]
   },
   "STREAK": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "STREAM": {
-    "tags0": ["location", "element", "water"]
+    "tags": [ ["location", "element", "water"] ]
   }, 
   "STRIKE": {
-    "tags0": ["cat", "animal"]
+    "tags": [ ["cat", "animal"] ]
   }, 
   "STUMPY": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "SUN": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   },
   "SUNNY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "SWALLOW": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "SWAMP": {
-    "tags0": ["plant", "other plant", "location"]
+    "tags": [ ["plant", "other plant", "location"] ]
   },
   "SWAN": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "SWARM": {
-    "tags0": ["animal", "bug"]
+    "tags": [ ["animal", "bug"] ]
   }, 
   "SWEET": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "SWIFT": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "SYCAMORE": {
-    "tags0": ["plant", "leaf"]
+    "tags": [ ["plant", "leaf"] ]
   }, 
   "TADPOLE": {
     "ypos": 20,
     "variants": 3,
-    "tags0": ["animal", "other animal"],
-    "tags1": ["animal", "other animal"],
-    "tags2": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"],
+              ["animal", "other animal"],
+              ["animal", "other animal"] ]
   }, 
   "TALL": {
-    "tags0": ["descriptor", "cat", "animal"]
+    "tags": [ ["descriptor", "cat", "animal"] ]
   }, 
   "TALON": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "TANGLE": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "TANSY": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "TAWNY": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "TEASEL": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "TEMPEST": {
     "variants": 3,
-    "tags0": ["element", "air"],
-    "tags1": ["element", "air"],
-    "tags2": ["element", "air"]
+    "tags": [ ["element", "air"],
+              ["element", "air"],
+              ["element", "air"] ]
   }, 
   "THISTLE": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "THORN": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "THRIFT": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "THRUSH": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "THUNDER": {
-    "tags0": ["element", "light"]
+    "tags": [ ["element", "light"] ]
   }, 
   "THYME": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "TIGER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "TIMBER": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "TINY": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "TOAD": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   }, 
   "TORN": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   },
   "TREE": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   },
   "TREMBLE": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "TRICKLE": {
-    "tags0": ["element", "water"]
+    "tags": [ ["element", "water"] ]
   }, 
   "TROUT": {
-    "tags0": ["animal", "fish"]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "TUFT": {
-    "tags0": ["descriptor"]
+    "tags": [ ["descriptor"] ]
   }, 
   "TULIP": {
     "variants": 2,
-    "tags0": ["plant", "flower"],
-    "tags1": ["plant", "flower"]
+    "tags": [ ["plant", "flower"],
+              ["plant", "flower"] ]
   }, 
   "TUMBLE": {
     "variants": 2,
-    "tags0": ["element", "earth"],
-    "tags1": ["cat", "animal"]
+    "tags": [ ["element", "earth"],
+              ["cat", "animal"] ]
   }, 
   "TURTLE": {
-    "tags0": ["animal", "other animal"]
+    "tags": [ ["animal", "other animal"] ]
   },
   "TWIG": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   },
   "TWILIGHT": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   },
   "VALLEY": {
     "ypos": 21,
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "VERBENA": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "VERVAIN": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "VINE": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "VIOLET": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   },
   "VIXEN": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   },
   "VOLE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   },
   "WARBLER": {
     "ypos": 22,
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   },
   "WASP": {
-    "tags0": ["bug", "animal"]
+    "tags": [ ["bug", "animal"] ]
   }, 
   "WEASEL": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "WEB": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "WEED": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "WEEVIL": {
-    "tags0": ["bug", "animal"]
+    "tags": [ ["bug", "animal"] ]
   }, 
   "WET": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "WHEAT": {
-    "tags0": ["plant", "other plant"]
+    "tags": [ ["plant", "other plant"] ]
   }, 
   "WHIMSY": {
-    "tags0": ["miscellaneous", "animal", "cat"]
+    "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "WHIRL": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "WHISKER": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "WHISPER": {
-    "tags0": ["animal", "cat"]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "WHISPERING": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "WHISTLE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "WHORL": {
-    "tags0": ["miscellaneous"]
+    "tags": [ ["miscellaneous"] ]
   }, 
   "WILD": {
     "variants": 0,
-    "tags0": []
+    "tags": []
   }, 
   "WILLOW": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "WIND": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   }, 
   "WING": {
-    "tags0": ["animal", "bird"]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "WISH": {
-    "tags0": ["cat", "animal"]
+    "tags": [ ["cat", "animal"] ]
   },
   "WISP": {
-    "tags0": ["element", "air"]
+    "tags": [ ["element", "air"] ]
   },
   "WISTERIA": {
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "WOLF": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "WOLVERINE": {
-    "tags0": ["animal", "mammal"]
+    "tags": [ ["animal", "mammal"] ]
   }, 
   "WOOD": {
-    "tags0": ["plant", "tree"]
+    "tags": [ ["plant", "tree"] ]
   }, 
   "WORM": {
-    "tags0": ["other animal", "animal"]
+    "tags": [ ["other animal", "animal"] ]
   }, 
   "WREN": {
-    "tags0": ["bird", "animal"]
+    "tags": [ ["bird", "animal"] ]
   }, 
   "YARROW": {
     "ypos": 23,
-    "tags0": ["plant", "flower"]
+    "tags": [ ["plant", "flower"] ]
   }, 
   "YEW": {
-    "tags0": ["plant", "fruit"]
+    "tags": [ ["plant", "fruit"] ]
   }, 
   "ZINNIA": {
     "ypos": 24,
     "variants": 0,
-    "tags0": []
+    "tags": []
   }
 }
