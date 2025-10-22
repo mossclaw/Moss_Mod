@@ -333,13 +333,6 @@ class Sprites:
         """
         Extracts sprites from a spritesheet according to a specification in a json file.
         """
-
-        def read_or_set(entry, name, value, on_read = None):
-            if name not in entry:
-                entry[name] = value
-            else:
-                value = entry[name]
-            return (value, on_read)
             
         def get_or_default(entry, name, default):
             if entry is not None and name in entry:
@@ -362,6 +355,15 @@ class Sprites:
     
     
     def load_specified_list(self, spritesheet, prefix, entries):
+
+        def read_or_set(entry, name, value, on_read = None):
+            if name not in entry:
+                entry[name] = value
+            else:
+                value = entry[name]
+            return (value, on_read)
+        
+        
         xpos = 0
         ypos = 0
         sprite_names = []
