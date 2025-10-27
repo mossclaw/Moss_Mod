@@ -387,14 +387,15 @@ class Sprites:
             ypos, read  = read_or_set(entry, 'ypos',     ypos)
             xpos, _     = read_or_set(entry, 'xpos',     0 if read else xpos)
             
+            names = []
             for i in range(variants):
                 sprite_name = f"{prefix}{name}{i}"
-                entry[f"sprite_name{i}"] = sprite_name
                 self.make_single(spritesheet, sprite_name, (xpos, ypos))
-                print(f"{sprite_name} at ({xpos}, {ypos})")
                 if 'exclude' not in entry or not entry['exclude']:
+                    names.append(sprite_name)
                     sprite_names.append(sprite_name)
                 xpos += 1
+            entry['sprite_names'] = names
         
         return (entries, sprite_names)
     

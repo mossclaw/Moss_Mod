@@ -19,6 +19,30 @@ cat_to_fade = []
 """Cats who have been faded since the last save"""
 
 
+def make_list(value):
+    if value is list:
+        return value
+    if value is None:
+        return []
+    return data
+
+
+def get_or_none(data: dict, key):
+    return data[key] if key in data else None
+
+
+def load_instance(data: dict, 
+                  Class, 
+                  args: dict):
+    arg_list = []
+    for name, tags in args.items():
+        arg = get_or_none(data, key) if 'opt' in tags else data[key]
+        if 'list' in tags:
+            arg = make_list(arg)
+        arg_list.append(arg)
+    return Class(*arg_list)
+
+
 def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
     """Save the cat data."""
 

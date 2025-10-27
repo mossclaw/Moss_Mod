@@ -10,6 +10,7 @@ from scripts.cat.sprites import sprites
 from scripts.game_structure import constants
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text
+from scripts.cat.accessory import Accessory
 
 
 class Pelt:
