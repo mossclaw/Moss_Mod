@@ -9,23 +9,10 @@ import time
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants#, image_cache
 from scripts.game_structure.game.settings import game_setting_get
+from scripts.utility import read_sprite_dict
 
 
 logger = logging.getLogger(__name__)
-
-
-def read_json(path, description_for_error = None):
-    try:
-        with open(path, 'r', encoding="utf-8") as read_file:
-            return ujson.loads(read_file.read())
-    except IOError:
-        if description_for_error is not None:
-            logger.error(f'Failed to read {description_for_error}.')
-        return {}
-
-
-def read_sprite_dict(name, description_for_error = None):
-    return read_json(f'sprites/dicts/{name}.json', description_for_error)
 
 
 class Sprites:
