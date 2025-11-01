@@ -9,12 +9,6 @@
     "torties": ["Tortie", "Calico"]
   },
   "colors": {
-    "peltcolors": [
-      "WHITE", "SNOW WHITE", "PALE BLUE", "GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER", "BLACK", "SOOT BLACK",
-      "LIGHT CREAM", "CREAM", "DARK CREAM", "GOLD", "PALE GOLD", "FIRE", "EMBER", "WARM HONEY", "GINGER", "SIENNA",
-      "DARK GINGER", "PALE BROWN", "ALMOND", "SANDSTONE", "LAVENDER", "GRANITE", "SANDY", "CINNAMON", "ACORN",
-      "LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE", "COPPER", "BLUE GOLDEN", "CROW"
-    ],
     "white": ["WHITE", "SNOW WHITE"],
     "blue": ["PALE BLUE"],
     "gray": ["GRAY", "DARK GRAY", "SLATE", "DARK SLATE", "SILVER"],
@@ -29,11 +23,6 @@
     "brown": ["LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"]
   },
   "eyes": {
-    "eyecolors": [
-      "YELLOW", "PALE YELLOW", "GOLD", "BLUE", "DARK BLUE", "PALE BLUE", "ICE", "HAZEL", "PALE GREEN",
-      "GREEN", "FOREST", "COPPER", "LIGHT GREY", "SLATE", "HEATHER BLUE", "DARK AMBER", "HAZELNUT", "CHOCOLATE", "AMBER",
-      "MANGO"
-    ],
     "yellow": ["YELLOW", "PALE YELLOW", "GOLD"],
     "blue": ["BLUE", "DARK BLUE", "PALE BLUE", "ICE"],
     "green": ["HAZEL", "PALE GREEN", "GREEN", "FOREST"],
@@ -46,37 +35,57 @@
   },
   "whitepatches": {
     "little": ["LITTLE", "LIGHTTUXEDO", "BUZZARDFANG", "TIP", "BLAZE", "BIB", "VEE", "PAWS",
-      "BELLY", "TAILTIP", "TOES", "BROKENBLAZE", "LILTWO", "SCOURGE", "TOESTAIL", "RAVENPAW", "HONEY",
-      "EXTRA", "MUSTACHE", "REVERSEHEART", "SPARKLE", "RIGHTEAR", "LEFTEAR", "ESTRELLA", "REVERSEEYE", "BACKSPOT",
-      "EYEBAGS", "LOCKET", "BLAZEMASK"],
-    "mid": ["TUXEDO", "FANCY", "UNDERS", "DAMIEN", "MITAINE", "SQUEAKS", "STAR",
-      "MOSSY", "CHANCE", "DIVA", "SAVANNAH", "FADESPOTS", "BEARD", "DAPPLEPAW", "MISS", "VENUS",
-      "BOWTIE", "VEST", "FADEBELLY", "DIGIT", "FCTWO", "FCONE", "MIA", "PRINCESS", "DOUGIE"],
-    "high": ["ANY", "ANYTWO", "BROKEN", "FRECKLES", "RINGTAIL", "HALFFACE", "PANTSTWO",
-      "GOATEE", "PRINCE", "FAROFA", "MISTER", "HALFWHITE", "APPALOOSA", "PIEBALD",
-      "CURVED", "GLASS", "MASKMANTLE", "MAO", "FALCON", "PEPPER", "BUB", "TRIXIE",
-      "SAMMY", "FRONT", "BLOSSOMSTEP", "COWTWO", "COWFOUR", "COWSIX", "COWEIGHT", "COWELEVEN",
-      "FINN", "SCAR", "BUSTER", "HAWKBLAZE"],
-    "mostly": ["VAN", "ONEEAR", "LIGHTSONG", "TAIL", "MOORISH", "APRON", "CAPSADDLE",
-      "CHESTSPECK", "BLACKSTAR", "PETAL", "FRECKLEMASK", "COW", "TIDAL",
-      "PEBBLESHINE", "BOOTS", "COWSEVEN", "COWNINE", "COWTEN",
-      "SHOOTINGSTAR", "EYESPOT", "PEBBLE", "TAILTWO", "BUDDY", "KROPKA"],
+               "BELLY", "TAILTIP", "TOES", "BROKENBLAZE", "LILTWO", "SCOURGE", "TOESTAIL", 
+               "RAVENPAW", "HONEY", "EXTRA", "MUSTACHE", "REVERSEHEART", "SPARKLE", "RIGHTEAR", 
+               "LEFTEAR", "ESTRELLA", "REVERSEEYE", "BACKSPOT", "EYEBAGS", "LOCKET", "BLAZEMASK"],
+    "mid": ["TUXEDO", "FANCY", "UNDERS", "DAMIEN", "MITAINE", "SQUEAKS", "STAR", "MOSSY", "CHANCE", 
+            "DIVA", "SAVANNAH", "FADESPOTS", "BEARD", "DAPPLEPAW", "MISS", "VENUS", "BOWTIE", 
+            "VEST", "FADEBELLY", "DIGIT", "FCTWO", "FCONE", "MIA", "PRINCESS", "DOUGIE"],
+    "high": ["ANY", "ANYTWO", "BROKEN", "FRECKLES", "RINGTAIL", "HALFFACE", "PANTSTWO", "GOATEE", 
+             "PRINCE", "FAROFA", "MISTER", "HALFWHITE", "APPALOOSA", "PIEBALD", "CURVED", "GLASS", 
+             "MASKMANTLE", "MAO", "FALCON", "PEPPER", "BUB", "TRIXIE", "SAMMY", "FRONT", 
+             "BLOSSOMSTEP", "COWTWO", "COWFOUR", "COWSIX", "COWEIGHT", "COWELEVEN", "FINN", 
+             "SCAR", "BUSTER", "HAWKBLAZE"],
+    "mostly": ["VAN", "ONEEAR", "LIGHTSONG", "TAIL", "MOORISH", "APRON", "CAPSADDLE", "CHESTSPECK", 
+               "BLACKSTAR", "PETAL", "FRECKLEMASK", "COW", "TIDAL", "PEBBLESHINE", "BOOTS", 
+               "COWSEVEN", "COWNINE", "COWTEN", "SHOOTINGSTAR", "EYESPOT", "PEBBLE", "TAILTWO", 
+               "BUDDY", "KROPKA"],
     "point": ["COLOURPOINT", "RAGDOLL", "SEPIAPOINT", "MINKPOINT", "SEALPOINT"],
     "vit": ["VITILIGO", "VITILIGOTWO", "PHANTOM", "KARPATI", "SPLAT", "BLEACHED"]
   },
   "tortiepatches": {
     "patterns": [
-      "ONE", "TWO", "THREE", "FOUR", "REDTAIL", "DELILAH", "HALF", "STREAK", "MASK", "SMOKE", "MINIMALONE",
-      "MINIMALTWO", "MINIMALTHREE", "MINIMALFOUR", "SWOOP", "CHIMERA", "GRUMPYFACE", "MOTTLED", "SIDEMASK", "EYEDOT",
-      "BANDANA", "SMUDGED", "DAUB", "EMBER", "BRIE", "ORIOLE", "ROBIN", "ROSETAIL", "DAPPLENIGHT", "BLANKET", "BODY",
-      "FRECKLED", "VIPER", "SKULL", "MAXIMUMEIGHT"
+      "ONE", "TWO", "THREE", "FOUR", "REDTAIL", "DELILAH", "HALF", "STREAK", "MASK", "SMOKE", 
+      "MINIMALONE", "MINIMALTWO", "MINIMALTHREE", "MINIMALFOUR", "SWOOP", "CHIMERA", "GRUMPYFACE", 
+      "MOTTLED", "SIDEMASK", "EYEDOT", "BANDANA", "SMUDGED", "DAUB", "EMBER", "BRIE", "ORIOLE", 
+      "ROBIN", "ROSETAIL", "DAPPLENIGHT", "BLANKET", "BODY", "FRECKLED", "VIPER", "SKULL", 
+      "MAXIMUMEIGHT"
     ],
     "bases": [
       "ticked", "agouti", "smoke", "rosette", "tabby", "classic", "sokoke", "solid", "abyssinian", "mackerel",
       "brokenmackerel", "braided", "brokenbraided", "bengal", "charcoalbengal"
     ]
   },
-  "hc": {
-    "patterns": ["TRUE", "TRUE"]
-  }
+  "tortiecolors": {
+    "black"     : { "*": ["fire", "ginger"] },
+    "white"     : { "*": ["fire", "ginger"], "base": ["black"] },
+    "blue"      : { "*": ["cream", "gold"] },
+    "gray"      : { "*": ["gold", "cream"] },
+    "cream"     : { "*": ["blue", "blue", "blue", "blue", 
+                          "gray", "gray", "gray", "gray", 
+                          "warmbrown", "brown", "coolbrown"] },
+    "gold"      : { "*": ["blue", "blue", "blue", "blue", 
+                          "gray", "gray", "gray", "gray", 
+                          "warmbrown", "brown", "coolbrown"] },
+    "fire"      : { "*": ["black", "black", "black", "black", 
+                          "warmbrown", "brown", "coolbrown"] },
+    "ginger"    : { "*": ["black", "black", "black", "black", 
+                          "warmbrown", "brown", "coolbrown"] },
+    "coolbrown" : { "*": ["cream", "gold", "fire", "ginger"] },
+    "lavender"  : { "*": ["cream", "gold", "fire", "ginger"] },
+    "warmbrown" : { "*": ["cream", "gold", "fire", "ginger"] },
+    "brown"     : { "*": ["cream", "gold", "fire", "ginger"] },
+    "_default_" : "GOLD"
+  },
+  "eyepatterns": ["TRUE", "TRUE"]
 }

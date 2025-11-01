@@ -18,6 +18,7 @@ class Accessory:
         self.color = color
         self.pattern = pattern
         self.slot = slot
+        self.parent = None
     
     
     @staticmethod

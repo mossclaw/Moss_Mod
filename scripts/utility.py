@@ -54,12 +54,12 @@ def read_json(path, description_for_error = None):
             return ujson.loads(read_file.read())
     except IOError:
         if description_for_error is not None:
-            logger.error(f'Failed to read {description_for_error}.')
+            logger.error(f"Failed to read {description_for_error}.")
         return {}
 
 
 def read_dict(subdir, name, description_for_error = None):
-    return read_json(f'{subdir}/dicts/{name}.json', description_for_error)
+    return read_json(f"{subdir}/dicts/{name}.json", description_for_error)
 
 
 def read_sprite_dict(name, description_for_error = None):
@@ -2684,7 +2684,7 @@ def generate_sprite(
         if cat.pelt.name not in ["Tortie", "Calico"]:
             new_sprite.blit(
                 sprites.sprites[
-                    cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
+                    cat.pelt.name.lower() + cat.pelt.colour + cat_sprite
                 ],
                 (0, 0),
             )
@@ -3045,6 +3045,9 @@ def generate_sprite(
 # ---------------------------------------------------------------------------- #
 #                                     OTHER                                    #
 # ---------------------------------------------------------------------------- #
+
+def union_of_entries(dict_of_lists):
+    return sorted({ x for y in sprite_names.values() for x in y })
 
 def chunks(L, n):
     return [L[x : x + n] for x in range(0, len(L), n)]
