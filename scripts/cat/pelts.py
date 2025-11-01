@@ -26,7 +26,7 @@ class Pelt:
     _real_pelts = read_resource_dict('real_pelts', 'Real Pelts')
     _fantasy_pelts = read_resource_dict('fantasy_pelts', 'Fantasy Pelts')
     _pelt_data = read_resource_dict('pelt_data', 'Pelt Data')
-    
+
     def _data_dict_for(config_key):
         return _real_pelts if _moss_config[config_key] else _fantasy_pelts
 
@@ -39,16 +39,16 @@ class Pelt:
     pelt_dict = _data_dict_for('real_pelts')['pelts']
     eyes_dict = _data_dict_for('real_eye_colors')['eyes']
     eye_colours = union_of_entries(eyes_dict)
-    
+
     sprite_names = _data_dict_for('real_pelt_colors')['colors']
     pelt_colours = union_of_entries(sprite_names)
     mottled_colors = set(sprite_names["black"] + sprite_names["brown"] + sprite_names["white"])
-    
+
     white_patches = _data_dict_for('real_white_patches')['whitepatches'][
-    white_lists = [ white_patches['little'], 
-                    white_patches['mid'], 
-                    white_patches['high'], 
-                    white_patches['mostly'], 
+    white_lists = [ white_patches['little'],
+                    white_patches['mid'],
+                    white_patches['high'],
+                    white_patches['mostly'],
                     ["FULLWHITE"] ]
     white_low_end  = white_lists[0] + white_lists[1]
     white_high_end = white_lists[2] + white_lists[3] + white_lists[4]
@@ -57,7 +57,7 @@ class Pelt:
 
 
 
-   
+
 
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
@@ -486,7 +486,7 @@ class Pelt:
                 poses[age] = choice(available)
                 if age == 'adult':
                     poses['young adult'] = poses['senior adult'] = poses[age]
-        
+
 
         if self.pattern in convert_dict["old_tortie_patches"]:
             old_pattern = self.pattern
@@ -524,7 +524,7 @@ class Pelt:
         zero = [0 for i in range(n)]
         unknown = weight_data['_unknown_'] if '_unknown_' in weight_data else zero
         weights = [0 for i in range(n)]
-        
+
         for value in parent_values:
             if value is None:
                 add = unknown
@@ -534,14 +534,14 @@ class Pelt:
                     if key in groupings and value in groupings[key] or key == value:
                         add = weight_data[key]
                         break
-            
+
             for x in range(n):
                 weights[x] += add[x]
-        
+
         # If we have no weights at all, replace with equal chance for all
         if ensure_not_zero and not any(weights):
             weights = [1 for i in range(n)]
-        
+
         return weights
 
 
@@ -654,7 +654,7 @@ class Pelt:
             self.tortiebase = selected.tortiebase
             return selected.white
 
-        
+
         # ------------------------------------------------------------------------------------------------------------#
         #   PELT
         # ------------------------------------------------------------------------------------------------------------#
@@ -697,7 +697,7 @@ class Pelt:
         # ------------------------------------------------------------------------------------------------------------#
         #   PELT COLOUR
         # ------------------------------------------------------------------------------------------------------------#
-        
+
         weights = Pelt._calc_inheritance_weights('colors', Pelt.sprite_names, par_peltcolours)
         chosen_pelt_color = choice(weighted_choice(Pelt.sprite_names.values(), weights))
 
@@ -857,13 +857,13 @@ class Pelt:
         # poses
         data = Pelt._pelt_data['poses']
         poses = self.cat_sprites
-        
+
         poses['newborn'] = choice(data['newborn'])
         poses['kitten' ] = choice(data['kitten'][self.length])
-        
-        poses['adolescent'] = choice(data['aging'][poses['kitten']])
-        poses['adult'     ] = choice(data['aging'][poses['adolescent']])
-        poses['senior'    ] = choice(data['aging'][poses['adult']])
+
+        poses['adolescent'] = choice(data['aging'][str(poses['kitten'])])
+        poses['adult'     ] = choice(data['aging'][str(poses['adolescent'])])
+        poses['senior'    ] = choice(data['aging'][str(poses['adult'])])
 
         poses['young adult' ] = poses['adult']
         poses['senior adult'] = poses['adult']
@@ -992,7 +992,7 @@ class Pelt:
 
             color_sets = Pelt._data_dict_for('real_mottled_colors')['tortiecolors']
             self.tortiecolour = color_sets['_default_']  # Default if not set below
-            
+
             wildcard_chance = constants.CONFIG["cat_generation"]["wildcard_tortie"]
             if self.colour:
                 # The "not wildcard_chance" allows users to set wildcard_tortie to 0
@@ -1021,10 +1021,10 @@ class Pelt:
                         if self.colour in colors:
                             color_set = color_sets[key]
                             break
-                    
+
                     def choose_color(key):
                         choice_from_categories(color_set[key], Pelt.sprite_names)
-                    
+
                     self.tortiecolour = choose_color('*')
                     if 'base' in color_set:
                         self.colour = choose_color('base')
@@ -1239,8 +1239,8 @@ class Pelt:
                 self.white_patches_tint = "none"
         else:
             self.white_patches_tint = "none"
-    
-    
+
+
     def is_mottled(self):
         return self.colour in Pelt.mottled_colors and self.tortiecolour in Pelt.mottled_colors
 
