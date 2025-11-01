@@ -110,7 +110,6 @@ class Sprites:
     cat_tints           = {}
     white_patches_tints = {}
     clan_symbols        = []
-    real_pelts          = {}
     
     # TODO: There are used from pelts.py. Would be nice to decouple, 
     #       but they *are* required to be in sync. Needs thinking.
@@ -153,7 +152,6 @@ class Sprites:
     def load_tints(self):
         self.cat_tints = read_sprite_dict('tint', 'Tints')
         self.white_patches_tints = read_sprite_dict('white_patches_tint', 'White Patches Tints')
-        self.real_pelts = read_sprite_dict('real_pelts', 'Real Pelts')
 
 
     def spritesheet(self, a_file, name):
