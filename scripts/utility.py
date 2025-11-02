@@ -2796,7 +2796,7 @@ def generate_sprite(
         tuft_line_tint = None
 
         if cat.pelt.tortie_tuft:
-            tuft_base_color = str(cat.pelt.tortiecolour).upper()
+            tuft_base_color = str(cat.pelt.tortie_colour).upper()
         else:
             tuft_base_color = str(cat.pelt.colour).upper()
 
@@ -2894,15 +2894,30 @@ def generate_sprite(
 
 
         # Hello! I'm sorry
+        base_name = None
+        base_color = None
+        tortie_base_pattern = None
+        tortie_color = None
+        base_tint = None
+
+        # SETTING UP EACH PIECE
+        base_pelt = None
+        mid_pelt = None
+        highlight_pelt = None
+        dark_pelt = None
+        line_pelt = None
+        unders_pelt = None
+        shade_pelt = None
+
 
         if cat.pelt.name not in ['Tortie', 'Calico']:
             base_name = str(cat.pelt.name).upper()
             base_color = str(cat.pelt.colour).upper()
 
         else:
-            base_name = str(cat.pelt.tortie_base).upper()
+            base_name = str(cat.pelt.tortiebase).upper()
             base_color = str(cat.pelt.colour).upper()
-            tortie_base_pattern = str(cat.pelt.tortie_pattern).upper()
+            tortie_base_pattern = str(cat.pelt.tortiepattern).upper()
             tortie_color = str(cat.pelt.tortie_colour).upper()
 
         if base_name:
@@ -2943,7 +2958,7 @@ def generate_sprite(
 
 
         # repeat for torties
-        if tortie_base_pattern:
+        if cat.pelt.name in ['Tortie', 'Calico']:
             tortie_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tortie_base_tint.fill(color_dict[tortie_color][1])
             tortie_base_pelt = sprites.sprites['baseSOLID' + cat_sprite].copy().convert_alpha()
@@ -3001,7 +3016,7 @@ def generate_sprite(
             patches.blit(tortie_shade_pelt, (0, 0))
             patches.blit(tortie_highlight_pelt, (0, 0))
             patches.blit(tortie_line_pelt, (0, 0))
-            patches.blit(sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite], (0, 0),
+            patches.blit(sprites.sprites["tortiemask" + cat.pelt.tortie_pattern + cat_sprite], (0, 0),
                          special_flags=pygame.BLEND_RGBA_MULT)
             new_sprite.blit(patches, (0, 0))
 
