@@ -955,7 +955,7 @@ class Pelt:
             if not self.pattern:
                 self.pattern = choice(Pelt.tortiepatterns)
 
-            color_sets = _data_dict_for('real_mottled_colors')['tortiecolors']
+            color_sets = _data_dict_for('real_tortie_colors')['tortiecolors']
             self.tortiecolour = color_sets['_default_']  # Default if not set below
 
             wildcard_chance = constants.CONFIG["cat_generation"]["wildcard_tortie"]
