@@ -751,3 +751,37 @@ dev_tools = false
       greenleaf = [1, 2, 3]
       leaf-fall = [2, 3, 2]
       leaf-bare = [5, 2, 1]
+
+[moss]
+# Defaults for moss settings are false(except for enable_tints), this is the intended way to play moss mod as it includes all content
+
+  black_lineart = false
+  # Sets all line art to flat black, including afterlife sprites.
+
+  black_white_patches = false
+  # Allows white patches to be tinted black
+
+  real_pelts = false
+  # Limits pelts to more realistic looking pelts only, this will stop a lot of pelts from showing up! This only effects new spawns, not existing cats.
+
+  real_pelt_colors = false
+  # Limits pelt colors to more realistic looking colors only, this will stop a lot of colors from showing up! This only effects new spawns, not existing cats.
+
+  real_eye_colors = false
+  # Limits eye colors to more realistic looking colors only, this will stop a lot of colors from showing up! This only effects new spawns, not existing cats.
+
+  real_white_patches = false
+  # Limits white patches to more realistic looking patches only, this will stop a lot of patches from showing up! This only effects new spawns, not existing cats.
+
+  real_tortie_patches = false
+  # Limits tortie patches to more realistic looking patches only, this will stop a lot of patches from showing up! This only effects new spawns, not existing cats.
+
+  real_tortie_colors = false
+  # Limits tortie color combinations to more realistic looking colors, this will stop a lot of combinations from showing up! This only effects new spawns, not existing cats.
+  # NOTE: this setting can be used without real_pelt_colors, this is only for group combinations like black/ginger or gray/cream.
+
+  classic_hc = false
+  # Limits heterochromia patterns to only be one eye of each color instead of sectoral variants. This only effects new spawns, not existing cats.
+
+  enable_tints = true
+  # Enables or disables pelt tints displaying, tints are still assigned to cats in the save file
