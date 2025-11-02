@@ -43,33 +43,6 @@ if TYPE_CHECKING:
     from scripts.cat.cats import Cat
 
 
-# ---------------------------------------------------------------------------- #
-#                            Loading json files                                #
-# ---------------------------------------------------------------------------- #
-
-
-def read_json(path, description_for_error = None):
-    try:
-        with open(path, 'r', encoding="utf-8") as read_file:
-            return ujson.loads(read_file.read())
-    except IOError:
-        if description_for_error is not None:
-            logger.error(f"Failed to read {description_for_error}.")
-        return {}
-
-
-def read_dict(subdir, name, description_for_error = None):
-    return read_json(f"{subdir}/dicts/{name}.json", description_for_error)
-
-
-def read_sprite_dict(name, description_for_error = None):
-    return read_dict('sprites', name, description_for_error)
-
-
-def read_resource_dict(name, description_for_error = None):
-    return read_dict('resources', name, description_for_error)
-
-
 
 # ---------------------------------------------------------------------------- #
 #                               Getting Cats                                   #
@@ -3047,7 +3020,7 @@ def generate_sprite(
 # ---------------------------------------------------------------------------- #
 
 def union_of_entries(dict_of_lists):
-    return sorted({ x for y in sprite_names.values() for x in y })
+    return sorted({ x for y in dict_of_lists.values() for x in y })
 
 def chunks(L, n):
     return [L[x : x + n] for x in range(0, len(L), n)]

@@ -9,7 +9,7 @@ import time
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants#, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.utility import read_sprite_dict
+from scripts.temp_util import read_sprite_dict, read_json
 
 
 logger = logging.getLogger(__name__)
@@ -23,7 +23,7 @@ class Sprites:
             self.image = None
             self.a_file = a_file
             self.ready = False
-    
+
         @property
         def sprite(self):
             if self.image is None:
@@ -63,7 +63,7 @@ class Sprites:
         def sprite(self):
             if self.image is None:
                 self.image = self.palette_set.apply(
-                    self.base_sprite.sprite, 
+                    self.base_sprite.sprite,
                     self.palette_name
                 )
             return self.image
@@ -75,27 +75,27 @@ class Sprites:
             self.base_palette = None
             self.path = path
             self.palette_names = palette_names
-        
+
         def apply(self, sprite, palette):
             if palette == 'BASE':
                 return sprite
-            
+
             if self.palettes is None:
                 image = pygame.image.load(path)
                 with pygame.PixelArray(image) as array:
                     n = array.shape[1]   # pylint: disable=unsubscriptable-object
-                    rows = [ 
+                    rows = [
                         [ image.unmap_rbg(color) for color in array[::, i] ]
                         for i in range(0, n)
                     ]
                     self.base_palette = rows[0]
                     self.palettes = dict(zip(self.palette_names, rows[1::]))
-            
+
             sprite = sprite.copy()
             with pygame.PixelArray(sprite) as array:
                 for old_color, new_color in zip(self.palette_names, self.palettes[palette]):
                     array.replace(old_color, new_color)
-            
+
             return sprite
 
 
@@ -110,8 +110,8 @@ class Sprites:
     cat_tints           = {}
     white_patches_tints = {}
     clan_symbols        = []
-    
-    # TODO: There are used from pelts.py. Would be nice to decouple, 
+
+    # TODO: There are used from pelts.py. Would be nice to decouple,
     #       but they *are* required to be in sync. Needs thinking.
     POSE_DATA = read_sprite_dict('pose_sprite_data')
     COLLAR_DATA = read_sprite_dict('collar_sprite_data')
@@ -124,8 +124,8 @@ class Sprites:
     PELT_DATA = read_sprite_dict('pelt_sprite_data')
     EYE_DATA = read_sprite_dict('eye_sprite_data')
     WHITE_DATA = read_sprite_dict('white_patches_sprite_data')
-    
-    
+
+
     def __init__(self):
         self.symbol_dict   = None
         self.symbol_colors = None
@@ -177,9 +177,9 @@ class Sprites:
         :param spritesheet: Name of spritesheet file.
         :param pos:         (x, y) tuple of offsets. NOT pixel offset, but offset in sprites.
         :param name:        Name of sprite being made.
-        :param sheet_size:  Number of sprites in the grid, as an (x, y) tuple, if different 
+        :param sheet_size:  Number of sprites in the grid, as an (x, y) tuple, if different
                             from default.
-        :param size:        Size of each individual sprite, as an (x, y) tuple, if different 
+        :param size:        Size of each individual sprite, as an (x, y) tuple, if different
                             from default.
         :param palettes:    List of palette names.
         """
@@ -201,7 +201,7 @@ class Sprites:
             if not self.blank_sprite:
                 self.blank_sprite = self.Blank(size)
             new_sprite = self.blank_sprite
-        
+
         if static:
             if sheet_size is None:
                 sheet_size = (self.sheet_size[0], self.sheet_size[1])
@@ -210,8 +210,8 @@ class Sprites:
         else:
             self.add_sprite(name, new_sprite)
             self.sprite_cache[name] = new_sprite
-    
-    
+
+
     def add_sprite(self, name, sprite):
         self.sprite_cache[name] = sprite
 
@@ -220,9 +220,9 @@ class Sprites:
         """
         Divide sprites on a spritesheet into groups of sprites that are easily accessible.
         :param name:      Name of spritesheet being made into a group of same name.
-        :param sheet_size: Number of sprites in the grid, as an (x, y) tuple, if different 
+        :param sheet_size: Number of sprites in the grid, as an (x, y) tuple, if different
                           from default.
-        :param size:      Size of each individual sprite, as an (x, y) tuple, if different 
+        :param size:      Size of each individual sprite, as an (x, y) tuple, if different
                           from default.
         :param palettes:  List of palette names.
         """
@@ -241,11 +241,11 @@ class Sprites:
     def load_file(self, path, name, subdir=None):
         def invalid(path, reason):
             logger.warning(f"Entry in sprites.json for {path} is not valid. Ignoring file. {reason}")
-            
-        
+
+
         spritesheet = f"{subdir}{name.upper()}" if subdir else name
         self.spritesheet(f"sprites/{path}", spritesheet)
-        
+
         if path in self.config:
             kind = self.config[path]
         elif subdir and subdir in self.config:
@@ -256,20 +256,20 @@ class Sprites:
         if isinstance(kind, list):
             arg = kind[1::]
             kind = kind[0]
-        
+
         match kind:
             case 'normal':
                 self.make_group(spritesheet)
-                
+
             case 'none':
                 pass
-                
+
             case 'single':
                 self.make_single(spritesheet, spritesheet)
-                
+
             case 'static':
                 self.make_single(spritesheet, spritesheet, static=True)
-                
+
             case 'json':
                 # arg should be a path to a json file
                 if len(arg) >= 1 and os.path.isfile(arg[0]):
@@ -278,7 +278,7 @@ class Sprites:
                         self.specified[name] = specified
                 else:
                     invalid(path, 'Value json requires a file as argument.')
-                
+
             case _:
                 invalid(path, 'Valid values are normal, none, single, static or json.')
 
@@ -291,7 +291,7 @@ class Sprites:
                 self.load_file(rel_path, file_name[:-4], subdir)
             elif os.path.isdir(sub_path) and not subdir:
                 self.load_dir(sub_path, file_name)
-            
+
 
     def load_all(self):
         # read sprites.json
@@ -300,9 +300,9 @@ class Sprites:
         # get the width and height of the spritesheet
         self.spritesheet('sprites/line.png', 'line')
         width, height = self.spritesheets['line'].sprite.get_size()
-        
+
         self.sheet_size = tuple(self.config['_sheet_size_'])
-        
+
         # check consistency of sheet size and determine sprite size
         if isinstance(self.size, int):
             pass
@@ -318,10 +318,10 @@ class Sprites:
 
         del width, height
         self.specified = {}
-        
+
         # Process contents of sprites folder
         self.load_dir('sprites')
-        
+
         # Save special sprite sets in individual variables, for convenience and compatibility.
         self.symbol_dict, self.clan_symbols = self.specified['symbol']
 
@@ -330,27 +330,27 @@ class Sprites:
         """
         Extracts sprites from a spritesheet according to a specification in a json file.
         """
-            
+
         def get_or_default(entry, name, default):
             if entry is not None and name in entry:
                 return entry[name]
             else:
                 return default
 
-        
+
         entries = read_json(json_path)
         config = entries['_config_']
         prefix = get_or_default(config, 'prefix', '')
         kind = config['type']
         del(entries['_config_'])
-        
+
         match kind:
             case 'list':
                 return self.load_specified_list(spritesheet, prefix, entries)
             case 'palette':
                 return self.load_specified_palette(spritesheet, prefix, entries)
-    
-    
+
+
     def load_specified_list(self, spritesheet, prefix, entries):
 
         def read_or_set(entry, name, value):
@@ -361,17 +361,17 @@ class Sprites:
                 value = entry[name]
                 read = True
             return (value, read)
-        
-        
+
+
         xpos = 0
         ypos = 0
         sprite_names = []
-        
+
         for name, entry in entries.items():
             variants, _ = read_or_set(entry, 'variants', 1)
             ypos, read  = read_or_set(entry, 'ypos',     ypos)
             xpos, _     = read_or_set(entry, 'xpos',     0 if read else xpos)
-            
+
             names = []
             for i in range(variants):
                 sprite_name = f"{prefix}{name}{i}"
@@ -381,10 +381,10 @@ class Sprites:
                     sprite_names.append(sprite_name)
                 xpos += 1
             entry['sprite_names'] = names
-        
+
         return (entries, sprite_names)
-    
-    
+
+
     def load_specified_palette(self, spritesheet, prefix, entries):
         # TODO
         return None
@@ -397,12 +397,12 @@ class Sprites:
         :param force_light: Use to ignore dark mode and always display the light mode color
         """
         dark = not force_light and game_setting_get('dark mode')
-        color_key = ('light' if dark else 'light') + '_mode_clan_symbols' 
+        color_key = ('light' if dark else 'light') + '_mode_clan_symbols'
         color = constants.CONFIG['theme'][color_key]
         if color != self.symbol_colors:
             self.symbol_colors = copy(color)
             self.clan_symbol_cache = {}
-        
+
         if symbol not in self.clan_symbol_cache:
             if symbol in self.sprite_cache:
                 sprite = self[symbol]
@@ -414,7 +414,7 @@ class Sprites:
             var = pygame.PixelArray(recolored)
             var.replace((87, 76, 45), pygame.Color(color), distance=0)
             del var
-            
+
             self.clan_symbol_cache[symbol] = recolored
 
         return self.clan_symbol_cache[symbol]

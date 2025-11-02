@@ -9,26 +9,28 @@ from scripts.cat.enums import CatAge
 from scripts.cat.sprites import sprites
 from scripts.game_structure import constants
 from scripts.game_structure.localization import get_lang_config
-from scripts.utility import adjust_list_text, read_resource_dict, union_of_entries
+from scripts.utility import adjust_list_text, union_of_entries
+from scripts.temp_util import read_resource_dict
 from scripts.cat.accessory import Accessory
 
 
 def weighted_choice(population, weights):
-    return random.choices(population, weights, 1)[0]
+    return random.choices(population, weights, k=1)[0]
 
 def choice_from_categories(categories, sets):
     return choice([ value for cat in categories for value in sets[cat] ])
 
 
+_moss_config = constants.CONFIG['moss']
+_real_pelts = read_resource_dict('real_pelts', 'Real Pelts')
+_fantasy_pelts = read_resource_dict('fantasy_pelts', 'Fantasy Pelts')
+
+def _data_dict_for(config_key):
+    return _real_pelts if _moss_config[config_key] else _fantasy_pelts
+
+
 class Pelt:
-    _moss_config = constants.CONFIG['moss']
-    _real_pelts = read_resource_dict('real_pelts', 'Real Pelts')
-    _fantasy_pelts = read_resource_dict('fantasy_pelts', 'Fantasy Pelts')
     _pelt_data = read_resource_dict('pelt_data', 'Pelt Data')
-
-    def _data_dict_for(config_key):
-        return _real_pelts if _moss_config[config_key] else _fantasy_pelts
-
 
     # ATTRIBUTES, including non-pelt related
     tortiepatterns = _data_dict_for('real_tortie_patches')['tortiepatches']['patterns']
@@ -36,14 +38,17 @@ class Pelt:
     eye_patterns   = _data_dict_for('classic_hc'         )['eyepatterns']
 
     pelt_dict = _data_dict_for('real_pelts')['pelts']
+    pelt_sets = list(pelt_dict.values())
+
     eyes_dict = _data_dict_for('real_eye_colors')['eyes']
     eye_colours = union_of_entries(eyes_dict)
 
     sprite_names = _data_dict_for('real_pelt_colors')['colors']
+    sprite_sets = list(sprite_names.values())
     pelt_colours = union_of_entries(sprite_names)
     mottled_colors = set(sprite_names["black"] + sprite_names["brown"] + sprite_names["white"])
 
-    white_patches = _data_dict_for('real_white_patches')['whitepatches'][
+    white_patches = _data_dict_for('real_white_patches')['whitepatches']
     white_lists = [ white_patches['little'],
                     white_patches['mid'],
                     white_patches['high'],
@@ -54,31 +59,9 @@ class Pelt:
     point_markings = white_patches['point']
     vit = white_patches['vit']
 
+    all_scars = union_of_entries(_pelt_data['scars'])
 
 
-
-
-    # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
-    # bite scars by @wood pank on discord
-    # scars from other cats, other animals
-
-    scars1 = ["ONE", "TWO", "THREE", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY",
-              "LEGBITE", "NECKBITE", "FACE", "MANLEG", "BRIDGE", "RIGHTBLIND", "LEFTBLIND",
-              "BOTHBLIND", "BEAKCHEEK", "BEAKLOWER", "CATBITE", "RATBITE", "QUILLCHUNK", "QUILLSCRATCH", "HINDLEG",
-              "BACK", "QUILLSIDE", "SCRATCHSIDE", "BEAKSIDE", "CATBITETWO", "FOUR"]
-
-    # missing parts
-    scars2 = ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", "TAILSCAR",
-              "MANTAIL", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
-
-    # "special" scars that could only happen in a special event
-    scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNBELLY", "BURNRUMP", "FROSTFACE",
-              "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"]
-
-    # missing scars that require color
-    scars4 = ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
-
-    all_scars = scars1 + scars2 + scars3 + scars4
 
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
@@ -216,7 +199,7 @@ class Pelt:
         self.eye_colour2 = eye_colour2
         self.eye_pattern = eye_pattern
         self.tortie_base = tortie_base
-        self.tortie_marking = tortie_marking
+        self.pattern = self.tortie_marking = tortie_marking
         self.tortie_pattern = tortie_pattern
         self.tortie_colour = tortie_colour
         self.vitiligo = vitiligo
@@ -596,7 +579,7 @@ class Pelt:
                 par_peltlength.add(p.pelt.length)
 
                 # Gather pelt name
-                if p.pelt.name in Pelt.torties:
+                if p.pelt.name in Pelt.pelt_dict['torties']:
                     par_peltnames.add(p.pelt.tortiebase.capitalize())
                 else:
                     par_peltnames.add(p.pelt.name)
@@ -656,7 +639,7 @@ class Pelt:
         ]  # There is a default chance for female tortie
         tortie_chance_m = constants.CONFIG["cat_generation"]["base_male_tortie"]
         for p_ in par_pelts:
-            if p_.name in Pelt.torties:
+            if p_.name in Pelt.pelt_dict['torties']:
                 tortie_chance_f = int(tortie_chance_f / 2)
                 tortie_chance_m = tortie_chance_m - 1
                 break
@@ -754,7 +737,7 @@ class Pelt:
 
         # Determine pelt.
         chosen_pelt = choice(
-            weighted_choice(Pelt.pelt_dict.values(), (35, 20, 30, 15, 20, 15, 0))
+            weighted_choice(Pelt.pelt_sets, (35, 20, 30, 15, 20, 15, 0))
         )
 
         # Tortie chance
@@ -775,13 +758,13 @@ class Pelt:
                 chosen_tortie_base = "Solid"
 
             chosen_tortie_base = chosen_tortie_base.lower()
-            chosen_pelt = random.choice(Pelt.torties)
+            chosen_pelt = random.choice(Pelt.pelt_dict['torties'])
 
         # ------------------------------------------------------------------------------------------------------------#
         #   PELT COLOUR
         # ------------------------------------------------------------------------------------------------------------#
 
-        chosen_pelt_color = choice(choice(Pelt.sprite_names.values()))
+        chosen_pelt_color = choice(choice(Pelt.sprite_sets))
 
         # ------------------------------------------------------------------------------------------------------------#
         #   PELT LENGTH
@@ -842,7 +825,7 @@ class Pelt:
         data = Pelt._pelt_data['poses']
         poses = self.cat_sprites
 
-        poses['newborn'] = choice(data['newborn'])
+        poses['newborn'] = choice(data['newborn'][self.length])
         poses['kitten' ] = choice(data['kitten'][self.length])
 
         poses['adolescent'] = choice(data['aging'][str(poses['kitten'])])
@@ -854,21 +837,18 @@ class Pelt:
 
 
     def init_scars(self, age):
-        if age == "newborn":
-            return
+        data = Pelt._pelt_data['scars']
 
-        if age in ("kitten", "adolescent"):
-            scar_choice = random.randint(0, 50)  # 2%
-        elif age in ("young adult", "adult"):
-            scar_choice = random.randint(0, 20)  # 5%
-        else:
-            scar_choice = random.randint(0, 15)  # 6.67%
+        # chance is expressed as "1 in x"
+        chance = data['generate']['chance'][age]
+        if chance > 0 and random.randint(1, chance) == 1:
+            lists = [ data['lists'][key] for key in data['generate']['use_lists'] ]
+            self.scars.append(choice(choice(lists)))
 
-        if scar_choice == 1:
-            self.scars.append(choice([choice(Pelt.scars1), choice(Pelt.scars3)]))
+        exclude = data['exclude']
+        remove = { x for y in [ exclude[x] for x in self.scars if x in exclude ] for x in y }
+        self.scars = [ x for x in self.scars if x not in remove ]
 
-        if "NOTAIL" in self.scars and "HALFTAIL" in self.scars:
-            self.scars.remove("HALFTAIL")
 
     def init_accessories(self, age):
         if age == "newborn":
@@ -969,13 +949,13 @@ class Pelt:
 
 
     def init_pattern(self):
-        if self.name in Pelt.torties:
+        if self.name in Pelt.pelt_dict['torties']:
             if not self.tortiebase:
                 self.tortiebase = choice(Pelt.tortiebases)
             if not self.pattern:
                 self.pattern = choice(Pelt.tortiepatterns)
 
-            color_sets = Pelt._data_dict_for('real_mottled_colors')['tortiecolors']
+            color_sets = _data_dict_for('real_mottled_colors')['tortiecolors']
             self.tortiecolour = color_sets['_default_']  # Default if not set below
 
             wildcard_chance = constants.CONFIG["cat_generation"]["wildcard_tortie"]
@@ -1107,7 +1087,7 @@ class Pelt:
         else:
             weights = (10, 10, 10, 10, 1)
 
-        chosen_white_patches = choice(weighted_choice(Pelt.white_list, weights))
+        chosen_white_patches = choice(weighted_choice(Pelt.white_lists, weights))
 
         self.white_patches = chosen_white_patches
         if self.points and self.white_patches in Pelt.white_high_end:
@@ -1313,7 +1293,7 @@ class Pelt:
 def _describe_pattern(cat, short=False):
     color_name = [f"cat.pelts.{str(cat.pelt.colour)}"]
     pelt_name = f"cat.pelts.{cat.pelt.name}{'' if short else '_long'}"
-    if cat.pelt.name in Pelt.torties:
+    if cat.pelt.name in Pelt.pelt_dict['torties']:
         pelt_name, color_name = _describe_torties(cat, color_name, short)
 
     color_name = [i18n.t(piece, count=1) for piece in color_name]
