@@ -34,7 +34,7 @@
       "_no_patches_" : [50,  5,  0,  0,  0]
     }
   },
-  "pelt_length": ["short", "medium", "long"]
+  "pelt_length": ["short", "medium", "long"],
   "poses": {
     "newborn": {
         "short" : [56, 57, 58, 59],
@@ -96,6 +96,35 @@
       "29": [37, 38, 39],
       "30": [38, 39],
       "31": [38, 39]
+    }
+  },
+  "scars": {
+    "lists": {
+      "general": ["ONE", "TWO", "THREE", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY",
+                  "LEGBITE", "NECKBITE", "FACE", "MANLEG", "BRIDGE", "RIGHTBLIND", "LEFTBLIND",
+                  "BOTHBLIND", "BEAKCHEEK", "BEAKLOWER", "CATBITE", "RATBITE", "QUILLCHUNK",
+                  "QUILLSCRATCH", "HINDLEG", "BACK", "QUILLSIDE", "SCRATCHSIDE", "BEAKSIDE",
+                  "CATBITETWO", "FOUR"],
+      "missing": ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR",
+                  "NOEAR", "TAILSCAR", "MANTAIL", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"],
+      "special": ["SNAKE", "TOETRAP", "BURNPAWS", "BURNBELLY", "BURNRUMP", "FROSTFACE",
+                  "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"],
+      "colored": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
+    },
+    "exclude": {
+      "NOTAIL": ["HALFTAIL"]
+    },
+    "generate": {
+      "chance": {
+        "newborn": 0,
+        "kitten": 50,
+        "adolescent": 20,
+        "young adult": 20,
+        "adult": 15,
+        "senior adult": 15,
+        "senior": 15
+      },
+      "use_lists": ["general", "special"]
     }
   }
 }
