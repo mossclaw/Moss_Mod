@@ -2629,15 +2629,23 @@ def generate_sprite(
         and age != CatAge.NEWBORN
         and constants.CONFIG["cat_sprites"]["sick_sprites"]
     ):
-        if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
-            cat_sprite = sprite_poses["sick_young0"]
+        if age in (CatAge.KITTEN):
+            cat_sprite = sprite_poses["sick_kitten"]
+        if age in (CatAge.ADOLESCENT):
+            cat_sprite = sprite_poses["sick_adolescent"]
+        if age in (CatAge.SENIOR):
+            cat_sprite = sprite_poses["sick_senior"]
         else:
-            cat_sprite = sprite_poses["sick_adult0"]
+            cat_sprite = sprite_poses["sick_adult"]
 
     # paralyzed sprites
     elif cat.pelt.paralyzed and age != CatAge.NEWBORN:
-        if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
-            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_young"]]
+        if age in (CatAge.KITTEN):
+            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_kitten"]]
+        if age in (CatAge.ADOLESCENT):
+            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_adolescent"]]
+        if age in (CatAge.SENIOR):
+            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_senior"]]
         else:
             cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_adult"]]
 
