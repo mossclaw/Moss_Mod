@@ -1,5 +1,5 @@
 from scripts.cat.save_load import load_instance
-from scripts.temp_utility import read_resource_dict
+from scripts.temp_util import read_resource_dict
 from random import choice
 
 class AccessoryDef:
@@ -14,7 +14,7 @@ class AccessoryDef:
                  color:    list[str],
                  patterns: int):
         self.name = name
-        self.position = position
+        self.slot = slot
         self.event = event
         self.color = color
         self.patterns = patterns
@@ -58,8 +58,8 @@ class AccessoryDef:
         AccessoryDef.slots  = make_acc_dict(lambda x: x.slot)
 
         AccessoryDef.sets = {
-            key: [ x for y in tags for x in events[y] ]
-            for key, tags in AccessoryDef_accessory_data['sets']
+            key: [ x for y in tags for x in AccessoryDef.events[y] ]
+            for key, tags in AccessoryDef._accessory_data['sets'].items()
         }
 
 

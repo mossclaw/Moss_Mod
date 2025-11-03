@@ -9,6 +9,7 @@ import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES, create_option_preview_cat
 from scripts.cat.pelts import Pelt
+from scripts.cat.accessory import AccessoryDef
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
 from scripts.cat_relations.enums import rel_type_tiers
@@ -122,7 +123,7 @@ class EventEditScreen(Screens):
     """List of all kit traits."""
 
     all_backstories: dict = BACKSTORIES["backstory_categories"]
-    """Dict of all backstory categories. Key is the backstory category and value is the backstories within that 
+    """Dict of all backstory categories. Key is the backstory category and value is the backstories within that
     category."""
     individual_stories: list = []
     """List of all possible backstories"""
@@ -284,7 +285,7 @@ class EventEditScreen(Screens):
         self.acc_button = {}
         self.acc_info: list = []
         """Loaded accessory tags"""
-        self.acc_categories = Pelt.acc_categories
+        self.acc_categories = { k: [ x.name for x in v ] for k, v in AccessoryDef.events.items() }
         self.open_category: str = ""
         """Currently open acc category (wild, collar, ect.)"""
 

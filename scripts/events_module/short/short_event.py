@@ -492,7 +492,7 @@ class ShortEvent:
             self.types.append("misc")
 
         possible_accs = getattr(self, "new_accessory", [])
-        return self.main_cat.pelt.add_accessory_for_event(possible_accs):
+        return self.main_cat.pelt.add_accessory_for_event(possible_accs)
 
     def handle_transition(self):
         """
