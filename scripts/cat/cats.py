@@ -3368,6 +3368,7 @@ class Cat:
                 "sprite_para_adult": self.pelt.cat_sprites["para_adult"],
                 "eye_colour": self.pelt.eye_colour,
                 "eye_colour2": (self.pelt.eye_colour2 or None),
+                "eye_pattern": (self.pelt.eye_pattern or None),
                 "reverse": self.pelt.reverse,
                 "white_patches": self.pelt.white_patches,
                 "vitiligo": self.pelt.vitiligo,
@@ -3378,6 +3379,7 @@ class Cat:
                 "tortie_color": self.pelt.tortie_colour,
                 "tortie_pattern": self.pelt.tortie_pattern,
                 "skin": self.pelt.skin,
+                "skin_color": self.pelt.skin_color,
                 "tint": self.pelt.tint,
                 "skill_dict": self.skills.get_skill_dict(),
                 "scars": self.pelt.scars or [],
@@ -3390,6 +3392,9 @@ class Cat:
                 "opacity": self.pelt.opacity,
                 "prevent_fading": self.prevent_fading,
                 "favourite": self.favourite,
+                "tuft": self.pelt.tuft,
+                "tuft_color": self.pelt.tuft_color,
+                "tortie_tuft": self.pelt.tortie_tuft,
             }
 
     def determine_next_and_previous_cats(
@@ -3521,7 +3526,8 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
             tortie_pattern=None,
             tortie_colour=None,
             tint="gray",
-            skin="BLUE",
+            skin="SOLID",
+            skin_color="BLUE",
             scars=[scar] if scar else [],
             adult_sprite=8,
             accessory=[acc] if acc else [],
