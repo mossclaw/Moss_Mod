@@ -20,6 +20,10 @@ def weighted_choice(population, weights):
 def choice_from_categories(categories, sets):
     return choice([ value for cat in categories for value in sets[cat] ])
 
+def weighted_coin(weight_true: int, weight_false: int):
+    return random.randint(1, weight_true + weight_false) <= weight_true
+
+
 
 _moss_config = constants.CONFIG['moss']
 _real_pelts = read_resource_dict('real_pelts', 'Real Pelts')
@@ -62,102 +66,6 @@ class Pelt:
     all_scars = union_of_entries(_pelt_data['scars'])
 
 
-
-
-    # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
-    # this is used for acc-giving events, only change if you're adding a new category tag to the event filter
-    # adding a category here will automatically update the event editor's options
-
-    plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "POPPY",
-                         "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "PETALS", "HEATHER",
-                         "GORSE", "JUNIPER", "RASPBERRY", "LAVENDER",
-                         "OAK LEAVES", "CATMINT", "MAPLE SEED", "LAUREL", "BULB", "CLOVER", "DAISY",
-                         "HEATHER", "SNAPDRAGON", "GORSE"]
-    wild_accessories = ["FEATHER", "MOTH", "BUTTERFLY", "CICADA"]
-    living_accessories = ["LUNA MOTH", "ATLAS MOTH", "BUTTERFLIES", "FIREFLIES"]
-    plant2_accessories = ["IVY", "LUCKY CLOVER", "WREATH", "FLOWER WREATH", "WILD FLOWERS", "LILAC", "MONSTERA"]
-    wild2_accessories = ["BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT"]
-    beach_accessories = ["SEAWEED", "SHELL"]
-    mountain_accessories = ["CRYSTAL"]
-    plains_accessories = ["SPROUT"]
-    forest_accessories = ["MUSHROOM"]
-    special_accessories = ["STICK", "MOSS BALL", "LILY PAD"]
-    kitty_accessories = ["SUNGLASSES", "COWBOY HAT", "BANDANA", "HARNESS", "RAINBOW HARNESS", "RAINBOW BANDANA"]
-    onecolor_nopattern_acc = ["POPPY", "HERBS", "PETALS", "CICADA", "BUTTERFLY", "DAISY", "MOTH", "FEATHER", "BUTTERFLIES", "CATMINT", "LAUREL",
-                              "IVY", "WREATH", "SHELL", "CRYSTAL"]
-    twocolor_nopattern_acc = ["BULB"]
-    onecolor_onepattern_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA"]
-    twocolor_onepattern_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
-    twocolor_twopattern_acc = ["BOWCOLLAR"]
-
-    tail_accessories = ["NOWAY"]
-    collars = ["LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR", "RAINBOW COLLAR"]
-    body_accessories = ["CATTAIL", "BIRD SKULL", "STICK", "FIREFLIES", "MUSHROOM", "LILAC", "SEAWEED", "LILY PAD", "MONSTERA",
-                        "WILD FLOWERS", "TWIGS", "CLOVER", "SERPENT", "MOSS BALL", "RAINBOW HARNESS", "RAINBOW BANDANA"]
-    head_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "SUNGLASSES", "LUNA MOTH", "ATLAS MOTH",
-                        "LUCKY CLOVER", "BLUEBELLS", "LILY OF THE VALLEY", "SNAPDRAGON", "ANTLERS", "SPROUT", "JUNIPER", "RASPBERRY", "LAVENDER",
-                        "OAK LEAVES", "MAPLE SEED"]
-    layer_accessories = ["HARNESS", "BANDANA", "POPPY", "HERBS", "DAISY", "BULB", "PETALS", "FEATHER", "CICADA", "BUTTERFLY", "MOTH",
-                         "NETTLE", "HEATHER", "GORSE", "CATMINT", "LAUREL", "BUTTERFLIES", "IVY", "WREATH", "FLOWER WREATH", "SHELL", "CRYSTAL", "COWBOY HAT",
-                         "LEATHERCOLLAR", "BELLCOLLAR", "BOWCOLLAR", "STUDDEDCOLLAR", "FANGCOLLAR"]
-
-
-    flower_acc = ["POPPY", "PETALS", "DAISY"]
-    doubleflower_acc = ["FLOWER WREATH"]
-    crystal_acc = ["SHELL", "CRYSTAL"]
-    leafbase_acc = ["BULB", "HEATHER", "GORSE"]
-    bug_acc = ["BUTTERFLY", "MOTH", "CICADA", "BUTTERFLIES"]
-    feather_acc = ["FEATHER"]
-    twoleg_acc = ["LEATHERCOLLAR", "FANGCOLLAR", "HARNESS", "BANDANA", "BOWCOLLAR"]
-    metal_acc = ["BELLCOLLAR", "STUDDEDCOLLAR"]
-    leaf_acc = ["HERBS", "CATMINT", "LAUREL", "IVY", "WREATH"]
-
-    accpatterns = ["STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID",
-                   "ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS",
-                   "BUTTERFLIESONE", "BUTTERFLIESTWO", "FLOWERPRINTONE", "FLOWERPRINTTWO", "CONVERSE", "FRUIT",
-                   "GEOMETRICONE", "CHECKERS", "PLAIDTWO", "WINTERSWEATER", "FLOWERPRINTTHREE", "FLOWERPRINTFOUR"]
-
-    simple_acc = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "CATTAIL", "BLUEBELLS",
-                  "LILY OF THE VALLEY", "SNAPDRAGON", "JUNIPER", "RASPBERRY", "LAVENDER",
-                  "OAK LEAVES", "MAPLE SEED", "CLOVER",
-                  "LUNA MOTH", "ATLAS MOTH", "FIREFLIES", "LUCKY CLOVER",
-                  "WILD FLOWERS", "LILAC", "MONSTERA", "BIRD SKULL", "ANTLERS", "TWIGS", "SERPENT",
-                  "SEAWEED", "SPROUT", "MUSHROOM", "STICK", "MOSS BALL", "LILYPAD", "SUNGLASSES", "RAINBOW HARNESS", "RAINBOW COLLAR", "RAINBOW BANDANA"]
-
-    twoleg_acc_colors = ['BLACK', 'WHITE', 'RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
-                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK', 'GREEN', 'LIME', 'BRIGHT PURPLE', 'HOT PINK',
-                         'NEON PURPLE']
-    metal_colors = ['GOLD', 'SILVER']
-    leaf_colors = ['GREEN', 'LIGHT GREEN', 'BRIGHT GREEN', 'DARK GREEN', 'BROWN', 'DARK BROWN', 'BRONZE', 'LIGHT BROWN']
-    flower_colors = ['BLACK', 'WHITE', 'RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
-                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
-    bug_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
-                         'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK']
-    crystal_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'PALE YELLOW', 'CYAN', 'LIGHT BLUE', 'BLUE',
-                  'DARK BLUE', 'PURPLE', 'LIGHT PURPLE', 'LILAC', 'PINK', "GREEN"]
-    feather_colors = ['RED', 'DARK ORANGE', 'YELLOW', 'BLUE', 'LIGHT BLUE', 'DARK BROWN', 'WHITE', 'BLACK']
-    gorse_colors = ["ORANGE", "YELLOW", "PALE YELLOW", "GOLD"]
-    heather_colors = ["PURPLE", "LILAC", "LIGHT PURPLE", "BRIGHT PURPLE"]
-    dry_colors = ["BROWN", "DARK BROWN", "BRONZE", "LIGHT BROWN"]
-
-    acc_categories = {
-        "PLANT": plant_accessories,
-        "WILD": wild_accessories,
-        "COLLAR": collars,
-        "PLANT2": plant2_accessories,
-        "WILD2": wild2_accessories,
-        "LIVING": living_accessories,
-        "KITTY": kitty_accessories,
-    }
-
-    skin_color = ['BLACK', 'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
-                    'SALMON', 'PEACH', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
-    skin = ['SOLID', 'TIP', 'MARBLE', 'FRECKLE', 'NOSE', 'INNER', 'SPLIT']
-    tufts = ['SHORT', 'FLUFFY', 'TALL', 'LONG', 'LYNX', 'LOW', 'CURLY', 'FULL', 'SHORTHALF', 'FLUFFYHALF', 'TALLHALF', 'LONGHALF', 'LYNXHALF', 'LOWHALF', 'CURLYHALF', 'FULLHALF']
-    tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE']
-    white_tuft_colors = ['HIGHLIGHT', 'BASE', 'MID', 'DARK', 'SHADE', 'WHITE']
-
-
     """Holds all appearance information for a cat. """
 
     def __init__(self,
@@ -174,7 +82,7 @@ class Pelt:
                  tortie_pattern: str = None,
                  vitiligo: str = None,
                  points: str = None,
-                 accessories: list[Accessory] = [],
+                 accessory: list[Accessory] = [],
                  paralyzed: bool = False,
                  opacity: int = 100,
                  scars: list = None,
@@ -206,7 +114,7 @@ class Pelt:
         self.length = length
         self.points = points
         self.rebuild_sprite = True
-        self.accessories = accessories
+        self.accessory = accessory
         self.paralyzed = paralyzed
         self.opacity = opacity
         self.scars = scars if isinstance(scars, list) else []
@@ -484,6 +392,22 @@ class Pelt:
             self.accessory = [self.accessory]
 
 
+    def excluded_accessory_slots(self):
+        exclude_slots = { x.slot for x in self.accessory }
+        if any([ x in ["NOTAIL", "HALFTAIL"] for x in self.scars ]):
+            exclude_slots.add("tail")
+        return exclude_slots
+
+
+    def add_accessory_for_event(possible):
+        acc = Accessory.create_random_for_event(possible, self.excluded_accessory_slots())
+        if acc is None:
+            return False
+        else
+            self.accessory.append(acc)
+            return True
+
+
     @staticmethod
     def _calc_inheritance_weights(category, groupings, parent_values, ensure_not_zero = True):
         weight_data = Pelt._pelt_data['inheritance'][category]
@@ -521,43 +445,27 @@ class Pelt:
 
         :return: None
         """
-        if not parents:
+        if weighted_coin(1, len(parents)):
             self.eye_colour = choice(Pelt.eye_colours)
         else:
-            self.eye_colour = choice(
-                [i.pelt.eye_colour for i in parents] + [choice(Pelt.eye_colours)]
-            )
+            self.eye_colour = choice(parents).pelt.eye_colour
 
         # White patches must be initalized before eye color.
         num = constants.CONFIG["cat_generation"]["base_heterochromia"]
-        if (
-            self.white_patches in Pelt.white_high_end
-            or self.colour == "WHITE"
-            or self.colour == "SNOW WHITE"
-        ):
-            num = num - 90
         if self.white_patches == "FULLWHITE" or self.colour == "WHITE" or self.colour == "SNOW WHITE":
-
-            num -= 10
+            num -= 100
+        elif self.white_patches in Pelt.white_high_end:
+            num -= 90
         for _par in parents:
             if _par.pelt.eye_colour2:
                 num -= 10
-
         if num < 0:
             num = 1
-        if not random.randint(0, num):
 
-            colour_wheel = [ x for x in Pelt.eyes_dict.values() ]
-            for colour in colour_wheel[:]:
-                if self.eye_colour in colour:
-                    colour_wheel.remove(
-                        colour
-                    )  # removes the selected list from the options
-                    self.eye_colour2 = choice(
-                        choice(colour_wheel)
-                    )  # choose from the remaining two lists
-                    self.eye_pattern = choice(Pelt.eye_patterns)
-                    break
+        if not random.randint(0, num):
+            color_wheel = [ x for x in Pelt.eyes_dict.values() if self.eye_colour not in x ]
+            self.eye_colour2 = choice(choice(color_wheel))
+            self.eye_pattern = choice(Pelt.eye_patterns)
 
 
     def pattern_color_inheritance(self, parents: tuple = (), gender="female"):
@@ -818,8 +726,9 @@ class Pelt:
         self.reverse = bool(random.getrandbits(1))
 
         # skin chances
-        self.skin = choice(Pelt.skin)
-        self.skin_color = choice(Pelt.skin_color)
+        data = Pelt._pelt_data['skin']
+        self.skin = choice(data['type'])
+        self.skin_color = choice(data['color'])
 
         # poses
         data = Pelt._pelt_data['poses']
@@ -836,12 +745,18 @@ class Pelt:
         poses['senior adult'] = poses['adult']
 
 
+    @staticmethod
+    def _roll(chance):
+        """
+        Takes a chance expressed as a "1 in x" chance, with 0 meaning never.
+        Returns the result of the roll as a boolean.
+        """
+        return chance > 0 and random.randint(1, chance) == 1
+
     def init_scars(self, age):
         data = Pelt._pelt_data['scars']
 
-        # chance is expressed as "1 in x"
-        chance = data['generate']['chance'][age]
-        if chance > 0 and random.randint(1, chance) == 1:
+        if Pelt._roll(data['generate']['chance'][age]):
             lists = [ data['lists'][key] for key in data['generate']['use_lists'] ]
             self.scars.append(choice(choice(lists)))
 
@@ -851,101 +766,10 @@ class Pelt:
 
 
     def init_accessories(self, age):
-        if age == "newborn":
-            self.accessory = []
-            return
-
-        acc_display_choice = random.randint(0, 80)
-        if age in ("kitten", "adolescent"):
-            acc_display_choice = random.randint(0, 180)
-        elif age in ("young adult", "adult"):
-            acc_display_choice = random.randint(0, 100)
-
-        if acc_display_choice == 1:
-
-            self.accessory = [
-                choice(
-                    [choice(Pelt.plant_accessories), choice(Pelt.wild_accessories), choice(Pelt.plant2_accessories), choice(Pelt.wild2_accessories)]
-                )
-            ]
+        if Pelt._roll(Pelt._pelt_data['accessory_chance'][age]):
+            self.accessory = [Accessory.create_random_from_set('initial')]
         else:
             self.accessory = []
-
-
-
-        if self.accessory in Pelt.flower_acc:
-            possible_first_colors = choice(Pelt.flower_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.leafbase_acc:
-            possible_first_colors = choice(Pelt.leaf_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.bug_acc:
-            possible_first_colors = choice(Pelt.bug_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.feather_acc:
-            possible_first_colors = choice(Pelt.feather_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.twoleg_acc:
-            possible_first_colors = choice(Pelt.twoleg_acc_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.metal_acc:
-            possible_first_colors = choice(Pelt.twoleg_acc_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.leaf_acc:
-            possible_first_colors = choice(Pelt.leaf_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.doubleflower_acc:
-            possible_first_colors = choice(Pelt.flower_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory in Pelt.crystal_acc:
-            possible_first_colors = choice(Pelt.crystal_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory == "HEATHER":
-            possible_first_colors = choice(Pelt.leaf_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory == "GORSE":
-            possible_first_colors = choice(Pelt.leaf_colors)
-            self.accessory_color = choice([possible_first_colors])
-        if self.accessory == "COWBOY HAT":
-            possible_first_colors = choice(Pelt.twoleg_acc_colors)
-            self.accessory_color = choice([possible_first_colors])
-
-        if self.accessory in Pelt.flower_acc:
-            possible_second_colors = choice(Pelt.flower_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.leafbase_acc:
-            possible_second_colors = choice(Pelt.flower_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.bug_acc:
-            possible_second_colors = choice(Pelt.bug_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.feather_acc:
-            possible_second_colors = choice(Pelt.feather_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.twoleg_acc:
-            possible_second_colors = choice(Pelt.twoleg_acc_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.metal_acc:
-            possible_second_colors = choice(Pelt.metal_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.leaf_acc:
-            possible_second_colors = choice(Pelt.leaf_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.doubleflower_acc:
-            possible_second_colors = choice(Pelt.flower_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory in Pelt.crystal_acc:
-            possible_second_colors = choice(Pelt.crystal_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory == "HEATHER":
-            possible_second_colors = choice(Pelt.heather_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-        if self.accessory == "GORSE":
-            possible_second_colors = choice(Pelt.gorse_colors)
-            self.accessory_color2 = choice([possible_second_colors])
-
-        self.accessory_pattern = choice(Pelt.accpatterns)
-        self.accessory_pattern2 = choice(Pelt.accpatterns)
 
 
     def init_pattern(self):
@@ -1146,18 +970,16 @@ class Pelt:
         else:
             tuft_chance = random.randint(1, 100)
         if tuft_chance > 70:
+            data = Pelt._pelt_data['tufts']
+            types = data['type']
+            colors = data['color']['white' if pelt_white else 'other']
             if parents:
-                self.tuft = choice(Pelt.tufts + (par_tuft * 5))
-                if pelt_white:
-                    self.tuft_color = choice(Pelt.white_tuft_colors + (par_tuft_color * 5 ))
-                else:
-                    self.tuft_color = choice(Pelt.tuft_colors + (par_tuft_color * 5))
-            else:
-                self.tuft = choice(Pelt.tufts)
-                if pelt_white:
-                    self.tuft_color = choice(Pelt.white_tuft_colors)
-                else:
-                    self.tuft_color = choice(Pelt.tuft_colors)
+                if weighted_coin(5 * len(par_tuft), len(types)):
+                    types = par_tuft
+                if weighted_coin(5 * len(par_tuft_color), len(colors)):
+                    colors = par_tuft_color
+            self.tuft = choice(types)
+            self.tuft_color = choice(colors)
         else:
             self.tuft = None
             self.tuft_color = "BASE"
@@ -1209,26 +1031,21 @@ class Pelt:
     def is_mottled(self):
         return self.colour in Pelt.mottled_colors and self.tortiecolour in Pelt.mottled_colors
 
+
     @property
     def white(self):
         return self.white_patches or self.points
 
-    @white.setter
-    def white(self, val):
-        print("Can't set pelt.white")
-        return
 
     def describe_eyes(self):
         return (
             adjust_list_text(
-                [
-                    i18n.t(f"cat.eyes.{self.eye_colour}"),
-                    i18n.t(f"cat.eyes.{self.eye_colour2}"),
-                ]
+                [ i18n.t(f"cat.eyes.{x}") for x in [ self.eye_colour, self.eye_colour2 ] ]
             )
             if self.eye_colour2
             else i18n.t(f"cat.eyes.{self.eye_colour}")
         )
+
 
     @staticmethod
     def describe_appearance(cat, short=False):

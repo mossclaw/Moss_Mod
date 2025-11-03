@@ -856,9 +856,9 @@ def create_new_cat(
                 # check if the kittypets come with a pretty acc
                 if bool(getrandbits(1)):
                     # TODO: refactor this entire function to remove this call amongst other things
-                    from scripts.cat.pelts import Pelt
+                    from scripts.cat.accessory import Accessory
 
-                    new_cat.pelt.accessory.append(choice(Pelt.collar_accessories))
+                    new_cat.pelt.accessory.append(Accessory.create_random_for_slot('neck'))
 
             # try to give name from full loner name list
             elif original_social in (CatSocial.LONER, CatSocial.ROGUE) and bool(
@@ -3362,16 +3362,8 @@ def generate_sprite(
 
  #       if not acc_hidden and cat.pelt.accessory:
    #         cat_accessories = cat.pelt.accessory
-  #          categories = [
-  #              "collar_accessories",
-  #              "tail_accessories",
-  #              "body_accessories",
-  #              "head_accessories",
-   #         ]
-    #        for category in categories:
-     #           for accessory in cat_accessories:
-      #              if accessory in getattr(Pelt, category):
-       #                 if accessory in cat.pelt.plant_accessories:
+     #       for accessory in cat_accessories:
+       #                 if accessory.event == "plant":
         #                    sprite_name = f"{sprites.PLANT_DATA['spritesheet']}{accessory}{cat_sprite}"
          #                   new_sprite.blit(
           #                      _recolor_lineart(
@@ -3381,7 +3373,7 @@ def generate_sprite(
               #                  ),
                #                 (0, 0),
                 #            )
-                 #       elif accessory in cat.pelt.wild_accessories:
+                 #       elif accessory.event == "wild":
                   #          sprite_name = f"{sprites.WILD_DATA['spritesheet']}{accessory}{cat_sprite}"
                    #         new_sprite.blit(
                     #            _recolor_lineart(
@@ -3391,7 +3383,7 @@ def generate_sprite(
                         #        ),
                          #       (0, 0),
    #                         )
-    #                    elif accessory in cat.pelt.collar_accessories:
+    #                    elif accessory.event == "neck":
      #                       sprite_name = f"{sprites.COLLAR_DATA['spritesheet']}{accessory}{cat_sprite}"
       #                      new_sprite.blit(
        #                         _recolor_lineart(

@@ -126,5 +126,27 @@
       },
       "use_lists": ["general", "special"]
     }
+  },
+  "skin": {
+    "type": ["SOLID", "TIP", "MARBLE", "FRECKLE", "NOSE", "INNER", "SPLIT"],
+    "color": ["BLACK", "PINK", "DARKBROWN", "BROWN", "LIGHTBROWN", "DARK", "DARKGREY",
+              "GREY", "DARKSALMON", "SALMON", "PEACH", "DARKBLUE", "BLUE", "LIGHTBLUE", "RED"]
+  },
+  "tufts": {
+    "type": ["SHORT", "FLUFFY", "TALL", "LONG", "LYNX", "LOW", "CURLY", "FULL", "SHORTHALF",
+             "FLUFFYHALF", "TALLHALF", "LONGHALF", "LYNXHALF", "LOWHALF", "CURLYHALF", "FULLHALF"],
+    "color": {
+      "other": ["HIGHLIGHT", "BASE", "MID", "DARK", "SHADE"],
+      "white": ["HIGHLIGHT", "BASE", "MID", "DARK", "SHADE", "WHITE"]
+    }
+  },
+  "accessory_chance": {
+    "newborn": 0,
+    "kitten": 180,
+    "adolescent": 180,
+    "young adult": 100,
+    "adult": 100,
+    "senior adult": 80,
+    "senior": 80
   }
 }
