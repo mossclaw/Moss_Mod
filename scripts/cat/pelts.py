@@ -403,7 +403,7 @@ class Pelt:
         acc = Accessory.create_random_for_event(possible, self.excluded_accessory_slots())
         if acc is None:
             return False
-        else
+        else:
             self.accessory.append(acc)
             return True
 

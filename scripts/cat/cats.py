@@ -2094,7 +2094,7 @@ class Cat:
             self.pelt.accessory = [
                 acc
                 for acc in self.pelt.accessory
-                if acc
+                if acc.name
                 not in (
                     "RED FEATHERS",
                     "BLUE FEATHERS",

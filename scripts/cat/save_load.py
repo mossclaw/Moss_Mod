@@ -37,7 +37,7 @@ def load_instance(data: dict,
                   fixed_args: list = []):
     arg_list = [ x for x in fixed_args ]
     for name, tags in args.items():
-        arg = get_or_none(data, key) if 'opt' in tags else data[key]
+        arg = get_or_none(data, name) if 'opt' in tags else data[name]
         if 'list' in tags:
             arg = make_list(arg)
         arg_list.append(arg)
