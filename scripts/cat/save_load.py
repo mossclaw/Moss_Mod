@@ -20,7 +20,7 @@ cat_to_fade = []
 
 
 def make_list(value):
-    if value is list:
+    if type(value) is list:
         return value
     if value is None:
         return []
@@ -31,10 +31,11 @@ def get_or_none(data: dict, key):
     return data[key] if key in data else None
 
 
-def load_instance(data: dict, 
-                  Class, 
-                  args: dict):
-    arg_list = []
+def load_instance(data: dict,
+                  Class,
+                  args: dict,
+                  fixed_args: list = []):
+    arg_list = [ x for x in fixed_args ]
     for name, tags in args.items():
         arg = get_or_none(data, key) if 'opt' in tags else data[key]
         if 'list' in tags:

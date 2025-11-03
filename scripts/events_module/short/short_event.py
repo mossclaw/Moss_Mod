@@ -6,6 +6,7 @@ import i18n
 from scripts.cat import pronouns
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
+from scripts.cat.accessory import Accessory
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
@@ -258,7 +259,7 @@ class ShortEvent:
 
         # give accessory
         if self.new_accessory:
-            if self.handle_accessories() is False:
+            if not self.handle_accessories():
                 return
 
         # change relationships before killing anyone
@@ -489,55 +490,9 @@ class ShortEvent:
         """
         if "misc" not in self.types:
             self.types.append("misc")
-        acc_list = []
+
         possible_accs = getattr(self, "new_accessory", [])
-        if "WILD" in possible_accs:
-            acc_list.extend(Pelt.wild_accessories)
-        if "PLANT" in possible_accs:
-            acc_list.extend(Pelt.plant_accessories)
-        if "COLLAR" in possible_accs:
-            acc_list.extend(Pelt.collar_accessories)
-
-        for acc in possible_accs:
-            if acc not in ("WILD", "PLANT", "COLLAR"):
-                acc_list.append(acc)
-
-        if hasattr(self.main_cat.pelt, "scars"):
-            if (
-                "NOTAIL" in self.main_cat.pelt.scars
-                or "HALFTAIL" in self.main_cat.pelt.scars
-            ):
-                for acc in Pelt.tail_accessories:
-                    if acc in acc_list:
-                        acc_list.remove(acc)
-
-        accessory_groups = [
-            Pelt.collar_accessories,
-            Pelt.head_accessories,
-            Pelt.tail_accessories,
-            Pelt.body_accessories,
-        ]
-        if self.main_cat.pelt.accessory:
-            for acc in self.main_cat.pelt.accessory:
-                # find which accessory group it belongs to
-                for i, lst in enumerate(accessory_groups):
-                    if acc in lst:
-                        # remove that group from possible accessories
-                        acc_list = [a for a in acc_list if a not in accessory_groups[i]]
-                        break
-
-        if not acc_list:
-            return False
-
-        if self.main_cat.pelt.accessory:
-            self.main_cat.pelt.accessory = (
-                *self.main_cat.pelt.accessory,
-                choice(acc_list),
-            )
-            return None
-        else:
-            self.main_cat.pelt.accessory = (choice(acc_list),)
-            return None
+        return self.main_cat.pelt.add_accessory_for_event(possible_accs):
 
     def handle_transition(self):
         """
