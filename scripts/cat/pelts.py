@@ -371,8 +371,8 @@ class Pelt:
             # tortiecolour. That may be different from the pelt color ("main" for torties)
             # generated before the "ginger-on-ginger" update. If it was generated after that update,
             # tortiecolour and pelt_colour will be the same. Therefore, let's also re-set the pelt color
-            self.colour = self.tortiecolour
-            self.tortiecolour = convert_dict["old_tortie_patches"][old_pattern][0]
+            self.colour = self.tortie_colour
+            self.tortie_colour = convert_dict["old_tortie_patches"][old_pattern][0]
 
         if self.pattern == "MINIMAL1":
             self.pattern = "MINIMALONE"
@@ -780,7 +780,7 @@ class Pelt:
                 self.pattern = choice(Pelt.tortiepatterns)
 
             color_sets = _data_dict_for('real_tortie_colors')['tortiecolors']
-            self.tortiecolour = color_sets['_default_']  # Default if not set below
+            self.tortie_colour = color_sets['_default_']  # Default if not set below
 
             wildcard_chance = constants.CONFIG["cat_generation"]["wildcard_tortie"]
             if self.colour:
@@ -797,7 +797,7 @@ class Pelt:
                     # Allow any colors that aren't the base color.
                     possible_colors = Pelt.pelt_colours.copy()
                     possible_colors.remove(self.colour)
-                    self.tortiecolour = choice(possible_colors)
+                    self.tortie_colour = choice(possible_colors)
 
                 else:
                     # Normal generation
@@ -814,14 +814,14 @@ class Pelt:
                     def choose_color(key):
                         choice_from_categories(color_set[key], Pelt.sprite_names)
 
-                    self.tortiecolour = choose_color('*')
+                    self.tortie_colour = choose_color('*')
                     if 'base' in color_set:
                         self.colour = choose_color('base')
 
         else:
             self.tortiebase = None
             self.tortiepattern = None
-            self.tortiecolour = None
+            self.tortie_colour = None
             self.pattern = None
 
     def white_patches_inheritance(self, parents: tuple):
@@ -1029,7 +1029,7 @@ class Pelt:
 
 
     def is_mottled(self):
-        return self.colour in Pelt.mottled_colors and self.tortiecolour in Pelt.mottled_colors
+        return self.colour in Pelt.mottled_colors and self.tortie_colour in Pelt.mottled_colors
 
 
     @property
@@ -1151,7 +1151,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
 
     base = cat.pelt.tortiebase.lower()
 
-    patches_color = f"cat.pelts.{cat.pelt.tortiecolour}"
+    patches_color = f"cat.pelts.{cat.pelt.tortie_colour}"
     color_name.append("/")
     color_name.append(patches_color)
 

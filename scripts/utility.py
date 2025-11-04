@@ -2668,10 +2668,10 @@ def generate_sprite(
             else:
                 cat_sprite = str(44)
 
-        if constants.CONFIG["fun"]["all_cats_are_newborn"]:
-            cat_sprite = str(cat.pelt.cat_sprites["newborn"])
-        else:
-            cat_sprite = str(cat.pelt.cat_sprites[age])
+    if constants.CONFIG["fun"]["all_cats_are_newborn"]:
+        cat_sprite = str(cat.pelt.cat_sprites["newborn"])
+    else:
+        cat_sprite = str(cat.pelt.cat_sprites[age])
 
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
@@ -3307,92 +3307,106 @@ def generate_sprite(
             # draw skin and scars2
             blendmode = pygame.BLEND_RGBA_MIN
 
-            skincolor_dict = {
-                "BLACK": ["#312923"],
-                "RED": ["#bf5338"],
-                "PINK": ["#f9c0b8"],
-                "DARKBROWN": ["#523219"],
-                "BROWN": ["#5f3e24"],
-                "LIGHTBROWN": ["#7d6146"],
-                "DARK": ["#201e1b"],
-                "DARKGREY": ["#464340"],
-                "GREY": ["#8a8581"],
-                "DARKSALMON": ["#9a5a44"],
-                "SALMON": ["#da9c7b"],
-                "PEACH": ["#ffc7a8"],
-                "DARKBLUE": ["#545a5e"],
-                "BLUE": ["#3a4e57"],
-                "LIGHTBLUE": ["#5f676b"]
-            }
+        skincolor_dict = {
+            "BLACK": ["#312923"],
+            "RED": ["#bf5338"],
+            "PINK": ["#f9c0b8"],
+            "DARKBROWN": ["#523219"],
+            "BROWN": ["#5f3e24"],
+            "LIGHTBROWN": ["#7d6146"],
+            "DARK": ["#201e1b"],
+            "DARKGREY": ["#464340"],
+            "GREY": ["#8a8581"],
+            "DARKSALMON": ["#9a5a44"],
+            "SALMON": ["#da9c7b"],
+            "PEACH": ["#ffc7a8"],
+            "DARKBLUE": ["#545a5e"],
+            "BLUE": ["#3a4e57"],
+            "LIGHTBLUE": ["#5f676b"],
+            "PALE": ["#d1ccd8"],
+            "WARMBROWN": ["#955a37"],
+            "PALEBROWN": ["#af9173"],
+            "PLUM": ["#754544"],
+            "PURPLE": ["#6a525a"],
+            "BERRY": ["#894a50"],
+            "DARKRED": ["#8c391a"],
+            "DARKORANGE": ["#c37251"],
+            "ORANGE": ["#da7e51"],
+            "GOLD": ["#c3875a"],
+            "LEMON": ["#f0b080"],
+            "DARKPINK": ["#a37275"],
+            "BRIGHTPINK": ["#ffa097"],
+            "APRICOT": ["#f9b6a0"]
+        }
 
-            skin_color = str(cat.pelt.skin_color).upper()
-            skin_name = str(cat.pelt.skin).upper()
-            skin_base = None
+        skin_color = str(cat.pelt.skin_color).upper()
+        skin_name = str(cat.pelt.skin).upper()
+        skin_base = None
 
-            skin_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            skin_base_tint.fill(skincolor_dict[skin_color][0])
-            skin_base = sprites.sprites['skin' + skin_name + cat_sprite].copy().convert_alpha()
-            skin_base.blit(skin_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+        skin_base_tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+        skin_base_tint.fill(skincolor_dict[skin_color][0])
+        skin_base = sprites.sprites['skin' + skin_name + cat_sprite].copy().convert_alpha()
+        skin_base.blit(skin_base_tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
-            new_sprite.blit(skin_base, (0, 0))
+        new_sprite.blit(skin_base, (0, 0))
 
-            if not scars_hidden:
-                for scar in cat.pelt.scars:
-                    if scar in cat.pelt.scars1:
-                        new_sprite.blit(
-                            sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                        )
-                    if scar in cat.pelt.scars3:
-                        new_sprite.blit(
-                            sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                        )
-                    if scar in cat.pelt.scars2:
-                        new_sprite.blit(
-                            sprites.sprites["scars" + scar + cat_sprite],
-                            (0, 0),
-                            special_flags=blendmode,
-                        )
-                    if scar in cat.pelt.scars4:
-                        new_sprite.blit(
-                            sprites.sprites["scarscolor" + scar + cat_sprite], (0, 0)
-                        )
+        # if not scars_hidden:
+        #     for scar in cat.pelt.scars:
+        #         if scar in cat.pelt.scars1:
+        #             new_sprite.blit(
+        #                 sprites.sprites["scars" + scar + cat_sprite], (0, 0)
+        #             )
+        #         if scar in cat.pelt.scars3:
+        #             new_sprite.blit(
+        #                 sprites.sprites["scars" + scar + cat_sprite], (0, 0)
+        #             )
+        #         if scar in cat.pelt.scars2:
+        #             new_sprite.blit(
+        #                 sprites.sprites["scars" + scar + cat_sprite],
+        #                 (0, 0),
+        #                 special_flags=blendmode,
+        #             )
+        #         if scar in cat.pelt.scars4:
+        #             new_sprite.blit(
+        #                 sprites.sprites["scarscolor" + scar + cat_sprite], (0, 0)
+        #             )
 
-        # draw accessories
-#        from scripts.cat.pelts import Pelt
+       #  draw accessories
+       # from scripts.cat.pelts import Pelt
 
- #       if not acc_hidden and cat.pelt.accessory:
-   #         cat_accessories = cat.pelt.accessory
-     #       for accessory in cat_accessories:
+       # if not acc_hidden and cat.pelt.accessory:
+       #     cat_accessories = cat.pelt.accessory
+       #     for accessory in cat_accessories:
        #                 if accessory.event == "plant":
-        #                    sprite_name = f"{sprites.PLANT_DATA['spritesheet']}{accessory}{cat_sprite}"
-         #                   new_sprite.blit(
-          #                      _recolor_lineart(
-           #                         sprites.sprites[sprite_name],
-            #                        lineart_color,
-             #                       gradient_surface,
-              #                  ),
-               #                 (0, 0),
-                #            )
-                 #       elif accessory.event == "wild":
-                  #          sprite_name = f"{sprites.WILD_DATA['spritesheet']}{accessory}{cat_sprite}"
-                   #         new_sprite.blit(
-                    #            _recolor_lineart(
-                     #               sprites.sprites[sprite_name],
-                      #              lineart_color,
-                       #             gradient_surface,
-                        #        ),
-                         #       (0, 0),
-   #                         )
-    #                    elif accessory.event == "neck":
-     #                       sprite_name = f"{sprites.COLLAR_DATA['spritesheet']}{accessory}{cat_sprite}"
-      #                      new_sprite.blit(
+       #                     sprite_name = f"{sprites.PLANT_DATA['spritesheet']}{accessory}{cat_sprite}"
+       #                     new_sprite.blit(
        #                         _recolor_lineart(
-        #                            sprites.sprites[sprite_name],
-         #                           lineart_color,
-          #                          gradient_surface,
-           #                     ),
-            #                    (0, 0),
-             #               )
+       #                             sprites.sprites[sprite_name],
+       #                             lineart_color,
+       #                             gradient_surface,
+       #                         ),
+       #                         (0, 0),
+       #                     )
+       #                 elif accessory.event == "wild":
+       #                     sprite_name = f"{sprites.WILD_DATA['spritesheet']}{accessory}{cat_sprite}"
+       #                     new_sprite.blit(
+       #                         _recolor_lineart(
+       #                             sprites.sprites[sprite_name],
+       #                             lineart_color,
+       #                             gradient_surface,
+       #                         ),
+       #                         (0, 0),
+       #                     )
+       #                 elif accessory.event == "neck":
+       #                     sprite_name = f"{sprites.COLLAR_DATA['spritesheet']}{accessory}{cat_sprite}"
+       #                     new_sprite.blit(
+       #                         _recolor_lineart(
+       #                             sprites.sprites[sprite_name],
+       #                             lineart_color,
+       #                             gradient_surface,
+       #                         ),
+       #                         (0, 0),
+       #                     )
 
         # Apply fading fog
         if (
@@ -3429,46 +3443,46 @@ def generate_sprite(
                 new_sprite = temp
 
         # ok! we have the sprite! now, do some layer things if the cat's already dead
- #       if dead:
-  #          temp_sprite = pygame.Surface(
-   #             (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
-    #        )
-#
-#            if cat.status.group == CatGroup.STARCLAN:
- #               # no underlay
-#
- #               # cat sprite
-  #              temp_sprite.blit(new_sprite, (0, 0))
-#
- #               # overlay
-  #              temp_sprite.blit(
-   #                 sprites.sprites["line_sc_overlay" + cat_sprite],
-    #                (0, 0),
-     #           )
-      #      elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
-       #         # underlay
-        #        temp_sprite.blit(
-         #           sprites.sprites["line_ur_overlay" + cat_sprite],
-          #          (0, 0),
-           #     )
-#
- #               # cat sprite
-  #              temp_sprite.blit(new_sprite, (0, 0))
-#
- #               # overlay
-  #              temp_sprite.blit(
-   #                 sprites.sprites["line_ur_overlay" + cat_sprite],
-    #                (0, 0),
-     #           )
-      #      elif cat.status.group == CatGroup.DARK_FOREST:
+       # if dead:
+       #     temp_sprite = pygame.Surface(
+       #         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
+       #     )
+       #
+       #     if cat.status.group == CatGroup.STARCLAN:
        #         # no underlay
-#
- #               # cat sprite
-  #              temp_sprite.blit(new_sprite, (0, 0))
-#
- #               # no overlay
-#
- #           new_sprite = temp_sprite
+       #
+       #         # cat sprite
+       #         temp_sprite.blit(new_sprite, (0, 0))
+       #
+       #         # overlay
+       #         temp_sprite.blit(
+       #             sprites.sprites["line_sc_overlay" + cat_sprite],
+       #             (0, 0),
+       #         )
+       #     elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+       #         # underlay
+       #         temp_sprite.blit(
+       #             sprites.sprites["line_ur_overlay" + cat_sprite],
+       #             (0, 0),
+       #         )
+       #
+       #         # cat sprite
+       #         temp_sprite.blit(new_sprite, (0, 0))
+       #
+       #         # overlay
+       #         temp_sprite.blit(
+       #             sprites.sprites["line_ur_overlay" + cat_sprite],
+       #             (0, 0),
+       #         )
+       #     elif cat.status.group == CatGroup.DARK_FOREST:
+       #         # no underlay
+       #
+       #         # cat sprite
+       #         temp_sprite.blit(new_sprite, (0, 0))
+       #
+       #         # no overlay
+       #
+       #     new_sprite = temp_sprite
 
         # reverse, if assigned so
         if cat.pelt.reverse:
