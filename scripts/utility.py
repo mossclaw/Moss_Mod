@@ -2917,7 +2917,7 @@ def generate_sprite(
         else:
             base_name = str(cat.pelt.tortiebase).upper()
             base_color = str(cat.pelt.colour).upper()
-            tortie_base_pattern = str(cat.pelt.tortiepattern).upper()
+            tortie_base_pattern = str(cat.pelt.tortie_pattern).upper()
             tortie_color = str(cat.pelt.tortie_colour).upper()
 
         if base_name:
