@@ -1,17 +1,22 @@
 import random
+import logging
+import traceback
 from random import choice
 from re import sub
 
 import i18n
 
 import scripts.game_structure.screen_settings
-from scripts.cat.enums import CatAge
+from scripts.cat.enums import CatAge, CatGroup
 from scripts.cat.sprites import sprites
-from scripts.game_structure import constants
+from scripts.cat.render import Render
+from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text, union_of_entries
 from scripts.temp_util import read_resource_dict
 from scripts.cat.accessory import Accessory
+
+logger = logging.getLogger(__name__)
 
 
 def weighted_choice(population, weights):
@@ -95,6 +100,7 @@ class Pelt:
                  adol_sprite: int = None,
                  adult_sprite: int = None,
                  senior_sprite: int = None,
+                 para_adult_sprite: int = None,
                  reverse: bool = False,
                  tuft: str = None,
                  tuft_color: str = "BASE",
@@ -121,13 +127,14 @@ class Pelt:
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
-        self.cat_sprites = {"kitten": kitten_sprite if kitten_sprite is not None else 0,
-                            "adolescent": adol_sprite if adol_sprite is not None else 0,
-                            "young adult": adult_sprite if adult_sprite is not None else 0,
-                            "adult": adult_sprite if adult_sprite is not None else 0,
-                            "senior adult": adult_sprite if adult_sprite is not None else 0,
-                            "senior": senior_sprite if senior_sprite is not None else 0,
-                            'newborn': newborn_sprite if newborn_sprite is not None else 0}
+        self.cat_sprites = {"kitten"      : kitten_sprite     or 0,
+                            "adolescent"  : adol_sprite       or 0,
+                            "young adult" : adult_sprite      or 0,
+                            "adult"       : adult_sprite      or 0,
+                            "senior adult": adult_sprite      or 0,
+                            "senior"      : senior_sprite     or 0,
+                            'newborn'     : newborn_sprite    or 0,
+                            "para_adult"  : para_adult_sprite or 0}
         self.reverse = reverse
         self.skin = skin
         self.skin_color = skin_color
@@ -167,6 +174,119 @@ class Pelt:
         new_pelt.init_tint()
 
         return new_pelt
+
+
+    def render(self, pose, group, dead, fade):
+        try:
+            render = Render(pose, flip= self.reverse)
+            render.set(colormap= 'pelt')
+
+            # Tufts
+            if self.tuft is not None:
+                if self.tuft_color == "WHITE":
+                    color = "BLACK" if self.white_patches_tint == "black" else "WHITE"
+                    index = 0
+                else:
+                    color = self.tortie_colour if self.tortie_tuft else self.colour
+                    index = Pelt._pelt_data['tufts']['color']['other'].index(self.tuft_color)
+                render.set(color= color)
+                render.paint('tufts', index)
+                render.paint('tuftlines', 5)
+
+            # Pelt
+            def paint_pelt(render):
+                render.paint('base', 1, sprite= 'SOLID')
+                render.paint_all(('under', 0), ('mid', 2), ('dark', 3), ('shade', 4), ('highlight', 0))
+                render.paint('line', 5, sprite= '')
+
+            tortie = self.name in ['Tortie', 'Calico']
+            render.set(color= self.colour, sprite= self.tortiebase if tortie else self.name)
+            paint_pelt(render)
+
+            if tortie:
+                render.set(color= self.tortie_colour, sprite= self.tortie_pattern)
+                render.add_layer('base', sprite= 'SOLID')
+                paint_pelt(render)
+                render.paint('tortiemask', blend= 'mult')
+                render.merge_layer()
+
+            # Tint
+            if self.tint is not None:
+                if self.tint in Render.colors['tint']:
+                    render.paint(colormap= 'tint', color= self.tint, index= 0)
+                elif self.tint in Render.colors['dilute_tint']:
+                    render.paint(colormap= 'dilute_tint', color= self.tint, index= 0, blend= 'add')
+
+            # White patches, vit & points
+            tint = self.white_patches_tint
+            if tint not in Render.colors['patches_tint']:
+                tint = None
+            render.set(colormap= 'patches_tint')
+            for sprite in [self.white_patches, self.points]:
+                if sprite:
+                    render.paint('white', sprite= sprite, color= tint, index= 0 if tint else None)
+            if self.vitiligo:
+                render.paint('white', sprite= self.vitiligo)
+
+            # Eyes
+            render.set(colormap= 'eyes', color= self.eye_colour, sprite= '')
+            render.paint_all(('eyebase', 0), ('eyemid', 1), ('eyetop', 2), ('eyeshade', 3))
+            if self.eye_pattern != None:
+                render.add_layer('eyebase')
+                render.paint_all(('eyebase', 0), ('eyemid', 1), ('eyetop', 2), ('eyeshade', 3))
+                render.paint('eyes2', sprite= self.eye_pattern, blend= 'mult')
+                render.merge_layer()
+            render.paint('eyelight')
+
+            # Lineart
+            black   = constants.CONFIG["moss"]["black_lineart"]
+            unknown = dead and group == CatGroup.UNKNOWN_RESIDENCE
+            forest  = dead and group == CatGroup.DARK_FOREST
+            render.set(sprite= '', colormap= 'line')
+            if black:
+                render.set(color= 'BLACK')
+            elif unknown:
+                render.set(color= 'PURPLE')
+            elif forest:
+                render.set(color= 'RED')
+            elif dead:
+                render.set(color= 'BLUE')
+            if black or dead:
+                render.paint('line', 0)
+            if forest:
+                render.paint('lineartdf')
+            elif dead and not unknown:
+                render.paint('lineartdead')
+
+            # Skin
+            render.paint('skin', 0, sprite= self.skin, colormap= 'skin', color= self.skin_color)
+
+            # Scars
+            # commented out in utility
+
+            # Accessories
+            # commented out in utility
+
+            # Fading
+            if dead and fade and pelt.opacity <= 97:
+                render.set(sprite= str((80 - pelt.opacity) // 35 + 1))
+                render.paint('fademask', blend= 'mult')
+                sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
+                render.add_layer(sheet, insert= True).merge_layer()
+
+            # Dead cat layer things?
+            # commented out in utility
+
+            sprite = render.image
+
+        except (TypeError, KeyError):
+            traceback.print_exc()
+            logger.exception("Failed to load sprite")
+
+            # Placeholder image
+            sprite = image_cache.load_image('sprites/error_placeholder.png').convert_alpha()
+
+        return sprite
 
 
     def check_and_convert(self, convert_dict):

@@ -182,7 +182,7 @@
       "tortie": [
         [11, ".tortiebase", "pelt", ".colour",
          ["under", 0], ["mid", 2], ["dark", 3], ["shade", 4], ["highlight", 0], ["line", 5]],
-        [12, "", "pelt", ".colour", ["line", 5]]
+        [12, "", "pelt", ".colour", ["line", 5]],
         [13, "SOLID", "pelt", ".tortie_colour", ["base", "push"], ["base", 1]],
         [14, ".tortie_pattern", "pelt", ".tortie_colour",
          ["under", 0], ["mid", 2], ["dark", 3], ["shade", 4],

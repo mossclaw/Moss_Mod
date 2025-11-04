@@ -172,7 +172,7 @@
     "STRAWBERRY"   : ["#edcbc7", "#f36f5d", "#c9333e", "#a6292e"],
     "FIG"          : ["#d88485", "#ce2427", "#6d407e", "#5b1f3a"]
   },
-  "lineart": {
+  "line": {
     "BLACK" : ["#000000"],
     "RED"   : ["#410000"],
     "BLUE"  : ["#94C7E3"],
@@ -208,5 +208,27 @@
     "DARKPINK"  : ["#a37275"],
     "BRIGHTPINK": ["#ffa097"],
     "APRICOT"   : ["#f9b6a0"]
+  },
+  "tint": {
+    "pink"  : ["#fdeded"],
+    "gray"  : ["#e1e1e1"],
+    "red"   : ["#f8e2e4"],
+    "black" : ["#c3c3c3"],
+    "orange": ["#fff7eb"],
+    "yellow": ["#faf8e1"],
+    "purple": ["#ebe1f4"],
+    "blue"  : ["#daedf5"]
+  },
+  "dilute_tint": {
+    "dilute"    : ["#141414"],
+    "warmdilute": ["#190f07"],
+    "cooldilute": ["#070f19"]
+  },
+  "patches_tint": {
+    "darkcream": ["#ece5d0"],
+    "cream"    : ["#f7f1e1"],
+    "offwhite" : ["#eef9fc"],
+    "gray"     : ["#d0e1e5"],
+    "pink"     : ["#fef8f9"]
   }
 }

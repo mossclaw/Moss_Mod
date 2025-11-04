@@ -2673,6 +2673,11 @@ def generate_sprite(
     else:
         cat_sprite = str(cat.pelt.cat_sprites[age])
 
+
+    can_fade = not cat.prevent_fading and get_clan_setting("fading")
+    return cat.pelt.render(cat_sprite, cat.status.group, dead, can_fade)
+
+
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
     )

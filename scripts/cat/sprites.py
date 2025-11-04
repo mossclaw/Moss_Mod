@@ -7,7 +7,7 @@ import ujson
 import time
 
 from scripts.cat.enums import CatGroup
-from scripts.game_structure import constants#, image_cache
+from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.temp_util import read_sprite_dict, read_json
 
