@@ -211,10 +211,10 @@ class Pelt:
             self.points = self.white_patches
             self.white_patches = None
 
-        if self.tortiepattern and "tortie" in self.tortiepattern:
-            self.tortiepattern = sub("tortie", "", self.tortiepattern.lower())
-            if self.tortiepattern == "solid":
-                self.tortiepattern = "solid"
+        if self.tortie_pattern and "tortie" in self.tortie_pattern:
+            self.tortie_pattern = sub("tortie", "", self.tortie_pattern.lower())
+            if self.tortie_pattern == "solid":
+                self.tortie_pattern = "solid"
 
         if self.white_patches in convert_dict["old_creamy_patches"]:
             self.white_patches = convert_dict["old_creamy_patches"][self.white_patches]
@@ -808,7 +808,7 @@ class Pelt:
                     print("Wildcard tortie!")
 
                     # Allow any pattern:
-                    self.tortiepattern = choice(Pelt.tortiebases)
+                    self.tortie_pattern = choice(Pelt.tortiebases)
 
                     # Allow any colors that aren't the base color.
                     possible_colors = Pelt.pelt_colours.copy()
@@ -818,9 +818,9 @@ class Pelt:
                 else:
                     # Normal generation
                     if self.tortiebase in ("solid"):
-                        self.tortiepattern = choice(Pelt.tortiebases)
+                        self.tortie_pattern = choice(Pelt.tortiebases)
                     else:
-                        self.tortiepattern = weighted_choice([self.tortiebase, "solid"], [97, 3])
+                        self.tortie_pattern = weighted_choice([self.tortiebase, "solid"], [97, 3])
 
                     for key, colors in Pelt.sprite_names.items():
                         if self.colour in colors:
@@ -836,7 +836,7 @@ class Pelt:
 
         else:
             self.tortiebase = None
-            self.tortiepattern = None
+            self.tortie_pattern = None
             self.tortie_colour = None
             self.pattern = None
 
