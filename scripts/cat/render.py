@@ -2,103 +2,123 @@ import pygame
 from scripts.temp_util import read_resource_dict
 from scripts.cat.sprites import sprites
 
-class RenderStep:
-    def __init__(self, order, source, index, size, sprite, color, extra):
-        self.order = order
-        self.source = source
-        self.index = index
 
-        self.size = size
-        self.sprite = sprite
-        self.color = color
-        self.extra = extra
-
-
-    def __lt__(self, other):
-        if order != other.order:
-            return order < other.order
-        if source != other.source:
-            return source < other.source
-        return index < other.index
-
-
-    def render(self, stack):
-        layer = self.sprite.copy().convert_alpha()
-        if self.color is not None:
-            tint = pygame.Surface(self.size).convert_alpha()
-            tint.fill(self.color)
-            layer.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-        if 'push' in extra:
-            stack.append(layer)
-        else:
-            flag = pygame.BLEND_RGB_MULT if 'blend' in extra else None
-            stack[-1].blit(layer, (0, 0), special_flags=flag)
-        if 'pop' in extra:
-            layer = stack.pop()
-            stack[-1].blit(layer, (0, 0))
-
-
-def interpret_render(obj, elem):
-    if type(elem) is list:
-        for part in elem:
-            if type(part) is list:
-                part = [ interpret_render(obj, x) for x in part ]
-                if (part[0] == part[1]) if len(part) > 2 else part[0]:
-                    return part[-1]
-            else:
-                return interpret_render(obj, part)
-        return None
-    elif elem[0] == '.':
-        return getattr(obj, elem[1:])
-    else
-        return elem
-
-
-class RenderStack:
-    surface_flags = pygame.HWSURFACE | pygame.SRCALPHA
+class Render:
+    _create_flags = pygame.HWSURFACE | pygame.SRCALPHA
+    _blend = { None : 0,
+              'mult': pygame.BLEND_RGB_MULT,
+              'add' : pygame.BLEND_RGB_ADD,
+              'min' : pygame.BLEND_RGB_MIN,
+             }
     colors = read_resource_dict('colors')
 
-    def __init__(self, size, flip, pose):
-        if type(size) is int:
+    def __init__(self, pose, size=None, flip=False, only_load=False):
+        if size is None:
+            size = sprites.size
+        if type(size) is int or type(size) is float:
             size = (size, size)
-        elif type(size) is not tuple:
-            size = tuple(size)
-        self.steps = []
+        self.pose = str(pose)
+        self.only_load = only_load
         self.size = size
         self.flip = flip
-        self.pose = str(pose)
-        self.dirty = False
-        self.depth = 0
+        self.colormap = None
+        self.color = None
+        self.sprite = None
+        self.stack = []
+        self.add_layer()
 
 
-    def add_chunk(self, obj, chunk):
-        order = interpret_render(obj, chunk[0])
-        name = interpret_render(obj, chunk[1]).upper()
-        color_type = interpret_render(obj, chunk[2])
-        color_name = interpret_render(obj, chunk[3]).upper()
-        add(order, name, color_type, color_name, chunk[4:])
-
-
-    def add(self, order, name, color_type, color_name, steps):
-        colors = RenderStack.colors[color_type][chunk[color_name]
-        for i, step in enumerate(steps):
-            sprite = sprites[step[0] + name + self.pose]
-            color = colors[step[1]] if len(step) > 1 and type(step[1]) is int else None
-            extra = step[(1 if color is None else 2):]
-            self.steps.append(RenderStep(order, name, i, self.size, sprite, color, extra))
-        self.dirty = True
-
-
-    def render(self):
-        if self.dirty:
-            self.steps.sort()
-
-        stack = [pygame.Surface(self.size, RenderStack.surface_flags)]
-
-        for step in self.steps:
-            step.render(stack)
-        sprite = stack[0]
-
+    @property
+    def image(self):
+        if len(self.stack) > 1:
+            raise RuntimeError('merge_layer must be called as many times as add_layer.')
         if self.flip:
-            sprite = pygame.transform.flip(sprite, True, False)
-        return sprite
+            return pygame.transform.flip(self.stack[0], True, False)
+        else:
+            return self.stack[0]
+
+
+    def set(self, colormap=None, color=None, sprite=None):
+        if colormap is not None:
+            self.colormap = colormap
+        if color is not None:
+            self.color = color
+        if sprite is not None:
+            self.sprite = sprite
+        return self
+
+
+    def paint(self, sheet=None, index=None, colormap=None, color=None, sprite=None, blend=None):
+        if self.only_load:
+            self.__load_only(sheet, sprite)
+        elif sheet is None:
+            self.__tint(self.stack[-1], colormap, color, index, blend)
+        else:
+            image = self.__load(sheet, sprite)
+            self.__tint(image, colormap, color, index)
+            self.__merge(image, blend)
+        return self
+
+
+    def paint_all(self, *operations):
+        for operation in operations:
+            if type(operation) is dict:
+                self.paint(**operation)
+            else:
+                self.paint(*operation)
+        return self
+
+
+    def add_layer(self, sheet=None, sprite=None, insert=False):
+        if self.only_load:
+            self.__load_only(sheet, sprite)
+        else:
+            if sheet is None:
+                image = pygame.Surface(self.size, Render._create_flags)
+            else:
+                image = self.__load(sheet, sprite)
+            if insert:
+                self.stack[-1:] = [image, self.stack[-1]]
+            else:
+                self.stack.append(image)
+        return self
+
+
+    def merge_layer(self, blend=None):
+        if not self.only_load:
+            self.__merge(self.stack.pop(), blend)
+        return self
+
+
+    def __merge(self, image, blend, target=None):
+        if target is None:
+            target = self.stack[-1]
+        target.blit(image, (0, 0), special_flags=Render._blend[blend])
+
+
+    def __tint(self, image, colormap, color, index, blend=None):
+        if index is None:
+            return
+        if colormap is None:
+            colormap = self.colormap
+        if color is None:
+            color = self.color
+        if colormap is None or color is None:
+            raise ValueError(
+                'Both colormap and color must be set or passed to paint when index != None.')
+
+        tint = pygame.Surface(self.size).convert_alpha()
+        tint.fill(Render.colors[colormap][color][index])
+        self.__merge(tint, blend or 'mult', image)
+
+
+    def __load(self, sheet, sprite=None):
+        return self.__load_only(sheet, sprite).copy().convert_alpha()
+
+
+    def __load_only(self, sheet, sprite=None):
+        if sprite is None:
+            sprite = self.sprite
+        if sprite is None:
+            raise ValueError('sprite must be set or passed to paint.')
+        return sprites[sheet + sprite.upper() + self.pose]
