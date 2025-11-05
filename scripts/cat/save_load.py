@@ -24,7 +24,7 @@ def make_list(value):
         return value
     if value is None:
         return []
-    return data
+    return [value]
 
 
 def get_or_none(data: dict, key):

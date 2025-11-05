@@ -30,3 +30,16 @@ def read_sprite_dict(name, description_for_error = None):
 def read_resource_dict(name, description_for_error = None):
     return read_dict('resources', name, description_for_error)
 
+
+
+# ---------------------------------------------------------------------------- #
+#                        Collection Utility Functions                          #
+# ---------------------------------------------------------------------------- #
+
+
+def union_of_entries(dict_of_lists):
+    return sorted({ x for y in dict_of_lists.values() for x in y })
+
+
+def reverse_dict(dict_of_lists):
+    return { item: key for key, items in dict_of_lists.items() for item in items }

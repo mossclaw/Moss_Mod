@@ -111,6 +111,12 @@
                   "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"],
       "colored": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
     },
+    "render": {
+      "general": { "sheet": "scars" },
+      "missing": { "sheet": "scars", "blend": "min" },
+      "special": { "sheet": "scars" },
+      "colored": { "sheet": "scarscolor" }
+    },
     "exclude": {
       "NOTAIL": ["HALFTAIL"]
     },
@@ -148,46 +154,5 @@
     "adult": 100,
     "senior adult": 80,
     "senior": 80
-  },
-  "render": [
-    {
-      "*": ".tuft_color",
-      "HIGHLIGHT": [[0, ".tuft", "pelt",
-                     [[".tortie_tuft", ".tortie_colour"], ".colour"],
-                     ["tufts", 0], ["tuftlines", 5]]],
-      "BASE"     : [[0, ".tuft", "pelt",
-                     [[".tortie_tuft", ".tortie_colour"], ".colour"],
-                     ["tufts", 1], ["tuftlines", 5]]],
-      "MID"      : [[0, ".tuft", "pelt",
-                     [[".tortie_tuft", ".tortie_colour"], ".colour"],
-                     ["tufts", 2], ["tuftlines", 5]]],
-      "DARK"     : [[0, ".tuft", "pelt",
-                     [[".tortie_tuft", ".tortie_colour"], ".colour"],
-                     ["tufts", 3], ["tuftlines", 5]]],
-      "SHADE"    : [[0, ".tuft", "pelt",
-                     [[".tortie_tuft", ".tortie_colour"], ".colour"],
-                     ["tufts", 4], ["tuftlines", 5]]],
-      "WHITE"    : [[0, ".tuft", "pelt",
-                     [[".white_patches_tint", "black", "BLACK"], "WHITE"],
-                     ["tufts", 0], ["tuftlines", 5]]]
-    },
-    [10, "SOLID", "pelt", ".colour", ["base", 1]],
-    {
-      "*": [[".name", "Tortie", "tortie"], [".name", "Calico", "tortie"], "regular"],
-      "regular": [
-        [11, ".name", "pelt", ".colour",
-         ["under", 0], ["mid", 2], ["dark", 3], ["shade", 4], ["highlight", 0]],
-        [12, "", "pelt", ".colour", ["line", 5]]
-      ],
-      "tortie": [
-        [11, ".tortiebase", "pelt", ".colour",
-         ["under", 0], ["mid", 2], ["dark", 3], ["shade", 4], ["highlight", 0], ["line", 5]],
-        [12, "", "pelt", ".colour", ["line", 5]],
-        [13, "SOLID", "pelt", ".tortie_colour", ["base", "push"], ["base", 1]],
-        [14, ".tortie_pattern", "pelt", ".tortie_colour",
-         ["under", 0], ["mid", 2], ["dark", 3], ["shade", 4],
-         ["highlight", 0], ["line", 5], ["tortiemask", "blend", "pop"]]
-      ]
-    }
-  ]
+  }
 }
