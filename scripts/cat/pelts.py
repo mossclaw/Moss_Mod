@@ -12,7 +12,7 @@ from scripts.cat.sprites import sprites
 from scripts.cat.render import Render
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
-from scripts.utility import adjust_list_text, union_of_entries
+from scripts.utility import adjust_list_text, union_of_entries, reverse_dict
 from scripts.temp_util import read_resource_dict
 from scripts.cat.accessory import Accessory
 
@@ -68,7 +68,8 @@ class Pelt:
     point_markings = white_patches['point']
     vit = white_patches['vit']
 
-    all_scars = union_of_entries(_pelt_data['scars'])
+    all_scars = union_of_entries(_pelt_data['scars']['lists'])
+    scar_reverse = reverse_dict(_pelt_data['scars']['lists'])
 
 
     """Holds all appearance information for a cat. """
@@ -176,7 +177,13 @@ class Pelt:
         return new_pelt
 
 
-    def render(self, pose, group, dead, fade):
+    def render(self,
+               pose,
+               dead=False,
+               group=None,
+               can_fade=True,
+               scars_hidden=False,
+               acc_hidden=False):
         try:
             render = Render(pose, flip= self.reverse)
             render.set(colormap= 'pelt')
@@ -200,7 +207,7 @@ class Pelt:
                 render.paint('line', 5, sprite= '')
 
             tortie = self.name in ['Tortie', 'Calico']
-            render.set(color= self.colour, sprite= self.tortiebase if tortie else self.name)
+            render.set(color= self.colour, sprite= self.tortie_base if tortie else self.name)
             paint_pelt(render)
 
             if tortie:
@@ -262,13 +269,20 @@ class Pelt:
             render.paint('skin', 0, sprite= self.skin, colormap= 'skin', color= self.skin_color)
 
             # Scars
-            # commented out in utility
+            if not scars_hidden:
+                args = Pelt._pelt_data['scars']['render']
+                reverse = Pelt.scar_reverse
+                for scar in self.scars:
+                    render.paint(sprite= scar, **args[reverse[scar]])
 
             # Accessories
-            # commented out in utility
+            if not acc_hidden:
+                render.set(colormap= 'assessory')
+                for acc in self.accessory:
+                    acc.render(render)
 
             # Fading
-            if dead and fade and pelt.opacity <= 97:
+            if dead and can_fade and pelt.opacity <= 97:
                 render.set(sprite= str((80 - pelt.opacity) // 35 + 1))
                 render.paint('fademask', blend= 'mult')
                 sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
@@ -608,7 +622,7 @@ class Pelt:
 
                 # Gather pelt name
                 if p.pelt.name in Pelt.pelt_dict['torties']:
-                    par_peltnames.add(p.pelt.tortiebase.capitalize())
+                    par_peltnames.add(p.pelt.tortie_base.capitalize())
                 else:
                     par_peltnames.add(p.pelt.name)
 
@@ -646,7 +660,7 @@ class Pelt:
             self.name = selected.name
             self.length = selected.length
             self.colour = selected.colour
-            self.tortiebase = selected.tortiebase
+            self.tortie_base = selected.tortie_base
             return selected.white
 
 
@@ -752,7 +766,7 @@ class Pelt:
         self.name = chosen_pelt
         self.colour = chosen_pelt_color
         self.length = chosen_pelt_length
-        self.tortiebase = (
+        self.tortie_base = (
             chosen_tortie_base  # This will be none if the cat isn't a tortie.
         )
         return chosen_white
@@ -820,7 +834,7 @@ class Pelt:
         self.name = chosen_pelt
         self.colour = chosen_pelt_color
         self.length = chosen_pelt_length
-        self.tortiebase = (
+        self.tortie_base = (
             chosen_tortie_base  # This will be none if the cat isn't a tortie.
         )
         return chosen_white
@@ -828,7 +842,7 @@ class Pelt:
 
     def init_pattern_color(self, parents, gender) -> bool:
         """Inits self.name, self.colour, self.length,
-        self.tortiebase and determines if the cat
+        self.tortie_base and determines if the cat
         will have white patche or not.
         Return TRUE is the cat should have white patches,
         false is not."""
@@ -894,8 +908,8 @@ class Pelt:
 
     def init_pattern(self):
         if self.name in Pelt.pelt_dict['torties']:
-            if not self.tortiebase:
-                self.tortiebase = choice(Pelt.tortiebases)
+            if not self.tortie_base:
+                self.tortie_base = choice(Pelt.tortiebases)
             if not self.pattern:
                 self.pattern = choice(Pelt.tortiepatterns)
 
@@ -921,10 +935,10 @@ class Pelt:
 
                 else:
                     # Normal generation
-                    if self.tortiebase in ("solid"):
+                    if self.tortie_base in ("solid"):
                         self.tortie_pattern = choice(Pelt.tortiebases)
                     else:
-                        self.tortie_pattern = weighted_choice([self.tortiebase, "solid"], [97, 3])
+                        self.tortie_pattern = weighted_choice([self.tortie_base, "solid"], [97, 3])
 
                     for key, colors in Pelt.sprite_names.items():
                         if self.colour in colors:
@@ -939,7 +953,7 @@ class Pelt:
                         self.colour = choose_color('base')
 
         else:
-            self.tortiebase = None
+            self.tortie_base = None
             self.tortie_pattern = None
             self.tortie_colour = None
             self.pattern = None
@@ -1269,7 +1283,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
         else:
             return f"cat.pelts.{cat.pelt.name}", ""
 
-    base = cat.pelt.tortiebase.lower()
+    base = cat.pelt.tortie_base.lower()
 
     patches_color = f"cat.pelts.{cat.pelt.tortie_colour}"
     color_name.append("/")
@@ -1283,7 +1297,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
             "rosette",
             "speckled",
         ):
-            base = f"cat.pelts.{cat.pelt.tortiebase.capitalize()}_long"
+            base = f"cat.pelts.{cat.pelt.tortie_base.capitalize()}_long"
         else:
             base = ""
         return base, color_name

@@ -2674,8 +2674,15 @@ def generate_sprite(
         cat_sprite = str(cat.pelt.cat_sprites[age])
 
 
-    can_fade = not cat.prevent_fading and get_clan_setting("fading")
-    return cat.pelt.render(cat_sprite, cat.status.group, dead, can_fade)
+    return cat.pelt.render(cat_sprite,
+                           dead,
+                           cat.status.group,
+                           not cat.prevent_fading and get_clan_setting("fading"),
+                           scars_hidden,
+                           acc_hidden)
+
+    # Everything below is now dead code.
+    # Still here just for reference until things shake down.
 
 
     new_sprite = pygame.Surface(
@@ -3511,6 +3518,11 @@ def generate_sprite(
 
 def union_of_entries(dict_of_lists):
     return sorted({ x for y in dict_of_lists.values() for x in y })
+
+
+def reverse_dict(dict_of_lists):
+    return { item: key for key, items in dict_of_lists.items() for item in items }
+
 
 def chunks(L, n):
     return [L[x : x + n] for x in range(0, len(L), n)]
