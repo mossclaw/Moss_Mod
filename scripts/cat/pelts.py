@@ -196,7 +196,7 @@ class Pelt:
                 else:
                     color = self.tortie_colour if self.tortie_tuft else self.colour
                     index = Pelt._pelt_data['tufts']['color']['other'].index(self.tuft_color)
-                render.set(color= color)
+                render.set(sprite= self.tuft, color= color)
                 render.paint('tufts', index)
                 render.paint('tuftlines', 5)
 
