@@ -6,11 +6,13 @@ from scripts.cat.sprites.load_sprites import sprites
 class Render:
     _create_flags = pygame.HWSURFACE | pygame.SRCALPHA
     _blend = { None : 0,
-              'mult': pygame.BLEND_RGB_MULT,
-              'add' : pygame.BLEND_RGB_ADD,
-              'min' : pygame.BLEND_RGB_MIN,
+              'alpha': pygame.BLEND_RGBA_MULT,
+              'mult' : pygame.BLEND_RGB_MULT,
+              'add'  : pygame.BLEND_RGB_ADD,
+              'min'  : pygame.BLEND_RGB_MIN,
              }
     colors = read_resource_dict('colors')
+    debug = False
 
     def __init__(self, pose, size=None, flip=False, only_load=False):
         if size is None:
@@ -112,11 +114,11 @@ class Render:
         self.__merge(tint, blend or 'mult', image)
 
 
-    def __load(self, sheet, sprite=None):
+    def __load(self, sheet, sprite):
         return self.__load_only(sheet, sprite).copy().convert_alpha()
 
 
-    def __load_only(self, sheet, sprite=None):
+    def __load_only(self, sheet, sprite):
         if sprite is None:
             sprite = self.sprite
         if sprite is None:

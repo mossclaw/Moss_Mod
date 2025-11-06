@@ -44,6 +44,16 @@ def load_instance(data: dict,
     return Class(*arg_list)
 
 
+def load_instance_list(data,
+                       Class,
+                       args: list,
+                       fixed_args: list = []):
+    return load_instance({ i: v for i, v in enumerate(data) },
+                         Class,
+                         { i: v for i, v in enumerate(args) },
+                         fixed_args)
+
+
 def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
     """Save the cat data."""
 

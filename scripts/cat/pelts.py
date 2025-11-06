@@ -155,8 +155,17 @@ class Pelt:
 
     @accessory.setter
     def accessory(self, val):
+        if type(val) is not list:
+            self._accessory.append(Accessory.load(val))
+        else:
+            self._accessory = [ Accessory.load(item) for item in val ]
+        self.__prune_same_slot_accessories()
         self.rebuild_sprite = True
-        self._accessory = val
+
+    def __prune_same_slot_accessories(self):
+        if len(self._accessory) > len({ x.slot for x in self._accessory }):
+            self._accessory = list({ x.slot: x for x in self._accessory }.values())
+            self.rebuild_sprite = True
 
     @property
     def scars(self):
@@ -175,6 +184,11 @@ class Pelt:
     def paralyzed(self, val):
         self.rebuild_sprite = True
         self._paralyzed = val
+
+
+    def get_accessory_save(self):
+        return [ acc.get_save() for acc in self.accessory ]
+
 
     @staticmethod
     def generate_new_pelt(gender: str, parents: tuple = (), age: str = "adult"):
@@ -229,7 +243,7 @@ class Pelt:
                 render.set(color= self.tortie_colour, sprite= self.tortie_pattern)
                 render.add_layer('base', sprite= 'SOLID')
                 paint_pelt(render)
-                render.paint('tortiemask', blend= 'mult')
+                render.paint('tortiemask', blend= 'alpha')
                 render.merge_layer()
 
             # Tint
@@ -256,7 +270,7 @@ class Pelt:
             if self.eye_pattern != None:
                 render.add_layer('eyebase')
                 render.paint_all(('eyebase', 0), ('eyemid', 1), ('eyetop', 2), ('eyeshade', 3))
-                render.paint('eyes2', sprite= self.eye_pattern, blend= 'mult')
+                render.paint('eyes2', sprite= self.eye_pattern, blend= 'alpha')
                 render.merge_layer()
             render.paint('eyelight')
 
@@ -292,14 +306,13 @@ class Pelt:
 
             # Accessories
             if not acc_hidden:
-                render.set(colormap= 'assessory')
                 for acc in self.accessory:
                     acc.render(render)
 
             # Fading
             if dead and can_fade and pelt.opacity <= 97:
                 render.set(sprite= str((80 - pelt.opacity) // 35 + 1))
-                render.paint('fademask', blend= 'mult')
+                render.paint('fademask', blend= 'alpha')
                 sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
                 render.add_layer(sheet, insert= True).merge_layer()
 

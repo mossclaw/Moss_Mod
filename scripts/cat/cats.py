@@ -3407,7 +3407,7 @@ class Cat:
                 "tint": self.pelt.tint,
                 "skill_dict": self.skills.get_skill_dict(),
                 "scars": self.pelt.scars or [],
-                "accessory": self.pelt.accessory,
+                "accessory": self.pelt.get_accessory_save(),
                 "experience": self.experience,
                 "current_apprentice": list(self.apprentice),
                 "former_apprentices": list(self.former_apprentices),
