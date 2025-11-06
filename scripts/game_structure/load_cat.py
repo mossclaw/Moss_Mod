@@ -127,6 +127,7 @@ def json_load():
                 colour=cat["pelt_color"],
                 eye_color=cat["eye_colour"],
                 eye_colour2=cat["eye_colour2"] if "eye_colour2" in cat else None,
+                eye_pattern=cat["eye_pattern"] if "eye_pattern" in cat else None,
                 paralyzed=cat["paralyzed"],
                 newborn_sprite=cat.get("sprite_newborn"),
                 kitten_sprite=(
@@ -166,10 +167,14 @@ def json_load():
                 tortie_pattern=cat["tortie_pattern"],
                 tortie_marking=cat["tortie_marking"],
                 skin=cat["skin"],
+                skin_color=cat["skin_color"] if "skin_color" in cat else Pelt.skin_color,
                 tint=cat["tint"] if "tint" in cat else None,
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100,
+                tuft=cat["tuft"] if "tuft" in cat else None,
+                tuft_color=cat["tuft_color"] if "tuft_color" in cat else "BASE",
+                tortie_tuft=cat["tortie_tuft"] if "tortie_tuft" in cat else False
             )
 
             # Runs a bunch of appearance-related conversion of old stuff.
