@@ -296,7 +296,7 @@ class Pelt:
 
             # Fading
             if dead and can_fade and pelt.opacity <= 97:
-                render.set(sprite= str((80 - pelt.opacity) // 35 + 1))
+                render.set(sprite= str((80 - self.opacity) // 35 + 1))
                 render.paint('fademask', blend= 'alpha')
                 sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
                 render.add_layer(sheet, insert= True).merge_layer()
