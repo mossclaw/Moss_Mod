@@ -1,6 +1,7 @@
-from scripts.cat.save_load import load_instance
+from scripts.cat.save_load import load_instance, load_instance_list
 from scripts.temp_util import read_resource_dict
 from random import choice
+from itertools import zip_longest
 
 class AccessoryDef:
     _accessory_data = read_resource_dict('accessories')
@@ -13,21 +14,24 @@ class AccessoryDef:
                  event:    str,
                  color:    list[str],
                  patterns: int,
-                 draw:     list):
+                 sprites:  list,
+                 sheets:   list):
         self.name = name
         self.slot = slot
         self.event = event
         self.color = color
         self.patterns = patterns or 0
 
-        if draw:
-            self.draw = [ AccessoryDef.__make_draw(e) for e in draw ]
-        elif not color and not patterns:
-            self.draw = [({'sheet': 'acc'}, None, None)]
-        else:
-            self.draw = [({'sheet': 'accbase'},
-                          0 if color else None,
-                          0 if patterns else None)]
+        n = max(len(color), self.patterns, len(sheets), len(sprites), 1)
+        self.sprites = [ s if s else name for s in sprites ]
+        if len(sprites) < n:
+            self.sprites += [name] * (n - len(sprites))
+        if len(sheets) < n:
+            if color or n > 1:
+                sheets = ['base'] * (n - len(sheets)) + sheets
+            else:
+                sheets = ['']
+        self.sheets = [ 'acc' + s for s in sheets ]
 
 
     def random_colors(self):
@@ -36,21 +40,6 @@ class AccessoryDef:
 
     def random_patterns(self):
         return [ choice(AccessoryDef.patterns) for x in range(1, self.patterns) ]
-
-
-    @staticmethod
-    def __make_draw(entry):
-        if 'sheet' not in entry:
-            entry['sheet'] = 'accbase'
-        if 'cp' in entry:
-            c = p = entry['cp']
-        else:
-            c = entry['c'] if 'c' in entry else None
-            p = entry['p'] if 'p' in entry else None
-        for key in ['c', 'p', 'cp']:
-            if key in entry:
-                del entry[key]
-        return (entry, c, p)
 
 
     @staticmethod
@@ -74,7 +63,8 @@ class AccessoryDef:
                       'ev'  : ['opt'],
                       'col' : ['list', 'opt'],
                       'pat' : ['opt'],
-                      'draw': ['list', 'opt'],
+                      'spr' : ['list', 'opt'],
+                      'sh'  : ['list', 'opt'],
                       }
         entries = AccessoryDef._accessory_data['list'].items()
         AccessoryDef.available = { name: load(name, data) for name, data in entries }
@@ -92,38 +82,58 @@ AccessoryDef.load_available()
 
 
 class Accessory:
-    _load_args = { 'name':    [],
-                   'color':   ['list'],
-                   'pattern': ['list'],
-                 }
+    _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
 
     def __init__(self,
                  accessory,
                  color: list[str],
                  pattern: list[str]):
-        self.accessory = Accessory.__lookup(accessory)
+        self.acc = Accessory.__lookup(accessory)
         self.color = color
         self.pattern = pattern
 
 
     @property
     def name(self):
-        return self.accessory.name
+        return self.acc.name
+
+
+    @property
+    def slot(self):
+        return self.acc.slot
+
+
+    @property
+    def event(self):
+        return self.acc.event
+
+
+    def get_save(self):
+        def single(val):
+            return val[0] if len(val) == 1 else val
+        if self.pattern:
+            return [self.name, single(self.color), single(self.pattern)]
+        elif self.color:
+            return [self.name, single(self.color)]
+        else:
+            return self.name
 
 
     def render(self, render):
-        render.set(sprite= self.name)
-        for args, col, pat in self.accessory.draw:
-            if col is None:
-                render.paint(**args)
+        render.set(colormap= 'accessory', sprite= self.name)
+        sets = zip_longest(self.acc.sprites, self.color, self.pattern, self.acc.sheets)
+        for sprite, color, pattern, sheet in sets:
+            render.set(sprite= sprite, color= color)
+            if color is None:
+                render.paint(sheet)
             else:
-                render.add_layer(**args)
-                render.paint(0, color= self.color[col], **args)
-                if pat is not None:
-                    render.add_layer('accpattern', self.pattern[pat])
-                    render.paint('accpattern', self.pattern[pat], blend= 'mult')
+                render.add_layer(sheet)
+                render.paint(sheet, 0)
+                if pattern is not None:
+                    render.add_layer('accpattern', sprite= pattern)
+                    render.paint('accpattern', sprite= pattern, blend= 'mult')
+                    render.paint(sheet, blend= 'alpha')
                     render.merge_layer()
-                    render.paint(blend= 'mult', **args)
                 render.merge_layer()
 
 
@@ -170,8 +180,12 @@ class Accessory:
 
 
     @staticmethod
-    def load(data: dict):
-        return load_instance(data, Accessory, _load_args)
+    def load(data):
+        if type(data) is str:
+            data = [data]
+        elif type(data) is Accessory:
+            return data
+        return load_instance_list(data, Accessory, Accessory._load_args)
 
 
     @staticmethod
