@@ -212,19 +212,20 @@ class Scar_Events:
 
             specialty = random.choice(scar_pool)
             if specialty in ["NOTAIL", "HALFTAIL"]:
+                remove = set(
+                    "RED FEATHERS",
+                    "BLUE FEATHERS",
+                    "JAY FEATHERS",
+                    "GULL FEATHERS",
+                    "SPARROW FEATHERS",
+                    "CLOVER",
+                    "DAISY",
+                )
                 cat.pelt.accessory = [
                     acc
                     for acc in cat.pelt.accessory
-                    if acc
-                    not in (
-                        "RED FEATHERS",
-                        "BLUE FEATHERS",
-                        "JAY FEATHERS",
-                        "GULL FEATHERS",
-                        "SPARROW FEATHERS",
-                        "CLOVER",
-                        "DAISY",
-                    )
+                    if acc.name
+                    not in remove
                 ]
 
             # combining left/right variations into the both version
