@@ -2597,6 +2597,7 @@ def generate_sprite(
     acc_hidden=False,
     always_living=False,
     disable_sick_sprite=False,
+    load_only=False,
 ) -> pygame.Surface:
     """
     Generates the sprite for a cat, with optional arguments that will override certain things.
@@ -2679,7 +2680,9 @@ def generate_sprite(
                            cat.status.group,
                            not cat.prevent_fading and get_clan_setting("fading"),
                            scars_hidden,
-                           acc_hidden)
+                           acc_hidden,
+                           load_only,
+                           cat.name)
 
     # Everything below is now dead code.
     # Still here just for reference until things shake down.

@@ -14,13 +14,13 @@ class Render:
     colors = read_resource_dict('colors')
     debug = False
 
-    def __init__(self, pose, size=None, flip=False, only_load=False):
+    def __init__(self, pose, size=None, flip=False, load_only=False):
         if size is None:
             size = sprites.size
         if type(size) is int or type(size) is float:
             size = (size, size)
         self.pose = str(pose)
-        self.only_load = only_load
+        self.load_only = load_only
         self.size = size
         self.flip = flip
         self.colormap = None
@@ -34,6 +34,8 @@ class Render:
     def image(self):
         if len(self.stack) > 1:
             raise RuntimeError('merge_layer must be called as many times as add_layer.')
+        if self.load_only:
+            return
         if self.flip:
             return pygame.transform.flip(self.stack[0], True, False)
         else:
@@ -51,7 +53,7 @@ class Render:
 
 
     def paint(self, sheet=None, index=None, colormap=None, color=None, sprite=None, blend=None):
-        if self.only_load:
+        if self.load_only:
             self.__load_only(sheet, sprite)
         elif sheet is None:
             self.__tint(self.stack[-1], colormap, color, index, blend)
@@ -72,7 +74,7 @@ class Render:
 
 
     def add_layer(self, sheet=None, sprite=None, insert=False):
-        if self.only_load:
+        if self.load_only:
             self.__load_only(sheet, sprite)
         else:
             if sheet is None:
@@ -87,7 +89,7 @@ class Render:
 
 
     def merge_layer(self, blend=None):
-        if not self.only_load:
+        if not self.load_only:
             self.__merge(self.stack.pop(), blend)
         return self
 
@@ -115,10 +117,15 @@ class Render:
 
 
     def __load(self, sheet, sprite):
-        return self.__load_only(sheet, sprite).copy().convert_alpha()
+        return self.__load_base(sheet, sprite).copy().convert_alpha()
 
 
     def __load_only(self, sheet, sprite):
+        if sheet is not None:
+            self.__load_base(sheet, sprite)
+
+
+    def __load_base(self, sheet, sprite):
         if sprite is None:
             sprite = self.sprite
         if sprite is None:

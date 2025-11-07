@@ -2,7 +2,7 @@
     "default": {
         "cat_shading": {
             "blur": 20,
-            "blend_strength": 200
+            "blend_strength": 255
         },
         "leader den": [344, 100],
         "medicine den": [105, 200],

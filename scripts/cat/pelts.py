@@ -3,6 +3,7 @@ import logging
 import traceback
 from random import choice
 from re import sub
+from time import time_ns
 
 import i18n
 
@@ -197,9 +198,12 @@ class Pelt:
                group=None,
                can_fade=True,
                scars_hidden=False,
-               acc_hidden=False):
+               acc_hidden=False,
+               load_only=False,
+               name=None):
         try:
-            render = Render(pose, flip= self.reverse)
+            t = time_ns()
+            render = Render(pose, flip= self.reverse, load_only= load_only)
             render.set(colormap= 'pelt')
 
             # Tufts
@@ -295,13 +299,15 @@ class Pelt:
                     acc.render(render)
 
             # Fading
-            if dead and can_fade and pelt.opacity <= 97:
+            if dead and can_fade and self.opacity <= 97:
                 render.set(sprite= str((80 - self.opacity) // 35 + 1))
                 render.paint('fademask', blend= 'alpha')
                 sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
                 render.add_layer(sheet, insert= True).merge_layer()
 
             sprite = render.image
+            t2 = time_ns()
+            #print(f"Rendered {name}'s pelt in {(t2 - t) / 1000000} ms.")
 
         except (TypeError, KeyError):
             traceback.print_exc()

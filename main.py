@@ -49,7 +49,7 @@ if not getattr(sys, "frozen", False):
     if isMissing:
         print(
             """You are missing some requirements to run clangen!
-                
+
                 Please look at the "README.md" file for instructions on how to install them.
                 """
         )
@@ -202,6 +202,7 @@ from scripts.cat.sprites import sprites
 from scripts.utility import (
     quit,
 )  # pylint: disable=redefined-builtin
+from scripts.cat.cats import Cat
 
 # from scripts.debug_menu import debugmode
 from scripts.debug_console import debug_mode
@@ -239,6 +240,7 @@ def load_data():
             version_convert(version_info)
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
+            Cat.pre_render_cats()
         except Exception as e:
             logging.exception("File failed to load")
             if switch_get_value(Switch.error_message) is None:
