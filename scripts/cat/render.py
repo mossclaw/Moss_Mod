@@ -9,7 +9,7 @@ class Render:
               'alpha': pygame.BLEND_RGBA_MULT,
               'mult' : pygame.BLEND_RGB_MULT,
               'add'  : pygame.BLEND_RGB_ADD,
-              'min'  : pygame.BLEND_RGB_MIN,
+              'min'  : pygame.BLEND_RGBA_MIN,
              }
     colors = read_resource_dict('colors')
     debug = False
