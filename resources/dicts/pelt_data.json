@@ -112,13 +112,33 @@
       "colored": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
     },
     "render": {
-      "general": { "sheet": "scars" },
-      "missing": { "sheet": "scars", "blend": "min" },
-      "special": { "sheet": "scars" },
-      "colored": { "sheet": "scarscolor" }
+      "general": {"sheet": "scars"},
+      "missing": {"sheet": "scars", "blend": "min"},
+      "special": {"sheet": "scars"},
+      "colored": {"sheet": "scarscolor"}
     },
     "exclude": {
-      "NOTAIL": ["HALFTAIL"]
+      "scars": {
+        "NOPAW"      : ["TOETRAP", "RATBITE", "FROSTSOCK"],
+        "NOTAIL"     : ["HALFTAIL", "TAILBASE", "TAILSCAR", "MANTAIL", "FROSTTAIL", "TAILSCAR"],
+        "HALFTAIL"   : ["TAILSCAR", "MANTAIL", "BURNTAIL", "FROSTTAIL"],
+        "BURNTAIL"   : ["TAILSCAR", "MANTAIL", "FROSTTAIL"],
+        "FROSTTAIL"  : ["TAILSCAR", "MANTAIL"],
+        "MANTAIL"    : ["TAILSCAR"],
+        "BRIGHTHEART": ["RIGHTBLIND", "NORIGHTEAR", "RIGHTEAR"],
+        "BOTHBLIND"  : ["THREE", "RIGHTBLIND", "LEFTBLIND"],
+        "NOEAR"      : ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR"],
+        "NOLEFTEAR"  : ["LEFTEAR"],
+        "NORIGHTEAR" : ["RIGHTEAR"]
+      },
+      "accessory": {
+        "NOTAIL"  : [{"slot": "tail"}],
+        "HALFTAIL": [{"slot": "tail"}]
+      }
+    },
+    "combine": {
+      "BOTHBLIND": ["LEFTBLIND", "RIGHTBLIND"],
+      "NOEAR"    : ["NOLEFTEAR", "NORIGHTEAR"]
     },
     "generate": {
       "chance": {
