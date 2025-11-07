@@ -316,9 +316,6 @@ class Pelt:
                 sheet = 'fade' + ('df' if forest else ('ur' if unknown else 'starclan'))
                 render.add_layer(sheet, insert= True).merge_layer()
 
-            # Dead cat layer things?
-            # commented out in utility
-
             sprite = render.image
 
         except (TypeError, KeyError):
