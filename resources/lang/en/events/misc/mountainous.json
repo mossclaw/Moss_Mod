@@ -110,12 +110,7 @@
         "frequency": 1,
         "event_text": "r_c found a little patch of acc_plural and decided to gift them to m_c.",
         "new_accessory": [
-            "POPPY",
-            "ORANGE POPPY",
-            "CYAN POPPY",
-            "WHITE POPPY",
-            "PINK POPPY",
-            "BULB WHITE"
+            "POPPY"
         ],
         "r_c": {
             "age": [
@@ -174,29 +169,55 @@
         }
     },
     {
-  "event_id": "mtn_misc_crystalreflection_supernaturalskills",
-  "location": [
-    "mountainous:camp3"
-  ],
-  "season": [
-    "any"
-  ],
-  "frequency": 2,
-  "event_text": "For a heartbeat, m_c thought the reflection staring back at {PRONOUN/m_c/object} in the crystals around camp was not {PRONOUN/m_c/poss} own.",
-  "m_c": {
-    "age": [
-      "any"
-    ],
-    "status": [
-      "any"
-    ],
-    "skill": [
-      "GHOST,2",
-      "CLAIRVOYANT,1",
-      "OMEN,1",
-      "DARK,2",
-      "STAR,2"
-    ]
-  }
-}
+        "event_id": "mtn_misc_crystalreflection_supernaturalskills",
+        "location": [
+            "mountainous:camp3"
+        ],
+        "season": [
+            "any"
+        ],
+        "frequency": 2,
+        "event_text": "For a heartbeat, m_c thought the reflection staring back at {PRONOUN/m_c/object} in the crystals around camp was not {PRONOUN/m_c/poss} own.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ],
+            "skill": [
+                "GHOST,2",
+                "CLAIRVOYANT,1",
+                "OMEN,1",
+                "DARK,2",
+                "STAR,2"
+            ]
+        }
+    },
+    {
+        "event_id": "mtn_misc_any_acc_CRYSTAL3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "accessory"
+        ],
+        "frequency": 4,
+        "event_text": "m_c is relaxing quietly in camp, when suddenly a rock tumbles down from the overhead mountain! {PRONOUN/m_c/subject/CAP} quickly {VERB/m_c/dodge/dodges} out of the way and the rock hits the ground hard, cracking open to reveal a beautiful acc_singular.",
+        "new_accessory": [
+            "CRYSTAL"
+        ],
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        }
+    }
 ]

@@ -1,5 +1,4 @@
 [
-  {
     "event_id": "fst_misc_war_anyapps1",
     "location": [
       "forest"
@@ -145,9 +144,9 @@
       "accessory"
     ],
     "frequency": 4,
-    "event_text": "A small flock of sparrows has decided to start frequenting the branches high above camp. To the annoyance of many, their preening has dropped plenty of feathers around camp; m_c thinks they're pretty, though, and decides to keep some.",
+    "event_text": "A small flock of birds has decided to start frequenting the branches high above camp. To the annoyance of many, their preening has dropped plenty of feathers around camp; m_c thinks they're pretty, though, and decides to keep some.",
     "new_accessory": [
-      "SPARROW FEATHERS"
+      "FEATHER"
     ]
   },
   {
@@ -431,5 +430,31 @@
         }
       }
     ]
+  },
+  {
+    "event_id": "pln_misc_any_acc_SHROOM1",
+    "location": [
+      "any"
+    ],
+    "season": [
+      "any"
+    ],
+    "sub_type": [
+      "accessory"
+    ],
+    "frequency": 4,
+    "event_text": "m_c is such a fungi to be around!",
+    "new_accessory": [
+      "MUSHROOM"
+    ],
+    "m_c": {
+      "age": [
+        "adolescent",
+        "young adult",
+        "adult",
+        "senior adult",
+        "senior"
+      ]
+    }
   }
 ]
