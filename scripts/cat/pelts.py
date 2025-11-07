@@ -619,7 +619,7 @@ class Pelt:
 
     def excluded_scars(self):
         data = Pelt._pelt_data['scars']['exclude']['scars']
-        return { x for y in self.scars for x in data[y] }
+        return { x for y in self.scars if y in data for x in data[y] }
 
 
     def excluded_accessory_slots(self):
