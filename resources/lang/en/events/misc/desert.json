@@ -38,7 +38,7 @@
     "frequency": 4,
     "event_text":  "The way that the plantlife withers in the dry season is stark, but sometimes beautiful. m_c added acc_plural to {PRONOUN/m_c/poss} pelt.",
     "new_accessory": [
-      "DRY HERBS",
+      "HERBS",
       "OAK LEAVES"
     ],
     "m_c": {
@@ -113,11 +113,7 @@
     "frequency": 4,
     "event_text":  "m_c takes a acc_singular to remember the last blooms of the wet season.",
     "new_accessory": [
-      "BULB WHITE", 
-      "BULB YELLOW", 
-      "BULB ORANGE", 
-      "BULB PINK", 
-      "BULB BLUE"
+      "BULB"
     ],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
@@ -133,12 +129,9 @@
     "frequency": 4,
     "event_text":  "m_c proudly shows off {PRONOUN/m_c/poss} acc_singular. {PRONOUN/m_c/subject/CAP} caught it all by {PRONOUN/m_c/self}!",
     "new_accessory": [
-      "MOTH WINGS", 
-      "CICADA WINGS", 
-      "MONARCH BUTTERFLY", 
-      "MORPHO BUTTERFLY", 
-      "ROSY MOTH WINGS",
-      "BLACK CICADA"
+      "MOTH",
+      "BUTTERFLY",
+      "CICADA"
     ],
     "m_c": {
         "age": ["kitten"]
