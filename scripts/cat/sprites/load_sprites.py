@@ -323,7 +323,7 @@ class Sprites:
         self.load_dir('sprites')
 
         # Save special sprite sets in individual variables, for convenience and compatibility.
-        self.symbol_dict, self.clan_symbols = self.specified['symbol']
+        self.symbol_dict, self.clan_symbols = self.specified['symbols']
 
 
     def load_specified(self, spritesheet, json_path):

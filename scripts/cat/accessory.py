@@ -34,6 +34,10 @@ class AccessoryDef:
         self.sheets = [ 'acc' + s for s in sheets ]
 
 
+    def __format__(self, spec):
+        return self.name
+
+
     def random_colors(self):
         return [ choice(AccessoryDef.colors[x]) for x in self.color ]
 

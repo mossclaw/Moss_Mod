@@ -934,7 +934,7 @@ class Pelt:
         if Pelt._roll(Pelt._pelt_data['accessory_chance'][age]):
             self.accessory = [Accessory.create_random_from_set('initial')]
         else:
-            self.accessory = tuple()
+            self.accessory = []
 
 
     def init_pattern(self):
