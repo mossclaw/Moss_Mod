@@ -59,6 +59,8 @@ from scripts.cat.sprites.display_sprites import update_sprite, update_mask
 from scripts.events_module.text_adjust import (
     event_text_adjust,
     leader_ceremony_text_adjust,
+    update_mask,
+    generate_sprite,
 )
 from scripts.events_module.event_filters import get_personality_compatibility
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
@@ -367,6 +369,14 @@ class Cat:
 
         if self.ID is not None and self.ID != "0":
             Cat.insert_cat(self)
+
+
+    @staticmethod
+    def pre_render_cats():
+        for cat in Cat.all_cats_list:
+            generate_sprite(cat, load_only=True)
+
+
 
     def init_faded(self, ID, status, prefix, suffix, moons, **kwargs):
         """Perform faded-specific initialization

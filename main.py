@@ -25,6 +25,13 @@ from scripts.game_structure.game.switches import (
 )
 from scripts.game_structure.load_cat import load_cats, version_convert
 from scripts.game_structure.screen_settings import MANAGER, screen, screen_scale
+from scripts.game_structure.discord_rpc import _DiscordRPC
+from scripts.cat.sprites.load_sprites import sprites
+from scripts.cat.cats import Cat
+
+# from scripts.debug_menu import debugmode
+from scripts.debug_console import debug_mode
+import pygame
 
 # import all screens for initialization (Note - must be done after pygame_gui manager is created)
 from scripts.screens import all_screens
@@ -76,6 +83,7 @@ def load_data():
             version_convert(version_info)
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
+            Cat.pre_render_cats()
         except Exception as e:
             logging.exception("File failed to load")
             if switch_get_value(Switch.error_message) is None:
