@@ -2077,9 +2077,9 @@ class Cat:
         new_condition = choice(possible_conditions)
 
         if new_condition == "born without a leg":
-            cat.pelt.scars.append("NOPAW")
+            cat.pelt.scars += ["NOPAW"]
         elif new_condition == "born without a tail":
-            cat.pelt.scars.append("NOTAIL")
+            cat.pelt.scars += ["NOTAIL"]
 
         self.get_permanent_condition(new_condition, born_with=True)
 
@@ -2097,25 +2097,6 @@ class Cat:
             return
         if "deaf" in self.permanent_condition and name == "partial hearing loss":
             return
-
-        # remove accessories if need be
-        if "NOTAIL" in self.pelt.scars or "HALFTAIL" in self.pelt.scars:
-            self.pelt.accessory = [
-                acc
-                for acc in self.pelt.accessory
-                if acc.name
-                not in (
-                    "RED FEATHERS",
-                    "BLUE FEATHERS",
-                    "JAY FEATHERS",
-                    "GULL FEATHERS",
-                    "SPARROW FEATHERS",
-                    "CLOVER",
-                    "DAISY",
-                    "WISTERIA",
-                    "GOLDEN CREEPING JENNY",
-                )
-            ]
 
         condition = PERMANENT[name]
         new_condition = False

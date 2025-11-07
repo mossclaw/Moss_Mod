@@ -162,6 +162,43 @@ class Pelt:
             self._accessory = list({ x.slot: x for x in self._accessory }.values())
             self.rebuild_sprite = True
 
+
+    @property
+    def scars(self):
+        return self._scars
+
+    @scars.setter
+    def scars(self, val):
+        current = set(val)
+        for kind, exclusions in Pelt._pelt_data['scars']['exclude'].items():
+            exclude = { v for k, lst in exclusions.items() for v in lst if k in current }
+            if kind == 'scars':
+                val = { x for x in current if x not in exclude }
+            elif len(exclude) > 0:
+                is_attrs = type(next(iter(exclude))) is dict
+                keep = Pelt.__filter_attrs if is_attrs else Pelt.__filter_not_in
+                item = getattr(self, kind)
+                if type(item) is list:
+                    item = [ x for x in item if keep(x) ]
+                else:
+                    item = item if keep(item) else None
+                setattr(self, kind, item)
+
+        for combined, parts in Pelt._pelt_data['scars']['combine'].items():
+            if all(( x in val for x in parts )):
+                val = { x for x in val if x not in parts } | { combine }
+
+        self._scars = list(val)
+
+    @staticmethod
+    def __filter_attrs(item, attrs):
+        return all([ getattr(item, k) != v for k, v in attrs.items() ])
+
+    @staticmethod
+    def __filter_not_in(item, values):
+        return item not in values
+
+
     @property
     def paralyzed(self):
         return self._paralyzed
@@ -542,11 +579,21 @@ class Pelt:
             self.accessory = [self.accessory]
 
 
+    def excluded_scars(self):
+        data = Pelt._pelt_data['scars']['exclude']['scars']
+        return { x for y in self.scars for x in data[y] }
+
+
     def excluded_accessory_slots(self):
-        exclude_slots = { x.slot for x in self.accessory }
-        if any([ x in ["NOTAIL", "HALFTAIL"] for x in self.scars ]):
-            exclude_slots.add("tail")
-        return exclude_slots
+        from_scars = Pelt._pelt_data['scars']['exclude']['accessories']
+        used    = { x.slot for x in self.accessory }
+        blocked = { x['slot'] for a in ( y for y in self.scars if y in from_scars )
+                              for x in from_scars[a] if 'slot' in x }
+        return used | blocked
+
+
+    def remove_accessory_in_slot(self, slot):
+        self.accessory = [ x for x in self.accessory if x.slot != slot ]
 
 
     def add_accessory_for_event(possible):
@@ -896,7 +943,7 @@ class Pelt:
 
 
     @staticmethod
-    def _roll(chance):
+    def __roll(chance):
         """
         Takes a chance expressed as a "1 in x" chance, with 0 meaning never.
         Returns the result of the roll as a boolean.
@@ -906,17 +953,13 @@ class Pelt:
     def init_scars(self, age):
         data = Pelt._pelt_data['scars']
 
-        if Pelt._roll(data['generate']['chance'][age]):
+        if Pelt.__roll(data['generate']['chance'][age]):
             lists = [ data['lists'][key] for key in data['generate']['use_lists'] ]
-            self.scars.append(choice(choice(lists)))
-
-        exclude = data['exclude']
-        remove = { x for y in [ exclude[x] for x in self.scars if x in exclude ] for x in y }
-        self.scars = [ x for x in self.scars if x not in remove ]
+            self.scars += [choice(choice(lists))]
 
 
     def init_accessories(self, age):
-        if Pelt._roll(Pelt._pelt_data['accessory_chance'][age]):
+        if Pelt.__roll(Pelt._pelt_data['accessory_chance'][age]):
             self.accessory = [Accessory.create_random_from_set('initial')]
         else:
             self.accessory = []
@@ -1327,7 +1370,6 @@ _scar_details = [
     "NORIGHTEAR",
     "NOEAR",
 ]
-
 
 def unpack_appearance_ruleset(cat, rule, short, pelt, color):
     if rule == "scarred":
