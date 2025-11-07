@@ -210,14 +210,28 @@
     "APRICOT"   : ["#f9b6a0"]
   },
   "tint": {
-    "pink"  : ["#fdeded"],
-    "gray"  : ["#e1e1e1"],
-    "red"   : ["#f8e2e4"],
-    "black" : ["#c3c3c3"],
-    "orange": ["#fff7eb"],
-    "yellow": ["#faf8e1"],
-    "purple": ["#ebe1f4"],
-    "blue"  : ["#daedf5"]
+    "pink"    : ["#fdeded"],
+    "gray"    : ["#e1e1e1"],
+    "red"     : ["#f8e2e4"],
+    "black"   : ["#c3c3c3"],
+    "orange"  : ["#fff7eb"],
+    "yellow"  : ["#faf8e1"],
+    "purple"  : ["#ebe1f4"],
+    "blue"    : ["#daedf5"],
+    "blush"   : ["#da9595"],
+    "willow"  : ["#e7f1e5"],
+    "bluegray": ["#c7d5e8"],
+    "lilac"   : ["#e2d0e2"],
+    "sandy"   : ["#eeeece"],
+    "plum"    : ["#e1cff3"],
+    "midgray" : ["#64636b"],
+    "cadet"   : ["#bbdff5"],
+    "sage"    : ["#9faaa0"],
+    "coral"   : ["#d49152"],
+    "tan"     : ["#fceade"],
+    "rosy"    : ["#ae847e"],
+    "beige"   : ["#b89685"],
+    "cream"   : ["#f7dcb6"]
   },
   "dilute_tint": {
     "dilute"    : ["#141414"],
@@ -229,7 +243,9 @@
     "cream"    : ["#f7f1e1"],
     "offwhite" : ["#eef9fc"],
     "gray"     : ["#d0e1e5"],
-    "pink"     : ["#fef8f9"]
+    "pink"     : ["#fef8f9"],
+    "black"    : ["#1c1b19"],
+    "blue"     : ["#f3f5f7"]
   },
   "accessory": {
     "BLACK"        : ["#3c3c3c"],
