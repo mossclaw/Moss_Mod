@@ -151,7 +151,7 @@ class Scar_Events:
             )
 
             specialty = random.choice(scar_pool)
-            cat.pelt.scars += [specialty]
+            cat.pelt.scars.append(specialty)
 
             scar_gain_strings = [
                 "hardcoded.scar_event0",

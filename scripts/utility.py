@@ -858,7 +858,7 @@ def create_new_cat(
                     # TODO: refactor this entire function to remove this call amongst other things
                     from scripts.cat.accessory import Accessory
 
-                    new_cat.pelt.accessory += [Accessory.create_random_for_slot('neck')]
+                    new_cat.pelt.accessory.append(Accessory.create_random_for_slot('neck'))
 
             # try to give name from full loner name list
             elif original_social in (CatSocial.LONER, CatSocial.ROGUE) and bool(
@@ -945,9 +945,9 @@ def create_new_cat(
 
                 # assign scars
                 if chosen_condition in ("lost a leg", "born without a leg"):
-                    new_cat.pelt.scars += ["NOPAW"]
+                    new_cat.pelt.scars.append("NOPAW")
                 elif chosen_condition in ("lost their tail", "born without a tail"):
-                    new_cat.pelt.scars += ["NOTAIL"]
+                    new_cat.pelt.scars.append("NOTAIL")
 
         # KILL >:D only if we're sposed to tho
         if not alive:
