@@ -156,17 +156,27 @@ class Pelt:
 
     @accessory.setter
     def accessory(self, val):
-        if type(val) is not list:
+        if not isinstance(val, list):
             self._accessory.append(Accessory.load(val))
         else:
-            self._accessory = [ Accessory.load(item) for item in val ]
-        self.__prune_same_slot_accessories()
+            self._accessory = Pelt.__AccessoryList(self, (Accessory.load(item) for item in val))
+            self.__prune_accessories()
+
+    def __prune_accessories(self):
+        # TODO: Also check limitation from scars
+        if len(self._accessory) > len({ x.slot for x in self._accessory }):
+            elems = { x.slot: x for x in self._accessory }.values()
+            self._accessory = Pelt.__AccessoryList(self, elems)
         self.rebuild_sprite = True
 
-    def __prune_same_slot_accessories(self):
-        if len(self._accessory) > len({ x.slot for x in self._accessory }):
-            self._accessory = list({ x.slot: x for x in self._accessory }.values())
-            self.rebuild_sprite = True
+    class __AccessoryList(list):
+        def __init__(self, pelt, elems):
+            list.__init__(self, elems)
+            self.pelt = pelt
+
+        def append(self, elem):
+            list.append(self, Accessory.load(elem))
+            self.pelt.__prune_accessories()
 
 
     @property
@@ -175,11 +185,14 @@ class Pelt:
 
     @scars.setter
     def scars(self, val):
-        current = set(val)
+        self.__update_scars(val)
+
+    def __update_scars(self, val):
+        orig = set(val)
         for kind, exclusions in Pelt._pelt_data['scars']['exclude'].items():
-            exclude = { v for k, lst in exclusions.items() for v in lst if k in current }
+            exclude = { v for k, lst in exclusions.items() for v in lst if k in orig }
             if kind == 'scars':
-                val = { x for x in current if x not in exclude }
+                val = { x for x in orig if x not in exclude }
             elif len(exclude) > 0:
                 is_attrs = type(next(iter(exclude))) is dict
                 keep = Pelt.__filter_attrs if is_attrs else Pelt.__filter_not_in
@@ -194,7 +207,17 @@ class Pelt:
             if all(( x in val for x in parts )):
                 val = { x for x in val if x not in parts } | { combine }
 
-        self._scars = list(val)
+        self._scars = Pelt.__ScarsList(self, val)
+
+    class __ScarsList(list):
+        def __init__(self, pelt, elems):
+            list.__init__(self, elems)
+            self.pelt = pelt
+
+        def append(self, elem):
+            list.append(self, elem)
+            self.pelt.__update_scars(self)
+
 
     @staticmethod
     def __filter_attrs(item, attrs):
