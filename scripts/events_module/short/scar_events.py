@@ -105,7 +105,7 @@ class Scar_Events:
         if len(cat.pelt.scars) < 4 and not int(random.random() * chance):
             # move potential scar text into displayed scar text
 
-            blocked = set(cat.pelt.scars + cat.pelt.excluded_scars())
+            blocked = set(cat.pelt.scars) | cat.pelt.excluded_scars()
             dont_pair = {'BRIGHTHEART', 'BOTHBLIND'}
             if len(blocked & dont_pair):
                 blocked |= dont_pair

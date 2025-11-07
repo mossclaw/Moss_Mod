@@ -160,9 +160,9 @@ class Pelt:
             self._accessory.append(Accessory.load(val))
         else:
             self._accessory = Pelt.__AccessoryList(self, (Accessory.load(item) for item in val))
-            self.__prune_accessories()
+            self._prune_accessories()
 
-    def __prune_accessories(self):
+    def _prune_accessories(self):
         # TODO: Also check limitation from scars
         if len(self._accessory) > len({ x.slot for x in self._accessory }):
             elems = { x.slot: x for x in self._accessory }.values()
@@ -176,7 +176,7 @@ class Pelt:
 
         def append(self, elem):
             list.append(self, Accessory.load(elem))
-            self.pelt.__prune_accessories()
+            self.pelt._prune_accessories()
 
 
     @property
@@ -185,9 +185,9 @@ class Pelt:
 
     @scars.setter
     def scars(self, val):
-        self.__update_scars(val)
+        self._update_scars(val)
 
-    def __update_scars(self, val):
+    def _update_scars(self, val):
         orig = set(val)
         for kind, exclusions in Pelt._pelt_data['scars']['exclude'].items():
             exclude = { v for k, lst in exclusions.items() for v in lst if k in orig }
@@ -216,7 +216,7 @@ class Pelt:
 
         def append(self, elem):
             list.append(self, elem)
-            self.pelt.__update_scars(self)
+            self.pelt._update_scars(self)
 
 
     @staticmethod
@@ -623,7 +623,7 @@ class Pelt:
 
 
     def excluded_accessory_slots(self):
-        from_scars = Pelt._pelt_data['scars']['exclude']['accessories']
+        from_scars = Pelt._pelt_data['scars']['exclude']['accessory']
         used    = { x.slot for x in self.accessory }
         blocked = { x['slot'] for a in ( y for y in self.scars if y in from_scars )
                               for x in from_scars[a] if 'slot' in x }
@@ -634,7 +634,7 @@ class Pelt:
         self.accessory = [ x for x in self.accessory if x.slot != slot ]
 
 
-    def add_accessory_for_event(possible):
+    def add_accessory_for_event(self, possible):
         acc = Accessory.create_random_for_event(possible, self.excluded_accessory_slots())
         if acc is None:
             return False

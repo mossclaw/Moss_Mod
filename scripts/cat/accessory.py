@@ -157,12 +157,11 @@ class Accessory:
     def create_random_for_event(possible, exclude_slots = []):
         if type(possible) is str:
             Accessory.create_random(AccessoryDef.events[possible])
-        lists = AccessoryDef.events
-        def list_of_accs(name):
-            low = lower(name)
-            return lists[lower(x)] if lower(x) in lists else [Accessory.__lookup(x)]
 
-        expanded = [ list_of_accs(x) for x in possible_accs ]
+        def list_of_accs(x, lists):
+            return lists[x.lower()] if x.lower() in lists else [Accessory.__lookup(x)]
+
+        expanded = [ list_of_accs(x, AccessoryDef.events) for x in possible ]
         acc_list = [ x for y in expanded for x in y if x.slot not in exclude_slots ]
         return Accessory.create_random(acc_list) if acc_list else None
 
