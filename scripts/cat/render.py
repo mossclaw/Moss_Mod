@@ -5,7 +5,7 @@ from scripts.cat.sprites import sprites
 
 class Render:
     _create_flags = pygame.HWSURFACE | pygame.SRCALPHA
-    _blend = { None : 0,
+    _blend = { None  : 0,
               'alpha': pygame.BLEND_RGBA_MULT,
               'mult' : pygame.BLEND_RGB_MULT,
               'add'  : pygame.BLEND_RGB_ADD,
