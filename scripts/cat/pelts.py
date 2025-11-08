@@ -14,7 +14,7 @@ from scripts.cat.render import Render
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
 from scripts.events_module.text_adjust import adjust_list_text
-from scripts.temp_util import union_of_entries, reverse_dict, read_resource_dict
+from scripts.temp_util import union_of_entries, reverse_dict, read_resource_dict, OnUpdateList
 from scripts.cat.accessory import Accessory
 
 logger = logging.getLogger(__name__)
@@ -159,24 +159,16 @@ class Pelt:
         if not isinstance(val, list):
             self._accessory.append(Accessory.load(val))
         else:
-            self._accessory = Pelt.__AccessoryList(self, (Accessory.load(item) for item in val))
+            self._accessory = OnUpdateList(lambda : self._prune_accessories(),
+                                           (Accessory.load(item) for item in val))
             self._prune_accessories()
 
     def _prune_accessories(self):
         # TODO: Also check limitation from scars
         if len(self._accessory) > len({ x.slot for x in self._accessory }):
             elems = { x.slot: x for x in self._accessory }.values()
-            self._accessory = Pelt.__AccessoryList(self, elems)
+            self._accessory = OnUpdateList(lambda : self._prune_accessories(), elems)
         self.rebuild_sprite = True
-
-    class __AccessoryList(list):
-        def __init__(self, pelt, elems):
-            list.__init__(self, elems)
-            self.pelt = pelt
-
-        def append(self, elem):
-            list.append(self, Accessory.load(elem))
-            self.pelt._prune_accessories()
 
 
     @property
@@ -187,15 +179,17 @@ class Pelt:
     def scars(self, val):
         self._update_scars(val)
 
-    def _update_scars(self, val):
-        orig = set(val)
+    def _update_scars(self, val=None):
+        orig = set(self._scars if val is None else val)
         for kind, exclusions in Pelt._pelt_data['scars']['exclude'].items():
-            exclude = { v for k, lst in exclusions.items() for v in lst if k in orig }
+            exclude = [ v for k, lst in exclusions.items() if k in orig for v in lst ]
             if kind == 'scars':
+                exclude = set(exclude)
                 val = { x for x in orig if x not in exclude }
             elif len(exclude) > 0:
-                is_attrs = type(next(iter(exclude))) is dict
-                keep = Pelt.__filter_attrs if is_attrs else Pelt.__filter_not_in
+                is_attrs = type(exclude[0]) is dict
+                test = Pelt.__filter_attrs if is_attrs else Pelt.__filter_not_in
+                keep = lambda x: all(( test(x, y) for y in exclude ))
                 item = getattr(self, kind)
                 if type(item) is list:
                     item = [ x for x in item if keep(x) ]
@@ -207,16 +201,7 @@ class Pelt:
             if all(( x in val for x in parts )):
                 val = { x for x in val if x not in parts } | { combine }
 
-        self._scars = Pelt.__ScarsList(self, val)
-
-    class __ScarsList(list):
-        def __init__(self, pelt, elems):
-            list.__init__(self, elems)
-            self.pelt = pelt
-
-        def append(self, elem):
-            list.append(self, elem)
-            self.pelt._update_scars(self)
+        self._scars = OnUpdateList(lambda : self._update_scars(), val)
 
 
     @staticmethod
@@ -774,7 +759,7 @@ class Pelt:
         weights = Pelt._calc_inheritance_weights('pelts', Pelt.pelt_dict, par_peltnames)
 
         # Now, choose the pelt category and pelt. The extra 0 is for the tortie pelts,
-        chosen_pelt = choice(weighted_choice(Pelt.pelt_dict.values(), weights + [0]))
+        chosen_pelt = choice(weighted_choice(Pelt.pelt_sets, weights + [0]))
 
         # Tortie chance
         tortie_chance_f = constants.CONFIG["cat_generation"][

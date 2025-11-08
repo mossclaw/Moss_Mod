@@ -31,9 +31,8 @@ def read_resource_dict(name, description_for_error = None):
     return read_dict('resources', name, description_for_error)
 
 
-
 # ---------------------------------------------------------------------------- #
-#                        Collection Utility Functions                          #
+#                            Collection Utilities                              #
 # ---------------------------------------------------------------------------- #
 
 
@@ -43,3 +42,13 @@ def union_of_entries(dict_of_lists):
 
 def reverse_dict(dict_of_lists):
     return { item: key for key, items in dict_of_lists.items() for item in items }
+
+
+class OnUpdateList(list):
+    def __init__(self, func, elems):
+        list.__init__(self, elems)
+        self.func = func
+
+    def append(self, elem):
+        list.append(self, Accessory.load(elem))
+        (self.func)()
