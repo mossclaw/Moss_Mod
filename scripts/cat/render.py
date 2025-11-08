@@ -12,7 +12,6 @@ class Render:
               'min'  : pygame.BLEND_RGBA_MIN,
              }
     colors = read_resource_dict('colors')
-    debug = False
 
     def __init__(self, pose, size=None, flip=False, load_only=False):
         if size is None:
@@ -26,6 +25,7 @@ class Render:
         self.colormap = None
         self.color = None
         self.sprite = None
+        self.debug = False
         self.stack = []
         self.add_layer()
 
@@ -42,13 +42,15 @@ class Render:
             return self.stack[0]
 
 
-    def set(self, colormap=None, color=None, sprite=None):
+    def set(self, colormap=None, color=None, sprite=None, debug=None):
         if colormap is not None:
             self.colormap = colormap
         if color is not None:
             self.color = color
         if sprite is not None:
             self.sprite = sprite
+        if debug is not None:
+            self.debug = debug
         return self
 
 
@@ -59,11 +61,13 @@ class Render:
               color=None,
               sprite=None,
               blend=None,
-              debug=False):
-        if debug:
-            image_str = f"'{sheet}{sprite or self.sprite}{self.pose}" if sheet else "-"
-            color_str = f"{colormap or self.colormap}/{color or self.color}[{index}]" if index else "-"
-            print(f"paint(): image= {image_str}, color= {color_str}")
+              debug=None):
+        if (debug if debug is not None else self.debug):
+            strings = [ string for arg, string in (
+                (sheet, f"image= '{sheet}{sprite or self.sprite}{self.pose}'"),
+                (index, f"color= {colormap or self.colormap}/{color or self.color}[{index}]"),
+                (blend, f"blend= '{blend}'") ) if arg is not None ]
+            print(f"paint(): {', '.join(strings)}")
         if self.load_only:
             self.__load_only(sheet, sprite)
         elif sheet is None:
