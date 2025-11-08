@@ -19,7 +19,12 @@ def safe_save(
 
     # If write_data is not a string,
     if type(write_data) is not str:
-        _data = ujson.dumps(write_data, indent=4)
+        try:
+            _data = ujson.dumps(write_data, indent=4)
+        except:
+            with open('failed_save.txt', "w", encoding="utf-8") as file:
+                print(repr(write_data), file=file)
+            raise
     else:
         _data = write_data
 
