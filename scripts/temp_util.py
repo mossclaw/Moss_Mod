@@ -30,3 +30,12 @@ def read_sprite_dict(name, description_for_error = None):
 def read_resource_dict(name, description_for_error = None):
     return read_dict('resources', name, description_for_error)
 
+
+class OnUpdateList(list):
+    def __init__(self, func, elems):
+        list.__init__(self, elems)
+        self.func = func
+
+    def append(self, elem):
+        list.append(self, Accessory.load(elem))
+        (self.func)()
