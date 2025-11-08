@@ -348,10 +348,11 @@ class Pelt:
 
             # Scars
             if not scars_hidden:
-                args = Pelt._pelt_data['scars']['render']
+                args_lists = Pelt._pelt_data['scars']['render']
                 reverse = Pelt.scar_reverse
                 for scar in self.scars:
-                    render.paint(sprite= scar, **args[reverse[scar]])
+                    for args in args_lists[reverse[scar]]:
+                        render.paint(sprite= scar, **args)
 
             # Accessories
             if not acc_hidden:

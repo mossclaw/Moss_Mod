@@ -52,7 +52,18 @@ class Render:
         return self
 
 
-    def paint(self, sheet=None, index=None, colormap=None, color=None, sprite=None, blend=None):
+    def paint(self,
+              sheet=None,
+              index=None,
+              colormap=None,
+              color=None,
+              sprite=None,
+              blend=None,
+              debug=False):
+        if debug:
+            image_str = f"'{sheet}{sprite or self.sprite}{self.pose}" if sheet else "-"
+            color_str = f"{colormap or self.colormap}/{color or self.color}[{index}]" if index else "-"
+            print(f"paint(): image= {image_str}, color= {color_str}")
         if self.load_only:
             self.__load_only(sheet, sprite)
         elif sheet is None:

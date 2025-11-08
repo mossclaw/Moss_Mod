@@ -105,17 +105,17 @@
                   "BOTHBLIND", "BEAKCHEEK", "BEAKLOWER", "CATBITE", "RATBITE", "QUILLCHUNK",
                   "QUILLSCRATCH", "HINDLEG", "BACK", "QUILLSIDE", "SCRATCHSIDE", "BEAKSIDE",
                   "CATBITETWO", "FOUR"],
-      "missing": ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR",
-                  "NOEAR", "TAILSCAR", "MANTAIL", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"],
+      "missing": ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW",
+                  "NOLEFTEAR", "NORIGHTEAR", "NOEAR"],
       "special": ["SNAKE", "TOETRAP", "BURNPAWS", "BURNBELLY", "BURNRUMP", "FROSTFACE",
                   "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"],
       "colored": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
     },
     "render": {
-      "general": {"sheet": "scars"},
-      "missing": {"sheet": "scars", "blend": "min"},
-      "special": {"sheet": "scars"},
-      "colored": {"sheet": "scarscolor"}
+      "general": [{"sheet": "scars"}],
+      "missing": [{"sheet": "scars", "blend": "min"}],
+      "special": [{"sheet": "scars"}],
+      "colored": [{"sheet": "scars", "blend": "min"}, {"sheet": "scarscolor"}]
     },
     "exclude": {
       "scars": {
