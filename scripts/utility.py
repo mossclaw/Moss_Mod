@@ -2669,7 +2669,7 @@ def generate_sprite(
             else:
                 cat_sprite = str(44)
 
-    if constants.CONFIG["fun"]["all_cats_are_newborn"]:
+    elif constants.CONFIG["fun"]["all_cats_are_newborn"]:
         cat_sprite = str(cat.pelt.cat_sprites["newborn"])
     else:
         cat_sprite = str(cat.pelt.cat_sprites[age])
