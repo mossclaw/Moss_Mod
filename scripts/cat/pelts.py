@@ -1015,7 +1015,7 @@ class Pelt:
                             break
 
                     def choose_color(key):
-                        choice_from_categories(color_set[key], Pelt.sprite_names)
+                        return choice_from_categories(color_set[key], Pelt.sprite_names)
 
                     self.tortie_colour = choose_color('*')
                     if 'base' in color_set:
