@@ -68,7 +68,7 @@
             "BLEACHED", "SMOKEY"]
   },
   "tortiepatches": {
-    "patterns": [
+    "marking": [
       "ONE", "TWO", "THREE", "FOUR", "REDTAIL", "DELILAH", "HALF", "STREAK", "MASK", "SMOKE",
       "MINIMALONE", "MINIMALTWO", "MINIMALTHREE", "MINIMALFOUR", "OREO", "SWOOP", "CHIMERA",
       "CHEST", "ARMTAIL", "GRUMPYFACE", "MOTTLED", "SIDEMASK", "EYEDOT", "BANDANA", "PACMAN",
