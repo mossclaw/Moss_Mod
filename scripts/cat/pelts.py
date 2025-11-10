@@ -43,7 +43,7 @@ class Pelt:
     _pelt_data = read_resource_dict('pelt_data', 'Pelt Data')
 
     # ATTRIBUTES, including non-pelt related
-    tortiepatterns = _data_dict_for('real_tortie_patches')['tortiepatches']['patterns']
+    tortiemarking  = _data_dict_for('real_tortie_patches')['tortiepatches']['marking']
     tortiebases    = _data_dict_for('real_pelts'         )['tortiepatches']['bases']
     eye_patterns   = _data_dict_for('classic_hc'         )['eyepatterns']
 
@@ -115,7 +115,7 @@ class Pelt:
         self.eye_colour2 = eye_colour2
         self.eye_pattern = eye_pattern
         self.tortie_base = tortie_base
-        self.pattern = self.tortie_marking = tortie_marking
+        self.tortie_marking = tortie_marking
         self.tortie_pattern = tortie_pattern
         self.tortie_colour = tortie_colour
         self.vitiligo = vitiligo
@@ -292,6 +292,7 @@ class Pelt:
                 render.set(color= self.tortie_colour, sprite= self.tortie_pattern)
                 render.add_layer('base', sprite= 'SOLID')
                 paint_pelt(render)
+                render.set(color=self.tortie_colour, sprite=self.tortie_marking)
                 render.paint('tortiemask', blend= 'alpha')
                 render.merge_layer()
 
@@ -574,9 +575,9 @@ class Pelt:
                     poses['young adult'] = poses['senior adult'] = poses[age]
 
 
-        if self.pattern in convert_dict["old_tortie_patches"]:
-            old_pattern = self.pattern
-            self.pattern = convert_dict["old_tortie_patches"][old_pattern][1]
+        if self.tortie_marking in convert_dict["old_tortie_patches"]:
+            old_pattern = self.tortie_marking
+            self.tortie_marking = convert_dict["old_tortie_patches"][old_pattern][1]
 
             # If the pattern is old, there is also a chance the base color is stored in
             # tortiecolour. That may be different from the pelt color ("main" for torties)
@@ -585,16 +586,16 @@ class Pelt:
             self.colour = self.tortie_colour
             self.tortie_colour = convert_dict["old_tortie_patches"][old_pattern][0]
 
-        if self.pattern == "MINIMAL1":
-            self.pattern = "MINIMALONE"
-        elif self.pattern == "MINIMAL2":
-            self.pattern = "MINIMALTWO"
-        elif self.pattern == "MINIMAL3":
-            self.pattern = "MINIMALTHREE"
-        elif self.pattern == "MINIMAL4":
-            self.pattern = "MINIMALFOUR"
-        elif self.pattern == "SPLIT":
-            self.pattern = "HALF"
+        if self.tortie_marking == "MINIMAL1":
+            self.tortie_marking = "MINIMALONE"
+        elif self.tortie_marking == "MINIMAL2":
+            self.tortie_marking = "MINIMALTWO"
+        elif self.tortie_marking == "MINIMAL3":
+            self.tortie_marking = "MINIMALTHREE"
+        elif self.tortie_marking == "MINIMAL4":
+            self.tortie_marking = "MINIMALFOUR"
+        elif self.tortie_marking == "SPLIT":
+            self.tortie_marking = "HALF"
 
 
         if self.accessory is None:
@@ -993,8 +994,8 @@ class Pelt:
         if self.name in Pelt.pelt_dict['torties']:
             if not self.tortie_base:
                 self.tortie_base = choice(Pelt.tortiebases)
-            if not self.pattern:
-                self.pattern = choice(Pelt.tortiepatterns)
+            if not self.tortie_marking:
+                self.tortie_marking = choice(Pelt.tortiemarking)
 
             color_sets = _data_dict_for('real_tortie_colors')['tortiecolors']
             self.tortie_colour = color_sets['_default_']  # Default if not set below
@@ -1039,7 +1040,7 @@ class Pelt:
             self.tortie_base = None
             self.tortie_pattern = None
             self.tortie_colour = None
-            self.pattern = None
+            self.tortie_marking = None
 
     def white_patches_inheritance(self, parents: tuple):
         par_whitepatches = set()

@@ -54,7 +54,7 @@
     "vit": ["VITILIGO", "VITILIGOTWO", "PHANTOM", "KARPATI", "SPLAT", "BLEACHED"]
   },
   "tortiepatches": {
-    "patterns": [
+    "marking": [
       "ONE", "TWO", "THREE", "FOUR", "REDTAIL", "DELILAH", "HALF", "STREAK", "MASK", "SMOKE", 
       "MINIMALONE", "MINIMALTWO", "MINIMALTHREE", "MINIMALFOUR", "SWOOP", "CHIMERA", "GRUMPYFACE", 
       "MOTTLED", "SIDEMASK", "EYEDOT", "BANDANA", "SMUDGED", "DAUB", "EMBER", "BRIE", "ORIOLE", 
