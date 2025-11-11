@@ -45,10 +45,13 @@ def reverse_dict(dict_of_lists):
 
 
 class OnUpdateList(list):
-    def __init__(self, func, elems):
+    def __init__(self, func, convert, elems):
         list.__init__(self, elems)
         self.func = func
+        self.convert = convert
 
     def append(self, elem):
-        list.append(self, Accessory.load(elem))
+        if self.convert is not None:
+            elem = (self.convert)(elem)
+        list.append(self, elem)
         (self.func)()

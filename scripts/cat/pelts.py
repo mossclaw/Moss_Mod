@@ -159,16 +159,20 @@ class Pelt:
         if not isinstance(val, list):
             self._accessory.append(Accessory.load(val))
         else:
-            self._accessory = OnUpdateList(lambda : self._prune_accessories(),
-                                           (Accessory.load(item) for item in val))
+            self._accessory = self.__make_accessory_list((Accessory.load(item) for item in val))
             self._prune_accessories()
 
     def _prune_accessories(self):
         # TODO: Also check limitation from scars
         if len(self._accessory) > len({ x.slot for x in self._accessory }):
             elems = { x.slot: x for x in self._accessory }.values()
-            self._accessory = OnUpdateList(lambda : self._prune_accessories(), elems)
+            self._accessory = self.__make_accessory_list(elems)
         self.rebuild_sprite = True
+
+    def __make_accessory_list(self, elems):
+        return OnUpdateList(lambda : self._prune_accessories(),
+                            lambda x: Accessory.load(x),
+                            elems)
 
 
     @property
@@ -201,7 +205,7 @@ class Pelt:
             if all(( x in val for x in parts )):
                 val = { x for x in val if x not in parts } | { combine }
 
-        self._scars = OnUpdateList(lambda : self._update_scars(), val)
+        self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
 
 
     @staticmethod
