@@ -2231,14 +2231,14 @@ def event_text_adjust(
         if "acc_plural" in text:
             text = text.replace(
                 "acc_plural",
-                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1].name}", count=2),
             )
 
         # acc_singular (only works for main_cat's acc)
         if "acc_singular" in text:
             text = text.replace(
                 "acc_singular",
-                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1].name}", count=1),
             )
 
         if "given_herb" in text:

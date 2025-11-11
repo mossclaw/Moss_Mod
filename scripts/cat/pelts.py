@@ -189,7 +189,7 @@ class Pelt:
                 test = Pelt.__filter_attrs if is_attrs else Pelt.__filter_not_in
                 keep = lambda x: all(( test(x, y) for y in exclude ))
                 item = getattr(self, kind)
-                if type(item) is list:
+                if isinstance(item, list):
                     item = [ x for x in item if keep(x) ]
                 else:
                     item = item if keep(item) else None
@@ -785,7 +785,7 @@ class Pelt:
         # ------------------------------------------------------------------------------------------------------------#
 
         weights = Pelt._calc_inheritance_weights('colors', Pelt.sprite_names, par_peltcolours)
-        chosen_pelt_color = choice(weighted_choice(Pelt.sprite_names.values(), weights))
+        chosen_pelt_color = choice(weighted_choice(Pelt.sprite_sets, weights))
 
         # ------------------------------------------------------------------------------------------------------------#
         #   PELT LENGTH
@@ -1093,7 +1093,7 @@ class Pelt:
         if not any(weights):
             weights = [2, 1, 0, 0, 0]
 
-        chosen_white_patches = choice(weighted_choice(Pelt.white_list, weights))
+        chosen_white_patches = choice(weighted_choice(Pelt.white_lists, weights))
 
         self.white_patches = chosen_white_patches
         if self.points and self.white_patches in Pelt.white_low_end:
