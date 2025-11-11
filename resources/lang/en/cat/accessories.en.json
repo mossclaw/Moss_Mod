@@ -64,71 +64,6 @@
             "many": "petals",
             "one": "bunch of petals"
         },
-        "WISTERIA": {
-            "zero": "wisteria",
-            "many": "wisterias",
-            "one": "wisteria"
-        },
-        "ROSE MALLOW": {
-            "zero": "rose mallow",
-            "many": "rose mallows",
-            "one": "rose mallow"
-        },
-        "PICKLEWEED": {
-            "zero": "pickleweed",
-            "many": "pickleweeds",
-            "one": "pickleweed"
-        },
-        "GOLDEN CREEPING JENNY": {
-            "zero": "golden creeping jenny",
-            "many": "golden creeping jennies",
-            "one": "golden creeping jenny"
-        },
-        "DESERT WILLOW": {
-            "zero": "desert willow",
-            "many": "desert willows",
-            "one": "desert willow"
-        },
-        "CACTUS FLOWER": {
-            "zero": "cactus flower",
-            "many": "cactus flowers",
-            "one": "cactus flower"
-        },
-        "PRAIRIE FIRE": {
-            "zero": "prairie-fire",
-            "many": "prairie-fires",
-            "one": "prairie-fire"
-        },
-        "VERBENA EAR": {
-            "zero": "verbena",
-            "many": "verbenas",
-            "one": "verbena"
-        },
-        "VERBENA PELT": {
-            "zero": "verbena-covered pelt",
-            "many": "verbenas",
-            "one": "bunch of verbenas"
-        },
-        "DRY HERBS": {
-            "zero": "herb-covered pelt",
-            "many": "dry herbs",
-            "one": "bunch of dry herbs"
-        },
-        "DRY CATMINT": {
-            "zero": "dried catmint",
-            "many": "dry catmint",
-            "one": "dry catmint"
-        },
-        "DRY NETTLES": {
-            "zero": "dried nettles",
-            "many": "dry nettles",
-            "one": "dried nettle"
-        },
-        "DRY LAURELS": {
-            "zero": "dried laurels",
-            "many": "dry laurels",
-            "one": "dried laurel"
-        },
         "OAK LEAVES": {
             "zero": "oak leaves",
             "many": "oak leaves",
@@ -149,58 +84,28 @@
             "many": "juniper",
             "one": "juniper"
         },
-        "RED FEATHERS": {
-            "zero": "cardinal feathers",
-            "many": "cardinal feathers",
-            "one": "cardinal feather"
+        "FEATHER": {
+            "zero": "feather",
+            "many": "feathers",
+            "one": "feather"
         },
-        "BLUE FEATHERS": {
-            "zero": "crow feathers",
-            "many": "crow feathers",
-            "one": "crow feather"
-        },
-        "JAY FEATHERS": {
-            "zero": "jay feathers",
-            "many": "jay feathers",
-            "one": "jay feather"
-        },
-        "MOTH WINGS": {
-            "zero": "moth wings",
+        "MOTH": {
+            "zero": "moth wing",
             "many": "moth wings",
             "one": "moth wing"
         },
-        "CICADA WINGS": {
+        "CICADA": {
             "zero": "cicada wings",
             "many": "cicada wings",
             "one": "cicada wing"
         },
-        "ORANGE POPPY": {
-            "zero": "orange poppy",
-            "many": "orange poppies",
-            "one": "orange poppy"
-        },
-        "CYAN POPPY": {
-            "zero": "cyan poppy",
-            "many": "cyan poppies",
-            "one": "cyan poppy"
-        },
-        "WHITE POPPY": {
-            "zero": "white poppy",
-            "many": "white poppies",
-            "one": "white poppy"
-        },
-        "PINK POPPY": {
-            "zero": "pink poppy",
-            "many": "pink poppies",
-            "one": "pink poppy"
-        },
         "CLOVER": {
-            "zero": "clover tail",
+            "zero": "clover",
             "many": "clovers",
             "one": "bunch of clovers"
         },
         "DAISY": {
-            "zero": "daisy tail",
+            "zero": "daisy",
             "many": "daisies",
             "one": "bunch of daisies"
         },
@@ -220,34 +125,14 @@
             "one": "snapdragon"
         },
         "GORSE": {
-            "zero": "gorse flowers",
+            "zero": "gorse flower",
             "many": "gorse flowers",
             "one": "gorse flowers"
         },
-        "BULB WHITE": {
-            "zero": "white flower bulb",
-            "many": "white flower bulbs",
-            "one": "white flower bulb"
-        },
-        "BULB YELLOW": {
-            "zero": "yellow flower bulb",
-            "many": "yellow flower bulbs",
-            "one": "yellow flower bulb"
-        },
-        "BULB ORANGE": {
-            "zero": "orange flower bulb",
-            "many": "orange flower bulbs",
-            "one": "orange flower bulb"
-        },
-        "BULB PINK": {
-            "zero": "pink flower bulb",
-            "many": "pink flower bulbs",
-            "one": "pink flower bulb"
-        },
-        "BULB BLUE": {
-            "zero": "blue flower bulb",
-            "many": "blue flower bulbs",
-            "one": "blue flower bulb"
+        "BULB": {
+            "zero": "flower bulb",
+            "many": "flower bulbs",
+            "one": "flower bulb"
         },
         "RASPBERRY": {
             "zero": "raspberries",
@@ -259,105 +144,180 @@
             "many": "cattails",
             "one": "cattail"
         },
-        "GULL FEATHERS": {
-            "zero": "gull feathers",
-            "many": "gull feathers",
-            "one": "gull feather"
+        "BUTTERFLY": {
+            "zero": "butterfly wing",
+            "many": "butterfly wings",
+            "one": "butterfly"
         },
-        "SPARROW FEATHERS": {
-            "zero": "sparrow feathers",
-            "many": "sparrow feathers",
-            "one": "sparrow feather"
+        "BUTTERFLIES": {
+            "zero": "swarm of butterflies",
+            "many": "butterflies",
+            "one": "swarm of butterflies"
         },
-        "ROSY MOTH WINGS": {
-            "zero": "rosy maple moth wings",
-            "many": "rosy maple moth wings",
-            "one": "rosy maple moth"
+        "ANTLERS": {
+            "zero": "stick antlers",
+            "many": "stick antlers",
+            "one": "pair of stick antlers"
         },
-        "MORPHO BUTTERFLY": {
-            "zero": "morpho butterfly wings",
-            "many": "morpho butterfly wings",
-            "one": "morpho butterfly"
+        "ATLAS MOTH": {
+            "zero": "atlas moth",
+            "many": "atlas moths",
+            "one": "atlas moth"
         },
-        "MONARCH BUTTERFLY": {
-            "zero": "monarch butterfly wings",
-            "many": "monarch butterfly wings",
-            "one": "monarch butterfly"
+        "BANDANA": {
+            "zero": "bandana",
+            "many": "bandanas",
+            "one": "bandana"
         },
-        "BLACK CICADA": {
-            "zero": "black cicada wings",
-            "many": "black cicada wings",
-            "one": "black cicada"
+        "RAINBOW BANDANA": {
+            "zero": "rainbow bandana",
+            "many": "bandanas",
+            "one": "bandana"
         },
-        "ROAD RUNNER FEATHER": {
-            "zero": "road runner feather",
-            "many": "road runner feathers",
-            "one": "road runner feather"
+        "BELLCOLLAR": {
+            "zero": "bell collar",
+            "many": "bell collars",
+            "one": "bell collar"
         },
-        "BOW": {
-            "zero": "bow",
-            "many": "bows",
-            "one": "bow"
+        "BOWCOLLAR": {
+            "zero": "bow collar",
+            "many": "bow collars",
+            "one": "bow collar"
         },
-        "BOW_FOIL": {
-            "zero": "foil bow",
-            "many": "foil bows",
-            "one": "foil bow"
+        "FANGCOLLAR": {
+            "zero": "dog-fang collar",
+            "many": "fang collars",
+            "one": "fang collar"
         },
-        "BOW_GRADIENT": {
-            "zero": "colorful bow",
-            "many": "colorful bows",
-            "one": "colorful bow"
+        "LEATHERCOLLAR": {
+            "zero": "collar",
+            "many": "collars",
+            "one": "collar"
         },
-        "LEATHER": {
-            "zero": "leather collar",
-            "many": "leather collars",
-            "one": "leather collar"
+        "STUDDEDCOLLAR": {
+            "zero": "studded collar",
+            "many": "studded collars",
+            "one": "studded collar"
         },
-        "LEATHER_SPIKE": {
-            "zero": "spiked leather collar",
-            "many": "spiked leather collars",
-            "one": "spiked leather collar"
+        "BIRD SKULL": {
+            "zero": "bird skull",
+            "many": "bird skulls",
+            "one": "bird skull"
         },
-        "LEATHER_GRADIENT": {
-            "zero": "colorful leather collar",
-            "many": "colorful leather collars",
-            "one": "colorful leather collar"
+        "COWBOY HAT": {
+            "zero": "cowboy hat",
+            "many": "cowboy hats",
+            "one": "cowboy hat"
         },
-        "LEATHER_BELL": {
-            "zero": "belled leather collar",
-            "many": "belled leather collars",
-            "one": "belled leather collar"
+        "CRYSTAL": {
+            "zero": "crystal",
+            "many": "crystals",
+            "one": "crystal"
         },
-        "LEATHER_BELL_SPIKE": {
-            "zero": "spiked leather collar with bell",
-            "many": "spiked leather collars with bells",
-            "one": "spiked leather collar with bell"
+        "FIREFLIES": {
+            "zero": "firefly",
+            "many": "fireflies",
+            "one": "firefly"
         },
-        "LEATHER_BELL_GRADIENT": {
-            "zero": "colorful belled leather collar",
-            "many": "colorful belled leather collars",
-            "one": "colorful belled leather collar"
+        "FLOWER WREATH": {
+            "zero": "flower wreath",
+            "many": "flower wreaths",
+            "one": "flower wreath"
         },
-        "NYLON": {
-            "zero": "nylon collar",
-            "many": "nylon collars",
-            "one": "nylon collar"
+        "HARNESS": {
+            "zero": "harness",
+            "many": "harnesses",
+            "one": "harness"
         },
-        "NYLON_GRADIENT": {
-            "zero": "colorful nylon collar",
-            "many": "colorful nylon collars",
-            "one": "colorful nylon collar"
+        "LILAC": {
+            "zero": "lilac",
+            "many": "lilacs",
+            "one": "lilac"
         },
-        "NYLON_BELL": {
-            "zero": "belled nylon collar",
-            "many": "belled nylon collars",
-            "one": "belled nylon collar"
+        "LILY PAD": {
+            "zero": "lily pad",
+            "many": "lily pads",
+            "one": "lily pad"
         },
-        "NYLON_BELL_GRADIENT": {
-            "zero": "colorful belled nylon collar",
-            "many": "colorful belled nylon collars",
-            "one": "colorful belled nylon collar"
+        "LUCKY CLOVER": {
+            "zero": "lucky clover",
+            "many": "lucky clovers",
+            "one": "lucky clover"
+        },
+        "LUNA MOTH": {
+            "zero": "luna moth",
+            "many": "luna moths",
+            "one": "luna moth"
+        },
+        "MONSTERA": {
+            "zero": "monstera leaf",
+            "many": "monstera leaves",
+            "one": "monstera leaf"
+        },
+        "MOSS BALL": {
+            "zero": "moss ball",
+            "many": "moss balls",
+            "one": "moss ball"
+        },
+        "MUSHROOM": {
+            "zero": "mushrooms",
+            "many": "mushrooms",
+            "one": "mushroom"
+        },
+        "RAINBOW COLLAR": {
+            "zero": "rainbow collar",
+            "many": "rainbow collars",
+            "one": "rainbow collar"
+        },
+        "RAINBOW HARNESS": {
+            "zero": "rainbow harness",
+            "many": "rainbow harnesses",
+            "one": "rainbow harness"
+        },
+        "SEAWEED": {
+            "zero": "seaweed",
+            "many": "seaweeds",
+            "one": "seaweed"
+        },
+        "SERPENT": {
+            "zero": "snake bones",
+            "many": "snake bones",
+            "one": "snake skeleton"
+        },
+        "SHELL": {
+            "zero": "shell",
+            "many": "shells",
+            "one": "shell"
+        },
+        "SPROUT": {
+            "zero": "sprout",
+            "many": "sprouts",
+            "one": "sprout"
+        },
+        "STICK": {
+            "zero": "oddly scratched stick",
+            "many": "oddly scratched sticks",
+            "one": "oddly scratched stick"
+        },
+        "SUNGLASSES": {
+            "zero": "sunglasses",
+            "many": "sunglasses",
+            "one": "sunglasses"
+        },
+        "TWIGS": {
+            "zero": "twig",
+            "many": "twigs",
+            "one": "twig"
+        },
+        "WILD FLOWERS": {
+            "zero": "wild flowers",
+            "many": "wild flowers",
+            "one": "bunch of wild flowers"
+        },
+        "WREATH": {
+            "zero": "wreath",
+            "many": "wreaths",
+            "one": "wreath"
         }
     }
 }
