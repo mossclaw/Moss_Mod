@@ -1294,7 +1294,11 @@ class MakeClanScreen(Screens):
     def _get_cat_tooltip_string(self, cat: Cat):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
 
-        return f"<b>{cat.name}</b><br>{cat.get_genderalign_string()}<br>{i18n.t('general.' + cat.age, count=1)}<br>{i18n.t('cat.personality.' + cat.personality.trait)}<br>{cat.skills.skill_string(short=True)}"
+        #  return (
+      #      f"<b>{cat.name}</b><br>{cat.pelt.name}<br>{cat.genderalign}<br>{cat.age}<br>{cat.personality.trait}"
+      #  )
+
+        return f"<b>pelt: {cat.pelt.colour} {cat.pelt.name}<br>tint: {cat.pelt.tint}<br>eye: {cat.pelt.eye_colour}<br>hc: {cat.pelt.eye_pattern} {cat.pelt.eye_colour2}<br>tortie marking: {cat.pelt.tortie_marking}<br>tortie pattern: {cat.pelt.tortie_colour} {cat.pelt.tortie_pattern}<br>white patch: {cat.pelt.white_patches_tint} {cat.pelt.white_patches}<br>points: {cat.pelt.points}<br>vitiligo: {cat.pelt.vitiligo}<br>tufts: {cat.pelt.tuft}"
 
     def open_game_mode(self):
         # Clear previous screen
