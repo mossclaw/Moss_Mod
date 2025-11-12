@@ -751,13 +751,81 @@ class ProfileScreen(Screens):
         # NEWLINE ----------
         output += "\n"
 
+        if the_cat.pelt.eye_pattern == None:
+            None
+        else:
+            output += 'heterochromia type: ' + the_cat.pelt.eye_pattern.lower()
+            output += "\n"
+
         # PELT TYPE
-        output += i18n.t(
-            "screens.profile.pelt_label",
-            pelt=i18n.t(f"cat.pelts.{the_cat.pelt.name}").lower(),
-        )
-        # NEWLINE ----------
+
+        if the_cat.pelt.name == "Tortie":
+            output += 'pelt: tortie, ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.tortie_base.lower()
+            # NEWLINE ----------
+            output += "\n"
+            output += 'pelt tint: ' + the_cat.pelt.tint.lower()
+        elif the_cat.pelt.name == "Calico":
+            output += 'pelt: calico, ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.tortie_base.lower()
+            output += "\n"
+            output += 'pelt tint: ' + the_cat.pelt.tint.lower()
+        else:
+            output += 'pelt: ' + the_cat.pelt.colour.lower() + ' ' + the_cat.pelt.name.lower()
+            output += "\n"
+            output += 'pelt tint: ' + the_cat.pelt.tint.lower()
+
         output += "\n"
+
+        if the_cat.pelt.name == "Tortie":
+            output += 'tortie marking: ' +  the_cat.pelt.tortie_marking.lower()
+            # NEWLINE ----------
+            output += "\n"
+            output += 'tortie pattern: ' + the_cat.pelt.tortie_colour.lower() + ' ' + the_cat.pelt.tortie_pattern.lower()
+            # NEWLINE ----------
+            output += "\n"
+        elif the_cat.pelt.name == "Calico":
+            output += 'tortie marking: ' + the_cat.pelt.tortie_marking.lower()
+            # NEWLINE ----------
+            output += "\n"
+            output += 'tortie pattern: ' + the_cat.pelt.tortie_colour.lower() + ' ' + the_cat.pelt.tortie_pattern.lower()
+            # NEWLINE ----------
+            output += "\n"
+        else:
+            None
+
+            # whitepatch info
+        if the_cat.pelt.white_patches == None:
+            None
+        else:
+            output += 'white patch: ' + the_cat.pelt.white_patches.lower()
+            # NEWLINE ----------
+            output += "\n"
+            output += 'white patch tint: ' + str(the_cat.pelt.white_patches_tint)
+            # NEWLINE ----------
+            output += "\n"
+
+            # vitiligo info
+        if the_cat.pelt.vitiligo == None:
+            None
+        else:
+            output += 'vitiligo: ' + the_cat.pelt.vitiligo.lower()
+            # NEWLINE ----------
+            output += "\n"
+
+            # point info
+        if the_cat.pelt.points == None:
+            None
+        else:
+            output += 'point: ' + the_cat.pelt.points.lower()
+            # NEWLINE ----------
+            output += "\n"
+
+            #tuft info
+        if the_cat.pelt.tuft == None:
+            None
+        else:
+            output += 'tuft: ' + the_cat.pelt.tuft.lower()
+            # NEWLINE ----------
+            output += "\n"
 
         # PELT LENGTH
         output += i18n.t(
