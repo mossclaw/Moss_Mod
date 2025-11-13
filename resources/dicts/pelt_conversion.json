@@ -32,11 +32,11 @@
     },
     "eye_colour": {
       "BLUE2":       { "*": "DARK BLUE" },
-      "BLUEYELLOW":  { "*": "BLUE", "eye_colour2": "YELLOW" },
-      "BLUEGREEN":   { "*": "BLUE", "eye_colour2": "GREEN"  }
+      "BLUEYELLOW":  { "*": "BLUE", "eye_colour2": "YELLOW", "eye_pattern": "TRUE" },
+      "BLUEGREEN":   { "*": "BLUE", "eye_colour2": "GREEN", "eye_pattern": "TRUE"  }
     },
     "eye_colour2": {
-      "BLUE2":       { "*": "DARK BLUE" }
+      "BLUE2":       { "*": "DARK BLUE", "eye_pattern": "TRUE" }
     },
     "skin": {
       "BLACK":        { "*": "SOLID",  "color": "BLACK"      },
