@@ -46,10 +46,6 @@ def json_load():
     all_cats = []
     clanname = switch_get_value(Switch.clan_list)[0]
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
-    with open(
-        f"resources/dicts/conversion_dict.json", "r", encoding="utf-8"
-    ) as read_file:
-        convert = ujson.loads(read_file.read())
     try:
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
@@ -62,7 +58,6 @@ def json_load():
         switch_set_value(Switch.traceback, e)
         raise
 
-    old_tortie_patches = convert["old_tortie_patches"]
 
     # create new cat objects
     for i, cat in enumerate(cat_data):
@@ -98,94 +93,8 @@ def json_load():
                 loading_cat=True,
             )
 
-            if cat["eye_colour"] == "BLUE2":
-                cat["eye_colour"] = "COBALT"
-            if cat["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
-                if cat["eye_colour"] == "BLUEYELLOW":
-                    cat["eye_colour2"] = "YELLOW"
-                elif cat["eye_colour"] == "BLUEGREEN":
-                    cat["eye_colour2"] = "GREEN"
-                cat["eye_colour"] = "BLUE"
-            if "eye_colour2" in cat:
-                if cat["eye_colour2"] == "BLUE2":
-                    cat["eye_colour2"] = "COBALT"
 
-            if "tint" in cat:
-                if cat["tint"] == "none":
-                    cat["tint"] = None
-            if "white_patches_tint" in cat:
-                if cat["white_patches_tint"] == "none":
-                    cat["white_patches_tint"] = None
-
-            if "pattern" in cat:
-                cat["tortie_marking"] = cat["pattern"]
-                del cat["pattern"]
-
-            new_cat.pelt = Pelt(
-                name=cat["pelt_name"],
-                length=cat["pelt_length"],
-                colour=cat["pelt_color"],
-                eye_color=cat["eye_colour"],
-                eye_colour2=cat["eye_colour2"] if "eye_colour2" in cat else None,
-                eye_pattern=cat["eye_pattern"] if "eye_pattern" in cat else None,
-                paralyzed=cat["paralyzed"],
-                newborn_sprite=cat.get("sprite_newborn"),
-                kitten_sprite=(
-                    cat["sprite_kitten"]
-                    if "sprite_kitten" in cat
-                    else cat["spirit_kitten"]
-                ),
-                adol_sprite=(
-                    cat["sprite_adolescent"]
-                    if "sprite_adolescent" in cat
-                    else cat["spirit_adolescent"]
-                ),
-                adult_sprite=(
-                    cat["sprite_adult"]
-                    if "sprite_adult" in cat
-                    else cat["spirit_adult"]
-                ),
-                senior_sprite=(
-                    cat["sprite_senior"]
-                    if "sprite_senior" in cat
-                    else cat["spirit_elder"]
-                ),
-                para_adult_sprite=(
-                    cat["sprite_para_adult"] if "sprite_para_adult" in cat else None
-                ),
-                reverse=cat["reverse"],
-                vitiligo=cat["vitiligo"] if "vitiligo" in cat else None,
-                points=cat["points"] if "points" in cat else None,
-                white_patches_tint=(
-                    cat["white_patches_tint"]
-                    if "white_patches_tint" in cat
-                    else "offwhite"
-                ),
-                white_patches=cat["white_patches"],
-                tortie_base=cat["tortie_base"],
-                tortie_colour=cat["tortie_color"],
-                tortie_pattern=cat["tortie_pattern"],
-                tortie_marking=cat["tortie_marking"],
-                skin=cat["skin"],
-                skin_color=cat["skin_color"] if "skin_color" in cat else Pelt.skin_color,
-                tint=cat["tint"] if "tint" in cat else None,
-                scars=cat["scars"] if "scars" in cat else [],
-                accessory=cat["accessory"],
-                opacity=cat["opacity"] if "opacity" in cat else 100,
-                tuft=cat["tuft"] if "tuft" in cat else None,
-                tuft_color=cat["tuft_color"] if "tuft_color" in cat else "BASE",
-                tortie_tuft=cat["tortie_tuft"] if "tortie_tuft" in cat else False
-            )
-
-            # Runs a bunch of appearance-related conversion of old stuff.
-            new_cat.pelt.check_and_convert(convert)
-
-            # converting old specialty saves into new scar parameter
-            if "specialty" in cat or "specialty2" in cat:
-                if cat["specialty"] is not None:
-                    new_cat.pelt.scars.append(cat["specialty"])
-                if cat["specialty2"] is not None:
-                    new_cat.pelt.scars.append(cat["specialty2"])
+            new_cat.pelt = Pelt.load_from_cat(cat)
 
             new_cat.adoptive_parents = (
                 cat["adoptive_parents"] if "adoptive_parents" in cat else []
@@ -422,7 +331,7 @@ def csv_load(all_cats):
                     f"There was an error loading cat # {str(attr[0])} (code: 1)",
                 )
                 the_pelt = Pelt(
-                    colour=attr[2], name=attr[11], length=attr[9], eye_color=attr[17]
+                    color=attr[2], name=attr[11], length=attr[9], eye_colour=attr[17]
                 )
                 switch_set_value(
                     Switch.error_message,
