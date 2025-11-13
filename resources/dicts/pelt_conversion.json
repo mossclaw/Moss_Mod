@@ -1,22 +1,22 @@
 {
   "attribute": {
     "tortie_marking": {
-      "PALEONE":     { "*": "ONE",   "color": "PALEGINGER" },
-      "PALETWO":     { "*": "TWO",   "color": "PALEGINGER" },
-      "PALETHREE":   { "*": "THREE", "color": "PALEGINGER" },
-      "PALEFOUR":    { "*": "FOUR",  "color": "PALEGINGER" },
-      "GOLDONE":     { "*": "ONE",   "color": "GOLDEN"     },
-      "GOLDTWO":     { "*": "TWO",   "color": "GOLDEN"     },
-      "GOLDTHREE":   { "*": "THREE", "color": "GOLDEN"     },
-      "GOLDFOUR":    { "*": "FOUR",  "color": "GOLDEN"     },
-      "GINGERONE":   { "*": "ONE",   "color": "GINGER"     },
-      "GINGERTWO":   { "*": "TWO",   "color": "GINGER"     },
-      "GINGERTHREE": { "*": "THREE", "color": "GINGER"     },
-      "GINGERFOUR":  { "*": "FOUR",  "color": "GINGER"     },
-      "DARKONE":     { "*": "ONE",   "color": "DARKGINGER" },
-      "DARKTWO":     { "*": "TWO",   "color": "DARKGINGER" },
-      "DARKTHREE":   { "*": "THREE", "color": "DARKGINGER" },
-      "DARKFOUR":    { "*": "FOUR",  "color": "DARKGINGER" },
+      "PALEONE":     { "*": "ONE",   "color": "GINGER" },
+      "PALETWO":     { "*": "TWO",   "color": "GINGER" },
+      "PALETHREE":   { "*": "THREE", "color": "GINGER" },
+      "PALEFOUR":    { "*": "FOUR",  "color": "GINGER" },
+      "GOLDONE":     { "*": "ONE",   "color": "GOLD"     },
+      "GOLDTWO":     { "*": "TWO",   "color": "GOLD"     },
+      "GOLDTHREE":   { "*": "THREE", "color": "GOLD"     },
+      "GOLDFOUR":    { "*": "FOUR",  "color": "GOLD"     },
+      "GINGERONE":   { "*": "ONE",   "color": "FIRE"     },
+      "GINGERTWO":   { "*": "TWO",   "color": "FIRE"     },
+      "GINGERTHREE": { "*": "THREE", "color": "FIRE"     },
+      "GINGERFOUR":  { "*": "FOUR",  "color": "FIRE"     },
+      "DARKONE":     { "*": "ONE",   "color": "DARK GINGER" },
+      "DARKTWO":     { "*": "TWO",   "color": "DARK GINGER" },
+      "DARKTHREE":   { "*": "THREE", "color": "DARK GINGER" },
+      "DARKFOUR":    { "*": "FOUR",  "color": "DARK GINGER" },
       "CREAMONE":    { "*": "ONE",   "color": "CREAM"      },
       "CREAMTWO":    { "*": "TWO",   "color": "CREAM"      },
       "CREAMTHREE":  { "*": "THREE", "color": "CREAM"      },
@@ -31,12 +31,12 @@
       "VITILIGO2":   { "*": "VITILIGOTWO" }
     },
     "eye_colour": {
-      "BLUE2":       { "*": "COBALT" },
+      "BLUE2":       { "*": "DARK BLUE" },
       "BLUEYELLOW":  { "*": "BLUE", "eye_colour2": "YELLOW" },
       "BLUEGREEN":   { "*": "BLUE", "eye_colour2": "GREEN"  }
     },
     "eye_colour2": {
-      "BLUE2":       { "*": "COBALT" }
+      "BLUE2":       { "*": "DARK BLUE" }
     },
     "skin": {
       "BLACK":        { "*": "SOLID",  "color": "BLACK"      },
