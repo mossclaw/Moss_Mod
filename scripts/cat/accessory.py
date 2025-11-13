@@ -223,10 +223,27 @@ class Accessory:
 
     @staticmethod
     def load_all(data, conv):
+        def convert_one(data, acc, key, attr, append):
+            if key in data:
+                if acc is not None:
+                    if append:
+                        getattr(acc, attr).append(data[key])
+                    else:
+                        setattr(acc, attr, [data[key]])
+                del data[key]
+
+        def convert_col_pat(data, acc=None):
+            convert_one(data, acc, 'accessory_color',   'color',   False)
+            convert_one(data, acc, 'accessory_color2',  'color',   True)
+            convert_one(data, acc, 'accessory_pattern', 'pattern', False)
+            convert_one(data, acc, 'accessory_pattern', 'pattern', True)
+
+
         if 'accessory' not in data:
             return
         accs = data['accessory']
         if not accs:
+            convert_col_pat(data)
             return
 
         if isinstance(accs, str):
@@ -241,16 +258,7 @@ class Accessory:
             elif isinstance(acc, list):
                 accs[i] = Accessory.load(acc)
 
-        if len(accs) > 0:
-            acc = accs[0]
-            if 'accessory_color' in data:
-                acc.color = [ data['accessory_color'] ]
-                if 'accessory_color2' in cat_data:
-                    acc.color.append(cat_data['accessory_color2'])
-            if 'accessory_pattern' in data:
-                acc.pattern = [ data['accessory_pattern'] ]
-                if 'accessory_pattern2' in cat_data:
-                    acc.pattern.append(cat_data['accessory_pattern2'])
+        convert_col_pat(data, accs[0] if len(accs) > 0 else None)
 
         for acc in accs:
             acc.acc.fix(acc)
