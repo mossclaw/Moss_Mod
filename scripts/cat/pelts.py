@@ -206,11 +206,13 @@ class Pelt:
 
     @accessory.setter
     def accessory(self, val):
-        if not isinstance(val, list):
-            self._accessory.append(Accessory.load(val))
-        else:
+        if isinstance(val, list):
             self._accessory = self.__make_accessory_list((Accessory.load(item) for item in val))
             self._prune_accessories()
+        elif hasattr(self, '_accessory'):
+            self._accessory.append(Accessory.load(val))
+        else:
+            self._accessory = [Accessory.load(val)]
 
     def _prune_accessories(self):
         # TODO: Also check limitation from scars
