@@ -226,6 +226,8 @@ class Accessory:
         if 'accessory' not in data:
             return
         accs = data['accessory']
+        if not accs:
+            return
 
         if isinstance(accs, str):
             data['accessory'] = accs = [ accs ]
