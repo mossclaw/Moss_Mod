@@ -233,10 +233,10 @@ class Accessory:
                 del data[key]
 
         def convert_col_pat(data, acc=None):
-            convert_one(data, acc, 'accessory_color',   'color',   False)
-            convert_one(data, acc, 'accessory_color2',  'color',   True)
-            convert_one(data, acc, 'accessory_pattern', 'pattern', False)
-            convert_one(data, acc, 'accessory_pattern', 'pattern', True)
+            convert_one(data, acc, 'accessory_color',    'color',   False)
+            convert_one(data, acc, 'accessory_color2',   'color',   True)
+            convert_one(data, acc, 'accessory_pattern',  'pattern', False)
+            convert_one(data, acc, 'accessory_pattern2', 'pattern', True)
 
 
         if 'accessory' not in data:
