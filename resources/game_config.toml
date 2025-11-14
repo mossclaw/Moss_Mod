@@ -3,7 +3,7 @@
 lock_season = false
 
 # whether or not development tools are disabled
-dev_tools = false
+dev_tools = true
 
 # settings regarding relationship events, also called "interactions"
 [relationship]
