@@ -202,10 +202,11 @@ class Pelt:
     def accessory(self, val):
         if isinstance(val, list):
             self.__make_accessory_list((Accessory.load(item) for item in val))
-        elif hasattr(self, '_accessory'):
-            self._accessory.append(Accessory.load(val))
         else:
-            self.__make_accessory_list((Accessory.load(val),))
+            if not hasattr(self, '_accessory'):
+                self.__make_accessory_list()
+            if isinstance(val, str) or isinstance(val, Accessory):
+                self._accessory.append(Accessory.load(val))
 
     def _prune_accessories(self):
         # TODO: Also check limitation from scars
@@ -214,11 +215,12 @@ class Pelt:
             self._accessory = self.__make_accessory_list(elems)
         self.rebuild_sprite = True
 
-    def __make_accessory_list(self, elems):
+    def __make_accessory_list(self, elems = ()):
         self._accessory =  OnUpdateList(lambda : self._prune_accessories(),
                                         lambda x: Accessory.load(x),
                                         elems)
-        self._prune_accessories()
+        if elems:
+            self._prune_accessories()
 
 
     @property
