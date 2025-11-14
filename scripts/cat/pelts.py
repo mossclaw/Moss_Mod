@@ -361,6 +361,7 @@ class Pelt:
             render.set(colormap= 'eyes', color= self.eye_colour, sprite= '')
             render.paint_all(('eyebase', 0), ('eyemid', 1), ('eyetop', 2), ('eyeshade', 3))
             if self.eye_pattern != None:
+                render.set(color= self.eye_colour2)
                 render.add_layer('eyebase')
                 render.paint_all(('eyebase', 0), ('eyemid', 1), ('eyetop', 2), ('eyeshade', 3))
                 render.paint('eyes2', sprite= self.eye_pattern, blend= 'alpha')
