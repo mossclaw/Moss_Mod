@@ -398,11 +398,7 @@
     "tags": [ ["descriptor"] ]
   }, 
   "DART": {
-<<<<<<< HEAD
-    "tags0": ["animal", "fish"]
-=======
-    "tags": [ ["fish"] ]
->>>>>>> 65b1da4f6 (Made clan symbols dict use nested lists instead of indexed names.)
+    "tags": [ ["animal", "fish"] ]
   }, 
   "DASH": {
     "tags": [ ["animal", "cat"] ]

@@ -74,6 +74,72 @@ class Pelt:
 
     conversion = read_resource_dict('pelt_conversion', 'Old Save Conversion')
 
+    # Pelt editing
+    def _edit_sprites_for(pelt, attr):
+        return [ str(x) for x in Pelt._pelt_data['poses'][attr[7:]][pelt.length] ]
+    def _edit_set_sprite(pelt, attr, value):
+        pelt.cat_sprites[attr[7:]] = int(value)
+    def _edit_get_sprite(pelt, attr):
+        return str(pelt.cat_sprites[attr[7:]])
+    def _tints(data):
+        return union_of_entries(data["possible_tints"])
+        
+    edit_values = {
+        'name'              : union_of_entries(pelt_dict),
+        'length'            : _pelt_data['pelt_length'],
+        'colour'            : pelt_colours,
+        'white_patches'     : [ x for y in white_lists for x in y ],
+        'eye_colour'        : eye_colours,
+        'eye_colour2'       : eye_colours,
+        'eye_pattern'       : eye_patterns,
+        'tortie_base'       : tortiebases,
+        'tortie_colour'     : pelt_colours,
+        'tortie_marking'    : tortiemarking,
+        'tortie_pattern'    : tortiebases,
+        'vitiligo'          : vit,
+        'points'            : point_markings,
+#        'accessory'         : [],
+#        'scars'             : [],
+        'tint'              : _tints(sprites.cat_tints),
+        'skin'              : _pelt_data['skin']['type'],
+        'skin_color'        : _pelt_data['skin']['color'],
+        'white_patches_tint': _tints(sprites.white_patches_tints),
+        'sprite_newborn'    : _edit_sprites_for,
+        'sprite_kitten'     : _edit_sprites_for,
+        'sprite_adolescent' : _edit_sprites_for,
+        'sprite_adult'      : _edit_sprites_for,
+        'sprite_senior'     : _edit_sprites_for,
+#        'sprite_para_adult' : [],
+        'reverse'           : ['False', 'True'],
+        'tuft'              : _pelt_data['tuft']['type'],
+        'tuft_color'        : _pelt_data['tuft']['color']['white'],
+        'tortie_tuft'       : ['False', 'True']
+    }
+    edit_get_funcs = {
+        'sprite_newborn'   : _edit_get_sprite,
+        'sprite_kitten'    : _edit_get_sprite,
+        'sprite_adolescent': _edit_get_sprite,
+        'sprite_adult'     : _edit_get_sprite,
+        'sprite_senior'    : _edit_get_sprite,
+    }
+    edit_set_funcs = {
+        'sprite_newborn'   : _edit_set_sprite,
+        'sprite_kitten'    : _edit_set_sprite,
+        'sprite_adolescent': _edit_set_sprite,
+        'sprite_adult'     : _edit_set_sprite,
+        'sprite_senior'    : _edit_set_sprite,
+    }
+    del _tints
+    for x in edit_values.values():
+        if isinstance(x, list) and len(x) > 10:
+            x.sort()
+    for key in ['white_patches', 'eye_colour2', 'eye_pattern', 'vitiligo', 
+                'points', 'tint', 'white_patches_tint', 'tuft']:
+        edit_values[key] = ['None'] + edit_values[key]
+    editable = list(edit_values)
+    edit_translate_set = { 'None': None, 'False': False, 'True': True }
+    edit_translate_get = { None: 'None', False: 'False', True: 'True' }
+
 
     """Holds all appearance information for a cat. """
 
@@ -331,7 +397,7 @@ class Pelt:
                     index = 0
                 else:
                     color = self.tortie_colour if self.tortie_tuft else self.colour
-                    index = Pelt._pelt_data['tufts']['color']['other'].index(self.tuft_color)
+                    index = Pelt._pelt_data['tuft']['color']['other'].index(self.tuft_color)
                 render.set(sprite= self.tuft, color= color)
                 render.paint('tufts', index)
                 render.paint('tuftlines', 5)
@@ -478,6 +544,35 @@ class Pelt:
         else:
             self.accessory.append(acc)
             return True
+
+
+    # Pelt editing
+    def edit_list_attributes(self):
+        return Pelt.editable
+
+    def edit_options_for(self, attribute):
+        vals = Pelt.edit_values[attribute]
+        if callable(vals):
+            vals = vals(self, attribute)
+        return vals
+
+    def edit_get(self, attribute):
+        if attribute in Pelt.edit_get_funcs:
+            value = Pelt.edit_get_funcs[attribute](self, attribute)
+        else:
+            value = getattr(self, attribute)
+        if value in Pelt.edit_translate_get:
+            value = Pelt.edit_translate_get[value]
+        return value
+
+    def edit_set(self, attribute, value):
+        if value in Pelt.edit_translate_set:
+            value = Pelt.edit_translate_set[value]
+        if attribute in Pelt.edit_set_funcs:
+            value = Pelt.edit_set_funcs[attribute](self, attribute, value)
+        else:
+            setattr(self, attribute, value)
+        self.rebuild_sprite = True
 
 
     @staticmethod
@@ -1038,7 +1133,7 @@ class Pelt:
         else:
             tuft_chance = random.randint(1, 100)
         if tuft_chance > 70:
-            data = Pelt._pelt_data['tufts']
+            data = Pelt._pelt_data['tuft']
             types = data['type']
             colors = data['color']['white' if pelt_white else 'other']
             if parents:

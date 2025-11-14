@@ -34,7 +34,6 @@ def generate_sprite(
                     If false, use the cat.not_working() to determine the no_working art.
     """
     poses: list = sprites.POSE_DATA["poses"]
-    sprite_poses = {x: str(poses.index(x)) for x in poses}
 
     if life_state is not None:
         age = life_state
