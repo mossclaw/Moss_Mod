@@ -6,7 +6,11 @@ import pygame_gui
 
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
-from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
+from scripts.game_structure.ui_elements import (
+    UIImageButton,
+    UISurfaceImageButton,
+    UIScrollingDropDown,
+    )
 from scripts.utility import (
     generate_sprite,
     shorten_text_to_fit,
@@ -52,6 +56,18 @@ class SpriteInspectScreen(Screens):
         self.override_dead_lineart = False
         self.acc_shown = True
         self.override_not_working = False
+
+        # Edit mode
+        self.edit_mode = False
+        self.edit_mode_text = None
+        self.edit_attribute = None
+        self.edit_value = None
+        self.edit_elements = {
+            'attribute_drop': None,
+            'attribute_text': None,
+            'value_drop'    : None,
+            'value_text'    : None,
+        }
 
         super().__init__(name)
 
@@ -101,6 +117,11 @@ class SpriteInspectScreen(Screens):
 
                 self.make_cat_image()
                 self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["edit_mode"]:
+                self.edit_mode = not self.edit_mode
+                self.set_edit_visibility()
+                self.update_checkboxes()
+
             elif event.ui_element == self.checkboxes["acc_shown"]:
                 if self.acc_shown:
                     self.acc_shown = False
@@ -134,7 +155,44 @@ class SpriteInspectScreen(Screens):
                     "Remove favorite" if self.the_cat.favourite else "Mark as favorite"
                 )
 
+        # Edit mode
+        attribute_drop = self.edit_elements['attribute_drop']
+        value_drop = self.edit_elements['value_drop']
+        pelt = self.the_cat.pelt
+
+        attribute = attribute_drop.selected_list
+        attribute = attribute[0] if attribute else None
+        if attribute != self.edit_attribute:
+            self.edit_attribute = attribute
+            self.set_edit_dropdown('attribute_drop', attribute)
+            self.update_edit_value()
+            if attribute:
+                options = pelt.edit_options_for(attribute)
+                value_drop.new_item_list(options)
+                self.edit_value = pelt.edit_get(attribute)
+                if self.edit_value not in options:
+                    print(f"Edit value '{self.edit_value}' is not in list for {attribute}.")
+                    self.edit_value = None
+                self.set_edit_dropdown('value_drop', self.edit_value)
+
+        value = value_drop.selected_list
+        value = value[0] if value else None
+        if value != self.edit_value:
+            print(f"Changing {attribute} from {self.edit_value} to {value}.")
+            self.edit_value = value
+            self.set_edit_dropdown('value_drop', value)
+            pelt.edit_set(self.edit_attribute, value)
+            self.make_cat_image()
+
         return super().handle_event(event)
+
+    def set_edit_dropdown(self, name, value):
+        drop = self.edit_elements[name]
+        sel  = [] if value is None else [value]
+        text = '' if value is None else value
+        drop.set_selected_list(sel)
+        drop.parent_button.set_text(text)
+        drop.update(0)
 
     def screen_switches(self):
         super().screen_switches()
@@ -200,22 +258,61 @@ class SpriteInspectScreen(Screens):
         )
         self.acc_shown_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_accessory",
-            ui_scale(pygame.Rect((545, 580), (-1, 50))),
+            ui_scale(pygame.Rect((550, 580), (-1, 50))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
         self.override_dead_lineart_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_living",
-            ui_scale(pygame.Rect((250, 630), (-1, 50))),
+            ui_scale(pygame.Rect((150, 630), (-1, 50))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
         self.override_not_working_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_healthy",
-            ui_scale(pygame.Rect((450, 630), (-1, 100))),
+            ui_scale(pygame.Rect((350, 630), (-1, 100))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
+        self.acc_shown_text = pygame_gui.elements.UITextBox(
+            "screens.sprite_inspect.edit_mode",
+            ui_scale(pygame.Rect((550, 630), (-1, 50))),
+            object_id=get_text_box_theme("#text_box_34_horizcenter"),
+            starting_height=2,
+        )
+
+        # Edit controls
+        self.edit_elements['edit_text'] = pygame_gui.elements.UITextBox(
+            "screens.sprite_inspect.edit_label",
+            ui_scale(pygame.Rect((210, 20), (-1, 50))),
+            object_id=get_text_box_theme("#text_box_34_horizcenter"),
+            starting_height=2,
+        )
+        self.edit_elements['attribute_drop'] = UIScrollingDropDown(
+            pygame.Rect((270, 25), (153, 30)),
+            dropdown_dimensions=(153, 600),
+            parent_text='',
+            item_list=[],
+            multiple_choice=False,
+            disable_selection=True,
+            child_trigger_close=True,
+            manager=MANAGER,
+            starting_height=2,
+        )
+        self.edit_elements['value_drop'] = UIScrollingDropDown(
+            pygame.Rect((435, 25), (153, 30)),
+            dropdown_dimensions=(153, 600),
+            parent_text='',
+            item_list=[],
+            multiple_choice=False,
+            disable_selection=True,
+            child_trigger_close=True,
+            manager=MANAGER,
+            starting_height=2,
+        )
+        self.edit_elements['attribute_drop'].parent_button.set_tooltip(
+            'screens.sprite_inspect.edit_attribute_tip')
+        self.set_edit_visibility()
 
         self.platform_shown = get_clan_setting("backgrounds")
 
@@ -315,6 +412,13 @@ class SpriteInspectScreen(Screens):
         ) = self.the_cat.determine_next_and_previous_cats()
         self.update_disabled_buttons()
 
+        # Edit controls
+        pelt = self.the_cat.pelt
+        attribute_drop = self.edit_elements['attribute_drop']
+        attribute_drop.new_item_list(pelt.edit_list_attributes())
+        self.set_edit_dropdown('attribute_drop', None)
+        self.edit_attribute = None
+
     def update_checkboxes(self):
         for ele in self.checkboxes:
             self.checkboxes[ele].kill()
@@ -343,7 +447,7 @@ class SpriteInspectScreen(Screens):
 
         # "Show as living"
         self.make_one_checkbox(
-            ui_scale_offset((200, 625)),
+            ui_scale_offset((100, 625)),
             "override_dead_lineart",
             self.override_dead_lineart,
             self.the_cat.dead,
@@ -352,11 +456,18 @@ class SpriteInspectScreen(Screens):
 
         # "Show as healthy"
         self.make_one_checkbox(
-            ui_scale_offset((400, 625)),
+            ui_scale_offset((300, 625)),
             "override_not_working",
             self.override_not_working,
             self.the_cat.not_working(),
             disabled_object_id="@checked_checkbox",
+        )
+
+        # "Edit"
+        self.make_one_checkbox(
+            ui_scale_offset((500, 625)),
+            "edit_mode",
+            self.edit_mode,
         )
 
     def make_one_checkbox(
@@ -423,6 +534,29 @@ class SpriteInspectScreen(Screens):
         else:
             self.cat_elements["platform"].hide()
 
+    def set_edit_visibility(self):
+        for elem in self.edit_elements.values():
+            if elem is not None:
+                if self.edit_mode:
+                    elem.show()
+                else:
+                    elem.hide()
+
+    def update_edit_value(self):
+        button = self.edit_elements['value_drop']
+        if button is None:
+            return
+        if self.edit_attribute is None:
+            button.disable()
+            attribute = i18n.t('scre ens.sprite_inspect.edit_unspecified_attribute')
+        else:
+            button.enable()
+            attribute = self.edit_attribute
+        button.parent_button.set_tooltip(
+            'screens.sprite_inspect.edit_value_tip',
+            text_kwargs={'attr': attribute}
+        )
+
     def exit_screen(self):
         self.back_button.kill()
         self.back_button = None
@@ -446,6 +580,8 @@ class SpriteInspectScreen(Screens):
         self.override_dead_lineart_text = None
         self.override_not_working_text.kill()
         self.override_not_working_text = None
+        self.edit_mode_text.kill()
+        self.edit_mode_text = None
 
         for ele in self.cat_elements:
             self.cat_elements[ele].kill()
@@ -453,10 +589,15 @@ class SpriteInspectScreen(Screens):
         for ele in self.checkboxes:
             self.checkboxes[ele].kill()
         self.checkboxes = {}
+        for ele in self.edit_elements:
+            if self.edit_elements[ele] is not None:
+                self.edit_elements[ele].kill()
+                self.edit_elements[ele] = None
         return super().exit_screen()
 
     def update_disabled_buttons(self):
         self.update_previous_next_cat_buttons()
+        self.update_edit_value()
 
         if self.displayed_life_stage >= len(self.valid_life_stages) - 1:
             self.next_life_stage.disable()

@@ -158,7 +158,7 @@
     "color": ["BLACK", "PINK", "DARKBROWN", "BROWN", "LIGHTBROWN", "DARK", "DARKGREY",
               "GREY", "DARKSALMON", "SALMON", "PEACH", "DARKBLUE", "BLUE", "LIGHTBLUE", "RED"]
   },
-  "tufts": {
+  "tuft": {
     "type": ["SHORT", "FLUFFY", "TALL", "LONG", "LYNX", "LOW", "CURLY", "FULL", "SHORTHALF",
              "FLUFFYHALF", "TALLHALF", "LONGHALF", "LYNXHALF", "LOWHALF", "CURLYHALF", "FULLHALF"],
     "color": {

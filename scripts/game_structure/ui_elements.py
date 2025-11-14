@@ -2428,7 +2428,7 @@ class UIScrollingDropDown(UIDropDownContainer):
 
         # create parent button
         self.parent_button = UISurfaceImageButton(
-            ui_scale(relative_rect.copy()),
+            pygame.Rect((0, 0), ui_scale_dimensions(relative_rect.size)),
             parent_text,
             get_button_dict(parent_style, relative_rect.size),
             manager=manager,
@@ -2443,7 +2443,7 @@ class UIScrollingDropDown(UIDropDownContainer):
         else:
             dimensions = relative_rect.size
 
-        dropdown_rect = ((relative_rect.x, 0), dropdown_dimensions)
+        dropdown_rect = ((0, 0), dropdown_dimensions)
         self.child_button_container = UIScrollingButtonList(
             pygame.Rect(dropdown_rect),
             button_dimensions=dimensions,

@@ -5,6 +5,12 @@
         "show_scars": "Show Scar(s)",
         "show_accessory": "Show Accessory",
         "show_living": "Show as Living",
-        "show_healthy": "Show as Healthy"
+        "show_healthy": "Show as Healthy",
+
+        "edit_mode": "Enable Editing",
+        "edit_label": "Edit:",
+        "edit_attribute_tip": "Select attribute to change.",
+        "edit_value_tip": "Select new value for %{attr}.",
+        "edit_unspecified_attribute": "the attribute"
     }
 }
