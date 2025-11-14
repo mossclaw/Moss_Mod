@@ -81,11 +81,15 @@ class Pelt:
         pelt.cat_sprites[attr[7:]] = int(value)
     def _edit_get_sprite(pelt, attr):
         return str(pelt.cat_sprites[attr[7:]])
+    def _edit_set_suffix(pelt, attr, value):
+        setattr(pelt, attr.split(' ')[-1], value)
+    def _edit_get_suffix(pelt, attr):
+        return getattr(pelt, attr.split(' ')[-1])
     def _tints(data):
         return union_of_entries(data["possible_tints"])
         
     edit_values = {
-        'name'              : union_of_entries(pelt_dict),
+        'pelt name'         : union_of_entries(pelt_dict),
         'length'            : _pelt_data['pelt_length'],
         'colour'            : pelt_colours,
         'white_patches'     : [ x for y in white_lists for x in y ],
@@ -116,6 +120,7 @@ class Pelt:
         'tortie_tuft'       : ['False', 'True']
     }
     edit_get_funcs = {
+        'pelt name'        : _edit_get_suffix,
         'sprite_newborn'   : _edit_get_sprite,
         'sprite_kitten'    : _edit_get_sprite,
         'sprite_adolescent': _edit_get_sprite,
@@ -123,6 +128,7 @@ class Pelt:
         'sprite_senior'    : _edit_get_sprite,
     }
     edit_set_funcs = {
+        'pelt name'        : _edit_set_suffix,
         'sprite_newborn'   : _edit_set_sprite,
         'sprite_kitten'    : _edit_set_sprite,
         'sprite_adolescent': _edit_set_sprite,
@@ -130,6 +136,8 @@ class Pelt:
         'sprite_senior'    : _edit_set_sprite,
     }
     del _tints
+    del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite
+    del _edit_set_suffix, _edit_get_suffix
     for x in edit_values.values():
         if isinstance(x, list) and len(x) > 10:
             x.sort()
