@@ -522,7 +522,8 @@ class SpriteInspectScreen(Screens):
         if self.edit_attribute is None:
             attribute = i18n.t('screens.sprite_inspect.edit_unspecified_attribute')
             value_drop.disable()
-            value_drop.parent_button.set_text('')
+            self.edit_value = None
+            self.set_edit_dropdown('value_drop', None)
         else:
             pelt = self.the_cat.pelt
             attribute = self.edit_attribute

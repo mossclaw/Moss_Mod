@@ -134,8 +134,9 @@ class Pelt:
         if isinstance(x, list) and len(x) > 10:
             x.sort()
     for key in ['white_patches', 'eye_colour2', 'eye_pattern', 'vitiligo', 
-                'points', 'tint', 'white_patches_tint', 'tuft']:
+                'points', 'tuft']:
         edit_values[key] = ['None'] + edit_values[key]
+    edit_values['tint'] = ['none'] + edit_values['tint']
     editable = list(edit_values)
     edit_translate_set = { 'None': None, 'False': False, 'True': True }
     edit_translate_get = { None: 'None', False: 'False', True: 'True' }
