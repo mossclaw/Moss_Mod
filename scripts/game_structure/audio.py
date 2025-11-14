@@ -22,12 +22,27 @@ class MusicManager:
         self.biome_playlist = []
         self.number_of_tracks = len(self.current_playlist)
         self.volume = game_setting_get("music_volume") / 100
-        self.muted = False
+        self.muted = self.__load_mute_status()
         self.audio_disabled = False
         self.current_track = None
         self.queued_track = None
 
         self.load_playlists()
+
+    def __load_mute_status(self):
+        try:
+            with open('saves/muted.txt', 'r') as f:
+                return bool(f.read())
+        except:
+            return False
+    
+    def __save_mute_status(self):
+        try:
+            with open('saves/muted.txt', 'w') as f:
+                f.write(str(self.muted))
+        except:
+            pass
+            
 
     def load_playlists(self):
         self.playlists = {}
@@ -166,6 +181,7 @@ class MusicManager:
         self.muted = True
         if not self.audio_disabled:
             pygame.mixer.music.pause()
+        self.__save_mute_status()
 
     def unmute_music(self, screen):
         """
@@ -187,6 +203,7 @@ class MusicManager:
             self.muted = False
         pygame.mixer.music.unpause()
         self.check_music(screen)
+        self.__save_mute_status()
         return True
 
     def change_volume(self, new_volume):
