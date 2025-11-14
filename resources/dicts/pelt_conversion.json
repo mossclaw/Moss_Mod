@@ -221,11 +221,12 @@
     {"from": "spirit_elder", "to": "sprite_senior"},
     {"from": "pattern",      "to": "tortie_marking"},
     {"from": "*",            "to": "*",        "keys":
-      ["sprite_senior", "eye_colour", "eye_colour2", "eye_pattern", "paralyzed", "reverse",
-       "vitiligo", "points", "white_patches_tint", "white_patches", "tortie_base", "tortie_color",
-       "tortie_pattern", "tortie_marking", "skin", "skin_color", "tint", "scars", "accessory",
-       "opacity", "tuft", "tuft_color", "tortie_tuft", "accessory_color", "accessory_color2",
-       "accessory_pattern", "accessory_pattern2"]
+      ["sprite_kitten", "sprite_adolescent", "sprite_adult", "sprite_senior",
+       "eye_colour", "eye_colour2", "eye_pattern", "paralyzed", "reverse", "vitiligo",
+       "points", "white_patches_tint", "white_patches", "tortie_base", "tortie_color",
+       "tortie_pattern", "tortie_marking", "skin", "skin_color", "tint", "scars",
+       "accessory", "opacity", "tuft", "tuft_color", "tortie_tuft", "accessory_color",
+       "accessory_color2", "accessory_pattern", "accessory_pattern2"]
     },
     {"from": "specialty*",   "to": "scars",    "keys": ["", "2"], "op": "append"}
   ]
