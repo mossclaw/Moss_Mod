@@ -12,7 +12,6 @@ from ..ui.elements.scrolling_dropdown import UIScrollingDropDown
 from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
-from scripts.game_structure.ui_elements import UIScrollingDropDown
 from .Screens import Screens
 from .enums import GameScreen
 from ..cat.sprites.load_sprites import sprites
