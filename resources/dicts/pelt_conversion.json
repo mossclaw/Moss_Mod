@@ -62,7 +62,7 @@
       "PANTS2":            { "*": "PANTSTWO"    },
       "ANY2":              { "*": "ANYTWO"      },
       "VITILIGO2":         { "*": "VITILIGOTWO" },
-      "POINTMARK":         { "*": "SEALPOINT",   "tint": null        },
+      "POINTMARK":         { "*": "SEALPOINT",   "tint": "none"      },
       "COLOURPOINTCREAMY": { "*": "COLOURPOINT", "tint": "darkcream" },
       "ANYCREAMY":         { "*": "ANY",         "tint": "darkcream" },
       "ANY2CREAMY":        { "*": "ANYTWO",      "tint": "darkcream" },
@@ -80,9 +80,9 @@
       "SMOKEY":            { "*": null, "vitiligo": "*" },
       "COLOURPOINT":       { "*": null, "points": "*" },
       "RAGDOLL":           { "*": null, "points": "*" },
-      "SEPIAPOINT":        { "*": null, "points": "*", "tint": null },
-      "MINKPOINT":         { "*": null, "points": "*", "tint": null },
-      "SEALPOINT":         { "*": null, "points": "*", "tint": null }
+      "SEPIAPOINT":        { "*": null, "points": "*", "tint": "none" },
+      "MINKPOINT":         { "*": null, "points": "*", "tint": "none" },
+      "SEALPOINT":         { "*": null, "points": "*", "tint": "none" }
     },
     "white_patches_tint": {
       "none": { "*": null }
