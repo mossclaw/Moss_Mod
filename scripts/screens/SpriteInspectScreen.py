@@ -156,43 +156,19 @@ class SpriteInspectScreen(Screens):
                 )
 
         # Edit mode
-        attribute_drop = self.edit_elements['attribute_drop']
-        value_drop = self.edit_elements['value_drop']
         pelt = self.the_cat.pelt
 
-        attribute = attribute_drop.selected_list
+        attribute = self.edit_elements['attribute_drop'].selected_list
         attribute = attribute[0] if attribute else None
         if attribute != self.edit_attribute:
-            self.edit_attribute = attribute
-            self.set_edit_dropdown('attribute_drop', attribute)
-            self.update_edit_value()
-            if attribute:
-                options = pelt.edit_options_for(attribute)
-                value_drop.new_item_list(options)
-                self.edit_value = pelt.edit_get(attribute)
-                if self.edit_value not in options:
-                    print(f"Edit value '{self.edit_value}' is not in list for {attribute}.")
-                    self.edit_value = None
-                self.set_edit_dropdown('value_drop', self.edit_value)
+            self.set_edit_attribute(attribute)
 
-        value = value_drop.selected_list
+        value = self.edit_elements['value_drop'].selected_list
         value = value[0] if value else None
         if value != self.edit_value:
-            print(f"Changing {attribute} from {self.edit_value} to {value}.")
-            self.edit_value = value
-            self.set_edit_dropdown('value_drop', value)
-            pelt.edit_set(self.edit_attribute, value)
-            self.make_cat_image()
+            self.set_edit_value(value)
 
         return super().handle_event(event)
-
-    def set_edit_dropdown(self, name, value):
-        drop = self.edit_elements[name]
-        sel  = [] if value is None else [value]
-        text = '' if value is None else value
-        drop.set_selected_list(sel)
-        drop.parent_button.set_text(text)
-        drop.update(0)
 
     def screen_switches(self):
         super().screen_switches()
@@ -274,7 +250,7 @@ class SpriteInspectScreen(Screens):
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
-        self.acc_shown_text = pygame_gui.elements.UITextBox(
+        self.edit_mode_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.edit_mode",
             ui_scale(pygame.Rect((550, 630), (-1, 50))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
@@ -416,8 +392,7 @@ class SpriteInspectScreen(Screens):
         pelt = self.the_cat.pelt
         attribute_drop = self.edit_elements['attribute_drop']
         attribute_drop.new_item_list(pelt.edit_list_attributes())
-        self.set_edit_dropdown('attribute_drop', None)
-        self.edit_attribute = None
+        self.set_edit_attribute(None)
 
     def update_checkboxes(self):
         for ele in self.checkboxes:
@@ -542,20 +517,48 @@ class SpriteInspectScreen(Screens):
                 else:
                     elem.hide()
 
-    def update_edit_value(self):
-        button = self.edit_elements['value_drop']
-        if button is None:
+    def set_edit_attribute(self, attribute):
+        self.edit_attribute = attribute
+        self.set_edit_dropdown('attribute_drop', attribute)
+        value_drop = self.edit_elements['value_drop']
+        if value_drop is None:
             return
+
         if self.edit_attribute is None:
-            button.disable()
-            attribute = i18n.t('scre ens.sprite_inspect.edit_unspecified_attribute')
+            attribute = i18n.t('screens.sprite_inspect.edit_unspecified_attribute')
+            value_drop.disable()
+            value_drop.parent_button.set_text('')
         else:
-            button.enable()
+            pelt = self.the_cat.pelt
             attribute = self.edit_attribute
-        button.parent_button.set_tooltip(
+            options = pelt.edit_options_for(attribute)
+            value_drop.new_item_list(options)
+            self.edit_value = pelt.edit_get(attribute)
+            if self.edit_value not in options:
+                print(f"Edit value '{self.edit_value}' is not in list for {attribute}.")
+                self.edit_value = None
+            self.set_edit_dropdown('value_drop', self.edit_value)
+            value_drop.enable()
+            
+        value_drop.parent_button.set_tooltip(
             'screens.sprite_inspect.edit_value_tip',
             text_kwargs={'attr': attribute}
         )
+
+    def set_edit_value(self, value):
+        print(f"Changing {self.edit_attribute} from {self.edit_value} to {value}.")
+        self.edit_value = value
+        self.set_edit_dropdown('value_drop', value)
+        self.the_cat.pelt.edit_set(self.edit_attribute, value)
+        self.make_cat_image()
+
+    def set_edit_dropdown(self, name, value):
+        drop = self.edit_elements[name]
+        sel  = [] if value is None else [value]
+        text = '' if value is None else value
+        drop.set_selected_list(sel)
+        drop.parent_button.set_text(text)
+        drop.update(0)
 
     def exit_screen(self):
         self.back_button.kill()
@@ -597,7 +600,6 @@ class SpriteInspectScreen(Screens):
 
     def update_disabled_buttons(self):
         self.update_previous_next_cat_buttons()
-        self.update_edit_value()
 
         if self.displayed_life_stage >= len(self.valid_life_stages) - 1:
             self.next_life_stage.disable()
