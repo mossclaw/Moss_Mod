@@ -85,10 +85,10 @@
       "SEALPOINT":         { "*": null, "points": "*", "tint": "none" }
     },
     "white_patches_tint": {
-      "none": { "*": null }
+      "_None_": { "*": "none" }
     },
     "tint": {
-      "none": { "*": null }
+      "_None_": { "*": "none" }
     }
   },
   "remove_prefix": {
