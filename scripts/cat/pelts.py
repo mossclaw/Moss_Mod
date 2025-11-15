@@ -36,6 +36,7 @@ def set_none_keys(target: dict):
     for value in target.values():
         if isinstance(value, dict):
             set_none_keys(value)
+    return target
 
 
 
