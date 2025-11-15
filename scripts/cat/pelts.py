@@ -29,6 +29,14 @@ def choice_from_categories(categories, sets):
 def weighted_coin(weight_true: int, weight_false: int):
     return random.randint(1, weight_true + weight_false) <= weight_true
 
+def set_none_keys(target: dict):
+    if '_None_' in target:
+        target[None] = target['_None_']
+        del target['_None_']
+    for value in target.values():
+        if isinstance(value, dict):
+            set_none_keys(value)
+
 
 
 _moss_config = constants.CONFIG['moss']
@@ -72,7 +80,7 @@ class Pelt:
     all_scars = union_of_entries(_pelt_data['scars']['lists'])
     scar_reverse = reverse_dict(_pelt_data['scars']['lists'])
 
-    conversion = read_resource_dict('pelt_conversion', 'Old Save Conversion')
+    conversion = set_none_keys(read_resource_dict('pelt_conversion', 'Old Save Conversion'))
 
     # Pelt editing
     def _edit_sprites_for(pelt, attr):
@@ -144,7 +152,8 @@ class Pelt:
     for key in ['white_patches', 'eye_colour2', 'eye_pattern', 'vitiligo', 
                 'points', 'tuft']:
         edit_values[key] = ['None'] + edit_values[key]
-    edit_values['tint'] = ['none'] + edit_values['tint']
+    for key in ['tint', 'white_patches_tint']:
+        edit_values[key] = ['none'] + edit_values[key]
     editable = list(edit_values)
     edit_translate_set = { 'None': None, 'False': False, 'True': True }
     edit_translate_get = { None: 'None', False: 'False', True: 'True' }
