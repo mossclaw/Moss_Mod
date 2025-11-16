@@ -104,7 +104,7 @@ def set_display_mode(
         
         if screen_config['auto_scale']:
             info = pygame.display.Info()
-            usable_height = info.current_h - 100
+            usable_height = info.current_h - screen_config['auto_scale_reserved']
             if usable_height > 0:
                 screen_scale = usable_height / screen_y
                 mult = screen_config['auto_scale_round_to']
