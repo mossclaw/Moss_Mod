@@ -15,7 +15,7 @@ from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text, union_of_entries, reverse_dict
 from scripts.temp_util import read_resource_dict, OnUpdateList
-from scripts.cat.accessory import Accessory
+from scripts.cat.accessory import Accessory, AccessoryDef
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +37,13 @@ def set_none_keys(target: dict):
         if isinstance(value, dict):
             set_none_keys(value)
     return target
+
+def numbered(name, n):
+    return [ name + ('' if n < 2 else f"_{i + 1}") for i in range(n) ]
+
+def denumbered(name):
+    parts = name.split('_')
+    return (parts[0], 0) if len(parts) == 1 else (parts[0], int(parts[1]) - 1)
 
 
 
@@ -90,10 +97,87 @@ class Pelt:
         pelt.cat_sprites[attr[7:]] = int(value)
     def _edit_get_sprite(pelt, attr):
         return str(pelt.cat_sprites[attr[7:]])
+        
     def _edit_set_suffix(pelt, attr, value):
         setattr(pelt, attr.split(' ')[-1], value)
     def _edit_get_suffix(pelt, attr):
         return getattr(pelt, attr.split(' ')[-1])
+    
+    def _edit_accessory_children(pelt, attr):
+        def available(slot):
+            return sorted(Accessory.available_per_slot[slot])
+        if len(attr) > 1:
+            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        if len(attr) == 3:
+            attr = attr[:2] + [denumbered(attr[2])]
+        match attr:
+            case ['accessory']: 
+                return sorted(Accessory.available_per_slot)
+            case ['accessory', slot] if acc:
+                return (['Remove', 'name'] + 
+                        numbered('color',   len(acc.color)) + 
+                        numbered('pattern', len(acc.pattern)))
+            case ['accessory', slot]:
+                return available(slot)
+            case ['accessory', slot, ('name', _)]:
+                return available(slot)
+            case ['accessory', _, ('color', i)]:
+                return acc.acc.available_colors(i)
+            case ['accessory', _, ('pattern', i)]:
+                return AccessoryDef.patterns
+            case _:
+                return None
+    def _edit_accessory_get(pelt, attr):
+        if len(attr) > 1:
+            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        if len(attr) == 3:
+            attr = attr[:2] + [denumbered(attr[2])]
+        match attr:
+            case ['accessory', slot, ('name', _)]:
+                return acc.name
+            case ['accessory', slot, ('color', i)]:
+                return acc.color[i]
+            case ['accessory', slot, ('pattern', i)]:
+                return acc.pattern[i]
+            case _:
+                return None
+    def _edit_accessory_set(pelt, attr, value):
+        if len(attr) > 1:
+            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        if len(attr) == 3:
+            attr = attr[:2] + [denumbered(attr[2])]
+        match attr:
+            case ['accessory', slot] if value == 'Remove':
+                pelt.accessory.remove(acc)
+            case ['accessory', slot] | ['accessory', slot, ('name', _)]:
+                pelt.accessory.append(value)
+            case ['accessory', slot, ('color', i)]:
+                acc.color[i] = value
+            case ['accessory', slot, ('pattern', i)]:
+                acc.pattern[i] = value
+   
+    def _edit_scars_children(pelt, attr):
+        match len(attr):
+            case 1: 
+                return ['Add'] + pelt.scars
+            case 2:
+                scars = Pelt.all_scars
+                return scars if attr[1] == 'Add' else ['Remove'] + scars
+            case _:
+                return None
+    def _edit_scars_get(pelt, attr):
+        match attr:
+            case ['scars', 'Add']:
+                return None
+            case ['scars', name]:
+                return name
+    def _edit_scars_set(pelt, attr, value):
+        match attr:
+            case ['scars', 'Add']:
+                pelt.scars.append(value)
+            case ['scars', name]:
+                pelt.scars = [ x for x in pelt.scars + [value] if x != name and x != 'Remove' ]
+                
     def _tints(data):
         return union_of_entries(data["possible_tints"])
         
@@ -111,8 +195,6 @@ class Pelt:
         'tortie_pattern'    : tortiebases,
         'vitiligo'          : vit,
         'points'            : point_markings,
-#        'accessory'         : [],
-#        'scars'             : [],
         'tint'              : _tints(sprites.cat_tints),
         'skin'              : _pelt_data['skin']['type'],
         'skin_color'        : _pelt_data['skin']['color'],
@@ -126,7 +208,7 @@ class Pelt:
         'reverse'           : ['False', 'True'],
         'tuft'              : _pelt_data['tuft']['type'],
         'tuft_color'        : _pelt_data['tuft']['color']['white'],
-        'tortie_tuft'       : ['False', 'True']
+        'tortie_tuft'       : ['False', 'True'],
     }
     edit_get_funcs = {
         'pelt name'        : _edit_get_suffix,
@@ -144,18 +226,24 @@ class Pelt:
         'sprite_adult'     : _edit_set_sprite,
         'sprite_senior'    : _edit_set_sprite,
     }
+    edit_children = { 
+        'accessory': (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set),
+        'scars'    : (_edit_scars_children,     _edit_scars_get,     _edit_scars_set),     
+    }
     del _tints
     del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite
     del _edit_set_suffix, _edit_get_suffix
+    del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set
+    del _edit_scars_children, _edit_scars_get, _edit_scars_set
     for x in edit_values.values():
         if isinstance(x, list) and len(x) > 10:
             x.sort()
-    for key in ['white_patches', 'eye_colour2', 'eye_pattern', 'vitiligo', 
-                'points', 'tuft']:
+    for key in ['white_patches', 'eye_colour2', 'eye_pattern', 'vitiligo', 'points', 'tuft', 
+                'tortie_base', 'tortie_colour', 'tortie_marking', 'tortie_pattern']:
         edit_values[key] = ['None'] + edit_values[key]
     for key in ['tint', 'white_patches_tint']:
         edit_values[key] = ['none'] + edit_values[key]
-    editable = list(edit_values)
+    editable = list(edit_values) + list(edit_children)
     edit_translate_set = { 'None': None, 'False': False, 'True': True }
     edit_translate_get = { None: 'None', False: 'False', True: 'True' }
 
@@ -297,13 +385,13 @@ class Pelt:
         # TODO: Also check limitation from scars
         if len(self._accessory) > len({ x.slot for x in self._accessory }):
             elems = { x.slot: x for x in self._accessory }.values()
-            self._accessory = self.__make_accessory_list(elems)
+            self.__make_accessory_list(elems)
         self.rebuild_sprite = True
 
     def __make_accessory_list(self, elems = ()):
-        self._accessory =  OnUpdateList(lambda : self._prune_accessories(),
-                                        lambda x: Accessory.load(x),
-                                        elems)
+        self._accessory = OnUpdateList(lambda : self._prune_accessories(),
+                                       lambda x: Accessory.load(x),
+                                       elems)
         if elems:
             self._prune_accessories()
 
@@ -551,31 +639,39 @@ class Pelt:
 
 
     # Pelt editing
-    def edit_list_attributes(self):
-        return Pelt.editable
-
     def edit_options_for(self, attribute):
-        vals = Pelt.edit_values[attribute]
+        if len(attribute) == 0:
+            return Pelt.editable
+        elif attribute[0] in Pelt.edit_children:
+            return Pelt.edit_children[attribute[0]][0](self, attribute)
+        elif len(attribute) > 1:
+            return None
+        vals = Pelt.edit_values[attribute[0]]
         if callable(vals):
-            vals = vals(self, attribute)
+            vals = vals(self, attribute[0])
         return vals
 
     def edit_get(self, attribute):
-        if attribute in Pelt.edit_get_funcs:
-            value = Pelt.edit_get_funcs[attribute](self, attribute)
+        if attribute[0] in Pelt.edit_children:
+            return Pelt.edit_children[attribute[0]][1](self, attribute)
+        elif attribute[0] in Pelt.edit_get_funcs:
+            value = Pelt.edit_get_funcs[attribute[0]](self, attribute[0])
         else:
-            value = getattr(self, attribute)
+            value = getattr(self, attribute[0])
         if value in Pelt.edit_translate_get:
             value = Pelt.edit_translate_get[value]
         return value
 
     def edit_set(self, attribute, value):
-        if value in Pelt.edit_translate_set:
-            value = Pelt.edit_translate_set[value]
-        if attribute in Pelt.edit_set_funcs:
-            value = Pelt.edit_set_funcs[attribute](self, attribute, value)
+        if attribute[0] in Pelt.edit_children:
+            Pelt.edit_children[attribute[0]][2](self, attribute, value)
         else:
-            setattr(self, attribute, value)
+            if value in Pelt.edit_translate_set:
+                value = Pelt.edit_translate_set[value]
+            if attribute[0] in Pelt.edit_set_funcs:
+                Pelt.edit_set_funcs[attribute[0]](self, attribute[0], value)
+            else:
+                setattr(self, attribute, value)
         self.rebuild_sprite = True
 
 
