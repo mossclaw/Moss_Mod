@@ -1,5 +1,6 @@
 {
     "auto_scale": 1,
-    "auto_scale_round_to": 0.25,
+    "auto_scale_round_to": 0.2,
+    "auto_scale_reserved": 60,
     "fullscreen_display": 0
 }
