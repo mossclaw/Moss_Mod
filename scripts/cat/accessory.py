@@ -120,10 +120,12 @@ AccessoryDef.load_available()
 
 
 class Accessory:
+    def _make_name_dict(acc_dict):
+        return { k: [ x.name for x in v ] for k, v in acc_dict.items() }
     _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
-    available_per_slot = {
-        slot: [ acc.name for acc in accs ] for slot, accs in AccessoryDef.slots.items()
-    }
+    names_by_slot  = _make_name_dict(AccessoryDef.slots)
+    names_by_event = _make_name_dict(AccessoryDef.events)
+    del _make_name_dict
 
     def __init__(self,
                  accessory,

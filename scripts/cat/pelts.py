@@ -105,14 +105,14 @@ class Pelt:
     
     def _edit_accessory_children(pelt, attr):
         def available(slot):
-            return sorted(Accessory.available_per_slot[slot])
+            return sorted(Accessory.names_by_slot[slot])
         if len(attr) > 1:
             acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
             case ['accessory']: 
-                return sorted(Accessory.available_per_slot)
+                return sorted(Accessory.names_by_slot)
             case ['accessory', slot] if acc:
                 return (['Remove', 'name'] + 
                         numbered('color',   len(acc.color)) + 
