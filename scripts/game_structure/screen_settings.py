@@ -101,6 +101,17 @@ def set_display_mode(
         screen_y = 700
         screen_scale = 1
         game_screen_size = (800, 700)
+        
+        if screen_config['auto_scale']:
+            info = pygame.display.Info()
+            usable_height = info.current_h - 100
+            if usable_height > 0:
+                screen_scale = usable_height / screen_y
+                mult = screen_config['auto_scale_round_to']
+                if mult:
+                    screen_scale = int(screen_scale / mult) * mult
+                screen_x *= screen_scale
+                screen_y *= screen_scale
         screen = pygame.display.set_mode((screen_x, screen_y))
     game_screen_size = (screen_x, screen_y)
 

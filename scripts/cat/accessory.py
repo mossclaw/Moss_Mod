@@ -38,6 +38,10 @@ class AccessoryDef:
         return self.name
 
 
+    def available_colors(self, i):
+        return AccessoryDef.colors[self.color[i]] if i < len(self.color) else None
+
+
     def random_colors(self):
         return AccessoryDef.__random_colors(self.color)
 
@@ -117,6 +121,9 @@ AccessoryDef.load_available()
 
 class Accessory:
     _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
+    available_per_slot = {
+        slot: [ acc.name for acc in accs ] for slot, accs in AccessoryDef.slots.items()
+    }
 
     def __init__(self,
                  accessory,
@@ -170,6 +177,9 @@ class Accessory:
                     render.merge_layer()
                 render.merge_layer()
 
+
+    def available_colors(i):
+        return Acc
 
     @staticmethod
     def __lookup(accessory):
