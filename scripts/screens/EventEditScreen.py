@@ -9,7 +9,7 @@ import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES, create_option_preview_cat
 from scripts.cat.pelts import Pelt
-from scripts.cat.accessory import AccessoryDef
+from scripts.cat.accessory import Accessory
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
 from scripts.cat_relations.enums import rel_type_tiers
@@ -287,7 +287,7 @@ class EventEditScreen(Screens):
         self.acc_button = {}
         self.acc_info: list = []
         """Loaded accessory tags"""
-        self.acc_categories = { k: [ x.name for x in v ] for k, v in AccessoryDef.events.items() }
+        self.acc_categories = Accessory.names_by_event
         self.open_category: str = ""
         """Currently open acc category (wild, collar, ect.)"""
 
@@ -1534,7 +1534,7 @@ class EventEditScreen(Screens):
         self.acc_element = {}
         if not self.param_locks.get("acc"):
             self.acc_info = []
-        self.acc_categories = Pelt.acc_categories
+        self.acc_categories = Accessory.names_by_event
         self.open_category = None
         self.acc_button = {}
         self.main_cat_editor = {}
