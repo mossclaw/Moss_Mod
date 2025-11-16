@@ -1436,7 +1436,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
     if cat.pelt.is_mottled():
         return "cat.pelts.mottled_long", color_name
     else:
-        if base in tuple(tabby.lower() for tabby in Pelt.stripes) + (
+        if base in tuple(tabby.lower() for tabby in Pelt.pelt_dict['stripes']) + (
             "bengal",
             "rosette",
             "speckled",
