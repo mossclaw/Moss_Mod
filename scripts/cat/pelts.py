@@ -686,7 +686,7 @@ class Pelt:
             if attribute[0] in Pelt.edit_set_funcs:
                 Pelt.edit_set_funcs[attribute[0]](self, attribute[0], value)
             else:
-                setattr(self, attribute, value)
+                setattr(self, attribute[0], value)
         self.rebuild_sprite = True
 
 
