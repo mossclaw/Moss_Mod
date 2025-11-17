@@ -9,7 +9,7 @@ import time
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.temp_util import read_sprite_dict, read_json
+from scripts.temp_util import read_sprite_dict, read_json, mods
 
 
 logger = logging.getLogger(__name__)
@@ -238,23 +238,24 @@ class Sprites:
                 i += 1
 
 
-    def load_file(self, path, name, subdir=None):
+    def load_file(self, path, rel_path, name, subdir=None):
         def invalid(path, reason):
             logger.warning(f"Entry in sprites.json for {path} is not valid. Ignoring file. {reason}")
 
-
         spritesheet = f"{subdir}{name.upper()}" if subdir else name
-        self.spritesheet(f"sprites/{path}", spritesheet)
+        self.spritesheet(path, spritesheet)
 
-        if path in self.config:
-            kind = self.config[path]
+        if rel_path in self.cur_config:
+            kind = self.cur_config[rel_path]
+        elif subdir and subdir in self.cur_config:
+            kind = self.cur_config[subdir]
         elif subdir and subdir in self.config:
             kind = self.config[subdir]
         else:
             kind = 'normal'
         arg = []
         if isinstance(kind, list):
-            arg = kind[1::]
+            arg = kind[1:]
             kind = kind[0]
 
         match kind:
@@ -284,13 +285,13 @@ class Sprites:
 
 
     def load_dir(self, path, subdir=None):
-        for file_name in os.listdir(path):
-            sub_path = f'{path}/{file_name}'
-            if os.path.isfile(sub_path) and file_name[-4:] == '.png':
-                rel_path = f'{subdir}/{file_name}' if subdir else file_name
-                self.load_file(rel_path, file_name[:-4], subdir)
-            elif os.path.isdir(sub_path) and not subdir:
-                self.load_dir(sub_path, file_name)
+        for entry in os.scandir(path):
+            sub_path = entry.path
+            if entry.is_file() and entry.name[-4:] == '.png':
+                rel_path = f"{subdir}/{entry.name}" if subdir else entry.name
+                self.load_file(entry.path, rel_path, entry.name[:-4], subdir)
+            elif entry.is_dir() and not subdir:
+                self.load_dir(entry.path, entry.name)
 
 
     def load_all(self):
@@ -319,8 +320,12 @@ class Sprites:
         del width, height
         self.specified = {}
 
-        # Process contents of sprites folder
+        # Process contents of sprites folder and mods
+        self.cur_config = self.config
         self.load_dir('sprites')
+        for mod in mods:
+            self.cur_config = mod.sprite_config
+            self.load_dir(mod.sprite_path)
 
         # Save special sprite sets in individual variables, for convenience and compatibility.
         self.symbol_dict, self.clan_symbols = self.specified['symbol']
