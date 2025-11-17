@@ -1,5 +1,6 @@
 import logging
 import ujson
+import os
 logger = logging.getLogger(__name__)
 
 
@@ -7,11 +8,12 @@ logger = logging.getLogger(__name__)
 #                            Loading json files                                #
 # ---------------------------------------------------------------------------- #
 
-
 def read_json(path, description_for_error = None):
     try:
-        with open(path, 'r', encoding="utf-8") as read_file:
-            return ujson.loads(read_file.read())
+        with open(path, 'r', encoding='utf-8') as read_file:
+            data = ujson.loads(read_file.read())
+            mod_expand(data, path)
+            return data
     except IOError:
         if description_for_error is not None:
             raise Exception(f"Failed to read {description_for_error} from {path}.")
@@ -29,6 +31,63 @@ def read_sprite_dict(name, description_for_error = None):
 
 def read_resource_dict(name, description_for_error = None):
     return read_dict('resources', name, description_for_error)
+
+
+# ---------------------------------------------------------------------------- #
+#                            Mod-mod support                                   #
+# ---------------------------------------------------------------------------- #
+
+def mod_expand(data, path):
+    global mods
+    for mod in mods:
+        mod.expand(data, path)
+
+
+class ModMod():
+    def load(self, path):
+        return None
+    
+    def expand(self, data, path):
+        modded = self.load(path)
+        if modded:
+            self.expand_part(data, modded)
+    
+    def expand_part(self, data, modded):
+        if isinstance(modded, dict) and isinstance(data, dict):
+            for key in modded:
+                if key in data:
+                    self.expand_part(data[key], modded[key])
+                else:
+                    data[key] = modded[key]
+        elif isinstance(modded, list) and isinstance(data, list):
+            data.expand(set(modded) - set(data))
+        else:
+            pass # TODO: error message
+
+
+class DirModMod(ModMod):
+    def __init__(self, path):
+        self.mod_path = path
+    
+    def load(self, path):
+        try:
+            with open(f"{self.mod_path}/{path}", 'r', encoding='utf-8') as read_file:
+                return ujson.loads(read_file.read())
+        except IOError:
+            return None
+
+
+# Load mod list
+mods = []
+try:
+    for entry in os.scandir('mods'):
+        try:
+            if entry.is_dir():
+                mods.append(DirModMod(entry.path))
+        except:
+            pass
+except:
+    pass
 
 
 # ---------------------------------------------------------------------------- #
