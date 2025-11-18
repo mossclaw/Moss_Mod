@@ -30,7 +30,7 @@ from scripts.screens.Screens import Screens
 from scripts.screens.enums import GameScreen
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
 from scripts.ui.icon import Icon
-from scripts.utility import ui_scale, get_text_box_theme, ui_scale_value
+from scripts.utility import ui_scale, get_text_box_theme, ui_scale_value, ui_scale_dimensions
 
 
 class ListScreen(Screens):
@@ -355,7 +355,7 @@ class ListScreen(Screens):
                 "normal": get_button_dict(ButtonStyles.DROPDOWN, (77, 34))[
                     "normal"
                 ].subsurface(
-                    (0, 0), (75, 34)
+                    (0, 0), ui_scale_dimensions((75, 34))
                 )  # this horrific thing gets rid of the double-thick line
             },
             object_id="@buttonstyles_dropdown",
