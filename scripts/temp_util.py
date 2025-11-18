@@ -46,8 +46,19 @@ def mod_expand(data, path):
         mod.expand(data, path)
 
 
+class _DirEntry:
+    def __init__(self, path, is_dir):
+        self.path = path.replace('\\', '/')
+        self.parts = self.path.split('/')
+        self.name = self.parts[-1] if self.parts[-1] else self.parts[-2]
+        self.is_dir = is_dir
+
+
 class ModMod():
     def real_path(self, path):
+        return path
+    
+    def virtual_path(self, path):
         return path
     
     def open_path(self, path, text=True):
@@ -59,7 +70,8 @@ class ModMod():
     
     def scan_dir(self, path):
         try:
-            return os.scandir(self.real_path(path))
+            return [ _DirEntry(self.virtual_path(x.path), x.is_dir()) 
+                     for x in os.scandir(self.real_path(path)) ]
         except:
             return []
     
@@ -85,29 +97,21 @@ class ModMod():
             with self.open_path(path) as read_file:
                 return ujson.loads(read_file.read())
         except (IOError, KeyError):
-            print(f"Failed to open {path} from mod.")
             return None
 
 
 class DirModMod(ModMod):
     def __init__(self, path):
         self.mod_path = path
+        self.len = len(path) + 1
     
     def real_path(self, path):
         return f"{self.mod_path}/{path}"
-
+    
+    def virtual_path(self, path):
+        return path[self.len:]
 
 class ZipModMod(ModMod):
-    class __InfoWrapper:
-        def __init__(self, info):
-            self.path = info.filename
-            parts = self.path.split('/')
-            self.name = parts[-1] if parts[-1] else parts[-2]
-            self._is_dir = info.is_dir()
-        
-        def is_dir(self):
-            return self._is_dir
-    
     def __init__(self, path):
         self.zip_path = path
         self.zip = ZipFile(path)
@@ -117,16 +121,14 @@ class ZipModMod(ModMod):
         files = self.zip.infolist()
         fs = {'': []}
         for file in files:
-            parts = file.filename.split('/')
-            file = ZipModMod.__InfoWrapper(file)
-            
+            file = _DirEntry(file.filename, file.is_dir())
             base = prev = ''
-            for part in parts[:-1]:
+            for part in file.parts[:-1]:
                 prev = base
                 base += part + '/'
                 if base not in fs:
                     fs[base] = []
-            fs[prev if file.is_dir() else base].append(file)
+            fs[prev if file.is_dir else base].append(file)
         return fs
 
     def open_path(self, path, text=True):

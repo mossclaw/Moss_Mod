@@ -290,13 +290,11 @@ class Sprites:
 
     def load_dir(self, mod, path, subdir=None):
         for entry in mod.scan_dir(path):
-            sub_path = entry.path
-            is_dir = entry.is_dir()
-            if not is_dir and entry.name[-4:] == '.png':
+            if not entry.is_dir and entry.name[-4:] == '.png':
                 rel_path = f"{subdir}/{entry.name}" if subdir else entry.name
                 self.load_file(mod, entry.path, rel_path, entry.name[:-4], subdir)
-            elif is_dir and not subdir:
-                self.load_dir(mod, entry.path, entry.name)
+            elif entry.is_dir and not subdir:
+                self.load_dir(mod, f"{path}/{entry.name}", entry.name)
 
 
     def load_all(self):
@@ -329,7 +327,7 @@ class Sprites:
         # Process contents of sprites folder and mods
         for mod in all_mods:
             if not hasattr(mod, 'sprite_config'):
-                mod.sprite_config = mod.load('sprites/dicts/sprites.json')
+                mod.sprite_config = mod.load('sprites/dicts/sprites.json') or {}
             self.load_dir(mod, 'sprites')
 
         # Save special sprite sets in individual variables, for convenience and compatibility.
