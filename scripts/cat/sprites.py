@@ -301,7 +301,7 @@ class Sprites:
 
     def load_all(self):
         # read sprites.json
-        self.config = read_sprite_dict('sprites', 'Sprite Configuration')
+        self.config = read_sprite_dict('sprites', 'Sprite Configuration', use_mods=False)
         base_mod.sprite_config = self.config
 
         # get the width and height of the spritesheet

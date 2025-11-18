@@ -2,7 +2,7 @@ import logging
 import ujson
 import os
 import io
-from zipfile import ZipFile
+from zipfile import ZipFile, is_zipfile
 logger = logging.getLogger(__name__)
 
 
@@ -10,11 +10,12 @@ logger = logging.getLogger(__name__)
 #                            Loading json files                                #
 # ---------------------------------------------------------------------------- #
 
-def read_json(path, description_for_error = None):
+def read_json(path, description_for_error = None, use_mods=True):
     try:
         with open(path, 'r', encoding='utf-8') as read_file:
             data = ujson.loads(read_file.read())
-            mod_expand(data, path)
+            if use_mods:
+                mod_expand(data, path)
             return data
     except IOError:
         if description_for_error is not None:
@@ -24,15 +25,15 @@ def read_json(path, description_for_error = None):
 
 
 def read_dict(subdir, name, description_for_error = None, use_mods = True):
-    return read_json(f"{subdir}/dicts/{name}.json", description_for_error)
+    return read_json(f"{subdir}/dicts/{name}.json", description_for_error, use_mods)
 
 
-def read_sprite_dict(name, description_for_error = None):
-    return read_dict('sprites', name, description_for_error)
+def read_sprite_dict(name, description_for_error = None, use_mods = True):
+    return read_dict('sprites', name, description_for_error, use_mods)
 
 
-def read_resource_dict(name, description_for_error = None):
-    return read_dict('resources', name, description_for_error)
+def read_resource_dict(name, description_for_error = None, use_mods = True):
+    return read_dict('resources', name, description_for_error, use_mods)
 
 
 # ---------------------------------------------------------------------------- #
@@ -84,6 +85,7 @@ class ModMod():
             with self.open_path(path) as read_file:
                 return ujson.loads(read_file.read())
         except (IOError, KeyError):
+            print(f"Failed to open {path} from mod.")
             return None
 
 
@@ -96,6 +98,16 @@ class DirModMod(ModMod):
 
 
 class ZipModMod(ModMod):
+    class __InfoWrapper:
+        def __init__(self, info):
+            self.path = info.filename
+            parts = self.path.split('/')
+            self.name = parts[-1] if parts[-1] else parts[-2]
+            self._is_dir = info.is_dir()
+        
+        def is_dir(self):
+            return self._is_dir
+    
     def __init__(self, path):
         self.zip_path = path
         self.zip = ZipFile(path)
@@ -106,8 +118,7 @@ class ZipModMod(ModMod):
         fs = {'': []}
         for file in files:
             parts = file.filename.split('/')
-            file.path = file.filename
-            file.name = parts[-1]
+            file = ZipModMod.__InfoWrapper(file)
             
             base = prev = ''
             for part in parts[:-1]:
@@ -115,7 +126,7 @@ class ZipModMod(ModMod):
                 base += part + '/'
                 if base not in fs:
                     fs[base] = []
-            fs[base if file.name else prev].append(file)
+            fs[prev if file.is_dir() else base].append(file)
         return fs
 
     def open_path(self, path, text=True):
@@ -144,11 +155,13 @@ try:
             path = entry.path
             if entry.is_dir():
                 mod_mods.append(DirModMod(path))
-            elif entry.is_file() and zipfile.is_zipfile(path):
+            elif is_zipfile(path):
                 mod_mods.append(ZipModMod(path))
         except:
+            raise
             pass
 except:
+    raise
     pass
 all_mods = [base_mod] + mod_mods
 
