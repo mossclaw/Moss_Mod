@@ -1,7 +1,7 @@
 import os
 
-import ujson
 import i18n
+from scripts.temp_util import read_resource_dict
 
 
 class Herb:
@@ -36,7 +36,4 @@ class Herb:
         return rarity_dict.get(biome.casefold(), {}).get(season.casefold(), 0)
 
 
-with open(
-    os.path.normpath("resources/dicts/herb_info.json"), "r", encoding="utf-8"
-) as read_file:
-    HERBS = ujson.loads(read_file.read())
+HERBS = read_resource_dict('herb_info', 'Herb Data')

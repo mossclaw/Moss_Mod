@@ -7,6 +7,7 @@ from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
 from ...game_structure.constants import DISPLAY_SETTINGS
+from scripts.temp_util import read_json
 
 
 def load_clan_settings():
@@ -90,10 +91,9 @@ def reset_loaded_clan_settings():
 # Init Settings
 clan_settings = {}
 _clan_settings = DISPLAY_SETTINGS["clan"]
-with open(
-    "resources/clansettings_conversion.json", "r", encoding="utf-8"
-) as conversion_file:
-    _old_save_conversion = ujson.loads(conversion_file.read())
+_old_save_conversion = read_json('resources/clansettings_conversion.json', 
+                                 'Clan Save Conversion', 
+                                 use_mods= False)
 
 all_settings = [
     _clan_settings["general"],

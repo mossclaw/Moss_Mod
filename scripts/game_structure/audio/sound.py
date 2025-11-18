@@ -25,11 +25,8 @@ class Sound:
 
     def load_sounds(self):
         # open up the sound dictionary
-        try:
-            with open("resources/audio/sounds.json", "r", encoding="utf-8") as f:
-                sound_data = ujson.load(f)
-        except:
-            logger.exception("Failed to load sound index")
+        sound_data = read_json('resources/audio/sounds.json', 'sound index')
+        if not sound_data:
             return
         for sound in sound_data:
             try:

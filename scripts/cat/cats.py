@@ -59,6 +59,7 @@ from scripts.cat.sprites.display_sprites import update_sprite, update_mask, gene
 from scripts.events_module.text_adjust import event_text_adjust, leader_ceremony_text_adjust
 from scripts.events_module.event_filters import get_personality_compatibility
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
+from scripts.temp_util import read_resource_dict
 
 import scripts.game_structure.screen_settings
 
@@ -3555,17 +3556,9 @@ game.cat_class = cat_class
 #                                load json files                               #
 # ---------------------------------------------------------------------------- #
 
-resource_directory = "resources/dicts/conditions/"
-with open(f"{resource_directory}illnesses.json", "r", encoding="utf-8") as read_file:
-    ILLNESSES = ujson.loads(read_file.read())
-
-with open(f"{resource_directory}injuries.json", "r", encoding="utf-8") as read_file:
-    INJURIES = ujson.loads(read_file.read())
-
-with open(
-    f"{resource_directory}permanent_conditions.json", "r", encoding="utf-8"
-) as read_file:
-    PERMANENT = ujson.loads(read_file.read())
+ILLNESSES = read_resource_dict('conditions/illnesses', 'Illnesses')
+INJURIES = read_resource_dict('conditions/injuries', 'Injuries')
+PERMANENT = read_resource_dict('conditions/permanent_conditions', 'Permanent Conditions')
 
 
 LEAD_CEREMONY_SC: Optional[Dict] = None
@@ -3584,5 +3577,4 @@ def load_leader_ceremonies():
 
 load_leader_ceremonies()
 
-with open("resources/dicts/backstories.json", "r", encoding="utf-8") as read_file:
-    BACKSTORIES = ujson.loads(read_file.read())
+BACKSTORIES = read_resource_dict('backstories', 'Backstories')

@@ -30,6 +30,7 @@ from scripts.ui.windows.save_check import SaveCheckWindow
 from scripts.ui.event_load_animation import EventLoadingAnimation
 from scripts.screens.enums import GameScreen
 from scripts.ui.scale import ui_scale_blit
+from scripts.temp_util import read_json
 from scripts.game_structure import game
 
 
@@ -610,13 +611,11 @@ class Screens:
     @property
     def theme(self) -> str:
         try:
-            return "dark" if game_setting_get("dark mode") else "light"
+            dark = game_setting_get("dark mode")
         except AttributeError:
-            with open(
-                "resources/gamesettings.json", "r", encoding="utf-8"
-            ) as read_file:
-                _settings = ujson.loads(read_file.read())
-                return "dark" if _settings["dark mode"] else "light"
+            _settings = read_json('resources/gamesettings.json', use_mods= False)
+            dark = _settings and _settings["dark mode"]
+        return "dark" if dark else "light"
 
     # pragma pylint: disable=no-member
     # noinspection PyUnresolvedReferences

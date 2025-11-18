@@ -49,11 +49,8 @@ class Music:
         """
         self.available_music = {}
 
-        try:
-            with open("resources/audio/music.json", "r", encoding="utf=8") as f:
-                music_data = ujson.load(f)
-        except:
-            logger.exception("Failed to load music index")
+        music_data = read_json('resources/audio/music.json', 'music index')
+        if not music_data:
             return
 
         for tracks in music_data:

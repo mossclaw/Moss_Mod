@@ -3,7 +3,6 @@ import os
 from copy import copy
 
 import pygame
-import ujson
 import time
 
 from scripts.cat.enums import CatGroup

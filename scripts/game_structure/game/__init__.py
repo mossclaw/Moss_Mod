@@ -8,6 +8,7 @@ from scripts.housekeeping.datadir import get_save_dir
 
 from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
+from scripts.temp_util import read_json
 
 from . import save_load, settings, switches
 
@@ -186,6 +187,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
             encoding="utf-8",
         ) as read_file:
             cat_info = ujson.loads(read_file.read())
+        del read_file
     except:
         print("ERROR: loading faded cat")
         return False

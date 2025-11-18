@@ -6,11 +6,10 @@ import contextlib
 import os
 import random
 
-import ujson
-
 from scripts.game_structure import constants
 from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.housekeeping.datadir import get_save_dir
+from scripts.temp_util import read_resource_dict
 
 
 class Name:
@@ -18,10 +17,8 @@ class Name:
     Stores & handles name generation.
     """
 
-    if os.path.exists("resources/dicts/names/names.json"):
-        with open("resources/dicts/names/names.json", encoding="utf-8") as read_file:
-            names_dict = ujson.loads(read_file.read())
-
+    names_dict = read_resource_dict('names/names')
+    if names_dict:
         if os.path.exists(get_save_dir() + "/prefixlist.txt"):
             with open(
                 str(get_save_dir() + "/prefixlist.txt"), "r", encoding="utf-8"
