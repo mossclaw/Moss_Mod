@@ -57,7 +57,10 @@ class ModMod():
             return open(path, 'rb')
     
     def scan_dir(self, path):
-        return os.scandir(self.real_path(path))
+        try:
+            return os.scandir(self.real_path(path))
+        except:
+            return []
     
     def expand(self, data, path):
         modded = self.load(path)
@@ -72,7 +75,7 @@ class ModMod():
                 else:
                     data[key] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
-            data.expand(set(modded) - set(data))
+            data.extend(set(modded) - set(data))
         else:
             pass # TODO: error message
     
@@ -80,7 +83,7 @@ class ModMod():
         try:
             with self.open_path(path) as read_file:
                 return ujson.loads(read_file.read())
-        except IOError | KeyError:
+        except (IOError, KeyError):
             return None
 
 
