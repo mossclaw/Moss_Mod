@@ -2,14 +2,13 @@ import os
 import random
 from random import choice, randint
 
-import ujson
-
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank
 from scripts.events_module.relationship.group_events import GroupEvents
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 from scripts.events_module.relationship.welcoming_events import Welcoming_Events
+from scripts.temp_util import read_resource_dict
 from scripts.utility import (
     get_cats_same_age,
     get_cats_of_romantic_interest,
@@ -24,12 +23,8 @@ class Relation_Events:
     had_one_event = False
     cats_triggered_events = {}
 
-    base_path = os.path.join("resources", "dicts", "relationship_events")
-
-    types_path = os.path.join(base_path, "group_interactions", "group_types.json")
-    with open(types_path, "r", encoding="utf-8") as read_file:
-        GROUP_TYPES = ujson.load(read_file)
-    del base_path
+    GROUP_TYPES = read_resource_dict('relationship_events/group_interactions/group_types', 
+                                     'Group Interaction Types')
 
     @staticmethod
     def handle_relationships(cat: Cat):

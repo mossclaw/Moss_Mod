@@ -8,6 +8,7 @@ from scripts.housekeeping.datadir import get_save_dir
 
 from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
+from scripts.temp_util import read_json
 
 from . import save_load, settings, switches
 
@@ -86,8 +87,7 @@ debug_settings = {
 # CLAN
 clan: Optional["Clan"] = None
 cat_class = None
-with open(f"resources/prey_config.json", "r", encoding="utf-8") as read_file:
-    prey_config = ujson.loads(read_file.read())
+prey_config = read_json('resources/prey_config.json', 'Prey Config')
 
 rpc = None
 
@@ -147,8 +147,6 @@ WILL CRASH if you try and use this anyway.
 """
 settings: Any
 
-del read_file  # cleanup from load
-
 
 def update_game():
     global current_screen, switch_screens, clicked, keyspressed
@@ -186,6 +184,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
             encoding="utf-8",
         ) as read_file:
             cat_info = ujson.loads(read_file.read())
+        del read_file
     except:
         print("ERROR: loading faded cat")
         return False

@@ -3,7 +3,6 @@ from typing import Dict
 import i18n
 import pygame
 import pygame_gui
-import ujson
 
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
@@ -15,6 +14,7 @@ from scripts.game_structure.ui_elements import (
     UIModifiedImage,
     UIModifiedScrollingContainer,
 )
+from scripts.temp_util import read_json
 from scripts.utility import (
     get_text_box_theme,
     ui_scale,
@@ -29,8 +29,7 @@ from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import ButtonStyles, get_button_dict
 from ..ui.icon import Icon
 
-with open("resources/clansettings.json", "r", encoding="utf-8") as f:
-    settings_dict = ujson.load(f)
+settings_dict = read_json('resources/clansettings.json', 'Clan Settings Data')
 
 
 class ClearingScreen(Screens):

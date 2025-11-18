@@ -18,7 +18,6 @@ from typing import List, Tuple, TYPE_CHECKING, Type, Union, Optional
 
 import i18n
 import pygame
-import ujson
 from pygame_gui.core import ObjectID
 
 from scripts.cat_relations.enums import RelType, RelTier, rel_type_tiers
@@ -32,6 +31,7 @@ from scripts.game_structure.localization import (
 )
 
 logger = logging.getLogger(__name__)
+from scripts.temp_util import read_resource_dict
 from scripts.game_structure import image_cache, localization, constants
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
 from scripts.cat.names import names
@@ -2748,30 +2748,13 @@ def quit(savesettings=False, clearevents=False):
     sys_exit()
 
 
-resource_directory = "resources/dicts/conditions/"
-with open(
-    os.path.normpath(f"{resource_directory}illnesses.json"), "r", encoding="utf-8"
-) as read_file:
-    ILLNESSES = ujson.loads(read_file.read())
-
-with open(
-    os.path.normpath(f"{resource_directory}injuries.json"), "r", encoding="utf-8"
-) as read_file:
-    INJURIES = ujson.loads(read_file.read())
-
-with open(
-    os.path.normpath(f"{resource_directory}permanent_conditions.json"),
-    "r",
-    encoding="utf-8",
-) as read_file:
-    PERMANENT = ujson.loads(read_file.read())
+ILLNESSES = read_resource_dict('conditions/illnesses', 'Illnesses')
+INJURIES = read_resource_dict('conditions/injuries', 'Injuries')
+PERMANENT = read_resource_dict('conditions/permanent_conditions', 'Permanent Conditions')
 
 langs = {"snippet": None, "prey": None}
 
 SNIPPETS = None
 PREY_LISTS = None
 
-with open(
-    os.path.normpath("resources/dicts/backstories.json"), "r", encoding="utf-8"
-) as read_file:
-    BACKSTORIES = ujson.loads(read_file.read())
+BACKSTORIES = read_resource_dict('backstories', 'Backstories')

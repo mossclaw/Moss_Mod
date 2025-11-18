@@ -2,12 +2,12 @@ import random
 
 import i18n
 import os
-import ujson
 
 from scripts.cat.enums import CatGroup
 from scripts.cat.skills import SkillPath
 from scripts.game_structure import game
 from scripts.utility import adjust_list_text
+from scripts.temp_util import read_resource_dict
 
 
 class History:
@@ -15,10 +15,7 @@ class History:
     this class handles the cat's history!
     """
 
-    history_options = {}
-    if os.path.exists("resources/dicts/history_options.json"):
-        with open("resources/dicts/history_options.json", encoding="utf-8") as f:
-            history_options = ujson.load(f)
+    history_options = read_resource_dict('history_options', 'History Options')
 
     def __init__(
         self,

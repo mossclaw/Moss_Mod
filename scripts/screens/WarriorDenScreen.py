@@ -1,7 +1,6 @@
 import i18n
 import pygame
 import pygame_gui
-import ujson
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
@@ -19,6 +18,7 @@ from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButt
 from scripts.game_structure.windows import SelectFocusClans
 from scripts.screens.Screens import Screens
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
+from scripts.temp_util import read_json
 from scripts.utility import (
     ui_scale,
     find_alive_cats_with_rank,
@@ -26,8 +26,7 @@ from scripts.utility import (
     adjust_list_text,
 )
 
-with open("resources/clansettings.json", "r", encoding="utf-8") as f:
-    settings_dict = ujson.load(f)
+settings_dict = read_json('resources/clansettings.json', 'Clan Settings Data')
 
 
 class WarriorDenScreen(Screens):

@@ -23,6 +23,7 @@ import pygame_gui
 
 from scripts.game_structure.ui_manager import UIManager
 from scripts.ui.generate_screen_scale_json import generate_screen_scale
+from scripts.temp_util import read_json
 
 logger = logging.getLogger(__name__)
 
@@ -69,8 +70,7 @@ def set_display_mode(
     if fullscreen is None:
         fullscreen = game_setting_get("fullscreen")
 
-    with open("resources/screen_config.json", "r", encoding="utf-8") as read_config:
-        screen_config = ujson.load(read_config)
+    screen_config = read_json('resources/screen_config.json', use_mods= False, exception= True)
 
     if source_screen is not None:
         curr_variable_dict = source_screen.display_change_save()
