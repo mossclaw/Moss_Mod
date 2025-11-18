@@ -6,7 +6,7 @@ import ujson
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 
 def load_clan_settings():

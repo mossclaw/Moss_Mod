@@ -44,7 +44,7 @@ from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.utility import (
     clamp,
     find_alive_cats_with_rank,

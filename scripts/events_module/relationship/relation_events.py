@@ -8,7 +8,7 @@ from scripts.cat.enums import CatRank
 from scripts.events_module.relationship.group_events import GroupEvents
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 from scripts.events_module.relationship.welcoming_events import Welcoming_Events
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.utility import (
     get_cats_same_age,
     get_cats_of_romantic_interest,

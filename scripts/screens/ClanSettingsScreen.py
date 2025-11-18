@@ -17,7 +17,7 @@ from scripts.game_structure.ui_elements import (
     UIModifiedScrollingContainer,
 )
 from scripts.housekeeping.datadir import open_data_dir
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 from scripts.utility import (
     get_text_box_theme,
     ui_scale,

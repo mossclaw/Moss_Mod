@@ -31,7 +31,7 @@ from scripts.game_structure.localization import (
 )
 
 logger = logging.getLogger(__name__)
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.game_structure import image_cache, localization, constants
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
 from scripts.cat.names import names

@@ -9,7 +9,7 @@ import random
 from scripts.game_structure import constants
 from scripts.cat.enums import CatRank, CatGroup
 from scripts.housekeeping.datadir import get_save_dir
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 
 
 class Name:

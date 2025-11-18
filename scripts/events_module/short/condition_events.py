@@ -29,7 +29,7 @@ from scripts.game_structure.game.switches import (
 )
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.utility import (
     event_text_adjust,
     find_alive_cats_with_rank,

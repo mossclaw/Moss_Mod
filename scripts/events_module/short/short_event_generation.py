@@ -24,7 +24,7 @@ from scripts.events_module.short.short_event import ShortEvent
 from scripts.game_structure import constants, game
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.utility import get_living_clan_cat_count, get_warring_clan
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 loaded_events = {}
 used_events = set()

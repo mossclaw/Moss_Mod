@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from random import randint, choice, choices
 
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 
 
 class Personality:

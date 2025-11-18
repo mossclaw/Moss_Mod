@@ -18,7 +18,7 @@ from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButt
 from scripts.game_structure.windows import SelectFocusClans
 from scripts.screens.Screens import Screens
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 from scripts.utility import (
     ui_scale,
     find_alive_cats_with_rank,

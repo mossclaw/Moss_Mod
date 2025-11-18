@@ -38,7 +38,7 @@ from scripts.screens.enums import GameScreen
 from scripts.ui.generate_box import get_box, BoxStyles
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
-from scripts.temp_util import read_resource_dict, read_json
+from scripts.moss_util import read_resource_dict, read_json
 from scripts.utility import (
     ui_scale,
     process_text,

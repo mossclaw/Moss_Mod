@@ -1,5 +1,5 @@
 import pygame
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.cat.sprites import sprites
 
 

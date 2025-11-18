@@ -27,7 +27,7 @@ from scripts.game_structure.ui_elements import UIImageButton
 from scripts.game_structure.windows import SaveCheck, EventLoading
 from scripts.screens.enums import GameScreen
 from scripts.screens.screens_core.screens_core import rebuild_den_dropdown
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 from scripts.utility import (
     update_sprite,
     ui_scale,

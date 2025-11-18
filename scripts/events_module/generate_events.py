@@ -12,7 +12,7 @@ from scripts.events_module.ongoing.ongoing_event import OngoingEvent
 from scripts.game_structure import constants
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
-from scripts.temp_util import read_resource_dict, read_json
+from scripts.moss_util import read_resource_dict, read_json
 
 
 def get_resource_directory(fallback=False):

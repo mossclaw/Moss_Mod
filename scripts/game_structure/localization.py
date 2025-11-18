@@ -6,7 +6,7 @@ import i18n.translations
 
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 lang_config: Optional[Dict] = None
 _lang_config_directory = os.path.join("resources", "lang", "{locale}", "config.json")

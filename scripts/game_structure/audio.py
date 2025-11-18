@@ -8,7 +8,7 @@ from scripts.game_structure.game.settings import game_setting_get, game_setting_
 from scripts.game_structure import game
 from scripts.game_structure.ui_elements import CatButton, UISpriteButton
 from scripts.screens.enums import GameScreen
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 logger = logging.getLogger(__name__)
 
