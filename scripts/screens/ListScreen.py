@@ -30,7 +30,7 @@ from scripts.screens.enums import GameScreen
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
 from scripts.ui.icon import Icon
 from scripts.ui.theme import get_text_box_theme
-from scripts.ui.scale import ui_scale, ui_scale_value
+from scripts.ui.scale import ui_scale, ui_scale_value, ui_scale_dimensions
 
 
 class ListScreen(Screens):
@@ -360,7 +360,17 @@ class ListScreen(Screens):
         self.cat_list_bar_elements["sort_by_label"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((-2, 0), (75, 34))),
             f"screens.list.filter_label",
+<<<<<<< HEAD
             button_dict,
+=======
+            {
+                "normal": get_button_dict(ButtonStyles.DROPDOWN, (77, 34))[
+                    "normal"
+                ].subsurface(
+                    (0, 0), ui_scale_dimensions((75, 34))
+                )  # this horrific thing gets rid of the double-thick line
+            },
+>>>>>>> 61535bcfd (Fixed 'sort by' button not scaling properly.)
             object_id="@buttonstyles_dropdown",
             container=self.cat_list_bar,
             starting_height=1,
