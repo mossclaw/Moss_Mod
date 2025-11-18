@@ -43,7 +43,7 @@ from scripts.ui.theme import get_text_box_theme
 from scripts.cat.sprites.display_sprites import generate_sprite
 from scripts.events_module.text_adjust import process_text
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
-from scripts.temp_util import read_resource_dict, read_json
+from scripts.moss_util import read_resource_dict, read_json
 
 
 class EventEditScreen(Screens):

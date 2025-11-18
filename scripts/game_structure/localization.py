@@ -4,7 +4,7 @@ from typing import Dict, Optional
 import i18n
 import ujson
 
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 lang_config: Optional[Dict] = None
 _lang_config_directory = os.path.join("resources", "lang", "{locale}", "config.json")

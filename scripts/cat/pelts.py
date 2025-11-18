@@ -14,7 +14,7 @@ from scripts.cat.render import Render
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
 from scripts.events_module.text_adjust import adjust_list_text
-from scripts.temp_util import union_of_entries, reverse_dict, read_resource_dict, OnUpdateList
+from scripts.moss_util import union_of_entries, reverse_dict, read_resource_dict, OnUpdateList
 from scripts.cat.accessory import Accessory, AccessoryDef
 
 logger = logging.getLogger(__name__)

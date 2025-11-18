@@ -8,7 +8,7 @@ from scripts.housekeeping.datadir import get_save_dir
 
 from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 from . import save_load, settings, switches
 

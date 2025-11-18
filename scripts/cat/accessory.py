@@ -1,5 +1,5 @@
 from scripts.cat.save_load import load_instance, load_instance_list
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from random import choice
 from itertools import zip_longest
 

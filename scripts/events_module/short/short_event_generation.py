@@ -31,7 +31,7 @@ from scripts.clan_package.get_clan_cats import (
     get_living_clan_cat_count,
     find_alive_cats_with_rank,
 )
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 loaded_events = {}
 used_events = set()

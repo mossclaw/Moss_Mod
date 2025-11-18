@@ -24,7 +24,7 @@ from scripts.ui.theme import get_text_box_theme
 from scripts.events_module.text_adjust import adjust_list_text
 from scripts.ui.scale import ui_scale
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 settings_dict = DISPLAY_SETTINGS["clan"]
 

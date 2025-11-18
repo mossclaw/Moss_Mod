@@ -7,7 +7,7 @@ from scripts.clan_resources.herb.herb import HERBS
 from scripts.clan_resources.supply import Supply
 
 from scripts.screens.enums import GameScreen
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 
 # this is just to make referencing main menu screens as a whole easier,
 # note that the clan creation screen is included and the clan settings screen is excluded. this is intended.

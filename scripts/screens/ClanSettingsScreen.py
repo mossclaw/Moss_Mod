@@ -17,7 +17,7 @@ from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.housekeeping.datadir import open_data_dir
 from ..ui.theme import get_text_box_theme
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 from .Screens import Screens
 from .enums import GameScreen
 from ..cat import save_load

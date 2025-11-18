@@ -32,7 +32,7 @@ from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.events_module.text_adjust import event_text_adjust, get_leader_life_notice
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 
 logger = logging.getLogger(__name__)
 

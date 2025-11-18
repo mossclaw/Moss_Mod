@@ -7,7 +7,7 @@ from scripts.cat.enums import CatGroup
 from scripts.cat.skills import SkillPath
 from scripts.game_structure import game
 from scripts.events_module.text_adjust import adjust_list_text
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 
 
 class History:

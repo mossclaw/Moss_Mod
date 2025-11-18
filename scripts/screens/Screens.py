@@ -30,7 +30,7 @@ from scripts.ui.windows.save_check import SaveCheckWindow
 from scripts.ui.event_load_animation import EventLoadingAnimation
 from scripts.screens.enums import GameScreen
 from scripts.ui.scale import ui_scale_blit
-from scripts.temp_util import read_json
+from scripts.moss_util import read_json
 from scripts.game_structure import game
 
 

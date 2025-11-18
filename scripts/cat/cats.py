@@ -59,7 +59,7 @@ from scripts.cat.sprites.display_sprites import update_sprite, update_mask, gene
 from scripts.events_module.text_adjust import event_text_adjust, leader_ceremony_text_adjust
 from scripts.events_module.event_filters import get_personality_compatibility
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 
 import scripts.game_structure.screen_settings
 

@@ -9,7 +9,7 @@ from scripts.events_module.relationship.group_events import GroupEvents
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 from scripts.events_module.relationship.welcoming_events import Welcoming_Events
 from scripts.events_module.event_filters import filter_relationship_type
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.clan_package.get_clan_cats import (
     get_cats_same_age,
     get_possible_mates,
