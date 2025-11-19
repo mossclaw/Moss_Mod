@@ -92,16 +92,20 @@ class Pelt:
 
     # Pelt editing
     def _edit_sprites_for(pelt, attr):
-        return [ str(x) for x in Pelt._pelt_data['poses'][attr[7:]][pelt.length] ]
+        if len(attr) > 1:
+            return None
+        return [ str(x) for x in Pelt._pelt_data['poses'][attr[0][7:]][pelt.length] ]
     def _edit_set_sprite(pelt, attr, value):
-        pelt.cat_sprites[attr[7:]] = int(value)
+        pelt.cat_sprites[attr[0][7:]] = int(value)
     def _edit_get_sprite(pelt, attr):
-        return str(pelt.cat_sprites[attr[7:]])
+        return str(pelt.cat_sprites[attr[0][7:]])
+    _edit_sprite_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite, True)
         
     def _edit_set_suffix(pelt, attr, value):
-        setattr(pelt, attr.split(' ')[-1], value)
+        setattr(pelt, attr[0].split(' ')[-1], value)
     def _edit_get_suffix(pelt, attr):
-        return getattr(pelt, attr.split(' ')[-1])
+        return getattr(pelt, attr[0].split(' ')[-1])
+    _edit_suffix_funcs = (None, _edit_get_suffix, _edit_set_suffix, True)
     
     def _edit_accessory_children(pelt, attr):
         def available(slot):
@@ -155,6 +159,7 @@ class Pelt:
                 acc.color[i] = value
             case ['accessory', slot, ('pattern', i)]:
                 acc.pattern[i] = value
+    _edit_accessory_funcs = (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set, False)
    
     def _edit_scars_children(pelt, attr):
         match len(attr):
@@ -177,6 +182,7 @@ class Pelt:
                 pelt.scars.append(value)
             case ['scars', name]:
                 pelt.scars = [ x for x in pelt.scars + [value] if x != name and x != 'Remove' ]
+    _edit_scars_funcs = (_edit_scars_children, _edit_scars_get, _edit_scars_set, False)
                 
     def _tints(data):
         return union_of_entries(data["possible_tints"])
@@ -199,42 +205,26 @@ class Pelt:
         'skin'              : _pelt_data['skin']['type'],
         'skin_color'        : _pelt_data['skin']['color'],
         'white_patches_tint': _tints(sprites.white_patches_tints),
-        'sprite_newborn'    : _edit_sprites_for,
-        'sprite_kitten'     : _edit_sprites_for,
-        'sprite_adolescent' : _edit_sprites_for,
-        'sprite_adult'      : _edit_sprites_for,
-        'sprite_senior'     : _edit_sprites_for,
-#        'sprite_para_adult' : [],
         'reverse'           : ['False', 'True'],
         'tuft'              : _pelt_data['tuft']['type'],
         'tuft_color'        : _pelt_data['tuft']['color']['white'],
         'tortie_tuft'       : ['False', 'True'],
     }
-    edit_get_funcs = {
-        'pelt name'        : _edit_get_suffix,
-        'sprite_newborn'   : _edit_get_sprite,
-        'sprite_kitten'    : _edit_get_sprite,
-        'sprite_adolescent': _edit_get_sprite,
-        'sprite_adult'     : _edit_get_sprite,
-        'sprite_senior'    : _edit_get_sprite,
-    }
-    edit_set_funcs = {
-        'pelt name'        : _edit_set_suffix,
-        'sprite_newborn'   : _edit_set_sprite,
-        'sprite_kitten'    : _edit_set_sprite,
-        'sprite_adolescent': _edit_set_sprite,
-        'sprite_adult'     : _edit_set_sprite,
-        'sprite_senior'    : _edit_set_sprite,
-    }
-    edit_children = { 
-        'accessory': (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set),
-        'scars'    : (_edit_scars_children,     _edit_scars_get,     _edit_scars_set),     
+    edit_funcs = { 
+        'accessory'        : _edit_accessory_funcs,
+        'scars'            : _edit_scars_funcs,     
+        'pelt name'        : _edit_suffix_funcs,
+        'sprite_newborn'   : _edit_sprite_funcs,
+        'sprite_kitten'    : _edit_sprite_funcs,
+        'sprite_adolescent': _edit_sprite_funcs,
+        'sprite_adult'     : _edit_sprite_funcs,
+        'sprite_senior'    : _edit_sprite_funcs
     }
     del _tints
-    del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite
-    del _edit_set_suffix, _edit_get_suffix
-    del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set
-    del _edit_scars_children, _edit_scars_get, _edit_scars_set
+    del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite, _edit_sprite_funcs
+    del _edit_set_suffix, _edit_get_suffix, _edit_suffix_funcs
+    del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set, _edit_accessory_funcs
+    del _edit_scars_children, _edit_scars_get, _edit_scars_set, _edit_scars_funcs
     for x in edit_values.values():
         if isinstance(x, list) and len(x) > 10:
             x.sort()
@@ -243,7 +233,7 @@ class Pelt:
         edit_values[key] = ['None'] + edit_values[key]
     for key in ['tint', 'white_patches_tint']:
         edit_values[key] = ['none'] + edit_values[key]
-    editable = list(edit_values) + list(edit_children)
+    editable = sorted(set(edit_values) | set(edit_funcs))
     edit_translate_set = { 'None': None, 'False': False, 'True': True }
     edit_translate_get = { None: 'None', False: 'False', True: 'True' }
 
@@ -640,38 +630,40 @@ class Pelt:
 
     # Pelt editing
     def edit_options_for(self, attribute):
-        if len(attribute) == 0:
+        n = len(attribute)
+        if n == 0:
             return Pelt.editable
-        elif attribute[0] in Pelt.edit_children:
-            return Pelt.edit_children[attribute[0]][0](self, attribute)
-        elif len(attribute) > 1:
-            return None
-        vals = Pelt.edit_values[attribute[0]]
-        if callable(vals):
-            vals = vals(self, attribute[0])
-        return vals
+        
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        if n == 1 and first in Pelt.edit_values:
+            return Pelt.edit_values[first]
+        elif funcs and funcs[0]:
+            return funcs[0](self, attribute)
+        return None
 
     def edit_get(self, attribute):
-        if attribute[0] in Pelt.edit_children:
-            return Pelt.edit_children[attribute[0]][1](self, attribute)
-        elif attribute[0] in Pelt.edit_get_funcs:
-            value = Pelt.edit_get_funcs[attribute[0]](self, attribute[0])
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        translate = funcs is None or funcs[3]
+        if funcs:
+            value = funcs[1](self, attribute)
         else:
-            value = getattr(self, attribute[0])
-        if value in Pelt.edit_translate_get:
+            value = getattr(self, first)
+        if translate and value in Pelt.edit_translate_get:
             value = Pelt.edit_translate_get[value]
         return value
 
     def edit_set(self, attribute, value):
-        if attribute[0] in Pelt.edit_children:
-            Pelt.edit_children[attribute[0]][2](self, attribute, value)
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        translate = funcs is None or funcs[3]
+        if translate and value in Pelt.edit_translate_set:
+            value = Pelt.edit_translate_set[value]
+        if funcs:
+            funcs[2](self, attribute, value)
         else:
-            if value in Pelt.edit_translate_set:
-                value = Pelt.edit_translate_set[value]
-            if attribute[0] in Pelt.edit_set_funcs:
-                Pelt.edit_set_funcs[attribute[0]](self, attribute[0], value)
-            else:
-                setattr(self, attribute[0], value)
+            setattr(self, first, value)
         self.rebuild_sprite = True
 
 
