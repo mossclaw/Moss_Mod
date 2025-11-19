@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 #                            Loading json files                                #
 # ---------------------------------------------------------------------------- #
 
+
 def _read_single_json(path, use_mods=True):
     with open(path, 'r', encoding='utf-8') as read_file:
         data = ujson.loads(read_file.read())
@@ -18,7 +19,7 @@ def _read_single_json(path, use_mods=True):
         return data
     
 
-def read_json(path, description_for_error = None, fallback=None, use_mods=True, exception=False):
+def read_json(path, description_for_error = None, use_mods=True, exception=False, fallback=None):
     def error(description_for_error):
         if description_for_error is not None:
             logger.error(f"Failed to read {description_for_error}.")
@@ -68,6 +69,9 @@ class _DirEntry:
 
 
 class ModMod():
+    def __init__(self, path):
+        self.mod_path = path
+    
     def real_path(self, path):
         return path
     
@@ -91,6 +95,7 @@ class ModMod():
     def expand(self, data, path):
         modded = self.load(path)
         if modded:
+            print(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
     
     def expand_part(self, data, modded):
@@ -115,7 +120,7 @@ class ModMod():
 
 class DirModMod(ModMod):
     def __init__(self, path):
-        self.mod_path = path
+        ModMod.__init__(self, path)
         self.len = len(path) + 1
     
     def real_path(self, path):
@@ -126,7 +131,7 @@ class DirModMod(ModMod):
 
 class ZipModMod(ModMod):
     def __init__(self, path):
-        self.zip_path = path
+        ModMod.__init__(self, path)
         self.zip = ZipFile(path)
         self.fs = self.build_fs()
     
@@ -157,7 +162,8 @@ class ZipModMod(ModMod):
 
 
 class BaseMod(ModMod):
-    pass
+    def __init__(self):
+        ModMod.__init__(self, 'BASE')
 
 
 
@@ -165,12 +171,15 @@ class BaseMod(ModMod):
 mod_mods = []
 base_mod = BaseMod()
 try:
+    print('Finding mod-mods...')
     for entry in os.scandir('mods'):
         try:
             path = entry.path
             if entry.is_dir():
+                print(f"  Folder: {path}")
                 mod_mods.append(DirModMod(path))
             elif is_zipfile(path):
+                print(f"  Zip file: {path}")
                 mod_mods.append(ZipModMod(path))
         except:
             raise
