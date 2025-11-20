@@ -31,6 +31,11 @@
             "If enabled, sprites and patrol art will no longer be antialiased (\"blurry\"/\"smooth\") when in fullscreen.",
             false
         ],
+        "background blending": [
+            "Blend sprites with background",
+            "If enabled, blend cat sprites slightly with background to make them look more part of the scene.",
+            false
+        ],
         "custom cursor": [
             "Custom cursor",
             "The cursor will be replaced with a cat paw. The cursor is currently unfinished and is prone to crashing.",
