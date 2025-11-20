@@ -146,43 +146,46 @@ class ClanScreen(Screens):
             used_positions.remove(place)
 
             try:
-                image = x.sprite.convert_alpha()
-                try:
-                    blend_layer = (
-                        self.game_bgs[self.active_bg]
-                        .subsurface(ui_scale(pygame.Rect(tuple(x.placement), (50, 50))))
-                        .convert_alpha()
-                    )
-                    blend_layer = pygame.transform.box_blur(
-                        blend_layer, self.layout["cat_shading"]["blur"]
-                    )
-                except ValueError:
-                    x_diff = ui_scale_value(
-                        50 + (x.placement[0] if x.placement[0] < 0 else 0)
-                    )
-                    y_diff = ui_scale_value(
-                        50 + (x.placement[1] if x.placement[1] < 0 else 0)
-                    )
-                    avg_layer = self.game_bgs[self.active_bg].subsurface(
-                        ui_scale(
-                            pygame.Rect(
-                                (
-                                    x.placement[0] if x.placement[0] > 0 else 0,
-                                    x.placement[1] if x.placement[1] > 0 else 0,
-                                ),
-                                (x_diff, y_diff),
+                sprite = x.sprite.convert_alpha()
+                
+                if game_setting_get('background blending'):
+                    image = sprite
+                    try:
+                        blend_layer = (
+                            self.game_bgs[self.active_bg]
+                            .subsurface(ui_scale(pygame.Rect(tuple(x.placement), (50, 50))))
+                            .convert_alpha()
+                        )
+                        blend_layer = pygame.transform.box_blur(
+                            blend_layer, self.layout["cat_shading"]["blur"]
+                        )
+                    except ValueError:
+                        x_diff = ui_scale_value(
+                            50 + (x.placement[0] if x.placement[0] < 0 else 0)
+                        )
+                        y_diff = ui_scale_value(
+                            50 + (x.placement[1] if x.placement[1] < 0 else 0)
+                        )
+                        avg_layer = self.game_bgs[self.active_bg].subsurface(
+                            ui_scale(
+                                pygame.Rect(
+                                    (
+                                        x.placement[0] if x.placement[0] > 0 else 0,
+                                        x.placement[1] if x.placement[1] > 0 else 0,
+                                    ),
+                                    (x_diff, y_diff),
+                                )
                             )
                         )
-                    )
-                    blend_layer = pygame.Surface(ui_scale_dimensions((50, 50)))
-                    blend_layer.fill(pygame.transform.average_color(avg_layer))
+                        blend_layer = pygame.Surface(ui_scale_dimensions((50, 50)))
+                        blend_layer.fill(pygame.transform.average_color(avg_layer))
 
-                sprite = image.copy()
-                sprite.fill((255, 255, 255, 255), special_flags=pygame.BLEND_RGB_MAX)
-                sprite.blit(blend_layer, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                image.set_alpha(self.layout["cat_shading"]["blend_strength"])
-                sprite.blit(image, (0, 0), special_flags=pygame.BLEND_ALPHA_SDL2)
-                sprite.set_alpha(255)
+                    sprite = image.copy()
+                    sprite.fill((255, 255, 255, 255), special_flags=pygame.BLEND_RGB_MAX)
+                    sprite.blit(blend_layer, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    image.set_alpha(self.layout["cat_shading"]["blend_strength"])
+                    sprite.blit(image, (0, 0), special_flags=pygame.BLEND_ALPHA_SDL2)
+                    sprite.set_alpha(255)
 
                 self.cat_buttons.append(
                     UISpriteButton(
