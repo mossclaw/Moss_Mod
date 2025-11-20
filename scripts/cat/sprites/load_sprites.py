@@ -128,7 +128,7 @@ class Sprites:
 
     def spritesheet(self, mod, path, name):
         """
-        Add spritesheet called name from a_file.
+        Add spritesheet called name from path.
 
         :param mod:  The mod containing the image.
         :param path: Path to the image to create a spritesheet from.

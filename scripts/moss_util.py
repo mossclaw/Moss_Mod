@@ -170,9 +170,10 @@ class BaseMod(ModMod):
         ModMod.__init__(self, 'BASE')
 
 
+
+# Load mod list
 def load_mod(modlist, entry):
     path = entry.path
-    
     if entry.is_dir():
         print(f"  Folder: {path}")
         modlist.append(DirModMod(path))
@@ -180,28 +181,26 @@ def load_mod(modlist, entry):
         print(f"  Zip file: {path}")
         modlist.append(ZipModMod(path))
 
-
-
-# Load mod list
 mod_mods = []
 base_mod = BaseMod()
-load_order = read_json('mods/load_order.json')
-load_order_set = set(load_order)
-load_order_present = dict()
+_load_order = read_json('mods/load_order.json')
+_load_order_set = set(_load_order)
+_load_order_present = dict()
 print('Finding mod-mods...')
 for entry in os.scandir('mods'):
     path = entry.path
     name = path[5:].removesuffix('.zip')
-    if name in load_order_set:
-        load_order_present[name] = entry
+    if name in _load_order_set:
+        _load_order_present[name] = entry
     else:
         load_mod(mod_mods, entry)
-for name in load_order:
-    if name in load_order_present:
-        load_mod(mod_mods, load_order_present[name])
+for name in _load_order:
+    if name in _load_order_present:
+        load_mod(mod_mods, _load_order_present[name])
     else:
         print(f"  {name} was in load_order.json, but not present in mods folder. Ignoring.")
 print(f"{len(mod_mods)} mod-mods found.")
+del _load_order, _load_order_set, _load_order_present
 all_mods = [base_mod] + mod_mods
 
 
