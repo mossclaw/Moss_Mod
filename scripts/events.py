@@ -67,6 +67,8 @@ from scripts.clan_package.get_clan_cats import (
     find_alive_cats_with_rank,
     get_living_clan_cat_count,
 )
+logger = logging.getLogger(__name__)
+
 
 logger = logging.getLogger(__name__)
 

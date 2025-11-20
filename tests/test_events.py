@@ -23,6 +23,9 @@ from scripts.clan_package.get_clan_cats import (
 from scripts.game_structure.game.save_load import read_clans
 from scripts.housekeeping.datadir import get_save_dir
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestEvents(unittest.TestCase):
     @classmethod
@@ -138,6 +141,3 @@ class TestEvents(unittest.TestCase):
                                 )
                             )
                         )
-
-                if not _ % 100:
-                    print(f"CLANCATS ALIVE: {get_living_clan_cat_count(Cat)}")

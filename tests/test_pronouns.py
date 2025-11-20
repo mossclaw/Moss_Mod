@@ -21,6 +21,9 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.pronouns import get_new_pronouns
 from scripts.events_module.text_adjust import process_text
 
+import logging
+logging.disable(logging.WARNING)
+
 
 def _test():
     """Iterate through all files in 'resources'

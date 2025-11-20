@@ -30,6 +30,9 @@ from scripts.clan import Clan, Afterlife
 from scripts.clan_resources.freshkill import FreshkillPile
 from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class FreshkillPileTest(unittest.TestCase):
     @classmethod

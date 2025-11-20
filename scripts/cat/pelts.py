@@ -440,6 +440,7 @@ class Pelt:
                 val = { x for x in val if x not in parts } | { combined }
 
         self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
+        self.rebuild_sprite = True
 
 
     @staticmethod
@@ -450,15 +451,6 @@ class Pelt:
     def __filter_not_in(item, values):
         return item not in values
 
-
-    @property
-    def scars(self):
-        return self._scars
-
-    @scars.setter
-    def scars(self, val):
-        self.rebuild_sprite = True
-        self._scars = val
 
     @property
     def paralyzed(self):

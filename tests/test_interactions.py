@@ -16,6 +16,9 @@ from scripts.cat_relations.interaction import (
     cats_fulfill_single_interaction_constraints,
 )
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class RelationshipConstraints(unittest.TestCase):
     def test_siblings(self):

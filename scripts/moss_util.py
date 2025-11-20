@@ -95,7 +95,7 @@ class ModMod():
     def expand(self, data, path):
         modded = self.load(path)
         if modded:
-            print(f"Expanding file {path} from mod-mod at {self.mod_path}")
+            logger.info(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
     
     def expand_part(self, data, modded):
@@ -186,7 +186,7 @@ base_mod = BaseMod()
 _load_order = read_json('mods/load_order.json')
 _load_order_set = set(_load_order)
 _load_order_present = dict()
-print('Finding mod-mods...')
+logger.info('Finding mod-mods...')
 for entry in os.scandir('mods'):
     path = entry.path
     name = path[5:].removesuffix('.zip')
@@ -198,8 +198,8 @@ for name in _load_order:
     if name in _load_order_present:
         load_mod(mod_mods, _load_order_present[name])
     else:
-        print(f"  {name} was in load_order.json, but not present in mods folder. Ignoring.")
-print(f"{len(mod_mods)} mod-mods found.")
+        logger.info(f"  {name} was in load_order.json, but not present in mods folder. Ignoring.")
+logger.info(f"{len(mod_mods)} mod-mods found.")
 del _load_order, _load_order_set, _load_order_present
 all_mods = [base_mod] + mod_mods
 

@@ -11,6 +11,9 @@ from scripts.cat.history import History
 from scripts.clan import Clan
 from scripts.events_module.patrol.patrol import Patrol
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestCondition(unittest.TestCase):
     condition_lists = {

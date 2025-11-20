@@ -11,6 +11,9 @@ from scripts.clan import Clan
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class CanHaveKits(unittest.TestCase):
     def test_prevent_kits(self):

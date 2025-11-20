@@ -15,6 +15,9 @@ from scripts.events_module.event_filters import (
 )
 from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestPersonalityCompatibility(unittest.TestCase):
     current_traits = [

@@ -15,6 +15,9 @@ from scripts.game_structure.localization import (
 from scripts.cat.pronouns import get_new_pronouns, determine_plural_pronouns
 from scripts.events_module.text_adjust import event_text_adjust
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestLocalisation(unittest.TestCase):
     @classmethod

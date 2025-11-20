@@ -14,6 +14,9 @@ import unittest
 
 import ujson
 
+import logging
+logging.disable(logging.WARNING)
+
 
 def _test():
     """Iterate through all files in 'resources'

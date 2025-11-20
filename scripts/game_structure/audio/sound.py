@@ -6,6 +6,7 @@ import pygame
 import pygame_gui
 import ujson
 
+from scripts.moss_util import read_json
 from scripts.game_structure.game.settings import game_setting_get, game_setting_set
 from scripts.ui.elements.cat_button import CatButton
 from scripts.ui.elements.image_button import UIImageButton
