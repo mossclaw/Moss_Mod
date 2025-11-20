@@ -60,11 +60,12 @@ We would create a directory `mods/deathray`, and add two .json files:
 ```json
 {
   "eyes": {
-    "DEATHRAY" : ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
-    "CONTRAST" : ["#ffffff", "#000000", "#ffffff", "#000000"]
+    "-DEATHRAY" : ["#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+    "-CONTRAST" : ["#ffffff", "#000000", "#ffffff", "#000000"]
   }
 }
 ```
+Prepending the keys with `-` means that conflicts with other mod-mods adding a color with the same name is resolved by load order.
 
 `mods/deathray/resources/dicts/fantasy_pelts.json`:
 ```json
