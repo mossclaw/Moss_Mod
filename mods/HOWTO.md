@@ -39,7 +39,7 @@ and the mod, then for each key in the mod dict:
   The `-` is removed and whatever value was in the original is replaced with the value 
   from the mod.
 - If the key is not in the original:
-  The key and its value is added to the dict.
+  The key and its value are added to the dict.
 - If the key is in the original:
   - If both original and modded values are dicts:
     They are merged in the way described here.
@@ -51,7 +51,7 @@ and the mod, then for each key in the mod dict:
 
 ### Example
 Say we want to create a mod-mod named "deathray" that adds two new eye colors designed to 
-sear the viewers retinas.
+sear the viewer's retinas.
 
 We would create a directory `mods/deathray`, and add two .json files:
 
