@@ -71,36 +71,6 @@ class Sprites:
             return self.image
 
 
-    class PaletteSet:
-        def __init__(self, path, palette_names):
-            self.palettes = None
-            self.base_palette = None
-            self.path = path
-            self.palette_names = palette_names
-
-        def apply(self, sprite, palette):
-            if palette == 'BASE':
-                return sprite
-
-            if self.palettes is None:
-                image = pygame.image.load(path)
-                with pygame.PixelArray(image) as array:
-                    n = array.shape[1]   # pylint: disable=unsubscriptable-object
-                    rows = [
-                        [ image.unmap_rbg(color) for color in array[::, i] ]
-                        for i in range(0, n)
-                    ]
-                    self.base_palette = rows[0]
-                    self.palettes = dict(zip(self.palette_names, rows[1::]))
-
-            sprite = sprite.copy()
-            with pygame.PixelArray(sprite) as array:
-                for old_color, new_color in zip(self.palette_names, self.palettes[palette]):
-                    array.replace(old_color, new_color)
-
-            return sprite
-
-
     class Blank:
         def __init__(self, size):
             self.sprite = pygame.Surface(

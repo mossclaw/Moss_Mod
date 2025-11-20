@@ -70,31 +70,32 @@ def all_shortevent_files():
     )
 
 
+def do_test_schema(files, schema):
+    for file in files:
+        data = json.loads(file.read_text())
+        try:
+            jsonschema.validate(
+                data, schema, cls=jsonschema.Draft7Validator, registry=registry
+            )
+        except:
+            print(file.relative_to(ROOT_DIR))
+            raise
+    
+
+
 def test_thoughts_schema():
     """Test that all thought JSONs are correct according to the JSON schema"""
-    for thought_file in all_thought_files():
-        data = json.loads(thought_file.read_text())
-        jsonschema.validate(
-            data, THOUGHT_SCHEMA, cls=jsonschema.Draft7Validator, registry=registry
-        )
+    do_test_schema(all_thought_files(), THOUGHT_SCHEMA)
 
 
 def test_patrols_schema():
     """Test that all patrol JSONs are correct according to the JSON schema"""
-    for patrol_file in all_patrol_files():
-        data = json.loads(patrol_file.read_text())
-        jsonschema.validate(
-            data, PATROL_SCHEMA, cls=jsonschema.Draft7Validator, registry=registry
-        )
+    do_test_schema(all_patrol_files(), PATROL_SCHEMA)
 
 
 def test_shortevent_schema():
     """Tests that all shortevent JSONs are correct according to the JSON schema"""
-    for shortevent_file in all_shortevent_files():
-        data = json.loads(shortevent_file.read_text())
-        jsonschema.validate(
-            data, SHORTEVENT_SCHEMA, cls=jsonschema.Draft7Validator, registry=registry
-        )
+    do_test_schema(all_shortevent_files(), SHORTEVENT_SCHEMA)
 
 
 class TestJsonSchemas(unittest.TestCase):

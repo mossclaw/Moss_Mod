@@ -120,6 +120,7 @@ AccessoryDef.load_available()
 
 
 class Accessory:
+    @staticmethod
     def _make_name_dict(acc_dict):
         return { k: [ x.name for x in v ] for k, v in acc_dict.items() }
     _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
@@ -179,9 +180,6 @@ class Accessory:
                     render.merge_layer()
                 render.merge_layer()
 
-
-    def available_colors(i):
-        return Acc
 
     @staticmethod
     def __lookup(accessory):
