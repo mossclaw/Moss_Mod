@@ -101,7 +101,11 @@ class ModMod():
     def expand_part(self, data, modded):
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
-                if key in data:
+                replace = key[0] == '-'
+                if replace:
+                    key = key[1:]
+                
+                if not replace and key in data:
                     self.expand_part(data[key], modded[key])
                 else:
                     data[key] = modded[key]
@@ -166,27 +170,38 @@ class BaseMod(ModMod):
         ModMod.__init__(self, 'BASE')
 
 
+def load_mod(modlist, entry):
+    path = entry.path
+    
+    if entry.is_dir():
+        print(f"  Folder: {path}")
+        modlist.append(DirModMod(path))
+    elif is_zipfile(path):
+        print(f"  Zip file: {path}")
+        modlist.append(ZipModMod(path))
+
+
 
 # Load mod list
 mod_mods = []
 base_mod = BaseMod()
-try:
-    print('Finding mod-mods...')
-    for entry in os.scandir('mods'):
-        try:
-            path = entry.path
-            if entry.is_dir():
-                print(f"  Folder: {path}")
-                mod_mods.append(DirModMod(path))
-            elif is_zipfile(path):
-                print(f"  Zip file: {path}")
-                mod_mods.append(ZipModMod(path))
-        except:
-            raise
-            pass
-except:
-    raise
-    pass
+load_order = read_json('mods/load_order.json')
+load_order_set = set(load_order)
+load_order_present = dict()
+print('Finding mod-mods...')
+for entry in os.scandir('mods'):
+    path = entry.path
+    name = path[5:].removesuffix('.zip')
+    if name in load_order_set:
+        load_order_present[name] = entry
+    else:
+        load_mod(mod_mods, entry)
+for name in load_order:
+    if name in load_order_present:
+        load_mod(mod_mods, load_order_present[name])
+    else:
+        print(f"  {name} was in load_order.json, but not present in mods folder. Ignoring.")
+print(f"{len(mod_mods)} mod-mods found.")
 all_mods = [base_mod] + mod_mods
 
 
