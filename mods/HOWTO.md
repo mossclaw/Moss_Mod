@@ -81,7 +81,7 @@ Thus adding both new colors to the "yellow" color group.
 To make sharing your mod-mod with others easier, you can make it a .zip file instead of 
 a directory. To do so, you create a zip file containing the *contents* of the directory.
 So if you were to zip up `mods/deathray` and add it in zipped form to the game instead, 
-you would have a file `mods/deathray.zip`, and if opening it the immediate (top-level) 
+you would have a file `mods/deathray.zip`. If you open the zip file, the immediate (top-level) 
 contents should be the same as in the directory version.
 
 ### Load order
