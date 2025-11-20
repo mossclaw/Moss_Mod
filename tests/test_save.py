@@ -19,6 +19,9 @@ else:
         if i.startswith("save"):
             num_example_saves += 1
 
+import logging
+logging.disable(logging.WARNING)
+
 
 @unittest.skipIf(
     num_example_saves == 0,

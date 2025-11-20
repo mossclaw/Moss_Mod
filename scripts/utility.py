@@ -1161,8 +1161,8 @@ def filter_relationship_type(
         all_possible_tags.extend(tier_list)
         all_possible_tags.extend([f"{l}_only" for l in tier_list])
     if not set(filter_list).issubset(set(all_possible_tags)):
-        print(
-            f"WARNING: {[tag for tag in filter_list if tag not in all_possible_tags]} is not a valid relationship_status tag!"
+        logger.warning(
+            f"{[tag for tag in filter_list if tag not in all_possible_tags]} is not a valid relationship_status tag!"
         )
 
     if patrol_leader:
@@ -2578,9 +2578,8 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
             clan.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
-            print(
-                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
-                f"Random chosen."
+            logger.warning(
+                f"attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. Random chosen."
             )
             clan.chosen_symbol = choice(sprites.clan_symbols)
 

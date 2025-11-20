@@ -15,6 +15,9 @@ from scripts.events_module.relationship.group_events import (
     GroupInteraction,
 )
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class MainCatFiltering(unittest.TestCase):
     test_clan = Clan(

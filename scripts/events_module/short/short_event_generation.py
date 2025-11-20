@@ -1,4 +1,5 @@
 import random
+import logging
 from typing import Optional
 
 import i18n
@@ -28,6 +29,7 @@ from scripts.moss_util import read_json
 
 loaded_events = {}
 used_events = set()
+logger = logging.getLogger(__name__)
 
 
 def get_resource_directory(fallback=False):
@@ -160,7 +162,7 @@ def create_short_event(
 
     else:
         # this doesn't necessarily mean there's a problem, but can be helpful for narrowing down possibilities
-        print(f"WARNING: no {event_type}: {sub_types} events found for {main_cat.name}")
+        logger.warning(f"no {event_type}: {sub_types} events found for {main_cat.name}")
         return
 
 

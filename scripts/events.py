@@ -5,7 +5,7 @@ TODO: Docs
 
 
 """
-
+import logging
 import random
 
 # pylint: enable=line-too-long
@@ -56,6 +56,8 @@ from scripts.utility import (
     history_text_adjust,
     unpack_rel_block,
 )
+logger = logging.getLogger(__name__)
+
 
 
 class Events:
@@ -2084,10 +2086,10 @@ class Events:
             kill_chance = max(1, int(kill_chance))
 
             if not int(random.random() * kill_chance):
-                print(
+                logger.info(
                     cat.name, "TARGET CHOSEN", Cat.fetch_cat(chosen_target.cat_to).name
                 )
-                print("KILL KILL KILL")
+                logger.info("KILL KILL KILL")
 
                 create_short_event(
                     event_type="birth_death",

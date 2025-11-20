@@ -11,6 +11,9 @@ from scripts.events_module.patrol.patrol import PatrolEvent, Patrol
 
 from scripts.utility import filter_relationship_type
 
+import logging
+logging.disable(logging.WARNING)
+
 # TODO: redo them! Filtering is not working like this anymore, but it got removed from .github/workflows/test.yml
 # so they are not failing!
 

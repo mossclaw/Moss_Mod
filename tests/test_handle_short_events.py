@@ -9,6 +9,9 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestHandleEvent(unittest.TestCase):
     def setUp(self):

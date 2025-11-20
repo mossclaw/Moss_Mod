@@ -34,6 +34,9 @@ registry = Registry().with_resources(
     ]
 )
 
+import logging
+logging.disable(logging.WARNING)
+
 
 def all_thought_files():
     """
