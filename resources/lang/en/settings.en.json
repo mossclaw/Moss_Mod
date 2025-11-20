@@ -6,6 +6,8 @@
         "fullscreen scaling_tooltip": "If enabled, fullscreen will display as large as possible (toggle fullscreen to update). This may include visual artifacts.",
         "no sprite antialiasing": "Disable sprite antialiasing",
         "no sprite antialiasing_tooltip": "If enabled, sprites and patrol art will no longer be antialiased (\"blurry\"/\"smooth\") when in fullscreen.",
+        "background blending": "Blend sprites with background",
+        "background blending_tooltip": "If enabled, blend cat sprites slightly with background to make them look more part of the scene.",
         "custom cursor": "Custom cursor",
         "custom cursor_tooltip": "The cursor will be replaced with a cat paw. The cursor is currently unfinished and is prone to crashing.",
         "keybinds": "Keybinds",

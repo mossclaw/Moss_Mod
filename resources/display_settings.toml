@@ -12,6 +12,7 @@
         "dark mode" = false
         "fullscreen scaling" = false
         "no sprite antialiasing" = false
+        "background blending" = false
         "custom cursor" = false
         keybinds = false
         shaders = false
