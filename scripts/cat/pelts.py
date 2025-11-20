@@ -93,27 +93,33 @@ class Pelt:
     conversion = set_none_keys(read_resource_dict('pelt_conversion', 'Old Save Conversion'))
 
     # Pelt editing
+    @staticmethod
     def _edit_sprites_for(pelt, attr):
         if len(attr) > 1:
             return None
         return [ str(x) for x in Pelt._pelt_data['poses'][attr[0][7:]][pelt.length] ]
+    @staticmethod
     def _edit_set_sprite(pelt, attr, value):
         pelt.cat_sprites[attr[0][7:]] = int(value)
+    @staticmethod
     def _edit_get_sprite(pelt, attr):
         return str(pelt.cat_sprites[attr[0][7:]])
     _edit_sprite_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite, True)
         
+    @staticmethod
     def _edit_set_suffix(pelt, attr, value):
         setattr(pelt, attr[0].split(' ')[-1], value)
+    @staticmethod
     def _edit_get_suffix(pelt, attr):
         return getattr(pelt, attr[0].split(' ')[-1])
     _edit_suffix_funcs = (None, _edit_get_suffix, _edit_set_suffix, True)
     
+    @staticmethod
     def _edit_accessory_children(pelt, attr):
         def available(slot):
             return sorted(Accessory.names_by_slot[slot])
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -133,9 +139,10 @@ class Pelt:
                 return AccessoryDef.patterns
             case _:
                 return None
+    @staticmethod
     def _edit_accessory_get(pelt, attr):
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -147,9 +154,10 @@ class Pelt:
                 return acc.pattern[i]
             case _:
                 return None
+    @staticmethod
     def _edit_accessory_set(pelt, attr, value):
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -163,6 +171,7 @@ class Pelt:
                 acc.pattern[i] = value
     _edit_accessory_funcs = (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set, False)
    
+    @staticmethod
     def _edit_scars_children(pelt, attr):
         match len(attr):
             case 1: 
@@ -172,12 +181,14 @@ class Pelt:
                 return scars if attr[1] == 'Add' else ['Remove'] + scars
             case _:
                 return None
+    @staticmethod
     def _edit_scars_get(pelt, attr):
         match attr:
             case ['scars', 'Add']:
                 return None
             case ['scars', name]:
                 return name
+    @staticmethod
     def _edit_scars_set(pelt, attr, value):
         match attr:
             case ['scars', 'Add']:
@@ -186,6 +197,7 @@ class Pelt:
                 pelt.scars = [ x for x in pelt.scars + [value] if x != name and x != 'Remove' ]
     _edit_scars_funcs = (_edit_scars_children, _edit_scars_get, _edit_scars_set, False)
                 
+    @staticmethod
     def _tints(data):
         return union_of_entries(data["possible_tints"])
         
@@ -242,6 +254,9 @@ class Pelt:
 
     """Holds all appearance information for a cat. """
 
+    _scars = None
+    _accessory = None
+    
     def __init__(self,
                  name: str = "Solid",
                  length: str = "short",
@@ -422,7 +437,7 @@ class Pelt:
 
         for combined, parts in Pelt._pelt_data['scars']['combine'].items():
             if all(( x in val for x in parts )):
-                val = { x for x in val if x not in parts } | { combine }
+                val = { x for x in val if x not in parts } | { combined }
 
         self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
 
@@ -1092,9 +1107,12 @@ class Pelt:
         else:
             self.points = None
 
-        weights = Pelt._calc_inheritance_weights('white_patches', Pelt.white_patches, par_whitepatches)
+        weights = Pelt._calc_inheritance_weights('white_patches', 
+                                                 Pelt.white_patches, 
+                                                 par_whitepatches)
         if not any(weights):
-            weights = Pelt.inheritance_weights['_no_patches_' if all(parents) else '_any_unknown_']
+            key = '_no_patches_' if all(parents) else '_any_unknown_'
+            weights = Pelt._pelt_data['inheritance']['white_patches'][key]
 
         # Adjust weights for torties, since they can't have anything greater than mid_white:
         if self.name == "Tortie":
