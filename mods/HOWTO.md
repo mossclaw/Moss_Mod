@@ -36,10 +36,11 @@ To change something, include as much of the structure of the original .json as n
 specify the right place in the file. When the equivalent dict exists in both the original
 and the mod, then for each key in the mod dict:
 - If the key starts with a `-`: 
-  The `-` is removed and whatever value was in the original is replaced with the value 
-  from the mod.
+  The `-` is removed from the key, and whatever value was in the original under the new key 
+  is replaced with the value from the mod. If the new key is not in the original, it and its 
+  value are added.
 - If the key is not in the original:
-  The key and its value are added to the dict.
+  The key and its value are added to the original.
 - If the key is in the original:
   - If both original and modded values are dicts:
     They are merged in the way described here.
