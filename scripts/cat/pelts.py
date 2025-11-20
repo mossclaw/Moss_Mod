@@ -822,7 +822,7 @@ class Pelt:
         # parents having white. If we have more than two, this
         # will keep that the same.
         per_parent = int(94 / len(par_white))
-        chance = 3 + per_parent * len(( 1 for p in par_white if p ))
+        chance = 3 + per_parent * sum(1 for p in par_white if p)
 
         chosen_white = random.randint(1, 100) <= chance
 
