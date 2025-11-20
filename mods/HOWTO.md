@@ -85,7 +85,7 @@ you would have a file `mods/deathray.zip`, and if opening it the immediate (top-
 contents should be the same as in the directory version.
 
 ### Load order
-If several mod-mods replace the same thing, then the last loaded one gets the final word.
+If several mod-mods replace the same thing, then the one loaded last gets the final say.
 To determine the order, there is a file `load_order.json` in the mods folder. 
 It should contain a Json list, with the mods you want to control the order of. 
 Any mod-mods listed there will be loaded _last_, in the order mentioned. 
