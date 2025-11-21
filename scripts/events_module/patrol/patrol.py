@@ -263,8 +263,8 @@ class Patrol:
         else:
             self.random_cat = choice(patrol_cats)
 
-        logger.info("Patrol Leader:", str(self.patrol_leader.name))
-        logger.info("Random Cat:", str(self.random_cat.name))
+        logger.info("Patrol Leader:" + str(self.patrol_leader.name))
+        logger.info("Random Cat:" + str(self.random_cat.name))
 
     def get_possible_patrols(
         self,
