@@ -2,7 +2,6 @@
 # -*- coding: ascii -*-
 
 import i18n
-import ujson
 
 from scripts.cat_relations.enums import RelType
 from scripts.events_module.event_filters import (
@@ -13,6 +12,7 @@ from scripts.events_module.ongoing.ongoing_event import OngoingEvent
 from scripts.game_structure import constants
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
+from scripts.moss_util import read_resource_dict, read_json
 
 
 def get_resource_directory(fallback=False):
@@ -27,21 +27,11 @@ def get_resource_directory(fallback=False):
 class GenerateEvents:
     loaded_events = {}
 
-    with open(
-        f"resources/dicts/conditions/injuries.json", "r", encoding="utf-8"
-    ) as read_file:
-        INJURIES = ujson.loads(read_file.read())
+    INJURIES = read_resource_dict('conditions/injuries', 'Injuries')
 
     @staticmethod
     def get_ongoing_event_dicts(file_path):
-        events = None
-        try:
-            with open(file_path, "r", encoding="utf-8") as read_file:
-                events = ujson.loads(read_file.read())
-        except:
-            print(f"ERROR: Unable to load events from biome {file_path}.")
-
-        return events
+        return read_json(file_path, f"events from biome {file_path}")
 
     @staticmethod
     def get_death_reaction_dicts(family_relation, rel_value):
@@ -51,17 +41,9 @@ class GenerateEvents:
 
     @staticmethod
     def get_lead_den_event_dicts(event_type: str, success: bool):
-        try:
-            file_path = f"{get_resource_directory()}leader_den/{'success' if success else 'fail'}/{event_type}.json"
-            with open(file_path, "r", encoding="utf-8") as read_file:
-                events = ujson.loads(read_file.read())
-        except:
-            events = None
-            print(
-                f"ERROR: Unable to load lead den events for {event_type} {'success' if success else 'fail'}."
-            )
-
-        return events
+        success_str = 'success' if success else 'fail'
+        file_path = f"{get_resource_directory()}leader_den/{success_str}/{event_type}.json"
+        return read_json(file_path, f"den events for {event_type} {success_str}")
 
     @staticmethod
     def clear_loaded_events():

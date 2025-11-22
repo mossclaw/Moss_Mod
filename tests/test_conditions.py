@@ -10,6 +10,9 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.cats import Cat
 from scripts.conditions import medicine_cats_can_cover_clan
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestsMedCondition(unittest.TestCase):
     def test_fulfilled(self):

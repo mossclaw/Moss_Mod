@@ -44,6 +44,7 @@ from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
+from scripts.moss_util import read_resource_dict
 from scripts.utility import (
     clamp,
     find_alive_cats_with_rank,
@@ -3514,12 +3515,12 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
             tortie_marking=None,
             tortie_base=None,
             tortie_pattern=None,
-            tortie_colour=None,
+            tortie_color=None,
             tint="gray",
             skin="SOLID",
             skin_color="BLUE",
             scars=[scar] if scar else [],
-            adult_sprite=8,
+            sprite_adult=8,
             accessory=[acc] if acc else [],
         ),
     )
@@ -3536,17 +3537,9 @@ game.cat_class = cat_class
 #                                load json files                               #
 # ---------------------------------------------------------------------------- #
 
-resource_directory = "resources/dicts/conditions/"
-with open(f"{resource_directory}illnesses.json", "r", encoding="utf-8") as read_file:
-    ILLNESSES = ujson.loads(read_file.read())
-
-with open(f"{resource_directory}injuries.json", "r", encoding="utf-8") as read_file:
-    INJURIES = ujson.loads(read_file.read())
-
-with open(
-    f"{resource_directory}permanent_conditions.json", "r", encoding="utf-8"
-) as read_file:
-    PERMANENT = ujson.loads(read_file.read())
+ILLNESSES = read_resource_dict('conditions/illnesses', 'Illnesses')
+INJURIES = read_resource_dict('conditions/injuries', 'Injuries')
+PERMANENT = read_resource_dict('conditions/permanent_conditions', 'Permanent Conditions')
 
 MINOR_MAJOR_REACTION: Optional[Dict] = None
 grief_lang: Optional[str] = None
@@ -3580,5 +3573,4 @@ def load_leader_ceremonies():
 
 load_leader_ceremonies()
 
-with open("resources/dicts/backstories.json", "r", encoding="utf-8") as read_file:
-    BACKSTORIES = ujson.loads(read_file.read())
+BACKSTORIES = read_resource_dict('backstories', 'Backstories')

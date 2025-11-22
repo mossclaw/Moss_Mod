@@ -7,6 +7,9 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.cats import Cat, Relationship
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class RelationshipConditions(unittest.TestCase):
     def test_main_cat_status_one(self):

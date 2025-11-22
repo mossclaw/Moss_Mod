@@ -3,7 +3,6 @@ from typing import Dict, Optional, Union
 
 import pygame
 import pygame_gui
-import ujson
 from pygame_gui.core import ObjectID
 
 import scripts.game_structure.screen_settings
@@ -28,6 +27,7 @@ from scripts.game_structure.ui_elements import UIImageButton
 from scripts.game_structure.windows import SaveCheck, EventLoading
 from scripts.screens.enums import GameScreen
 from scripts.screens.screens_core.screens_core import rebuild_den_dropdown
+from scripts.moss_util import read_json
 from scripts.utility import (
     update_sprite,
     ui_scale,
@@ -723,13 +723,11 @@ class Screens:
     @property
     def theme(self) -> str:
         try:
-            return "dark" if game_setting_get("dark mode") else "light"
+            dark = game_setting_get("dark mode")
         except AttributeError:
-            with open(
-                "resources/gamesettings.json", "r", encoding="utf-8"
-            ) as read_file:
-                _settings = ujson.loads(read_file.read())
-                return "dark" if _settings["dark mode"] else "light"
+            _settings = read_json('resources/gamesettings.json', use_mods= False)
+            dark = _settings and _settings["dark mode"]
+        return "dark" if dark else "light"
 
     # pragma pylint: disable=no-member
     # noinspection PyUnresolvedReferences

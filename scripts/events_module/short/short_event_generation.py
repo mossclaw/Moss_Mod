@@ -1,8 +1,8 @@
 import random
+import logging
 from typing import Optional
 
 import i18n
-import ujson
 
 from scripts.cat.cats import Cat
 from scripts.cat.skills import SkillPath
@@ -25,9 +25,11 @@ from scripts.events_module.short.short_event import ShortEvent
 from scripts.game_structure import constants, game
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.utility import get_living_clan_cat_count, get_warring_clan
+from scripts.moss_util import read_json
 
 loaded_events = {}
 used_events = set()
+logger = logging.getLogger(__name__)
 
 
 def get_resource_directory(fallback=False):
@@ -160,7 +162,7 @@ def create_short_event(
 
     else:
         # this doesn't necessarily mean there's a problem, but can be helpful for narrowing down possibilities
-        print(f"WARNING: no {event_type}: {sub_types} events found for {main_cat.name}")
+        logger.warning(f"no {event_type}: {sub_types} events found for {main_cat.name}")
         return
 
 
@@ -198,24 +200,13 @@ def get_event_dicts(file_path) -> list:
     Opens and loads .json for the given file path.
     :param file_path: The file path to open
     """
-    try:
-        with open(
-            get_resource_directory() + file_path, "r", encoding="utf-8"
-        ) as read_file:
-            events = ujson.loads(read_file.read())
-    except ValueError:
-        try:
-            with open(
-                get_resource_directory(fallback=True) + file_path,
-                "r",
-                encoding="utf-8",
-            ) as read_file:
-                events = ujson.loads(read_file.read())
-        except ValueError:
-            print(f"ERROR: Unable to load {file_path}.")
-            return []
-
-    return events
+    events = None
+    for fallback in [False, True]:
+        if events is None:
+            events = read_json(get_resource_directory(fallback) + file_path)
+    if events is None:
+        print(f"ERROR: Unable to load {file_path}.")
+        return []
 
 
 def generate_event_objects(event_triggered, biome, frequency) -> list:

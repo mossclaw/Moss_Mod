@@ -1,5 +1,5 @@
 import pygame
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from scripts.cat.sprites import sprites
 
 
@@ -74,7 +74,9 @@ class Render:
             self.__tint(self.stack[-1], colormap, color, index, blend)
         else:
             image = self.__load(sheet, sprite)
-            self.__tint(image, colormap, color, index)
+            if index is not None:
+                image = image.copy().convert_alpha()
+                self.__tint(image, colormap, color, index)
             self.__merge(image, blend)
         return self
 
@@ -95,7 +97,7 @@ class Render:
             if sheet is None:
                 image = pygame.Surface(self.size, Render._create_flags)
             else:
-                image = self.__load(sheet, sprite)
+                image = self.__load(sheet, sprite).copy().convert_alpha()
             if insert:
                 self.stack[-1:] = [image, self.stack[-1]]
             else:
@@ -132,7 +134,7 @@ class Render:
 
 
     def __load(self, sheet, sprite):
-        return self.__load_base(sheet, sprite).copy().convert_alpha()
+        return self.__load_base(sheet, sprite)
 
 
     def __load_only(self, sheet, sprite):

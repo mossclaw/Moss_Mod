@@ -14,7 +14,7 @@ from scripts.cat.render import Render
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text, union_of_entries, reverse_dict
-from scripts.temp_util import read_resource_dict, OnUpdateList
+from scripts.moss_util import read_resource_dict, OnUpdateList
 from scripts.cat.accessory import Accessory, AccessoryDef
 
 logger = logging.getLogger(__name__)
@@ -25,6 +25,9 @@ def weighted_choice(population, weights):
 
 def choice_from_categories(categories, sets):
     return choice([ value for cat in categories for value in sets[cat] ])
+
+def coin():
+    return bool(random.getrandbits(1))
 
 def weighted_coin(weight_true: int, weight_false: int):
     return random.randint(1, weight_true + weight_false) <= weight_true
@@ -44,7 +47,6 @@ def numbered(name, n):
 def denumbered(name):
     parts = name.split('_')
     return (parts[0], 0) if len(parts) == 1 else (parts[0], int(parts[1]) - 1)
-
 
 
 _moss_config = constants.CONFIG['moss']
@@ -91,23 +93,33 @@ class Pelt:
     conversion = set_none_keys(read_resource_dict('pelt_conversion', 'Old Save Conversion'))
 
     # Pelt editing
+    @staticmethod
     def _edit_sprites_for(pelt, attr):
-        return [ str(x) for x in Pelt._pelt_data['poses'][attr[7:]][pelt.length] ]
+        if len(attr) > 1:
+            return None
+        return [ str(x) for x in Pelt._pelt_data['poses'][attr[0][7:]][pelt.length] ]
+    @staticmethod
     def _edit_set_sprite(pelt, attr, value):
-        pelt.cat_sprites[attr[7:]] = int(value)
+        pelt.cat_sprites[attr[0][7:]] = int(value)
+    @staticmethod
     def _edit_get_sprite(pelt, attr):
-        return str(pelt.cat_sprites[attr[7:]])
+        return str(pelt.cat_sprites[attr[0][7:]])
+    _edit_sprite_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite, True)
         
+    @staticmethod
     def _edit_set_suffix(pelt, attr, value):
-        setattr(pelt, attr.split(' ')[-1], value)
+        setattr(pelt, attr[0].split(' ')[-1], value)
+    @staticmethod
     def _edit_get_suffix(pelt, attr):
-        return getattr(pelt, attr.split(' ')[-1])
+        return getattr(pelt, attr[0].split(' ')[-1])
+    _edit_suffix_funcs = (None, _edit_get_suffix, _edit_set_suffix, True)
     
+    @staticmethod
     def _edit_accessory_children(pelt, attr):
         def available(slot):
             return sorted(Accessory.names_by_slot[slot])
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -127,9 +139,10 @@ class Pelt:
                 return AccessoryDef.patterns
             case _:
                 return None
+    @staticmethod
     def _edit_accessory_get(pelt, attr):
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -141,9 +154,10 @@ class Pelt:
                 return acc.pattern[i]
             case _:
                 return None
+    @staticmethod
     def _edit_accessory_set(pelt, attr, value):
-        if len(attr) > 1:
-            acc = ([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0]
+        acc = (([ x for x in pelt.accessory if x.slot == attr[1] ] or [None])[0] 
+               if len(attr) > 1 else None)
         if len(attr) == 3:
             attr = attr[:2] + [denumbered(attr[2])]
         match attr:
@@ -155,7 +169,9 @@ class Pelt:
                 acc.color[i] = value
             case ['accessory', slot, ('pattern', i)]:
                 acc.pattern[i] = value
+    _edit_accessory_funcs = (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set, False)
    
+    @staticmethod
     def _edit_scars_children(pelt, attr):
         match len(attr):
             case 1: 
@@ -165,19 +181,23 @@ class Pelt:
                 return scars if attr[1] == 'Add' else ['Remove'] + scars
             case _:
                 return None
+    @staticmethod
     def _edit_scars_get(pelt, attr):
         match attr:
             case ['scars', 'Add']:
                 return None
             case ['scars', name]:
                 return name
+    @staticmethod
     def _edit_scars_set(pelt, attr, value):
         match attr:
             case ['scars', 'Add']:
                 pelt.scars.append(value)
             case ['scars', name]:
                 pelt.scars = [ x for x in pelt.scars + [value] if x != name and x != 'Remove' ]
+    _edit_scars_funcs = (_edit_scars_children, _edit_scars_get, _edit_scars_set, False)
                 
+    @staticmethod
     def _tints(data):
         return union_of_entries(data["possible_tints"])
         
@@ -199,42 +219,26 @@ class Pelt:
         'skin'              : _pelt_data['skin']['type'],
         'skin_color'        : _pelt_data['skin']['color'],
         'white_patches_tint': _tints(sprites.white_patches_tints),
-        'sprite_newborn'    : _edit_sprites_for,
-        'sprite_kitten'     : _edit_sprites_for,
-        'sprite_adolescent' : _edit_sprites_for,
-        'sprite_adult'      : _edit_sprites_for,
-        'sprite_senior'     : _edit_sprites_for,
-#        'sprite_para_adult' : [],
         'reverse'           : ['False', 'True'],
         'tuft'              : _pelt_data['tuft']['type'],
         'tuft_color'        : _pelt_data['tuft']['color']['white'],
         'tortie_tuft'       : ['False', 'True'],
     }
-    edit_get_funcs = {
-        'pelt name'        : _edit_get_suffix,
-        'sprite_newborn'   : _edit_get_sprite,
-        'sprite_kitten'    : _edit_get_sprite,
-        'sprite_adolescent': _edit_get_sprite,
-        'sprite_adult'     : _edit_get_sprite,
-        'sprite_senior'    : _edit_get_sprite,
-    }
-    edit_set_funcs = {
-        'pelt name'        : _edit_set_suffix,
-        'sprite_newborn'   : _edit_set_sprite,
-        'sprite_kitten'    : _edit_set_sprite,
-        'sprite_adolescent': _edit_set_sprite,
-        'sprite_adult'     : _edit_set_sprite,
-        'sprite_senior'    : _edit_set_sprite,
-    }
-    edit_children = { 
-        'accessory': (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set),
-        'scars'    : (_edit_scars_children,     _edit_scars_get,     _edit_scars_set),     
+    edit_funcs = { 
+        'accessory'        : _edit_accessory_funcs,
+        'scars'            : _edit_scars_funcs,     
+        'pelt name'        : _edit_suffix_funcs,
+        'sprite_newborn'   : _edit_sprite_funcs,
+        'sprite_kitten'    : _edit_sprite_funcs,
+        'sprite_adolescent': _edit_sprite_funcs,
+        'sprite_adult'     : _edit_sprite_funcs,
+        'sprite_senior'    : _edit_sprite_funcs
     }
     del _tints
-    del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite
-    del _edit_set_suffix, _edit_get_suffix
-    del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set
-    del _edit_scars_children, _edit_scars_get, _edit_scars_set
+    del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite, _edit_sprite_funcs
+    del _edit_set_suffix, _edit_get_suffix, _edit_suffix_funcs
+    del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set, _edit_accessory_funcs
+    del _edit_scars_children, _edit_scars_get, _edit_scars_set, _edit_scars_funcs
     for x in edit_values.values():
         if isinstance(x, list) and len(x) > 10:
             x.sort()
@@ -243,13 +247,16 @@ class Pelt:
         edit_values[key] = ['None'] + edit_values[key]
     for key in ['tint', 'white_patches_tint']:
         edit_values[key] = ['none'] + edit_values[key]
-    editable = list(edit_values) + list(edit_children)
+    editable = sorted(set(edit_values) | set(edit_funcs))
     edit_translate_set = { 'None': None, 'False': False, 'True': True }
     edit_translate_get = { None: 'None', False: 'False', True: 'True' }
 
 
     """Holds all appearance information for a cat. """
 
+    _scars = None
+    _accessory = None
+    
     def __init__(self,
                  name: str = "Solid",
                  length: str = "short",
@@ -424,7 +431,7 @@ class Pelt:
 
         for combined, parts in Pelt._pelt_data['scars']['combine'].items():
             if all(( x in val for x in parts )):
-                val = { x for x in val if x not in parts } | { combine }
+                val = { x for x in val if x not in parts } | { combined }
 
         self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
 
@@ -640,38 +647,40 @@ class Pelt:
 
     # Pelt editing
     def edit_options_for(self, attribute):
-        if len(attribute) == 0:
+        n = len(attribute)
+        if n == 0:
             return Pelt.editable
-        elif attribute[0] in Pelt.edit_children:
-            return Pelt.edit_children[attribute[0]][0](self, attribute)
-        elif len(attribute) > 1:
-            return None
-        vals = Pelt.edit_values[attribute[0]]
-        if callable(vals):
-            vals = vals(self, attribute[0])
-        return vals
+        
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        if n == 1 and first in Pelt.edit_values:
+            return Pelt.edit_values[first]
+        elif funcs and funcs[0]:
+            return funcs[0](self, attribute)
+        return None
 
     def edit_get(self, attribute):
-        if attribute[0] in Pelt.edit_children:
-            return Pelt.edit_children[attribute[0]][1](self, attribute)
-        elif attribute[0] in Pelt.edit_get_funcs:
-            value = Pelt.edit_get_funcs[attribute[0]](self, attribute[0])
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        translate = funcs is None or funcs[3]
+        if funcs:
+            value = funcs[1](self, attribute)
         else:
-            value = getattr(self, attribute[0])
-        if value in Pelt.edit_translate_get:
+            value = getattr(self, first)
+        if translate and value in Pelt.edit_translate_get:
             value = Pelt.edit_translate_get[value]
         return value
 
     def edit_set(self, attribute, value):
-        if attribute[0] in Pelt.edit_children:
-            Pelt.edit_children[attribute[0]][2](self, attribute, value)
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        translate = funcs is None or funcs[3]
+        if translate and value in Pelt.edit_translate_set:
+            value = Pelt.edit_translate_set[value]
+        if funcs:
+            funcs[2](self, attribute, value)
         else:
-            if value in Pelt.edit_translate_set:
-                value = Pelt.edit_translate_set[value]
-            if attribute[0] in Pelt.edit_set_funcs:
-                Pelt.edit_set_funcs[attribute[0]](self, attribute[0], value)
-            else:
-                setattr(self, attribute[0], value)
+            setattr(self, first, value)
         self.rebuild_sprite = True
 
 
@@ -736,49 +745,21 @@ class Pelt:
 
 
     def pattern_color_inheritance(self, parents: tuple = (), gender="female"):
-        # setting parent pelt categories
-        # We are using a set, since we don't need this to be ordered, and sets deal with removing duplicates.
-        par_peltlength = set()
-        par_peltcolours = set()
-        par_peltnames = set()
-        par_pelts = []
-        par_white = []
-        par_tufts = set()
-        par_tufts_color = set()
-        for p in parents:
-            if p:
-                # Gather pelt color.
-                par_peltcolours.add(p.pelt.colour)
-
-                # Gather pelt length
-                par_peltlength.add(p.pelt.length)
-
-                # Gather pelt name
-                if p.pelt.name in Pelt.pelt_dict['torties']:
-                    par_peltnames.add(p.pelt.tortie_base.capitalize())
-                else:
-                    par_peltnames.add(p.pelt.name)
-
-                # Gather exact pelts, for direct inheritance.
-                par_pelts.append(p.pelt)
-
-                # Gather if they have white in their pelt.
-                par_white.append(p.pelt.white)
-
-                #Gather tufts
-                par_tufts.add(p.pelt.tuft)
-                par_tufts_color.add(p.pelt.tuft_color)
-            else:
-                # If order for white patches to work correctly, we also want to randomly generate a "pelt_white"
-                # for each "None" parent (missing or unknown parent)
-                par_white.append(bool(random.getrandbits(1)))
-
-                # Append None
-                # Gather pelt color.
-                par_peltcolours.add(None)
-                par_peltlength.add(None)
-                par_peltnames.add(None)
-                par_tufts.add(None)
+        # Collect parent pelt categories. Some are sets to remove duplicates.
+        par_pelts       = [ p.pelt for p in parents ]
+        par_peltlength  = { p.length if p else None   for p in par_pelts }
+        par_peltcolours = { p.colour if p else None   for p in par_pelts }
+        par_white       = [ p.white  if p else coin() for p in par_pelts ]
+        par_tufts       = { p.tuft   if p else None   for p in par_pelts }
+        torties = Pelt.pelt_dict['torties']
+        par_torties   = [ p and p.name in torties for p in par_pelts ]
+        par_peltnames = { 
+            p.tortie_base.capitalize() if t else p.name 
+            for p, t in zip(par_pelts, par_torties)
+        }
+        # Now filter out unknown
+        par_pelts       = [ p for p in par_pelts if p ]
+        par_tufts_color = { p.tuft_color for p in par_pelts }
 
         # If this list is empty, something went wrong.
         if not par_peltcolours:
@@ -796,37 +777,24 @@ class Pelt:
             self.tortie_base = selected.tortie_base
             return selected.white
 
-
-        # ------------------------------------------------------------------------------------------------------------#
-        #   PELT
-        # ------------------------------------------------------------------------------------------------------------#
-
+        # PELT
+        
         # Determine pelt.
-
         weights = Pelt._calc_inheritance_weights('pelts', Pelt.pelt_dict, par_peltnames)
 
         # Now, choose the pelt category and pelt. The extra 0 is for the tortie pelts,
         chosen_pelt = choice(weighted_choice(Pelt.pelt_sets, weights + [0]))
 
         # Tortie chance
-        tortie_chance_f = constants.CONFIG["cat_generation"][
-            "base_female_tortie"
-        ]  # There is a default chance for female tortie
-        tortie_chance_m = constants.CONFIG["cat_generation"]["base_male_tortie"]
-        for p_ in par_pelts:
-            if p_.name in Pelt.pelt_dict['torties']:
-                tortie_chance_f = int(tortie_chance_f / 2)
-                tortie_chance_m = tortie_chance_m - 1
-                break
+        female = gender == 'female'
+        key = 'base_female_tortie' if female else 'base_male_tortie'
+        tortie_chance = constants.CONFIG['cat_generation'][key]
+        if any(par_torties):
+            tortie_chance = int(tortie_chance / 2) if female else tortie_chance - 1
 
         # Determine tortie:
-        if gender == "female":
-            torbie = random.getrandbits(tortie_chance_f) == 1
-        else:
-            torbie = random.getrandbits(tortie_chance_m) == 1
-
         chosen_tortie_base = None
-        if torbie:
+        if random.getrandbits(tortie_chance) == 1:
             # If it is tortie, the chosen pelt above becomes the base pelt.
             chosen_tortie_base = chosen_pelt
 
@@ -834,19 +802,14 @@ class Pelt:
                 chosen_tortie_base = "Solid"
 
             chosen_tortie_base = chosen_tortie_base.lower()
-            chosen_pelt = random.choice(Pelt.pelt_dict['torties'])
+            chosen_pelt = random.choice(torties)
 
-        # ------------------------------------------------------------------------------------------------------------#
-        #   PELT COLOUR
-        # ------------------------------------------------------------------------------------------------------------#
-
+        # PELT COLOUR
         weights = Pelt._calc_inheritance_weights('colors', Pelt.sprite_names, par_peltcolours)
         chosen_pelt_color = choice(weighted_choice(Pelt.sprite_sets, weights))
 
-        # ------------------------------------------------------------------------------------------------------------#
-        #   PELT LENGTH
-        # ------------------------------------------------------------------------------------------------------------#
-
+        # PELT LENGTH
+        # TODO: move weights to pelt_data
         weights = [0, 0, 0]  # Weights for each length. It goes (short, medium, long)
         for p_ in par_peltlength:
             if p_ == "short":
@@ -869,18 +832,12 @@ class Pelt:
 
         chosen_pelt_length = weighted_choice(Pelt._pelt_data['pelt_length'], weights)
 
-        # ------------------------------------------------------------------------------------------------------------#
-        #   PELT WHITE
-        # ------------------------------------------------------------------------------------------------------------#
-
+        # PELT WHITE
         # There are 94 percentage points that can be added by
         # parents having white. If we have more than two, this
         # will keep that the same.
-        percentage_add_per_parent = int(94 / len(par_white))
-        chance = 3
-        for p_ in par_white:
-            if p_:
-                chance += percentage_add_per_parent
+        per_parent = int(94 / len(par_white))
+        chance = 3 + per_parent * sum(1 for p in par_white if p)
 
         chosen_white = random.randint(1, 100) <= chance
 
@@ -1135,9 +1092,12 @@ class Pelt:
         else:
             self.points = None
 
-        weights = Pelt._calc_inheritance_weights('white_patches', Pelt.white_patches, par_whitepatches)
+        weights = Pelt._calc_inheritance_weights('white_patches', 
+                                                 Pelt.white_patches, 
+                                                 par_whitepatches)
         if not any(weights):
-            weights = Pelt.inheritance_weights['_no_patches_' if all(parents) else '_any_unknown_']
+            key = '_no_patches_' if all(parents) else '_any_unknown_'
+            weights = Pelt._pelt_data['inheritance']['white_patches'][key]
 
         # Adjust weights for torties, since they can't have anything greater than mid_white:
         if self.name == "Tortie":

@@ -3,13 +3,12 @@ import os
 from copy import copy
 
 import pygame
-import ujson
 import time
 
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.temp_util import read_sprite_dict, read_json
+from scripts.moss_util import read_sprite_dict, read_json, all_mods, base_mod
 
 
 logger = logging.getLogger(__name__)
@@ -19,15 +18,18 @@ class Sprites:
     """ Class that handles and hold all spritesheets. """
 
     class SpriteSheet:
-        def __init__(self, a_file):
+        def __init__(self, mod, path):
             self.image = None
-            self.a_file = a_file
+            self.mod = mod
+            self.path = path
             self.ready = False
 
         @property
         def sprite(self):
             if self.image is None:
-                self.image = pygame.image.load(self.a_file).convert_alpha()
+                with self.mod.open_path(self.path, text=False) as file:
+                    name = self.path.split('/')[-1]
+                    self.image = pygame.image.load(file, namehint=name).convert_alpha()
             return self.image
 
 
@@ -67,36 +69,6 @@ class Sprites:
                     self.palette_name
                 )
             return self.image
-
-
-    class PaletteSet:
-        def __init__(self, path, palette_names):
-            self.palettes = None
-            self.base_palette = None
-            self.path = path
-            self.palette_names = palette_names
-
-        def apply(self, sprite, palette):
-            if palette == 'BASE':
-                return sprite
-
-            if self.palettes is None:
-                image = pygame.image.load(path)
-                with pygame.PixelArray(image) as array:
-                    n = array.shape[1]   # pylint: disable=unsubscriptable-object
-                    rows = [
-                        [ image.unmap_rbg(color) for color in array[::, i] ]
-                        for i in range(0, n)
-                    ]
-                    self.base_palette = rows[0]
-                    self.palettes = dict(zip(self.palette_names, rows[1::]))
-
-            sprite = sprite.copy()
-            with pygame.PixelArray(sprite) as array:
-                for old_color, new_color in zip(self.palette_names, self.palettes[palette]):
-                    array.replace(old_color, new_color)
-
-            return sprite
 
 
     class Blank:
@@ -154,14 +126,15 @@ class Sprites:
         self.white_patches_tints = read_sprite_dict('white_patches_tint', 'White Patches Tints')
 
 
-    def spritesheet(self, a_file, name):
+    def spritesheet(self, mod, path, name):
         """
-        Add spritesheet called name from a_file.
+        Add spritesheet called name from path.
 
-        :param a_file: Path to the file to create a spritesheet from.
-        :param name:   Name to call the new spritesheet.
+        :param mod:  The mod containing the image.
+        :param path: Path to the image to create a spritesheet from.
+        :param name: Name to call the new spritesheet.
         """
-        self.spritesheets[name] = self.SpriteSheet(a_file)
+        self.spritesheets[name] = self.SpriteSheet(mod, path)
 
 
     def make_single(self,
@@ -238,23 +211,24 @@ class Sprites:
                 i += 1
 
 
-    def load_file(self, path, name, subdir=None):
+    def load_file(self, mod, path, rel_path, name, subdir=None):
         def invalid(path, reason):
             logger.warning(f"Entry in sprites.json for {path} is not valid. Ignoring file. {reason}")
 
-
         spritesheet = f"{subdir}{name.upper()}" if subdir else name
-        self.spritesheet(f"sprites/{path}", spritesheet)
+        self.spritesheet(mod, path, spritesheet)
 
-        if path in self.config:
-            kind = self.config[path]
+        if rel_path in mod.sprite_config:
+            kind = mod.sprite_config[rel_path]
+        elif subdir and subdir in mod.sprite_config:
+            kind = mod.sprite_config[subdir]
         elif subdir and subdir in self.config:
             kind = self.config[subdir]
         else:
             kind = 'normal'
         arg = []
         if isinstance(kind, list):
-            arg = kind[1::]
+            arg = kind[1:]
             kind = kind[0]
 
         match kind:
@@ -283,22 +257,22 @@ class Sprites:
                 invalid(path, 'Valid values are normal, none, single, static or json.')
 
 
-    def load_dir(self, path, subdir=None):
-        for file_name in os.listdir(path):
-            sub_path = f'{path}/{file_name}'
-            if os.path.isfile(sub_path) and file_name[-4:] == '.png':
-                rel_path = f'{subdir}/{file_name}' if subdir else file_name
-                self.load_file(rel_path, file_name[:-4], subdir)
-            elif os.path.isdir(sub_path) and not subdir:
-                self.load_dir(sub_path, file_name)
+    def load_dir(self, mod, path, subdir=None):
+        for entry in mod.scan_dir(path):
+            if not entry.is_dir and entry.name[-4:] == '.png':
+                rel_path = f"{subdir}/{entry.name}" if subdir else entry.name
+                self.load_file(mod, entry.path, rel_path, entry.name[:-4], subdir)
+            elif entry.is_dir and not subdir:
+                self.load_dir(mod, f"{path}/{entry.name}", entry.name)
 
 
     def load_all(self):
         # read sprites.json
-        self.config = read_sprite_dict('sprites', 'Sprite Configuration')
+        self.config = read_sprite_dict('sprites', 'Sprite Configuration', use_mods=False)
+        base_mod.sprite_config = self.config
 
         # get the width and height of the spritesheet
-        self.spritesheet('sprites/line.png', 'line')
+        self.spritesheet(base_mod, 'sprites/line.png', 'line')
         width, height = self.spritesheets['line'].sprite.get_size()
 
         self.sheet_size = tuple(self.config['_sheet_size_'])
@@ -319,8 +293,11 @@ class Sprites:
         del width, height
         self.specified = {}
 
-        # Process contents of sprites folder
-        self.load_dir('sprites')
+        # Process contents of sprites folder and mods
+        for mod in all_mods:
+            if not hasattr(mod, 'sprite_config'):
+                mod.sprite_config = mod.load('sprites/dicts/sprites.json') or {}
+            self.load_dir(mod, 'sprites')
 
         # Save special sprite sets in individual variables, for convenience and compatibility.
         self.symbol_dict, self.clan_symbols = self.specified['symbol']

@@ -35,7 +35,7 @@ def game_settings_save(currentscreen=None):
 
 def game_settings_load():
     """Load settings that user has saved from previous use"""
-
+    
     try:
         with open(settings_path, "r", encoding="utf-8") as read_file:
             settings_data = ujson.loads(read_file.read())

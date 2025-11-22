@@ -209,7 +209,6 @@ class Clan:
             ),
         )
 
-        self.instructor.dead = True
         self.instructor.dead_for = randint(20, 200)
         self.add_cat(self.instructor)
         self.all_other_clans = []

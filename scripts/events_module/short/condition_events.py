@@ -3,7 +3,6 @@ from copy import deepcopy
 from typing import Dict, List
 
 import i18n
-import ujson
 
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAge, CatRank
@@ -30,6 +29,7 @@ from scripts.game_structure.game.switches import (
 )
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
+from scripts.moss_util import read_resource_dict
 from scripts.utility import (
     event_text_adjust,
     find_alive_cats_with_rank,
@@ -48,26 +48,10 @@ class Condition_Events:
     resource_directory = "resources/dicts/conditions/"
     current_loaded_lang = None
 
-    with open(
-        f"{resource_directory}illnesses.json", "r", encoding="utf-8"
-    ) as read_file:
-        ILLNESSES = ujson.loads(read_file.read())
-
-    with open(f"{resource_directory}injuries.json", "r", encoding="utf-8") as read_file:
-        INJURIES = ujson.loads(read_file.read())
-
-    with open(
-        "resources/dicts/conditions/permanent_conditions.json", "r", encoding="utf-8"
-    ) as read_file:
-        PERMANENT = ujson.loads(read_file.read())
-    # ---------------------------------------------------------------------------- #
-    #                                    CHANCE                                    #
-    # ---------------------------------------------------------------------------- #
-
-    with open(
-        "resources/dicts/conditions/illnesses_seasons.json", "r", encoding="utf-8"
-    ) as read_file:
-        ILLNESSES_SEASON_LIST = ujson.loads(read_file.read())
+    ILLNESSES = read_resource_dict('conditions/illnesses', 'Illnesses')
+    INJURIES = read_resource_dict('conditions/injuries', 'Injuries')
+    PERMANENT = read_resource_dict('conditions/permanent_conditions', 'Permanent Conditions')
+    ILLNESSES_SEASON_LIST = read_resource_dict('conditions/illnesses_seasons', 'Seasonal Illnesses')
 
     # ---------------------------------------------------------------------------- #
     #                                   STRINGS                                    #

@@ -11,6 +11,9 @@ from scripts.events import events_class
 from scripts.game_structure import game
 from scripts.utility import get_living_cat_count
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestEvents(unittest.TestCase):
     def test_bulk_skip(self):
@@ -60,5 +63,3 @@ class TestEvents(unittest.TestCase):
         ):
             for _ in range(500):
                 events_class.one_moon()
-                if not _ % 100:
-                    print(f"CATS ALIVE: {get_living_cat_count(Cat)}")

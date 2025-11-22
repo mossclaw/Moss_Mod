@@ -1,5 +1,5 @@
 from scripts.cat.save_load import load_instance, load_instance_list
-from scripts.temp_util import read_resource_dict
+from scripts.moss_util import read_resource_dict
 from random import choice
 from itertools import zip_longest
 
@@ -120,6 +120,7 @@ AccessoryDef.load_available()
 
 
 class Accessory:
+    @staticmethod
     def _make_name_dict(acc_dict):
         return { k: [ x.name for x in v ] for k, v in acc_dict.items() }
     _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
@@ -179,9 +180,6 @@ class Accessory:
                     render.merge_layer()
                 render.merge_layer()
 
-
-    def available_colors(i):
-        return Acc
 
     @staticmethod
     def __lookup(accessory):

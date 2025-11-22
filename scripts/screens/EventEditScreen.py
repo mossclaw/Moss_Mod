@@ -5,7 +5,6 @@ from random import choice
 
 import pygame
 import pygame_gui
-import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES, create_option_preview_cat
 from scripts.cat.pelts import Pelt
@@ -39,6 +38,7 @@ from scripts.screens.enums import GameScreen
 from scripts.ui.generate_box import get_box, BoxStyles
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
+from scripts.moss_util import read_resource_dict, read_json
 from scripts.utility import (
     ui_scale,
     process_text,
@@ -53,11 +53,8 @@ class EventEditScreen(Screens):
     This screen provides an interface to allow devs to edit and create events.
     """
 
-    with open("resources/dicts/events/tags.json", "r", encoding="utf-8") as read_file:
-        TAGS = ujson.loads(read_file.read())
-
-    with open("resources/dicts/events/types.json", "r", encoding="utf-8") as read_file:
-        TYPES = ujson.loads(read_file.read())
+    TAGS = read_resource_dict('events/tags', 'Event Tags')
+    TYPES = read_resource_dict('events/types', 'Event Types')
 
     test_cat_names: dict = {
         "m_c": "MainCat",
@@ -723,14 +720,7 @@ class EventEditScreen(Screens):
         """
         Loads the event json information for the given file path and returns it as a list.
         """
-        event_list = []
-
-        try:
-            with open(path, "r", encoding="utf-8") as read_file:
-                events = read_file.read()
-                event_list = ujson.loads(events)
-        except:
-            print(f"Something went wrong with event loading. Is {path} valid?")
+        event_list = read_json(path, f"Event List ({path})")
 
         if not event_list and self.editor_element.get("intro_text"):
             self.editor_element["intro_text"].set_text(

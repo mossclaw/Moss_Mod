@@ -16,6 +16,9 @@ from scripts.game_structure.localization import (
 )
 from scripts.utility import event_text_adjust
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestLocalisation(unittest.TestCase):
     @classmethod

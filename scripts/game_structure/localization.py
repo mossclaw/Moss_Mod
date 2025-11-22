@@ -3,10 +3,10 @@ from typing import List, Dict, Union, Optional
 
 import i18n
 import i18n.translations
-import ujson
 
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
+from scripts.moss_util import read_json
 
 lang_config: Optional[Dict] = None
 _lang_config_directory = os.path.join("resources", "lang", "{locale}", "config.json")
@@ -82,20 +82,10 @@ def load_lang_resource(location: str, *, root_directory=None):
     resource_directory = os.path.join(root_directory, locale)
     fallback_directory = os.path.join(root_directory, fallback)
     location = location.lstrip("\\/")  # just in case someone is an egg and does add it
-    try:
-        with open(
-            os.path.join(resource_directory, location.replace("{lang}", locale)),
-            "r",
-            encoding="utf-8",
-        ) as string_file:
-            return ujson.loads(string_file.read())
-    except FileNotFoundError:
-        with open(
-            os.path.join(fallback_directory, location.replace("{lang}", fallback)),
-            "r",
-            encoding="utf-8",
-        ) as string_file:
-            return ujson.loads(string_file.read())
+    return read_json(
+        os.path.join(resource_directory, location.replace("{lang}", locale)),
+        fallback= os.path.join(fallback_directory, location.replace("{lang}", fallback)), 
+        exception= True)
 
 
 def get_lang_config() -> Dict:
@@ -105,10 +95,9 @@ def get_lang_config() -> Dict:
     global lang_config, _directory_changed
     locale = i18n.config.get("locale")
     if _directory_changed or lang_config is None or lang_config["lang"] != locale:
-        with open(
-            _lang_config_directory.replace("{locale}", locale), "r", encoding="utf-8"
-        ) as lang_file:
-            lang_config = ujson.loads(lang_file.read())
+        lang_config = read_json(
+            _lang_config_directory.replace("{locale}", locale), 
+            exception= True)
         _directory_changed = False
     return lang_config
 

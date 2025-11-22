@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from random import randint, choice, choices
 
-import ujson
+from scripts.moss_util import read_resource_dict
 
 
 class Personality:
@@ -11,10 +11,7 @@ class Personality:
     facet_types = ["lawfulness", "sociability", "aggression", "stability"]
     facet_range = [0, 16]
 
-    with open(
-        "resources/dicts/traits/trait_ranges.json", "r", encoding="utf-8"
-    ) as read_file:
-        trait_ranges = ujson.loads(read_file.read())
+    trait_ranges = read_resource_dict('traits/trait_ranges', 'Trait Ranges')
 
     def __init__(
         self,

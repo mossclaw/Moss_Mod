@@ -13,6 +13,9 @@ from scripts.clan import Clan
 from scripts.clan_resources.freshkill import FreshkillPile
 from scripts.utility import get_alive_clan_queens
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class FreshkillPileTest(unittest.TestCase):
     def setUp(self) -> None:

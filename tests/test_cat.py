@@ -12,6 +12,9 @@ from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial
 from scripts.cat_relations.relationship import Relationship
 
+import logging
+logging.disable(logging.WARNING)
+
 
 class TestCreationAge(unittest.TestCase):
     # test that a cat with 1-5 moons has the age of a kitten

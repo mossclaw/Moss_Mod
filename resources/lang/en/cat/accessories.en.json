@@ -318,6 +318,11 @@
             "zero": "wreath",
             "many": "wreaths",
             "one": "wreath"
+        },
+        "IVY": {
+            "zero": "ivy",
+            "many": "ivy",
+            "one": "ivy"
         }
     }
 }
