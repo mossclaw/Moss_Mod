@@ -1,4 +1,5 @@
 import random
+import logging
 from copy import deepcopy
 from random import choice
 from typing import Dict, List
@@ -19,6 +20,8 @@ from scripts.events_module.event_filters import (
     get_highest_romantic_relation,
     get_personality_compatibility,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class RomanticEvents:
@@ -756,9 +759,7 @@ class RomanticEvents:
             return False, None
 
         if poly:
-            print("----- POLY-POLY-POLY", cat_from.name, cat_to.name)
-            print(cat_from.mate)
-            print(cat_to.mate)
+            logger.info(f"----- POLY-POLY-POLY {cat_from.name} {cat_to.name}")
 
         mate_string = RomanticEvents.prepare_relationship_string(
             mate_string, cat_from, cat_to

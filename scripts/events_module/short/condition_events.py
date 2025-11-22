@@ -1,4 +1,5 @@
 import random
+import logging
 from copy import deepcopy
 from typing import Dict, List
 
@@ -498,7 +499,7 @@ class Condition_Events:
                         else:
                             return perm_condition
                 except KeyError:
-                    logger.error(
+                    logger.warning(
                         "%s couldn't be found in injury dict! No permanent condition possible.",
                         injury_name,
                     )
