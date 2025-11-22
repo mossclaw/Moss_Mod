@@ -1,4 +1,5 @@
 import random
+import logging
 from copy import deepcopy
 from typing import Dict, List
 
@@ -35,6 +36,8 @@ from scripts.utility import (
     find_alive_cats_with_rank,
     get_leader_life_notice,
 )
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------- #
@@ -495,16 +498,10 @@ class Condition_Events:
                         else:
                             return perm_condition
                 except KeyError:
-                    print(
-                        f"WARNING: {injury_name} couldn't be found in injury dict! no permanent condition is possible."
+                    logger.warning(
+                        f"{injury_name} couldn't be found in injury dict! no permanent condition is possible."
                     )
                     return perm_condition
-            else:
-                print(
-                    f"WARNING: {scar} for {injury_name} is either None or is not in scar_to_condition dict. This is "
-                    f"not necessarily a bug.  Only report if you feel the scar should have "
-                    f"resulted in a permanent condition."
-                )
 
         elif condition is not None:
             perm_condition = condition
