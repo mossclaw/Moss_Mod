@@ -496,6 +496,10 @@ class Pelt:
             render = Render(pose, flip= self.reverse, load_only= load_only)
             render.set(colormap= 'pelt')
 
+            # Moss settings
+            black   = constants.CONFIG["moss"]["black_lineart"]
+            tint_on = constants.CONFIG["moss"]["enable_tints"]
+
             # Tufts
             if self.tuft is not None:
                 if self.tuft_color == "WHITE":
@@ -506,7 +510,7 @@ class Pelt:
                     index = Pelt._pelt_data['tuft']['color']['other'].index(self.tuft_color)
                 render.set(sprite= self.tuft, color= color)
                 render.paint('tufts', index)
-                render.paint('tuftlines', 5)
+                render.paint('tuftlines', 5, color= "BLACK" if black else color)
 
             # Pelt
             def paint_pelt(render):
@@ -527,7 +531,7 @@ class Pelt:
                 render.merge_layer()
 
             # Tint
-            if self.tint is not None:
+            if tint_on and self.tint is not None:
                 if self.tint in Render.colors['tint']:
                     render.paint(colormap= 'tint', color= self.tint, index= 0)
                 elif self.tint in Render.colors['dilute_tint']:
@@ -556,7 +560,6 @@ class Pelt:
             render.paint('eyelight')
 
             # Lineart
-            black   = constants.CONFIG["moss"]["black_lineart"]
             unknown = dead and group == CatGroup.UNKNOWN_RESIDENCE
             forest  = dead and group == CatGroup.DARK_FOREST
             render.set(sprite= '', colormap= 'line')
