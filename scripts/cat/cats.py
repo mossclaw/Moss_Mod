@@ -18,6 +18,7 @@ import scripts.game_structure.localization as pronouns
 from scripts.cat import save_load
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup
 from scripts.cat.history import History
+from scripts.cat.chronicle import Chronicle
 from scripts.cat.names import Name
 from scripts.cat.pelts import Pelt
 from scripts.cat.personality import Personality
@@ -161,6 +162,7 @@ class Cat:
         """
 
         self._history = None
+        self.chronicle = Chronicle(ID, game)
 
         if (
             faded

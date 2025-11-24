@@ -396,7 +396,7 @@ class Pelt:
         self.rebuild_sprite = True
 
     def __make_accessory_list(self, elems = ()):
-        self._accessory = OnUpdateList(lambda : self._prune_accessories(),
+        self._accessory = OnUpdateList(lambda _: self._prune_accessories(),
                                        lambda x: Accessory.load(x),
                                        elems)
         if elems:
@@ -433,7 +433,7 @@ class Pelt:
             if all(( x in val for x in parts )):
                 val = { x for x in val if x not in parts } | { combined }
 
-        self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
+        self._scars = OnUpdateList(lambda _: self._update_scars(), None, val)
 
 
     @staticmethod

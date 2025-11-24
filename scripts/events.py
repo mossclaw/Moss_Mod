@@ -81,7 +81,7 @@ class Events:
         """
         Handles the moon skipping of the whole Clan.
         """
-        game.cur_events_list = []
+        game.cur_events_list.clear()
         game.herb_events_list = []
         game.freshkill_events_list = []
         game.mediated = []

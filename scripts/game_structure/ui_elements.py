@@ -1563,6 +1563,75 @@ class UICheckbox(UIImageButton):
         self.change_object_id("@unchecked_checkbox")
 
 
+class UICheckbox2:
+    @staticmethod
+    def __make_pair(value):
+        if isinstance(value, str) or value is None:
+            return (value, value)
+        match len(value):
+            case 0:
+                return (None, None)
+            case 1:
+                return (value[0], value[0])
+            case 2:
+                return value
+            case _:
+                return value[:2]
+    
+    def __init__(
+        self,
+        relative_rect,
+        checked=False,
+        object_ids=None,
+        tool_tip_texts=None,
+        manager=None,
+        container=None,
+        starting_height=1,
+    ):
+        rect = ui_scale(relative_rect)
+        object_ids     = self.__make_pair(object_ids)
+        tool_tip_texts = self.__make_pair(tool_tip_texts)
+        object_ids = (object_ids[0] or '@unchecked_checkbox', 
+                      object_ids[1] or '@checked_checkbox')
+        
+        self.buttons = [ 
+            UIImageButton(rect, '', 
+                          object_id=object_id, 
+                          tool_tip_text=tool_tip_text, 
+                          manager=manager, 
+                          container=container, 
+                          starting_height=starting_height)
+            for object_id, tool_tip_text in zip(object_ids, tool_tip_texts)
+        ]
+        self.checked = checked
+    
+    @property
+    def checked(self):
+        return self._checked
+    
+    @checked.setter
+    def checked(self, value):
+        if value:
+            self.buttons[0].hide()
+            self.buttons[1].show()
+            self._checked = True
+        else:
+            self.buttons[0].show()
+            self.buttons[1].hide()
+            self._checked = False
+    
+    def handle_event(self, event):
+        mine = (event.type == pygame_gui.UI_BUTTON_START_PRESS 
+                and event.ui_element in self.buttons)
+        if mine:
+            self.checked = event.ui_element == self.buttons[0]
+        return mine
+    
+    def kill(self):
+        for elem in self.buttons:
+            elem.kill()
+
+
 class UICatListDisplay(UIContainer):
     def __init__(
         self,

@@ -8,7 +8,7 @@ from scripts.housekeeping.datadir import get_save_dir
 
 from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
-from scripts.moss_util import read_json
+from scripts.moss_util import read_json, OnUpdateList
 
 from . import save_load, settings, switches
 
@@ -17,6 +17,7 @@ from .settings import game_setting_get
 from .switches import switch_get_value, Switch
 from ...screens.enums import GameScreen
 from ...cat.enums import CatGroup
+from ...cat.chronicle import Chronicle
 
 pygame.init()
 
@@ -30,7 +31,7 @@ max_name_length = 10
 mediated = []  # Keep track of which couples have been mediated this moon.
 just_died = []  # keeps track of which cats died this moon via die()
 
-cur_events_list = []
+cur_events_list = OnUpdateList(Chronicle.handle_event, None, ())
 ceremony_events_list = []
 birth_death_events_list = []
 relation_events_list = []
