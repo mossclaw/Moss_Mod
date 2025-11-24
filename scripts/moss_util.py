@@ -1,5 +1,6 @@
 import logging
 import ujson
+import json
 import os
 import io
 from zipfile import ZipFile, is_zipfile
@@ -11,9 +12,21 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------- #
 
 
+def _decode_json(path, content):
+    try:
+        return ujson.loads(content)
+    except ujson.JSONDecodeError:
+        pass
+    try:
+        # Use standard json for the better error messages
+        return json.loads(content)
+    except json.JSONDecodeError as e:
+        raise json.JSONDecodeError(f"{path}: {e.msg}", e.doc, e.pos)
+
+
 def _read_single_json(path, use_mods=True):
     with open(path, 'r', encoding='utf-8') as read_file:
-        data = ujson.loads(read_file.read())
+        data = _decode_json(path, read_file.read())
         if use_mods:
             mod_expand(data, path)
         return data
@@ -78,6 +91,9 @@ class ModMod():
     def virtual_path(self, path):
         return path
     
+    def info_path(self, path):
+        return f"{self.mod_path}/{path}"
+    
     def open_path(self, path, text=True):
         path = self.real_path(path)
         if text:
@@ -117,7 +133,7 @@ class ModMod():
     def load(self, path):
         try:
             with self.open_path(path) as read_file:
-                return ujson.loads(read_file.read())
+                return _decode_json(self.info_path(path), read_file.read())
         except (IOError, KeyError):
             return None
 
