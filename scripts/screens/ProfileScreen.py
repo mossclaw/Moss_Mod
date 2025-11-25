@@ -1355,7 +1355,10 @@ class ProfileScreen(Screens):
             text = event[1]
             if moons and event[0] != cur:
                 cur = event[0]
-                text = i18n.t("screens.profile.moons_ago", count= now - cur) + '\n' + text
+                moon_header = i18n.t("screens.profile.moons_ago", 
+                                     count= now - cur, 
+                                     moon= cur)
+                text = f"{moon_header}\n{text}"
             parts.append(text)
         return '\n\n'.join(parts)
 

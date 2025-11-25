@@ -43,8 +43,8 @@
         "subtab_favorite_tooltip": "favorite this sub-tab - it will be the default sub tab displayed when History is viewed",
         "subtab_unfavorite_tooltip": "un-favorite this sub-tab",
         "moons_ago": {
-            "one": "%{count} moon ago:",
-            "many": "%{count} moons ago:"
+            "one": "Moon %{moon} (%{count} moon ago):",
+            "many": "Moon %{moon} (%{count} moons ago):"
         },
         "no_moons_tooltip": "Show the Moon that certain history events occurred on",
         "show_moons_tooltip": "Stop showing the Moon that certain history events occurred on",
