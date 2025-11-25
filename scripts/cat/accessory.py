@@ -15,7 +15,8 @@ class AccessoryDef:
                  color:    list[str],
                  patterns: int,
                  sprites:  list,
-                 sheets:   list):
+                 sheets:   list,
+                 order:    int):
         self.name = name
         self.slot = slot
         self.event = event
@@ -32,6 +33,10 @@ class AccessoryDef:
             else:
                 sheets = ['']
         self.sheets = [ 'acc' + s for s in sheets ]
+
+        if order is None:
+            order = AccessoryDef._accessory_data['default_order'][slot]
+        self.order = order
 
 
     def __format__(self, spec):
@@ -103,6 +108,7 @@ class AccessoryDef:
                       'pat' : ['opt'],
                       'spr' : ['list', 'opt'],
                       'sh'  : ['list', 'opt'],
+                      'ord' : ['opt'],
                       }
         entries = AccessoryDef._accessory_data['list'].items()
         AccessoryDef.available = { name: load(name, data) for name, data in entries }
@@ -150,6 +156,11 @@ class Accessory:
     @property
     def event(self):
         return self.acc.event
+
+
+    @property
+    def order(self):
+        return self.acc.order
 
 
     def get_save(self):
