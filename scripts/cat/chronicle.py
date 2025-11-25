@@ -53,7 +53,6 @@ class Chronicle:
                 self.events[i] = tuple(self.events[i])
         else:
             self.events = []
-        print(repr(self.events))
     
     def save(self, save_dir):
         safe_save(self.__save_path(save_dir), self.events, indent= 0)

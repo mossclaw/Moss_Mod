@@ -79,6 +79,7 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
         clan_cats.append(cat_data)
 
         inter_cat.save_condition()
+        inter_cat.chronicle.save(chronicles_dir)
 
         if inter_cat.history:
             inter_cat.save_history(history_dir)
@@ -86,9 +87,6 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
             inter_cat.history = None
         if not inter_cat.dead:
             inter_cat.save_relationship_of_cat(relationships_dir)
-            inter_cat.chronicle.save(chronicles_dir)
-        else:
-            inter_cat.chronicle.delete(chronicles_dir)
 
     safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
 
@@ -97,7 +95,9 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
     """Deals with fades cats, if needed, adding them as faded"""
     global cat_to_fade
 
-    fade_cat_dir = Path(get_save_dir()) / clanname / "faded_cats"
+    directory = Path(get_save_dir()) / clanname
+    fade_cat_dir = directory / "faded_cats"
+    chronicles_dir = directory / "chronicles"
 
     if cat_to_fade:
         if not fade_cat_dir.exists():
@@ -124,6 +124,9 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
                 parent_faded = add_faded_offspring_to_faded_cat(clanname, x, cat)
                 if not parent_faded:
                     print(f"WARNING: Can't find parent {x} of {cat.name}")
+
+        # Remove any chronicle
+        inter_cat.chronicle.delete(chronicles_dir)
 
         # Get a copy of info
         if game_setting_get("save_faded_copy"):
