@@ -225,13 +225,14 @@ all_mods = [base_mod] + mod_mods
 # ---------------------------------------------------------------------------- #
 
 class OnUpdateList(list):
-    def __init__(self, append, convert, elems):
+    def __init__(self, on_append, convert, elems):
         list.__init__(self, elems)
-        self._append = append
-        self._convert = convert
+        self.on_append = on_append
+        self.convert = convert
 
     def append(self, elem):
-        if self._convert is not None:
-            elem = (self._convert)(elem)
+        if self.convert is not None:
+            elem = (self.convert)(elem)
         list.append(self, elem)
-        (self._append)(elem)
+        if self.on_append is not None:
+            (self.on_append)(elem)

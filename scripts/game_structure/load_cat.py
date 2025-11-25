@@ -2,6 +2,7 @@ import logging
 import os
 from math import floor
 from random import choice
+from pathlib import Path
 
 import i18n
 import ujson
@@ -45,6 +46,7 @@ def json_load():
     Cat.dead_cats.clear()
     all_cats = []
     clanname = switch_get_value(Switch.clan_list)[0]
+    chronicle_dir = Path(get_save_dir()) / clanname / 'chronicles'
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
     try:
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
@@ -95,6 +97,8 @@ def json_load():
 
 
             new_cat.pelt = Pelt.load_from_cat(cat)
+            
+            new_cat.chronicle.load(chronicle_dir)
 
             new_cat.adoptive_parents = (
                 cat["adoptive_parents"] if "adoptive_parents" in cat else []

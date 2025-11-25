@@ -162,7 +162,6 @@ class Cat:
         """
 
         self._history = None
-        self.chronicle = Chronicle(ID, game)
 
         if (
             faded
@@ -344,6 +343,9 @@ class Cat:
                 load_existing_name=loading_cat,
                 cat=self,
             )
+        
+        # Chronicle
+        self.chronicle = Chronicle(ID, game)
 
         # Private Sprite
         self._sprite: Optional["pygame.Surface"] = None

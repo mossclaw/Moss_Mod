@@ -60,6 +60,7 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
     directory = Path(get_save_dir()) / clanname
     history_dir = directory / "history"
     relationships_dir = directory / "relationships"
+    chronicles_dir = directory / "chronicles"
 
     if not directory.exists():
         directory.mkdir(parents=True)
@@ -85,6 +86,9 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
             inter_cat.history = None
         if not inter_cat.dead:
             inter_cat.save_relationship_of_cat(relationships_dir)
+            inter_cat.chronicle.save(chronicles_dir)
+        else:
+            inter_cat.chronicle.delete(chronicles_dir)
 
     safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
 

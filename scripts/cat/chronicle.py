@@ -1,5 +1,8 @@
 import i18n
 
+from scripts.game_structure.game.save_load import safe_save
+from scripts.moss_util import read_json
+
 
 class Chronicle:
     per_cat = {}
@@ -37,5 +40,24 @@ class Chronicle:
         self.game = game
         Chronicle.per_cat[cat_id] = self
     
+    def __save_path(self, save_dir):
+        return save_dir / f"{self.cat_id}.json"
+    
     def log(self, text):
         self.events.append((self.game.clan.age, text))
+    
+    def load(self, save_dir):
+        self.events = read_json(self.__save_path(save_dir), use_mods= False)
+        if self.events:
+            for i in range(len(self.events)):
+                self.events[i] = tuple(self.events[i])
+        else:
+            self.events = []
+        print(repr(self.events))
+    
+    def save(self, save_dir):
+        safe_save(self.__save_path(save_dir), self.events, indent= 0)
+    
+    def delete(self, save_dir):
+        self.__save_path(save_dir).unlink(missing_ok= True)
+            

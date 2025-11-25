@@ -210,10 +210,16 @@ def load_events():
     try:
         with open(events_path, "r", encoding="utf-8") as f:
             events_list = ujson.loads(f.read())
+            
+        on_append_event = cur_events_list.on_append
+        cur_events_list.on_append = None
+        
         for event_dict in events_list:
             event_obj = Single_Event.from_dict(event_dict, cat_class)
             if event_obj:
                 cur_events_list.append(event_obj)
+        
+        cur_events_list.on_append = on_append_event
     except FileNotFoundError:
         pass
 

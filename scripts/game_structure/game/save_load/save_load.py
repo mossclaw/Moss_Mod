@@ -9,7 +9,11 @@ from scripts.housekeeping.datadir import get_temp_dir, get_save_dir
 
 
 def safe_save(
-    path: Union[str, Path], write_data, check_integrity=False, max_attempts: int = 15
+    path: Union[str, Path], 
+    write_data, 
+    check_integrity=False, 
+    max_attempts: int = 15, 
+    indent: int = 4
 ):
     """If write_data is not a string, assumes you want this
     in json format. If check_integrity is true, it will read back the file
@@ -20,7 +24,7 @@ def safe_save(
     # If write_data is not a string,
     if type(write_data) is not str:
         try:
-            _data = ujson.dumps(write_data, indent=4)
+            _data = ujson.dumps(write_data, indent=indent)
         except:
             with open('failed_save.txt', "w", encoding="utf-8") as file:
                 print(repr(write_data), file=file)
