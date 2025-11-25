@@ -584,7 +584,7 @@ class Pelt:
 
             # Accessories
             if not acc_hidden:
-                for acc in self.accessory:
+                for acc in sorted(self.accessory, key= lambda x: x.order):
                     acc.render(render)
 
             # Fading

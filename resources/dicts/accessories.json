@@ -96,6 +96,11 @@
     "WREATH"            : { "slot": "neck", "ev": "plant2",
                             "col": ["leaf"] }
   },
+  "default_order": {
+      "body": 10,
+      "neck": 20,
+      "head": 30
+  },
   "patterns": [
     "STRIPES", "NOTES", "STARS", "IVYS", "PAWPRINTS", "PLAID",
     "ZEBRA", "HEARTS", "FLORAL", "SQUIGGLE", "WAVES", "DIAMONDS",
