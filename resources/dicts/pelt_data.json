@@ -155,8 +155,10 @@
   },
   "skin": {
     "type": ["SOLID", "TIP", "MARBLE", "FRECKLE", "NOSE", "INNER", "SPLIT"],
-    "color": ["BLACK", "PINK", "DARKBROWN", "BROWN", "LIGHTBROWN", "DARK", "DARKGREY",
-              "GREY", "DARKSALMON", "SALMON", "PEACH", "DARKBLUE", "BLUE", "LIGHTBLUE", "RED"]
+    "color": ["APRICOT", "BERRY", "BLACK", "BLUE", "BRIGHTPINK", "BROWN", "DARK",
+      "DARKBLUE", "DARKBROWN", "DARKGREY", "DARKORANGE", "DARKPINK", "DARKRED",
+      "DARKSALMON", "GREY", "GOLD", "LEMON", "LIGHTBLUE", "LIGHTBROWN", "ORANGE",
+      "PALE", "PALEBROWN", "PEACH", "PINK", "PLUM", "PURPLE", "RED", "SALMON", "WARMBROWN"]
   },
   "tuft": {
     "type": ["SHORT", "FLUFFY", "TALL", "LONG", "LYNX", "LOW", "CURLY", "FULL", "SHORTHALF",
