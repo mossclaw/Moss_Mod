@@ -605,7 +605,7 @@ class Pelt:
             t2 = time_ns()
             #print(f"Rendered {name}'s pelt in {(t2 - t) / 1000000} ms.")
 
-        except (TypeError, KeyError):
+        except (TypeError, KeyError, ValueError):
             traceback.print_exc()
             logger.exception("Failed to load sprite")
 
