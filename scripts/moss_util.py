@@ -118,13 +118,10 @@ class ModMod():
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
                 replace = key[0] == '-'
-                if replace:
-                    key = key[1:]
-                
-                if not replace and key in data:
+                if key[0] != '-' and key in data:
                     self.expand_part(data[key], modded[key])
                 else:
-                    data[key] = modded[key]
+                    data[key[1:]] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
             data.extend(set(modded) - set(data))
         else:
@@ -191,10 +188,10 @@ class BaseMod(ModMod):
 def load_mod(modlist, entry):
     path = entry.path
     if entry.is_dir():
-        print(f"  Folder: {path}")
+        logger.info(f"  Folder: {path}")
         modlist.append(DirModMod(path))
     elif is_zipfile(path):
-        print(f"  Zip file: {path}")
+        logger.info(f"  Zip file: {path}")
         modlist.append(ZipModMod(path))
 
 mod_mods = []
