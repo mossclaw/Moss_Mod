@@ -118,10 +118,11 @@ class ModMod():
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
                 replace = key[0] == '-'
-                if key[0] != '-' and key in data:
+                if not replace and key in data:
                     self.expand_part(data[key], modded[key])
                 else:
-                    data[key[1:]] = modded[key]
+                    data_key = key[1:] if replace else key
+                    data[data_key] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
             data.extend(set(modded) - set(data))
         else:
