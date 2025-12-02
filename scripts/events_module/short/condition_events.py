@@ -603,7 +603,8 @@ class Condition_Events:
                 # choose event string
                 random_index = int(random.random() * len(possible_string_list))
                 event = possible_string_list[random_index]
-                event = event_text_adjust(Cat, event, main_cat=cat)
+                med_cat = Condition_Events.random_med_cat(cat)
+                event = event_text_adjust(Cat, event, main_cat=cat, random_cat=med_cat)
                 event_list.append(event)
                 game.herb_events_list.append(event)
 
@@ -632,6 +633,26 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
         return event_string
+    
+    
+    @staticmethod
+    def random_med_cat(patient_cat):
+        med_list = find_alive_cats_with_rank(
+            Cat,
+            [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
+            working=True,
+        )
+        # If the patient is a med cat, don't consider them as one for the event.
+
+        if patient_cat in med_list:
+            med_list.remove(patient_cat)
+
+        # Choose med cat, if you can
+        if med_list:
+            return random.choice(med_list)
+        else:
+            return None
+    
 
     @staticmethod
     def handle_already_injured(cat):
@@ -774,21 +795,7 @@ class Condition_Events:
                     # choose event string and ensure Clan's med cat number aligns with event text
                     random_index = random.randrange(0, len(possible_string_list))
 
-                    med_list = find_alive_cats_with_rank(
-                        Cat,
-                        [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
-                        working=True,
-                    )
-                    # If the cat is a med cat, don't consider them as one for the event.
-
-                    if cat in med_list:
-                        med_list.remove(cat)
-
-                    # Choose med cat, if you can
-                    if med_list:
-                        med_cat = random.choice(med_list)
-                    else:
-                        med_cat = None
+                    med_cat = Condition_Events.random_med_cat(cat)
 
                     if (
                         not med_cat
