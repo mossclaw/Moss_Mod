@@ -608,6 +608,8 @@ class Condition_Events:
                 event = Condition_Events.get_valid_string_from_list(
                     possible_string_list, cat
                 )
+                med_cat = Condition_Events.random_med_cat(cat)
+                event = event_text_adjust(Cat, event, main_cat=cat, random_cat=med_cat)
 
                 event_list.append(event)
                 game.herb_events_list.append(event)
@@ -643,6 +645,26 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
         return event_string, cat_dict
+    
+    
+    @staticmethod
+    def random_med_cat(patient_cat):
+        med_list = find_alive_cats_with_rank(
+            Cat,
+            [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
+            working=True,
+        )
+        # If the patient is a med cat, don't consider them as one for the event.
+
+        if patient_cat in med_list:
+            med_list.remove(patient_cat)
+
+        # Choose med cat, if you can
+        if med_list:
+            return random.choice(med_list)
+        else:
+            return None
+    
 
     @staticmethod
     def get_valid_string_from_list(event_list: list[str], cat: Cat) -> str:
@@ -803,21 +825,7 @@ class Condition_Events:
 
                     # choose event string and ensure Clan's med cat number aligns with event text
 
-                    med_list = find_alive_cats_with_rank(
-                        Cat,
-                        [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
-                        working=True,
-                    )
-
-                    # If the cat is a med cat, don't consider them as one for the event.
-                    if cat in med_list:
-                        med_list.remove(cat)
-
-                    # Choose med cat, if you can
-                    if med_list:
-                        med_cat = random.choice(med_list)
-                    else:
-                        med_cat = None
+                    med_cat = Condition_Events.random_med_cat(cat)
 
                     accepted_events = []
                     # Ensure that the Clan's med cat number aligns with event text
