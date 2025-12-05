@@ -102,9 +102,16 @@ class Pelt:
     def _edit_set_sprite(pelt, attr, value):
         pelt.cat_sprites[attr[0][7:]] = int(value)
     @staticmethod
+    def _edit_set_sprite_adult(pelt, attr, value):
+        value = int(value)
+        pelt.cat_sprites['young adult' ] = value
+        pelt.cat_sprites['adult'       ] = value
+        pelt.cat_sprites['senior adult'] = value
+    @staticmethod
     def _edit_get_sprite(pelt, attr):
         return str(pelt.cat_sprites[attr[0][7:]])
-    _edit_sprite_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite, True)
+    _edit_sprite_funcs       = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite,       True)
+    _edit_sprite_adult_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite_adult, True)
         
     @staticmethod
     def _edit_set_suffix(pelt, attr, value):
@@ -231,7 +238,7 @@ class Pelt:
         'sprite_newborn'   : _edit_sprite_funcs,
         'sprite_kitten'    : _edit_sprite_funcs,
         'sprite_adolescent': _edit_sprite_funcs,
-        'sprite_adult'     : _edit_sprite_funcs,
+        'sprite_adult'     : _edit_sprite_adult_funcs,
         'sprite_senior'    : _edit_sprite_funcs
     }
     del _tints
