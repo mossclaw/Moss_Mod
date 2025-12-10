@@ -223,6 +223,8 @@ def get_event_dicts(file_path) -> list:
     if events is None:
         print(f"ERROR: Unable to load {file_path}.")
         return []
+    else:
+        return events
 
 
 def generate_event_objects(event_triggered, biome, frequency) -> list:
