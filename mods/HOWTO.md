@@ -65,7 +65,7 @@ We would create a directory `mods/deathray`, and add two .json files:
   }
 }
 ```
-Prepending the keys with `-` means that conflicts with other mod-mods adding a color with the same name is resolved by load order.
+The reason we prepended the keys with `-` is so that conflicts with other mod-mods adding a color with the same name will be resolved by load order. In the abcense of name conflicts it has no effect.
 
 `mods/deathray/resources/dicts/fantasy_pelts.json`:
 ```json
