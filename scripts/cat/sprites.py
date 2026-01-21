@@ -12,6 +12,7 @@ from scripts.moss_util import read_sprite_dict, read_json, all_mods, base_mod
 
 
 logger = logging.getLogger(__name__)
+drop_sheets = constants.CONFIG["low_ram"]
 
 
 class Sprites:
@@ -26,11 +27,14 @@ class Sprites:
 
         @property
         def sprite(self):
-            if self.image is None:
+            image = self.image
+            if image is None:
                 with self.mod.open_path(self.path, text=False) as file:
                     name = self.path.split('/')[-1]
-                    self.image = pygame.image.load(file, namehint=name).convert_alpha()
-            return self.image
+                    image = pygame.image.load(file, namehint=name).convert_alpha()
+                if not drop_sheets:
+                    self.image = image
+            return image
 
 
     class SpriteCache:
