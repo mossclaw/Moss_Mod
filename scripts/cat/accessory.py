@@ -13,7 +13,7 @@ class AccessoryDef:
                  slot:     str,
                  event:    str,
                  color:    list[str],
-                 patterns: list[int] | int | None,
+                 patterns,
                  sprites:  list,
                  sheets:   list,
                  order:    int):
