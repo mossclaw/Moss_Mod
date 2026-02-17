@@ -603,7 +603,7 @@ class LeaderDenScreen(Screens):
             self.focus_clan = get_other_clan(name)
         else:
             other_clans = game.clan.all_other_clans
-            self.focus_clan = other_clans[i] if other_clans else None        
+            self.focus_clan = other_clans[0] if other_clans else None        
         
         if not self.focus_clan:
             for key in ("clan_name", "clan_temper", "clan_rel", 
