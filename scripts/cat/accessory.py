@@ -13,7 +13,7 @@ class AccessoryDef:
                  slot:     str,
                  event:    str,
                  color:    list[str],
-                 patterns: int,
+                 patterns: list[int] | int | None,
                  sprites:  list,
                  sheets:   list,
                  order:    int):
@@ -21,9 +21,9 @@ class AccessoryDef:
         self.slot = slot
         self.event = event
         self.color = color
-        self.patterns = patterns or 0
 
-        n = max(len(color), self.patterns, len(sheets), len(sprites), 1)
+        n_pat = patterns if isinstance(patterns, int) else len(patterns or [])
+        n = max(len(color), n_pat, len(sheets), len(sprites), 1)
         self.sprites = [ s if s else name for s in sprites ]
         if len(sprites) < n:
             self.sprites += [name] * (n - len(sprites))
@@ -33,6 +33,13 @@ class AccessoryDef:
             else:
                 sheets = ['']
         self.sheets = [ 'acc' + s for s in sheets ]
+        if isinstance(patterns, int):
+            patterns = [i for i in range(1, patterns + 1)]
+        elif patterns is None:
+            patterns = []
+        if len(patterns) < n:
+            patterns += [0] * (n - len(patterns))
+        self.patterns = patterns
 
         if order is None:
             order = AccessoryDef._accessory_data['default_order'][slot]
@@ -52,7 +59,7 @@ class AccessoryDef:
 
 
     def random_patterns(self):
-        return AccessoryDef.__random_patterns(self.patterns)
+        return AccessoryDef.__random_patterns(max(self.patterns))
 
 
     def fix(self, acc):
@@ -64,10 +71,10 @@ class AccessoryDef:
             if col not in AccessoryDef.colors[self.color[i]]:
                 acc.color[i] = AccessoryDef.__random_color(self.color[i])
 
-        n = self.patterns
+        n = max(self.patterns)
         if len(acc.pattern) != n:
             rand_func = AccessoryDef.__random_patterns
-            acc.pattern = acc.pattern[:n] + rand_func(n - self.patterns)
+            acc.pattern = acc.pattern[:n] + rand_func(n - len(acc.pattern))
 
 
     @staticmethod
@@ -136,7 +143,7 @@ class Accessory:
 
     def __init__(self,
                  accessory,
-                 color: list[str] = [],
+                 color:   list[str] = [],
                  pattern: list[str] = []):
         self.acc = Accessory.__lookup(accessory)
         self.color = color
@@ -176,7 +183,7 @@ class Accessory:
 
     def render(self, render):
         render.set(colormap= 'accessory', sprite= self.name)
-        sets = zip_longest(self.acc.sprites, self.color, self.pattern, self.acc.sheets)
+        sets = zip_longest(self.acc.sprites, self.color, self.acc.patterns, self.acc.sheets)
         for sprite, color, pattern, sheet in sets:
             render.set(sprite= sprite, color= color)
             if color is None:
@@ -184,7 +191,8 @@ class Accessory:
             else:
                 render.add_layer(sheet)
                 render.paint(sheet, 0)
-                if pattern is not None:
+                if pattern > 0:
+                    pattern = self.pattern[pattern - 1]
                     render.add_layer('accpattern', sprite= pattern)
                     render.paint('accpattern', sprite= pattern, blend= 'mult')
                     render.paint(sheet, blend= 'alpha')
