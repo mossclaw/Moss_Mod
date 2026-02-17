@@ -96,8 +96,7 @@ class LeaderDenScreen(Screens):
                         event.ui_element
                         == self.other_clan_selection_elements[f"button{i}"]
                     ):
-                        self.focus_clan = game.clan.all_other_clans[i]
-                        self.update_other_clan_focus()
+                        self.update_other_clan_focus(None)
             elif event.ui_element == self.focus_frame_elements["negative_interaction"]:
                 text = self.focus_frame_elements["negative_interaction"].text.replace(
                     "screens.leader_den.", ""
@@ -347,12 +346,10 @@ class LeaderDenScreen(Screens):
         # INITIAL DISPLAY - display currently chosen interaction OR first clan in list
         if get_clan_setting("lead_den_clan_event"):
             current_setting = get_clan_setting("lead_den_clan_event")
-            self.focus_clan = get_other_clan(current_setting["other_clan"])
-            self.update_other_clan_focus()
+            self.update_other_clan_focus(current_setting["other_clan"])
             self.update_clan_interaction_choice(current_setting["interaction_type"])
         else:
-            self.focus_clan = game.clan.all_other_clans[0]
-            self.update_other_clan_focus()
+            self.update_other_clan_focus(None)
 
     def exit_screen(self):
         """
@@ -586,7 +583,8 @@ class LeaderDenScreen(Screens):
 
         self.update_text(clan=False)
 
-    def update_other_clan_focus(self):
+
+    def update_other_clan_focus(self, name):
         """
         handles changing the clan that is currently in focus
         """
@@ -600,6 +598,18 @@ class LeaderDenScreen(Screens):
             container=self.focus_frame_container,
             manager=MANAGER,
         )
+        
+        if name:
+            self.focus_clan = get_other_clan(name)
+        else:
+            other_clans = game.clan.all_other_clans
+            self.focus_clan = other_clans[i] if other_clans else None        
+        
+        if not self.focus_clan:
+            for key in ("clan_name", "clan_temper", "clan_rel", 
+                        "negative_interaction", "positive_interaction"):
+                self.focus_frame_elements[key] = None
+            return
 
         self.focus_clan_elements["clan_symbol"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 67), (100, 100))),
