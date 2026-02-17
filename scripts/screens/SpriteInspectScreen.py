@@ -516,6 +516,10 @@ class SpriteInspectScreen(Screens):
         if selection == ['Back']:
             self.edit_back()
             return
+        elif selection == ['Remove']:
+            self.edit_back()
+            self.set_edit_value('Remove')
+            return
         
         attribute = self.edit_attribute
         if selection is None:
@@ -559,6 +563,7 @@ class SpriteInspectScreen(Screens):
         self.edit_value = value
         self.set_edit_dropdown('value_drop', value)
         
+        options = None
         if value:
             pelt = self.the_cat.pelt
             new_attribute = self.edit_attribute + [value]
@@ -566,9 +571,15 @@ class SpriteInspectScreen(Screens):
             if options:
                 self.edit_refresh_attribute_list(new_attribute, options)
             else:
-                print(f"Changing {self.edit_attribute[-1]} from {old} to {value}.")
-                pelt.edit_set(self.edit_attribute, value)
-                self.edit_refresh_attribute_list(self.edit_attribute)
+                attribute = self.edit_attribute
+                if attribute[-1] == 'Add':
+                    print(f"Adding {value}.")
+                elif value == 'Remove':
+                    print(f"Removing {attribute[-1]}.")
+                else:
+                    print(f"Changing {attribute[-1]} from {old} to {value}.")
+                pelt.edit_set(attribute, value)
+                self.edit_refresh_attribute_list(attribute)
                 self.make_cat_image()
         
     def edit_back(self):
