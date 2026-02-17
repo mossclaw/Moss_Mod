@@ -3,7 +3,10 @@ import ujson
 import json
 import os
 import io
+import i18n
+
 from zipfile import ZipFile, is_zipfile
+
 logger = logging.getLogger(__name__)
 
 
@@ -64,13 +67,33 @@ def read_resource_dict(name, description_for_error = None, use_mods = True, exce
 
 
 # ---------------------------------------------------------------------------- #
+#                            i18n extension                                    #
+# ---------------------------------------------------------------------------- #
+
+class ModdedLoader(i18n.loaders.loader.Loader):
+    delegate = i18n.resource_loader.loaders['json']
+    
+    def __init__(self):
+        super(ModdedLoader, self).__init__()
+        self.delegate = ModdedLoader.delegate
+
+    def load_resource(self, filename, root_data):
+        data = self.delegate.load_resource(filename, root_data)
+        mod_expand(data, filename.replace('\\', '/'), root_data)
+        return data
+
+
+i18n.resource_loader.register_loader(ModdedLoader, ['json'])
+
+
+# ---------------------------------------------------------------------------- #
 #                            Mod-mod support                                   #
 # ---------------------------------------------------------------------------- #
 
-def mod_expand(data, path):
+def mod_expand(data, path, root=None):
     global mod_mods
     for mod in mod_mods:
-        mod.expand(data, path)
+        mod.expand(data, path, root)
 
 
 class _DirEntry:
@@ -108,8 +131,10 @@ class ModMod():
         except:
             return []
     
-    def expand(self, data, path):
+    def expand(self, data, path, root=None):
         modded = self.load(path)
+        if root is not None and modded is not None:
+            modded = modded[root] if root in modded else None
         if modded:
             logger.info(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
@@ -124,7 +149,8 @@ class ModMod():
                     data_key = key[1:] if replace else key
                     data[data_key] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
-            data.extend(set(modded) - set(data))
+            add = set(modded) - set(data)
+            data.extend(x for x in modded if x in add)
         else:
             pass # TODO: error message
     
