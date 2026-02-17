@@ -239,78 +239,72 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
         frequency = debug_freq
 
     file_path = f"{event_triggered}/{biome}.json"
-    load_name = f"{file_path}_{frequency}"
 
     try:
         if file_path in loaded_events:
-            return loaded_events[file_path]
-        if load_name in loaded_events:
-            return loaded_events[load_name]
+            events_dict = loaded_events[file_path]
         else:
             events_dict = get_event_dicts(file_path)
+            loaded_events[file_path] = events_dict
 
-            event_list = []
-            if not events_dict:
-                return event_list
-            for event in events_dict:
-                event_text = event["event_text"] if "event_text" in event else None
-                event_frequency = event["frequency"] if "frequency" in event else 4
-
-                if not event_text:
-                    event_text = event["death_text"] if "death_text" in event else None
-
-                if not event_text:
-                    print(
-                        f"WARNING: some events resources which are used in generate_events have no 'event_text'."
-                    )
-                if frequency != event_frequency:
-                    continue
-
-                # this is a catch for empty dict r_c
-                if "r_c" in event:
-                    # check if it's an empty dict.
-                    # we assume if the param is present but empty, then we just want any available cat
-                    if not event["r_c"]:
-                        r_c = {"age": ["any"]}
-                    else:
-                        r_c = event["r_c"]
-                else:
-                    r_c = {}
-
-                event = ShortEvent(
-                    event_id=event["event_id"] if "event_id" in event else "",
-                    location=event["location"] if "location" in event else ["any"],
-                    season=event["season"] if "season" in event else ["any"],
-                    sub_type=event["sub_type"] if "sub_type" in event else [],
-                    tags=event["tags"] if "tags" in event else [],
-                    text=event_text,
-                    new_accessory=(
-                        event["new_accessory"] if "new_accessory" in event else []
-                    ),
-                    m_c=event["m_c"] if "m_c" in event else {},
-                    r_c=r_c,
-                    new_cat=event["new_cat"] if "new_cat" in event else [],
-                    injury=event["injury"] if "injury" in event else [],
-                    exclude_involved=(
-                        event["exclude_involved"] if "exclude_involved" in event else []
-                    ),
-                    history=event["history"] if "history" in event else [],
-                    relationships=(
-                        event["relationships"] if "relationships" in event else []
-                    ),
-                    outsider=event["outsider"] if "outsider" in event else {},
-                    other_clan=event["other_clan"] if "other_clan" in event else {},
-                    supplies=event["supplies"] if "supplies" in event else [],
-                    new_gender=event["new_gender"] if "new_gender" in event else [],
-                    future_event=event["future_event"]
-                    if "future_event" in event
-                    else {},
-                )
-                event_list.append(event)
-
-            # Add to loaded events.
-            loaded_events[load_name] = event_list
+        event_list = []
+        if not events_dict:
             return event_list
+        for event in events_dict:
+            event_text = event["event_text"] if "event_text" in event else None
+            event_frequency = event["frequency"] if "frequency" in event else 4
+
+            if not event_text:
+                event_text = event["death_text"] if "death_text" in event else None
+
+            if not event_text:
+                print(
+                    f"WARNING: some events resources which are used in generate_events have no 'event_text'."
+                )
+            if frequency != event_frequency:
+                continue
+
+            # this is a catch for empty dict r_c
+            if "r_c" in event:
+                # check if it's an empty dict.
+                # we assume if the param is present but empty, then we just want any available cat
+                if not event["r_c"]:
+                    r_c = {"age": ["any"]}
+                else:
+                    r_c = event["r_c"]
+            else:
+                r_c = {}
+
+            event = ShortEvent(
+                event_id=event["event_id"] if "event_id" in event else "",
+                location=event["location"] if "location" in event else ["any"],
+                season=event["season"] if "season" in event else ["any"],
+                sub_type=event["sub_type"] if "sub_type" in event else [],
+                tags=event["tags"] if "tags" in event else [],
+                text=event_text,
+                new_accessory=(
+                    event["new_accessory"] if "new_accessory" in event else []
+                ),
+                m_c=event["m_c"] if "m_c" in event else {},
+                r_c=r_c,
+                new_cat=event["new_cat"] if "new_cat" in event else [],
+                injury=event["injury"] if "injury" in event else [],
+                exclude_involved=(
+                    event["exclude_involved"] if "exclude_involved" in event else []
+                ),
+                history=event["history"] if "history" in event else [],
+                relationships=(
+                    event["relationships"] if "relationships" in event else []
+                ),
+                outsider=event["outsider"] if "outsider" in event else {},
+                other_clan=event["other_clan"] if "other_clan" in event else {},
+                supplies=event["supplies"] if "supplies" in event else [],
+                new_gender=event["new_gender"] if "new_gender" in event else [],
+                future_event=event["future_event"]
+                if "future_event" in event
+                else {},
+            )
+            event_list.append(event)
 
     except ValueError:
         print(f"WARNING: {file_path} was not found, check short event generation")
