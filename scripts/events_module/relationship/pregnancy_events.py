@@ -950,7 +950,7 @@ class Pregnancy_Events:
             # adoptive parents are set at the end, when everything else is decided
 
             # remove scars
-            kit.pelt.scars = tuple()
+            kit.pelt.scars = []
 
             # try to give them a permanent condition. 1/90 chance
             # don't delete the game.clan condition, this is needed for a test

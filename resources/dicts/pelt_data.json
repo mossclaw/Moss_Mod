@@ -140,6 +140,19 @@
       "BOTHBLIND": ["LEFTBLIND", "RIGHTBLIND"],
       "NOEAR"    : ["NOLEFTEAR", "NORIGHTEAR"]
     },
+    "disabling": [
+        "NOPAW",
+        "NOTAIL",
+        "HALFTAIL",
+        "NOEAR",
+        "BOTHBLIND",
+        "RIGHTBLIND",
+        "LEFTBLIND",
+        "BRIGHTHEART",
+        "NOLEFTEAR",
+        "NORIGHTEAR",
+        "MANLEG"
+    ],
     "generate": {
       "chance": {
         "newborn": 0,

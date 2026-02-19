@@ -3475,23 +3475,7 @@ def create_cat(rank, moons=None, biome=None):
     elif new_cat.moons == 0:
         new_cat.moons = randint(1, 5)
 
-    not_allowed_scars = [
-        "NOPAW",
-        "NOTAIL",
-        "HALFTAIL",
-        "NOEAR",
-        "BOTHBLIND",
-        "RIGHTBLIND",
-        "LEFTBLIND",
-        "BRIGHTHEART",
-        "NOLEFTEAR",
-        "NORIGHTEAR",
-        "MANLEG",
-    ]
-
-    new_cat.pelt.scars = tuple(
-        scar for scar in new_cat.pelt.scars if scar not in not_allowed_scars
-    )
+    new_cat.pelt.remove_disabling_scars()
 
     return new_cat
 

@@ -314,13 +314,7 @@ class Pelt:
         self.accessory = accessory
         self.paralyzed = paralyzed
         self.opacity = opacity
-        self._scars = (
-            tuple(scars)
-            if isinstance(scars, list)
-            else scars
-            if isinstance(scars, tuple)
-            else tuple()
-        )
+        self._scars = scars or []
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
@@ -639,6 +633,18 @@ class Pelt:
     def excluded_scars(self):
         data = Pelt._pelt_data['scars']['exclude']['scars']
         return { x for y in self.scars if y in data for x in data[y] }
+
+
+    def remove_disabling_scars(self):
+        self.remove_scars(Pelt._pelt_data['scars']['disabling'])
+
+
+    def remove_scars(self, to_remove):
+        if not isinstance(to_remove, set):
+            to_remove = set(to_remove)
+        for i in range(len(self.scars) - 1, -1, -1):
+            if self.scars[i] in to_remove:
+                self.scars.pop(i)
 
 
     def excluded_accessory_slots(self):

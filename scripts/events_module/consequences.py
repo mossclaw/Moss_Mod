@@ -644,14 +644,11 @@ def create_new_cat(
                 weights = constants.CONFIG["cat_name_controls"]["kittypet"]
                 # check if the kittypets come with a pretty acc
                 if bool(getrandbits(1)):
-                    new_cat.pelt.accessory = (
-                        *new_cat.pelt.accessory,
-                        choice(new_cat.pelt.collar_accessories),
-                    )
+                    new_cat.pelt.add_accessory_for_event('collar')
+
             if original_social == CatSocial.LONER:
                 weights = constants.CONFIG["cat_name_controls"]["loner"]
-
-            if original_social == CatSocial.ROGUE:
+            elif original_social == CatSocial.ROGUE:
                 weights = constants.CONFIG["cat_name_controls"]["rogue"]
 
             selected_category = choices(name_categories, weights, k=1)[0]
@@ -677,23 +674,7 @@ def create_new_cat(
 
         # Remove disabling scars, if they generated.
         # these are removed bc the cat won't have the associated perm condition
-        not_allowed = [
-            "NOPAW",
-            "NOTAIL",
-            "HALFTAIL",
-            "NOEAR",
-            "BOTHBLIND",
-            "RIGHTBLIND",
-            "LEFTBLIND",
-            "BRIGHTHEART",
-            "NOLEFTEAR",
-            "NORIGHTEAR",
-            "MANLEG",
-        ]
-
-        new_cat.pelt.scars = tuple(
-            scar for scar in new_cat.pelt.scars if scar not in not_allowed
-        )
+        new_cat.pelt.remove_disabling_scars()
 
         # chance to give the new cat a permanent condition, higher chance for found kits and litters
         if kit or litter:
@@ -735,9 +716,9 @@ def create_new_cat(
                 # assign scars
 
                 if chosen_condition in ("lost a leg", "born without a leg"):
-                    new_cat.pelt.scars = (*new_cat.pelt.scars, "NOPAW")
+                    new_cat.pelt.scars.append("NOPAW")
                 elif chosen_condition in ("lost their tail", "born without a tail"):
-                    new_cat.pelt.scars = (*new_cat.pelt.scars, "NOTAIL")
+                    new_cat.pelt.scars.append("NOTAIL")
 
         # KILL >:D only if we're sposed to tho
         if not alive:
