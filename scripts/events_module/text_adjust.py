@@ -514,30 +514,12 @@ def event_text_adjust(
     # prey lists
     text = adjust_prey_abbr(text)
 
-    # acc_plural (only works for main_cat's acc)
     if main_cat:
-        if "acc_plural" in text:
-            text = text.replace(
-                "acc_plural",
-                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
-            )
-
-        # acc_singular (only works for main_cat's acc)
-        if "acc_singular" in text:
-            accessory_name = main_cat.pelt.accessory[-1].name
-            if sprites.COLLAR_DATA["palette_map"]:
-                potential_collar = "".join(
-                    [x for x in accessory_name if not x.islower()]
-                ).strip("_")
-                for style in main_cat.pelt.collar_styles:
-                    if style == potential_collar:
-                        accessory_name = potential_collar
-                        break
-            text = text.replace(
-                "acc_singular",
-                i18n.t(f"cat.accessories.{accessory_name}", count=1),
-            )
-
+        for tag, n in (("acc_plural", 2), ("acc_singular", 1)):
+            if tag in text:
+                acc = i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1].name}", count=n)
+                text = text.replace(tag, acc)
+        
         if "given_herb" in text:
             text = text.replace(
                 "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
