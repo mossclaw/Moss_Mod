@@ -1349,14 +1349,14 @@ def _describe_pattern(cat, short=False):
     color_name = [i18n.t(piece, count=1) for piece in color_name]
     color_name = "".join(color_name)
 
+    white = i18n.t("cat.pelts.WHITE", count=1)
     if cat.pelt.white_patches:
         if cat.pelt.white_patches == "FULLWHITE":
             # If the cat is fullwhite, discard all other information. They are just white
-            color_name = i18n.t("cat.pelts.FULLWHITE")
+            color_name = white
             pelt_name = ""
         elif cat.pelt.name != "Calico":
-            white = i18n.t("cat.pelts.FULLWHITE")
-            if i18n.t("cat.pelts.WHITE", count=1) in color_name:
+            if white in color_name:
                 color_name = white
             elif cat.pelt.white_patches in Pelt.white_patches['mostly']:
                 color_name = adjust_list_text([white, color_name])
