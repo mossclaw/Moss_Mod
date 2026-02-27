@@ -728,8 +728,11 @@ class Pelt:
             weights = [0] * l + weights[l:n-h] + [0] * h
         
         sets = [x for x in weight_data.keys() if x[0] != '_']
-        category = weighted_choice(sets, weights)
-        return choice(groupings[category])
+        category = weighted_choice(sets[:n], weights)
+        if category not in groupings:
+            return category
+        else:
+            return choice(groupings[category])
 
 
     def init_eyes(self, parents):
