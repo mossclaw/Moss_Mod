@@ -695,7 +695,11 @@ class Pelt:
 
 
     @staticmethod
-    def _calc_inheritance_weights(category, groupings, parent_values, ensure_not_zero = True):
+    def _roll_inheritance(category, 
+                          groupings, 
+                          parent_values, 
+                          no_weights = None, 
+                          clamp = None):
         weight_data = Pelt._pelt_data['inheritance'][category]
         n = len(next(iter(weight_data.values())))
         zero = [0 for i in range(n)]
@@ -716,10 +720,16 @@ class Pelt:
                 weights[x] += add[x]
 
         # If we have no weights at all, replace with equal chance for all
-        if ensure_not_zero and not any(weights):
-            weights = [1 for i in range(n)]
+        if not any(weights):
+            weights = weight_data[no_weights] if no_weights else [1 for i in range(n)]
 
-        return weights
+        if clamp:
+            l, h = clamp
+            weights = [0] * l + weights[l:n-h] + [0] * h
+        
+        sets = [x for x in weight_data.keys() if x[0] != '_']
+        category = weighted_choice(sets, weights)
+        return choice(groupings[category])
 
 
     def init_eyes(self, parents):
@@ -790,10 +800,7 @@ class Pelt:
         # PELT
         
         # Determine pelt.
-        weights = Pelt._calc_inheritance_weights('pelts', Pelt.pelt_dict, par_peltnames)
-
-        # Now, choose the pelt category and pelt. The extra 0 is for the tortie pelts,
-        chosen_pelt = choice(weighted_choice(Pelt.pelt_sets, weights + [0]))
+        chosen_pelt = Pelt._roll_inheritance('pelts', Pelt.pelt_dict, par_peltnames)
 
         # Tortie chance
         female = gender == 'female'
@@ -815,8 +822,7 @@ class Pelt:
             chosen_pelt = random.choice(torties)
 
         # PELT COLOUR
-        weights = Pelt._calc_inheritance_weights('colors', Pelt.sprite_names, par_peltcolours)
-        chosen_pelt_color = choice(weighted_choice(Pelt.sprite_sets, weights))
+        chosen_pelt_color = Pelt._roll_inheritance('colors', Pelt.sprite_names, par_peltcolours)
 
         # PELT LENGTH
         # TODO: move weights to pelt_data
@@ -1102,26 +1108,14 @@ class Pelt:
         else:
             self.points = None
 
-        weights = Pelt._calc_inheritance_weights('white_patches', 
-                                                 Pelt.white_patches, 
-                                                 par_whitepatches)
-        if not any(weights):
-            key = '_no_patches_' if all(parents) else '_any_unknown_'
-            weights = Pelt._pelt_data['inheritance']['white_patches'][key]
+        no_weights = '_no_patches_' if all(parents) else '_any_unknown_'
+        clamp = tuple(3 if self.name == x else 0 for x in ('Calico', 'Tortie'))
+        self.white_patches = Pelt._roll_inheritance('white_patches', 
+                                                    Pelt.white_patches, 
+                                                    par_whitepatches, 
+                                                    no_weights,
+                                                    clamp)
 
-        # Adjust weights for torties, since they can't have anything greater than mid_white:
-        if self.name == "Tortie":
-            weights = weights[:2] + [0, 0, 0]
-        elif self.name == "Calico":
-            weights = [0, 0, 0] + weights[3:]
-        # Another check to make sure not all the values are zero. This should never happen, but better
-        # safe than sorry.
-        if not any(weights):
-            weights = [2, 1, 0, 0, 0]
-
-        chosen_white_patches = choice(weighted_choice(Pelt.white_lists, weights))
-
-        self.white_patches = chosen_white_patches
         if self.points and self.white_patches in Pelt.white_low_end:
             self.points = None
 
