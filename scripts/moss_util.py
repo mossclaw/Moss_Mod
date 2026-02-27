@@ -139,18 +139,25 @@ class ModMod():
             logger.info(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
     
-    def expand_part(self, data, modded):
+    def expand_part(self, data, modded, append = False):
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
-                replace = key[0] == '-'
-                if not replace and key in data:
-                    self.expand_part(data[key], modded[key])
-                else:
-                    data_key = key[1:] if replace else key
-                    data[data_key] = modded[key]
+                prefix = key[0] if key[0] in '-+' else ''
+                data_keys = (key[1:] if prefix else key),
+                if data_keys == ('*',):
+                    present = set(x.strip('-+') for x in modded.keys)
+                    data_keys = set(data.keys()) - present
+                for data_key in data_keys:
+                    if prefix != '-' and data_key in data:
+                        self.expand_part(data[data_key], modded[key], prefix == '+')
+                    elif prefix != '+':
+                        data[data_key] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
-            add = set(modded) - set(data)
-            data.extend(x for x in modded if x in add)
+            if append:
+                data.extend(modded)
+            else:
+                add = set(modded) - set(data)
+                data.extend(x for x in modded if x in add)
         else:
             pass # TODO: error message
     
