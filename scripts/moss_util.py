@@ -144,7 +144,7 @@ class ModMod():
             for key in modded:
                 prefix = key[0] if key[0] in '-+' else ''
                 data_keys = (key[1:] if prefix else key),
-                if data_keys == ('*',):
+                if data_keys == ('#',):
                     present = set(x.strip('-+') for x in modded.keys)
                     data_keys = set(data.keys()) - present
                 for data_key in data_keys:
