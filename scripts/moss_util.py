@@ -142,7 +142,7 @@ class ModMod():
     def expand_part(self, data, modded):
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
-                prefix = key[0] if key[0] in '-+' else ''
+                prefix = key[0] if key and key[0] in '-+' else ''
                 data_keys = (key[1:] if prefix else key),
                 if data_keys == ('#',):
                     present = set(x.strip('-+') for x in modded.keys)
