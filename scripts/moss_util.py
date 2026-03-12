@@ -153,7 +153,7 @@ class ModMod():
                     elif prefix != '+':
                         data[data_key] = modded[key]
         elif isinstance(modded, list) and isinstance(data, list):
-            if append:
+            if append or not data or not isinstance(data[0], str):
                 data.extend(modded)
             else:
                 add = set(modded) - set(data)
