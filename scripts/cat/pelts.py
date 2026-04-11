@@ -112,14 +112,19 @@ class Pelt:
         return str(pelt.cat_sprites[attr[0][7:]])
     _edit_sprite_funcs       = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite,       True)
     _edit_sprite_adult_funcs = (_edit_sprites_for, _edit_get_sprite, _edit_set_sprite_adult, True)
-        
+    
     @staticmethod
-    def _edit_set_suffix(pelt, attr, value):
-        setattr(pelt, attr[0].split(' ')[-1], value)
+    def _edit_set_pelt_name(pelt, attr, value):
+        pelt.name = value
+        if value in ('Tortie', 'Calico'):
+            for key in ('tortie_' + x for x in ('base', 'colour', 'marking', 'pattern')):
+                if getattr(pelt, key) is None:
+                    setattr(pelt, key, choice(Pelt.edit_values[key]))
     @staticmethod
-    def _edit_get_suffix(pelt, attr):
-        return getattr(pelt, attr[0].split(' ')[-1])
-    _edit_suffix_funcs = (None, _edit_get_suffix, _edit_set_suffix, True)
+    def _edit_get_pelt_name(pelt, attr):
+        return pelt.name
+    _edit_pelt_name_funcs = (None, _edit_get_pelt_name, _edit_set_pelt_name, True)
+    
     
     @staticmethod
     def _edit_accessory_children(pelt, attr):
@@ -234,7 +239,7 @@ class Pelt:
     edit_funcs = { 
         'accessory'        : _edit_accessory_funcs,
         'scars'            : _edit_scars_funcs,     
-        'pelt name'        : _edit_suffix_funcs,
+        'pelt name'        : _edit_pelt_name_funcs,
         'sprite_newborn'   : _edit_sprite_funcs,
         'sprite_kitten'    : _edit_sprite_funcs,
         'sprite_adolescent': _edit_sprite_funcs,
@@ -243,7 +248,7 @@ class Pelt:
     }
     del _tints
     del _edit_sprites_for, _edit_set_sprite, _edit_get_sprite, _edit_sprite_funcs
-    del _edit_set_suffix, _edit_get_suffix, _edit_suffix_funcs
+    del _edit_set_pelt_name, _edit_get_pelt_name, _edit_pelt_name_funcs
     del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set, _edit_accessory_funcs
     del _edit_scars_children, _edit_scars_get, _edit_scars_set, _edit_scars_funcs
     for x in edit_values.values():
@@ -686,7 +691,7 @@ class Pelt:
         first = attribute[0]
         funcs = Pelt.edit_funcs.get(first)
         translate = funcs is None or funcs[3]
-        if funcs:
+        if funcs and funcs[1]:
             value = funcs[1](self, attribute)
         else:
             value = getattr(self, first)
@@ -700,7 +705,7 @@ class Pelt:
         translate = funcs is None or funcs[3]
         if translate and value in Pelt.edit_translate_set:
             value = Pelt.edit_translate_set[value]
-        if funcs:
+        if funcs and funcs[2]:
             funcs[2](self, attribute, value)
         else:
             setattr(self, first, value)
