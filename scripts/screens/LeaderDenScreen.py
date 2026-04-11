@@ -85,14 +85,12 @@ class LeaderDenScreen(Screens):
                 self.current_page -= 1
                 self.update_outsider_cats()
             elif event.ui_element in self.other_clan_selection_elements.values():
+                elems = self.other_clan_selection_elements
                 for i in range(0, 5):
-                    if f"button{i}" not in self.other_clan_selection_elements:
-                        continue
-                    if (
-                        event.ui_element
-                        == self.other_clan_selection_elements[f"button{i}"]
-                    ):
-                        self.update_other_clan_focus(None)
+                    button_key = f"button{i}"
+                    if button_key in elems and event.ui_element == elems[button_key]:
+                        name = self.other_clan_selection_elements[f"clan_name{i}"].text[:-4]
+                        self.update_other_clan_focus(name)
             elif event.ui_element == self.focus_frame_elements["negative_interaction"]:
                 text = self.focus_frame_elements["negative_interaction"].text.replace(
                     "screens.leader_den.", ""
