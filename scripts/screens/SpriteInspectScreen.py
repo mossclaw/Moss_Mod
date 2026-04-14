@@ -567,13 +567,17 @@ class SpriteInspectScreen(Screens):
                 self.edit_refresh_attribute_list(new_attribute, options)
             else:
                 attribute = self.edit_attribute
+                random = value == 'Random'
+                if random:
+                    value = pelt.edit_random(attribute)
                 if attribute[-1] == 'Add':
                     print(f"Adding {value}.")
                 elif value == 'Remove':
                     print(f"Removing {attribute[-1]}.")
                 else:
                     print(f"Changing {attribute[-1]} from {old} to {value}.")
-                pelt.edit_set(attribute, value)
+                if not random:
+                    pelt.edit_set(attribute, value)
                 self.edit_refresh_attribute_list(attribute)
                 self.make_cat_image()
         
@@ -581,9 +585,19 @@ class SpriteInspectScreen(Screens):
         self.edit_refresh_attribute_list(self.edit_attribute[:-1])
     
     def edit_set_drop_list(self, drop, options):
-        if len(self.edit_attribute) > 1:
-            options = ['Back'] + options
-        drop.new_item_list(options)
+        start = 0
+        extended = []
+        n = len(self.edit_attribute)
+        if n > 1:
+            extended.append('Back')
+        if options[0] == 'Remove':
+            start = 1
+            extended.append(options[0])
+        elif n > 0 and self.the_cat.pelt.edit_allows_random(self.edit_attribute):
+            extended.append('Random')
+        extended.extend(options[start:])
+            
+        drop.new_item_list(extended)
         drop.child_button_container.vert_scroll_bar.set_scroll_from_start_percentage(0.0)
     
     def edit_refresh_attribute_list(self, new_attribute, value_options=None):

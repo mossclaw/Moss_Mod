@@ -127,6 +127,9 @@ class Pelt:
     
     
     @staticmethod
+    def _edit_slotted_allows_random(pelt, attr):
+        return len(attr) > 1
+    @staticmethod
     def _edit_accessory_children(pelt, attr):
         def available(slot):
             return sorted(Accessory.names_by_slot[slot])
@@ -181,7 +184,11 @@ class Pelt:
                 acc.color[i] = value
             case ['accessory', slot, ('pattern', i)]:
                 acc.pattern[i] = value
-    _edit_accessory_funcs = (_edit_accessory_children, _edit_accessory_get, _edit_accessory_set, False)
+    _edit_accessory_funcs = (_edit_accessory_children, 
+                             _edit_accessory_get, 
+                             _edit_accessory_set, 
+                             False,
+                             _edit_slotted_allows_random)
    
     @staticmethod
     def _edit_scars_children(pelt, attr):
@@ -207,7 +214,11 @@ class Pelt:
                 pelt.scars.append(value)
             case ['scars', name]:
                 pelt.scars = [ x for x in pelt.scars + [value] if x != name and x != 'Remove' ]
-    _edit_scars_funcs = (_edit_scars_children, _edit_scars_get, _edit_scars_set, False)
+    _edit_scars_funcs = (_edit_scars_children, 
+                         _edit_scars_get, 
+                         _edit_scars_set, 
+                         False, 
+                         _edit_slotted_allows_random)
                 
     @staticmethod
     def _tints(data):
@@ -686,6 +697,18 @@ class Pelt:
         elif funcs and funcs[0]:
             return funcs[0](self, attribute)
         return None
+
+    def edit_allows_random(self, attribute):
+        if len(attribute) == 0:
+            return False
+        first = attribute[0]
+        funcs = Pelt.edit_funcs.get(first)
+        return not funcs or len(funcs) < 5 or funcs[4](self, attribute)
+
+    def edit_random(self, attribute):
+        options = self.edit_options_for(attribute)
+        self.edit_set(attribute, choice(options))
+        return self.edit_get(attribute)
 
     def edit_get(self, attribute):
         first = attribute[0]
