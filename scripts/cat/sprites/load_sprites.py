@@ -31,7 +31,7 @@ class Sprites:
             if image is None:
                 with self.mod.open_path(self.path, text=False) as file:
                     name = self.path.split('/')[-1]
-                    image = pygame.image.load(file, namehint=name).convert_alpha()
+                    image = pygame.image.load(file, namehint=name)
                 if not drop_sheets:
                     self.image = image
             return image
@@ -53,25 +53,7 @@ class Sprites:
                     self.spritesheet.sprite,
                     self.x, self.y,
                     self.size[0], self.size[1]
-                )
-            return self.image
-
-
-    class PaletteSpriteCache:
-        def __init__(self, base_sprite, palette_set, palette_name):
-            self.image = None
-            self.base_sprite = base_sprite
-            self.palette_set = palette_set
-            self.palette_name = palette_name
-            self.ready = False
-
-        @property
-        def sprite(self):
-            if self.image is None:
-                self.image = self.palette_set.apply(
-                    self.base_sprite.sprite,
-                    self.palette_name
-                )
+                ).convert_alpha()
             return self.image
 
 
