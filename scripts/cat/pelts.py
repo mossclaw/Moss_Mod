@@ -125,7 +125,6 @@ class Pelt:
         return pelt.name
     _edit_pelt_name_funcs = (None, _edit_get_pelt_name, _edit_set_pelt_name, True)
     
-    
     @staticmethod
     def _edit_slotted_allows_random(pelt, attr):
         return len(attr) > 1
@@ -219,12 +218,33 @@ class Pelt:
                          _edit_scars_set, 
                          False, 
                          _edit_slotted_allows_random)
-                
+    
+    @staticmethod
+    def _edit_randomize_all_get(pelt, attr):
+        return None
+    @staticmethod
+    def _edit_randomize_all_set(pelt, attr, value):
+        if value is None:
+            return
+        for key in pelt.edit_options_for([]):
+            key = [key]
+            if pelt.edit_allows_random(key):
+                pelt.edit_random(key)
+    @staticmethod
+    def _edit_never_allows_random(pelt, attr):
+        return False
+    _edit_randomize_all_funcs = (None, 
+                                 _edit_randomize_all_get, 
+                                 _edit_randomize_all_set, 
+                                 False, 
+                                 _edit_never_allows_random)
+    
     @staticmethod
     def _tints(data):
         return union_of_entries(data["possible_tints"])
         
     edit_values = {
+        'RANDOMIZE ALL'     : ['Randomize'],
         'pelt name'         : union_of_entries(pelt_dict),
         'length'            : _pelt_data['pelt_length'],
         'colour'            : pelt_colours,
@@ -248,6 +268,7 @@ class Pelt:
         'tortie_tuft'       : ['False', 'True'],
     }
     edit_funcs = { 
+        'RANDOMIZE ALL'    : _edit_randomize_all_funcs,
         'accessory'        : _edit_accessory_funcs,
         'scars'            : _edit_scars_funcs,     
         'pelt name'        : _edit_pelt_name_funcs,
@@ -262,6 +283,8 @@ class Pelt:
     del _edit_set_pelt_name, _edit_get_pelt_name, _edit_pelt_name_funcs
     del _edit_accessory_children, _edit_accessory_get, _edit_accessory_set, _edit_accessory_funcs
     del _edit_scars_children, _edit_scars_get, _edit_scars_set, _edit_scars_funcs
+    del _edit_randomize_all_get, _edit_randomize_all_set, _edit_randomize_all_funcs
+    del _edit_never_allows_random, _edit_slotted_allows_random
     for x in edit_values.values():
         if isinstance(x, list) and len(x) > 10:
             x.sort()
