@@ -305,6 +305,8 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
                 else {},
             )
             event_list.append(event)
+        
+        return event_list
 
     except ValueError:
         print(f"WARNING: {file_path} was not found, check short event generation")

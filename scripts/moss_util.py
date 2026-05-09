@@ -139,7 +139,7 @@ class ModMod():
             logger.info(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
     
-    def expand_part(self, data, modded):
+    def expand_part(self, data, modded, append=False):
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
                 prefix = key[0] if key and key[0] in '-+' else ''
