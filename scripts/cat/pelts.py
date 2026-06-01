@@ -429,7 +429,7 @@ class Pelt:
         if isinstance(val, list):
             self.__make_accessory_list((Accessory.load(item) for item in val))
         else:
-            if not hasattr(self, '_accessory'):
+            if self._accessory is None:
                 self.__make_accessory_list()
             if isinstance(val, str) or isinstance(val, Accessory):
                 self._accessory.append(Accessory.load(val))
