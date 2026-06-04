@@ -18,8 +18,11 @@ import ujson
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.game_structure.localization import get_new_pronouns
-from scripts.utility import process_text
+from scripts.cat.pronouns import get_new_pronouns
+from scripts.events_module.text_adjust import process_text
+
+import logging
+logging.disable(logging.WARNING)
 
 import logging
 logging.disable(logging.WARNING)
@@ -66,6 +69,8 @@ def _test():
         "dep_name": _r,
         "med_name": _r,
         "cat_tag": _r,
+        "cat_to": _r,
+        "cat_from": _r,
     }
 
     for x in range(0, 11):

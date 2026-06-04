@@ -1,6 +1,6 @@
 import pygame
 from scripts.moss_util import read_resource_dict
-from scripts.cat.sprites import sprites
+from scripts.cat.sprites.load_sprites import sprites
 
 
 class Render:

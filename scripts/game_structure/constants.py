@@ -18,7 +18,16 @@ MENU_SCREENS = [
     GameScreen.MAKE_CLAN,
 ]
 
+EVENTS_PER_PAGE = 10
+
 BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
+
+CAMPS: dict = {
+    "Forest": ["Classic", "Gully", "Grotto", "Lakeside"],
+    "Mountainous": ["Cliff", "Cavern", "Crystal River", "Ruins"],
+    "Plains": ["Grasslands", "Tunnels", "Wastelands", "Bridge"],
+    "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord"],
+}
 
 SEASONS = ["Newleaf", "Greenleaf", "Leaf-fall", "Leaf-bare"]
 SEASON_CALENDAR = [
@@ -36,11 +45,21 @@ SEASON_CALENDAR = [
     "Leaf-bare",
 ]
 
-TEMPERAMENT_DICT = {
-    "low_social": ["cunning", "proud", "bloodthirsty"],
-    "mid_social": ["amiable", "stoic", "wary"],
-    "high_social": ["gracious", "mellow", "logical"],
-}
+TEMPERAMENT_DICTS = [
+    {
+        "low_social": ["cunning", "proud", "bloodthirsty"],
+        "mid_social": ["amiable", "stoic", "wary"],
+        "high_social": ["gracious", "mellow", "logical"],
+    },
+    {
+        "low_lawful": ["chaotic", "mercurial", "calculating"],
+        "mid_lawful": ["eager", "observant", "adaptable"],
+        "high_lawful": ["decisive", "methodical", "steadfast"],
+    },
+]
+
+facet_types = ["lawfulness", "sociability", "aggression", "stability"]
+facet_range = [0, 16]
 
 OUTSIDER_REPS = ("welcoming", "neutral", "hostile")
 OTHER_CLAN_REPS = ("ally", "neutral", "hostile")
@@ -138,6 +157,12 @@ SUPPLY_ADJUSTMENTS = [
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
+
+with open("resources/display_settings.toml", "r", encoding="utf-8") as read_file:
+    DISPLAY_SETTINGS = tomllib.loads(read_file.read())
+
+with open("resources/prey_config.toml", "r", encoding="utf-8") as read_file:
+    PREY_CONFIG = tomllib.loads(read_file.read())
 
 LAYOUTS = read_json('resources/placements.json', 'Layouts')
 

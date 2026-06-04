@@ -139,7 +139,7 @@ class ModMod():
             logger.info(f"Expanding file {path} from mod-mod at {self.mod_path}")
             self.expand_part(data, modded)
     
-    def expand_part(self, data, modded, append = False):
+    def expand_part(self, data, modded, append=False):
         if isinstance(modded, dict) and isinstance(data, dict):
             for key in modded:
                 prefix = key[0] if key and key[0] in '-+' else ''
@@ -252,8 +252,17 @@ all_mods = [base_mod] + mod_mods
 
 
 # ---------------------------------------------------------------------------- #
-#                            Utility classes                                   #
+#                            Collection Utilities                              #
 # ---------------------------------------------------------------------------- #
+
+
+def union_of_entries(dict_of_lists):
+    return sorted({ x for y in dict_of_lists.values() for x in y })
+
+
+def reverse_dict(dict_of_lists):
+    return { item: key for key, items in dict_of_lists.items() for item in items }
+
 
 class OnUpdateList(list):
     def __init__(self, update, convert, elems):

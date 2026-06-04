@@ -10,11 +10,13 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 from scripts.cat.cats import Cat
 from scripts.game_structure.localization import (
-    get_new_pronouns,
-    determine_plural_pronouns,
     set_lang_config_directory,
 )
-from scripts.utility import event_text_adjust
+from scripts.cat.pronouns import get_new_pronouns, determine_plural_pronouns
+from scripts.events_module.text_adjust import event_text_adjust
+
+import logging
+logging.disable(logging.WARNING)
 
 import logging
 logging.disable(logging.WARNING)

@@ -4,12 +4,14 @@ from random import randint, choice, choices
 
 from scripts.moss_util import read_resource_dict
 
+from scripts.game_structure import constants
+
 
 class Personality:
     """Hold personality information for a cat, and functions to deal with it"""
 
-    facet_types = ["lawfulness", "sociability", "aggression", "stability"]
-    facet_range = [0, 16]
+    facet_types = constants.facet_types
+    facet_range = constants.facet_range
 
     trait_ranges = read_resource_dict('traits/trait_ranges', 'Trait Ranges')
 

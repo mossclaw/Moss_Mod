@@ -77,8 +77,7 @@
     "tags": [ ["animal", "bug"] ]
   },
   "BEECH": {
-    "variants": 0,
-    "tags": []
+    "tags": [ ["plant", "leaf"] ]
   },
   "BEETLE": {
     "tags": [ ["animal", "bug"] ]
@@ -119,8 +118,7 @@
     "tags": [ ["animal", "cat"] ]
   }, 
   "BLIZZARD": {
-    "variants": 0,
-    "tags": [ ["element"] ]
+    "tags": [ ["element", "water"] ]
   },
   "BLOOD": {
     "tags": [ ["element", "water"] ]
@@ -281,8 +279,7 @@
     "tags": [ ["element", "fire"] ]
   },
   "CLAW": {
-    "variants": 0,
-    "tags": [ ["miscellaneous"] ]
+    "tags": [ ["animal", "cat"] ]
   }, 
   "CLAY": {
     "tags": [ ["miscellaneous"] ]
@@ -291,7 +288,6 @@
     "tags": [ ["descriptor"] ]
   }, 
   "CLIFF": {
-    "variants": 0,
     "tags": [ ["location"] ]
   },
   "CLOUD": {
@@ -337,7 +333,6 @@
     "variants": 2,
     "tags": [ ["animal", "bird"],
               ["animal", "bird"] ]
-
   }, 
   "CREEK": {
     "tags": [ ["location", "element", "water"] ]
@@ -372,7 +367,7 @@
     "tags": [ ["miscellaneous", "animal", "cat"] ]
   }, 
   "CURLEW": {
-    "tags": [ ["plant", "flower"] ]
+    "tags": [ ["animal", "bird"] ]
   }, 
   "CURLY": {
     "tags": [ ["descriptor"] ]
@@ -403,7 +398,7 @@
     "tags": [ ["descriptor"] ]
   }, 
   "DART": {
-    "tags": [ ["fish"] ]
+    "tags": [ ["animal", "fish"] ]
   }, 
   "DASH": {
     "tags": [ ["animal", "cat"] ]
@@ -418,8 +413,7 @@
     "tags": [ ["miscellaneous"] ]
   }, 
   "DEW": {
-    "variants": 0,
-    "tags": [ ["element", "water"] ]
+    "tags": [ ["element", "water", "plant", "leaf"] ]
   }, 
   "DOG": {
     "tags": [ ["animal", "mammal"] ]
@@ -1285,8 +1279,7 @@
     "tags": []
   },
   "PUDDLE": {
-    "variants": 0,
-    "tags": []
+    "tags": [ ["element", "puddle", "animal", "cat"] ]
   },
   "PUMPKIN": {
     "tags": [ ["plant", "fruit"] ]

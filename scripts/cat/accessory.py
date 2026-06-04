@@ -203,7 +203,10 @@ class Accessory:
     @staticmethod
     def __lookup(accessory):
         if isinstance(accessory, str):
-            accessory = AccessoryDef.available[accessory]
+            if accessory in AccessoryDef.available:
+                accessory = AccessoryDef.available[accessory]
+            else:
+                raise ValueError(f"No accessory named {accessory}.")
         return accessory
 
 
@@ -215,7 +218,7 @@ class Accessory:
     @staticmethod
     def create_random_for_event(possible, exclude_slots = []):
         if isinstance(possible, str):
-            Accessory.create_random(AccessoryDef.events[possible])
+            return Accessory.create_random(AccessoryDef.events[possible])
 
         def list_of_accs(x, lists):
             return lists[x.lower()] if x.lower() in lists else [Accessory.__lookup(x)]

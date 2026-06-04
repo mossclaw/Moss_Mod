@@ -25,5 +25,5 @@
 	"faded": "single",
 	"fademask": "static",
 	"accpattern": "static",
-	"symbol.png": [ "json", "resources/dicts/clan_symbols.json" ]
+	"symbols.png": [ "json", "resources/dicts/clan_symbols.json" ]
 }

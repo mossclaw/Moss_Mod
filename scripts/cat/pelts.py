@@ -8,13 +8,13 @@ from time import time_ns
 import i18n
 
 import scripts.game_structure.screen_settings
+from scripts.cat.sprites.load_sprites import sprites
 from scripts.cat.enums import CatAge, CatGroup
-from scripts.cat.sprites import sprites
 from scripts.cat.render import Render
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.localization import get_lang_config
-from scripts.utility import adjust_list_text, union_of_entries, reverse_dict
-from scripts.moss_util import read_resource_dict, OnUpdateList
+from scripts.events_module.text_adjust import adjust_list_text
+from scripts.moss_util import union_of_entries, reverse_dict, read_resource_dict, OnUpdateList
 from scripts.cat.accessory import Accessory, AccessoryDef
 
 logger = logging.getLogger(__name__)
@@ -353,7 +353,7 @@ class Pelt:
         self.accessory = accessory
         self.paralyzed = paralyzed
         self.opacity = opacity
-        self.scars = scars if isinstance(scars, list) else []
+        self._scars = scars or []
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
@@ -429,7 +429,7 @@ class Pelt:
         if isinstance(val, list):
             self.__make_accessory_list((Accessory.load(item) for item in val))
         else:
-            if self._accessory is None:
+            if not hasattr(self, '_accessory'):
                 self.__make_accessory_list()
             if isinstance(val, str) or isinstance(val, Accessory):
                 self._accessory.append(Accessory.load(val))
@@ -480,6 +480,7 @@ class Pelt:
                 val = { x for x in val if x not in parts } | { combined }
 
         self._scars = OnUpdateList(lambda : self._update_scars(), None, val)
+        self.rebuild_sprite = True
 
 
     @staticmethod
@@ -673,6 +674,18 @@ class Pelt:
         return { x for y in self.scars if y in data for x in data[y] }
 
 
+    def remove_disabling_scars(self):
+        self.remove_scars(Pelt._pelt_data['scars']['disabling'])
+
+
+    def remove_scars(self, to_remove):
+        if not isinstance(to_remove, set):
+            to_remove = set(to_remove)
+        for i in range(len(self.scars) - 1, -1, -1):
+            if self.scars[i] in to_remove:
+                self.scars.pop(i)
+
+
     def excluded_accessory_slots(self):
         from_scars = Pelt._pelt_data['scars']['exclude']['accessory']
         used    = { x.slot for x in self.accessory }
@@ -746,11 +759,7 @@ class Pelt:
 
 
     @staticmethod
-    def _roll_inheritance(category, 
-                          groupings, 
-                          parent_values, 
-                          no_weights = None, 
-                          clamp = None):
+    def _calc_inheritance_weights(category, groupings, parent_values, ensure_not_zero = True):
         weight_data = Pelt._pelt_data['inheritance'][category]
         n = len(next(iter(weight_data.values())))
         zero = [0 for i in range(n)]
@@ -771,19 +780,10 @@ class Pelt:
                 weights[x] += add[x]
 
         # If we have no weights at all, replace with equal chance for all
-        if not any(weights):
-            weights = weight_data[no_weights] if no_weights else [1 for i in range(n)]
+        if ensure_not_zero and not any(weights):
+            weights = [1 for i in range(n)]
 
-        if clamp:
-            l, h = clamp
-            weights = [0] * l + weights[l:n-h] + [0] * h
-        
-        sets = [x for x in weight_data.keys() if x[0] != '_']
-        category = weighted_choice(sets[:n], weights)
-        if category not in groupings:
-            return category
-        else:
-            return choice(groupings[category])
+        return weights
 
 
     def init_eyes(self, parents):
@@ -854,7 +854,10 @@ class Pelt:
         # PELT
         
         # Determine pelt.
-        chosen_pelt = Pelt._roll_inheritance('pelts', Pelt.pelt_dict, par_peltnames)
+        weights = Pelt._calc_inheritance_weights('pelts', Pelt.pelt_dict, par_peltnames)
+
+        # Now, choose the pelt category and pelt. The extra 0 is for the tortie pelts,
+        chosen_pelt = choice(weighted_choice(Pelt.pelt_sets, weights + [0]))
 
         # Tortie chance
         female = gender == 'female'
@@ -876,7 +879,8 @@ class Pelt:
             chosen_pelt = random.choice(torties)
 
         # PELT COLOUR
-        chosen_pelt_color = Pelt._roll_inheritance('colors', Pelt.sprite_names, par_peltcolours)
+        weights = Pelt._calc_inheritance_weights('colors', Pelt.sprite_names, par_peltcolours)
+        chosen_pelt_color = choice(weighted_choice(Pelt.sprite_sets, weights))
 
         # PELT LENGTH
         # TODO: move weights to pelt_data
@@ -1162,14 +1166,26 @@ class Pelt:
         else:
             self.points = None
 
-        no_weights = '_no_patches_' if all(parents) else '_any_unknown_'
-        clamp = tuple(3 if self.name == x else 0 for x in ('Calico', 'Tortie'))
-        self.white_patches = Pelt._roll_inheritance('white_patches', 
-                                                    Pelt.white_patches, 
-                                                    par_whitepatches, 
-                                                    no_weights,
-                                                    clamp)
+        weights = Pelt._calc_inheritance_weights('white_patches', 
+                                                 Pelt.white_patches, 
+                                                 par_whitepatches)
+        if not any(weights):
+            key = '_no_patches_' if all(parents) else '_any_unknown_'
+            weights = Pelt._pelt_data['inheritance']['white_patches'][key]
 
+        # Adjust weights for torties, since they can't have anything greater than mid_white:
+        if self.name == "Tortie":
+            weights = weights[:2] + [0, 0, 0]
+        elif self.name == "Calico":
+            weights = [0, 0, 0] + weights[3:]
+        # Another check to make sure not all the values are zero. This should never happen, but better
+        # safe than sorry.
+        if not any(weights):
+            weights = [2, 1, 0, 0, 0]
+
+        chosen_white_patches = choice(weighted_choice(Pelt.white_lists, weights))
+
+        self.white_patches = chosen_white_patches
         if self.points and self.white_patches in Pelt.white_low_end:
             self.points = None
 
@@ -1401,8 +1417,8 @@ def _describe_pattern(cat, short=False):
     if cat.pelt.white_patches:
         if cat.pelt.white_patches == "FULLWHITE":
             # If the cat is fullwhite, discard all other information. They are just white
-            color_name = white
-            pelt_name = ""
+            color_name = i18n.t("cat.pelts.FULLWHITE")
+            pelt_name = f"cat.pelts.SingleColour_long"
         elif cat.pelt.name != "Calico":
             if white in color_name:
                 color_name = white
@@ -1446,7 +1462,7 @@ def _describe_torties(cat, color_name, short=False) -> [str, str]:
         ):
             base = f"cat.pelts.{cat.pelt.tortie_base.capitalize()}_long"
         else:
-            base = ""
+            base = f"cat.pelts.{cat.pelt.name}_long"
         return base, color_name
 
 
