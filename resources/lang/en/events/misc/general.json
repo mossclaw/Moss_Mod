@@ -13846,9 +13846,8 @@
               "medicine cat apprentice"
             ]
         }
-    }
-  },
-    {
+    },
+  {
     "event_id": "gen_misc_any_acc_KITTY2",
     "location": ["any"],
     "season": ["any"],
