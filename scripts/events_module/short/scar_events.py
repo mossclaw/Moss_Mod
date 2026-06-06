@@ -18,69 +18,6 @@ from scripts.game_structure import game
 class Scar_Events:
     """All events with a connection to conditions."""
 
-    # scar pools
-    bite_scars = ["CATBITE", "CATBITETWO"]
-    rat_scars = ["RATBITE", "TOE"]
-    beak_scars = ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"]
-    canid_scars = ["LEGBITE", "NECKBITE", "TAILSCAR", "BRIGHTHEART"]
-    snake_scars = ["SNAKE", "SNAKETWO"]
-    claw_scars = [
-        "ONE",
-        "TWO",
-        "SNOUT",
-        "TAILSCAR",
-        "CHEEK",
-        "SIDE",
-        "THROAT",
-        "TAILBASE",
-        "BELLY",
-        "FACE",
-        "BRIDGE",
-        "HINDLEG",
-        "BACK",
-        "SCRATCHSIDE",
-    ]
-    leg_scars = ["NOPAW", "TOETRAP", "MANLEG", "FOUR"]
-    tail_scars = ["TAILSCAR", "TAILBASE", "NOTAIL", "HALFTAIL", "MANTAIL"]
-    ear_scars = ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR"]
-    frostbite_scars = [
-        "HALFTAIL",
-        "NOTAIL",
-        "NOPAW",
-        "NOLEFTEAR",
-        "NORIGHTEAR",
-        "NOEAR",
-        "FROSTFACE",
-        "FROSTTAIL",
-        "FROSTMITT",
-        "FROSTSOCK",
-    ]
-    eye_scars = ["THREE", "RIGHTBLIND", "LEFTBLIND", "BOTHBLIND"]
-    burn_scars = ["BRIGHTHEART", "BURNPAWS", "BURNTAIL", "BURNBELLY", "BURNRUMP"]
-    quill_scars = ["QUILLCHUNK", "QUILLSCRATCH", "QUILLSIDE"]
-    head_scars = ["SNOUT", "CHEEK", "BRIDGE", "BEAKCHEEK"]
-    bone_scars = ["MANLEG", "TOETRAP", "FOUR"]
-    back_scars = ["TWO", "TAILBASE", "BACK"]
-
-    scar_allowed = {
-        "bite-wound": canid_scars,
-        "cat bite": bite_scars,
-        "severe burn": burn_scars,
-        "rat bite": rat_scars,
-        "snake bite": snake_scars,
-        "mangled tail": tail_scars,
-        "mangled leg": leg_scars,
-        "torn ear": ear_scars,
-        "frostbite": frostbite_scars,
-        "damaged eyes": eye_scars,
-        "quilled by porcupine": quill_scars,
-        "claw-wound": claw_scars,
-        "beak bite": beak_scars,
-        "broken jaw": head_scars,
-        "broken back": back_scars,
-        "broken bone": bone_scars,
-    }
-
     @staticmethod
     def handle_scars(cat, injury_name):
         """
@@ -90,7 +27,7 @@ class Scar_Events:
         scar_pool = cat.injuries[injury_name].get("potential_scars", [])
 
         # If the injury can't give a scar, return None, None
-        if not scar_pool and injury_name not in Scar_Events.scar_allowed:
+        if not scar_pool and injury_name not in cat.pelt.scar_dict['event']:
             return None, None
 
         moons_with = game.clan.age - cat.injuries[injury_name]["moon_start"]
@@ -109,34 +46,16 @@ class Scar_Events:
             dont_pair = {'BRIGHTHEART', 'BOTHBLIND'}
             if len(blocked & dont_pair):
                 blocked |= dont_pair
-            scar_pool = [
-                i
-                for i in Scar_Events.scar_allowed[injury_name]
-                if i not in blocked
-            ]
+            if not scar_pool:
+                scar_pool = [
+                    i
+                    for i in cat.pelt.scar_dict['event'][injury_name]
+                    if i not in blocked
+                ]
 
             # Extra check for disabling scars.
             if int(random.random() * 3):
-                condition_scars = {
-                    "LEGBITE",
-                    "THREE",
-                    "NOPAW",
-                    "TOETRAP",
-                    "NOTAIL",
-                    "HALFTAIL",
-                    "LEFTEAR",
-                    "RIGHTEAR",
-                    "MANLEG",
-                    "BRIGHTHEART",
-                    "NOLEFTEAR",
-                    "NORIGHTEAR",
-                    "NOEAR",
-                    "LEFTBLIND",
-                    "RIGHTBLIND",
-                    "BOTHBLIND",
-                    "RATBITE",
-                }
-
+                condition_scars = set(cat.pelt.scar_dict['condition'])
                 scar_pool = list(set(scar_pool).difference(condition_scars))
 
             # If there are no new scars to give them, return None, None.

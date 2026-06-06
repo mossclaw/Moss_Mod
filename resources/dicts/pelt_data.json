@@ -117,6 +117,30 @@
       "special": [{"sheet": "scars"}],
       "colored": [{"sheet": "scars", "blend": "min"}, {"sheet": "scarscolor"}]
     },
+    "event": {
+      "bite-wound":           ["LEGBITE", "NECKBITE", "TAILSCAR", "BRIGHTHEART"],
+      "cat bite":             ["CATBITE", "CATBITETWO"],
+      "severe burn":          ["BRIGHTHEART", "BURNPAWS", "BURNTAIL", "BURNBELLY", "BURNRUMP"],
+      "rat bite":             ["RATBITE", "TOE"],
+      "snake bite":           ["SNAKE", "SNAKETWO"],
+      "mangled tail":         ["TAILSCAR", "TAILBASE", "NOTAIL", "HALFTAIL", "MANTAIL"],
+      "mangled leg":          ["NOPAW", "TOETRAP", "MANLEG", "FOUR"],
+      "torn ear":             ["LEFTEAR", "RIGHTEAR", "NOLEFTEAR", "NORIGHTEAR"],
+      "frostbite":            ["HALFTAIL", "NOTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR", 
+                               "NOEAR", "FROSTFACE", "FROSTTAIL", "FROSTMITT", "FROSTSOCK"],
+      "damaged eyes":         ["THREE", "RIGHTBLIND", "LEFTBLIND", "BOTHBLIND"],
+      "quilled by porcupine": ["QUILLCHUNK", "QUILLSCRATCH", "QUILLSIDE"],
+      "claw-wound":           ["ONE", "TWO", "SNOUT", "TAILSCAR", "CHEEK", "SIDE", 
+                               "THROAT", "TAILBASE", "BELLY", "FACE", "BRIDGE", "HINDLEG", 
+                               "BACK", "SCRATCHSIDE"],
+      "beak bite":            ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"],
+      "broken jaw":           ["SNOUT", "CHEEK", "BRIDGE", "BEAKCHEEK"],
+      "broken back":          ["TWO", "TAILBASE", "BACK"],
+      "broken bone":          ["MANLEG", "TOETRAP", "FOUR"]
+    },
+    "condition": ["LEGBITE", "THREE", "NOPAW", "TOETRAP", "NOTAIL", "HALFTAIL", "LEFTEAR", 
+                  "RIGHTEAR", "MANLEG", "BRIGHTHEART", "NOLEFTEAR", "NORIGHTEAR", "NOEAR", 
+                  "LEFTBLIND", "RIGHTBLIND", "BOTHBLIND", "RATBITE"],
     "exclude": {
       "scars": {
         "NOPAW"      : ["TOETRAP", "RATBITE", "FROSTSOCK"],

@@ -87,8 +87,9 @@ class Pelt:
     point_markings = white_patches['point']
     vit = white_patches['vit']
 
-    all_scars = union_of_entries(_pelt_data['scars']['lists'])
-    scar_reverse = reverse_dict(_pelt_data['scars']['lists'])
+    scar_dict = _pelt_data['scars']
+    all_scars = union_of_entries(scar_dict['lists'])
+    scar_reverse = reverse_dict(scar_dict['lists'])
 
     conversion = set_none_keys(read_resource_dict('pelt_conversion', 'Old Save Conversion'))
 
