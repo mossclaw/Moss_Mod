@@ -268,7 +268,7 @@
     "frequency": 3,
     "event_text": "m_c sees a flock of corvids swarm the fresh-kill pile and rushes to chase them off, though they've already made off with valuable prey. At least {PRONOUN/m_c/subject} {VERB/m_c/were/was} able to grab hold of some of their tail feathers.",
     "new_accessory": [
-      "BLUE FEATHERS"
+      { "*": "FEATHER", "col": "BLUE" }
     ],
     "m_c": {
       "age": [

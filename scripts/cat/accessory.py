@@ -3,6 +3,16 @@ from scripts.moss_util import read_resource_dict
 from random import choice
 from itertools import zip_longest
 
+
+def _set_fixed(rand, fixed):
+    if fixed is None:
+        return rand
+    if isinstance(fixed, list):
+        return [ r if f is None else f for r, f in zip_longest(rand, fixed[:len(rand)]) ]
+    if len(rand) >= 1:
+        rand[0] = fixed
+    return rand
+
 class AccessoryDef:
     _accessory_data = read_resource_dict('accessories')
     colors = _accessory_data['colors']
@@ -54,12 +64,12 @@ class AccessoryDef:
         return AccessoryDef.colors[self.color[i]] if i < len(self.color) else None
 
 
-    def random_colors(self):
-        return AccessoryDef.__random_colors(self.color)
+    def random_colors(self, fixed= None):
+        return _set_fixed(AccessoryDef.__random_colors(self.color), fixed)
 
 
-    def random_patterns(self):
-        return AccessoryDef.__random_patterns(max(self.patterns))
+    def random_patterns(self, fixed= None):
+        return _set_fixed(AccessoryDef.__random_patterns(max(self.patterns)), fixed)
 
 
     def fix(self, acc):
@@ -211,6 +221,13 @@ class Accessory:
 
 
     @staticmethod
+    def __slot(accessory):
+        if isinstance(accessory, dict):
+            accessory = accessory['*']
+        return Accessory.__lookup(accessory)
+
+
+    @staticmethod
     def create_random_from_set(set_name):
         return Accessory.create_random(AccessoryDef.sets[set_name])
 
@@ -221,10 +238,13 @@ class Accessory:
             return Accessory.create_random(AccessoryDef.events[possible])
 
         def list_of_accs(x, lists):
-            return lists[x.lower()] if x.lower() in lists else [Accessory.__lookup(x)]
+            if isinstance(x, str) and x.lower() in lists:
+                return lists[x.lower()]
+            else:
+                return [x]
 
         expanded = [ list_of_accs(x, AccessoryDef.events) for x in possible ]
-        acc_list = [ x for y in expanded for x in y if x.slot not in exclude_slots ]
+        acc_list = [ x for y in expanded for x in y if Accessory.__slot(x) not in exclude_slots ]
         return Accessory.create_random(acc_list) if acc_list else None
 
 
@@ -236,12 +256,20 @@ class Accessory:
     @staticmethod
     def create_random(available):
         if isinstance(available, list):
-            available = choice(available)
-        accessory = Accessory.__lookup(available)
+            accessory = choice(available)
+        else:
+            accessory = available
+        if isinstance(accessory, dict):
+            color   = accessory['col'] if 'col' in accessory else None
+            pattern = accessory['pat'] if 'pat' in accessory else None
+            accessory = accessory['*']
+        else:
+            (color, pattern) = (None, None)
+        accessory = Accessory.__lookup(accessory)
         return Accessory(
             accessory,
-            accessory.random_colors(),
-            accessory.random_patterns())
+            accessory.random_colors(color),
+            accessory.random_patterns(pattern))
 
 
     @staticmethod
