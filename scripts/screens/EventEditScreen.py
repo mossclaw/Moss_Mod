@@ -2229,7 +2229,7 @@ class EventEditScreen(Screens):
 
         for block in self.injury_block_list:
             if (
-                set(block["injuries"]).intersection(set(Scar_Events.scar_allowed))
+                set(block["injuries"]).intersection(set(Pelt.scar_dict['event']))
                 or block["scars"]
             ):
                 injured_cats.extend(block["cats"])
