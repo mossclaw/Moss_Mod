@@ -3,7 +3,7 @@
     "points": ["Ticked", "Agouti", "Smoke", "Mist", "Fog", "Dust"],
     "spots": ["Speckled", "Rosette", "Bengal", "CharcoalBengal"],
     "swirls": ["Tabby", "Classic", "Sokoke", "Marbled", "Smudge"],
-    "flats": ["Solid", "Singlestripe", "Abyssinian"],
+    "flats": ["Solid", "Singlestripe", "Abyssinian", "Vulpine"],
     "stripes": ["Mackerel", "Braided", "Brindle", "BrokenMackerel", "BrokenBraided", "Masked"],
     "exotic": ["Saber", "Faded", "Longdan", "Splotch"],
     "torties": ["Tortie", "Calico"]
@@ -82,7 +82,7 @@
       "solid", "tabby", "bengal", "marbled", "ticked", "smoke", "rosette", "speckled", "mackerel",
       "classic", "sokoke", "agouti", "singlestripe", "abyssinian", "brindle", "braided", "splotch",
       "saber", "faded", "masked", "fog", "mist", "smudge", "longdan", "brokenmackerel", "brokenbraided",
-      "charcoalbengal", "dust"
+      "charcoalbengal", "dust", "vulpine"
     ]
   },
   "tortiecolors": {

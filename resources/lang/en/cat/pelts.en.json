@@ -390,6 +390,8 @@
         "BrokenMackerel_long": "%{color} broken mackerel",
         "BrokenBraided": "broken braided",
         "BrokenBraided_long": "%{color} broken braided",
+        "Vulpine": "vulpine",
+        "Vulpine_long": "%{color} vulpine",
         "Masked": "masked",
         "Masked_long": "%{color} masked",
         "Saber": "saber",
