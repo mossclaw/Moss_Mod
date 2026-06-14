@@ -949,6 +949,8 @@ class Condition_Events:
                     working=True,
                     sort=True,
                 )
+                if cat in med_list:
+                    med_list.remove(cat)
                 med_cat = None
                 has_parents = False
                 if cat.parent1 is not None and cat.parent2 is not None:
@@ -974,15 +976,10 @@ class Condition_Events:
                         has_parents = True
 
                 if len(med_list) == 0 or not has_parents:
-                    if random_index == 0:
-                        random_index = 1
-                    else:
-                        med_cat = None
+                    random_index = 1
                 else:
                     med_cat = random.choice(med_list)
-                    if med_cat == cat:
-                        random_index = 1
-                        med_cat = None
+
                 event = possible_string_list[random_index]
                 event = event_text_adjust(
                     Cat, event, main_cat=cat, random_cat=med_cat
