@@ -27,17 +27,17 @@
     "brown": ["ACORN", "LIGHT BROWN", "BROWN", "DARK BROWN", "COFFEE", "CHOCOLATE", "COCOA", "DEER"]
   },
   "eyes": {
-    "yellow": ["YELLOW", "PALE YELLOW", "GOLD", "LEMON", "PEACH"],
+    "yellow": ["YELLOW", "PALE YELLOW", "GOLD", "LEMON", "PEACH", "MUSTARD"],
     "blue": ["BLUE", "DARK BLUE", "CYAN", "SUN-LIT ICE", "BRIGHT BLUE", "PALE BLUE", "SEASIDE",
-             "WINTER", "ICE", "CANDY", "STARLIGHT", "RUST", "OCEAN", "PLUTONIUM"],
+             "WINTER", "ICE", "CANDY", "STARLIGHT", "RUST", "OCEAN", "PLUTONIUM", "AURORA", "SEA", "BLUEBELL"],
     "green": ["HAZEL", "PALE GREEN", "GREEN", "EMERALD", "SAGE", "LIME", "DARK HAZEL", "SUMMER", "SPRING",
-              "FOREST", "BRIGHT GREEN", "SEA GREEN", "DOVE", "OLIVE", "WARM GREEN", "MINT", "URANIUM"],
+              "FOREST", "BRIGHT GREEN", "SEA GREEN", "DOVE", "OLIVE", "WARM GREEN", "MINT", "URANIUM", "GLADE"],
     "red": ["DARK AMBER", "RUBY", "ECLIPSE", "CRIMSON", "COLD FIRE", "EMBER", "CHERRY", "STRAWBERRY"],
     "grey": ["GREY", "DARK GREY", "SLATE", "LIGHT GREY", "GHOST", "STORM"],
     "purple": ["HEATHER BLUE", "LAVENDER",  "PURPLE", "SUNSET", "MIDNIGHT", "COLD PURPLE", "PHANTOM",
-               "GLASS", "VIOLET", "FIG"],
-    "pink": ["LILAC", "PINK", "MAGENTA", "PIXIE", "HIBISCUS", "SUNRISE", "HYDRANGEA", "LIGHT ROSE"],
-    "brown": ["HAZELNUT", "CHOCOLATE", "CARAMEL", "COFFEE", "MOCHA", "BARK", "WARM HAZEL", "OMEN"],
+               "GLASS", "VIOLET", "FIG", "DAWN"],
+    "pink": ["LILAC", "PINK", "MAGENTA", "PIXIE", "HIBISCUS", "SUNRISE", "HYDRANGEA", "LIGHT ROSE", "DUSK"],
+    "brown": ["HAZELNUT", "CHOCOLATE", "CARAMEL", "COFFEE", "MOCHA", "BARK", "WARM HAZEL", "OMEN", "EARTHY"],
     "orange": ["AMBER", "COPPER", "AUTUMN", "SUMMER", "HONEY", "PLUMERIA", "PASSION FRUIT",
                "HABANERO", "MANGO"]
   },

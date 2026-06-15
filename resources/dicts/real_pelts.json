@@ -23,14 +23,14 @@
     "brown": ["LIGHT BROWN", "BROWN", "DARK BROWN", "CHOCOLATE"]
   },
   "eyes": {
-    "yellow": ["YELLOW", "PALE YELLOW", "GOLD"],
-    "blue": ["BLUE", "DARK BLUE", "PALE BLUE", "ICE"],
-    "green": ["HAZEL", "PALE GREEN", "GREEN", "FOREST"],
+    "yellow": ["YELLOW", "PALE YELLOW", "GOLD", "MUSTARD"],
+    "blue": ["BLUE", "DARK BLUE", "PALE BLUE", "ICE", "SEA"],
+    "green": ["HAZEL", "PALE GREEN", "GREEN", "FOREST", "GLADE"],
     "red": ["COPPER"],
     "grey": ["LIGHT GREY", "SLATE"],
-    "purple": ["HEATHER BLUE"],
+    "purple": ["HEATHER BLUE", "BLUEBELL"],
     "pink": ["DARK AMBER"],
-    "brown": ["HAZELNUT", "CHOCOLATE"],
+    "brown": ["HAZELNUT", "CHOCOLATE", "EARTHY"],
     "orange": ["AMBER", "MANGO"]
   },
   "whitepatches": {

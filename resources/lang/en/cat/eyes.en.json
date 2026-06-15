@@ -83,6 +83,14 @@
         "PLUMERIA": "plumeria",
         "PASSION FRUIT": "passion fruit",
         "HABANERO": "habanero",
-        "MANGO": "mango"
+        "MANGO": "mango",
+        "DAWN": "dawn",
+        "DUSK": "dusk",
+        "AURORA": "aurora",
+        "GLADE": "glade",
+        "MUSTARD": "mustard",
+        "EARTHY": "earthy",
+        "SEA": "sea",
+        "BLUEBELL": "bluebell"
     }
 }
