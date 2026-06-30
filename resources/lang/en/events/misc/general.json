@@ -13757,7 +13757,7 @@
         "sub_type": ["accessory"],
         "frequency": 4,
         "event_text":  "m_c has been hanging around a group of scary-looking rogues... and has a acc_singular to prove it!",
-        "new_accessory": ["FANGCOLLAR"],
+        "new_accessory": ["LEATHERCOLLAR+FANG"],
         "m_c": {
             "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
         }
@@ -13769,7 +13769,7 @@
         "sub_type": ["accessory"],
         "frequency": 4,
         "event_text":  "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
-        "new_accessory": ["FANGCOLLAR"],
+        "new_accessory": ["LEATHERCOLLAR+FANG"],
         "m_c": {
             "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
             "skill": ["ROGUE,0"]
@@ -13782,7 +13782,7 @@
         "sub_type": ["accessory"],
         "frequency": 4,
         "event_text":  "m_c dares any cat to ask about {PRONOUN/m_c/poss} new acc_singular.",
-        "new_accessory": ["FANGCOLLAR"],
+        "new_accessory": ["LEATHERCOLLAR+FANG"],
         "m_c": {
             "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
             "trait": ["bloodthirsty", "fierce"]
@@ -13914,7 +13914,7 @@
     "sub_type": ["accessory"],
     "frequency": 4,
     "event_text":  "m_c has been hanging around a group of scary-looking rogues... and has a acc_singular to prove it!",
-    "new_accessory": ["FANGCOLLAR"],
+    "new_accessory": ["LEATHERCOLLAR+FANG"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     }
@@ -13926,7 +13926,7 @@
     "sub_type": ["accessory"],
     "frequency": 4,
     "event_text":  "m_c returns to camp after seeking out a group of rogues, wearing a reminder of {PRONOUN/m_c/poss} past.",
-    "new_accessory": ["FANGCOLLAR"],
+    "new_accessory": ["LEATHERCOLLAR+FANG"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
         "skill": ["ROGUE,0"]
@@ -13939,7 +13939,7 @@
     "sub_type": ["accessory"],
     "frequency": 4,
     "event_text":  "m_c dares any cat to ask about {PRONOUN/m_c/poss} new acc_singular.",
-    "new_accessory": ["FANGCOLLAR"],
+    "new_accessory": ["LEATHERCOLLAR+FANG"],
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
         "trait": ["bloodthirsty", "fierce"]

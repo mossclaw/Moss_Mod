@@ -1,7 +1,7 @@
 from scripts.cat.save_load import load_instance, load_instance_list
-from scripts.moss_util import read_resource_dict
+from scripts.moss_util import read_resource_dict, add_function_mod
 from random import choice
-from itertools import zip_longest
+from itertools import zip_longest, product
 
 
 def _set_fixed(rand, fixed):
@@ -12,6 +12,28 @@ def _set_fixed(rand, fixed):
     if len(rand) >= 1:
         rand[0] = fixed
     return rand
+
+
+def _combine_function_mod(data, path, root):
+    if not path == f"resources/lang/{root}/cat/accessories.{root}.json":
+        return
+    
+    for key, accessories in _combinations.items():
+        for name, parts in accessories.items():
+            part_dicts = [ data[key] for key in parts if key in data ]
+            if (name not in data 
+                    and 'combined' in data 
+                    and key in data['combined']):
+                combine_dict = data['combined'][key]
+                data[name] = translation_dict = {}
+                for plural_key, fmt in combine_dict.items():
+                    strings = [ part[plural_key] for part in part_dicts ]
+                    value = fmt.format(*strings)
+                    translation_dict[plural_key] = value
+
+add_function_mod(_combine_function_mod)
+_combinations = {}
+
 
 class AccessoryDef:
     _accessory_data = read_resource_dict('accessories')
@@ -26,11 +48,11 @@ class AccessoryDef:
                  patterns,
                  sprites:  list,
                  sheets:   list,
-                 order:    int):
+                 order:    int,
+                 combine:  dict):
         self.name = name
         self.slot = slot
         self.event = event
-        self.color = color
 
         n_pat = patterns if isinstance(patterns, int) else len(patterns or [])
         n = max(len(color), n_pat, len(sheets), len(sprites), 1)
@@ -42,7 +64,7 @@ class AccessoryDef:
                 sheets = ['base'] * (n - len(sheets)) + sheets
             else:
                 sheets = ['']
-        self.sheets = [ 'acc' + s for s in sheets ]
+        self.sheets = [ s if s.startswith('acc') else 'acc' + s for s in sheets ]
         if isinstance(patterns, int):
             patterns = [i for i in range(1, patterns + 1)]
         elif patterns is None:
@@ -50,10 +72,21 @@ class AccessoryDef:
         if len(patterns) < n:
             patterns += [0] * (n - len(patterns))
         self.patterns = patterns
+        
+        if len(color) < n:
+            color += [None] * (n - len(color))
+        self.color_expanded = color
+        self.color = [ x for x in color if x is not None ]
 
-        if order is None:
+        if order is None and slot is not None:
             order = AccessoryDef._accessory_data['default_order'][slot]
         self.order = order
+        
+        if combine is not None:
+            for key, val in combine.items():
+                if isinstance(val, int):
+                    combine[key] = { 'part': val }
+        self.combine = combine
 
 
     def __format__(self, spec):
@@ -70,6 +103,24 @@ class AccessoryDef:
 
     def random_patterns(self, fixed= None):
         return _set_fixed(AccessoryDef.__random_patterns(max(self.patterns)), fixed)
+    
+    
+    class __ColorIter:
+        def __init__(self, expanded, condensed):
+            self.expanded = expanded
+            self.condensed = condensed
+        
+        def __iter__(self):
+            self.e_it = iter(self.expanded)
+            self.c_it = iter(self.condensed)
+            return self
+        
+        def __next__(self):
+            return None if next(self.e_it) is None else next(self.c_it)
+
+    
+    def color_for_render(self, color):
+        return AccessoryDef.__ColorIter(self.color_expanded, color)
 
 
     def fix(self, acc):
@@ -78,7 +129,7 @@ class AccessoryDef:
             rand_func = AccessoryDef.__random_colors
             acc.color = acc.color[:n] + rand_func(self.color[len(acc.color):])
         for i, col in enumerate(acc.color):
-            if col not in AccessoryDef.colors[self.color[i]]:
+            if self.color[i] is not None and col not in AccessoryDef.colors[self.color[i]]:
                 acc.color[i] = AccessoryDef.__random_color(self.color[i])
 
         n = max(self.patterns)
@@ -88,13 +139,58 @@ class AccessoryDef:
 
 
     @staticmethod
+    def __combine(key, *parts):
+        def extract(key, part, value, new, tag, is_set):
+            if not is_set:
+                if tag in part.combine[key]:
+                    is_set = True
+                    value = part.combine[key][tag]
+                elif value is None:
+                    value = new
+            return (value, is_set)
+        
+        exclude = set()
+        for part in parts:
+            if 'exclude' in part.combine[key]:
+                exclude.update(part.combine[key]['exclude'])
+
+        slot_set  = False
+        event_set = False
+        order_set = False
+        name     = None
+        slot     = None
+        event    = None
+        order    = None
+        color    = []
+        patterns = []
+        sprites  = []
+        sheets   = []
+        
+        for part in parts:
+            if part.name in exclude:
+                return None
+            name = part.name if name is None else name + '+' + part.name
+            slot,  slot_set  = extract(key, part, slot,  part.slot,  'slot', slot_set)
+            event, event_set = extract(key, part, event, part.event, 'ev',   event_set)
+            order, order_set = extract(key, part, order, part.order, 'ord',  order_set)
+            color   .extend(part.color_expanded)
+            patterns.extend(part.patterns)
+            sprites .extend(part.sprites)
+            sheets  .extend(part.sheets)
+        
+        _combinations.setdefault(key, {})[name] = [ part.name for part in parts ]
+        
+        return AccessoryDef(name, slot, event, color, patterns, sprites, sheets, order, None)
+
+
+    @staticmethod
     def __random_color(category):
         return choice(AccessoryDef.colors[category])
 
 
     @staticmethod
     def __random_colors(categories):
-        return [ AccessoryDef.__random_color(x) for x in categories ]
+        return [ None if x is None else AccessoryDef.__random_color(x) for x in categories ]
 
 
     @staticmethod
@@ -117,6 +213,28 @@ class AccessoryDef:
                         acc_dict[key] = []
                     acc_dict[key].append(acc)
             return acc_dict
+        
+        def make_combinations(available):
+            combinations = {}
+            for part in available.values():
+                if part.combine is not None:
+                    for key, val in part.combine.items():
+                        i = val['part'] - 1
+                        if key not in combinations:
+                            combinations[key] = []
+                        while i >= len(combinations[key]):
+                            combinations[key].append([])
+                        combinations[key][i].append(part)
+            for key, lists in combinations.items():
+                for parts in product(*lists):
+                    acc = AccessoryDef.__combine(key, *parts)
+                    if acc is not None:
+                        available[acc.name] = acc
+        
+        def remove_no_slot(available):
+            for name in tuple(available):
+                if available[name].slot is None:
+                    del available[name]
 
 
         load_args = { 'slot': [],
@@ -126,9 +244,12 @@ class AccessoryDef:
                       'spr' : ['list', 'opt'],
                       'sh'  : ['list', 'opt'],
                       'ord' : ['opt'],
+                      'comb': ['opt'],
                       }
         entries = AccessoryDef._accessory_data['list'].items()
         AccessoryDef.available = { name: load(name, data) for name, data in entries }
+        make_combinations(AccessoryDef.available)
+        remove_no_slot(AccessoryDef.available)
         AccessoryDef.events = make_acc_dict(lambda x: x.event)
         AccessoryDef.slots  = make_acc_dict(lambda x: x.slot)
 
@@ -143,13 +264,15 @@ AccessoryDef.load_available()
 
 
 class Accessory:
+    _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
+    
     @staticmethod
     def _make_name_dict(acc_dict):
         return { k: [ x.name for x in v ] for k, v in acc_dict.items() }
-    _load_args = [ [], ['list', 'opt'], ['list', 'opt'] ]
     names_by_slot  = _make_name_dict(AccessoryDef.slots)
     names_by_event = _make_name_dict(AccessoryDef.events)
     del _make_name_dict
+
 
     def __init__(self,
                  accessory,
@@ -193,7 +316,10 @@ class Accessory:
 
     def render(self, render):
         render.set(colormap= 'accessory', sprite= self.name)
-        sets = zip_longest(self.acc.sprites, self.color, self.acc.patterns, self.acc.sheets)
+        sets = zip_longest(self.acc.sprites, 
+                           self.acc.color_for_render(self.color), 
+                           self.acc.patterns, 
+                           self.acc.sheets)
         for sprite, color, pattern, sheet in sets:
             render.set(sprite= sprite, color= color)
             if color is None:
@@ -297,7 +423,10 @@ class Accessory:
             convert_one(data, acc, 'accessory_color2',   'color',   True)
             convert_one(data, acc, 'accessory_pattern',  'pattern', False)
             convert_one(data, acc, 'accessory_pattern2', 'pattern', True)
-
+        
+        def from_convert(conv):
+            conv = { ('accessory' if k == '*' else k): v for k,v in conv.items() }
+            return Accessory(**conv)
 
         if 'accessory' not in data:
             return
@@ -311,12 +440,20 @@ class Accessory:
 
         for i, acc in enumerate(accs):
             if isinstance(acc, str):
-                args = conv[acc] if acc in conv else { '*': acc }
-                args['accessory'] = args['*']
-                del args['*']
-                accs[i] = Accessory(**args)
+                if acc in conv:
+                    accs[i] = from_convert(conv[acc])
+                else:
+                    accs[i] = Accessory(acc)
             elif isinstance(acc, list):
-                accs[i] = Accessory.load(acc)
+                if acc[0] in conv:
+                    acc_conv = conv[acc[0]]
+                    if len(acc_conv) == 1:
+                        acc[0] = acc_conv['*']
+                        accs[i] = Accessory.load(acc)
+                    else:
+                        accs[i] = from_convert(acc_conv)
+                else:
+                    accs[i] = Accessory.load(acc)
 
         convert_col_pat(data, accs[0] if len(accs) > 0 else None)
 

@@ -96,6 +96,11 @@ def mod_expand(data, path, root=None):
         mod.expand(data, path, root)
 
 
+def add_function_mod(func):
+    global mod_mods
+    mod_mods.append(FunctionMod(func))
+
+
 class _DirEntry:
     def __init__(self, path, is_dir):
         self.path = path.replace('\\', '/')
@@ -215,6 +220,18 @@ class ZipModMod(ModMod):
 class BaseMod(ModMod):
     def __init__(self):
         ModMod.__init__(self, 'BASE')
+
+
+class FunctionMod(ModMod):
+    def __init__(self, func):
+        ModMod.__init__(self, 'FUNC')
+        self.func = func
+    
+    def expand(self, data, path, root=None):
+        self.func(data, path, root)
+    
+    def scan_dir(self, path):
+        return []
 
 
 

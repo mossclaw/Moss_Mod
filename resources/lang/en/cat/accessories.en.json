@@ -4,6 +4,13 @@
             "zero should be what you'd like to display on the cat profile",
             "one and many will be used on events"
         ],
+        "combined": {
+            "collar": {
+                "zero": "{0} with {1}",
+                "many": "{0} with {1}",
+                "one": "{0} with {1}"
+            }
+        },
         "MAPLE LEAF": {
             "zero": "maple leaf",
             "many": "maple leaves",
@@ -174,20 +181,35 @@
             "many": "bandanas",
             "one": "bandana"
         },
-        "BELLCOLLAR": {
+        "LEATHERCOLLAR+BELL": {
             "zero": "bell collar",
             "many": "bell collars",
             "one": "bell collar"
         },
-        "BOWCOLLAR": {
+        "LEATHERCOLLAR+BOW": {
             "zero": "bow collar",
             "many": "bow collars",
             "one": "bow collar"
         },
-        "FANGCOLLAR": {
+        "LEATHERCOLLAR+FANG": {
             "zero": "dog-fang collar",
             "many": "fang collars",
             "one": "fang collar"
+        },
+        "BELL": {
+            "zero": "bell",
+            "many": "bells",
+            "one": "bell"
+        },
+        "BOW": {
+            "zero": "bow",
+            "many": "bows",
+            "one": "bow"
+        },
+        "FANG": {
+            "zero": "fangs",
+            "many": "fangs",
+            "one": "fangs"
         },
         "LEATHERCOLLAR": {
             "zero": "collar",
