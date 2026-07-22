@@ -551,7 +551,7 @@ class Pelt:
                     index = Pelt._pelt_data['tuft']['color']['other'].index(self.tuft_color)
                 render.set(sprite= self.tuft, color= color)
                 render.paint('tufts', index)
-                render.paint('tuftlines', 5, color= "BLACK" if black else color)
+                render.paint('tuftlines', 6, color= "BLACK" if black else color)
 
             # Pelt
             def paint_pelt(render):
