@@ -3,6 +3,13 @@ from scripts.moss_util import read_resource_dict
 from scripts.cat.sprites.load_sprites import sprites
 
 
+def _expand_pelt_colors(colors):
+    colors = colors['pelt']
+    for col in colors.values():
+        if len(col) < 7:
+            col.insert(5, col[0])
+
+
 class Render:
     _create_flags = pygame.HWSURFACE | pygame.SRCALPHA
     _blend = { None  : 0,
@@ -12,6 +19,7 @@ class Render:
               'min'  : pygame.BLEND_RGBA_MIN,
              }
     colors = read_resource_dict('colors')
+    _expand_pelt_colors(colors)
 
     def __init__(self, pose, size=None, flip=False, load_only=False):
         if size is None:

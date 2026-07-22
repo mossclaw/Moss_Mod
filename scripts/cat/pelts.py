@@ -556,8 +556,8 @@ class Pelt:
             # Pelt
             def paint_pelt(render):
                 render.paint('base', 1, sprite= 'SOLID')
-                render.paint_all(('under', 0), ('mid', 2), ('dark', 3), ('shade', 4), ('highlight', 0))
-                render.paint('line', 5, sprite= '')
+                render.paint_all(('under', 0), ('mid', 2), ('dark', 3), ('shade', 4), ('highlight', 5))
+                render.paint('line', 6, sprite= '')
 
             tortie = self.name in ['Tortie', 'Calico']
             render.set(color= self.colour, sprite= self.tortie_base if tortie else self.name)
