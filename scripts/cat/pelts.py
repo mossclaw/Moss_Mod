@@ -533,7 +533,7 @@ class Pelt:
                load_only=False,
                name=None):
         try:
-            t = time_ns()
+            #t = time_ns()
             render = Render(pose, flip= self.reverse, load_only= load_only)
             render.set(colormap= 'pelt')
 
@@ -643,7 +643,7 @@ class Pelt:
                 render.add_layer(sheet, insert= True).merge_layer()
 
             sprite = render.image
-            t2 = time_ns()
+            #t2 = time_ns()
             #print(f"Rendered {name}'s pelt in {(t2 - t) / 1000000} ms.")
 
         except (TypeError, KeyError, ValueError):
