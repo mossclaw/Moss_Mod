@@ -89,7 +89,10 @@ class Pelt:
 
     scar_dict = _pelt_data['scars']
     all_scars = union_of_entries(scar_dict['lists'])
-    scar_reverse = reverse_dict(scar_dict['lists'])
+    scar_reverse = reverse_dict(scar_dict['render']['groups'])
+    for x in all_scars: 
+        if x not in scar_reverse:
+            scar_reverse[x] = 'default'
 
     conversion = set_none_keys(read_resource_dict('pelt_conversion', 'Old Save Conversion'))
 
@@ -620,11 +623,12 @@ class Pelt:
                 render.paint('lineartdead')
 
             # Skin
-            render.paint('skin', 0, sprite= self.skin, colormap= 'skin', color= self.skin_color)
+            render.set(colormap= 'skin', color= self.skin_color)
+            render.paint('skin', 0, sprite= self.skin)
 
             # Scars
             if not scars_hidden:
-                args_lists = Pelt._pelt_data['scars']['render']
+                args_lists = Pelt.scar_dict['render']['method']
                 reverse = Pelt.scar_reverse
                 for scar in self.scars:
                     for args in args_lists[reverse[scar]]:

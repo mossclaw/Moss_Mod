@@ -3,11 +3,24 @@ from scripts.moss_util import read_resource_dict
 from scripts.cat.sprites.load_sprites import sprites
 
 
-def _expand_pelt_colors(colors):
-    colors = colors['pelt']
+def _expand_colors(colors, section, n, copy, to=None, conv=None):
+    colors = colors[section]
     for col in colors.values():
-        if len(col) < 7:
-            col.insert(5, col[0])
+        if len(col) < n:
+            value = col[copy]
+            if conv is not None:
+                value = conv(value)
+            if to is None:
+                col.append(value)
+            else:
+                col.insert(to, col[copy])
+
+
+def _make_scar_color(color):
+    parts = [color[1:3], color[3:5], color[5:7]]
+    ratio = (0.6, 0.4, 0.4)
+    adjusted = [ format(round(r * int(x, base=16)), '02x') for x, r in zip(parts, ratio) ]
+    return '#' + ''.join(adjusted)
 
 
 class Render:
@@ -19,7 +32,8 @@ class Render:
               'min'  : pygame.BLEND_RGBA_MIN,
              }
     colors = read_resource_dict('colors')
-    _expand_pelt_colors(colors)
+    _expand_colors(colors, 'pelt', 7, 0, 5)
+    _expand_colors(colors, 'skin', 2, 0, conv=_make_scar_color)
 
     def __init__(self, pose, size=None, flip=False, load_only=False):
         if size is None:

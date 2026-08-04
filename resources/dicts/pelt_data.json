@@ -112,10 +112,19 @@
       "colored": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"]
     },
     "render": {
-      "general": [{"sheet": "scars"}],
-      "missing": [{"sheet": "scars", "blend": "min"}],
-      "special": [{"sheet": "scars"}],
-      "colored": [{"sheet": "scars", "blend": "min"}, {"sheet": "scarscolor"}]
+      "groups": {
+        "missing": ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW",
+                    "NOLEFTEAR", "NORIGHTEAR", "NOEAR"],
+        "partial": ["MANTAIL", "TAILSCAR", "FROSTTAIL", "BURNTAIL", "BRIGHTHEART"],
+        "notint":  ["FROSTFACE", "FROSTMITT", "FROSTSOCK"]
+      },
+      "method": {
+        "default": [{"sheet": "scarskin", "index": 0}, {"sheet": "scars", "index": 1}],
+        "missing": [{"sheet": "scarcrop", "blend": "min"}],
+        "partial": [{"sheet": "scarcrop", "blend": "min"},
+                    {"sheet": "scarskin", "index": 0}, {"sheet": "scars", "index": 1}],
+        "notint":  [{"sheet": "scarnotint"}]
+      }
     },
     "event": {
       "bite-wound":           ["LEGBITE", "NECKBITE", "TAILSCAR", "BRIGHTHEART"],
