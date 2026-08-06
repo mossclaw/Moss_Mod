@@ -838,20 +838,6 @@ class ProfileScreen(Screens):
         if the_cat.pelt.accessory:
             cats_accs = list(deepcopy(the_cat.pelt.accessory))
             acc_list = []
-#            if sprites.COLLAR_DATA["palette_map"]:
-#                for acc in the_cat.pelt.accessory:
-#                    potential_collar = "".join(
-#                        [x for x in acc.name if not x.islower()]
-#                    ).strip("_")
-#                    for style in Pelt.collar_styles:
-#                        if style == potential_collar:
-#                            acc_list.append(
-#                                i18n.t(f"cat.accessories.{potential_collar}", count=0)
-#                            )
-#                            cats_accs.remove(acc)
-#                            break
-#                    if acc_list:
-#                        break
 
             acc_list.extend(
                 [i18n.t(f"cat.accessories.{acc.name}", count=0) for acc in cats_accs]

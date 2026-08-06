@@ -37,29 +37,41 @@
   "pelt_length": ["short", "medium", "long"],
   "poses": {
     "newborn": {
-        "short" : [56, 57, 58, 59],
-        "medium": [56, 57, 58, 59],
-        "long"  : [56, 57, 58, 59]
+      "short" : [56, 57, 58, 59],
+      "medium": [56, 57, 58, 59],
+      "long"  : [56, 57, 58, 59]
     },
     "kitten": {
-        "short" : [0, 2, 4, 6],
-        "medium": [0, 2, 4, 6],
-        "long"  : [1, 3, 5, 7]
+      "short" : [0, 2, 4, 6],
+      "medium": [0, 2, 4, 6],
+      "long"  : [1, 3, 5, 7]
     },
     "adolescent": {
-        "short" : [ 8,  9, 10, 11],
-        "medium": [ 8,  9, 10, 11],
-        "long"  : [12, 13, 14, 15]
+      "short" : [ 8,  9, 10, 11],
+      "medium": [ 8,  9, 10, 11],
+      "long"  : [12, 13, 14, 15]
     },
     "adult": {
-        "short" : [16, 17, 18, 19, 20, 21, 22, 23],
-        "medium": [16, 17, 18, 19, 20, 21, 22, 23],
-        "long"  : [24, 25, 26, 27, 28, 29, 30, 31]
+      "short" : [16, 17, 18, 19, 20, 21, 22, 23],
+      "medium": [16, 17, 18, 19, 20, 21, 22, 23],
+      "long"  : [24, 25, 26, 27, 28, 29, 30, 31]
     },
     "senior": {
-        "short" : [32, 33, 34, 35],
-        "medium": [32, 33, 34, 35],
-        "long"  : [36, 37, 38, 39]
+      "short" : [32, 33, 34, 35],
+      "medium": [32, 33, 34, 35],
+      "long"  : [36, 37, 38, 39]
+    },
+    "sick": {
+      "kitten"    : { "short": 48, "medium": 48, "long": 49 },
+      "adolescent": { "short": 50, "medium": 50, "long": 51 },
+      "adult"     : { "short": 52, "medium": 52, "long": 53 },
+      "senior"    : { "short": 54, "medium": 54, "long": 55 }
+    },
+    "paralyzed": {
+      "kitten"    : { "short": 40, "medium": 40, "long": 41 },
+      "adolescent": { "short": 42, "medium": 42, "long": 43 },
+      "adult"     : { "short": 44, "medium": 44, "long": 45 },
+      "senior"    : { "short": 46, "medium": 46, "long": 47 }
     },
     "aging": {
        "0": [ 8,  9],

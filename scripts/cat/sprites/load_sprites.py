@@ -69,20 +69,6 @@ class Sprites:
     white_patches_tints = {}
     clan_symbols        = []
 
-    # TODO: There are used from pelts.py. Would be nice to decouple,
-    #       but they *are* required to be in sync. Needs thinking.
-    POSE_DATA = read_sprite_dict('pose_sprite_data')
-    COLLAR_DATA = read_sprite_dict('collar_sprite_data')
-    WILD_DATA = read_sprite_dict('wild_sprite_data')
-    PLANT_DATA = read_sprite_dict('plant_sprite_data')
-    SCAR_DATA = read_sprite_dict('scar_sprite_data')
-    SCAR_MISSING_PART_DATA = read_sprite_dict('scar_missing_sprite_data')
-    SKIN_DATA = read_sprite_dict('skin_sprite_data')
-    TORTIE_DATA = read_sprite_dict('tortie_patches_sprite_data')
-    PELT_DATA = read_sprite_dict('pelt_sprite_data')
-    EYE_DATA = read_sprite_dict('eye_sprite_data')
-    WHITE_DATA = read_sprite_dict('white_patches_sprite_data')
-
 
     def __init__(self):
         self.symbol_dict   = None

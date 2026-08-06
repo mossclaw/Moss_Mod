@@ -33,80 +33,31 @@ def generate_sprite(
     :param disable_sick_sprite: If true, never use the not_working lineart.
                     If false, use the cat.not_working() to determine the no_working art.
     """
-    poses: list = sprites.POSE_DATA["poses"]
-
-    if life_state is not None:
-        age = life_state
-    else:
-        age = cat.age
-
-    if always_living:
-        dead = False
-    else:
-        dead = cat.dead
-
-    # setting the cat_sprite (bc this makes things much easier)
-    cat_sprite = str(0)
-    if (
-            not disable_sick_sprite
+    age = life_state or cat.age.pose_age()
+    newborn = age == CatAge.NEWBORN
+    sick = (not newborn 
+            and not disable_sick_sprite 
             and cat.not_working()
-            and age != CatAge.NEWBORN
-            and constants.CONFIG["cat_sprites"]["sick_sprites"]
-    ):
-
-        if cat.pelt.length == "long":
-            if age in CatAge.KITTEN:
-                cat_sprite = str(49)
-            elif age in CatAge.ADOLESCENT:
-                cat_sprite = str(51)
-            elif age in CatAge.SENIOR:
-                cat_sprite = str(55)
-            else:
-                cat_sprite = str(53)
-        else:
-            if age in CatAge.KITTEN:
-                cat_sprite = str(48)
-            elif age in CatAge.ADOLESCENT:
-                cat_sprite = str(50)
-            elif age in CatAge.SENIOR:
-                cat_sprite = str(54)
-            else:
-                cat_sprite = str(52)
-
-    elif cat.pelt.paralyzed and age != "newborn":
-        if cat.pelt.length == "long":
-            if age in CatAge.KITTEN:
-                cat_sprite = str(41)
-            elif age in CatAge.ADOLESCENT:
-                cat_sprite = str(43)
-            elif age in CatAge.SENIOR:
-                cat_sprite = str(47)
-            else:
-                cat_sprite = str(45)
-        else:
-            if age in CatAge.KITTEN:
-                cat_sprite = str(40)
-            elif age in CatAge.ADOLESCENT:
-                cat_sprite = str(42)
-            elif age in CatAge.SENIOR:
-                cat_sprite = str(46)
-            else:
-                cat_sprite = str(44)
-
-    elif constants.CONFIG["fun"]["all_cats_are_newborn"]:
-        cat_sprite = str(cat.pelt.cat_sprites["newborn"])
-    else:
-        cat_sprite = str(cat.pelt.cat_sprites[age])
-
-
-    return cat.pelt.render(cat_sprite,
-                           dead,
+            and constants.CONFIG["cat_sprites"]["sick_sprites"])
+    paralyzed = not newborn and cat.pelt.paralyzed
+    
+    return cat.pelt.render(get_cat_sprite(cat, age, sick, paralyzed),
+                           cat.dead and not always_living,
                            cat.status.group,
                            not cat.prevent_fading and get_clan_setting("fading"),
                            scars_hidden,
                            acc_hidden,
                            load_only,
                            cat.name)
+
+
+def get_cat_sprite(cat, age, sick, paralyzed):
+    if sick or paralyzed:
+        poses = Pelt._pelt_data['poses']['sick' if sick else 'paralyzed']
+        return poses[age][cat.pelt.length]
+    if constants.CONFIG["fun"]["all_cats_are_newborn"]:
+        age = CatAge.NEWBORN
+    return cat.pelt.cat_sprites[age]
 
 
 def update_sprite(cat):
