@@ -578,13 +578,13 @@ class Clan:
             members = sections[4].split(",")
             other_clans = []
         if len(general) == 9:
-            if general[3] == "None":
+            if general[3] == None:
                 general[3] = "camp1"
-            elif general[4] == "None":
+            elif general[4] == None:
                 general[4] = 0
-            elif general[7] == "None":
+            elif general[7] == None:
                 general[7] = "classic"
-            elif general[8] == "None":
+            elif general[8] == None:
                 general[8] = 50
             game.clan = Clan(
                 name=general[0],
@@ -599,11 +599,11 @@ class Clan:
             game.clan.post_initialization_functions()
             game.clan.reputation = general[8]
         elif len(general) == 8:
-            if general[3] == "None":
+            if general[3] == None:
                 general[3] = "camp1"
-            elif general[4] == "None":
+            elif general[4] == None:
                 general[4] = 0
-            elif general[7] == "None":
+            elif general[7] == None:
                 general[7] = "classic"
             game.clan = Clan(
                 name=general[0],
@@ -617,9 +617,9 @@ class Clan:
             )
             game.clan.post_initialization_functions()
         elif len(general) == 7:
-            if general[4] == "None":
+            if general[4] == None:
                 general[4] = 0
-            elif general[3] == "None":
+            elif general[3] == None:
                 general[3] = "camp1"
             game.clan = Clan(
                 name=general[0],
