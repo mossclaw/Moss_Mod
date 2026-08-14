@@ -20,7 +20,7 @@
 	"_sheet_size_": [8, 8],
 	
 	"lineart.png": "none",
-	"error_placeholder.png": "none",
+	"error_placeholder.png": "single",
 	"paralyzed/Credit.png": "none",
 	"faded": "single",
 	"fademask": "static",

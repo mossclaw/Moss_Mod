@@ -8,6 +8,7 @@ import pygame
 import scripts.game_structure.screen_settings
 from scripts.ui.generate_box import BoxData, get_box
 from scripts.ui.scale import ui_scale_dimensions
+from scripts.cat.sprites.load_sprites import images
 
 
 class ButtonStyles(Enum):
@@ -38,224 +39,120 @@ class ButtonStyles(Enum):
 
 buttonstyles = {
     "mainmenu": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/mainmenu_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/mainmenu_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/mainmenu_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/mainmenu_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'mainmenu_normal'],
+        "hovered": images['generated_buttons', 'mainmenu_hovered'],
+        "selected": images['generated_buttons', 'mainmenu_normal'],
+        "disabled": images['generated_buttons', 'mainmenu_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "clan_header": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/clan_header_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/clan_header_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/clan_header_hovered.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/clan_header_hovered.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'clan_header_normal'],
+        "hovered": images['generated_buttons', 'clan_header_hovered'],
+        "selected": images['generated_buttons', 'clan_header_hovered'],
+        "disabled": images['generated_buttons', 'clan_header_hovered'],
         "ninetile": False,
         "scale_only": False,
     },
     "squoval": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/general_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/general_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/general_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/general_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'general_normal'],
+        "hovered": images['generated_buttons', 'general_hovered'],
+        "selected": images['generated_buttons', 'general_normal'],
+        "disabled": images['generated_buttons', 'general_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "menu_left": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/menu_left_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/menu_left_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/menu_left_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/menu_left_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'menu_left_normal'],
+        "hovered": images['generated_buttons', 'menu_left_hovered'],
+        "selected": images['generated_buttons', 'menu_left_normal'],
+        "disabled": images['generated_buttons', 'menu_left_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "menu_middle": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/menu_middle_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/menu_middle_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/menu_middle_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/menu_middle_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'menu_middle_normal'],
+        "hovered": images['generated_buttons', 'menu_middle_hovered'],
+        "selected": images['generated_buttons', 'menu_middle_normal'],
+        "disabled": images['generated_buttons', 'menu_middle_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "menu_right": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/menu_right_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/menu_right_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/menu_right_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/menu_right_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'menu_right_normal'],
+        "hovered": images['generated_buttons', 'menu_right_hovered'],
+        "selected": images['generated_buttons', 'menu_right_normal'],
+        "disabled": images['generated_buttons', 'menu_right_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "profile_left": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/profile_left_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/profile_left_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/profile_left_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/profile_left_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'profile_left_normal'],
+        "hovered": images['generated_buttons', 'profile_left_hovered'],
+        "selected": images['generated_buttons', 'profile_left_normal'],
+        "disabled": images['generated_buttons', 'profile_left_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "profile_middle": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/profile_middle_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/profile_middle_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/profile_middle_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/profile_middle_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'profile_middle_normal'],
+        "hovered": images['generated_buttons', 'profile_middle_hovered'],
+        "selected": images['generated_buttons', 'profile_middle_normal'],
+        "disabled": images['generated_buttons', 'profile_middle_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "profile_right": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/profile_right_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/profile_right_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/profile_right_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/profile_right_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'profile_right_normal'],
+        "hovered": images['generated_buttons', 'profile_right_hovered'],
+        "selected": images['generated_buttons', 'profile_right_normal'],
+        "disabled": images['generated_buttons', 'profile_right_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "rounded_rect": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/rounded_rect_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/rounded_rect_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/rounded_rect_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/rounded_rect_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'rounded_rect_normal'],
+        "hovered": images['generated_buttons', 'rounded_rect_hovered'],
+        "selected": images['generated_buttons', 'rounded_rect_normal'],
+        "disabled": images['generated_buttons', 'rounded_rect_disabled'],
         "ninetile": False,
         "scale_only": False,
     },
     "dropdown": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/dropdown_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/dropdown_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/dropdown_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/dropdown_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'dropdown_normal'],
+        "hovered": images['generated_buttons', 'dropdown_hovered'],
+        "selected": images['generated_buttons', 'dropdown_normal'],
+        "disabled": images['generated_buttons', 'dropdown_disabled'],
         "ninetile": True,
         "scale_only": False,
     },
     "horizontal_tab": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/horizontal_tab_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/horizontal_tab_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/horizontal_tab_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/horizontal_tab_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'horizontal_tab_normal'],
+        "hovered": images['generated_buttons', 'horizontal_tab_hovered'],
+        "selected": images['generated_buttons', 'horizontal_tab_normal'],
+        "disabled": images['generated_buttons', 'horizontal_tab_disabled'],
         "ninetile": False,
         "scale_only": False,
         "tab_movement": {"hovered": False, "disabled": True, "amount": (0, -4)},
     },
     "horizontal_tab_mirrored": {
         "normal": pygame.transform.flip(
-            pygame.image.load(
-                "resources/images/generated_buttons/horizontal_tab_normal.png"
-            ).convert_alpha(),
+            images['generated_buttons', 'horizontal_tab_normal'],
             False,
             True,
         ),
         "hovered": pygame.transform.flip(
-            pygame.image.load(
-                "resources/images/generated_buttons/horizontal_tab_hovered.png"
-            ).convert_alpha(),
+            images['generated_buttons', 'horizontal_tab_hovered'],
             False,
             True,
         ),
         "selected": pygame.transform.flip(
-            pygame.image.load(
-                "resources/images/generated_buttons/horizontal_tab_normal.png"
-            ).convert_alpha(),
+            images['generated_buttons', 'horizontal_tab_normal'],
             False,
             True,
         ),
         "disabled": pygame.transform.flip(
-            pygame.image.load(
-                "resources/images/generated_buttons/horizontal_tab_disabled.png"
-            ).convert_alpha(),
+            images['generated_buttons', 'horizontal_tab_disabled'],
             False,
             True,
         ),
@@ -264,83 +161,43 @@ buttonstyles = {
         "tab_movement": {"hovered": False, "disabled": True, "amount": (0, 4)},
     },
     "vertical_tab": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/vertical_tab_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/vertical_tab_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/vertical_tab_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/vertical_tab_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'vertical_tab_normal'],
+        "hovered": images['generated_buttons', 'vertical_tab_hovered'],
+        "selected": images['generated_buttons', 'vertical_tab_normal'],
+        "disabled": images['generated_buttons', 'vertical_tab_disabled'],
         "ninetile": False,
         "scale_only": False,
         "tab_movement": {"hovered": True, "disabled": False, "amount": (10, 0)},
     },
     "ladder_top": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/ladder_top_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/ladder_top_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/ladder_top_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/ladder_top_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'ladder_top_normal'],
+        "hovered": images['generated_buttons', 'ladder_top_hovered'],
+        "selected": images['generated_buttons', 'ladder_top_normal'],
+        "disabled": images['generated_buttons', 'ladder_top_disabled'],
         "ninetile": True,
         "scale_only": False,
     },
     "ladder_middle": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/ladder_middle_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/ladder_middle_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/ladder_middle_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/ladder_middle_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'ladder_middle_normal'],
+        "hovered": images['generated_buttons', 'ladder_middle_hovered'],
+        "selected": images['generated_buttons', 'ladder_middle_normal'],
+        "disabled": images['generated_buttons', 'ladder_middle_disabled'],
         "ninetile": True,
         "scale_only": False,
     },
     "ladder_bottom": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/ladder_bottom_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/ladder_bottom_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/ladder_bottom_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/ladder_bottom_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'ladder_bottom_normal'],
+        "hovered": images['generated_buttons', 'ladder_bottom_hovered'],
+        "selected": images['generated_buttons', 'ladder_bottom_normal'],
+        "disabled": images['generated_buttons', 'ladder_bottom_disabled'],
         "ninetile": True,
         "scale_only": False,
     },
     "icon": {
-        "normal": pygame.image.load(
-            "resources/images/generated_buttons/icon_normal.png"
-        ).convert_alpha(),
-        "hovered": pygame.image.load(
-            "resources/images/generated_buttons/icon_hovered.png"
-        ).convert_alpha(),
-        "selected": pygame.image.load(
-            "resources/images/generated_buttons/icon_normal.png"
-        ).convert_alpha(),
-        "disabled": pygame.image.load(
-            "resources/images/generated_buttons/icon_disabled.png"
-        ).convert_alpha(),
+        "normal": images['generated_buttons', 'icon_normal'],
+        "hovered": images['generated_buttons', 'icon_hovered'],
+        "selected": images['generated_buttons', 'icon_normal'],
+        "disabled": images['generated_buttons', 'icon_disabled'],
         "ninetile": False,
         "scale_only": True,
     },
@@ -372,9 +229,7 @@ def __separate_icon_tabs() -> Tuple[str, str, Dict[str, Dict[str, pygame.Surface
     A separate helper method to build the icon tabs since I shoved them all in one file. It just made sense, ok?
     :return: a generator for the tab, status and associated surface
     """
-    source = pygame.image.load(
-        "resources/images/generated_buttons/icon_tab.png"
-    ).convert_alpha()
+    source = images['generated_buttons', 'icon_tab']
     tab_size = source.get_width() // 3
     for y, fun_tab in enumerate(
         ["icon_tab_top", "icon_tab_left", "icon_tab_bottom", "icon_tab_right"], start=0

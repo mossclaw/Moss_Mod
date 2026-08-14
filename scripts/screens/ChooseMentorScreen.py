@@ -5,7 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -154,9 +154,7 @@ class ChooseMentorScreen(Screens):
         self.mentor_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((40, 113), (281, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat1_frame_ment.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat1_frame_ment'],
                 (562, 394),
             ),
             manager=MANAGER,
@@ -164,9 +162,7 @@ class ChooseMentorScreen(Screens):
         self.app_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((480, 113), (281, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat2_frame_ment.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat2_frame_ment'],
                 (562, 394),
             ),
             manager=MANAGER,
@@ -175,7 +171,7 @@ class ChooseMentorScreen(Screens):
         self.mentor_icon = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((315, 160), (171, 114))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/mentor.png").convert_alpha(),
+                image_cache['mentor'],
                 (343, 228),
             ),
             manager=MANAGER,
@@ -253,7 +249,7 @@ class ChooseMentorScreen(Screens):
         self.filter_seperator = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((497, 7), (10, 210))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/vertical_bar.png"),
+                image_cache['vertical_bar'],
                 ui_scale_dimensions((10, 210)),
             ),
             container=self.filter_container,

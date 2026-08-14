@@ -24,13 +24,15 @@ from pygame_gui.core import ObjectID
 from requests.exceptions import RequestException, Timeout
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, game, constants
+from scripts.game_structure import game, constants
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.game.settings import game_settings_load, game_setting_get
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.windows.update_available import UpdateAvailableWindow
 from scripts.ui.windows.changelog import ChangelogWindow
 from scripts.housekeeping.datadir import open_data_dir, open_url
+from scripts.cat.sprites.load_sprites import images
 from ..housekeeping.quit_game import quit_game
 from ..ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
@@ -193,7 +195,7 @@ class StartScreen(Screens):
         if game.event_editing:
             game.event_editing = False
 
-        bg = pygame.image.load("resources/images/menu.png").convert()
+        bg = images['menu']
         if game_setting_get("dark mode"):
             bg.fill(
                 constants.CONFIG["theme"]["fullscreen_background"]["dark"][
@@ -286,9 +288,7 @@ class StartScreen(Screens):
             tool_tip_text="screens.start.tooltip_discord",
             anchors={"left_target": self.social_buttons["tumblr_button"]},
         )
-        errorimg = image_cache.load_image(
-            "resources/images/errormsg.png"
-        ).convert_alpha()
+        errorimg = image_cache['errormsg']
 
         self.error_box = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((130, 150), (590, 400))),

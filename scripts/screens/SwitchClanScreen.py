@@ -12,6 +12,7 @@ from scripts.game_structure import game
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.windows.delete_check import CheckDeletionWindow
+from scripts.cat.sprites.load_sprites import images
 from ..ui.theme import get_text_box_theme
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset, ui_scale_value
 from .Screens import Screens
@@ -113,7 +114,7 @@ class SwitchClanScreen(Screens):
         self.set_bg("default", "mainmenu_bg")
         self.show_mute_buttons()
         self.screen = pygame.transform.scale(
-            pygame.image.load("resources/images/clan_saves_frame.png").convert_alpha(),
+            images['clan_saves_frame'],
             ui_scale_dimensions((220, 368)),
         )
         self.main_menu = UISurfaceImageButton(

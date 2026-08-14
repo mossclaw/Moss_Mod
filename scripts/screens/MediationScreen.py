@@ -6,7 +6,9 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, game
+from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
+from scripts.cat.sprites.load_sprites import images
 from ..ui.elements.relation_display import UIRelationDisplay
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -271,7 +273,7 @@ class MediationScreen(Screens):
 
         self.search_bar_image = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((55, 625), (118, 34))),
-            pygame.image.load("resources/images/search_bar.png").convert_alpha(),
+            images['search_bar'],
             manager=MANAGER,
         )
         self.search_bar = pygame_gui.elements.UITextEntryLine(
@@ -408,9 +410,7 @@ class MediationScreen(Screens):
             for cat in chunked_cats[self.page - 1]:
                 if get_clan_setting("show fav") and cat.favourite:
                     _temp = pygame.transform.scale(
-                        pygame.image.load(
-                            f"resources/images/fav_marker.png"
-                        ).convert_alpha(),
+                        images['fav_marker'],
                         ui_scale_dimensions((50, 50)),
                     )
 
@@ -473,26 +473,16 @@ class MediationScreen(Screens):
 
         # Gender
         if cat.genderalign == "female":
-            gender_icon = image_cache.load_image(
-                "resources/images/female_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['female_big']
         elif cat.genderalign == "male":
-            gender_icon = image_cache.load_image(
-                "resources/images/male_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['male_big']
         elif cat.genderalign == "trans female":
-            gender_icon = image_cache.load_image(
-                "resources/images/transfem_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['transfem_big']
         elif cat.genderalign == "trans male":
-            gender_icon = image_cache.load_image(
-                "resources/images/transmasc_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['transmasc_big']
         else:
             # Everyone else gets the nonbinary icon
-            gender_icon = image_cache.load_image(
-                "resources/images/nonbi_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['nonbi_big']
 
         self.selected_cat_elements["gender" + tag] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((x + 160, y + 12), (25, 25))),
@@ -505,9 +495,7 @@ class MediationScreen(Screens):
             self.selected_cat_elements["mate_icon" + tag] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((x + 14, y + 14), (22, 20))),
                 pygame.transform.scale(
-                    image_cache.load_image(
-                        "resources/images/heart_big.png"
-                    ).convert_alpha(),
+                    image_cache['heart_big'],
                     ui_scale_dimensions((44, 40)),
                 ),
             )
@@ -535,9 +523,7 @@ class MediationScreen(Screens):
                 ] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((x + 14, y + 14), (18, 18))),
                     pygame.transform.scale(
-                        image_cache.load_image(
-                            "resources/images/dot_big.png"
-                        ).convert_alpha(),
+                        image_cache['dot_big'],
                         ui_scale_dimensions((18, 18)),
                     ),
                 )

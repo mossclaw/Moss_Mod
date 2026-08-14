@@ -7,6 +7,7 @@ import pygame_gui
 from scripts.cat.cats import Cat
 from scripts.clan_resources.herb.herb_supply import MESSAGES
 from scripts.game_structure import game
+from scripts.cat.sprites.load_sprites import images
 from ..ui.elements.modified_image import UIModifiedImage
 from ..ui.elements.text_box_tweaked import UITextBoxTweaked
 from ..ui.elements.sprite_button import UISpriteButton
@@ -668,9 +669,7 @@ class MedDenScreen(Screens):
                 self.herbs["cobweb1"] = UIModifiedImage(
                     ui_scale(pygame.Rect((108, 95), (396, 224))),
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/med_cat_den/cobweb1.png"
-                        ).convert_alpha(),
+                        images['med_cat_den', 'cobweb1'],
                         (792, 448),
                     ),
                     manager=MANAGER,
@@ -680,9 +679,7 @@ class MedDenScreen(Screens):
                     self.herbs["cobweb2"] = UIModifiedImage(
                         ui_scale(pygame.Rect((108, 95), (396, 224))),
                         pygame.transform.scale(
-                            pygame.image.load(
-                                "resources/images/med_cat_den/cobweb2.png"
-                            ).convert_alpha(),
+                            images['med_cat_den', 'cobweb2'],
                             (792, 448),
                         ),
                         manager=MANAGER,
@@ -692,9 +689,7 @@ class MedDenScreen(Screens):
             self.herbs[herb] = UIModifiedImage(
                 ui_scale(pygame.Rect((108, 95), (396, 224))),
                 pygame.transform.scale(
-                    pygame.image.load(
-                        f"resources/images/med_cat_den/{herb}.png"
-                    ).convert_alpha(),
+                    images['med_cat_den', herb],
                     (792, 448),
                 ),
                 manager=MANAGER,

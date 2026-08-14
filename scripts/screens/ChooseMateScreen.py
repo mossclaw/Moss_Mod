@@ -5,7 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -22,6 +22,7 @@ from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
+from scripts.moss_util import if_in
 
 
 class ChooseMateScreen(Screens):
@@ -205,18 +206,14 @@ class ChooseMateScreen(Screens):
         self.the_cat_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((40, 113), (266, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat1_frame_mate.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat1_frame_mate'],
                 ui_scale_dimensions((266, 197)),
             ),
         )
         self.mate_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((494, 113), (266, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat2_frame_mate.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat2_frame_mate'],
                 ui_scale_dimensions((266, 197)),
             ),
         )
@@ -286,7 +283,7 @@ class ChooseMateScreen(Screens):
         self.offspring_separator = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((497, 0), (10, 176))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/vertical_bar.png"),
+                image_cache['vertical_bar'],
                 ui_scale_dimensions((10, 176)),
             ),
             container=self.offspring_container,
@@ -319,7 +316,7 @@ class ChooseMateScreen(Screens):
         self.potential_seperator = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((497, 0), (10, 176))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/vertical_bar.png"),
+                image_cache['vertical_bar'],
                 ui_scale_dimensions((10, 176)),
             ),
             container=self.potential_container,
@@ -996,18 +993,14 @@ class ChooseMateScreen(Screens):
 
         self.draw_compatible_line_affection()
 
+        heart = if_in(self.selected_cat.ID, 
+                      (self.the_cat.mate, 'mates'), 
+                      (self.the_cat.previous_mates, 'breakup'),
+                      'maybe')
         self.selected_cat_elements["center_heart"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 188), (200, 78))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/heart_mates.png"
-                    if self.selected_cat.ID in self.the_cat.mate
-                    else (
-                        "resources/images/heart_breakup.png"
-                        if self.selected_cat.ID in self.the_cat.previous_mates
-                        else "resources/images/heart_maybe.png"
-                    )
-                ).convert_alpha(),
+                image_cache[f"heart_{heart}"],
                 ui_scale_dimensions((200, 78)),
             ),
             anchors={"centerx": "centerx"},
@@ -1090,17 +1083,17 @@ class ChooseMateScreen(Screens):
         compatibility = get_personality_compatibility(self.the_cat, self.selected_cat)
 
         if compatibility == CatCompatibility.POSITIVE:
-            line = "resources/images/line_compatible.png"
+            line = "line_compatible"
         elif compatibility == CatCompatibility.NEGATIVE:
-            line = "resources/images/line_incompatible.png"
+            line = "line_incompatible"
         else:
-            line = "resources/images/line_neutral.png"
+            line = "line_neutral"
 
         # Set the lines
         self.selected_cat_elements["compat_line"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 190), (200, 78))),
             pygame.transform.scale(
-                image_cache.load_image(line).convert_alpha(),
+                image_cache[line],
                 ui_scale_dimensions((200, 78)),
             ),
             anchors={"centerx": "centerx"},
@@ -1130,9 +1123,7 @@ class ChooseMateScreen(Screens):
             self.selected_cat_elements["heart1" + str(i)] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((x_pos, 285), (22, 20))),
                 pygame.transform.scale(
-                    image_cache.load_image(
-                        "resources/images/heart_big.png"
-                    ).convert_alpha(),
+                    image_cache['heart_big'],
                     ui_scale_dimensions((22, 20)),
                 ),
             )
@@ -1162,9 +1153,7 @@ class ChooseMateScreen(Screens):
             self.selected_cat_elements["heart2" + str(i)] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((x_pos, 285), (22, 20))),
                 pygame.transform.scale(
-                    image_cache.load_image(
-                        "resources/images/heart_big.png"
-                    ).convert_alpha(),
+                    image_cache['heart_big'],
                     ui_scale_dimensions((22, 20)),
                 ),
             )

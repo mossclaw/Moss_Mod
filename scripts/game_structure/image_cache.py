@@ -1,13 +1,16 @@
 import pygame
+from scripts.cat.sprites.load_sprites import images
 
-_images = {}
+
+class Cache:
+    def __init__(self):
+        self._images = {}
+    
+    def __getitem__(self, x):
+        if x not in self._images:
+            self._images[x] = images[x]
+        
+        return self._images[x]
 
 
-def load_image(path):
-    """
-    If not in the cache already, loads the image from path as a surface.
-    Otherwise, the image is retrieved from the cache.
-    """
-    if path not in _images:
-        _images[path] = pygame.image.load(path).convert_alpha()
-    return _images[path]
+image_cache = Cache()

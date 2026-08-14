@@ -7,9 +7,10 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, constants
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
+from scripts.cat.sprites.load_sprites import images
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -230,7 +231,7 @@ class ClanScreen(Screens):
         self.show_den_labels = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((25, 641), (167, 34))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/show_den_labels.png"),
+                image_cache['show_den_labels'],
                 ui_scale_dimensions((167, 34)),
             ),
         )
@@ -292,7 +293,6 @@ class ClanScreen(Screens):
     def update_camp_bg(self):
         light_dark = "dark" if game_setting_get("dark mode") else "light"
 
-        camp_bg_base_dir = "resources/images/camp_bg/"
         leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
         camp_nr = game.clan.camp_bg
 
@@ -309,27 +309,24 @@ class ClanScreen(Screens):
 
         all_backgrounds = []
         for leaf in leaves:
-            platform_dir = (
-                f"{camp_bg_base_dir}/{biome}/{leaf}_{camp_nr}_{light_dark}.png"
-            )
-            all_backgrounds.append(platform_dir)
+            all_backgrounds.append(f"{leaf}_{camp_nr}_{light_dark}")
 
         self.add_bgs(
             {
                 "Newleaf": pygame.transform.scale(
-                    pygame.image.load(all_backgrounds[0]).convert(),
+                    images['camp_bg', biome, all_backgrounds[0]],
                     ui_scale_dimensions((800, 700)),
                 ),
                 "Greenleaf": pygame.transform.scale(
-                    pygame.image.load(all_backgrounds[1]).convert(),
+                    images['camp_bg', biome, all_backgrounds[1]],
                     ui_scale_dimensions((800, 700)),
                 ),
                 "Leaf-bare": pygame.transform.scale(
-                    pygame.image.load(all_backgrounds[2]).convert(),
+                    images['camp_bg', biome, all_backgrounds[2]],
                     ui_scale_dimensions((800, 700)),
                 ),
                 "Leaf-fall": pygame.transform.scale(
-                    pygame.image.load(all_backgrounds[3]).convert(),
+                    images['camp_bg', biome, all_backgrounds[3]],
                     ui_scale_dimensions((800, 700)),
                 ),
             },

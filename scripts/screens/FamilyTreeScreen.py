@@ -5,7 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -244,9 +244,7 @@ class FamilyTreeScreen(Screens):
         self.root_cat_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((64, 475), (226, 170))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/familytree_bigcatbox.png"
-                ).convert_alpha(),
+                image_cache['familytree_bigcatbox'],
                 ui_scale_dimensions((425, 170)),
             ),
             manager=MANAGER,

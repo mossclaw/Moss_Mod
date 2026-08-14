@@ -29,9 +29,10 @@ from scripts.ui.scale import (
     ui_scale_value,
     ui_scale_blit,
 )
+from scripts.cat.sprites.load_sprites import images
 
 game_frame: Optional[pygame.Surface] = None
-core_vignette = pygame.image.load("resources/images/vignette.png")
+core_vignette = images['vignette']
 vignette: Optional[pygame.Surface] = None
 dropshadow: Optional[pygame.Surface] = None
 fade: Optional[pygame.Surface] = None
@@ -315,7 +316,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
     menu_buttons["season_indicator"] = UIModifiedImage(
         ui_scale(pygame.Rect((404, 3), (144, 67))),
         pygame.transform.scale(
-            pygame.image.load(f"resources/images/season_{season}.png").convert_alpha(),
+            images[f"season_{season}"],
             (144, 67),
         ),
         visible=visible,
@@ -333,7 +334,7 @@ def load_moon_phases():
 
     for i in range(0, 8):
         moon_phases.append(
-            pygame.image.load(f"resources/images/moon_phase{i}.png").convert_alpha()
+            images[f"moon_phase{i}"]
         )
 
 
@@ -483,38 +484,38 @@ def rebuild_bgs():
         "light": {
             "default": pygame.transform.scale(bg, temp_screen_size),
             "mainmenu_bg": pygame.transform.scale(
-                pygame.image.load("resources/images/menu_logoless.png").convert(),
+                images['menu_logoless'],
                 temp_screen_size,
             ),
             "starclan": pygame.transform.scale(
-                pygame.image.load("resources/images/starclanbg.png").convert_alpha(),
+                images['starclanbg'],
                 temp_screen_size,
             ),
             "darkforest": pygame.transform.scale(
-                pygame.image.load("resources/images/darkforestbg.png").convert_alpha(),
+                images['darkforestbg'],
                 temp_screen_size,
             ),
             "unknown_residence": pygame.transform.scale(
-                pygame.image.load("resources/images/urbg.png").convert(),
+                images['urbg'],
                 temp_screen_size,
             ),
         },
         "dark": {
             "default": pygame.transform.scale(bg_dark, temp_screen_size),
             "mainmenu_bg": pygame.transform.scale(
-                pygame.image.load("resources/images/menu_logoless.png").convert(),
+                images['menu_logoless'],
                 temp_screen_size,
             ),
             "starclan": pygame.transform.scale(
-                pygame.image.load("resources/images/starclanbg.png").convert_alpha(),
+                images['starclanbg'],
                 temp_screen_size,
             ),
             "darkforest": pygame.transform.scale(
-                pygame.image.load("resources/images/darkforestbg.png").convert_alpha(),
+                images['darkforestbg'],
                 temp_screen_size,
             ),
             "unknown_residence": pygame.transform.scale(
-                pygame.image.load("resources/images/urbg.png").convert(),
+                images['urbg'],
                 temp_screen_size,
             ),
         },
@@ -556,8 +557,12 @@ def rebuild_bgs():
 
 
 def get_camp_bgs():
-    camp_bg_base_dir = "resources/images/camp_bg/"
-    leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
+    leaves = {
+        "Newleaf": "newleaf", 
+        "Greenleaf": "greenleaf", 
+        "Leaf-bare": "leafbare", 
+        "Leaf-fall": "leaffall"
+    }
     available_biome = ["forest", "mountainous", "plains", "beach"]
 
     try:
@@ -566,52 +571,16 @@ def get_camp_bgs():
     except AttributeError:
         camp_nr = "camp1"
         biome = available_biome[0]
+    
+    size = scripts.game_structure.screen_settings.screen.get_size()
 
-    all_backgrounds = []
-    for light_dark in ("light", "dark"):
-        for leaf in leaves:
-            platform_dir = (
-                f"{camp_bg_base_dir}/{biome}/{leaf}_{camp_nr}_{light_dark}.png"
-            )
-            all_backgrounds.append(platform_dir)
-
-    return {
-        "light": {
-            "Newleaf": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[0]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Greenleaf": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[1]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Leaf-bare": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[2]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Leaf-fall": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[3]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-        },
-        "dark": {
-            "Newleaf": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[4]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Greenleaf": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[5]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Leaf-bare": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[6]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-            "Leaf-fall": pygame.transform.scale(
-                pygame.image.load(all_backgrounds[7]).convert(),
-                scripts.game_structure.screen_settings.screen.get_size(),
-            ),
-        },
+    return { 
+        ld: { 
+            leaf: pygame.transform.scale(
+                images['camp_bg', biome, f"{leaves[leaf]}_{camp_nr}_{ld}"],
+                size
+            ) for leaf in leaves
+        } for ld in ('light', 'dark')
     }
 
 

@@ -7,7 +7,8 @@ import pygame
 import pygame_gui
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, game
+from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
 from ..ui.elements.text_box_tweaked import UITextBoxTweaked
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.theme import get_text_box_theme
@@ -29,6 +30,21 @@ class RoleScreen(Screens):
     buttons = {}
     next_cat = None
     previous_cat = None
+    
+    rank_icons = {
+        CatRank.LEADER: "leader_icon",
+        CatRank.DEPUTY: "deputy_icon",
+        CatRank.MEDICINE_CAT: "medic_icon",
+        CatRank.MEDICINE_APPRENTICE: "medic_app_icon",
+        CatRank.MEDIATOR: "mediator_icon",
+        CatRank.MEDIATOR_APPRENTICE: "mediator_app_icon",
+        CatRank.WARRIOR: "warrior_icon",
+        CatRank.APPRENTICE: "warrior_app_icon",
+        CatRank.KITTEN: "kit_icon",
+        CatRank.NEWBORN: "kit_icon",
+        CatRank.ELDER: "elder_icon",
+    }
+
 
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
@@ -125,7 +141,7 @@ class RoleScreen(Screens):
         self.bar = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((48, 350), (704, 10))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/bar.png"),
+                image_cache['bar'],
                 ui_scale_dimensions((704, 10)),
             ),
             manager=MANAGER,
@@ -288,30 +304,12 @@ class RoleScreen(Screens):
             manager=MANAGER,
         )
 
-        main_dir = "resources/images/"
-        paths = {
-            CatRank.LEADER: "leader_icon.png",
-            CatRank.DEPUTY: "deputy_icon.png",
-            CatRank.MEDICINE_CAT: "medic_icon.png",
-            CatRank.MEDICINE_APPRENTICE: "medic_app_icon.png",
-            CatRank.MEDIATOR: "mediator_icon.png",
-            CatRank.MEDIATOR_APPRENTICE: "mediator_app_icon.png",
-            CatRank.WARRIOR: "warrior_icon.png",
-            CatRank.APPRENTICE: "warrior_app_icon.png",
-            CatRank.KITTEN: "kit_icon.png",
-            CatRank.NEWBORN: "kit_icon.png",
-            CatRank.ELDER: "elder_icon.png",
-        }
 
-        if self.the_cat.status.rank in paths:
-            icon_path = os.path.join(main_dir, paths[self.the_cat.status.rank])
-        else:
-            icon_path = os.path.join(main_dir, "buttonrank.png")
-
+        icon = RoleScreen.rank_icons.get(self.the_cat.status.rank, 'buttonrank')
         self.selected_cat_elements["role_icon"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((82, 231), (78, 78))),
             pygame.transform.scale(
-                image_cache.load_image(icon_path),
+                image_cache[icon],
                 ui_scale_dimensions((78, 78)),
             ),
         )

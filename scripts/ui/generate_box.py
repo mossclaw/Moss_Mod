@@ -8,6 +8,7 @@ import pygame
 
 import scripts.game_structure.screen_settings
 from scripts.ui.scale import ui_scale_dimensions, ui_scale_value
+from scripts.cat.sprites.load_sprites import images
 
 
 @dataclass(unsafe_hash=True)
@@ -26,21 +27,17 @@ class BoxStyles(Enum):
 boxstyles = {
     "frame": BoxData(
         "frame",
-        pygame.image.load("resources/images/generated_boxes/frame.png").convert_alpha(),
+        images['generated_boxes', 'frame'],
         (3, 3),
     ),
     "selection_box": BoxData(
         "selection_box",
-        pygame.image.load(
-            "resources/images/generated_boxes/selection_box.png"
-        ).convert_alpha(),
+        images['generated_boxes', 'selection_box'],
         (3, 3),
     ),
     "rounded_box": BoxData(
         "rounded_box",
-        pygame.image.load(
-            "resources/images/generated_boxes/rounded_box.png"
-        ).convert_alpha(),
+        images['generated_boxes', 'rounded_box'],
         (7, 3),
     ),
 }

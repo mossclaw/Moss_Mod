@@ -13,7 +13,9 @@ from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.clan_resources.freshkill import FRESHKILL_ACTIVE
-from scripts.game_structure import image_cache, game
+from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
+from scripts.cat.sprites.load_sprites import images
 from ..ui.elements.modified_image import UIModifiedImage
 from ..ui.elements.text_box_tweaked import UITextBoxTweaked
 from ..ui.elements.image_button import UIImageButton
@@ -86,13 +88,11 @@ def backstory_text(cat):
 # ---------------------------------------------------------------------------- #
 class ProfileScreen(Screens):
     # UI Images
-    conditions_tab = image_cache.load_image(
-        "resources/images/conditions_tab_backdrop.png"
-    ).convert_alpha()
+    conditions_tab = image_cache['conditions_tab_backdrop']
 
-    df = image_cache.load_image("resources/images/buttons/exile_df.png").convert_alpha()
-    sc = image_cache.load_image("resources/images/buttons/guide_sc.png").convert_alpha()
-    ur = image_cache.load_image("resources/images/buttons/send_ur.png").convert_alpha()
+    df = image_cache['buttons/exile_df']
+    sc = image_cache['buttons/guide_sc']
+    ur = image_cache['buttons/send_ur']
 
     # Keep track of current tabs open. Can be used to keep tabs open when pages are switched, and
     # helps with exiting the screen
@@ -2570,9 +2570,7 @@ class ProfileScreen(Screens):
 
         biome = biome.lower()
 
-        platformsheet = pygame.image.load(
-            "resources/images/platforms.png"
-        ).convert_alpha()
+        platformsheet = images['platforms']
 
         order = ["beach", "forest", "mountainous", "nest", "plains", "SC/DF"]
 

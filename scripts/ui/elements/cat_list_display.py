@@ -17,6 +17,7 @@ from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.sprite_button import UISpriteButton
 from scripts.ui.generate_box import get_box, BoxStyles
 from scripts.ui.scale import ui_scale_dimensions, ui_scale, ui_scale_value
+from scripts.cat.sprites.load_sprites import images
 
 
 class UICatListDisplay(UIContainer):
@@ -113,7 +114,7 @@ class UICatListDisplay(UIContainer):
         self.show_names = show_names
 
         self._favor_circle = pygame.transform.scale(
-            pygame.image.load(f"resources/images/fav_marker.png").convert_alpha(),
+            images['fav_marker'],
             ui_scale_dimensions((50, 50)),
         )
         if game_setting_get("dark mode"):

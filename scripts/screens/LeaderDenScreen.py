@@ -31,6 +31,7 @@ from scripts.clan_package.get_clan_cats import (
     find_alive_cats_with_rank,
     get_living_clan_cat_count,
 )
+from scripts.cat.sprites.load_sprites import images
 
 
 class LeaderDenScreen(Screens):
@@ -152,26 +153,17 @@ class LeaderDenScreen(Screens):
             self.no_leader = True
 
         # LEADER DEN BG AND LEADER SPRITE
-        try:
-            self.screen_elements["bg_image"] = pygame_gui.elements.UIImage(
-                ui_scale(pygame.Rect((0, 0), (700, 450))),
-                pygame.image.load(
-                    f"resources/images/lead_den_bg/{game.clan.biome.lower()}/{game.clan.camp_bg.lower()}.png"
-                ).convert_alpha(),
-                object_id="#lead_den_bg",
-                starting_height=1,
-                manager=MANAGER,
-            )
-        except FileNotFoundError:
-            self.screen_elements["bg_image"] = pygame_gui.elements.UIImage(
-                ui_scale(pygame.Rect((0, 0), (700, 450))),
-                pygame.image.load(
-                    f"resources/images/lead_den_bg/{game.clan.biome.lower()}/camp1.png"
-                ).convert_alpha(),
-                object_id="#lead_den_bg",
-                starting_height=1,
-                manager=MANAGER,
-            )
+        biome = game.clan.biome.lower()
+        bg = images['lead_den_bg', biome, game.clan.camp_bg.lower()]
+        if bg is None:
+            bg = images['lead_den_bg', biome, 'camp1']
+        self.screen_elements["bg_image"] = pygame_gui.elements.UIImage(
+            ui_scale(pygame.Rect((0, 0), (700, 450))),
+            bg,
+            object_id="#lead_den_bg",
+            starting_height=1,
+            manager=MANAGER,
+        )
 
         if not self.no_leader:
             self.screen_elements["lead_image"] = pygame_gui.elements.UIImage(
@@ -379,9 +371,7 @@ class LeaderDenScreen(Screens):
         )
         self.focus_frame_elements["frame"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 31), (240, 364))),
-            pygame.image.load(
-                "resources/images/lead_den_focus_frame.png"
-            ).convert_alpha(),
+            images['lead_den_focus_frame'],
             object_id="#lead_den_focus_frame",
             container=self.focus_frame_container,
             starting_height=1,

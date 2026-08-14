@@ -56,6 +56,7 @@ from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.cat.sprites.display_sprites import update_sprite, update_mask, generate_sprite
+from scripts.cat.sprites.load_sprites import sprites
 from scripts.events_module.text_adjust import event_text_adjust, leader_ceremony_text_adjust
 from scripts.events_module.event_filters import get_personality_compatibility
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
@@ -2974,31 +2975,8 @@ class Cat:
         self.faded = True
 
         # Silhouette sprite
-        if self.age == CatAge.NEWBORN:
-            file_name = "faded_newborn"
-        elif self.age == CatAge.KITTEN:
-            file_name = "faded_kitten"
-        elif self.age in [
-            CatAge.ADULT,
-            CatAge.YOUNG_ADULT,
-            CatAge.SENIOR_ADULT,
-        ]:
-            file_name = "faded_adult"
-        elif self.age == CatAge.ADOLESCENT:
-            file_name = "faded_adol"
-        else:
-            file_name = "faded_senior"
-
-        if self.status.group == CatGroup.DARK_FOREST:
-            file_name += "_df"
-        elif self.status.group == CatGroup.UNKNOWN_RESIDENCE:
-            file_name += "_ur"
-
-        file_name += ".png"
-
-        self.sprite = image_cache.load_image(
-            f"sprites/faded/{file_name}"
-        ).convert_alpha()
+        age = 'ADOL' if self.age == CatAge.ADOLESCENT else self.age.pose_age().upper()
+        self.sprite = sprites[f"fadedFADED_{age}{self.status.group.afterlife_suffix()}"]
 
     @staticmethod
     def fetch_cat(ID: str):

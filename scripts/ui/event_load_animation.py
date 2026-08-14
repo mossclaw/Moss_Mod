@@ -5,6 +5,7 @@ import pygame_gui
 
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
+from scripts.cat.sprites.load_sprites import images
 
 
 class EventLoadingAnimation(GameWindow):
@@ -38,7 +39,7 @@ class EventLoadingAnimation(GameWindow):
         frames = []
         for i in range(0, 16):
             frames.append(
-                pygame.image.load(f"resources/images/loading_animate/timeskip/{i}.png")
+                images['loading_animate', 'timeskip', i]
             )
 
         return frames

@@ -8,7 +8,7 @@ import pygame_gui
 from scripts.cat.cats import Cat
 from scripts import events
 from scripts.events import Single_Event
-from scripts.game_structure import image_cache, constants
+from scripts.game_structure import game, constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import (
     Switch,
@@ -16,7 +16,7 @@ from scripts.game_structure.game.switches import (
     switch_set_value,
     switch_set_dict_value,
 )
-from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.modified_scrolling_container import (
     UIModifiedScrollingContainer,
@@ -366,7 +366,7 @@ class EventsScreen(Screens):
                 self.alert[f"{event_type}"] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((10, 24 + y_pos), (4, 22))),
                     pygame.transform.scale(
-                        image_cache.load_image("resources/images/alert_mark.png"),
+                        image_cache['alert_mark'],
                         ui_scale_dimensions((4, 22)),
                     ),
                     container=self.full_event_display_container,

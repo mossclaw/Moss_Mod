@@ -6,7 +6,8 @@ from pygame_gui.core import IContainerLikeInterface, UIElement
 
 from scripts.cat.cats import Cat
 from scripts.cat.save_load import save_cats
-from scripts.game_structure import image_cache, game
+from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.game import switch_get_value, Switch
 from scripts.game_structure.game.settings import game_settings_save
 from scripts.game_structure.game.switches import switch_set_value
@@ -39,7 +40,7 @@ class UISaveButton:
         self.unsaved_state_dict = get_button_dict(ButtonStyles.SQUOVAL, self.DIMENSIONS)
         # this needs to be here to that the scaling is updated properly
         self.unsaved_state_dict["normal"] = pygame.transform.scale(
-            image_cache.load_image("resources/images/buttons/save_clan.png"),
+            image_cache['buttons', 'save_clan'],
             ui_scale_dimensions(self.DIMENSIONS),
         )
 
@@ -75,7 +76,7 @@ class UISaveButton:
             "buttons.clan_saved",
             {
                 "normal": pygame.transform.scale(
-                    image_cache.load_image("resources/images/save_clan_saved.png"),
+                    image_cache['save_clan_saved'],
                     ui_scale_dimensions(self.DIMENSIONS),
                 )
             },

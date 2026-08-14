@@ -16,8 +16,8 @@ from scripts.events_module.short.condition_events import Condition_Events
 
 from scripts.events_module.short.scar_events import Scar_Events
 from scripts.events_module.short.short_event import ShortEvent
-from scripts.game_structure import image_cache, constants
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
+from scripts.game_structure.image_cache import image_cache
 from scripts.cat.pronouns import get_default_pronouns
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.collapsible_container import UICollapsibleContainer
@@ -1853,7 +1853,7 @@ class EventEditScreen(Screens):
         self.editor_element[name] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, off_set), (524, 24))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/spacer.png").convert_alpha(),
+                image_cache['spacer'],
                 ui_scale_dimensions((524, 24)),
             ),
             container=container,

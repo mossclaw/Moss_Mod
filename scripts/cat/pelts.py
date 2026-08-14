@@ -655,7 +655,7 @@ class Pelt:
             logger.exception("Failed to load sprite")
 
             # Placeholder image
-            sprite = image_cache.load_image('sprites/error_placeholder.png').convert_alpha()
+            sprite = sprites['error_placeholder']
 
         return sprite
 

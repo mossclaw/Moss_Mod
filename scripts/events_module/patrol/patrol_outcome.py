@@ -38,6 +38,7 @@ from scripts.clan_resources.freshkill import (
     HUNTER_BONUS,
     FRESHKILL_ACTIVE,
 )
+from scripts.cat.sprites.load_sprites import images
 
 
 class PatrolOutcome:
@@ -446,19 +447,12 @@ class PatrolOutcome:
 
     def get_outcome_art(self):
         """Return outcome art, if not None. Return's None if there is no outcome art, or if outcome art can't be found."""
-        root_dir = "resources/images/patrol_art/"
-
         if game_setting_get("gore") and self.outcome_art_clean:
             file_name = self.outcome_art_clean
         else:
             file_name = self.outcome_art
 
-        if not isinstance(file_name, str) or not path_exists(
-            f"{root_dir}{file_name}.png"
-        ):
-            return None
-
-        return pygame.image.load(f"{root_dir}{file_name}.png")
+        return images['patrol_art', file_name]
 
     # ---------------------------------------------------------------------------- #
     #                                   HANDLERS                                   #

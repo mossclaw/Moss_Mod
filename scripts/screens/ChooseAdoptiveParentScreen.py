@@ -5,7 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.propagating_thread import PropagatingThread
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -183,18 +183,14 @@ class ChooseAdoptiveParentScreen(Screens):
         self.the_cat_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((40, 113), (266, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat1_frame_mate.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat1_frame_mate'],
                 (532, 394),
             ),
         )
         self.parent_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((494, 113), (266, 197))),
             pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/choosing_cat2_frame_mate.png"
-                ).convert_alpha(),
+                image_cache['choosing_cat2_frame_mate'],
                 (532, 394),
             ),
         )
@@ -202,7 +198,7 @@ class ChooseAdoptiveParentScreen(Screens):
         self.center_icon = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((306, 160), (188, 129))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/adoption.png").convert_alpha(),
+                image_cache['adoption'],
                 ui_scale_dimensions((376, 258)),
             ),
             manager=MANAGER,
@@ -275,7 +271,7 @@ class ChooseAdoptiveParentScreen(Screens):
         self.potential_seperator = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((497, 0), (10, 176))),
             pygame.transform.scale(
-                image_cache.load_image("resources/images/vertical_bar.png"),
+                image_cache['vertical_bar'],
                 ui_scale_dimensions((20, 352)),
             ),
             container=self.potential_container,

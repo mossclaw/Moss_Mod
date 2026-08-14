@@ -4,7 +4,7 @@ import pygame
 import pygame_gui
 
 from scripts.cat_relations.enums import RelTier
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from scripts.ui.elements.modified_image import UIModifiedImage
 from scripts.ui.scale import ui_scale_value, ui_scale_dimensions
 
@@ -24,10 +24,8 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
         tool_tip_text: str = None,
     ):
         # creating the colored bar
-        path = "resources/images/relation_bar.png"
-
         bar = pygame.transform.scale(
-            image_cache.load_image(path),
+            image_cache['relation_bar'],
             (relative_rect[2], relative_rect[3]),
         )
 
@@ -76,9 +74,7 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
 
         # Now to make the overlay
         image = pygame.transform.scale(
-            image_cache.load_image(
-                "resources/images/relations_border_bars.png"
-            ).convert_alpha(),
+            image_cache['relations_border_bars'],
             (relative_rect[2], relative_rect[3]),
         )
 
@@ -113,7 +109,7 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
         pointer_size = ui_scale_dimensions((14, 12))
 
         pointer = pygame.transform.scale(
-            image_cache.load_image("resources/images/rel_pointer.png").convert_alpha(),
+            image_cache['rel_pointer'],
             pointer_size,
         )
         self.pointer = pygame_gui.elements.UIImage(

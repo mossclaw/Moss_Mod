@@ -13,8 +13,9 @@ from scripts.cat.cats import create_example_cats, create_cat, Cat
 from scripts.cat.names import names
 from scripts.clan import Clan
 from scripts.events_module.patrol.patrol import Patrol
-from scripts.game_structure import image_cache, constants
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
+from scripts.game_structure.image_cache import image_cache
+from scripts.cat.sprites.load_sprites import images
 from .screens_core.screens_core import rebuild_top_menu_buttons
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -39,24 +40,12 @@ from ..ui.icon import Icon
 class MakeClanScreen(Screens):
     # UI images
     ui_images = {
-        "clan_frame": pygame.image.load(
-            "resources/images/pick_clan_screen/clan_name_frame.png"
-        ).convert_alpha(),
-        "name_clan": pygame.image.load(
-            "resources/images/pick_clan_screen/name_clan_light.png"
-        ).convert_alpha(),
-        "leader": pygame.image.load(
-            "resources/images/pick_clan_screen/leader_light.png"
-        ).convert_alpha(),
-        "deputy": pygame.image.load(
-            "resources/images/pick_clan_screen/deputy_light.png"
-        ).convert_alpha(),
-        "medic": pygame.image.load(
-            "resources/images/pick_clan_screen/med_light.png"
-        ).convert_alpha(),
-        "pick_clan": pygame.image.load(
-            "resources/images/pick_clan_screen/clan_light.png"
-        ).convert_alpha(),
+        "clan_frame": images['pick_clan_screen', 'clan_name_frame'],
+        "name_clan": images['pick_clan_screen', 'name_clan_light'],
+        "leader": images['pick_clan_screen', 'leader_light'],
+        "deputy": images['pick_clan_screen', 'deputy_light'],
+        "medic": images['pick_clan_screen', 'med_light'],
+        "pick_clan": images['pick_clan_screen', 'clan_light'],
     }
 
     classic_mode_text = "screens.make_clan.classic_info"
@@ -644,9 +633,7 @@ class MakeClanScreen(Screens):
             if len(self.members) == 0:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_none_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_none_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -654,9 +641,7 @@ class MakeClanScreen(Screens):
             elif len(self.members) == 1:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_one_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_one_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -664,9 +649,7 @@ class MakeClanScreen(Screens):
             elif len(self.members) == 2:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_two_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_two_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -674,9 +657,7 @@ class MakeClanScreen(Screens):
             elif len(self.members) == 3:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_three_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_three_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -684,9 +665,7 @@ class MakeClanScreen(Screens):
             elif 4 <= len(self.members) <= 6:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_four_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_four_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -697,9 +676,7 @@ class MakeClanScreen(Screens):
             elif len(self.members) == 7:
                 self.elements["background"].set_image(
                     pygame.transform.scale(
-                        pygame.image.load(
-                            "resources/images/pick_clan_screen/clan_full_light.png"
-                        ).convert_alpha(),
+                        images['pick_clan_screen', 'clan_full_light'],
                         ui_scale_dimensions((800, 700)),
                     )
                 )
@@ -1031,9 +1008,7 @@ class MakeClanScreen(Screens):
         if "camp_art" in self.elements:
             self.elements["camp_art"].kill()
         if self.biome_selected:
-            src = pygame.image.load(
-                self.get_camp_art_path(self.selected_camp_tab)
-            ).convert_alpha()
+            src = self.get_camp_art()
             self.elements["camp_art"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((175, 170), (450, 400))),
                 pygame.transform.scale(
@@ -1048,9 +1023,7 @@ class MakeClanScreen(Screens):
 
     def get_camp_bg(self, src=None):
         if src is None:
-            src = pygame.image.load(
-                self.get_camp_art_path(self.selected_camp_tab)
-            ).convert_alpha()
+            src = self.get_camp_art()
 
         name = "_".join(
             [
@@ -1308,9 +1281,7 @@ class MakeClanScreen(Screens):
         self.clear_all_page()
         self.sub_screen = "game mode"
 
-        text_box = image_cache.load_image(
-            "resources/images/game_mode_text_box.png"
-        ).convert_alpha()
+        text_box = image_cache['game_mode_text_box']
 
         self.elements["game_mode_background"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((325, 130), (399, 461))),
@@ -1743,9 +1714,7 @@ class MakeClanScreen(Screens):
         self.elements["background"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 414), (800, 286))),
             pygame.transform.scale(
-                pygame.image.load(
-                    "resources/images/pick_clan_screen/clan_none_light.png"
-                ).convert_alpha(),
+                images['pick_clan_screen', 'clan_none_light'],
                 ui_scale_dimensions((800, 700)),
             ),
             manager=MANAGER,
@@ -2175,21 +2144,20 @@ class MakeClanScreen(Screens):
         Cat.sort_cats()
         rebuild_top_menu_buttons()
 
-    def get_camp_art_path(self, campnum) -> Optional[str]:
+    def get_camp_art(self, campnum=None) -> Optional[pygame.Surface]:
+        if campnum is None:
+            campnum = self.selected_camp_tab
         if not campnum:
             return None
 
         leaf = self.selected_season.replace("-", "")
 
-        camp_bg_base_dir = "resources/images/camp_bg/"
         start_leave = leaf.casefold()
         light_dark = "dark" if game_setting_get("dark mode") else "light"
 
         biome = self.biome_selected.lower()
 
-        return (
-            f"{camp_bg_base_dir}/{biome}/{start_leave}_camp{campnum}_{light_dark}.png"
-        )
+        return images['camp_bg', biome, f"{start_leave}_camp{campnum}_{light_dark}"]
 
     def draw_art_frame(self):
         if "art_frame" in self.elements:

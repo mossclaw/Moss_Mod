@@ -6,13 +6,21 @@ import pygame
 import time
 
 from scripts.cat.enums import CatGroup
-from scripts.game_structure import constants, image_cache
+from scripts.game_structure import constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.moss_util import read_sprite_dict, read_json, all_mods, base_mod
 
 
 logger = logging.getLogger(__name__)
 drop_sheets = constants.CONFIG["low_ram"]
+
+
+def _combine(tup, value):
+    if tup is None:
+        return value
+    if isinstance(tup, tuple):
+        return tup + (value,)
+    return (tup, value)
 
 
 class Sprites:
@@ -23,7 +31,6 @@ class Sprites:
             self.image = None
             self.mod = mod
             self.path = path
-            self.ready = False
 
         @property
         def sprite(self):
@@ -32,10 +39,46 @@ class Sprites:
                 with self.mod.open_path(self.path, text=False) as file:
                     name = self.path.split('/')[-1]
                     image = pygame.image.load(file, namehint=name)
-                if not drop_sheets:
-                    self.image = image
+                self._cache(image)
             return image
+        
+        def _cache(self, image):
+            if not drop_sheets:
+                self.image = image
 
+
+    class Image(SpriteSheet):
+        def _cache(self, image):
+            pass
+    
+    
+    class Section(dict):
+        def __getitem__(self, x):
+            return dict.__getitem__(self, x).sprite.convert_alpha() if x in self else None
+
+
+    class ImageDict:
+        def __init__(self):
+            self.sections = {}
+        
+        def __getitem__(self, x):
+            if isinstance(x, tuple):
+                if len(x) == 2:
+                    section, name = x
+                else:
+                    section, name = x[:-1], x[-1]
+            else:
+                section, name = '', x
+                
+            return self.sections[section][name]
+        
+        def section(self, section):
+            if section is None:
+                section = ''
+            if section not in self.sections:
+                self.sections[section] = Sprites.Section()
+            return self.sections[section]
+    
 
     class SpriteCache:
         def __init__(self, spritesheet, x, y, size):
@@ -44,7 +87,6 @@ class Sprites:
             self.x = x
             self.y = y
             self.size = size
-            self.ready = False
 
         @property
         def sprite(self):
@@ -68,6 +110,7 @@ class Sprites:
     cat_tints           = {}
     white_patches_tints = {}
     clan_symbols        = []
+    platformsheet       = None
 
 
     def __init__(self):
@@ -75,7 +118,7 @@ class Sprites:
         self.symbol_colors = None
         self.size          = None
         self.spritesheets  = {}
-        self.images        = {}
+        self.images        = self.ImageDict()
         self.sprite_cache  = {}
         self.sprites       = self
 
@@ -83,6 +126,7 @@ class Sprites:
         self.blank_sprite  = None
 
         self.load_tints()
+        self.load_all()
 
 
     def __getitem__(self, name):
@@ -107,6 +151,17 @@ class Sprites:
         :param name: Name to call the new spritesheet.
         """
         self.spritesheets[name] = self.SpriteSheet(mod, path)
+
+
+    def image(self, section, mod, path, name):
+        """
+        Add non-cached image called name from path.
+
+        :param mod:  The mod containing the image.
+        :param path: Path to the image.
+        :param name: Name to call the image.
+        """
+        self.images.section(section)[name] = self.Image(mod, path)
 
 
     def make_single(self,
@@ -154,7 +209,6 @@ class Sprites:
                 self.add_sprite(f"{name}{i}", new_sprite)
         else:
             self.add_sprite(name, new_sprite)
-            self.sprite_cache[name] = new_sprite
 
 
     def add_sprite(self, name, sprite):
@@ -183,10 +237,14 @@ class Sprites:
                 i += 1
 
 
-    def load_file(self, mod, path, rel_path, name, subdir=None):
+    def load_file(self, mod, path, rel_path, name, is_sprite, subdir=None):
         def invalid(path, reason):
             logger.warning(f"Entry in sprites.json for {path} is not valid. Ignoring file. {reason}")
 
+        if not is_sprite:
+            self.image(subdir, mod, path, name)
+            return
+        
         spritesheet = f"{subdir}{name.upper()}" if subdir else name
         self.spritesheet(mod, path, spritesheet)
 
@@ -229,13 +287,20 @@ class Sprites:
                 invalid(path, 'Valid values are normal, none, single, static or json.')
 
 
-    def load_dir(self, mod, path, subdir=None):
+    def load_dir(self, mod, path, is_sprites, subdir=None):
         for entry in mod.scan_dir(path):
             if not entry.is_dir and entry.name[-4:] == '.png':
-                rel_path = f"{subdir}/{entry.name}" if subdir else entry.name
-                self.load_file(mod, entry.path, rel_path, entry.name[:-4], subdir)
-            elif entry.is_dir and not subdir:
-                self.load_dir(mod, f"{path}/{entry.name}", entry.name)
+                self.load_file(mod, 
+                               entry.path, 
+                               f"{subdir}/{entry.name}" if subdir else entry.name, 
+                               entry.name[:-4], 
+                               is_sprites, 
+                               subdir)
+            elif entry.is_dir and (not is_sprites or not subdir):
+                self.load_dir(mod, 
+                              f"{path}/{entry.name}", 
+                              is_sprites, 
+                              _combine(subdir, entry.name))
 
 
     def load_all(self):
@@ -269,7 +334,8 @@ class Sprites:
         for mod in all_mods:
             if not hasattr(mod, 'sprite_config'):
                 mod.sprite_config = mod.load('sprites/dicts/sprites.json') or {}
-            self.load_dir(mod, 'sprites')
+            self.load_dir(mod, 'sprites', True)
+            self.load_dir(mod, 'resources/images', False)
 
         # Save special sprite sets in individual variables, for convenience and compatibility.
         self.symbol_dict, self.clan_symbols = self.specified['symbols']
@@ -392,9 +458,9 @@ class Sprites:
 
         biome = biome.lower()
 
-        platformsheet = image_cache.load_image(
-            "resources/images/platforms.png"
-        ).convert_alpha()
+        if Sprites.platformsheet is None:
+            Sprites.platformsheet = images['platforms']
+        platformsheet = Sprites.platformsheet
 
         order = ["beach", "forest", "mountainous", "nest", "plains", "dead"]
 
@@ -432,4 +498,5 @@ class Sprites:
 
 # CREATE INSTANCE
 sprites = Sprites()
+images = sprites.images
 

@@ -11,6 +11,7 @@ from pygame_gui.core import ObjectID, UIContainer
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
+from scripts.game_structure.image_cache import image_cache
 from ..ui.elements.cat_button import CatButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -204,9 +205,7 @@ class ChangeGenderScreen(Screens):
         self.elements["cat_frame"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((50, 100), (699, 520))),
             pygame.transform.scale(
-                pygame.image.load(
-                    "resources/images/gender_framing.png"
-                ).convert_alpha(),
+                image_cache['gender_framing'],
                 ui_scale_dimensions((699, 520)),
             ),
             manager=MANAGER,
@@ -307,7 +306,6 @@ class ChangeGenderScreen(Screens):
                 "top_target": self.removalboxes_text["instr"],
             },
         )
-        pronoun_frame = "resources/images/pronoun_frame.png"
         n = 0
         for pronounset in self.the_cat.pronouns:
             displayname = (
@@ -335,7 +333,7 @@ class ChangeGenderScreen(Screens):
             self.elements[
                 f"cat_pronouns_{n}"
             ].background_image = pygame.transform.scale(
-                pygame.image.load(pronoun_frame).convert_alpha(),
+                image_cache['pronoun_frame'],
                 ui_scale_dimensions((272, 44)),
             )
             self.elements[f"cat_pronouns_{n}"].rebuild()
@@ -416,7 +414,6 @@ class ChangeGenderScreen(Screens):
         )
 
         n = 0
-        pronoun_frame = "resources/images/pronoun_frame.png"
 
         all_pronouns = self.pronouns_dict + [
             x
@@ -452,7 +449,7 @@ class ChangeGenderScreen(Screens):
                 margins={"left": 0, "right": 0, "top": ui_scale_value(2), "bottom": 0},
             )
             self.elements[f"{n}"].background_image = pygame.transform.scale(
-                pygame.image.load(pronoun_frame).convert_alpha(),
+                image_cache['pronoun_frame'],
                 ui_scale_dimensions((272, 44)),
             )
             self.elements[f"{n}"].rebuild()

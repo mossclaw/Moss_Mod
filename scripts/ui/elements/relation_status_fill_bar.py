@@ -1,7 +1,7 @@
 import pygame
 import pygame_gui
 
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from scripts.ui.scale import ui_scale_value
 
 
@@ -35,9 +35,7 @@ class UIRelationStatusFillBar(pygame_gui.elements.UIStatusBar):
 
         # Now to make the overlay
         image = pygame.transform.scale(
-            image_cache.load_image(
-                "resources/images/relations_border_bars.png"
-            ).convert_alpha(),
+            image_cache['relations_border_bars'],
             (relative_rect[2], relative_rect[3]),
         )
 

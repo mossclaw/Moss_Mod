@@ -131,6 +131,15 @@ class CatGroup(StrEnum):
             self.PLAYER_CLAN,
             self.OTHER_CLAN,
         )
+    
+    def afterlife_suffix(self) -> str:
+        match self:
+            case self.DARK_FOREST:
+                return '_DF'
+            case self.UNKNOWN_RESIDENCE:
+                return '_UR'
+            case _:
+                return ''
 
 
 class CatCompatibility(Enum):

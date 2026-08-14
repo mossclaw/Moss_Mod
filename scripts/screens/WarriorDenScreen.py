@@ -25,6 +25,7 @@ from scripts.events_module.text_adjust import adjust_list_text
 from scripts.ui.scale import ui_scale
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 from scripts.moss_util import read_json
+from scripts.cat.sprites.load_sprites import images
 
 settings_dict = DISPLAY_SETTINGS["clan"]
 
@@ -140,7 +141,7 @@ class WarriorDenScreen(Screens):
 
         self.focus_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((50, 190), (700, 460))),
-            pygame.image.load("resources/images/warrior_den_frame.png").convert_alpha(),
+            images['warrior_den_frame'],
             object_id="#focus_frame",
             starting_height=1,
             manager=MANAGER,
@@ -174,9 +175,7 @@ class WarriorDenScreen(Screens):
 
         self.base_image = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((442, 84), (264, 348))),
-            pygame.image.load(
-                f"resources/images/warrior_den/{image}.png"
-            ).convert_alpha(),
+            images['warrior_den', image],
             manager=MANAGER,
         )
 
@@ -187,18 +186,14 @@ class WarriorDenScreen(Screens):
 
             self.focus_information["focus_visual"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((442, 84), (264, 348))),
-                pygame.image.load(
-                    f"resources/images/warrior_den/{self.active_code}.png"
-                ).convert_alpha(),
+                images['warrior_den', self.active_code],
                 manager=MANAGER,
             )
 
         else:
             self.focus_information["focus_visual"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((442, 84), (264, 348))),
-                pygame.image.load(
-                    f"resources/images/warrior_den/{self.original_focus_code}.png"
-                ).convert_alpha(),
+                images['warrior_den', self.original_focus_code],
                 manager=MANAGER,
             )
 

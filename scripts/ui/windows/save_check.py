@@ -4,7 +4,7 @@ import pygame_gui
 
 from scripts.cat.cats import Cat
 from scripts.cat.save_load import save_cats
-from scripts.game_structure import image_cache
+from scripts.game_structure.image_cache import image_cache
 from scripts.game_structure.game.switches import (
     switch_get_value,
     Switch,
@@ -66,7 +66,7 @@ class SaveCheckWindow(GameWindow):
         )
         save_buttons = get_button_dict(ButtonStyles.SQUOVAL, (114, 30))
         save_buttons["normal"] = pygame.transform.scale(
-            image_cache.load_image("resources/images/buttons/save_clan.png"),
+            image_cache['buttons', 'save_clan'],
             ui_scale_dimensions((114, 30)),
         )
 
@@ -85,7 +85,7 @@ class SaveCheckWindow(GameWindow):
             "buttons.clan_saved",
             {
                 "normal": pygame.transform.scale(
-                    image_cache.load_image("resources/images/save_clan_saved.png"),
+                    image_cache['save_clan_saved'],
                     ui_scale_dimensions((114, 30)),
                 )
             },

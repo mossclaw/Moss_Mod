@@ -31,6 +31,7 @@ from scripts.ui.generate_button import ButtonStyles, get_button_dict
 from scripts.ui.icon import Icon
 from scripts.ui.theme import get_text_box_theme
 from scripts.ui.scale import ui_scale, ui_scale_value
+from scripts.cat.sprites.load_sprites import images
 
 
 class ListScreen(Screens):
@@ -67,16 +68,10 @@ class ListScreen(Screens):
 
     def __init__(self, name=None):
         super().__init__(name)
-        self.ur_bg_image = pygame.image.load("resources/images/urbg.png").convert()
-        self.sc_bg_image = pygame.image.load(
-            "resources/images/starclanbg.png"
-        ).convert_alpha()
-        self.df_bg_image = pygame.image.load(
-            "resources/images/darkforestbg.png"
-        ).convert_alpha()
-        self.search_bar_image = pygame.image.load(
-            "resources/images/search_bar.png"
-        ).convert_alpha()
+        self.ur_bg_image = images['urbg']
+        self.sc_bg_image = images['starclanbg']
+        self.df_bg_image = images['darkforestbg']
+        self.search_bar_image = images['search_bar']
         self.all_pages = None
         self.filter_options_visible = True
         self.group_options_visible = False

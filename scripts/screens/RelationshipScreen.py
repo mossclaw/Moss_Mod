@@ -5,8 +5,8 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, constants
-from scripts.game_structure import game
+from scripts.game_structure.image_cache import image_cache
+from scripts.game_structure import game, constants
 from scripts.ui.elements.relation_display import UIRelationDisplay
 from scripts.ui.elements.sprite_button import UISpriteButton
 from scripts.ui.elements.image_button import UIImageButton
@@ -233,9 +233,7 @@ class RelationshipScreen(Screens):
         )
 
         self.search_bar_image = pygame.transform.scale(
-            image_cache.load_image(
-                "resources/images/relationship_search.png"
-            ).convert_alpha(),
+            image_cache['relationship_search'],
             ui_scale_dimensions((228, 39)),
         )
         self.details_frame_image = get_box(
@@ -249,9 +247,7 @@ class RelationshipScreen(Screens):
         )
 
         self.list_frame_image = pygame.transform.scale(
-            image_cache.load_image(
-                "resources/images/relationship_list_frame.png"
-            ).convert_alpha(),
+            image_cache['relationship_list_frame'],
             ui_scale_dimensions((502, 500)),
         )
 
@@ -489,9 +485,7 @@ class RelationshipScreen(Screens):
                 self.inspect_cat_elements["mate"] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((8, 8), (22, 20))),
                     pygame.transform.scale(
-                        image_cache.load_image(
-                            "resources/images/heart_big.png"
-                        ).convert_alpha(),
+                        image_cache['heart_big'],
                         ui_scale_dimensions((22, 20)),
                     ),
                     container=self.selected_cat_container,
@@ -505,9 +499,7 @@ class RelationshipScreen(Screens):
                     self.inspect_cat_elements["family"] = pygame_gui.elements.UIImage(
                         ui_scale(pygame.Rect((10, 8), (18, 18))),
                         pygame.transform.scale(
-                            image_cache.load_image(
-                                "resources/images/dot_big.png"
-                            ).convert_alpha(),
+                            image_cache['dot_big'],
                             ui_scale_dimensions((18, 18)),
                         ),
                         container=self.selected_cat_container,
@@ -515,26 +507,16 @@ class RelationshipScreen(Screens):
 
             # Gender
             if self.inspect_cat.genderalign == "female":
-                gender_icon = image_cache.load_image(
-                    "resources/images/female_big.png"
-                ).convert_alpha()
+                gender_icon = image_cache['female_big']
             elif self.inspect_cat.genderalign == "male":
-                gender_icon = image_cache.load_image(
-                    "resources/images/male_big.png"
-                ).convert_alpha()
+                gender_icon = image_cache['male_big']
             elif self.inspect_cat.genderalign == "trans female":
-                gender_icon = image_cache.load_image(
-                    "resources/images/transfem_big.png"
-                ).convert_alpha()
+                gender_icon = image_cache['transfem_big']
             elif self.inspect_cat.genderalign == "trans male":
-                gender_icon = image_cache.load_image(
-                    "resources/images/transmasc_big.png"
-                ).convert_alpha()
+                gender_icon = image_cache['transmasc_big']
             else:
                 # Everyone else gets the nonbinary icon
-                gender_icon = image_cache.load_image(
-                    "resources/images/nonbi_big.png"
-                ).convert_alpha()
+                gender_icon = image_cache['nonbi_big']
 
             gender_rect = ui_scale(pygame.Rect((0, 0), (34, 34)))
             gender_rect.topright = ui_scale_offset((-3, 3))
@@ -764,26 +746,16 @@ class RelationshipScreen(Screens):
         self.relation_list_elements["name" + str(i)].disable()
         # Gender alignment
         if the_relationship.cat_to.genderalign == "female":
-            gender_icon = image_cache.load_image(
-                "resources/images/female_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['female_big']
         elif the_relationship.cat_to.genderalign == "male":
-            gender_icon = image_cache.load_image(
-                "resources/images/male_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['male_big']
         elif the_relationship.cat_to.genderalign == "trans female":
-            gender_icon = image_cache.load_image(
-                "resources/images/transfem_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['transfem_big']
         elif the_relationship.cat_to.genderalign == "trans male":
-            gender_icon = image_cache.load_image(
-                "resources/images/transmasc_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['transmasc_big']
         else:
             # Everyone else gets the nonbinary icon
-            gender_icon = image_cache.load_image(
-                "resources/images/nonbi_big.png"
-            ).convert_alpha()
+            gender_icon = image_cache['nonbi_big']
 
         self.relation_list_elements["gender" + str(i)] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((pos_x + 80, pos_y + 5), (18, 18))),
@@ -800,9 +772,7 @@ class RelationshipScreen(Screens):
                 "mate_icon" + str(i)
             ] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((pos_x + 5, pos_y + 5), (11, 10))),
-                image_cache.load_image(
-                    "resources/images/heart_big.png"
-                ).convert_alpha(),
+                image_cache['heart_big'],
             )
         else:
             # FAMILY DOT
@@ -827,9 +797,7 @@ class RelationshipScreen(Screens):
                     "relation_icon" + str(i)
                 ] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((pos_x + 5, pos_y + 5), (9, 9))),
-                    image_cache.load_image(
-                        "resources/images/dot_big.png"
-                    ).convert_alpha(),
+                    image_cache['dot_big'],
                 )
 
         # ------------------------------------------------------------------------------------------------------------ #

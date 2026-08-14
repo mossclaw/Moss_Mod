@@ -281,6 +281,17 @@ def reverse_dict(dict_of_lists):
     return { item: key for key, items in dict_of_lists.items() for item in items }
 
 
+def if_in(item, *entries):
+    for x in entries:
+        match x:
+            case group, value:
+                if item in group:
+                    return value
+            case _:
+                return x
+    return None
+
+
 class OnUpdateList(list):
     def __init__(self, update, convert, elems):
         list.__init__(self, elems)

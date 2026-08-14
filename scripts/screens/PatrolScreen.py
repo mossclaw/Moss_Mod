@@ -7,7 +7,8 @@ import pygame_gui
 
 from scripts.cat.cats import Cat
 from scripts.events_module.patrol.patrol import Patrol
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
+from scripts.cat.sprites.load_sprites import images
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -17,7 +18,7 @@ from ..ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from .enums import GameScreen
 from ..clan_package.settings import get_clan_setting
-from ..game_structure import image_cache, constants
+from ..game_structure.image_cache import image_cache
 from ..game_structure.game.settings import game_setting_get
 from ..cat.enums import CatRank
 from ..game_structure.propagating_thread import PropagatingThread
@@ -47,11 +48,11 @@ class PatrolScreen(Screens):
 
         self.in_progress_data = None
         self.able_box = pygame.transform.scale(
-            image_cache.load_image("resources/images/patrol_able_cats.png"),
+            image_cache['patrol_able_cats'],
             ui_scale_dimensions((270, 201)),
         )
         self.app_frame = pygame.transform.scale(
-            image_cache.load_image("resources/images/patrol_app_frame.png"),
+            image_cache['patrol_app_frame'],
             ui_scale_dimensions((166, 170)),
         )
         self.mate_frame = pygame.transform.flip(self.app_frame, True, False)
@@ -803,7 +804,7 @@ class PatrolScreen(Screens):
         self.elements["info_bg"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((90, 456), (420, 204))),
             pygame.transform.scale(
-                pygame.image.load("resources/images/patrol_info.png").convert_alpha(),
+                images['patrol_info'],
                 ui_scale_dimensions((420, 204)),
             ),
             manager=MANAGER,
@@ -1057,9 +1058,7 @@ class PatrolScreen(Screens):
                 self.fav[str(i)] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                     pygame.transform.scale(
-                        pygame.image.load(
-                            f"resources/images/fav_marker.png"
-                        ).convert_alpha(),
+                        images['fav_marker'],
                         ui_scale_dimensions((50, 50)),
                     ),
                 )

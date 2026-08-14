@@ -40,6 +40,7 @@ from scripts.events_module.text_adjust import (
     adjust_list_text,
     event_text_adjust,
 )
+from scripts.cat.sprites.load_sprites import images
 
 logger = logging.getLogger(__name__)
 
@@ -1178,16 +1179,15 @@ class Patrol:
         if not self.patrol_event or not isinstance(self.patrol_event.patrol_art, str):
             return pygame.Surface((600, 600), flags=pygame.SRCALPHA)
 
-        root_dir = "resources/images/patrol_art/"
 
         if not game_setting_get("gore") and self.patrol_event.patrol_art_clean:
             file_name = self.patrol_event.patrol_art_clean
         else:
             file_name = self.patrol_event.patrol_art
+            
+        image = images['patrol_art', file_name] if isinstance(file_name, str) else None
 
-        if not isinstance(file_name, str) or not path_exists(
-            f"{root_dir}{file_name}.png"
-        ):
+        if image is None:
             if "herb_gathering" in self.patrol_event.types:
                 file_name = "med"
             elif "hunting" in self.patrol_event.types:
@@ -1197,9 +1197,9 @@ class Patrol:
             else:
                 file_name = "train"
 
-            file_name = f"{file_name}_general_intro"
+            image = images['patrol_art', f"{file_name}_general_intro"]
 
-        return pygame.image.load(f"{root_dir}{file_name}.png")
+        return image
 
 
 # ---------------------------------------------------------------------------- #
