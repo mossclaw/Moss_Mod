@@ -39,7 +39,7 @@ class EventLoadingAnimation(GameWindow):
         frames = []
         for i in range(0, 16):
             frames.append(
-                images['loading_animate', 'timeskip', i]
+                images['loading_animate', 'timeskip', str(i)]
             )
 
         return frames
