@@ -381,6 +381,12 @@ class Sprites:
         xpos = 0
         ypos = 0
         sprite_names = []
+        
+        global dbg
+        if dbg > 0:
+            raise Exception()
+        else:
+            dbg += 1
 
         for name, entry in entries.items():
             variants, _ = read_or_set(entry, 'variants', 1)
@@ -495,6 +501,7 @@ class Sprites:
             )
         )
 
+dbg = 0
 
 # CREATE INSTANCE
 sprites = Sprites()

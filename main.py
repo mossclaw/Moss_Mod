@@ -68,9 +68,6 @@ def load_data():
         game.audio.disabled = True
         game.audio.muted = True
 
-    # load in the spritesheets
-    sprites.load_all()
-
     clan_list = read_clans()
     if clan_list:
         switch_set_value(Switch.clan_list, clan_list)
