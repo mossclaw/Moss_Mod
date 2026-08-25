@@ -90,9 +90,9 @@ class ProfileScreen(Screens):
     # UI Images
     conditions_tab = image_cache['conditions_tab_backdrop']
 
-    df = image_cache['buttons/exile_df']
-    sc = image_cache['buttons/guide_sc']
-    ur = image_cache['buttons/send_ur']
+    df = image_cache['buttons', 'exile_df']
+    sc = image_cache['buttons', 'guide_sc']
+    ur = image_cache['buttons', 'send_ur']
 
     # Keep track of current tabs open. Can be used to keep tabs open when pages are switched, and
     # helps with exiting the screen
