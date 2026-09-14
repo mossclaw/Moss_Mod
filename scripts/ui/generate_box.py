@@ -84,11 +84,11 @@ def get_tileset(style: BoxData) -> Tileset:
 
     # ceiling to the nearest multiple of the tilecount
     width = (
-        ceil(ui_scale_value(surface.get_width()) / style.tilecount[0])
+        ceil(ui_scale_value(surface.get_width()) / style.tilecount[0] - 0.001)
         * style.tilecount[0]
     )
     height = (
-        ceil(ui_scale_value(surface.get_height()) / style.tilecount[1])
+        ceil(ui_scale_value(surface.get_height()) / style.tilecount[1] - 0.001)
         * style.tilecount[1]
     )
 
