@@ -24,7 +24,7 @@ def _decode_json(path, content):
         # Use standard json for the better error messages
         return json.loads(content)
     except json.JSONDecodeError as e:
-        raise json.JSONDecodeError(f"{path}: {e.msg}", e.doc, e.pos)
+        raise json.JSONDecodeError(f"{path}: {e.msg}", e.doc, e.pos) from None
 
 
 def _read_single_json(path, use_mods=True):
