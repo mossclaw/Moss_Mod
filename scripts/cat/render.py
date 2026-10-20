@@ -149,9 +149,19 @@ class Render:
         if colormap is None or color is None:
             raise ValueError(
                 'Both colormap and color must be set or passed to paint when index != None.')
+        
+        try:
+            col = Render.colors[colormap][color][index]
+        except KeyError:
+            if colormap not in Render.colors:
+                raise KeyError(f"No such colormap: {colormap}") from None
+            elif color not in Render.colors[colormap]:
+                raise KeyError(f"No such color '{colormap}/{color}'") from None
+            elif len(Render.colors[colormap][color]) < index + 1:
+                raise KeyError(f"To few color codes in color '{colormap}/{color}'") from None
 
         tint = pygame.Surface(self.size).convert_alpha()
-        tint.fill(Render.colors[colormap][color][index])
+        tint.fill(col)
         self.__merge(tint, blend or 'mult', image)
 
 
