@@ -672,7 +672,12 @@ class Pregnancy_Events:
         ):
             return False, False
 
-        # Check to see if the pair can have kits.
+        # Check if it is an affair while settings does not allow it.
+        # The pregnant parent's mates are already considered while choosing second parent.
+        if not allow_affair and second_parent.mate and cat.ID not in second_parent.mate:
+            return False, False
+
+        # Check to see if the pair can have kits due to genders.
         if cat.gender == second_parent.gender:
             if same_sex_birth:
                 return True, False
